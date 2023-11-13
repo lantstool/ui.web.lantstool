@@ -1,0 +1,11 @@
+.account {
+  border: 1px solid #000000;
+  margin: 10px;
+  padding: 10px;
+}
+
+.key {
+  background-color: #efddff;
+  padding: 10px;
+  margin: 10px 0;
+}

@@ -1,0 +1,11 @@
+.container {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 250px 10px auto 10px;
+  grid-template-rows: 10px auto 10px;
+  grid-template-areas:
+    'a . . .'
+    'a . b .'
+    'a . . .';
+}
+

@@ -1,0 +1,14 @@
+.allowedMethods {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputGroupWrapper {
+  width: 80%;
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-family: 'Montserrat Alternates', sans-serif;
+      }
+    </style>
+    <script type="module">
+      import { Buffer } from 'buffer';
+      globalThis.Buffer = Buffer;
+    </script>
+    <title>Near Devtools</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+.container {
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6ca7a7;
+  border-radius: 5px 0 0 5px;
+}
+
+.addTransactionButton {
+  height: 30px;
+  width: calc(100% - 10px);
+  margin-top: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addTransactionButton:hover {
+  transform: scale(1.01);
+}

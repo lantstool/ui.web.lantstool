@@ -1,0 +1,13 @@
+.action {
+  padding: 10px;
+  background-color: #b1d0f4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #78b7ff;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

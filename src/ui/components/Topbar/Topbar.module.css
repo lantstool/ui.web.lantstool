@@ -1,0 +1,7 @@
+.container {
+    grid-area: b;
+    display: flex;
+    align-items: center;
+    background-color: #8b6ca7;
+    border-radius: 5px;
+}

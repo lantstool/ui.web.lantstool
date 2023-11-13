@@ -1,0 +1,8 @@
+.inputGroup {
+  margin: 10px 0;
+}
+
+.inputGroup > label {
+  display: flex;
+  margin-bottom: 5px;
+}

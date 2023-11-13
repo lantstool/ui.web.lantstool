@@ -1,0 +1,28 @@
+.input {
+  height: 48px;
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  border: 1px solid #a463b0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: inherit;
+  box-sizing: border-box;
+  padding: 5px 15px;
+}
+
+.input:disabled {
+  border: 3px solid #8d8d8d;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  text-shadow: 0 0 5px black;
+  margin-top: 4px;
+}
+
+.textarea {
+  height: auto;
+}
