@@ -14,7 +14,7 @@ export const To = ({ form }: any) => {
   return (
     <fieldset style={{ borderRadius: 8, margin: '20px 0', }}>
       <legend>To</legend>
-      <InputGroup register={register} name="receiverId" label="Receiver Id" />
+      <InputGroup register={register} name="receiver.accountId" label="Receiver Id" />
     </fieldset>
   );
 };

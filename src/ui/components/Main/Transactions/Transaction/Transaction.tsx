@@ -12,7 +12,7 @@ export const Transaction = ({ tx }: any) => {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    onSendTransaction();
+    onSendTransaction(data);
   };
 
   return (

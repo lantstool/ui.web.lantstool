@@ -9,31 +9,45 @@ export const initState = {
       transactionId: '1a',
       name: 'Transaction 1',
       createdAt: '2023-01-01',
-      signerId: 'eclipseer.testnet',
-      publicKey: 'abc123',
-      to: {
-        accountId: '',
+      signer: {
+        accountId: 'eclipseer.testnet',
+        source: 'Input',
+      },
+      signerKey: {
+        source: 'Input',
+        publicKey: 'ed25519:FijQaWHjbJdf8wDQmGzcLGEpqRt2HMuVF9gCXsFhMqJn',
+        privateKey:
+          'ed25519:5GyJ5aHaXGzH4CogoCom4L7ATwVQRHWQXuYnYxP3NGrbksuer51uECB8C3BVHkdVR5VLqyhtnfhDUVTiCGkxeWdL',
+        seedPhrase: 'gospel leave reject define cigar crawl vacant cute file mixture ocean swamp',
+      },
+      receiver: {
+        accountId: 'eclpseeer-multisig-test-1.testnet',
         type: 'Named', // NewImplicit
       },
-      receiverId: 'eclipseer.testnet',
       actions: [
         {
-          actionId: 'd1d1',
-          name: 'Add Key',
-          type: 'AddKey',
-          publicKey: 'abc:123',
-          permission: {
-            type: 'FullAccess', // FullAccess
-            restrictions: {
-              allowedAllowance: 'Limited', // Limited
-              allowance: 0.5,
-              receiverId: 'abc.near',
-              allowedMethods: 'All', // Certain
-              methodNames: [{ name: '' }],
-            },
-          },
-          nonce: '0',
+          actionId: 'ttt251',
+          name: 'Transfer',
+          type: 'Transfer',
+          amount: '0.001',
         },
+        // {
+        //   actionId: 'd1d1',
+        //   name: 'Add Key',
+        //   type: 'AddKey',
+        //   publicKey: 'abc:123',
+        //   permission: {
+        //     type: 'FullAccess', // FullAccess
+        //     restrictions: {
+        //       allowedAllowance: 'Limited', // Limited
+        //       allowance: 0.5,
+        //       receiverId: 'abc.near',
+        //       allowedMethods: 'All', // Certain
+        //       methodNames: [{ name: '' }],
+        //     },
+        //   },
+        //   nonce: '0',
+        // },
       ],
     },
     '2a': {

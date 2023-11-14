@@ -8,8 +8,8 @@ export const Metadata = ({ form }: any) => {
     <div>
       <h2>{name}</h2>
       <h3>From</h3>
-      <InputGroup register={register} name="signerId" label="Signer Id" />
-      <InputGroup register={register} name="publicKey" label="Public Key" />
+      <InputGroup register={register} name="signer.accountId" label="Signer Id" />
+      <InputGroup register={register} name="signerKey.publicKey" label="Signer Public Key" />
     </div>
   );
 };
