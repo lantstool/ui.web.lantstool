@@ -2,6 +2,7 @@ import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { useWatch } from 'react-hook-form';
 import { KeyPair } from 'near-api-js';
 import { useEffect } from 'react';
+import { AccessKey } from './AccessKey/AccessKey.tsx';
 
 const getPublicKey = (privateKey: string) => {
   try {
@@ -21,7 +22,7 @@ export const Metadata = ({ form }: any) => {
   });
 
   useEffect(() => {
-    setValue(`signerKey.publicKey`, getPublicKey(signerType?.privateKey));
+    setValue('signerKey.publicKey', getPublicKey(signerType?.privateKey));
   }, [signerType?.privateKey]);
 
   return (
@@ -29,38 +30,7 @@ export const Metadata = ({ form }: any) => {
       <h2>{name}</h2>
       <h3>From</h3>
       <InputGroup register={register} name="signer.accountId" label="Signer Id" />
-
-      <fieldset style={{ borderRadius: 8 }}>
-        <legend>Access key</legend>
-
-        <input
-          {...register('signerKey.source')}
-          type="radio"
-          value="Manually"
-          id={'signerKey.source.manually'}
-        />
-        <label htmlFor={'signerKey.source.manually'}>Type manually</label>
-
-        <input
-          {...register('signerKey.source')}
-          type="radio"
-          value="Existing"
-          id={'signerKey.source.existing'}
-        />
-        <label htmlFor={'signerKey.source.existing'}>Select existing</label>
-
-        {signerType?.source === 'Manually' && (
-          <>
-            <InputGroup register={register} name={'signerKey.privateKey'} label="Private Key" />
-            <InputGroup
-              register={register}
-              name={'signerKey.publicKey'}
-              label="Public Key"
-              disabled={true}
-            />
-          </>
-        )}
-      </fieldset>
+      <AccessKey register={register} signerType={signerType} />
     </div>
   );
 };
