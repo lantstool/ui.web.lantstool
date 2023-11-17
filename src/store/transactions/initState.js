@@ -14,7 +14,7 @@ export const initState = {
         source: 'Input',
       },
       signerKey: {
-        source: 'Input',
+        source: 'Manually',
         publicKey: 'ed25519:FijQaWHjbJdf8wDQmGzcLGEpqRt2HMuVF9gCXsFhMqJn',
         privateKey:
           'ed25519:5GyJ5aHaXGzH4CogoCom4L7ATwVQRHWQXuYnYxP3NGrbksuer51uECB8C3BVHkdVR5VLqyhtnfhDUVTiCGkxeWdL',
