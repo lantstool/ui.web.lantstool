@@ -1,0 +1,33 @@
+.buttonModal {
+  width: 246px;
+  margin-top: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #fffcf1;
+  border: 2px solid #ffe8a3;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+}
+.input {
+  width: 90%;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #78b7ff;
+  background-color: #b1d0f4;
+}
+.buttonAdd {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #7521f1;
+  border: 1px solid #7821ff;
+  cursor: pointer;
+}

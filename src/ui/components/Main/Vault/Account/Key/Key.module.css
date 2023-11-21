@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #efe3ff;
+    border: 1px solid #9747ff;
+}
+.keys{
+    width: 100%;
+    word-break: break-all;
+}
+.infoWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100%;
+}
+.info{
+    display: flex;
+    justify-content: space-evenly;
+}
+.infoButtons{
+    display: flex;
+    justify-content: space-evenly;
+}
