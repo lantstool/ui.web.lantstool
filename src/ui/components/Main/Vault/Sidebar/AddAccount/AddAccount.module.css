@@ -9,29 +9,10 @@
 .modal {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   width: 400px;
   height: 300px;
-}
-.form{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-justify-content: space-evenly;
-  width: 90%;
-}
-.title{
-  margin: 0;
-  padding: 0;
-  font-size: 22px;
-  font-weight: 600;
-  color: #000000;
-}
-.subTitle{
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  color: #000000;
 }
 .input {
   width: 90%;
@@ -41,51 +22,12 @@ justify-content: space-evenly;
   border: 1px solid #78b7ff;
   background-color: #b1d0f4;
 }
-.error{
-  height: 20px;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  color: #ff0000;
-}
-.buttonGroup{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
 .buttonAdd {
-  width: 120px;
-  padding: 10px 15px;
-  font-size: 15px;
-  border-radius: 8px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 6px;
   color: #ffffff;
   background-color: #7521f1;
   border: 1px solid #7821ff;
   cursor: pointer;
-}
-.buttonAdd:disabled {
-  background-color: #c4c4c4;
-  border: 1px solid #c4c4c4;
-  cursor: not-allowed;
-}
-.buttonAdd:disabled:hover {
-  background-color: #c4c4c4;
-  border: 1px solid #c4c4c4;
-  cursor: not-allowed;
-}
-.buttonAdd:hover {
-  background-color: #a667fd;
-}
-.buttonClose {
-  width: 120px;
-  padding: 8px 15px;
-  font-size: 15px;
-  border-radius: 8px;
-  color: #ffffff;
-  background-color: #f41336;
-  border: 1px solid #ff2121;
-  cursor: pointer;
-}
-.buttonClose:hover {
-  background-color: #ff5b5b;
 }
