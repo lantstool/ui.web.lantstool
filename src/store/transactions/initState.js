@@ -21,8 +21,19 @@ export const initState = {
         seedPhrase: 'gospel leave reject define cigar crawl vacant cute file mixture ocean swamp',
       },
       receiver: {
-        accountId: 'eclpseeer-multisig-test-1.testnet',
-        type: 'Named', // NewImplicit
+        type: 'existing', // newNamed // newImplicit
+        existing: {
+          accountId: 'eclpseeer-multisig-test-1.testnet',
+        },
+        newNamed: {
+          accountId: '',
+        },
+        newImplicit: {
+          accountId: '',
+          seedPhrase: '',
+          privateKey: '',
+          publicKey: '',
+        },
       },
       actions: [
         {
