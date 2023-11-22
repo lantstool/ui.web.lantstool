@@ -19,20 +19,12 @@ export const AccessKey = ({ form }: any) => {
   });
 
   useEffect(() => {
-    setValue('signerKey.publicKey', getPublicKey(signerType?.privateKey));
-  }, [signerType?.privateKey]);
+    setValue('signerKey.publicKey', getPublicKey(signerType.privateKey));
+  }, [signerType.privateKey]);
 
   return (
     <fieldset style={{ borderRadius: 8 }}>
       <legend>Access key</legend>
-
-      <input
-        {...register('signerKey.source')}
-        type="radio"
-        value="Manually"
-        id="signerKey.source.manually"
-      />
-      <label htmlFor="signerKey.source.manually">Type manually</label>
 
       <input
         {...register('signerKey.source')}
@@ -42,14 +34,22 @@ export const AccessKey = ({ form }: any) => {
       />
       <label htmlFor="signerKey.source.existing">Select existing</label>
 
-      {signerType?.source === 'Manually' && (
+      <input
+        {...register('signerKey.source')}
+        type="radio"
+        value="Manually"
+        id="signerKey.source.manually"
+      />
+      <label htmlFor="signerKey.source.manually">Type manually</label>
+
+      {signerType.source === 'Manually' && (
         <>
           <InputGroup register={register} name="signerKey.privateKey" label="Private Key" />
           <InputGroup
             register={register}
             name="signerKey.publicKey"
             label="Public Key"
-            disabled={true}
+            disabled
           />
         </>
       )}
