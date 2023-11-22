@@ -12,9 +12,10 @@ export const Account = ({ map, activeAccId }: any) => {
         </div>
       </div>
       <div className={cn.keyWrapper}>
-        {map[activeAccId].map((accountKey: any) => (
-          <Key key={accountKey.privateKey} accountKey={accountKey} />
-        ))}
+        {map[activeAccId].map(
+          (accountKey: any) =>
+            accountKey.publicKey && <Key key={accountKey.publicKey} accountKey={accountKey} />,
+        )}
       </div>
     </div>
   );

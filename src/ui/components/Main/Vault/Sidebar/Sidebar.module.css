@@ -18,6 +18,7 @@
   overflow: auto;
 }
 .text {
+  min-height: 40px;
   margin: 8px;
   padding: 2px 4px;
   text-align: center;
