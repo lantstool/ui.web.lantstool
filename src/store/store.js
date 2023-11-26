@@ -27,7 +27,7 @@ export const store = createStore({
 
   idb: entity(async () => {
     try {
-      const idb = await openDB('near-devtools', 2, {
+      const idb = await openDB('near-devtools', 1, {
         upgrade(db) {
           if (!db.objectStoreNames.contains('transactions')) {
             db.createObjectStore('transactions', { keyPath: 'transactionId' });

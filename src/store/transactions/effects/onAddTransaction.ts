@@ -6,24 +6,24 @@ const createTx = () => {
 
   return {
     userId: '1u',
-      spaceId: '1s',
+    spaceId: '1s',
     networkId: '1n',
     transactionId,
     name: `TX#${transactionId.slice(0, 10)}`,
     createdAt: new Date().toISOString(),
     signer: {
-    accountId: '',
+      accountId: '',
       source: 'Input',
-  },
+    },
     signerKey: {
       source: 'Manually',
-        publicKey: '',
-        privateKey: '',
-        seedPhrase: '',
+      publicKey: '',
+      privateKey: '',
+      seedPhrase: '',
     },
     receiver: {
       type: 'existing',
-        existing: {
+      existing: {
         accountId: '',
       },
       newNamed: {
@@ -31,16 +31,17 @@ const createTx = () => {
       },
       newImplicit: {
         accountId: '',
-          seedPhrase: '',
-          privateKey: '',
-          publicKey: '',
+        seedPhrase: '',
+        privateKey: '',
+        publicKey: '',
       },
     },
     actions: [],
-  }
+  };
 };
 
 export const onAddTransaction = effect(async ({ payload, slice, store }: any) => {
+  const { navigate } = payload;
   const [idb] = store.getEntities((store: any) => store.idb);
   const addTransaction = slice.getActions((slice: any) => slice.addTransaction);
 
@@ -48,6 +49,7 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
     const transaction = createTx();
     await idb.add('transactions', transaction);
     addTransaction(transaction);
+    navigate(`${transaction.transactionId}`)
   } catch (e) {
     console.log(e);
   }

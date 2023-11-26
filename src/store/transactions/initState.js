@@ -1,5 +1,4 @@
 export const initState = {
-  active: '',
   list: [],
   map: {
     '1a': {

@@ -1,13 +1,15 @@
+import { useMatch, useNavigate } from "react-router-dom";
 import { useStoreState, useStoreAction, useStoreEffect } from '../../../../../react-vault';
 import { Transaction } from './Transaction/Transaction.tsx';
 import cn from './Sidebar.module.css';
 
-export const Sidebar = () => {
+export const Sidebar = ({ activeTransactionId }: any ) => {
   const transactions: any = useStoreState((store: any) => store.transactions);
   const onAddTransaction = useStoreEffect((store: any) => store.transactions.onAddTransaction);
-  const setActiveTransaction = useStoreAction(
-    (store: any) => store.transactions.setActiveTransaction,
-  );
+  const navigate = useNavigate();
+  const match: any = useMatch('/transactions/:transactionId');
+
+  const addTransaction = () => onAddTransaction({ navigate });
 
   return (
     <div className={cn.container}>
@@ -15,12 +17,10 @@ export const Sidebar = () => {
         <Transaction
           key={id}
           transaction={transactions.map[id]}
-          activeTxId={transactions.active}
-          id={id}
-          setActiveTransaction={setActiveTransaction}
+          isActive={id === match?.params?.transactionId}
         />
       ))}
-      <button className={cn.addTransactionButton} onClick={onAddTransaction}>
+      <button className={cn.addTransactionButton} onClick={addTransaction}>
         Add Transaction
       </button>
     </div>
