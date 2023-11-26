@@ -10,11 +10,11 @@ import { store } from './store/store.js';
 import { StoreProvider } from './react-vault';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <>
     <StoreProvider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </StoreProvider>
-  </React.StrictMode>,
+  </>,
 );

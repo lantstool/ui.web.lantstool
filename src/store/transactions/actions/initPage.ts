@@ -10,7 +10,6 @@ export const initPage = action(({ slice, payload }: any) => {
     map[tx.transactionId] = tx;
   });
 
-  slice.active = payload.transactions[0].transactionId;
   slice.list = list;
   slice.map = map;
 });
