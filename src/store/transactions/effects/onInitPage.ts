@@ -10,7 +10,6 @@ export const onInitPage = effect(async ({ payload, slice, store }: any) => {
 
     payload(false);
     initPage({ transactions });
-    // addTransaction(transaction);
   } catch (e) {
     console.log(e);
   }

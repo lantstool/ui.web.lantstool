@@ -1,4 +1,4 @@
-import { providers } from 'near-api-js';
+import { JsonRpcProvider } from 'near-api-js/lib/providers';
 import { effect } from '../../../../react-vault';
 import { createTx } from './createTx.ts';
 import { signTx } from './signTx.ts';
@@ -6,7 +6,7 @@ import { signTx } from './signTx.ts';
 // TODO get network info from store
 export const onSendTransaction = effect(async ({ payload: form, slice, store }: any) => {
   try {
-    const provider = new providers.JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+    const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
 
     const transaction = await createTx({ provider, form });
     console.log(transaction);
