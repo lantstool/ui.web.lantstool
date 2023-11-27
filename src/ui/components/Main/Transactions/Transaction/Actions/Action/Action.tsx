@@ -23,7 +23,7 @@ export const Action = ({ form, action, index, remove }: any) => {
       {type === 'DeployContract' && (
         <DeployContract getName={getName} action={action} form={form} />
       )}
-      {type === 'FunctionCall' && <FunctionCall getName={getName} action={action} form={form} />}
+      {type === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
     </div>
   );
 };

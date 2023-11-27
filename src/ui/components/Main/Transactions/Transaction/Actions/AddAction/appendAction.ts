@@ -34,8 +34,20 @@ const addKey = (append: any) =>
     nonce: '0',
   });
 
+const functionCall = (append: any) =>
+  append({
+    actionId: v4(),
+    name: 'Function Call',
+    type: 'FunctionCall',
+    methodName: '',
+    arguments: '{}',
+    gas: '50',
+    deposit: '0',
+  });
+
 export const appendAction = {
   createAccount,
   transfer,
   addKey,
+  functionCall,
 };

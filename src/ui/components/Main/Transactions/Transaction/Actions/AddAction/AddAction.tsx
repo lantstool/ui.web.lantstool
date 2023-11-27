@@ -23,6 +23,11 @@ export const AddAction = ({ append }: any) => {
     closeModal();
   };
 
+  const functionCall = () => {
+    appendAction.functionCall(append);
+    closeModal();
+  };
+
   return (
     <>
       <button className={cn.addAction} onClick={openModal} type="button">
@@ -33,7 +38,8 @@ export const AddAction = ({ append }: any) => {
           <h3>Choose Action</h3>
           <button onClick={createAccount}> Create Account</button>
           <button onClick={transfer}>Transfer</button>
-          <button onClick={addKey}>Add Access Key</button>
+          <button onClick={addKey}>Add Key</button>
+          <button onClick={functionCall}>Function Call</button>
         </div>
       </Modal>
     </>
