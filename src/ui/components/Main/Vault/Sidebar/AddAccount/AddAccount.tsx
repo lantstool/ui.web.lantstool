@@ -1,13 +1,11 @@
 import { Modal } from '../../../../general/Modal/Modal.tsx';
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import cn from './AddAccount.module.css';
-import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../../react-vault';
 import { useForm } from 'react-hook-form';
 import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './addAccountSchema.ts';
-import { Simulate } from 'react-dom/test-utils';
-import submit = Simulate.submit;
 
 export const AddAccount = ({ list }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -21,16 +19,16 @@ export const AddAccount = ({ list }: any) => {
     reset,
     formState: { errors },
   } = useForm({ mode: 'all', resolver: yupResolver(newSchema) });
-
+  console.log(errors);
   const openModal = () => setOpen(true);
   const closeModal = () => {
+    clearTimeout(timerRef.current);
     setOpen(false);
     reset();
   };
-
   const onClick = () => {
-    timerRef.current='clear'
-
+    clearTimeout(timerRef.current);
+    timerRef.current = null;
   };
   const onSubmit = (data: any) => {
     onAddAccount({ data, closeModal });
@@ -55,12 +53,7 @@ export const AddAccount = ({ list }: any) => {
             </div>
 
             <div className={cn.buttonGroup}>
-              <button
-                onClick={onClick}
-                // disabled={errors.accountId !== undefined}
-                type="submit"
-                className={cn.buttonAdd}
-              >
+              <button onClick={onClick} type="submit" className={cn.buttonAdd}>
                 Add account
               </button>
               <button onClick={closeModal} className={cn.buttonClose}>

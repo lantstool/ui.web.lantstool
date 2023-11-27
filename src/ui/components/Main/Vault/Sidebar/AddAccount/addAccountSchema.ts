@@ -8,26 +8,14 @@ const near = await connect({
 });
 
 const asyncDebounce = (func: any, timerRef: any) => {
-  let timeout: any;
   return (...args: any) => {
-    clearTimeout(timeout);
-    // console.log(timerRef.current)
+    clearTimeout(timerRef.current);
     return new Promise((resolve) => {
       const later = () => {
-        timeout = null;
         resolve(func(...args));
       };
-      // if (timerRef.current===0){
-      //   later()
-      //   clearTimeout(timeout);
-      // }
-      if (timerRef.current === 'clear') {
-        later();
-        clearTimeout(timeout);
-      }
-
-      timeout = setTimeout(later, 3000);
-      timerRef.current= timeout
+      const wait: any = timerRef.current === null || 3000;
+      timerRef.current = setTimeout(later, wait);
     });
   };
 };
@@ -62,20 +50,3 @@ export const createSchema = (list: any, timerRef: any) => {
       }),
   });
 };
-
-// const asyncDebounce = (func:any, timerRef:any) => {
-//   let timeout:any;
-//   return (...args:any) => {
-//     clearTimeout(timeout);
-//     return new Promise((resolve) => {
-//       const later = () => {
-//         timeout = null;
-//         resolve(func(...args));
-//       };
-//       const wait:any = timerRef.current === 0 || 3000;
-//       timeout = setTimeout(later, wait);
-//       timerRef.current = timeout;
-//       console.log(timerRef)
-//     });
-//   };
-// };
