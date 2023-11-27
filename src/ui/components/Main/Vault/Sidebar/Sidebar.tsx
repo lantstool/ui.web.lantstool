@@ -15,7 +15,7 @@ export const Sidebar = ({ list, activeAccId }: any) => {
           </div>
         ))}
       </div>
-        <AddAccount/>
+        <AddAccount list={list}/>
     </div>
   );
 };
