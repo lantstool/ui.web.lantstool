@@ -1,34 +1,14 @@
 import { PublicKey } from 'near-api-js/lib/utils';
 import { utils } from 'near-api-js';
-import {
-  createAccount,
-  transfer,
-  addKey,
-  fullAccessKey,
-  functionCallAccessKey,
-  createTransaction,
-} from 'near-api-js/lib/transaction';
-
-const getCreateAccountAction = () => createAccount();
-
-const getTransferAction = (action: any) => transfer(utils.format.parseNearAmount(action.amount));
-
-const getAddKeyAction = (action: any) => {
-  const { type, restrictions } = action.permission;
-
-  const getFunctionCallKey = () => {};
-
-  const accessKey =
-    type === 'FullAccess' ? fullAccessKey() : functionCallAccessKey(restrictions.receiverId, []);
-
-  return addKey(utils.PublicKey.from(action.publicKey), accessKey);
-};
+import { createTransaction } from 'near-api-js/lib/transaction';
+import { getAction } from './getAction';
 
 const getActions = (actions: any) =>
   actions.map((action: any) => {
-    if (action.type === 'CreateAccount') return getCreateAccountAction();
-    if (action.type === 'AddKey') return getAddKeyAction(action);
-    if (action.type === 'Transfer') return getTransferAction(action);
+    if (action.type === 'CreateAccount') return getAction.createAccount();
+    if (action.type === 'AddKey') return getAction.addKey(action);
+    if (action.type === 'Transfer') return getAction.transfer(action);
+    if (action.type === 'FunctionCall') return getAction.functionCall(action);
   });
 
 export const createTx = async ({ provider, form }: any) => {

@@ -49,7 +49,7 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
     const transaction = createTx();
     await idb.add('transactions', transaction);
     addTransaction(transaction);
-    navigate(`${transaction.transactionId}`)
+    navigate(`/transactions/${transaction.transactionId}`)
   } catch (e) {
     console.log(e);
   }
