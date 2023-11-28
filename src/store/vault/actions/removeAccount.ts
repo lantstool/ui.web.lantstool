@@ -1,8 +1,8 @@
 import {action} from "../../../react-vault";
 
 export const removeAccount = action(({ slice, payload }: any) => {
-    const index = slice.list.indexOf(payload.accountId);
-    slice.list.splice(index, 1);
-    delete slice.map[payload.accountId];
+    console.log(payload);
+    console.log(slice.list = slice.list.filter((accId: string) => accId !== payload))
+    delete slice.map[payload];
     slice.active = slice.list[0];
 });

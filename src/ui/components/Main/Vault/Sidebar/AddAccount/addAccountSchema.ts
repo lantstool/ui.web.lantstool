@@ -46,7 +46,7 @@ export const createSchema = (list: any, timerRef: any) => {
         return verified as boolean;
       })
       .test('account-validation', 'Account exists', function (value) {
-        return !list.includes(value);
+        return list.length > 0 ? !list.includes(value) : true;
       }),
   });
 };

@@ -41,15 +41,7 @@
   border: 1px solid #7821ff;
   cursor: pointer;
 }
-.buttonRemove {
-  font-size: 14px;
-  padding: 5px;
-  border-radius: 6px;
-  color: #ffffff;
-  background-color: #ff0d41;
-  border: 1px solid #ff00df;
-  cursor: pointer;
-}
+
 .keyWrapper {
   max-height: 83vh;
   width: 100%;

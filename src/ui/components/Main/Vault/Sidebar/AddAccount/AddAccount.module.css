@@ -13,21 +13,21 @@
   width: 400px;
   height: 300px;
 }
-.form{
+.form {
   height: 100%;
   display: flex;
   flex-direction: column;
-justify-content: space-evenly;
+  justify-content: space-evenly;
   width: 90%;
 }
-.title{
+.title {
   margin: 0;
   padding: 0;
   font-size: 22px;
   font-weight: 600;
   color: #000000;
 }
-.subTitle{
+.subtitle {
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -41,14 +41,14 @@ justify-content: space-evenly;
   border: 1px solid #78b7ff;
   background-color: #b1d0f4;
 }
-.error{
+.error {
   height: 20px;
   margin: 0;
   padding: 0;
   font-size: 14px;
   color: #ff0000;
 }
-.buttonGroup{
+.buttonGroup {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -62,16 +62,6 @@ justify-content: space-evenly;
   background-color: #7521f1;
   border: 1px solid #7821ff;
   cursor: pointer;
-}
-.buttonAdd:disabled {
-  background-color: #c4c4c4;
-  border: 1px solid #c4c4c4;
-  cursor: not-allowed;
-}
-.buttonAdd:disabled:hover {
-  background-color: #c4c4c4;
-  border: 1px solid #c4c4c4;
-  cursor: not-allowed;
 }
 .buttonAdd:hover {
   background-color: #a667fd;
