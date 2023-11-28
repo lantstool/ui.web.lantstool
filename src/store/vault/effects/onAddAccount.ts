@@ -13,6 +13,6 @@ export const onAddAccount = effect(async ({ payload, slice, store }: any) => {
     addAccount({ accountId });
     payload.closeModal(false);
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 });

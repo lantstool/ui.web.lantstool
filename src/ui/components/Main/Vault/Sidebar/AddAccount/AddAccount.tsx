@@ -19,7 +19,7 @@ export const AddAccount = ({ list }: any) => {
     reset,
     formState: { errors },
   } = useForm({ mode: 'all', resolver: yupResolver(newSchema) });
-  console.log(errors);
+
   const openModal = () => setOpen(true);
   const closeModal = () => {
     clearTimeout(timerRef.current);
@@ -28,7 +28,7 @@ export const AddAccount = ({ list }: any) => {
   };
   const onClick = () => {
     clearTimeout(timerRef.current);
-    timerRef.current = null;
+    timerRef.current = 0;
   };
   const onSubmit = (data: any) => {
     onAddAccount({ data, closeModal });

@@ -14,7 +14,7 @@ const asyncDebounce = (func: any, timerRef: any) => {
       const later = () => {
         resolve(func(...args));
       };
-      const wait: any = timerRef.current === null || 3000;
+      const wait: any = timerRef.current === 0 || 3000;
       timerRef.current = setTimeout(later, wait);
     });
   };

@@ -31,8 +31,6 @@ export const store = createStore({
         upgrade(db) {
           if (!db.objectStoreNames.contains('transactions')) {
             db.createObjectStore('transactions', { keyPath: 'transactionId' });
-          }if (!db.objectStoreNames.contains('vault')) {
-            db.createObjectStore('vault', { keyPath: 'accountId' });
           }
           if (!db.objectStoreNames.contains('vault')) {
             db.createObjectStore('vault', { keyPath: 'accountId' });
