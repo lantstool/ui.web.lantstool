@@ -19,7 +19,7 @@ export const To = ({ form }: any) => {
 
   return (
     <fieldset style={{ borderRadius: 8, margin: '20px 0' }}>
-      <legend>To</legend>
+      <legend>Receiver</legend>
 
       <div>
         <input

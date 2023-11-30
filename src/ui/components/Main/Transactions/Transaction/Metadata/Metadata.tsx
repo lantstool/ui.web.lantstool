@@ -23,7 +23,7 @@ export const Metadata = ({ form }: any) => {
           Delete
         </button>
       </div>
-      <h3>From</h3>
+      <h3>Sender</h3>
       <InputGroup register={register} name="signer.accountId" label="Signer Id" />
       <AccessKey form={form} />
     </div>
