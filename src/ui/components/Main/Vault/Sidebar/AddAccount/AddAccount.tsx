@@ -6,10 +6,12 @@ import { useForm } from 'react-hook-form';
 import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './addAccountSchema.ts';
+import { useNavigate } from 'react-router-dom';
 
 export const AddAccount = ({ list }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const timerRef: any = useRef(null);
+  const navigate = useNavigate();
 
   const onAddAccount = useStoreEffect((store: any) => store.vault.onAddAccount);
   const newSchema = createSchema(list, timerRef);
@@ -31,7 +33,7 @@ export const AddAccount = ({ list }: any) => {
     timerRef.current = 0;
   };
   const onSubmit = (data: any) => {
-    onAddAccount({ data, closeModal });
+    onAddAccount({ data, closeModal, navigate });
     reset();
   };
   return (

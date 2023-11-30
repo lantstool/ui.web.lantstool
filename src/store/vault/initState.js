@@ -1,5 +1,4 @@
 export const initState = {
-  active: 'eclpseeer-multisig-test-1.testnet',
   list: ['eclpseeer-multisig-test-1.testnet', 'eclpseeer-multisig-test-2.testnet'],
   map: {
     'eclpseeer-multisig-test-1.testnet': [

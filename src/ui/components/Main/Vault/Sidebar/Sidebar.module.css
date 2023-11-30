@@ -21,13 +21,15 @@
   min-height: 40px;
   margin: 8px;
   padding: 2px 4px;
+  display: flex;
   text-align: center;
-  word-break: break-all;
-  font-size: 17px;
-  color: #ffffff;
-  background-color: #8b6ca7;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #676767;
   border-radius: 5px;
+  background-color: #8b6ca7;
+  color: #ffffff;
+  word-break: break-all;
 }
 .text:hover {
   background-color: #bb92e4;
@@ -40,4 +42,3 @@
 .active:hover {
   background-color: #e149f1;;
 }
-
