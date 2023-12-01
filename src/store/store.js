@@ -32,6 +32,9 @@ export const store = createStore({
           if (!db.objectStoreNames.contains('transactions')) {
             db.createObjectStore('transactions', { keyPath: 'transactionId' });
           }
+          if (!db.objectStoreNames.contains('vault')) {
+            db.createObjectStore('vault', { keyPath: 'accountId' });
+          }
         },
       });
     } catch (e) {

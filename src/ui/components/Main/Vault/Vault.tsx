@@ -1,25 +1,31 @@
 import { useStoreState } from '../../../../react-vault';
 import cn from './Vault.module.css';
+import { Sidebar } from './Sidebar/Sidebar.tsx';
+import { Account } from './Account/Account.tsx';
+import { Empty } from './Empty/Empty.tsx';
+import { useStoreEffect } from '../../../../react-vault';
+import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 export const Vault = () => {
-  const list = useStoreState((store: any) => store.vault.list);
-  const map = useStoreState((store: any) => store.vault.map);
+  const onInitPage = useStoreEffect((store: any) => store.vault.onInitPage);
+  const list: any = useStoreState((store: any) => store.vault.list);
+  const map: any = useStoreState((store: any) => store.vault.map);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    onInitPage(setLoading);
+  }, [onInitPage]);
+
+  if (loading) return <p>Loading...</p>;
+  if (list.length == 0) return <Empty list={list} />;
 
   return (
-    <div>
-      <h1>Vault</h1>
-      {list.map((accountId: any) => (
-        <div key={accountId} className={cn.account}>
-          <h2>{accountId}</h2>
-          {map[accountId].map((key: any) => (
-            <div key={key.publicKey} className={cn.key}>
-              <p>{key.publicKey}</p>
-              <p>{key.seedPhrase}</p>
-              <p>{key.privateKey}</p>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className={cn.container}>
+      <Sidebar list={list} />
+      <Routes>
+        <Route path=":accountId" element={<Account map={map} />} />
+      </Routes>
     </div>
   );
 };
