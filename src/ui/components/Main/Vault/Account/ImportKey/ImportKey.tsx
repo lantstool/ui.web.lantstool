@@ -8,11 +8,11 @@ import { useForm, useWatch } from "react-hook-form";
 export const ImportKey = (accountId: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const onGetAccessKeyList = useStoreEffect((store: any) => store.vault.onGetAccessKeyList);
-  const accessList: any = useStoreState((state: any) => state.vault.accessKeyList);
-  const form = useForm({ defaultValues: { list: accessList } });
+  const accessKeyList: any = useStoreState((state: any) => state.vault.accessKeyList);
+  const form = useForm({ defaultValues: { list: accessKeyList } });
   const {control,register} = form
   console.log(form);
-  const accessType = useWatch({
+  const signerKey = useWatch({
     control,
     name: 'signerKey',
   });
@@ -49,7 +49,7 @@ export const ImportKey = (accountId: any) => {
                 label="Select key"
                 onChange={handleChange}
               >
-                {accessList.map((key: any) => (
+                {accessKeyList.map((key: any) => (
                   <MenuItem key={key.public_key} value={key.public_key}>
                     {key.public_key}
                   </MenuItem>

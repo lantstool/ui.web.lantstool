@@ -1,10 +1,11 @@
 import { effect } from '../../../react-vault';
+import { replaceDotsToString } from "../helpers/replaceDots.ts";
 
 const getNextRoute = (accList: any, activeTxId: string) => {
   if (accList.length === 1) return '/vault';
   const index = accList.findIndex((id: any) => id === activeTxId);
-  if (0 < index) return `/vault/${accList[index - 1].replace(/\./g, '-dot-')}`;
-  if (0 === index) return `/vault/${accList[index + 1].replace(/\./g, '-dot-')}`;
+  if (0 < index) return `/vault/${replaceDotsToString(accList[index - 1])}`;
+  if (0 === index) return `/vault/${replaceDotsToString(accList[index + 1])}`;
 };
 
 export const onRemoveAccount = effect(async ({ payload, slice, store }: any) => {

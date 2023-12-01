@@ -1,24 +1,20 @@
 import { effect } from "../../../react-vault";
-import { connect } from "near-api-js";
-
-const near = await connect({
-  networkId: 'testnet',
-  nodeUrl: 'https://rpc.testnet.near.org',
-  walletUrl: 'https://testnet.mynearwallet.com',
-});
+import {JsonRpcProvider} from "near-api-js/lib/providers";
 
 
-export const onGetAccessKeyList =effect(async ({ payload, slice, store }: any) => {
+export const onGetAccessKeyList =effect(async ({ payload, slice }: any) => {
   const {accountId} = payload
   const getAccessKeyList = slice.getActions((slice: any) => slice.getAccessKeyList);
-  console.log(accountId);
+
   try {
-    const response = await near.connection.provider.query({
+    const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+
+    const response = await provider.query({
       request_type: "view_access_key_list",
       finality: "final",
       account_id: accountId,
     });
-    // console.log();
+
     getAccessKeyList(response)
   }catch (e){
     console.log(e);
