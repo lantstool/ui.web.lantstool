@@ -1,0 +1,81 @@
+.buttonModal {
+  width: 246px;
+  margin-top: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #fffcf1;
+  border: 2px solid #ffe8a3;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+}
+.form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 90%;
+}
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+}
+.subtitle {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #000000;
+}
+.input {
+  width: 90%;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #78b7ff;
+  background-color: #b1d0f4;
+}
+.error {
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #ff0000;
+}
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.buttonAdd {
+  width: 120px;
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: #7521f1;
+  border: 1px solid #7821ff;
+  cursor: pointer;
+}
+.buttonAdd:hover {
+  background-color: #a667fd;
+}
+.buttonClose {
+  width: 120px;
+  padding: 8px 15px;
+  font-size: 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  background-color: #f41336;
+  border: 1px solid #ff2121;
+  cursor: pointer;
+}
+.buttonClose:hover {
+  background-color: #ff5b5b;
+}
