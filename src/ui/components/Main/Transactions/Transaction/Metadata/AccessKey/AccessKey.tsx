@@ -1,7 +1,10 @@
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
 import { useEffect } from 'react';
 import { KeyPair } from 'near-api-js';
 import { useWatch } from 'react-hook-form';
+import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
+import { SelectGroup } from '../../../../../general/SelectGroup/SelectGroup.tsx';
+import { useStoreState } from '../../../../../../../react-vault';
+import { SelectKey } from "./SelectKey/SelectKey.tsx";
 
 const getPublicKey = (privateKey: string) => {
   try {
@@ -10,13 +13,11 @@ const getPublicKey = (privateKey: string) => {
     return e;
   }
 };
+
 export const AccessKey = ({ form }: any) => {
   const { register, control, setValue } = form;
 
-  const signerType = useWatch({
-    control,
-    name: 'signerKey',
-  });
+  const signerType = useWatch({ control, name: 'signerKey' });
 
   useEffect(() => {
     setValue('signerKey.publicKey', getPublicKey(signerType.privateKey));
@@ -32,7 +33,7 @@ export const AccessKey = ({ form }: any) => {
         value="Existing"
         id="signerKey.source.existing"
       />
-      <label htmlFor="signerKey.source.existing">Select existing</label>
+      <label htmlFor="signerKey.source.existing">Select from Vault</label>
 
       <input
         {...register('signerKey.source')}
@@ -42,15 +43,12 @@ export const AccessKey = ({ form }: any) => {
       />
       <label htmlFor="signerKey.source.manually">Type manually</label>
 
+      {signerType.source === 'Existing' && <SelectKey form={form} />}
+
       {signerType.source === 'Manually' && (
         <>
           <InputGroup register={register} name="signerKey.privateKey" label="Private Key" />
-          <InputGroup
-            register={register}
-            name="signerKey.publicKey"
-            label="Public Key"
-            disabled
-          />
+          <InputGroup register={register} name="signerKey.publicKey" label="Public Key" disabled />
         </>
       )}
     </fieldset>
