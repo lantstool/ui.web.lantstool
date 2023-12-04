@@ -22,7 +22,7 @@ export const Account = ({ map }: any) => {
         {map[accId]?.list?.map(
           (accountKey: any) =>
             accountKey && (
-              <Key key={accountKey} publicKey={accountKey} account={map[accId].map[accountKey]} />
+              <Key key={accountKey} account={map[accId].map[accountKey]} />
             ),
         )}
       </div>

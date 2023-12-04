@@ -2,11 +2,11 @@ import cn from './Key.module.css';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-export const Key = ({ publicKey, account }: any) => {
+export const Key = ({ account }: any) => {
   return (
     <div className={cn.container}>
       <div className={cn.keys}>
-        <p>Public key: {publicKey}</p>
+        <p>Public key: {account.publicKey}</p>
         <p>Seed phrase: {account.seedPhrase}</p>
         <p>Private key: {account.privateKey}</p>
       </div>
