@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import { KeyPair } from 'near-api-js';
 import { useWatch } from 'react-hook-form';
 import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
-import { SelectGroup } from '../../../../../general/SelectGroup/SelectGroup.tsx';
-import { useStoreState } from '../../../../../../../react-vault';
 import { SelectKey } from "./SelectKey/SelectKey.tsx";
 
 const getPublicKey = (privateKey: string) => {

@@ -18,7 +18,7 @@ export const App = () => {
   return (
     <div className={cn.container}>
       <Sidebar />
-      <Topbar />
+      {/*<Topbar />*/}
       <Main />
     </div>
   );
