@@ -17,7 +17,7 @@ export const Account = ({ map }: any) => {
       <div className={cn.topBar}>
         <h2 className={cn.title}>{accId}</h2>
         <div className={cn.buttonGroup}>
-          <ImportKey accountId={accId} />
+          <ImportKey accountId={accId} list={accountMap.list}/>
           <RemoveAccount accountId={accId} />
         </div>
       </div>

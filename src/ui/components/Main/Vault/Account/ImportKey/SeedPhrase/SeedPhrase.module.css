@@ -1,0 +1,10 @@
+.privateKey{
+    margin: 0;
+    height: 60px;
+    word-break: break-all;
+}
+.error{
+    margin: 0;
+    height: 30px;
+    color: red;
+}
