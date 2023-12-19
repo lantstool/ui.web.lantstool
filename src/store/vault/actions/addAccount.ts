@@ -1,7 +1,7 @@
-import {action} from "../../../react-vault";
-
+import { action } from '../../../react-vault';
 
 export const addAccount = action(({ slice, payload }: any) => {
-    slice.list.push(payload.accountId);
-    slice.map[payload.accountId] = []
+  const { account } = payload;
+  slice.list.push(account.accountId);
+  slice.map[account.accountId] = account;
 });

@@ -7,7 +7,7 @@ export const initPage = action(({ slice, payload }: any) => {
 
   payload.vault.forEach((account: any) => {
     list.push(account.accountId);
-    map[account.accountId] = [account];
+    map[account.accountId] = account;
   });
 
   slice.list = list;

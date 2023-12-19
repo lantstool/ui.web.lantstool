@@ -3,6 +3,7 @@ export const initState = {
   accessKeyList: [],
   map: {
     'eclpseeer-multisig-test-1.testnet': {
+      accountId: 'eclpseeer-multisig-test-1.testnet',
       list: ['ed25519:EU3JT4N2ahWEzVPfcjEutG89ZDfX1vcqeYz9N1DDest6'],
       map: {
         'ed25519:EU3JT4N2ahWEzVPfcjEutG89ZDfX1vcqeYz9N1DDest6': {
@@ -16,6 +17,7 @@ export const initState = {
       },
     },
     'eclpseeer-multisig-test-2.testnet': {
+      accountId: 'eclpseeer-multisig-test-2.testnet',
       list: [
         'ed25519:Hmv5bNHAsGZjEYLRmiJiTKMgQJgg1WKk84bdtzU9yhWK',
         'ed25519:EU3JT4N2ahWEzVPfcjEutG89ZDfX1vcqeYz9N1DDest6',
