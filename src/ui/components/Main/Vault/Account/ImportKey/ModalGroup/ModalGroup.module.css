@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
+    height: 350px;
+    padding: 0 25px;
+}
+.closeBtn{
+
+}
+.prevBtn{
+
+}

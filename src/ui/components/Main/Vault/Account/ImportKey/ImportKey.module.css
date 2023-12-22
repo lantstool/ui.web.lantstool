@@ -1,20 +1,12 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 550px;
-    height: 400px;
-    padding: 0 25px;
-}
 .buttonImport {
-    margin-right: 10px;
-    padding: 5px;
-    border-radius: 6px;
-    color: #ffffff;
-    background-color: #7521f1;
-    border: 1px solid #7821ff;
-    cursor: pointer;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #7521f1;
+  border: 1px solid #7821ff;
+  cursor: pointer;
 }
 .form {
-    width: 100%;
+  width: 100%;
 }
