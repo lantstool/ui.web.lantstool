@@ -5,9 +5,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 3px;
-  border: 1px solid #676767;
   border-radius: 5px;
-  background-color: #8b6ca7;
   color: #ffffff;
 }
 .container:hover {

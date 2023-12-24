@@ -1,7 +1,44 @@
-.container {
-    grid-area: a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: blueviolet;
+.sidebar {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: 15px auto 15px;
+  grid-template-rows: 20% auto 20%;
+  grid-template-areas:
+    '. a .'
+    '. b .'
+    '. c .';
+  background-color: #2d6a4f;
+  color: white;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.26);
+}
+
+.logo {
+  grid-area: a;
+  justify-self: center;
+  font-size: 23px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.navigation {
+  grid-area: b;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  color: white;
+  margin: 5px;
+}
+
+.profile {
+  grid-area: c;
+  justify-self: center;
+  align-self: end;
 }

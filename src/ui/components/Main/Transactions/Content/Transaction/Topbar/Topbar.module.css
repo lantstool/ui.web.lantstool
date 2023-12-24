@@ -1,0 +1,26 @@
+.topbar {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: 40px auto 10px 60px 40px;
+  grid-template-rows: auto;
+  grid-template-areas: '. a . b .';
+  background-color: #40916c;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  color: white;
+}
+
+.name {
+  grid-area: a;
+  align-self: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+}
+
+.delete {
+  grid-area: b;
+  align-self: center;
+}
