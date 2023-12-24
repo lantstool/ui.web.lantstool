@@ -7,7 +7,7 @@ export const Key = ({ account }: any) => {
     <div className={cn.container}>
       <div className={cn.keys}>
         <p>Public key: {account.publicKey}</p>
-        <p>Seed phrase: {account.seedPhrase}</p>
+        {account.seedPhrase && <p>Seed phrase: {account.seedPhrase}</p>}
         <p>Private key: {account.privateKey}</p>
       </div>
       <div className={cn.infoWrapper}>
