@@ -1,24 +1,12 @@
 import * as yup from 'yup';
 import { connect } from 'near-api-js';
+import {asyncDebounce} from "../../../../../../store/vault/helpers/asyncDebounce.ts";
 
 const near = await connect({
   networkId: 'testnet',
   nodeUrl: 'https://rpc.testnet.near.org',
   walletUrl: 'https://testnet.mynearwallet.com',
 });
-
-const asyncDebounce = (func: any, timerRef: any) => {
-  return (...args: any) => {
-    clearTimeout(timerRef.current);
-    return new Promise((resolve) => {
-      const later = () => {
-        resolve(func(...args));
-      };
-      const wait: any = timerRef.current === 0 || 3000;
-      timerRef.current = setTimeout(later, wait);
-    });
-  };
-};
 
 const verifyAccount = async (value: any, values: any) => {
   try {

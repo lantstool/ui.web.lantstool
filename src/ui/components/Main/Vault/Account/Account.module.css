@@ -5,7 +5,6 @@
   align-items: center;
   border-radius: 8px;
   height: 100%;
-
 }
 .topBar {
   display: grid;
@@ -42,4 +41,3 @@
 
   overflow: auto;
 }
-
