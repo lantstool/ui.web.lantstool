@@ -1,15 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Navigation } from './Navigation/Navigation.tsx';
 import cn from './Sidebar.module.css';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 export const Sidebar = () => {
   return (
-    <div className={cn.sidebar}>
-      <h1 className={cn.logo}>Near Devtools</h1>
-      <div className={cn.navigation}>
-        <Link to="/transactions" className={cn.link}>Transactions</Link>
-        <Link to="/vault" className={cn.link}>Vault</Link>
+    <div className={cn.container}>
+      <div>
+        <h2 className={cn.title}>Near Devtools</h2>
+        <div className={cn.subtitleWrapper}>
+          <div className={cn.subtitleGroup}>
+            <h4 className={cn.subtitle}>Personal space</h4>
+            <KeyboardArrowDownIcon style={{ color: 'white' }} />
+          </div>
+          <div className={cn.subtitleGroup}>
+            <h4 className={cn.subtitle}>TestNet</h4>
+            <KeyboardArrowDownIcon style={{ color: 'white' }} />
+          </div>
+        </div>
       </div>
-      <p className={cn.profile}>eclipseeer</p>
+      <Navigation />
+      <h2 className={cn.name}>eclipseeer</h2>
     </div>
   );
 };
