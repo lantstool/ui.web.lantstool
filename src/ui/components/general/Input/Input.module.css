@@ -3,7 +3,7 @@
   width: 100%;
   position: relative;
   display: inline-flex;
-  border: 1px solid #a463b0;
+  border: 1px solid #40916C;
   border-radius: 8px;
   outline: none;
   font-size: 14px;
@@ -13,7 +13,7 @@
 }
 
 .input:disabled {
-  border: 3px solid #8d8d8d;
+  border: 1px solid #8d8d8d;
 }
 
 .error {

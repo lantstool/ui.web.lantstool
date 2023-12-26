@@ -3,17 +3,19 @@ import { effect } from '../../../../react-vault';
 import { createTx } from './createTx.ts';
 import { signTx } from './signTx.ts';
 
+const networkId = 'testnet';
+
 // TODO get network info from store
-export const onSendTransaction = effect(async ({ payload: form, slice, store }: any) => {
+export const onSendTransaction = effect(async ({ payload: form }: any) => {
   try {
-    const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+    const provider = new JsonRpcProvider({ url: `https://rpc.${networkId}.near.org` });
 
     const transaction = await createTx({ provider, form });
     console.log(transaction);
 
     const signedTx = await signTx({
       transaction,
-      networkId: 'testnet',
+      networkId,
       privateKey: form.signerKey.privateKey,
     });
 

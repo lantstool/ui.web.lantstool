@@ -2,12 +2,11 @@
   height: 100vh;
   width: 100%;
   display: grid;
-  grid-template-columns: 250px 10px auto 10px;
-  grid-template-rows: 10px 50px 10px auto 10px;
+  grid-template-columns: 250px 5px auto 5px;
+  grid-template-rows: 5px auto 5px;
   grid-template-areas:
-    'a . . .'
-    'a . b .'
     'a . . .'
     'a . c .'
     'a . . .';
+  background-color: #F5F9F7;
 }
