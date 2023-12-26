@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #6ca7a7;
-  border-radius: 5px 0 0 5px;
+  background-color: #438668;
+  border-radius: 15px 0 0 15px;
 }
 
 .addTransactionButton {

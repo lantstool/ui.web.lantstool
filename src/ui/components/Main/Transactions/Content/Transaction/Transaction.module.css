@@ -1,0 +1,39 @@
+.transaction {
+  width: 800px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto 60px;
+  grid-template-areas:
+    'a'
+    'b'
+    'c';
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.formScrollWrapper {
+  grid-area: b;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: calc(100% - 80px);
+  margin: 20px 0;
+}
+
+.bottomBar {
+  grid-area: c;
+  background-color: #40916C;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

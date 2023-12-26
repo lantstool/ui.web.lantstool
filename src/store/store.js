@@ -35,6 +35,9 @@ export const store = createStore({
           if (!db.objectStoreNames.contains('vault')) {
             db.createObjectStore('vault', { keyPath: 'accountId' });
           }
+          if (!db.objectStoreNames.contains('contractsCode')) {
+            db.createObjectStore('contractsCode', { keyPath: 'contractCodeId' });
+          }
         },
       });
     } catch (e) {

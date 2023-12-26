@@ -3,6 +3,7 @@ import { utils } from 'near-api-js';
 import { createTransaction } from 'near-api-js/lib/transaction';
 import { getAction } from './getAction';
 
+// TODO move to getActions folder
 const getActions = (actions: any) =>
   actions.map((action: any) => {
     if (action.type === 'CreateAccount') return getAction.createAccount();

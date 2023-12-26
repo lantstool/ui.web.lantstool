@@ -18,6 +18,11 @@ export const initState = {
         privateKey:
           'ed25519:5GyJ5aHaXGzH4CogoCom4L7ATwVQRHWQXuYnYxP3NGrbksuer51uECB8C3BVHkdVR5VLqyhtnfhDUVTiCGkxeWdL',
         seedPhrase: 'gospel leave reject define cigar crawl vacant cute file mixture ocean swamp',
+        fromVault: {
+          options: [],
+          publicKey: '',
+          privateKey: '',
+        },
       },
       receiver: {
         type: 'existing', // newNamed // newImplicit

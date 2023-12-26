@@ -1,0 +1,12 @@
+.action {
+  padding: 10px;
+  background-color: #40916c24;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
