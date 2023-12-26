@@ -1,4 +1,4 @@
-import { Modal } from '../../../../../general/Modal/Modal.tsx';
+import { Modal } from '../../../../../../general/Modal/Modal.tsx';
 import cn from './ModalGroup.module.css';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';

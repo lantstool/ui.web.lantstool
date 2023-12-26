@@ -4,7 +4,7 @@ import { KeyPair } from 'near-api-js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './schema.ts';
-import { ModalGroup } from '../ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
 import cn from '../SeedPhrase/SeedPhrase.module.css';
 
 export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => {

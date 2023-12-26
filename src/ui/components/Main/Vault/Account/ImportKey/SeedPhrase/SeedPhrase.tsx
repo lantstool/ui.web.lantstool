@@ -7,7 +7,7 @@ import { useStoreEffect, useStoreState } from '../../../../../../../react-vault'
 import { useForm, useWatch } from 'react-hook-form';
 import { createSchema } from './schema.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ModalGroup } from '../ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
 
 export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => {
   const onAddKey = useStoreEffect((store: any) => store.vault.onAddKey);
