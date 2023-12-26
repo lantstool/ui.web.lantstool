@@ -1,7 +1,40 @@
 .container {
-    grid-area: a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: blueviolet;
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d6a4f;
+}
+.subtitleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.subtitleGroup {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.subtitle {
+  margin: 10px 8px;
+  padding: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.name {
+  margin: 90px 0 30px 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
 }
