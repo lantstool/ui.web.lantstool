@@ -10,5 +10,6 @@
     text-transform: uppercase;
 }
 .icon {
+    width: 14px;
     margin-right: 7px;
 }

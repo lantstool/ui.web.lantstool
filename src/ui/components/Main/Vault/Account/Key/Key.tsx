@@ -8,7 +8,8 @@ import { Label } from './Label/Label.tsx';
 export const Key = ({ account }: any) => {
   const onRemoveKey = useStoreEffect((store: any) => store.vault.onRemoveKey);
   const permission = account.permission === 'FullAccess' ? 'Full access' : 'Function call';
-  const receiverId = account.receiverId === null ? '' : account.receiverId;
+  const permissionType = account.permission === 'FullAccess' ? 'fullAccess' : 'functionCall';
+  const receiverId = account.receiverId === null ? '' : `: ${account.receiverId}`;
   const removeKey = () => {
     onRemoveKey(account);
   };
@@ -17,8 +18,8 @@ export const Key = ({ account }: any) => {
     <div className={cn.key}>
       <div className={cn.container}>
         <div className={cn.infoGroup}>
-          <Label name={account.storageType} type="ledger" />
-          <Label name={`${permission} ${receiverId}`} type="functionCall" />
+          <Label name={account.storageType} type={account.storageType} />
+          <Label name={`${permission} ${receiverId}`} type={permissionType} />
         </div>
         <RemoveButton remove={removeKey} />
       </div>

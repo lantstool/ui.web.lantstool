@@ -19,7 +19,6 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
 
     const receiver =
       response.permission === 'AccessKey' ? response.permission?.FunctionCall.receiver_id : null;
-    console.log(receiver);
 
     const account = {
       accountId,

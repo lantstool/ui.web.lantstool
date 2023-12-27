@@ -49,7 +49,7 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
       privateKey: data.privateKey,
       seedPhrase: null,
       accountId,
-      storageType: 'Locally',
+      storageType: 'locally',
     });
   };
 

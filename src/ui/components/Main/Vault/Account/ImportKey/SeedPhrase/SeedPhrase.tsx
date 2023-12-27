@@ -52,7 +52,7 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
       privateKey: phraseData.secretKey,
       seedPhrase: phraseData.seedPhrase,
       accountId,
-      storageType: 'Locally',
+      storageType: 'locally',
     });
     resetField('seedPhrase');
   };
