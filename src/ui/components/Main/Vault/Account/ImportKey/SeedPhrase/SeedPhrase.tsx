@@ -47,7 +47,13 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
   const onSubmit = (data: any) => {
     const phraseData = parseSeedPhrase(data.seedPhrase);
     setValue('publicKey', phraseData.publicKey);
-    onAddKey({ data: phraseData, accountId });
+    onAddKey({
+      publicKey: phraseData.publicKey,
+      privateKey: phraseData.secretKey,
+      seedPhrase: phraseData.seedPhrase,
+      accountId,
+      storageType: 'Locally',
+    });
     resetField('seedPhrase');
   };
 

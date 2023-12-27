@@ -1,0 +1,12 @@
+.button {
+    border: none;
+    background: none;
+    padding: 0;
+}
+.icon {
+    margin: 0 3px 0 10px;
+    color: #b6c8c0;
+}
+.icon:hover {
+    color: #40916c;
+}

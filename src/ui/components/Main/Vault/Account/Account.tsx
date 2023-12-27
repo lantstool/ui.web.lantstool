@@ -3,7 +3,7 @@ import { Key } from './Key/Key.tsx';
 import { RemoveAccount } from './RemoveAccount/RemoveAccount.tsx';
 import { useParams } from 'react-router-dom';
 import { ImportKey } from './ImportKey/ImportKey.tsx';
-import { replaceStringToDots } from '../../../../../store/vault/helpers/replaceDots.ts';
+import { replaceStringToDots } from '../../../../../store/vault/helpers/regularExpressions.ts';
 import { useStoreState } from '../../../../../react-vault';
 
 export const Account = ({ map }: any) => {
@@ -21,11 +21,13 @@ export const Account = ({ map }: any) => {
           <RemoveAccount accountId={accId} />
         </div>
       </div>
-      <div className={cn.keyWrapper}>
-        {map[accId].list.map(
-          (accountKey: any) =>
-            accountKey && <Key key={accountKey} account={map[accId].map[accountKey]} />,
-        )}
+      <div className={cn.keyContainer}>
+        <div className={cn.keyWrapper}>
+          {map[accId].list.map(
+            (accountKey: any) =>
+              accountKey && <Key key={accountKey} account={map[accId].map[accountKey]} />,
+          )}
+        </div>
       </div>
     </div>
   );

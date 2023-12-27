@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #2d6a4f;
+  border-radius: 0 20px 20px 0;
 }
 .subtitleWrapper {
   display: flex;

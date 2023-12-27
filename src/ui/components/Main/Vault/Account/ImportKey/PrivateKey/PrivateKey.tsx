@@ -44,7 +44,13 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
   const onSubmit = (data: any) => {
     const pk = KeyPair.fromString(data.privateKey).getPublicKey().toString();
     setValue('publicKey', pk);
-    onAddKey({ data, accountId });
+    onAddKey({
+      publicKey: data.publicKey,
+      privateKey: data.privateKey,
+      seedPhrase: null,
+      accountId,
+      storageType: 'Locally',
+    });
   };
 
   return (

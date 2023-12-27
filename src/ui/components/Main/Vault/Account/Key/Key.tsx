@@ -1,34 +1,30 @@
 import cn from './Key.module.css';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
+import { useStoreEffect } from '../../../../../../react-vault';
+import { PrivateItem } from './PrivateItem/PrivateItem.tsx';
+import { PublicItem } from './PublicItem/PublicItem.tsx';
+import { RemoveButton } from '../../../../general/Buttons/RemoveButton/RemoveButton.tsx';
+import { Label } from './Label/Label.tsx';
+
 export const Key = ({ account }: any) => {
+  const onRemoveKey = useStoreEffect((store: any) => store.vault.onRemoveKey);
+  const permission = account.permission === 'FullAccess' ? 'Full access' : 'Function call';
+  const receiverId = account.receiverId === null ? '' : account.receiverId;
+  const removeKey = () => {
+    onRemoveKey(account);
+  };
+
   return (
-    <div className={cn.container}>
-      <div className={cn.keys}>
-        <p>Public key: {account.publicKey}</p>
-        {account.seedPhrase && <p>Seed phrase: {account.seedPhrase}</p>}
-        <p>Private key: {account.privateKey}</p>
-      </div>
-      <div className={cn.infoWrapper}>
-        <div className={cn.info}>
-          <p>Ledger</p>
-          <div>
-            <p>Full access key</p>
-            <div className={cn.infoButtons}>
-              <button>
-                <ContentCopyIcon />
-              </button>
-              <button>
-                <VisibilityRoundedIcon />
-              </button>
-            </div>
-          </div>
+    <div className={cn.key}>
+      <div className={cn.container}>
+        <div className={cn.infoGroup}>
+          <Label name={account.storageType} type="ledger" />
+          <Label name={`${permission} ${receiverId}`} type="functionCall" />
         </div>
+        <RemoveButton remove={removeKey} />
       </div>
-      <button>
-        <HighlightOffOutlinedIcon />
-      </button>
+      <PublicItem name={account.publicKey} />
+      <PrivateItem name={account.privateKey} />
+      {account.seedPhrase && <PrivateItem name={account.seedPhrase} />}
     </div>
   );
 };

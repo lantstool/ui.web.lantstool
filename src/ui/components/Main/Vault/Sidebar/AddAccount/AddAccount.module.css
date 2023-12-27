@@ -1,11 +1,19 @@
 .buttonModal {
-  width: 246px;
+  width: 200px;
   margin-top: 15px;
-  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
   border-radius: 10px;
-  background-color: #fffcf1;
-  border: 2px solid #ffe8a3;
+  color: #ffffff;
+  background-color: #438668;
+  border: 2px solid #D4FFEB;
+  cursor: pointer;
 }
+.buttonModal:hover{
+  background-color: #7dd7b3;;
+}
+
 .modal {
   display: flex;
   flex-direction: column;

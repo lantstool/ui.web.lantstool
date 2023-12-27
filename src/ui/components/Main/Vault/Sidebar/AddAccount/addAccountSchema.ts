@@ -8,7 +8,7 @@ const near = await connect({
   walletUrl: 'https://testnet.mynearwallet.com',
 });
 
-const verifyAccount = async (value: any, values: any) => {
+const verifyAccount = async (value: any) => {
   try {
     await near.connection.provider.query({
       request_type: 'view_account',
@@ -18,7 +18,6 @@ const verifyAccount = async (value: any, values: any) => {
     return true;
   } catch (e) {
     console.log(e);
-    values.createError({ path: 'accountId' });
     return false;
   }
 };
