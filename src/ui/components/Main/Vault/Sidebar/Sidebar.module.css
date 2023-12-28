@@ -18,7 +18,7 @@
 }
 .wrapper {
   width: 100%;
-  max-height: calc(100vh - 170px);
+  height: calc(100vh - 170px);
   overflow: auto;
 }
 ::-webkit-scrollbar {
