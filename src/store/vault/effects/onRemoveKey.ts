@@ -8,13 +8,10 @@ export const onRemoveKey = effect(async ({ payload, slice, store }: any) => {
   try {
     const record = await idb.get('vault', accountId);
 
-    const updatedMap = { ...record.map };
-    delete updatedMap[publicKey];
+    const { [publicKey]: removedKey, ...updatedMap } = record.map;
+    const updatedList = record.list.filter((item: any) => item !== publicKey);
 
-    record.list = record.list.filter((item: any) => item !== publicKey);
-    record.map = updatedMap;
-
-    await idb.put('vault', record);
+    await idb.put('vault', { ...record, list: updatedList, map: updatedMap });
     removeKey({ accountId, publicKey });
   } catch (e) {
     console.log(e);

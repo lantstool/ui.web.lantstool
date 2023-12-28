@@ -1,8 +1,8 @@
 import { action } from '../../../react-vault';
 
 export const addKey = action(({ slice, payload }: any) => {
-  const { account, accountId } = payload;
+  const { keyData, accountId } = payload;
 
-  slice.map[accountId].list.push(account.publicKey);
-  slice.map[accountId].map[account.publicKey] = account
+  slice.map[accountId].list.push(keyData.publicKey);
+  slice.map[accountId].map[keyData.publicKey] = keyData;
 });

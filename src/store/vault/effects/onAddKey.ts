@@ -17,28 +17,21 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
       public_key: publicKey,
     });
 
-    const receiver =
-      response.permission === 'AccessKey' ? response.permission?.FunctionCall.receiver_id : null;
-
-    const account = {
+    const keyData = {
       accountId,
       publicKey,
       privateKey,
       seedPhrase,
       permission: response.permission,
-      receiverId: receiver,
       storageType,
     };
 
     const record = await idb.get('vault', accountId);
     record.list.push(publicKey);
-    record.map = {
-      ...record.map,
-      [publicKey]: account,
-    };
+    record.map[publicKey] = keyData
     await idb.put('vault', record);
 
-    addKey({ account, accountId });
+    addKey({ keyData, accountId });
   } catch (e) {
     console.log(e);
   }

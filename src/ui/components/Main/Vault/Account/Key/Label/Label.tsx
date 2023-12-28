@@ -1,6 +1,6 @@
 import cn from './Label.module.css';
 
-export const Label = ({ name, type }: any) => {
+export const Label = ({ text, type }: any) => {
   const iconType: any = {
     ledger: '/ledger.svg',
     locally: '/locally.svg',
@@ -17,7 +17,7 @@ export const Label = ({ name, type }: any) => {
   return (
     <span className={cn.label} style={{ backgroundColor: color[type] }}>
       <img className={cn.icon} alt="#" src={iconType[type]} />
-      {name}
+      {text}
     </span>
   );
 };

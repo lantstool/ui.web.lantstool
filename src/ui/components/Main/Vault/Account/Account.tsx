@@ -25,7 +25,7 @@ export const Account = ({ map }: any) => {
         <div className={cn.keyWrapper}>
           {map[accId].list.map(
             (accountKey: any) =>
-              accountKey && <Key key={accountKey} account={map[accId].map[accountKey]} />,
+              accountKey && <Key key={accountKey} keyData={map[accId].map[accountKey]} />,
           )}
         </div>
       </div>

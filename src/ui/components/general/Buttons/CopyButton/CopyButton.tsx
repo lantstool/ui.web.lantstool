@@ -3,10 +3,10 @@ import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
 
-export const CopyButton = ({ name }: any) => {
+export const CopyButton = ({ text }: any) => {
   const [copied, setCopied] = useState(false);
   const copyTextToClipboard = () => {
-    navigator.clipboard.writeText(name);
+    navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);

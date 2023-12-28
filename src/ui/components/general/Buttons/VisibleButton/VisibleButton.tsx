@@ -7,7 +7,7 @@ export const VisibleButton = ({ visible, setVisible }: any) => {
     setVisible(!visible);
   };
   return (
-    <div>
+    <>
       {visible ? (
         <button onClick={toggleVisibility} className={cn.button}>
           <VisibilityOffOutlinedIcon className={cn.icon} sx={{ fontSize: 22 }} />
@@ -17,6 +17,6 @@ export const VisibleButton = ({ visible, setVisible }: any) => {
           <VisibilityRoundedIcon className={cn.icon} sx={{ fontSize: 22 }} />
         </button>
       )}
-    </div>
+    </>
   );
 };

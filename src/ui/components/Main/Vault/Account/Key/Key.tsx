@@ -5,27 +5,29 @@ import { PublicItem } from './PublicItem/PublicItem.tsx';
 import { RemoveButton } from '../../../../general/Buttons/RemoveButton/RemoveButton.tsx';
 import { Label } from './Label/Label.tsx';
 
-export const Key = ({ account }: any) => {
+export const Key = ({ keyData }: any) => {
+  const { permission, storageType, publicKey, privateKey, seedPhrase }: any = keyData;
   const onRemoveKey = useStoreEffect((store: any) => store.vault.onRemoveKey);
-  const permission = account.permission === 'FullAccess' ? 'Full access' : 'Function call';
-  const permissionType = account.permission === 'FullAccess' ? 'fullAccess' : 'functionCall';
-  const receiverId = account.receiverId === null ? '' : `: ${account.receiverId}`;
+  const permissions = permission === 'FullAccess' ? 'Full access' : 'Function call';
+  const permissionType = permission === 'FullAccess' ? 'fullAccess' : 'functionCall';
+  const receiverId = permission !== 'FullAccess' ? `: ${permission?.FunctionCall.receiver_id}` : '';
+
   const removeKey = () => {
-    onRemoveKey(account);
+    onRemoveKey(keyData);
   };
 
   return (
     <div className={cn.key}>
       <div className={cn.container}>
         <div className={cn.infoGroup}>
-          <Label name={account.storageType} type={account.storageType} />
-          <Label name={`${permission} ${receiverId}`} type={permissionType} />
+          <Label text={storageType} type={storageType} />
+          <Label text={`${permissions} ${receiverId}`} type={permissionType} />
         </div>
         <RemoveButton remove={removeKey} />
       </div>
-      <PublicItem name={account.publicKey} />
-      <PrivateItem name={account.privateKey} />
-      {account.seedPhrase && <PrivateItem name={account.seedPhrase} />}
+      <PublicItem text={publicKey} />
+      <PrivateItem text={privateKey} />
+      {seedPhrase && <PrivateItem text={seedPhrase} />}
     </div>
   );
 };

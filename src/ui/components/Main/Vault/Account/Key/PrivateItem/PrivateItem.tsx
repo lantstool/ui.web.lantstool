@@ -4,17 +4,17 @@ import { hideText } from '../../../../../../../store/vault/helpers/regularExpres
 import { CopyButton } from '../../../../../general/Buttons/CopyButton/CopyButton.tsx';
 import { VisibleButton } from '../../../../../general/Buttons/VisibleButton/VisibleButton.tsx';
 
-export const PrivateItem = ({ name }: any) => {
+export const PrivateItem = ({ text }: any) => {
   const [visible, setVisible] = useState(false);
 
-  const hideName = hideText(name);
+  const hideName = hideText(text);
 
   return (
     <div className={cn.privateItem}>
-      {!visible ? <p className={cn.hide}>{hideName}</p> : <p className={cn.name}>{name}</p>}
+      {!visible ? <p className={cn.hide}>{hideName}</p> : <p className={cn.name}>{text}</p>}
       <div className={cn.buttonWrapper}>
         <VisibleButton visible={visible} setVisible={setVisible} />
-        <CopyButton name={name} />
+        <CopyButton text={text} />
       </div>
     </div>
   );
