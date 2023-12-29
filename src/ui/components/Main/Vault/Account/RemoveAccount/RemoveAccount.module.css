@@ -7,12 +7,10 @@
   padding: 0 25px;
 }
 .buttonRemove {
-  font-size: 14px;
-  padding: 5px;
-  border-radius: 6px;
-  color: #ffffff;
-  background-color: #ff0d41;
-  border: 1px solid #ff00df;
+  padding: 10px 0;
+  color: #FFFFFF;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 .btnRemove {

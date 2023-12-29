@@ -1,5 +1,5 @@
 import { effect } from '../../../react-vault';
-import { replaceDotsToString } from "../helpers/replaceDots.ts";
+import { replaceDotsToString } from "../helpers/regularExpressions.ts";
 
 const getNextRoute = (accList: any, activeTxId: string) => {
   if (accList.length === 1) return '/vault';

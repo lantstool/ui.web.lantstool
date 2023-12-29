@@ -1,0 +1,28 @@
+.label {
+  display: flex;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #6851f4;
+  padding: 3px 10px;
+  font-size: 12px;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+.icon {
+  width: 14px;
+  margin-right: 7px;
+}
+
+.ledger {
+  background-color: #e16bb7;
+}
+.locally {
+  background-color: #6851f4;
+}
+.functionCall {
+  background-color: #f4bd51;
+}
+.fullAccess {
+  background-color: #4ad135;
+}

@@ -1,34 +1,33 @@
 import cn from './Key.module.css';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
-import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
-export const Key = ({ account }: any) => {
+import { useStoreEffect } from '../../../../../../react-vault';
+import { PrivateItem } from './PrivateItem/PrivateItem.tsx';
+import { PublicItem } from './PublicItem/PublicItem.tsx';
+import { RemoveButton } from '../../../../general/Buttons/RemoveButton/RemoveButton.tsx';
+import { Label } from './Label/Label.tsx';
+
+export const Key = ({ keyData }: any) => {
+  const { permission, storageType, publicKey, privateKey, seedPhrase }: any = keyData;
+  const onRemoveKey = useStoreEffect((store: any) => store.vault.onRemoveKey);
+  const permissions = permission === 'FullAccess' ? 'Full access' : 'Function call';
+  const permissionType = permission === 'FullAccess' ? 'fullAccess' : 'functionCall';
+  const receiverId = permission !== 'FullAccess' ? `: ${permission?.FunctionCall.receiver_id}` : '';
+
+  const removeKey = () => {
+    onRemoveKey(keyData);
+  };
+
   return (
-    <div className={cn.container}>
-      <div className={cn.keys}>
-        <p>Public key: {account.publicKey}</p>
-        {account.seedPhrase && <p>Seed phrase: {account.seedPhrase}</p>}
-        <p>Private key: {account.privateKey}</p>
-      </div>
-      <div className={cn.infoWrapper}>
-        <div className={cn.info}>
-          <p>Ledger</p>
-          <div>
-            <p>Full access key</p>
-            <div className={cn.infoButtons}>
-              <button>
-                <ContentCopyIcon />
-              </button>
-              <button>
-                <VisibilityRoundedIcon />
-              </button>
-            </div>
-          </div>
+    <div className={cn.key}>
+      <div className={cn.container}>
+        <div className={cn.infoGroup}>
+          <Label text={storageType} type={storageType} />
+          <Label text={`${permissions} ${receiverId}`} type={permissionType} />
         </div>
+        <RemoveButton remove={removeKey} />
       </div>
-      <button>
-        <HighlightOffOutlinedIcon />
-      </button>
+      <PublicItem text={publicKey} />
+      <PrivateItem text={privateKey} />
+      {seedPhrase && <PrivateItem text={seedPhrase} />}
     </div>
   );
 };

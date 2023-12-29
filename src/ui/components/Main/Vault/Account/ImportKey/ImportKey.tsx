@@ -5,6 +5,7 @@ import { SignatureType } from './SignatureType/SignatureType.tsx';
 import { ImportType } from './ImportType/ImportType.tsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.tsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.tsx';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 export const ImportKey = ({ accountId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -25,7 +26,8 @@ export const ImportKey = ({ accountId }: any) => {
   return (
     <>
       <button className={cn.buttonImport} onClick={openModal}>
-        Import key
+        <AddBoxOutlinedIcon style={{ fontSize: 24 }} />
+        <p className={cn.btnText}>Import key</p>
       </button>
       {modalStep === 'signatureType' && (
         <SignatureType closeModal={closeModal} navigate={navigate} isOpen={isOpen} />

@@ -3,12 +3,18 @@ import { Modal } from '../../../../general/Modal/Modal.tsx';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import { Menu, MenuItem } from '@mui/material';
 
 export const RemoveAccount = (accountId: any) => {
   const [isOpen, setOpen]: any = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const onRemoveAccount = useStoreEffect((store: any) => store.vault.onRemoveAccount);
   const navigate = useNavigate();
-  const openModal = () => setOpen(true);
+  const openModal = () => {
+    setAnchorEl(null);
+    setOpen(true);
+  };
   const closeModal = () => {
     setOpen(false);
   };
@@ -16,12 +22,30 @@ export const RemoveAccount = (accountId: any) => {
     onRemoveAccount({ accountId, navigate });
     setOpen(false);
   };
+  const closeMenu = () => {
+    setAnchorEl(null);
+  };
+  const openMenu = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   return (
     <>
-      <button className={cn.buttonRemove} onClick={openModal}>
-        Remove
-      </button>
+      <div>
+        <button className={cn.buttonRemove} onClick={openMenu}>
+          <MoreVertOutlinedIcon />
+        </button>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={closeMenu}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <MenuItem onClick={openModal}>Remove</MenuItem>
+        </Menu>
+      </div>
+
       <Modal isOpen={isOpen} close={closeModal}>
         <div className={cn.container}>
           <h2 className={cn.title}>Remove account for vault</h2>

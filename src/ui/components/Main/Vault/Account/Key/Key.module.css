@@ -1,27 +1,28 @@
+.key {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  padding: 20px 30px;
+  border-radius: 8px;
+  border: 1px solid #40916c;
+}
 .container {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #efe3ff;
-    border: 1px solid #9747ff;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 7px;
+  align-items: center;
 }
-.keys{
-    width: 100%;
-    word-break: break-all;
+.infoGroup {
+  display: flex;
+  height: 100%;
+  text-align: center;
 }
-.infoWrapper{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 100%;
+.info {
+  display: flex;
+  justify-content: space-evenly;
 }
-.info{
-    display: flex;
-    justify-content: space-evenly;
-}
-.infoButtons{
-    display: flex;
-    justify-content: space-evenly;
+.infoButtons {
+  display: flex;
+  justify-content: space-evenly;
 }
