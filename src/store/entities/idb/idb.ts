@@ -2,7 +2,7 @@ import { entity } from '../../../react-vault';
 import { openDB } from 'idb/with-async-ittr';
 
 // If user open the app for the first time we need to create the database
-const setupIdb = (db: any) => {
+const setupIdb = async (db: any) => {
   db.createObjectStore('users', { keyPath: 'userId' });
 
   const spaces = db.createObjectStore('spaces', { keyPath: 'spaceId' });
@@ -13,6 +13,12 @@ const setupIdb = (db: any) => {
 
   const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
   transactions.createIndex('networkIdOrder', ['networkId', 'order'], { unique: true });
+
+  const transactionsCounter = db.createObjectStore('transactions-counter', {
+    keyPath: 'networkId',
+  });
+  await transactionsCounter.add({ networkId: 'a', count: 0 }); // TODO replace with real networkId
+  await transactionsCounter.add({ networkId: 'b', count: 0 });
 
   const accounts = db.createObjectStore('accounts', { keyPath: 'accountId' });
   accounts.createIndex('networkId', 'networkId');
@@ -26,8 +32,8 @@ const setupIdb = (db: any) => {
 export const idb = entity(async () => {
   try {
     return await openDB('near-devtools', 1, {
-      upgrade: (db: any, currentVersion: number) => {
-        if (currentVersion === 0) setupIdb(db);
+      upgrade: async (db: any, currentVersion: number) => {
+        if (currentVersion === 0) await setupIdb(db);
       },
     });
   } catch (e) {

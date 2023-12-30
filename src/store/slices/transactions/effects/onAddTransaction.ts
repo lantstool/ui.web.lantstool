@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 const networkId = 'a';
 
-const createTx = (order: number) => {
+const createTx = (order: number, count: number) => {
   const transactionId = v4();
 
   return {
@@ -11,8 +11,8 @@ const createTx = (order: number) => {
     spaceId: '1s',
     networkId,
     transactionId,
-    name: `TX#${transactionId.slice(0, 10)}`,
-    createdAt: new Date().toISOString(),
+    name: `Transaction#${count}`,
+    createdAt: new Date(),
     order,
     signer: {
       accountId: '',
@@ -49,14 +49,22 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
   const addTransaction = slice.getActions((slice: any) => slice.addTransaction);
 
   try {
-    const txOrder = await idb.countFromIndex(
-      'transactions',
-      'networkIdOrder',
-      IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
-    );
+    const [txOrder, txCounter] = await Promise.all([
+      idb.countFromIndex(
+        'transactions',
+        'networkIdOrder',
+        IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
+      ),
+      idb.get('transactions-counter', networkId),
+    ]);
+    txCounter.count += 1;
 
-    const transaction = createTx(txOrder);
-    await idb.add('transactions', transaction);
+    const transaction = createTx(txOrder, txCounter.count);
+
+    await Promise.all([
+      idb.add('transactions', transaction),
+      idb.put('transactions-counter', txCounter),
+    ]);
 
     addTransaction(transaction);
     navigate(`/transactions/${transaction.transactionId}`);

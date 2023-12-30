@@ -5,22 +5,6 @@ import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 
 export const store = createStore({
-  space: {
-    spaceId: '1',
-    name: 'General',
-  },
-  networks: {
-    active: '1t',
-    list: ['1t', '2m'],
-    map: {
-      '1t': {
-        name: 'Testnet',
-      },
-      '2m': {
-        name: 'Mainnet',
-      },
-    },
-  },
   // entities
   idb,
   // effects
