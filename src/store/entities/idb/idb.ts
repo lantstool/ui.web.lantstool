@@ -1,5 +1,5 @@
 import { entity } from '../../../react-vault';
-import { openDB } from 'idb';
+import { openDB } from 'idb/with-async-ittr';
 
 // If user open the app for the first time we need to create the database
 const setupIdb = (db: any) => {
@@ -12,8 +12,7 @@ const setupIdb = (db: any) => {
   networks.createIndex('spaceId', 'spaceId');
 
   const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
-  transactions.createIndex('networkId', 'networkId');
-  transactions.createIndex('order', 'order');
+  transactions.createIndex('networkIdOrder', ['networkId', 'order'], { unique: true });
 
   const accounts = db.createObjectStore('accounts', { keyPath: 'accountId' });
   accounts.createIndex('networkId', 'networkId');
