@@ -26,10 +26,10 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
       storageType,
     };
 
-    const record = await idb.get('vault', accountId);
+    const record = await idb.get('accounts', accountId);
     record.list.push(publicKey);
     record.map[publicKey] = keyData
-    await idb.put('vault', record);
+    await idb.put('accounts', record);
 
     addKey({ keyData, accountId });
   } catch (e) {

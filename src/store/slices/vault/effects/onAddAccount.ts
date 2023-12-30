@@ -14,7 +14,7 @@ export const onAddAccount = effect(async ({ payload, slice, store }: any) => {
       list: [],
       map: {},
     };
-    await idb.add('vault', account);
+    await idb.add('accounts', account);
     addAccount({ account });
 
     navigate(`/vault/${modifiedAccountId}`);

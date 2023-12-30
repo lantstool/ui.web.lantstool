@@ -1,23 +1,35 @@
 import { entity } from '../../../react-vault';
 import { openDB } from 'idb';
 
-const upgrade = (db: any) => {
-  console.log(db);
-  // if (!db.objectStoreNames.contains('transactions')) {
-  //   db.createObjectStore('transactions', { keyPath: 'transactionId' });
-  // }
-  // if (!db.objectStoreNames.contains('vault')) {
-  //   db.createObjectStore('vault', { keyPath: 'accountId' });
-  // }
-  // if (!db.objectStoreNames.contains('contractsCode')) {
-  //   db.createObjectStore('contractsCode', { keyPath: 'contractCodeId' });
-  // }
+// If user open the app for the first time we need to create the database
+const setupIdb = (db: any) => {
+  db.createObjectStore('users', { keyPath: 'userId' });
+
+  const spaces = db.createObjectStore('spaces', { keyPath: 'spaceId' });
+  spaces.createIndex('userId', 'userId');
+
+  const networks = db.createObjectStore('networks', { keyPath: 'networkId' });
+  networks.createIndex('spaceId', 'spaceId');
+
+  const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
+  transactions.createIndex('networkId', 'networkId');
+  transactions.createIndex('order', 'order');
+
+  const accounts = db.createObjectStore('accounts', { keyPath: 'accountId' });
+  accounts.createIndex('networkId', 'networkId');
+
+  const environments = db.createObjectStore('environments', { keyPath: 'environmentId' });
+  environments.createIndex('networkId', 'networkId');
+
+  db.createObjectStore('contract-codes', { keyPath: 'contractCodeId' });
 };
 
 export const idb = entity(async () => {
   try {
     return await openDB('near-devtools', 1, {
-      upgrade,
+      upgrade: (db: any, currentVersion: number) => {
+        if (currentVersion === 0) setupIdb(db);
+      },
     });
   } catch (e) {
     console.log(e);

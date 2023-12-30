@@ -5,7 +5,7 @@ export const onInitPage = effect(async ({ payload, slice, store }: any) => {
   const initPage = slice.getActions((slice: any) => slice.initPage);
 
   try {
-    const vault = await idb.getAll('vault');
+    const vault = await idb.getAll('accounts');
     payload(false);
     initPage({ vault });
   } catch (e) {

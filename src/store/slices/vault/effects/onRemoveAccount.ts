@@ -17,7 +17,7 @@ export const onRemoveAccount = effect(async ({ payload, slice, store }: any) => 
     const list = slice.getState((slice: any) => slice.list);
     const nextRoute = getNextRoute(list, accId);
 
-    await idb.delete('vault', accId);
+    await idb.delete('accounts', accId);
     removeAccount(accId);
     navigate(nextRoute);
   } catch (e) {

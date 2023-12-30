@@ -7,10 +7,11 @@ const createTx = () => {
   return {
     userId: '1u',
     spaceId: '1s',
-    networkId: '1n',
+    networkId: '2n',
     transactionId,
     name: `TX#${transactionId.slice(0, 10)}`,
     createdAt: new Date().toISOString(),
+    order: 5,
     signer: {
       accountId: '',
       source: 'Input',
