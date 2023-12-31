@@ -1,32 +1,36 @@
 import { entity } from '../../../react-vault';
 import { openDB } from 'idb/with-async-ittr';
+import { v4 as uuid } from 'uuid';
+import { setupUsers } from './setupUsers.ts';
+import { setupSpaces } from './setupSpaces.ts';
+import { setupNetworks } from './setupNetworks.ts';
+import { setupTransactions } from './setupTransactions.ts';
+import { setupAccounts } from './setupAccounts.ts';
+import { setupEnvironments } from './setupEnvironments.ts';
 
 // If user open the app for the first time we need to create the database
 const setupIdb = async (db: any) => {
-  db.createObjectStore('users', { keyPath: 'userId' });
+  // As we don't have a login process yet, we need to create some default data
+  // const ids = {
+  //   userId: uuid(),
+  //   spaceId: uuid(),
+  //   testnetId: uuid(),
+  //   mainnetId: uuid(),
+  // };
 
-  const spaces = db.createObjectStore('spaces', { keyPath: 'spaceId' });
-  spaces.createIndex('userId', 'userId');
+  const ids = {
+    userId: 'user1',
+    spaceId: 'space1',
+    testnetId: 'testnet1',
+    mainnetId: 'mainnet1',
+  };
 
-  const networks = db.createObjectStore('networks', { keyPath: 'networkId' });
-  networks.createIndex('spaceId', 'spaceId');
-
-  const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
-  transactions.createIndex('networkIdOrder', ['networkId', 'order'], { unique: true });
-
-  const transactionsCounter = db.createObjectStore('transactions-counter', {
-    keyPath: 'networkId',
-  });
-  await transactionsCounter.add({ networkId: 'a', count: 0 }); // TODO replace with real networkId
-  await transactionsCounter.add({ networkId: 'b', count: 0 });
-
-  const accounts = db.createObjectStore('accounts', { keyPath: 'accountId' });
-  accounts.createIndex('networkId', 'networkId');
-
-  const environments = db.createObjectStore('environments', { keyPath: 'environmentId' });
-  environments.createIndex('networkId', 'networkId');
-
-  db.createObjectStore('contract-codes', { keyPath: 'contractCodeId' });
+  await setupUsers(db, ids);
+  await setupSpaces(db, ids);
+  await setupNetworks(db, ids);
+  await setupTransactions(db, ids);
+  setupAccounts(db);
+  setupEnvironments(db);
 };
 
 export const idb = entity(async () => {

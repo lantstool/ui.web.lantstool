@@ -13,7 +13,13 @@ export const onInitPage = effect(async ({ payload, slice, store }: any) => {
       IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
     );
 
-    console.log(transactions);
+    const data = await idb.getAllFromIndex(
+      'spaces',
+      'members',
+      'alice',
+    );
+    console.log(data);
+
     payload(false);
     initPage({ transactions });
   } catch (e) {

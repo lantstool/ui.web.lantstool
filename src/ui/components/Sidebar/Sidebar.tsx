@@ -1,6 +1,8 @@
 import { Navigation } from './Navigation/Navigation.tsx';
 import cn from './Sidebar.module.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Network } from './Network/Network.tsx';
+
 export const Sidebar = () => {
   return (
     <div className={cn.container}>
@@ -11,10 +13,7 @@ export const Sidebar = () => {
             <h4 className={cn.subtitle}>Personal space</h4>
             <KeyboardArrowDownIcon style={{ color: 'white' }} />
           </div>
-          <div className={cn.subtitleGroup}>
-            <h4 className={cn.subtitle}>TestNet</h4>
-            <KeyboardArrowDownIcon style={{ color: 'white' }} />
-          </div>
+          <Network />
         </div>
       </div>
       <Navigation />
