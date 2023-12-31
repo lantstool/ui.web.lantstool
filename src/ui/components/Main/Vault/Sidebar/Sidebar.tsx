@@ -2,7 +2,7 @@ import cn from './Sidebar.module.css';
 import cnm from 'classnames';
 import { AddAccount } from './AddAccount/AddAccount.tsx';
 import { NavLink, useMatch } from 'react-router-dom';
-import { replaceDotsToString } from '../../../../../store/vault/helpers/regularExpressions.ts';
+import { replaceDotsToString } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 
 export const Sidebar = ({ list }: any) => {
   const match: any = useMatch('/vault/:accountId');

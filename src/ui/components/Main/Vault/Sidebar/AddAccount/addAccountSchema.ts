@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { connect } from 'near-api-js';
-import {asyncDebounce} from "../../../../../../store/vault/helpers/asyncDebounce.ts";
+import {asyncDebounce} from "../../../../../../store/slices/vault/helpers/asyncDebounce.ts";
 
 const near = await connect({
   networkId: 'testnet',

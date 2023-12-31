@@ -3,7 +3,7 @@ import { Key } from './Key/Key.tsx';
 import { RemoveAccount } from './RemoveAccount/RemoveAccount.tsx';
 import { useParams } from 'react-router-dom';
 import { ImportKey } from './ImportKey/ImportKey.tsx';
-import { replaceStringToDots } from '../../../../../store/vault/helpers/regularExpressions.ts';
+import { replaceStringToDots } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 import { useStoreState } from '../../../../../react-vault';
 
 export const Account = ({ map }: any) => {
