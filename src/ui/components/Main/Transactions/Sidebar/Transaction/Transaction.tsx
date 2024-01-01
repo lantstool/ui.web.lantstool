@@ -8,7 +8,7 @@ export const Transaction = ({ transaction, isActive }: any) => {
       to={`/transactions/${transaction.transactionId}`}
       className={cnm(cn.container, isActive && cn.active)}
     >
-      {transaction.name}
+      <p className={cn.title}>{transaction.name}</p>
     </NavLink>
   );
 };
