@@ -16,11 +16,15 @@ export const createTx = async ({ provider, form }: any) => {
   const { signer, signerKey, receiver, actions } = form;
 
   const pk = PublicKey.from(signerKey.publicKey);
+  console.log(pk.toString());
+  console.log(signer.accountId);
   const accessKey = await provider.query(`access_key/${signer.accountId}/${pk.toString()}`, '');
+  console.log(accessKey);
+
   const nonce = accessKey.nonce + 1;
   const recentBlockHash = utils.serialize.base_decode(accessKey.block_hash);
   const receiverId = receiver[receiver.type].accountId;
-
+  console.log(accessKey);
   return createTransaction(
     signer.accountId,
     pk,

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useMatch, useNavigate } from 'react-router-dom';
+import { Routes, Route, useMatch } from 'react-router-dom';
 import { Sidebar } from './Sidebar/Sidebar.tsx';
-import { Content } from "./Content/Content.tsx";
+import { Content } from './Content/Content.tsx';
 import { Empty } from './Empty/Empty.tsx';
 import cn from './Transactions.module.css';
 import { useStoreState, useStoreEffect } from '../../../../react-vault';
 
 export const Transactions = () => {
   const transactions: any = useStoreState((store: any) => store.transactions);
+  const networkId: any = useStoreState((store: any) => store.networks.current.networkId);
   const onInitPage = useStoreEffect((store: any) => store.transactions.onInitPage);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +17,7 @@ export const Transactions = () => {
 
   useEffect(() => {
     onInitPage(setLoading);
-  }, [onInitPage]);
+  }, [networkId]);
 
   if (loading) return <h3>Loading...</h3>;
   if (transactions.list.length === 0) return <Empty />;

@@ -1,13 +1,11 @@
 import { effect } from '../../../../react-vault';
 
-const networkId = 'a';
-
 // We need to update the order of all txs which have order > than the deleted one
 // because we need to have a subsequent unique order of txs like 0, 1, 2, 3, 4, 5, not 0, 1, 3, 5
 // because we use txs count as a tx order for the new tx
 // So if we have 6 txs, and we delete the 3rd one - we need to update the order of the 4th, 5th and 6th txs
 
-const updateTxsOrder = async (idb: any, txOrder: number) => {
+const updateTxsOrder = async (idb: any, txOrder: number, networkId: string) => {
   const tx = idb.transaction('transactions', 'readwrite');
   const index = tx.store.index('networkIdOrder');
 
@@ -41,13 +39,14 @@ export const onDeleteTransaction = effect(async ({ payload, slice, store }: any)
   const [idb] = store.getEntities((store: any) => store.idb);
   const deleteTransaction = slice.getActions((slice: any) => slice.deleteTransaction);
   const { order } = slice.getState((slice: any) => slice.map[transactionId]);
+  const networkId = store.getState((store: any) => store.networks.current.networkId);
 
   try {
     const list = slice.getState((slice: any) => slice.list);
     const nextRoute = getNextRoute(list, transactionId);
 
     await idb.delete('transactions', transactionId);
-    const updatedTxsOrder = await updateTxsOrder(idb, order);
+    const updatedTxsOrder = await updateTxsOrder(idb, order, networkId);
     deleteTransaction({ transactionId, updatedTxsOrder });
     navigate(nextRoute);
   } catch (e) {
