@@ -8,7 +8,7 @@ export const setupNetworks = async (db: any, ids: any) => {
     name: 'Testnet',
     createdAt: Date.now(),
     url: {
-      rpc: 'https://beta.rpc.testnet.near.org',
+      rpc: 'https://rpc.testnet.near.org',
       myNearWallet: 'https://testnet.mynearwallet.com',
     },
   });
@@ -19,7 +19,7 @@ export const setupNetworks = async (db: any, ids: any) => {
     name: 'Mainnet',
     createdAt: Date.now(),
     url: {
-      rpc: 'https://beta.rpc.mainnet.near.org',
+      rpc: 'https://rpc.mainnet.near.org',
       myNearWallet: 'https://app.mynearwallet.com',
     },
   });

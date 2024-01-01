@@ -1,10 +1,9 @@
 import { effect } from '../../../../react-vault';
 
-const networkId = 'a';
-
 export const onInitPage = effect(async ({ payload, slice, store }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);
   const initPage = slice.getActions((slice: any) => slice.initPage);
+  const networkId = store.getState((store: any) => store.networks.current.networkId);
 
   try {
     const transactions = await idb.getAllFromIndex(
@@ -12,13 +11,6 @@ export const onInitPage = effect(async ({ payload, slice, store }: any) => {
       'networkIdOrder',
       IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
     );
-
-    const data = await idb.getAllFromIndex(
-      'spaces',
-      'members',
-      'alice',
-    );
-    console.log(data);
 
     payload(false);
     initPage({ transactions });
