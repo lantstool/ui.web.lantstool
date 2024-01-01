@@ -1,7 +1,7 @@
 .topbar {
   grid-area: a;
   display: grid;
-  grid-template-columns: 40px auto 10px 60px 40px;
+  grid-template-columns: 50px auto 10px 10px 30px;
   grid-template-rows: auto;
   grid-template-areas: '. a . b .';
   background-color: #40916c;
@@ -13,14 +13,19 @@
 .name {
   grid-area: a;
   align-self: center;
+  justify-self: center;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin: 0;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.delete {
+.sideMenu {
   grid-area: b;
   align-self: center;
 }
