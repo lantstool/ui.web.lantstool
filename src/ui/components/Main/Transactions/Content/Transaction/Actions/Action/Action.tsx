@@ -21,6 +21,7 @@ export const Action = ({ form, action, index, remove }: any) => {
       {type === 'Transfer' && <Transfer form={form} getName={getName} />}
       {type === 'AddKey' && <AddKey getName={getName} action={action} form={form} />}
       {type === 'DeployContract' && (
+        // @ts-ignore
         <DeployContract getName={getName} action={action} form={form} />
       )}
       {type === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
