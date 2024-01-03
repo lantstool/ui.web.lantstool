@@ -1,7 +1,7 @@
 import { effect } from '../../../../react-vault';
 import { v4 } from 'uuid';
 
-const createTx = (order: number, count: number, networkId: string) => {
+const createTx = (order: number, transactionName: string, networkId: string) => {
   const transactionId = v4();
 
   return {
@@ -9,7 +9,7 @@ const createTx = (order: number, count: number, networkId: string) => {
     spaceId: '1s',
     networkId,
     transactionId,
-    name: `Transaction#${count}`,
+    name: transactionName,
     createdAt: new Date(),
     order,
     signer: {
@@ -42,7 +42,7 @@ const createTx = (order: number, count: number, networkId: string) => {
 };
 
 export const onAddTransaction = effect(async ({ payload, slice, store }: any) => {
-  const { navigate } = payload;
+  const { navigate, transactionName } = payload;
   const networkId = store.getState((store: any) => store.networks.current.networkId);
   const [idb] = store.getEntities((store: any) => store.idb);
   const addTransaction = slice.getActions((slice: any) => slice.addTransaction);
@@ -58,7 +58,7 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
     ]);
     txCounter.count += 1;
 
-    const transaction = createTx(txOrder, txCounter.count, networkId);
+    const transaction = createTx(txOrder, transactionName, networkId);
 
     await Promise.all([
       idb.add('transactions', transaction),
