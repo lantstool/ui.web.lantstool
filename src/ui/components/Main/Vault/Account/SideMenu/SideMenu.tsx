@@ -1,12 +1,12 @@
-import cn from './RemoveAccount.module.css';
-import { Modal } from '../../../../general/Modal/Modal.tsx';
+import cn from './SideMenu.module.css';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import { Menu, MenuItem } from '@mui/material';
+import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 
-export const RemoveAccount = (accountId: any) => {
+export const SideMenu = (accountId: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const onRemoveAccount = useStoreEffect((store: any) => store.vault.onRemoveAccount);
@@ -45,25 +45,7 @@ export const RemoveAccount = (accountId: any) => {
           <MenuItem onClick={openModal}>Remove</MenuItem>
         </Menu>
       </div>
-
-      <Modal isOpen={isOpen} close={closeModal}>
-        <div className={cn.container}>
-          <h2 className={cn.title}>Remove account for vault</h2>
-          <p className={cn.subtitle}>
-            Are you sure to remove this account from the vault? It will also remove all keys from
-            this vault. Notice this action only removes data locally from this app and DOESN'T make
-            any changes on the blockchain.
-          </p>
-          <div className={cn.buttonGroup}>
-            <button className={cn.btnRemove} onClick={remove}>
-              Remove
-            </button>
-            <button className={cn.btnClose} onClick={closeModal}>
-              Close
-            </button>
-          </div>
-        </div>
-      </Modal>
+      <DeleteModal isOpen={isOpen} closeModal={closeModal} remove={remove} />
     </>
   );
 };
