@@ -1,0 +1,61 @@
+.container {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+    height: 300px;
+    padding: 0 25px;
+    background: #40916c;
+    border-radius: 8px;
+    box-shadow: 2px 1px 4px 0 rgba(0, 0, 0, 0.26);
+    position: fixed;
+    top: calc(50%);
+    left: calc(50% + 270px);
+    transform: translate(-50%, -50%);
+}
+
+.btnRemove {
+    width: 120px;
+    padding: 8px 15px;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #40916c;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+}
+.btnRemove:hover {
+    background-color: #7dd7b3;
+}
+.btnClose {
+    width: 120px;
+    padding: 8px 15px;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #40916c;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+}
+.btnClose:hover {
+    background-color: #7dd7b3;
+}
+.title {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.subtitle {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

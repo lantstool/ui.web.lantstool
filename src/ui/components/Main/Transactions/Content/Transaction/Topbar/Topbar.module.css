@@ -14,15 +14,13 @@
   grid-area: a;
   align-self: center;
   justify-self: center;
-  font-size: 18px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin: 0;
   max-width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-all;
 }
 
 .sideMenu {

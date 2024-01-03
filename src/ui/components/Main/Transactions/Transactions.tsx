@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useMatch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Sidebar } from './Sidebar/Sidebar.tsx';
 import { Content } from './Content/Content.tsx';
 import { Empty } from './Empty/Empty.tsx';
@@ -12,9 +12,6 @@ export const Transactions = () => {
   const onInitPage = useStoreEffect((store: any) => store.transactions.onInitPage);
   const [loading, setLoading] = useState(true);
 
-  const match: any = useMatch('/transactions/:transactionId');
-  const transaction = transactions.map[match?.params?.transactionId];
-
   useEffect(() => {
     onInitPage(setLoading);
   }, [networkId]);
@@ -24,7 +21,7 @@ export const Transactions = () => {
 
   return (
     <div className={cn.transactions}>
-      <Sidebar activeTransactionId={transaction?.transactionId} />
+      <Sidebar />
       <Routes>
         <Route index element={<div>Select TX</div>} />
         <Route path=":transactionId" element={<Content />} />

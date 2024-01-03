@@ -2,9 +2,12 @@ import cn from './DeleteModal.module.css';
 import { Modal } from '../../../../../../../general/Modal/Modal.tsx';
 import { useStoreEffect } from '../../../../../../../../../react-vault';
 
-export const DeleteModal = ({ isOpen, closeModal, transactionId, navigate, setOpen }: any) => {
+export const DeleteModal = ({ isOpen, transactionId, navigate, setOpen }: any) => {
   const onDeleteTransaction = useStoreEffect((store: any) => store.transactions.onDeleteTransaction);
   const open = isOpen === 'deleteModal'
+  const closeModal = () => {
+    setOpen(null);
+  };
   const remove = () => {
     onDeleteTransaction({ transactionId, navigate });
     setOpen(false);

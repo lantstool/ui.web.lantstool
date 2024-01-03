@@ -1,8 +1,8 @@
 .transactions {
   height: 100%;
   display: grid;
-  grid-template-columns: 250px 10px auto 10px;
-  grid-template-rows: 5px calc(100vh - 20px) 5px;
+  grid-template-columns: 300px 20px auto 20px;
+  grid-template-rows: 10px calc(100vh - 30px) 10px;
   grid-template-areas:
     'a . . .'
     'a . b .'
