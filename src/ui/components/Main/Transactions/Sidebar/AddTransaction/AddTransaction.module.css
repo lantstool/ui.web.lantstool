@@ -1,0 +1,62 @@
+.addBtn {
+  width: 200px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #438668;
+  border: 2px solid #d4ffeb;
+  cursor: pointer;
+}
+.addBtn:hover {
+  background-color: #7dd7b3;
+}
+.modalContainer {
+  width: 450px;
+  height: 350px;
+  background: #ffffff;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
+  position: fixed;
+  top: 50%;
+  left: calc(50% + 270px);
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+}
+.formContainer{
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.wrapper{
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: ' . a b ';
+}
+.label {
+  margin-bottom: 10px;
+}
+.input {
+  height: 20px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #fbfbfb;
+  border-radius: 8px;
+}
+.btnAddTransaction {
+  width: 200px;
+  align-self: center;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #40916c;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.btnAddTransaction:hover {
+  background-color: #7dd7b3;
+}
