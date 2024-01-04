@@ -56,7 +56,7 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
             register={register}
             name="transactionName"
             textarea={true}
-            rows={3}
+            rows={4}
             label="Transaction name"
           />
           <ErrorMessage error={errors.transactionName?.message} />

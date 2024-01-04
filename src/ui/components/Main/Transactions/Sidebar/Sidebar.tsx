@@ -2,7 +2,7 @@ import { useMatch } from 'react-router-dom';
 import { useStoreState } from '../../../../../react-vault';
 import { Transaction } from './Transaction/Transaction.tsx';
 import cn from './Sidebar.module.css';
-import { AddTransaction } from './AddTransaction/AddTransaction.tsx';
+import { AddTransaction } from '../general/AddTransaction/AddTransaction.tsx';
 
 export const Sidebar = () => {
   const transactions: any = useStoreState((store: any) => store.transactions);
