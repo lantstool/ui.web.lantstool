@@ -13,9 +13,6 @@ export const SideMenu = ({ transactionId, navigate }: any) => {
     setAnchorEl(null);
     setOpen(type);
   };
-  const closeModal = () => {
-    setOpen(null);
-  };
   const closeMenu = () => {
     setAnchorEl(null);
   };
@@ -44,13 +41,11 @@ export const SideMenu = ({ transactionId, navigate }: any) => {
       <EditModal
         isOpen={isOpen}
         setOpen={setOpen}
-        closeModal={closeModal}
         transactionId={transactionId}
       />
       <DeleteModal
         isOpen={isOpen}
         setOpen={setOpen}
-        closeModal={closeModal}
         transactionId={transactionId}
         navigate={navigate}
       />

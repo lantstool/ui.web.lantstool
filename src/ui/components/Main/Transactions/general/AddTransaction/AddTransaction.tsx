@@ -7,6 +7,9 @@ import cn from './AddTransaction.module.css';
 import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { Title } from '../../../general/Title/Title.tsx';
 import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
+import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema.ts';
 
 export const AddTransaction = () => {
   const [isOpen, setOpen]: any = useState(false);
@@ -16,8 +19,16 @@ export const AddTransaction = () => {
   );
   const navigate = useNavigate();
 
-  const { register, control, handleSubmit, reset, setValue } = useForm({
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm({
     mode: 'all',
+    resolver: yupResolver(schema),
     defaultValues: { transactionName: 'Transaction' },
   });
 
@@ -47,19 +58,28 @@ export const AddTransaction = () => {
         Add transaction
       </button>
       <Modal isOpen={isOpen} close={closeModal}>
-        <div className={cn.modalContainer}>
-          <form className={cn.formContainer} onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={cn.modalContainer}>
             <div className={cn.wrapper}>
               <Title text="Add transaction" />
               <CloseButton close={closeModal} />
             </div>
             <p>You can add your transaction and save all data for next time.</p>
-            <InputGroup register={register} name="transactionName" label="Transaction name" />
+            <div>
+              <InputGroup
+                register={register}
+                name="transactionName"
+                label="Transaction name"
+                textarea={true}
+                rows={4}
+              />
+              <ErrorMessage error={errors.transactionName?.message} />
+            </div>
             <button className={cn.btnAddTransaction} type="submit">
               Add transaction
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </Modal>
     </>
   );
