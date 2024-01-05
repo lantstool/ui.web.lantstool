@@ -20,7 +20,7 @@ export const Sidebar = () => {
           />
         ))}
       </div>
-      <AddTransaction />
+      <AddTransaction styles={cn.modalContainer} />
     </div>
   );
 };

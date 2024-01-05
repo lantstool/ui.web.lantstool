@@ -7,8 +7,12 @@ import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './addAccountSchema.ts';
 import { useNavigate } from 'react-router-dom';
+import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
+import { Title } from '../../../general/Title/Title.tsx';
+import { Subtitle } from '../../../general/Subtitle/Subtitle.tsx';
+import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
 
-export const AddAccount = ({ list }: any) => {
+export const AddAccount = ({ list, styles }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const timerRef: any = useRef(null);
   const navigate = useNavigate();
@@ -42,28 +46,25 @@ export const AddAccount = ({ list }: any) => {
         Add account
       </button>
       <Modal isOpen={isOpen} close={closeModal}>
-        <div className={cn.modal}>
-          <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>
-            <h2 className={cn.title}>Add account for Vault</h2>
-            <p className={cn.subTitle}>
-              You can add your account to a vault that will store information locally in your
-              browser.
-            </p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles}>
+            <div className={cn.header}>
+              <Title text="Add account" />
+              <CloseButton close={closeModal} />
+            </div>
+            <Subtitle
+              text="You can add your account to a vault that will store information locally in your
+              browser."
+            />
             <div>
               <InputGroup register={register} name="accountId" label="Account Id" />
-              <p className={cn.error}>{errors.accountId?.message}</p>
+              <ErrorMessage error={errors.accountId?.message} />
             </div>
-
-            <div className={cn.buttonGroup}>
-              <button onClick={onClick} type="submit" className={cn.buttonAdd}>
-                Add account
-              </button>
-              <button onClick={closeModal} className={cn.buttonClose}>
-                Close
-              </button>
-            </div>
-          </form>
-        </div>
+            <button onClick={onClick} type="submit" className={cn.btnAddAccount}>
+              Add account
+            </button>
+          </div>
+        </form>
       </Modal>
     </>
   );

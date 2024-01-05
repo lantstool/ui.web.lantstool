@@ -11,7 +11,7 @@ import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.ts';
 
-export const AddTransaction = () => {
+export const AddTransaction = ({ styles }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const onAddTransaction = useStoreEffect((store: any) => store.transactions.onAddTransaction);
   const getTransactionCount = useStoreEffect(
@@ -59,8 +59,8 @@ export const AddTransaction = () => {
       </button>
       <Modal isOpen={isOpen} close={closeModal}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className={cn.modalContainer}>
-            <div className={cn.wrapper}>
+          <div className={styles}>
+            <div className={cn.header}>
               <Title text="Add transaction" />
               <CloseButton close={closeModal} />
             </div>

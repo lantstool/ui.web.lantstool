@@ -1,6 +1,6 @@
 import cn from './Sidebar.module.css';
 import cnm from 'classnames';
-import { AddAccount } from './AddAccount/AddAccount.tsx';
+import { AddAccount } from '../general/AddAccount/AddAccount.tsx';
 import { NavLink, useMatch } from 'react-router-dom';
 import { replaceDotsToString } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 
@@ -11,7 +11,6 @@ export const Sidebar = ({ list }: any) => {
     <div className={cn.sidebar}>
       <input className={cn.search} />
       <div className={cn.wrapper}>
-
         {list.map((id: any) => (
           <NavLink
             key={id}
@@ -25,7 +24,7 @@ export const Sidebar = ({ list }: any) => {
           </NavLink>
         ))}
       </div>
-      <AddAccount list={list} />
+      <AddAccount list={list} styles={cn.modalContainer} />
     </div>
   );
 };
