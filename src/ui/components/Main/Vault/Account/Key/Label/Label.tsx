@@ -11,6 +11,7 @@ const types: any = {
   functionCall: { icon: functionCall, colorClass: cn.functionCall },
   fullAccess: { icon: fullAccess, colorClass: cn.fullAccess },
 };
+
 const getType = (type: any) => {
   return types[type] === undefined ? types['ledger'] : types[type];
 };

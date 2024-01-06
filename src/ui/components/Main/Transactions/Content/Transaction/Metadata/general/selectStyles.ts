@@ -15,4 +15,8 @@ export const selectStyles = {
     ...styles,
     borderRadius: '8px',
   }),
+  option: (base: any) => ({
+    ...base,
+    fontSize: 15,
+  }),
 };

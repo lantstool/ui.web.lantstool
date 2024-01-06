@@ -9,13 +9,13 @@ export const onGetAccessKeyList = effect(async ({ payload, store, slice }: any) 
   try {
     const provider = new JsonRpcProvider({ url: url.rpc });
 
-    const response = await provider.query({
+    const keys = await provider.query({
       request_type: 'view_access_key_list',
       finality: 'final',
       account_id: accountId,
     });
 
-    getAccessKeyList(response);
+    getAccessKeyList(keys);
   } catch (e) {
     console.log(e);
   }

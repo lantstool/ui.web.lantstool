@@ -2,39 +2,41 @@ import Select from 'react-select';
 import { Controller, useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { selectStyles } from '../general/selectStyles.ts';
-
-const getOptions = async (accountId: string, getAccount: any, setOptions: any) => {
-  if (!accountId) return;
-  const account = await getAccount({ accountId });
-  console.log(account);
-  const options = account.list.map((publicKey: string) => ({
-    value: publicKey,
-    label: publicKey,
-    permission: account.map[publicKey].permission,
-  }));
-
-  setOptions(options);
-};
+import { PermissionLabel } from './general/PermissionLabel/PermissionLabel.tsx';
+import { selectStyles } from '../general/selectStyles';
+import { Option } from './Option/Option.tsx';
+import { getOptions } from './getOptions.ts';
+import cn from './SignerKey.module.css';
 
 export const SignerKey = ({ form }: any) => {
   const { control } = form;
   const getAccount = useStoreEffect((store: any) => store.vault.getAccount);
-  const accountId = useWatch({ control, name: 'signerId.value' });
   const [options, setOptions] = useState([]);
+  const accountId = useWatch({ control, name: 'signerId.value' });
+  const signerKey = useWatch({ control, name: 'signerKey' });
 
   useEffect(() => {
     getOptions(accountId, getAccount, setOptions);
   }, [accountId]);
 
   return (
-    <div>
-      <p>Signer Key</p>
+    <div className={cn.signerKey}>
+      <div className={cn.head}>
+        <span>Signer Key</span>
+        {signerKey && <PermissionLabel permission={signerKey.permission} />}
+      </div>
+
       <Controller
         name="signerKey"
         control={control}
         render={({ field }: any) => (
-          <Select {...field} isSearchable options={options} styles={selectStyles} />
+          <Select
+            {...field}
+            components={{ Option }}
+            isSearchable
+            options={options}
+            styles={selectStyles}
+          />
         )}
       />
     </div>
