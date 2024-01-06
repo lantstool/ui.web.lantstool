@@ -12,16 +12,9 @@ const createTx = (order: number, transactionName: string, networkId: string) => 
     name: transactionName,
     createdAt: new Date(),
     order,
-    signer: {
-      accountId: '',
-      source: 'Input',
-    },
-    signerKey: {
-      source: 'Manually',
-      publicKey: '',
-      privateKey: '',
-      seedPhrase: '',
-    },
+    signerId: '',
+    signerKey: '',
+
     receiver: {
       type: 'existing',
       existing: {
