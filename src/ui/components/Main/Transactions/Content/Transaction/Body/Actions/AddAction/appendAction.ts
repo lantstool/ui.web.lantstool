@@ -45,9 +45,18 @@ const functionCall = (append: any) =>
     deposit: '0',
   });
 
+const deployContract = (append: any) =>
+  append({
+    type: 'DeployContract',
+    actionId: v4(),
+    name: 'Deploy Contract',
+    file: '',
+  });
+
 export const appendAction = {
   createAccount,
   transfer,
   addKey,
   functionCall,
+  deployContract,
 };

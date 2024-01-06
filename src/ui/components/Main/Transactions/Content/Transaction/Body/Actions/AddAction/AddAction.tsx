@@ -28,6 +28,11 @@ export const AddAction = ({ append }: any) => {
     closeModal();
   };
 
+  const deployContract = () => {
+    appendAction.deployContract(append);
+    closeModal();
+  };
+
   return (
     <>
       <button className={cn.addAction} onClick={openModal} type="button">
@@ -39,6 +44,7 @@ export const AddAction = ({ append }: any) => {
           <button onClick={createAccount}> Create Account</button>
           <button onClick={transfer}>Transfer</button>
           <button onClick={addKey}>Add Key</button>
+          <button onClick={deployContract}>Deploy Contract</button>
           <button onClick={functionCall}>Function Call</button>
         </div>
       </Modal>

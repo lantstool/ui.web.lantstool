@@ -39,10 +39,12 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
     setOpen(null);
     reset();
   };
+
   const edit = () => {
     onEditTransactionName({ transactionId, transactionName });
     setOpen(null);
   };
+
   return (
     <Modal isOpen={open} close={closeModal}>
       <div className={cn.container}>

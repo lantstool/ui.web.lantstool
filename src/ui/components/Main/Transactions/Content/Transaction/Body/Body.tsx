@@ -12,6 +12,7 @@ export const Body = ({ transaction }: any) => {
   const form = useForm({ defaultValues: transaction });
 
   const onSubmit = form.handleSubmit((data: any) => {
+    console.log(data);
     onSendTransaction(data);
   });
 
