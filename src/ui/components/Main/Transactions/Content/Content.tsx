@@ -1,4 +1,4 @@
-import { useStoreEffect, useStoreState } from '../../../../../react-vault';
+import { useStoreState } from '../../../../../react-vault';
 import { useParams } from 'react-router-dom';
 import { Transaction } from './Transaction/Transaction';
 import cn from './Content.module.css';
