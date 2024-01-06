@@ -10,7 +10,7 @@ export const Transaction = ({ transaction, onSendTransaction, onSaveTransaction 
 
   const onSubmit = form.handleSubmit((data: any) => {
     console.log(data);
-    onSendTransaction(data);
+    // onSendTransaction(data);
   });
 
   const save = () => {

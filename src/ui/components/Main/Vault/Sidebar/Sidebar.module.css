@@ -36,14 +36,7 @@
   height: calc(100vh - 170px);
   overflow: auto;
 }
-::-webkit-scrollbar {
-  margin: 0;
-  background: #709784;
-  width: 3px;
-}
-::-webkit-scrollbar-thumb {
-  background: #96d8ae;
-}
+
 .title {
   margin-left: 7px;
   width: 250px;

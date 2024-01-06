@@ -2,7 +2,7 @@
   min-height: 100%;
   display: grid;
   grid-template-columns: 300px 20px auto 10px;
-  grid-template-rows: 10px auto 10px;
+  grid-template-rows: 5px auto 5px;
   grid-template-areas:
     ' a . . .'
     ' a . b .'

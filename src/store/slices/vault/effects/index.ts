@@ -4,6 +4,8 @@ import { onRemoveAccount } from './onRemoveAccount.ts';
 import { onGetAccessKeyList } from './onGetAccessKeyList.tsx';
 import { onAddKey } from './onAddKey.ts';
 import { onRemoveKey } from './onRemoveKey.ts';
+import { getAccountsIds } from "./getAccountsIds.ts";
+import { getAccount } from "./getAccount.ts";
 
 export const effects = {
   onInitPage,
@@ -12,4 +14,6 @@ export const effects = {
   onGetAccessKeyList,
   onAddKey,
   onRemoveKey,
+  getAccountsIds,
+  getAccount,
 };

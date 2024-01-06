@@ -1,5 +1,7 @@
 import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
 import { AccessKey } from './AccessKey/AccessKey.tsx';
+import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
+import { SignerKey } from './SignerKey/SignerKey.tsx';
 
 export const Metadata = ({ form }: any) => {
   const { register } = form;
@@ -7,8 +9,8 @@ export const Metadata = ({ form }: any) => {
   return (
     <div>
       <h3>Sender</h3>
-      <InputGroup register={register} name="signer.accountId" label="Signer Id" />
-      <AccessKey form={form} />
+      <SignerAccount form={form} />
+      <SignerKey form={form} />
     </div>
   );
 };
