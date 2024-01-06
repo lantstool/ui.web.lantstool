@@ -2,7 +2,7 @@ import cn from './Key.module.css';
 import { useStoreEffect } from '../../../../../../react-vault';
 import { PrivateItem } from './PrivateItem/PrivateItem.tsx';
 import { PublicItem } from './PublicItem/PublicItem.tsx';
-import { RemoveButton } from '../../../../general/Buttons/RemoveButton/RemoveButton.tsx';
+import { RemoveButton } from './RemoveButton/RemoveButton.tsx';
 import { Label } from './Label/Label.tsx';
 
 export const Key = ({ keyData }: any) => {
