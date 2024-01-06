@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../../general/InputGroup/InputGroup.tsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.tsx';
 
 export const AddKey = ({ form, getName }: any) => {

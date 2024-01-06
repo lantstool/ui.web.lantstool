@@ -1,5 +1,5 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
-import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../../../../general/InputGroup/InputGroup.tsx';
 import cn from './AllowedMethods.module.css';
 
 export const AllowedMethods = ({ form, getName }: any) => {

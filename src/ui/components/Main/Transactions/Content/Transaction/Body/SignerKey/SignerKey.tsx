@@ -3,7 +3,7 @@ import { Controller, useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
 import { PermissionLabel } from './general/PermissionLabel/PermissionLabel.tsx';
-import { selectStyles } from '../general/selectStyles';
+import { selectStyles } from '../general/selectStyles.ts';
 import { Option } from './Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
 import cn from './SignerKey.module.css';

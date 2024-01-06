@@ -1,0 +1,24 @@
+.formScrollWrapper {
+  grid-area: b;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: calc(100% - 80px);
+  margin: 20px 0;
+}
+
+.bottomBar {
+  grid-area: c;
+  background-color: #40916C;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -2,7 +2,7 @@
 // @ts-ignore
 import { generateSeedPhrase } from 'near-seed-phrase';
 import { utils } from 'near-api-js';
-import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.tsx';
 
 const generateImplicitAccount = () => {
   const result = generateSeedPhrase();

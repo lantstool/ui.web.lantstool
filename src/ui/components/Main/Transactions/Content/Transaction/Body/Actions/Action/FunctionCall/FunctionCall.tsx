@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../../general/InputGroup/InputGroup.tsx';
 
 export const FunctionCall = ({ form, getName }: any) => {
   const { register } = form;

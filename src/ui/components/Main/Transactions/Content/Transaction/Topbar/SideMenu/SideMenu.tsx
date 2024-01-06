@@ -5,7 +5,7 @@ import { Menu, MenuItem } from '@mui/material';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { EditModal } from './EditModal/EditModal.tsx';
 
-export const SideMenu = ({ transactionId, navigate }: any) => {
+export const SideMenu = ({ transactionId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -13,9 +13,11 @@ export const SideMenu = ({ transactionId, navigate }: any) => {
     setAnchorEl(null);
     setOpen(type);
   };
+
   const closeMenu = () => {
     setAnchorEl(null);
   };
+
   const openMenu = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -38,17 +40,8 @@ export const SideMenu = ({ transactionId, navigate }: any) => {
           <MenuItem onClick={() => openModal('deleteModal')}>Remove</MenuItem>
         </Menu>
       </div>
-      <EditModal
-        isOpen={isOpen}
-        setOpen={setOpen}
-        transactionId={transactionId}
-      />
-      <DeleteModal
-        isOpen={isOpen}
-        setOpen={setOpen}
-        transactionId={transactionId}
-        navigate={navigate}
-      />
+      <EditModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      <DeleteModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
     </>
   );
 };

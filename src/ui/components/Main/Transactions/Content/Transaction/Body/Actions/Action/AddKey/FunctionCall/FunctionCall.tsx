@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.tsx';
 import { Allowance } from './Allowance/Allowance.tsx';
 import { AllowedMethods } from "./AllowedMethods/AllowedMethods.tsx";
 
