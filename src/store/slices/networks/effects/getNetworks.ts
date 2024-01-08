@@ -9,11 +9,6 @@ export const getNetworks = effect(async ({ slice, store }: any) => {
   try {
     const networks = await idb.getAllFromIndex('networks', 'spaceId', spaceId);
     networks.sort((a: any, b: any) => (a.createdAt > b.createdAt ? 1 : -1));
-
-    // console.log(networks);
-    // networks[1].url.rpc = 'https://rpc.mainnet.near.org'
-    // await idb.put('networks', networks[1])
-
     setNetworks({ networks });
   } catch (e) {
     console.log(e);
