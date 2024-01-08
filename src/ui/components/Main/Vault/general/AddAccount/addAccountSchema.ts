@@ -1,29 +1,22 @@
 import * as yup from 'yup';
-import { connect } from 'near-api-js';
-import {asyncDebounce} from "../../../../../../store/slices/vault/helpers/asyncDebounce.ts";
+import { asyncDebounce } from '../../../../../../store/slices/vault/helpers/asyncDebounce.ts';
+import { JsonRpcProvider } from 'near-api-js/lib/providers';
 
-const near = await connect({
-  networkId: 'testnet',
-  nodeUrl: 'https://rpc.testnet.near.org',
-  walletUrl: 'https://testnet.mynearwallet.com',
-});
-
-const verifyAccount = async (value: any) => {
+const verifyAccount = (rpc: string) => async (value: any) => {
   try {
-    await near.connection.provider.query({
+    await new JsonRpcProvider({ url: rpc }).query({
       request_type: 'view_account',
       finality: 'final',
       account_id: value,
     });
     return true;
   } catch (e) {
-    console.log(e);
     return false;
   }
 };
 
-export const createSchema = (list: any, timerRef: any) => {
-  const debouncedVerifyAccount = asyncDebounce(verifyAccount, timerRef);
+export const createSchema = (list: any, timerRef: any, rpc: string) => {
+  const debouncedVerifyAccount = asyncDebounce(() => verifyAccount(rpc), timerRef);
   return yup.object({
     accountId: yup
       .string()
