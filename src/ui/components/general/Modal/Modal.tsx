@@ -12,7 +12,7 @@ export const Modal = ({ children, isOpen, close }: Props) => {
 
   // TODO: figure out why modal close when mouse moves beyond modal and mouseUp
   return (
-    <div className={cn.backstage}>
+    <div className={cn.backstage} onClick={close}>
       <div className={cn.modal} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
