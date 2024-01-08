@@ -1,6 +1,6 @@
 import cn from './Account.module.css';
 import { Key } from './Key/Key.tsx';
-import { RemoveAccount } from './RemoveAccount/RemoveAccount.tsx';
+import { SideMenu } from './SideMenu/SideMenu.tsx';
 import { useParams } from 'react-router-dom';
 import { ImportKey } from './ImportKey/ImportKey.tsx';
 import { replaceStringToDots } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
@@ -18,7 +18,7 @@ export const Account = ({ map }: any) => {
         <h2 className={cn.title}>{accId}</h2>
         <div className={cn.buttonGroup}>
           <ImportKey accountId={accId} />
-          <RemoveAccount accountId={accId} />
+          <SideMenu accountId={accId} />
         </div>
       </div>
       <div className={cn.keyContainer}>

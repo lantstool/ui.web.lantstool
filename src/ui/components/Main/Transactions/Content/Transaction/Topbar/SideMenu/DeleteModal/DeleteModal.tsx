@@ -1,30 +1,42 @@
 import cn from './DeleteModal.module.css';
 import { Modal } from '../../../../../../../general/Modal/Modal.tsx';
 import { useStoreEffect } from '../../../../../../../../../react-vault';
+import { CloseButton } from '../../../../../../general/CloseButton/CloseButton.tsx';
+import { Title } from '../../../../../../general/Title/Title.tsx';
+import { Subtitle } from '../../../../../../general/Subtitle/Subtitle.tsx';
+import { useNavigate } from "react-router-dom";
 
-export const DeleteModal = ({ isOpen, closeModal, transactionId, navigate, setOpen }: any) => {
-  const onDeleteTransaction = useStoreEffect((store: any) => store.transactions.onDeleteTransaction);
-  const open = isOpen === 'deleteModal'
+export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
+  const onDeleteTransaction = useStoreEffect(
+    (store: any) => store.transactions.onDeleteTransaction,
+  );
+  const navigate = useNavigate();
+
+  const open = isOpen === 'deleteModal';
+
+  const closeModal = () => {
+    setOpen(null);
+  };
+
   const remove = () => {
     onDeleteTransaction({ transactionId, navigate });
     setOpen(false);
   };
+
   return (
     <Modal isOpen={open} close={closeModal}>
       <div className={cn.container}>
-        <h2 className={cn.title}>Remove transaction from storage</h2>
-        <p className={cn.subtitle}>
-          Are you sure to remove this transaction? It will also remove all data from this
-          transaction.
-        </p>
-        <div className={cn.buttonGroup}>
-          <button className={cn.btnRemove} onClick={remove}>
-            Remove
-          </button>
-          <button className={cn.btnClose} onClick={closeModal}>
-            Close
-          </button>
+        <div className={cn.header}>
+          <Title text="Remove transaction" />
+          <CloseButton close={closeModal} />
         </div>
+        <Subtitle
+          text="Are you sure to remove this transaction? It will also remove all data from this
+          transaction."
+        />
+        <button className={cn.btnRemove} onClick={remove}>
+          Remove
+        </button>
       </div>
     </Modal>
   );

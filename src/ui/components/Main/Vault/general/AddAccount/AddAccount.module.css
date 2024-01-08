@@ -1,0 +1,35 @@
+.buttonModal {
+  width: 200px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #438668;
+  border: 2px solid #D4FFEB;
+  cursor: pointer;
+}
+.buttonModal:hover{
+  background-color: #7dd7b3;;
+}
+.header{
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: ' . a b ';
+  align-items: center;
+}
+.btnAddAccount {
+  width: 200px;
+  align-self: center;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #40916c;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.btnAddAccount:hover {
+  background-color: #7dd7b3;
+}

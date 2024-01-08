@@ -6,9 +6,10 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
 
   const [idb] = store.getEntities((store: any) => store.idb);
   const addKey = slice.getActions((slice: any) => slice.addKey);
+  const rpc = store.getState((store: any) => store.networks.current.url.rpc);
 
   try {
-    const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+    const provider = new JsonRpcProvider({ url: rpc });
 
     const response: any = await provider.query({
       request_type: 'view_access_key',
@@ -28,7 +29,7 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
 
     const record = await idb.get('accounts', accountId);
     record.list.push(publicKey);
-    record.map[publicKey] = keyData
+    record.map[publicKey] = keyData;
     await idb.put('accounts', record);
 
     addKey({ keyData, accountId });
