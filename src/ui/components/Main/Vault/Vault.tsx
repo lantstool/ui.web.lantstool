@@ -11,11 +11,12 @@ export const Vault = () => {
   const onInitPage = useStoreEffect((store: any) => store.vault.onInitPage);
   const list: any = useStoreState((store: any) => store.vault.list);
   const map: any = useStoreState((store: any) => store.vault.map);
+  const networkId: string = useStoreState((store: any) => store.networks.current.networkId);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     onInitPage(setLoading);
-  }, [onInitPage]);
+  }, [networkId]);
 
   if (loading) return <p>Loading...</p>;
   if (list.length == 0) return <Empty list={list} />;
