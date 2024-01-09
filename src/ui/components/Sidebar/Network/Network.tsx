@@ -3,6 +3,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Menu, MenuItem } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { useStoreState, useStoreAction } from '../../../../react-vault';
+import Button from '@mui/material/Button';
 
 const useGetMenuItems = () => {
   const { current, list, map }: any = useStoreState((store: any) => store.networks);
@@ -55,6 +56,7 @@ export const Network = () => {
             {network.name}
           </MenuItem>
         ))}
+        <Button variant="outlined">Manage Networks</Button>
       </Menu>
     </>
   );

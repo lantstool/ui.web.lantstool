@@ -47,11 +47,13 @@ export const AddTransaction = ({ styles }: any) => {
     setOpen(false);
     reset();
   };
+
   const onSubmit = (data: any) => {
     onAddTransaction({ data, transactionName, closeModal, navigate });
     setOpen(false);
     reset();
   };
+
   return (
     <>
       <button className={cn.addBtn} onClick={openModal}>
