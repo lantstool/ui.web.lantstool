@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import cn from './ImportKey.module.css';
 import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { SignatureType } from './SignatureType/SignatureType.tsx';
 import { ImportType } from './ImportType/ImportType.tsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.tsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.tsx';
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import addIcon from '../../../../../../assets/addIcon.svg';
+import { GeneralButton } from '../../../general/GeneralButton/GeneralButton.tsx';
 
 export const ImportKey = ({ accountId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -25,10 +25,7 @@ export const ImportKey = ({ accountId }: any) => {
 
   return (
     <>
-      <button className={cn.buttonImport} onClick={openModal}>
-        <AddBoxOutlinedIcon style={{ fontSize: 24 }} />
-        <p className={cn.btnText}>Import key</p>
-      </button>
+      <GeneralButton text="Add account" onClick={openModal} type="submit" src={addIcon} />
       {modalStep === 'signatureType' && (
         <SignatureType closeModal={closeModal} navigate={navigate} isOpen={isOpen} />
       )}

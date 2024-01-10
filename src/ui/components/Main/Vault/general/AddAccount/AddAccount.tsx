@@ -1,7 +1,7 @@
 import { Modal } from '../../../../general/Modal/Modal.tsx';
 import { useState, useRef } from 'react';
 import cn from './AddAccount.module.css';
-import { useStoreEffect, useStoreState } from "../../../../../../react-vault";
+import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { useForm } from 'react-hook-form';
 import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,6 +11,8 @@ import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../general/Title/Title.tsx';
 import { Subtitle } from '../../../general/Subtitle/Subtitle.tsx';
 import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
+import { GeneralButton } from '../../../general/GeneralButton/GeneralButton.tsx';
+import addIcon from '../../../../../../assets/addIcon.svg';
 
 export const AddAccount = ({ list, styles }: any) => {
   const rpc = useStoreState((store: any) => store.networks.current.url.rpc);
@@ -48,9 +50,7 @@ export const AddAccount = ({ list, styles }: any) => {
 
   return (
     <>
-      <button className={cn.buttonModal} onClick={openModal}>
-        Add account
-      </button>
+      <GeneralButton text="Add account" onClick={openModal} src={addIcon} />
       <Modal isOpen={isOpen} close={closeModal}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles}>
@@ -66,9 +66,7 @@ export const AddAccount = ({ list, styles }: any) => {
               <InputGroup register={register} name="accountId" label="Account Id" />
               <ErrorMessage error={errors.accountId?.message} />
             </div>
-            <button onClick={onClick} type="submit" className={cn.btnAddAccount}>
-              Add account
-            </button>
+            <GeneralButton text="Add account" onClick={onClick} style="secondary" type="submit" />
           </div>
         </form>
       </Modal>

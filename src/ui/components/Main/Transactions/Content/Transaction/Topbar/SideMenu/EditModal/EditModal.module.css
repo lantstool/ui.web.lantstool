@@ -20,36 +20,5 @@
   grid-template-areas: '. a b';
   align-items: center;
 }
-.inputContainer {
-  color: #081c15;
-}
-.input {
-  padding: 8px 10px;
-  font-size: 14px;
-  border: 1px solid #fbfbfb;
-  border-radius: 8px;
-}
-.input:focus {
-  outline: none;
-}
 
-.subtitle {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  color: #081c15;
-}
-.btnSave {
-  width: 200px;
-  align-self: center;
-  padding: 8px 15px;
-  font-size: 16px;
-  border-radius: 8px;
-  color: #ffffff;
-  background: #40916c;
-  border: 1px solid #ffffff;
-  cursor: pointer;
-}
-.btnSave:hover {
-  background-color: #7dd7b3;
-}
+

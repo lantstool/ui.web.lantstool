@@ -10,6 +10,9 @@ import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
 import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.ts';
+import { Subtitle } from '../../../general/Subtitle/Subtitle.tsx';
+import { GeneralButton } from '../../../general/GeneralButton/GeneralButton.tsx';
+import addIcon from '../../../../../../assets/addIcon.svg';
 
 export const AddTransaction = ({ styles }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -56,9 +59,7 @@ export const AddTransaction = ({ styles }: any) => {
 
   return (
     <>
-      <button className={cn.addBtn} onClick={openModal}>
-        Add transaction
-      </button>
+      <GeneralButton text="Add transaction" onClick={openModal} src={addIcon} type="submit" />
       <Modal isOpen={isOpen} close={closeModal}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles}>
@@ -66,7 +67,7 @@ export const AddTransaction = ({ styles }: any) => {
               <Title text="Add transaction" />
               <CloseButton close={closeModal} />
             </div>
-            <p>You can add your transaction and save all data for next time.</p>
+            <Subtitle text="You can add your transaction and save all data for next time." />
             <div>
               <InputGroup
                 register={register}
@@ -77,9 +78,7 @@ export const AddTransaction = ({ styles }: any) => {
               />
               <ErrorMessage error={errors.transactionName?.message} />
             </div>
-            <button className={cn.btnAddTransaction} type="submit">
-              Add transaction
-            </button>
+            <GeneralButton text="Add transaction" style="secondary" type="submit" />
           </div>
         </form>
       </Modal>
