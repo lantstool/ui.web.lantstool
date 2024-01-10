@@ -6,13 +6,12 @@ import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
 import cn from './Body.module.css';
 
-export const Body = ({ transaction }: any) => {
+export const Body = ({ bodyData }: any) => {
   const onSendTransaction = useStoreEffect((store: any) => store.transactions.onSendTransaction);
   const onSaveTransaction = useStoreEffect((store: any) => store.transactions.onSaveTransaction);
-  const form = useForm({ defaultValues: transaction });
+  const form = useForm({ defaultValues: bodyData });
 
   const onSubmit = form.handleSubmit((data: any) => {
-    console.log(data);
     onSendTransaction(data);
   });
 
