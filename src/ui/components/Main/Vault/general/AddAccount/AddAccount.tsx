@@ -11,7 +11,7 @@ import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../general/Title/Title.tsx';
 import { Subtitle } from '../../../general/Subtitle/Subtitle.tsx';
 import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
-import { GeneralButton } from '../../../general/GeneralButton/GeneralButton.tsx';
+import { Button } from '../../../general/Button/Button.tsx';
 import addIcon from '../../../../../../assets/addIcon.svg';
 
 export const AddAccount = ({ list, styles }: any) => {
@@ -50,7 +50,7 @@ export const AddAccount = ({ list, styles }: any) => {
 
   return (
     <>
-      <GeneralButton text="Add account" onClick={openModal} src={addIcon} />
+      <Button text="Add account" onClick={openModal} src={addIcon} />
       <Modal isOpen={isOpen} close={closeModal}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles}>
@@ -66,7 +66,7 @@ export const AddAccount = ({ list, styles }: any) => {
               <InputGroup register={register} name="accountId" label="Account Id" />
               <ErrorMessage error={errors.accountId?.message} />
             </div>
-            <GeneralButton text="Add account" onClick={onClick} style="secondary" type="submit" />
+            <Button text="Add account" onClick={onClick} style="secondary" type="submit" />
           </div>
         </form>
       </Modal>

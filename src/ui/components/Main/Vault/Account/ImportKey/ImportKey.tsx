@@ -5,7 +5,7 @@ import { ImportType } from './ImportType/ImportType.tsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.tsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.tsx';
 import addIcon from '../../../../../../assets/addIcon.svg';
-import { GeneralButton } from '../../../general/GeneralButton/GeneralButton.tsx';
+import { Button } from '../../../general/Button/Button.tsx';
 
 export const ImportKey = ({ accountId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -25,7 +25,7 @@ export const ImportKey = ({ accountId }: any) => {
 
   return (
     <>
-      <GeneralButton text="Add account" onClick={openModal} type="submit" src={addIcon} />
+      <Button text="Add account" onClick={openModal} type="submit" src={addIcon} />
       {modalStep === 'signatureType' && (
         <SignatureType closeModal={closeModal} navigate={navigate} isOpen={isOpen} />
       )}

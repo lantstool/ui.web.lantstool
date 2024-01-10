@@ -8,7 +8,7 @@ import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.t
 import { CloseButton } from '../../../../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../../../../general/Title/Title.tsx';
 import { ErrorMessage } from '../../../../../../general/ErrorMessage/ErrorMessage.tsx';
-import { GeneralButton } from '../../../../../../general/GeneralButton/GeneralButton.tsx';
+import { Button } from '../../../../../../general/Button/Button.tsx';
 
 export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
   const onEditTransactionName = useStoreEffect(
@@ -63,7 +63,7 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
           />
           <ErrorMessage error={errors.transactionName?.message} />
         </div>
-        <GeneralButton text="Save" onClick={handleSubmit(edit)} style="secondary" />
+        <Button text="Save" onClick={handleSubmit(edit)} style="secondary" />
       </div>
     </Modal>
   );

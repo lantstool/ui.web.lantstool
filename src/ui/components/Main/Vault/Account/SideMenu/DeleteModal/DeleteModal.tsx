@@ -3,7 +3,7 @@ import { Modal } from '../../../../../general/Modal/Modal.tsx';
 import { CloseButton } from '../../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../../general/Title/Title.tsx';
 import { Subtitle } from '../../../../general/Subtitle/Subtitle.tsx';
-import { GeneralButton } from '../../../../general/GeneralButton/GeneralButton.tsx';
+import { Button } from '../../../../general/Button/Button.tsx';
 
 export const DeleteModal = ({ isOpen, closeModal, remove }: any) => {
   return (
@@ -18,7 +18,7 @@ export const DeleteModal = ({ isOpen, closeModal, remove }: any) => {
         vault. Notice this action only removes data locally from this app and DOESN'T make any
         changes on the blockchain."
         />
-        <GeneralButton text="Remove" style="secondary" onClick={remove} />
+        <Button text="Remove" style="secondary" onClick={remove} />
       </div>
     </Modal>
   );
