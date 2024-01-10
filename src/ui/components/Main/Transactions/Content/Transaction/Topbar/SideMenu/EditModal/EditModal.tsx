@@ -8,6 +8,7 @@ import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.t
 import { CloseButton } from '../../../../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../../../../general/Title/Title.tsx';
 import { ErrorMessage } from '../../../../../../general/ErrorMessage/ErrorMessage.tsx';
+import { Button } from '../../../../../../general/Button/Button.tsx';
 
 export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
   const onEditTransactionName = useStoreEffect(
@@ -52,7 +53,6 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
           <Title text="Edit name" />
           <CloseButton close={closeModal} />
         </div>
-
         <div className={cn.inputContainer}>
           <InputGroup
             register={register}
@@ -63,9 +63,7 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
           />
           <ErrorMessage error={errors.transactionName?.message} />
         </div>
-        <button className={cn.btnSave} onClick={handleSubmit(edit)}>
-          Save
-        </button>
+        <Button text="Save" onClick={handleSubmit(edit)} style="secondary" />
       </div>
     </Modal>
   );
