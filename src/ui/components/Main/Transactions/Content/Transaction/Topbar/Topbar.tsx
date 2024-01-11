@@ -1,8 +1,16 @@
 import cn from './Topbar.module.css';
 import { SideMenu } from './SideMenu/SideMenu.tsx';
 
-export const Topbar = ({ topBarData }: any) => {
-  const { transactionId, name } = topBarData;
+const separateData = (transaction: any) => {
+  return {
+    transactionId: transaction.transactionId,
+    name: transaction.name,
+  };
+};
+
+export const Topbar = ({ transaction }: any) => {
+  const getFormData = separateData(transaction);
+  const { transactionId, name } = getFormData;
 
   return (
     <div className={cn.topbar}>
