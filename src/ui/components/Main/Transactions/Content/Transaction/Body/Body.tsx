@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
+import { useMemo } from 'react';
 import cn from './Body.module.css';
 
-const separateData = (transaction: any) => {
+const getFormDefaultValues = (transaction: any) => {
   return {
     transactionId: transaction.transactionId,
     signerId: transaction.signerId,
@@ -19,8 +20,9 @@ const separateData = (transaction: any) => {
 export const Body = ({ transaction }: any) => {
   const onSendTransaction = useStoreEffect((store: any) => store.transactions.onSendTransaction);
   const onSaveTransaction = useStoreEffect((store: any) => store.transactions.onSaveTransaction);
-  const getFormData = separateData(transaction);
-  const form = useForm({ defaultValues: getFormData });
+
+  const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
+  const form = useForm({ defaultValues: formDefaultValues });
 
   const onSubmit = form.handleSubmit((data: any) => {
     onSendTransaction(data);

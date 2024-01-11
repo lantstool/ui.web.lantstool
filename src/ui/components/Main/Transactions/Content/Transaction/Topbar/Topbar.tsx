@@ -1,7 +1,8 @@
 import cn from './Topbar.module.css';
 import { SideMenu } from './SideMenu/SideMenu.tsx';
+import { useMemo } from 'react';
 
-const separateData = (transaction: any) => {
+const getFormDefaultValues = (transaction: any) => {
   return {
     transactionId: transaction.transactionId,
     name: transaction.name,
@@ -9,8 +10,8 @@ const separateData = (transaction: any) => {
 };
 
 export const Topbar = ({ transaction }: any) => {
-  const getFormData = separateData(transaction);
-  const { transactionId, name } = getFormData;
+  const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
+  const { transactionId, name } = formDefaultValues;
 
   return (
     <div className={cn.topbar}>
