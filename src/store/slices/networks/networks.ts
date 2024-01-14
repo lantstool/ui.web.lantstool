@@ -1,6 +1,8 @@
 import { setNetworks } from './actions/setNetworks.ts';
 import { getNetworks } from './effects/getNetworks.ts';
+import { getNetwork } from "./effects/getNetwork.ts";
 import { setCurrent } from './actions/setCurrent.ts';
+import { setCurrentNetwork } from "./actions/setCurrentNetwork.ts";
 import { addNetwork } from './actions/addNetwork.ts';
 import { createNetwork } from './effects/createNetwork.ts';
 import { deleteNetwork } from './effects/deleteNetwork.ts';
@@ -16,10 +18,12 @@ export const networks = {
   setNetworks,
   addNetwork,
   setCurrent,
+  setCurrentNetwork,
   removeNetwork,
   updateNetwork,
   // effects
   getNetworks,
+  getNetwork,
   createNetwork,
   deleteNetwork,
   editNetwork,

@@ -9,7 +9,6 @@ export const Network = ({ network }) => {
   const { register, handleSubmit } = useForm({
     defaultValues: network,
   });
-  console.log(network);
 
   const onSubmit = (data: any) => {
     console.log(data);

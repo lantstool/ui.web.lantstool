@@ -6,12 +6,14 @@ import { ImportKey } from './ImportKey/ImportKey.tsx';
 import { replaceStringToDots } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 import { useStoreState } from '../../../../../react-vault';
 
-export const Account = ({ map }: any) => {
+export const Account = () => {
   const { accountId }: any = useParams();
+  const map: any = useStoreState((store: any) => store.vault.map);
   const accId = replaceStringToDots(accountId);
   const accountMap: any = useStoreState((store: any) => store.vault.map[accId]);
 
   if (!accountMap) return <div className={cn.container}>No Tx</div>;
+
   return (
     <div className={cn.container}>
       <div className={cn.topBar}>

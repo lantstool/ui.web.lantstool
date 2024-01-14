@@ -1,9 +1,9 @@
 import cn from '../Sidebar.module.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Menu, MenuItem } from '@mui/material';
-import { useMemo, useState } from 'react';
-import { useStoreState, useStoreAction } from '../../../../react-vault';
-import Button from '@mui/material/Button';
+import { useEffect, useMemo, useState } from 'react';
+import { useStoreState, useStoreEffect } from '../../../../react-vault';
+import { useNavigate } from 'react-router-dom';
 
 const useGetMenuItems = () => {
   const { current, list, map }: any = useStoreState((store: any) => store.networks);
@@ -11,18 +11,25 @@ const useGetMenuItems = () => {
   return useMemo(
     () =>
       list
-        .filter((id: any) => id !== current.networkId)
+        .filter((id: any) => id !== current?.networkId)
         .map((id: any) => ({ networkId: map[id].networkId, name: map[id].name })),
-    [current.networkId, list, map],
+    [current?.networkId, list, map],
   );
 };
 
 export const Network = () => {
   const current: any = useStoreState((store: any) => store.networks.current);
-  const setCurrent = useStoreAction((store: any) => store.networks.setCurrent);
+  const getNetworks = useStoreEffect((store: any) => store.networks.getNetworks);
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+
   const open = Boolean(anchorEl);
+
   const items = useGetMenuItems();
+
+  useEffect(() => {
+    getNetworks();
+  }, []);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -33,7 +40,7 @@ export const Network = () => {
   };
 
   const handleMenuItemClick = (networkId: any) => {
-    setCurrent({ networkId });
+    navigate(`/${networkId}`);
     handleClose();
   };
 
@@ -56,7 +63,6 @@ export const Network = () => {
             {network.name}
           </MenuItem>
         ))}
-        <Button variant="outlined">Manage Networks</Button>
       </Menu>
     </>
   );

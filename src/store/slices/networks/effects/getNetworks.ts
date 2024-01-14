@@ -9,7 +9,7 @@ export const getNetworks = effect(async ({ slice, store }: any) => {
   try {
     const networks = await idb.getAllFromIndex('networks', 'spaceId', spaceId);
     networks.sort((a: any, b: any) => (a.createdAt > b.createdAt ? 1 : -1));
-    setNetworks({ networks });
+    setNetworks(networks);
   } catch (e) {
     console.log(e);
   }

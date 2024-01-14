@@ -10,14 +10,14 @@ export const Sidebar = () => {
         <h2 className={cn.title}>Near Devtools</h2>
         <div className={cn.subtitleWrapper}>
           <div className={cn.subtitleGroup}>
-            <h4 className={cn.subtitle}>Personal space</h4>
+            <h4 className={cn.subtitle}>Personal Space</h4>
             <KeyboardArrowDownIcon style={{ color: 'white' }} />
           </div>
           <Network />
         </div>
       </div>
       <Navigation />
-      <h2 className={cn.name}>eclipseeer</h2>
+      <h2 className={cn.name}>User Account</h2>
     </div>
   );
 };
