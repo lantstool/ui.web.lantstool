@@ -1,4 +1,4 @@
-.container {
+.app {
   height: 100vh;
   width: 100%;
   display: grid;
@@ -9,4 +9,10 @@
     'a . c .'
     'a . . .';
   background-color: #F5F9F7;
+}
+
+.main {
+  grid-area: c;
+  background-color: #D1E4DC;
+  border-radius: 15px;
 }

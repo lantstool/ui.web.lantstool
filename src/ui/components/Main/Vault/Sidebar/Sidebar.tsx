@@ -5,7 +5,7 @@ import { NavLink, useMatch } from 'react-router-dom';
 import { replaceDotsToString } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 
 export const Sidebar = ({ list }: any) => {
-  const match: any = useMatch('/vault/:accountId');
+  const match: any = useMatch(':accountId'); // TODO Fix it
 
   return (
     <div className={cn.sidebar}>
@@ -14,7 +14,7 @@ export const Sidebar = ({ list }: any) => {
         {list.map((id: any) => (
           <NavLink
             key={id}
-            to={`/vault/${replaceDotsToString(id)}`}
+            to={replaceDotsToString(id)}
             className={cnm(
               cn.textWrapper,
               replaceDotsToString(id) === match?.params?.accountId && cn.active,

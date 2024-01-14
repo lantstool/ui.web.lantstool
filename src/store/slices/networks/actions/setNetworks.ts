@@ -1,8 +1,6 @@
 import { action } from '../../../../react-vault';
 
-export const setNetworks = action(({ slice, payload }: any) => {
-  const { networks } = payload;
-
+export const setNetworks = action(({ slice, payload: networks }: any) => {
   slice.list = [];
   slice.map = {};
 
@@ -10,5 +8,4 @@ export const setNetworks = action(({ slice, payload }: any) => {
     slice.list.push(network.networkId);
     slice.map[network.networkId] = network;
   });
-  slice.current = networks[0];
 });
