@@ -1,6 +1,8 @@
 import { action, effect } from '../../../react-vault';
 import { matchPath } from 'react-router-dom';
 import { get, set } from 'lodash';
+import { current } from 'immer';
+import { getInitDataFromLocalStorage } from "./getInitDataFromLocalStorage.ts";
 
 const saveDynamicRoute = (slice: any, pattern: string, pathname: string, pathToSave: any) => {
   const match = matchPath(pattern, pathname);
@@ -38,6 +40,18 @@ export const navigation = {
       pathname,
       ({ currentNetworkId }) => `${currentNetworkId}.vault.route`,
     );
+
+    const nav = current(slice);
+    console.log('nav', nav);
+    // TODO move to effect
+    setTimeout(
+      () =>
+        localStorage.setItem(
+          '[Near-Devtools][0][navigation]',
+          JSON.stringify(nav),
+        ),
+      0,
+    );
   }),
 
   navigateTo: effect(({ payload, slice }: any) => {
@@ -46,4 +60,12 @@ export const navigation = {
     const destination = get(routes, `${splitPathname(match.pathname)}.route`) || fallbackRoute;
     navigate(destination);
   }),
+
+  setInitData: action(({ payload, slice }) => {
+    slice.route = payload.route;
+    slice.routes = payload.routes;
+  }),
+
+  // effects
+  getInitDataFromLocalStorage,
 };
