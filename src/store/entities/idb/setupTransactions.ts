@@ -1,6 +1,6 @@
 export const setupTransactions = async (db: any, ids: any) => {
   const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
-  transactions.createIndex('networkIdOrder', ['networkId', 'order'], { unique: true });
+  transactions.createIndex('networkIdOrder', ['networkId', 'order']);
 
   const transactionsCounter = db.createObjectStore('transactions-counter', {
     keyPath: 'networkId',

@@ -32,7 +32,7 @@ export const SideMenu = (accountId: any) => {
   return (
     <>
       <div>
-        <button className={cn.buttonRemove} onClick={openMenu}>
+        <button className={cn.sideMenuButton} onClick={openMenu}>
           <MoreVertOutlinedIcon />
         </button>
         <Menu
