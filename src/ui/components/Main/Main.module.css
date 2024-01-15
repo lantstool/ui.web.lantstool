@@ -1,0 +1,5 @@
+.container {
+  grid-area: c;
+  background-color: #D1E4DC;
+  border-radius: 15px;
+}

@@ -4,7 +4,6 @@ import { vault } from './slices/vault/index';
 import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 import { networks } from './slices/networks/networks';
-import { navigation } from "./slices/navigation/navigation";
 
 export const store = createStore({
   // entities
@@ -15,5 +14,4 @@ export const store = createStore({
   networks,
   transactions,
   vault,
-  navigation,
 });

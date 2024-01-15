@@ -26,7 +26,7 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
   const {
     register,
     control,
-    formState: { errors, dirtyFields },
+    formState: { errors, isDirty },
     clearErrors,
     resetField,
     handleSubmit,
@@ -65,7 +65,7 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
           <InputGroup register={register} name="seedPhrase" label="Seed phrase" />
           <p className={cn.error}>{errors?.seedPhrase && errors?.seedPhrase.message}</p>
           <div className={cn.publicKey}>
-            {!errors?.seedPhrase && publicKey && !dirtyFields.seedPhrase && (
+            {!errors?.seedPhrase?.message && publicKey && isDirty && (
               <p className={cn.successfulMessage}>Add key: {publicKey} successful!</p>
             )}
           </div>

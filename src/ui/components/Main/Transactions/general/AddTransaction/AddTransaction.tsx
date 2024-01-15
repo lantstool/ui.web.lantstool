@@ -10,9 +10,6 @@ import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
 import { ErrorMessage } from '../../../general/ErrorMessage/ErrorMessage.tsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.ts';
-import { Subtitle } from '../../../general/Subtitle/Subtitle.tsx';
-import { Button } from '../../../general/Button/Button.tsx';
-import addIcon from '../../../../../../assets/addIcon.svg';
 
 export const AddTransaction = ({ styles }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -50,16 +47,16 @@ export const AddTransaction = ({ styles }: any) => {
     setOpen(false);
     reset();
   };
-
   const onSubmit = (data: any) => {
     onAddTransaction({ data, transactionName, closeModal, navigate });
     setOpen(false);
     reset();
   };
-
   return (
     <>
-      <Button text="Add transaction" onClick={openModal} src={addIcon} type="submit" />
+      <button className={cn.addBtn} onClick={openModal}>
+        Add transaction
+      </button>
       <Modal isOpen={isOpen} close={closeModal}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles}>
@@ -67,7 +64,7 @@ export const AddTransaction = ({ styles }: any) => {
               <Title text="Add transaction" />
               <CloseButton close={closeModal} />
             </div>
-            <Subtitle text="You can add your transaction and save all data for next time." />
+            <p>You can add your transaction and save all data for next time.</p>
             <div>
               <InputGroup
                 register={register}
@@ -78,7 +75,9 @@ export const AddTransaction = ({ styles }: any) => {
               />
               <ErrorMessage error={errors.transactionName?.message} />
             </div>
-            <Button text="Add transaction" style="secondary" type="submit" />
+            <button className={cn.btnAddTransaction} type="submit">
+              Add transaction
+            </button>
           </div>
         </form>
       </Modal>

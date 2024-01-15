@@ -20,5 +20,19 @@
   grid-template-areas: ' . a b ';
   align-items: center;
 }
+.btnRemove {
+  width: 200px;
+  padding: 8px 15px;
+  align-self: center;
+  font-size: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #40916c;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.btnRemove:hover {
+  background-color: #7dd7b3;
+}
 
 

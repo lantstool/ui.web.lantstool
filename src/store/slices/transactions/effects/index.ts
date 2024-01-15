@@ -5,7 +5,6 @@ import { onSaveTransaction } from './onSaveTransaction.ts';
 import { onDeleteTransaction } from './onDeleteTransaction.ts';
 import { onEditTransactionName } from './onEditTransactionName.ts';
 import { getTransactionCount } from './getTransactionCount.ts';
-import { onReorderTransactions } from './onReorderTransactions.ts';
 
 export const effects = {
   onAddTransaction,
@@ -15,5 +14,4 @@ export const effects = {
   onDeleteTransaction,
   onEditTransactionName,
   getTransactionCount,
-  onReorderTransactions,
 };

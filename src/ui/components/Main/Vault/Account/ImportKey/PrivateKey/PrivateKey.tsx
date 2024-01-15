@@ -24,7 +24,7 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
   const {
     register,
     control,
-    formState: { errors, dirtyFields },
+    formState: { errors, isDirty },
     clearErrors,
     resetField,
     setValue,
@@ -51,7 +51,6 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
       accountId,
       storageType: 'locally',
     });
-    resetField('privateKey');
   };
 
   return (
@@ -61,7 +60,7 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
         <InputGroup register={register} name="privateKey" label="Private key" />
         {errors?.privateKey && <p>{errors?.privateKey?.message}</p>}
         <div className={cn.publicKey}>
-          {!errors?.privateKey && publicKey && !dirtyFields.privateKey && (
+          {!errors?.seedPhrase?.message && publicKey && isDirty && (
             <p className={cn.successfulMessage}>Add key: {publicKey} successful!</p>
           )}
         </div>

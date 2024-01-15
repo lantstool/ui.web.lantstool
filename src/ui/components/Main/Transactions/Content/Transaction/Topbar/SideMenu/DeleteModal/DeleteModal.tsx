@@ -4,8 +4,7 @@ import { useStoreEffect } from '../../../../../../../../../react-vault';
 import { CloseButton } from '../../../../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../../../../general/Title/Title.tsx';
 import { Subtitle } from '../../../../../../general/Subtitle/Subtitle.tsx';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../../../../../../general/Button/Button.tsx';
+import { useNavigate } from "react-router-dom";
 
 export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
   const onDeleteTransaction = useStoreEffect(
@@ -35,7 +34,9 @@ export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
           text="Are you sure to remove this transaction? It will also remove all data from this
           transaction."
         />
-        <Button text="Remove" onClick={remove} style="secondary" />
+        <button className={cn.btnRemove} onClick={remove}>
+          Remove
+        </button>
       </div>
     </Modal>
   );
