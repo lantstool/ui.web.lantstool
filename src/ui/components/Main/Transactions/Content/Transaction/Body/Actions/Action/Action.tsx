@@ -26,7 +26,7 @@ export const Action = ({ form, action, index, remove }: any) => {
         <DeployContract getName={getName} action={action} form={form} />
       )}
       {type === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
-      {type === 'DeleteKey' && <DeleteKey form={form} getName={getName} />}
+      {type === 'DeleteKey' && <DeleteKey action={action} form={form} getName={getName} />}
     </div>
   );
 };
