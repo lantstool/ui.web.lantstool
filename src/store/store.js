@@ -4,7 +4,8 @@ import { vault } from './slices/vault/index';
 import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 import { networks } from './slices/networks/networks';
-import { navigation } from "./slices/navigation/navigation";
+import { navigation } from './slices/navigation/navigation';
+import { getAccessKeyList } from './effects/getAccessKeyList.ts';
 
 export const store = createStore({
   // entities
@@ -16,4 +17,5 @@ export const store = createStore({
   transactions,
   vault,
   navigation,
+  getAccessKeyList,
 });

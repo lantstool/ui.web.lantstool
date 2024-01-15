@@ -3,6 +3,7 @@ import { Transfer } from './Transfer/Transfer.tsx';
 import { AddKey } from './AddKey/AddKey.tsx';
 import { DeployContract } from './DeployContract/DeployContract.tsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.tsx';
+import { DeleteKey } from './DeleteKey/DeleteKey.tsx';
 import cn from './Action.module.css';
 
 export const Action = ({ form, action, index, remove }: any) => {
@@ -25,6 +26,7 @@ export const Action = ({ form, action, index, remove }: any) => {
         <DeployContract getName={getName} action={action} form={form} />
       )}
       {type === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
+      {type === 'DeleteKey' && <DeleteKey form={form} getName={getName} />}
     </div>
   );
 };

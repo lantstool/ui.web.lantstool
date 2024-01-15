@@ -9,11 +9,11 @@ import { createSchema } from './schema.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
 
-export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => {
+
+export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen, keyList }: any) => {
   const onAddKey = useStoreEffect((store: any) => store.vault.onAddKey);
-  const accessKeyList: any = useStoreState((state: any) => state.vault.accessKeyList);
   const list: any = useStoreState((store: any) => store.vault.map[accountId].list);
-  const schema: any = createSchema(accessKeyList, list);
+  const schema = createSchema(keyList, list);
 
   const form = useForm<any>({
     mode: 'all',
@@ -23,6 +23,7 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
       seedPhrase: null,
     },
   });
+
   const {
     register,
     control,
@@ -37,6 +38,7 @@ export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen }: any) => 
     control,
     name: 'publicKey',
   });
+
   const onPrevStep = () => {
     clearErrors('seedPhrase');
     resetField('seedPhrase');
