@@ -24,14 +24,18 @@ const updateTxsOrder = async (idb: any, txOrder: number, networkId: string) => {
   return updatedTxsOrder;
 };
 
-const getNextRoute = (txList: any, activeTxId: string) => {
+// TODO: handle the case when we delete the last tx in the list - we also need
+// to clear navigation state for transactions and we shouldn't navigate to last
+// deleted tx
+
+const getNextRoute = (txList: any, activeTxId: string, networkId: string) => {
   // If we have only 1 tx in the list after we will have 0 records
-  if (txList.length === 1) return '/transactions';
+  if (txList.length === 1) return `/${networkId}/transactions`;
   const index = txList.findIndex((id: any) => id === activeTxId);
   // If we want to delete the second or further tx - return the upper one
-  if (0 < index) return `/transactions/${txList[index - 1]}`;
+  if (0 < index) return `/${networkId}/transactions/${txList[index - 1]}`;
   // If we want to delete is first tx in the list - return the lover one
-  if (0 === index) return `/transactions/${txList[index + 1]}`;
+  if (0 === index) return `/${networkId}/transactions/${txList[index + 1]}`;
 };
 
 export const onDeleteTransaction = effect(async ({ payload, slice, store }: any) => {
@@ -43,11 +47,13 @@ export const onDeleteTransaction = effect(async ({ payload, slice, store }: any)
 
   try {
     const list = slice.getState((slice: any) => slice.list);
-    const nextRoute = getNextRoute(list, transactionId);
+    const nextRoute = getNextRoute(list, transactionId, networkId);
 
     await idb.delete('transactions', transactionId);
     const updatedTxsOrder = await updateTxsOrder(idb, order, networkId);
     deleteTransaction({ transactionId, updatedTxsOrder });
+
+    console.log('nextRoute', nextRoute);
     navigate(nextRoute);
   } catch (e) {
     console.log(e);

@@ -21,7 +21,7 @@ export const onAddAccount = effect(async ({ payload, slice, store }: any) => {
     await idb.add('accounts', account);
     addAccount({ account });
 
-    navigate(`/vault/${modifiedAccountId}`);
+    navigate(`${modifiedAccountId}`);
     closeModal(false);
   } catch (e) {
     console.log(e);
