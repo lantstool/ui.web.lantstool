@@ -4,6 +4,7 @@ import { transfer } from './transfer.ts';
 import { functionCall } from './functionCall.ts';
 import { deployContract } from './deployContract.ts';
 import { deleteKey } from './deleteKey.ts';
+import { deleteAccount } from './deleteAccount.ts';
 
 export const getActions = async (actions: any) =>
   Promise.all(
@@ -14,5 +15,6 @@ export const getActions = async (actions: any) =>
       if (action.type === 'FunctionCall') return functionCall(action);
       if (action.type === 'DeployContract') return deployContract(action);
       if (action.type === 'DeleteKey') return deleteKey(action);
+      if (action.type === 'DeleteAccount') return deleteAccount(action);
     }),
   );

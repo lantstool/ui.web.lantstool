@@ -61,6 +61,13 @@ const deleteKey = (append: any) =>
     accessKey: '',
   });
 
+const deleteAccount = (append: any) =>
+  append({
+    actionId: v4(),
+    name: 'Delete Account',
+    type: 'DeleteAccount',
+  });
+
 export const appendAction = {
   createAccount,
   transfer,
@@ -68,4 +75,5 @@ export const appendAction = {
   functionCall,
   deployContract,
   deleteKey,
+  deleteAccount,
 };
