@@ -10,14 +10,15 @@ import { Head } from '../../../general/Head/Head.tsx';
 
 export const DeleteKey = ({ form, getName, action }: any) => {
   const [options, setOptions] = useState([]);
-  const [publicKey, setPublicKey] = useState(action.publicKey);
   const getAccessKeyList = useStoreEffect((store: any) => store.getAccessKeyList);
-  const { control } = form;
+  const { control, setValue } = form;
   const accountId = useWatch({ control, name: 'signerId.value' });
+  const actions = useWatch({ control, name: `actions` });
+  const findAction = actions.find((el:any)=>el.actionId === action.actionId)
 
   const onChange = (field: any) => (event: any) => {
     field.onChange(event);
-    setPublicKey(event);
+    setValue('accessKey', event)
   };
 
   useEffect(() => {
@@ -26,9 +27,9 @@ export const DeleteKey = ({ form, getName, action }: any) => {
 
   return (
     <div className={cn.signerKey}>
-      <Head text="Access Key" permission={publicKey} />
+      <Head text="Access Key" permission={findAction.accessKey} />
       <Controller
-        name={getName('publicKey')}
+        name={getName('accessKey')}
         control={control}
         render={({ field }: any) => (
           <Select

@@ -58,6 +58,7 @@ const deleteKey = (append: any) =>
     actionId: v4(),
     name: 'Delete Key',
     type: 'DeleteKey',
+    accessKey: '',
   });
 
 export const appendAction = {
