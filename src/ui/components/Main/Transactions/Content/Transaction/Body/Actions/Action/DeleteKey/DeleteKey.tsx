@@ -6,7 +6,7 @@ import { Controller, useWatch } from 'react-hook-form';
 import { getOptions } from './getOptions.ts';
 import cn from '../../../general/Option/Option.module.css';
 import { Option } from '../../../general/Option/Option.tsx';
-import { Head } from '../../../general/Head/Head.tsx';
+import { PermissionGroup } from '../../../general/PermissionGroup/PermissionGroup.tsx';
 
 export const DeleteKey = ({ form, getName, action }: any) => {
   const [options, setOptions] = useState([]);
@@ -27,7 +27,7 @@ export const DeleteKey = ({ form, getName, action }: any) => {
 
   return (
     <div className={cn.signerKey}>
-      <Head text="Access Key" permission={findAction.accessKey} />
+      <PermissionGroup text="Access Key" permission={findAction.accessKey} />
       <Controller
         name={getName('accessKey')}
         control={control}

@@ -12,10 +12,10 @@ export const store = createStore({
   idb,
   // effects
   onInitApp,
+  getAccessKeyList,
   // slices
   networks,
   transactions,
   vault,
   navigation,
-  getAccessKeyList,
 });
