@@ -1,7 +1,7 @@
-import cn from './PermissionGroup.module.css';
+import cn from './SelectHeadLabel.module.css';
 import { PermissionLabel } from '../PermissionLabel/PermissionLabel.tsx';
 
-export const PermissionGroup = ({ permission, text }: any) => {
+export const SelectHeadLabel = ({ permission, text }: any) => {
   return (
     <div className={cn.head}>
       <span>{text}</span>
