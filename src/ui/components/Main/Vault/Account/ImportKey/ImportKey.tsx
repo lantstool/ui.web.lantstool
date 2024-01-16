@@ -30,7 +30,7 @@ export const ImportKey = ({ accountId }: any) => {
 
   return (
     <>
-      <Button text="Add account" onClick={openModal} type="submit" src={addIcon} />
+      <Button text="Import key" onClick={openModal} type="submit" src={addIcon} />
       {modalStep === 'signatureType' && (
         <SignatureType closeModal={closeModal} navigate={navigate} isOpen={isOpen} />
       )}

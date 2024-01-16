@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 8px;
   height: 100%;
 }
 .topBar {
@@ -12,7 +11,7 @@
   grid-template-columns: auto auto auto 250px 20px;
   grid-template-areas: '. a a b .';
   width: 100%;
-  border-radius: 8px 8px 0 0 ;
+  border-radius: 15px 15px 0 0 ;
   background-color: #438668;
 }
 .title {
@@ -33,12 +32,8 @@
 }
 .keyContainer {
   width: 100%;
-  height: 100%;
-  border-radius: 0 0 8px 8px;
+  height: calc(100vh - 90px);
+  border-radius: 0 0 15px 15px ;
   background-color: #FFFFFF;
-
-}
-.keyWrapper{
-  max-height: calc(100% - 60px);
   overflow: auto;
 }
