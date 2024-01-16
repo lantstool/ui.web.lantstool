@@ -33,6 +33,16 @@ export const AddAction = ({ append }: any) => {
     closeModal();
   };
 
+  const deleteKey = () => {
+    appendAction.deleteKey(append);
+    closeModal();
+  };
+
+  const deleteAccount = () => {
+    appendAction.deleteAccount(append);
+    closeModal();
+  };
+
   return (
     <>
       <button className={cn.addAction} onClick={openModal} type="button">
@@ -46,6 +56,8 @@ export const AddAction = ({ append }: any) => {
           <button onClick={addKey}>Add Key</button>
           <button onClick={deployContract}>Deploy Contract</button>
           <button onClick={functionCall}>Function Call</button>
+          <button onClick={deleteKey}>Delete Key</button>
+          <button onClick={deleteAccount}>Delete Account</button>
         </div>
       </Modal>
     </>

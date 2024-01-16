@@ -7,11 +7,10 @@ import { createSchema } from './schema.ts';
 import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
 import cn from '../SeedPhrase/SeedPhrase.module.css';
 
-export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => {
+export const PrivateKey = ({ closeModal, navigate, accountId, isOpen, keyList }: any) => {
   const onAddKey = useStoreEffect((store: any) => store.vault.onAddKey);
-  const accessKeyList: any = useStoreState((state: any) => state.vault.accessKeyList);
   const list: any = useStoreState((store: any) => store.vault.map[accountId].list);
-  const schema: any = createSchema(list, accessKeyList);
+  const schema: any = createSchema(list, keyList);
 
   const form = useForm<any>({
     mode: 'all',
@@ -21,6 +20,7 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
       publicKey: null,
     },
   });
+
   const {
     register,
     control,
@@ -35,12 +35,14 @@ export const PrivateKey = ({ closeModal, navigate, accountId, isOpen }: any) => 
     control,
     name: 'publicKey',
   });
+
   const onPrevStep = (e: any) => {
     e.preventDefault();
     clearErrors('privateKey');
     resetField('privateKey');
     navigate('importType');
   };
+
   const onSubmit = (data: any) => {
     const pk = KeyPair.fromString(data.privateKey).getPublicKey().toString();
     setValue('publicKey', pk);
