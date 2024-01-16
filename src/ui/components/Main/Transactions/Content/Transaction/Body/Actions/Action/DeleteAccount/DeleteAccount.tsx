@@ -2,5 +2,5 @@ import { InputGroup } from '../../../../../../../../general/InputGroup/InputGrou
 
 export const DeleteAccount = ({ form, getName }: any) => {
   const { register } = form;
-  return <InputGroup register={register} name={getName('deleteAccount')} label="Delete Account" />;
+  return <InputGroup register={register} name={getName('beneficiaryId')} label="Beneficiary Id" />;
 };
