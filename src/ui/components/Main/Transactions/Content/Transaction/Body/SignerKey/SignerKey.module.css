@@ -2,13 +2,6 @@
   margin-top: 25px;
 }
 
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
 .label {
   color: #081C15;
   font-size: 15px;

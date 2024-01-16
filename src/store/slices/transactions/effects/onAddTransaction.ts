@@ -59,7 +59,7 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
     ]);
 
     addTransaction(transaction);
-    navigate(`/transactions/${transaction.transactionId}`);
+    navigate(`${transaction.transactionId}`);
   } catch (e) {
     console.log(e);
   }

@@ -1,6 +1,6 @@
 import { components, OptionProps } from "react-select";
 import cn from "./Option.module.css";
-import { PermissionLabel } from "../general/PermissionLabel/PermissionLabel.tsx";
+import { PermissionLabel } from "../PermissionLabel/PermissionLabel.tsx";
 
 interface Option {
   readonly value: string;

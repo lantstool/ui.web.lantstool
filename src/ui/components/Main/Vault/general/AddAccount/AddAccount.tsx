@@ -1,5 +1,5 @@
 import { Modal } from '../../../../general/Modal/Modal.tsx';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import cn from './AddAccount.module.css';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { useForm } from 'react-hook-form';
@@ -18,10 +18,9 @@ export const AddAccount = ({ list, styles }: any) => {
   const rpc = useStoreState((store: any) => store.networks.current.url.rpc);
   const onAddAccount = useStoreEffect((store: any) => store.vault.onAddAccount);
   const [isOpen, setOpen]: any = useState(false);
-  const timerRef: any = useRef(null);
   const navigate = useNavigate();
 
-  const newSchema = createSchema(list, timerRef, rpc);
+  const newSchema = createSchema(list, rpc);
 
   const {
     register,
@@ -33,14 +32,8 @@ export const AddAccount = ({ list, styles }: any) => {
   const openModal = () => setOpen(true);
 
   const closeModal = () => {
-    clearTimeout(timerRef.current);
     setOpen(false);
     reset();
-  };
-
-  const onClick = () => {
-    clearTimeout(timerRef.current);
-    timerRef.current = 0;
   };
 
   const onSubmit = (data: any) => {
@@ -66,7 +59,7 @@ export const AddAccount = ({ list, styles }: any) => {
               <InputGroup register={register} name="accountId" label="Account Id" />
               <ErrorMessage error={errors.accountId?.message} />
             </div>
-            <Button text="Add account" onClick={onClick} style="secondary" type="submit" />
+            <Button text="Add account" style="secondary" type="submit" />
           </div>
         </form>
       </Modal>

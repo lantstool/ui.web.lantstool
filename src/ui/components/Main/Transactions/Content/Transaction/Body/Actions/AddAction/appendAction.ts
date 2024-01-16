@@ -53,10 +53,27 @@ const deployContract = (append: any) =>
     file: '',
   });
 
+const deleteKey = (append: any) =>
+  append({
+    actionId: v4(),
+    name: 'Delete Key',
+    type: 'DeleteKey',
+    accessKey: '',
+  });
+
+const deleteAccount = (append: any) =>
+  append({
+    actionId: v4(),
+    name: 'Delete Account',
+    type: 'DeleteAccount',
+  });
+
 export const appendAction = {
   createAccount,
   transfer,
   addKey,
   functionCall,
   deployContract,
+  deleteKey,
+  deleteAccount,
 };

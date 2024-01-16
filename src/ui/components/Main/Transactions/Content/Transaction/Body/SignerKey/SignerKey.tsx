@@ -2,10 +2,10 @@ import Select from 'react-select';
 import { Controller, useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { PermissionLabel } from './general/PermissionLabel/PermissionLabel.tsx';
 import { selectStyles } from '../general/selectStyles.ts';
-import { Option } from './Option/Option.tsx';
+import { Option } from '../general/Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
+import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.tsx';
 import cn from './SignerKey.module.css';
 
 export const SignerKey = ({ form }: any) => {
@@ -21,11 +21,7 @@ export const SignerKey = ({ form }: any) => {
 
   return (
     <div className={cn.signerKey}>
-      <div className={cn.head}>
-        <span>Signer Key</span>
-        {signerKey && <PermissionLabel permission={signerKey.permission} />}
-      </div>
-
+      <SelectHeadLabel text="Signer Key" permission={signerKey} />
       <Controller
         name="signerKey"
         control={control}
