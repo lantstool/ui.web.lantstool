@@ -24,12 +24,10 @@ export const Account = () => {
         </div>
       </div>
       <div className={cn.keyContainer}>
-        <div className={cn.keyWrapper}>
-          {map[accId].list.map(
-            (accountKey: any) =>
-              accountKey && <Key key={accountKey} keyData={map[accId].map[accountKey]} />,
-          )}
-        </div>
+        {map[accId].list.map(
+          (accountKey: any) =>
+            accountKey && <Key key={accountKey} keyData={map[accId].map[accountKey]} />,
+        )}
       </div>
     </div>
   );
