@@ -11,6 +11,7 @@ export const SideMenu = (accountId: any) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const onRemoveAccount = useStoreEffect((store: any) => store.vault.onRemoveAccount);
   const navigate = useNavigate();
+
   const openModal = () => {
     setAnchorEl(null);
     setOpen(true);
@@ -35,17 +36,19 @@ export const SideMenu = (accountId: any) => {
         <button className={cn.sideMenuButton} onClick={openMenu}>
           <MoreVertOutlinedIcon />
         </button>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={closeMenu}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <MenuItem onClick={openModal}>Remove</MenuItem>
-        </Menu>
+        {Boolean(anchorEl) && (
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={closeMenu}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+          >
+            <MenuItem onClick={openModal}>Remove</MenuItem>
+          </Menu>
+        )}
       </div>
-      <DeleteModal isOpen={isOpen} closeModal={closeModal} remove={remove} />
+      {isOpen && <DeleteModal isOpen={isOpen} closeModal={closeModal} remove={remove} />}
     </>
   );
 };
