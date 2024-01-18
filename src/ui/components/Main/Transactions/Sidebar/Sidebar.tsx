@@ -23,7 +23,6 @@ export const Sidebar = () => {
 
   return (
     <div className={cn.container}>
-      <input className={cn.search} />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="transactions">
           {(provided: any) => (

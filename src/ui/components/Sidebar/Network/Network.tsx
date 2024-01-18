@@ -1,4 +1,4 @@
-import cn from '../Sidebar.module.css';
+import cn from './Network.module.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Menu, MenuItem } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
