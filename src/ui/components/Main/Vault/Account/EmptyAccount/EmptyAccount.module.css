@@ -7,7 +7,7 @@
     border-radius: 15px 15px 0 0 ;
     background-color: #438668;
 }
-.buttonContainer {
+.sideMenuContainer {
     grid-area: b;
     display: flex;
     justify-content: flex-end;

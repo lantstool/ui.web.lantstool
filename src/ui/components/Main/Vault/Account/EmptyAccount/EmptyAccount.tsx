@@ -9,7 +9,7 @@ export const EmptyAccount = ({ styles, accId }: any) => {
     <div className={styles.container}>
       <div className={cn.topBar}>
         <h2 className={styles.title}>{accId}</h2>
-        <div className={cn.buttonContainer}>
+        <div className={cn.sideMenuContainer}>
           <SideMenu accountId={accId} />
         </div>
       </div>
