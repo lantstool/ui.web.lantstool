@@ -15,6 +15,7 @@
   background-color: #2d6a4f;
   border-radius: 0 20px 20px 0;
 }
+
 .title {
   grid-area: a;
   margin: 0;
@@ -25,6 +26,7 @@
   color: #ffffff;
   text-transform: uppercase;
 }
+
 .subtitleWrapper {
   justify-self: center;
   display: flex;
