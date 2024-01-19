@@ -40,8 +40,12 @@ export const SideMenu = ({ transactionId }: any) => {
           <MenuItem onClick={() => openModal('deleteModal')}>Remove</MenuItem>
         </Menu>
       </div>
-      <EditModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
-      <DeleteModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      {isOpen === 'editModal' && (
+        <EditModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      )}
+      {isOpen === 'deleteModal' && (
+        <DeleteModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      )}
     </>
   );
 };
