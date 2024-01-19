@@ -5,7 +5,11 @@ import { useState } from 'react';
 
 export const CopyButton = ({ text }: any) => {
   const [copied, setCopied] = useState(false);
-  const copyTextToClipboard = () => {
+
+  const copyTextToClipboard = (e:any) => {
+    console.log('icon')
+    e.stopPropagation()
+    e.preventDefault()
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => {
@@ -14,7 +18,7 @@ export const CopyButton = ({ text }: any) => {
   };
 
   return (
-    <button onClick={copyTextToClipboard} className={cn.button}>
+    <button onClick={(e)=>copyTextToClipboard(e)} className={cn.button}>
       {copied ? (
         <DoneOutlinedIcon className={cn.copy} sx={{ fontSize: 22 }} />
       ) : (

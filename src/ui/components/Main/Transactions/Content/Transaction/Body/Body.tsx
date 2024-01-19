@@ -38,7 +38,7 @@ export const Body = ({ transaction }: any) => {
       <div className={cn.formScrollWrapper}>
         <form className={cn.form}>
           <div>
-            <h3>Sender</h3>
+            <h3 className={cn.title}>Sender</h3>
             <SignerAccount form={form} />
             <SignerKey form={form} />
           </div>

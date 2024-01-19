@@ -6,3 +6,8 @@
   align-items: center;
   row-gap: 10px;
 }
+
+.btnContainer{
+  display: flex;
+  justify-content: center;
+}

@@ -19,4 +19,5 @@ export const selectStyles = {
     ...base,
     fontSize: 15,
   }),
+  indicatorSeparator: () => ({ display: 'none' })
 };

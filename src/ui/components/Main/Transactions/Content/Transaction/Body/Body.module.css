@@ -12,6 +12,12 @@
   margin: 20px 0;
 }
 
+.title{
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+
 .bottomBar {
   grid-area: c;
   background-color: #40916C;
