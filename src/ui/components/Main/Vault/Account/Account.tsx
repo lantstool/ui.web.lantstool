@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ImportKey } from './ImportKey/ImportKey.tsx';
 import { replaceStringToDots } from '../../../../../store/slices/vault/helpers/regularExpressions.ts';
 import { useStoreState } from '../../../../../react-vault';
+import { EmptyAccount } from './EmptyAccount/EmptyAccount.tsx';
 
 export const Account = () => {
   const { accountId }: any = useParams();
@@ -12,7 +13,9 @@ export const Account = () => {
   const accId = replaceStringToDots(accountId);
   const accountMap: any = useStoreState((store: any) => store.vault.map[accId]);
 
-  if (!accountMap) return <div className={cn.container}>No Tx</div>;
+  if (!accountMap) return <div className={cn.container}>No account</div>;
+
+  if (map[accId].list.length === 0) return <EmptyAccount styles={cn} accId={accId} />;
 
   return (
     <div className={cn.container}>
