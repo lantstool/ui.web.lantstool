@@ -1,7 +1,7 @@
 import cn from './PrivateItem.module.css';
 import { useState } from 'react';
 import { hideText } from '../../../../../../../store/slices/vault/helpers/regularExpressions.ts';
-import { CopyButton } from '../general/CopyButton/CopyButton.tsx';
+import { CopyButton } from '../../../../general/CopyButton/CopyButton.tsx';
 import { VisibleButton } from './VisibleButton/VisibleButton.tsx';
 
 export const PrivateItem = ({ text }: any) => {
