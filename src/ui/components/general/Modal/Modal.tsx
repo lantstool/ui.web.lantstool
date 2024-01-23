@@ -8,18 +8,11 @@ type Props = {
 };
 
 export const Modal = ({ children, isOpen, close }: Props) => {
-  const handleMouseDown = (e: any) => {
-    const modal = document.querySelector(`.${cn.modal}`);
-    if (modal && !modal.contains(e.target)) {
-      close();
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
-    <div className={cn.backstage} onMouseDown={handleMouseDown}>
-      <div className={cn.modal} onClick={(e) => e.stopPropagation()}>
+    <div className={cn.backstage} onMouseDown={close}>
+      <div className={cn.modal} onMouseDown={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>
