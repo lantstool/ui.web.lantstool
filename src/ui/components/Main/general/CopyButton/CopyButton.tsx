@@ -16,7 +16,7 @@ export const CopyButton = ({ text }: any) => {
   };
 
   return (
-    <button onClick={(e) => copyTextToClipboard(e)} className={cn.button} type="button">
+    <button onClick={copyTextToClipboard} className={cn.button} type="button">
       {copied ? (
         <DoneOutlinedIcon className={cn.copy} sx={{ fontSize: 22 }} />
       ) : (
