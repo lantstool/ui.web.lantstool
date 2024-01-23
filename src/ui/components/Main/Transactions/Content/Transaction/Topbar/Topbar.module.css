@@ -13,7 +13,6 @@
 .name {
   grid-area: a;
   align-self: center;
-  justify-self: center;
   font-size: 15px;
   font-style: normal;
   font-weight: 600;

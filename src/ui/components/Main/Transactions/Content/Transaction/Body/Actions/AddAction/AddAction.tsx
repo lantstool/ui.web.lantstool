@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Modal } from '../../../../../../../general/Modal/Modal.tsx';
 import { appendAction } from './appendAction.ts';
 import cn from './AddAction.module.css';
+import {Button} from "../../../../../../general/Button/Button.tsx";
+import addIcon from '../../../../../../../../../assets/addIcon.svg'
 
 export const AddAction = ({ append }: any) => {
   const [isOpen, setOpen] = useState(false);
@@ -45,9 +47,9 @@ export const AddAction = ({ append }: any) => {
 
   return (
     <>
-      <button className={cn.addAction} onClick={openModal} type="button">
-        Add Action
-      </button>
+      <div className={cn.btnContainer}>
+        <Button text='Add Action' type="button" onClick={openModal} src={addIcon}/>
+      </div>
       <Modal isOpen={isOpen} close={closeModal}>
         <div className={cn.modal}>
           <h3>Choose Action</h3>

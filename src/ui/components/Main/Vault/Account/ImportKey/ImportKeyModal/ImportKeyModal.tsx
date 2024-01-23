@@ -1,7 +1,7 @@
-import { SignatureType } from '../SignatureType/SignatureType.tsx';
-import { ImportType } from '../ImportType/ImportType.tsx';
-import { SeedPhrase } from '../SeedPhrase/SeedPhrase.tsx';
-import { PrivateKey } from '../PrivateKey/PrivateKey.tsx';
+import { SignatureType } from './SignatureType/SignatureType.tsx';
+import { ImportType } from './ImportType/ImportType.tsx';
+import { SeedPhrase } from './SeedPhrase/SeedPhrase.tsx';
+import { PrivateKey } from './PrivateKey/PrivateKey.tsx';
 import { useEffect, useState } from 'react';
 import { onSetKeyList } from '../onSetKeyList.ts';
 import { useStoreEffect, useStoreState } from '../../../../../../../react-vault';

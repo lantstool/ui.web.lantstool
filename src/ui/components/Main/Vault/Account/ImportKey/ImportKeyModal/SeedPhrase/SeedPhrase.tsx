@@ -2,12 +2,12 @@
 // @ts-ignore
 import { parseSeedPhrase } from 'near-seed-phrase';
 import cn from './SeedPhrase.module.css';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
-import { useStoreEffect, useStoreState } from '../../../../../../../react-vault';
+import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.tsx';
+import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault';
 import { useForm, useWatch } from 'react-hook-form';
 import { createSchema } from './schema.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../../general/ModalGroup/ModalGroup.tsx';
 
 
 export const SeedPhrase = ({ closeModal, navigate, accountId, isOpen, keyList }: any) => {

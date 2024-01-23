@@ -1,23 +1,13 @@
 import { Navigation } from './Navigation/Navigation.tsx';
 import cn from './Sidebar.module.css';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Network } from './Network/Network.tsx';
 
 export const Sidebar = () => {
   return (
     <div className={cn.container}>
-      <div>
-        <h2 className={cn.title}>Near Devtools</h2>
-        <div className={cn.subtitleWrapper}>
-          <div className={cn.subtitleGroup}>
-            <h4 className={cn.subtitle}>Personal Space</h4>
-            <KeyboardArrowDownIcon style={{ color: 'white' }} />
-          </div>
-          <Network />
-        </div>
-      </div>
+      <h2 className={cn.title}>Near Devtools</h2>
+      <Network />
       <Navigation />
-      <h2 className={cn.name}>User Account</h2>
     </div>
   );
 };

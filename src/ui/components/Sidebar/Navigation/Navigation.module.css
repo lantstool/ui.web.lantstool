@@ -1,4 +1,6 @@
 .navigation {
+  grid-area: c;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;

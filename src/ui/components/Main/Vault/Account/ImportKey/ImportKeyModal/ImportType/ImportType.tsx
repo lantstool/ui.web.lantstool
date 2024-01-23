@@ -1,4 +1,4 @@
-import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../../general/ModalGroup/ModalGroup.tsx';
 
 export const ImportType = ({ closeModal, navigate, isOpen }: any) => {
   const onPrevStep = () => navigate('signatureType');

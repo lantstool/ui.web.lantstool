@@ -5,7 +5,10 @@ import { useStoreEffect } from '../../../../../../../react-vault';
 import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
 import { useMemo } from 'react';
+import { Button } from '../../../../general/Button/Button.tsx';
 import cn from './Body.module.css';
+import sendTransaction from '../../../../../../../assets/sendTransaction.svg';
+import saveIcon from '../../../../../../../assets/saveIcon.svg';
 
 const getFormDefaultValues = (transaction: any) => {
   return {
@@ -38,7 +41,7 @@ export const Body = ({ transaction }: any) => {
       <div className={cn.formScrollWrapper}>
         <form className={cn.form}>
           <div>
-            <h3>Sender</h3>
+            <h3 className={cn.title}>Sender</h3>
             <SignerAccount form={form} />
             <SignerKey form={form} />
           </div>
@@ -47,11 +50,11 @@ export const Body = ({ transaction }: any) => {
         </form>
       </div>
       <div className={cn.bottomBar}>
-        <button type="button" onClick={onSubmit}>
-          Sent Transaction
-        </button>{' '}
-        <button type="button" onClick={save}>
-          Save
+        <div className={cn.sendTransaction}>
+          <Button text="Sent Transaction" onClick={onSubmit} src={sendTransaction} type="button" />
+        </div>
+        <button className={cn.saveButton} type="button" onClick={save}>
+          <img src={saveIcon} alt="#" />
         </button>
       </div>
     </>

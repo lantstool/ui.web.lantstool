@@ -1,5 +1,5 @@
 import cn from './PublicItem.module.css';
-import { CopyButton } from '../general/CopyButton/CopyButton.tsx';
+import { CopyButton } from '../../../../general/CopyButton/CopyButton.tsx';
 
 export const PublicItem = ({ text }: any) => {
   return (

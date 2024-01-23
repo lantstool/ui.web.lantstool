@@ -8,6 +8,7 @@
   border-radius: 8px 0 0 8px;
   padding: 15px 0;
 }
+
 .modalContainer {
   height: 350px;
   width: 450px;
@@ -23,19 +24,13 @@
   transform: translate(-50%, -50%);
   border-radius: 8px;
 }
+
 .wrapper {
   width: 100%;
   height: calc(100vh - 170px);
   overflow: auto;
 }
-.search {
-  height: 40px;
-  width: 260px;
-  border-radius: 10px;
-  border: 1px solid #d4ffeb;
-  background-color: #438668;
-  outline-width: 0;
-}
+
 .addTransactionButton {
   height: 30px;
   width: calc(100% - 10px);
