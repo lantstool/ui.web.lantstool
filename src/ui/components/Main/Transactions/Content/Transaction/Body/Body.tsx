@@ -51,7 +51,7 @@ export const Body = ({ transaction }: any) => {
       </div>
       <div className={cn.bottomBar}>
         <div className={cn.sendTransaction}>
-          <Button text="Sent Transaction" onClick={onSubmit} src={sendTransaction} type="button" />
+          <Button text="Sent Transaction" onClick={onSubmit} src={sendTransaction} />
         </div>
         <button className={cn.saveButton} type="button" onClick={save}>
           <img src={saveIcon} alt="#" />

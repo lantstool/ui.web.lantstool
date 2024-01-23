@@ -5,6 +5,7 @@ import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../../react-vault';
 
 const getBalance: any = async (getAccountBalance: any, accountId: any, setBalance: any) => {
+  if (!accountId) return;
   const balance = await getAccountBalance({ accountId });
   setBalance(balance);
 };
