@@ -8,11 +8,17 @@ type Props = {
 };
 
 export const Modal = ({ children, isOpen, close }: Props) => {
+  const handleMouseDown = (e: any) => {
+    const modal = document.querySelector(`.${cn.modal}`);
+    if (modal && !modal.contains(e.target)) {
+      close();
+    }
+  };
+
   if (!isOpen) return null;
 
-  // TODO: figure out why modal close when mouse moves beyond modal and mouseUp
   return (
-    <div className={cn.backstage} onClick={close}>
+    <div className={cn.backstage} onMouseDown={handleMouseDown}>
       <div className={cn.modal} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
