@@ -1,5 +1,5 @@
 import { effect } from '../../../../react-vault';
-import { connect, keyStores, utils } from 'near-api-js';
+import { connect, utils } from 'near-api-js';
 
 const truncateNumber = (number: any) => {
   return number.toString().replace(/(\.\d{2})\d*$/, '$1');
@@ -7,17 +7,13 @@ const truncateNumber = (number: any) => {
 
 export const getAccountBalance = effect(async ({ payload, store }: any) => {
   const { accountId } = payload;
-  const networkName = store.getState((store: any) => store.networks.current.name);
-
-  const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
+  const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const rpc = store.getState((store: any) => store.networks.current.url.rpc);
 
   try {
     const config = {
-      networkId: networkName,
-      keyStore: myKeyStore,
-      nodeUrl: `https://rpc.${networkName}.near.org`,
-      walletUrl: `https://wallet.${networkName}.near.org`,
-      explorerUrl: `https://explorer.${networkName}.near.org`,
+      networkId: networkId,
+      nodeUrl: rpc,
     };
 
     const connection = await connect(config);

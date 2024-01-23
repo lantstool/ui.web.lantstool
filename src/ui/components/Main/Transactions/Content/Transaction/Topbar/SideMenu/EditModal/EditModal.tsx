@@ -15,6 +15,7 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
     (store: any) => store.transactions.onEditTransactionName,
   );
   const txName: any = useStoreState((state: any) => state.transactions.map[transactionId]?.name);
+
   const open = isOpen === 'editModal';
 
   const form = useForm({

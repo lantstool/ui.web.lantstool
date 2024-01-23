@@ -36,17 +36,15 @@ export const SideMenu = (accountId: any) => {
         <button className={cn.sideMenuButton} onClick={openMenu}>
           <MoreVertOutlinedIcon />
         </button>
-        {Boolean(anchorEl) && (
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={closeMenu}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          >
-            <MenuItem onClick={openModal}>Remove</MenuItem>
-          </Menu>
-        )}
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={closeMenu}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <MenuItem onClick={openModal}>Remove</MenuItem>
+        </Menu>
       </div>
       {isOpen && <DeleteModal isOpen={isOpen} closeModal={closeModal} remove={remove} />}
     </>
