@@ -3,7 +3,7 @@ import { ImportType } from './ImportType/ImportType.tsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.tsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.tsx';
 import { useEffect, useState } from 'react';
-import { onSetKeyList } from '../onSetKeyList.ts';
+import { onSetKeyList } from './onSetKeyList.ts';
 import { useStoreEffect, useStoreState } from '../../../../../../../react-vault';
 
 export const ImportKeyModal = ({ navigate, closeModal, isOpen, accountId }) => {
