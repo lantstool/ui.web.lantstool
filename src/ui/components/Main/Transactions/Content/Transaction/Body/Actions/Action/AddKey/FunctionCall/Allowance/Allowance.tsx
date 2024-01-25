@@ -8,7 +8,7 @@ export const Allowance = ({ form, getName }: any) => {
   const { control, register } = form;
 
   const allowedAllowance = useWatch({
-    control: control,
+    control,
     name: allowedAllowanceName,
   });
 

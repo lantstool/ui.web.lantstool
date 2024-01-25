@@ -1,20 +1,20 @@
 import { utils, transactions } from 'near-api-js';
 
+const functionCallKey = (restrictions: any) => {
+  const { allowedAllowance, receiverId, allowedMethods, allowance, methodNames } = restrictions;
+
+  const allowanceValue: any =
+    allowedAllowance === 'Unlimited' ? null : utils.format.parseNearAmount(allowance);
+  const methodNamesValue = allowedMethods === 'All' ? [] : methodNames.map((el: any) => el.name);
+
+  return transactions.functionCallAccessKey(receiverId, methodNamesValue, allowanceValue);
+};
+
 export const addKey = (action: any) => {
   const { type, restrictions } = action.permission;
-  const { allowedAllowance, methodNames, allowance, receiverId, allowedMethods } = restrictions;
 
-  const formatAllowance = utils.format.parseNearAmount(allowance);
-  const transformedMethodNames = methodNames.map((el: any) => el.name);
-
-  const functionCallKey = () => {
-    const allowance: any = allowedAllowance === 'Unlimited' ? null : formatAllowance;
-    const methodNames = allowedMethods === 'All' ? [] : transformedMethodNames;
-
-    return transactions.functionCallAccessKey(receiverId, methodNames, allowance);
-  };
-
-  const accessKey = type === 'FullAccess' ? transactions.fullAccessKey() : functionCallKey();
+  const accessKey =
+    type === 'FullAccess' ? transactions.fullAccessKey() : functionCallKey(restrictions);
 
   return transactions.addKey(utils.PublicKey.from(action.publicKey), accessKey);
 };

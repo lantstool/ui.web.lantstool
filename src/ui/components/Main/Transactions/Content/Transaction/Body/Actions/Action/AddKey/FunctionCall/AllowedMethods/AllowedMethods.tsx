@@ -8,12 +8,12 @@ export const AllowedMethods = ({ form, getName }: any) => {
   const { control, register } = form;
 
   const allowedMethods = useWatch({
-    control: control,
+    control,
     name: allowedMethodsName,
   });
 
   const { fields, append, remove } = useFieldArray({
-    control: control,
+    control,
     name: methodNamesName,
   });
 
