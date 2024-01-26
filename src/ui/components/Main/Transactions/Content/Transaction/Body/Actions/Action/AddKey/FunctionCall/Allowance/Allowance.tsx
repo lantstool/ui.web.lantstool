@@ -5,9 +5,10 @@ import cn from './Allowance.module.css';
 export const Allowance = ({ form, getName }: any) => {
   const allowedAllowanceName = getName('permission.restrictions.allowedAllowance');
   const allowanceName = getName('permission.restrictions.allowance');
+  const { control, register } = form;
 
   const allowedAllowance = useWatch({
-    control: form.control,
+    control,
     name: allowedAllowanceName,
   });
 
@@ -18,7 +19,7 @@ export const Allowance = ({ form, getName }: any) => {
       <legend>Allowance</legend>
 
       <input
-        {...form.register(allowedAllowanceName)}
+        {...register(allowedAllowanceName)}
         type="radio"
         id={`${allowedAllowanceName}.unlimited`}
         value="Unlimited"
@@ -26,16 +27,14 @@ export const Allowance = ({ form, getName }: any) => {
       <label htmlFor={`${allowedAllowanceName}.unlimited`}>Unlimited</label>
 
       <input
-        {...form.register(allowedAllowanceName)}
+        {...register(allowedAllowanceName)}
         type="radio"
         id={`${allowedAllowanceName}.limited`}
         value="Limited"
       />
       <label htmlFor={`${allowedAllowanceName}.limited`}>Limited</label>
 
-      {isLimitedAllowance && (
-        <InputGroup register={form.register} name={allowanceName} label="Amount" />
-      )}
+      {isLimitedAllowance && <InputGroup register={register} name={allowanceName} label="Amount" />}
     </fieldset>
   );
 };

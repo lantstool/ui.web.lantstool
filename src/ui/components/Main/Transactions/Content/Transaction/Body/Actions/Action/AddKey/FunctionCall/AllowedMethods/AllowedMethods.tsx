@@ -5,19 +5,19 @@ import cn from './AllowedMethods.module.css';
 export const AllowedMethods = ({ form, getName }: any) => {
   const allowedMethodsName = getName('permission.restrictions.allowedMethods');
   const methodNamesName = getName('permission.restrictions.methodNames');
+  const { control, register } = form;
 
   const allowedMethods = useWatch({
-    control: form.control,
+    control,
     name: allowedMethodsName,
   });
 
   const { fields, append, remove } = useFieldArray({
-    control: form.control,
+    control,
     name: methodNamesName,
   });
 
   console.log(fields);
-
   const addMethod = () => append({ name: '' });
   const removeMethod = (index: number) => remove(index);
 
@@ -25,7 +25,7 @@ export const AllowedMethods = ({ form, getName }: any) => {
     <fieldset className={cn.allowedMethods}>
       <legend>Allowed Methods</legend>
       <input
-        {...form.register(allowedMethodsName)}
+        {...register(allowedMethodsName)}
         type="radio"
         id={`${allowedMethodsName}.all`}
         value="All"
@@ -33,7 +33,7 @@ export const AllowedMethods = ({ form, getName }: any) => {
       <label htmlFor={`${allowedMethodsName}.all`}>All</label>
 
       <input
-        {...form.register(allowedMethodsName)}
+        {...register(allowedMethodsName)}
         type="radio"
         id={`${allowedMethodsName}.certain`}
         value="Certain"
@@ -46,7 +46,7 @@ export const AllowedMethods = ({ form, getName }: any) => {
             <div key={method.id} className={cn.row}>
               <div className={cn.inputGroupWrapper}>
                 <InputGroup
-                  register={form.register}
+                  register={register}
                   name={`${methodNamesName}.${index}.name`}
                   label="Method Name"
                 />
@@ -58,7 +58,9 @@ export const AllowedMethods = ({ form, getName }: any) => {
               )}
             </div>
           ))}
-          <button onClick={addMethod}>Add Method</button>
+          <button type="button" onClick={addMethod}>
+            Add Method
+          </button>
         </>
       )}
     </fieldset>
