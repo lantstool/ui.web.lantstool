@@ -33,7 +33,7 @@ export const Body = ({ transaction }: any) => {
 
   useEffect(() => {
     form.reset(formDefaultValues);
-  }, [transaction,form]);
+  }, [transaction]);
 
   const save = () => {
     const data = form.getValues();
