@@ -32,7 +32,6 @@ export const Body = ({ transaction }: any) => {
   });
 
   useEffect(() => {
-    console.log(transaction)
     form.reset(formDefaultValues);
   }, [transaction,form]);
 
