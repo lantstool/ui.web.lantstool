@@ -53,7 +53,6 @@ export const onDeleteTransaction = effect(async ({ payload, slice, store }: any)
     const updatedTxsOrder = await updateTxsOrder(idb, order, networkId);
     deleteTransaction({ transactionId, updatedTxsOrder });
 
-    console.log('nextRoute', nextRoute);
     navigate(nextRoute);
   } catch (e) {
     console.log(e);
