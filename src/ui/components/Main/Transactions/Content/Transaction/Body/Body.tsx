@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Button } from '../../../../general/Button/Button.tsx';
 import cn from './Body.module.css';
 import sendTransaction from '../../../../../../../assets/sendTransaction.svg';
@@ -24,12 +24,16 @@ export const Body = ({ transaction }: any) => {
   const onSendTransaction = useStoreEffect((store: any) => store.transactions.onSendTransaction);
   const onSaveTransaction = useStoreEffect((store: any) => store.transactions.onSaveTransaction);
 
-  const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
+  const formDefaultValues: any = useMemo(() => getFormDefaultValues(transaction), [transaction]);
   const form = useForm({ defaultValues: formDefaultValues });
 
   const onSubmit = form.handleSubmit((data: any) => {
     onSendTransaction(data);
   });
+
+  useEffect(() => {
+    form.reset(formDefaultValues);
+  }, [transaction]);
 
   const save = () => {
     const data = form.getValues();

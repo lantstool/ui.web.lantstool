@@ -66,6 +66,7 @@ const deleteAccount = (append: any) =>
     actionId: v4(),
     name: 'Delete Account',
     type: 'DeleteAccount',
+    beneficiaryId: '',
   });
 
 export const appendAction = {
