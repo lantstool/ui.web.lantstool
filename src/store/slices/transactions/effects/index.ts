@@ -7,6 +7,7 @@ import { onEditTransactionName } from './onEditTransactionName.ts';
 import { getTransactionCount } from './getTransactionCount.ts';
 import { onReorderTransactions } from './onReorderTransactions.ts';
 import { getAccountBalance } from './getAccountBalance.tsx';
+import { onDuplicateTransaction } from './onDuplicateTransaction.ts';
 
 export const effects = {
   onAddTransaction,
@@ -18,4 +19,5 @@ export const effects = {
   getTransactionCount,
   onReorderTransactions,
   getAccountBalance,
+  onDuplicateTransaction,
 };
