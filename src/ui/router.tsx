@@ -6,11 +6,13 @@ import { Account } from './components/Main/Vault/Account/Account.tsx';
 import { Networks } from './components/Main/Networks/Networks.tsx';
 import { RootLoader } from './components/RootLoader.tsx';
 import { NetworkLayout } from './components/NetworkLayout.tsx';
+import { KeyVault } from "./components/Main/KeyVault/KeyVault.tsx";
 
 export const router = createMemoryRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLoader />}>
       <Route path=":currentNetworkId" element={<NetworkLayout />}>
+        <Route path="keyVault" element={<KeyVault />} />
         <Route path="transactions" element={<Transactions />}>
           <Route path=":transactionId" element={<Content />} />
         </Route>

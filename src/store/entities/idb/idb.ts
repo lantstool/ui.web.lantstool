@@ -1,8 +1,9 @@
 import { entity } from '../../../react-vault';
 import { openDB } from 'idb/with-async-ittr';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import { setupUsers } from './setupUsers.ts';
 import { setupSpaces } from './setupSpaces.ts';
+import { setupKeys } from "./setupKeys.ts";
 import { setupNetworks } from './setupNetworks.ts';
 import { setupTransactions } from './setupTransactions.ts';
 import { setupAccounts } from './setupAccounts.ts';
@@ -19,14 +20,15 @@ const setupIdb = async (db: any) => {
   // };
 
   const ids = {
-    userId: 'user1',
-    spaceId: 'space1',
-    testnetId: 'testnet1',
-    mainnetId: 'mainnet1',
+    userId: 'user-uuid',
+    spaceId: 'space-uuid',
+    testnetId: 'testnet',
+    mainnetId: 'mainnet',
   };
 
   await setupUsers(db, ids);
   await setupSpaces(db, ids);
+  setupKeys(db);
   await setupNetworks(db, ids);
   await setupTransactions(db, ids);
   setupAccounts(db);

@@ -11,6 +11,7 @@ export const Navigation = () => {
     <div className={cn.navigation}>
       <LinkItem name="Transactions" src={transaction} to="transactions" />
       <LinkItem name="Vault" src={vault} to="vault" />
+      <LinkItem name="Key Vault" src={vault} to="keyVault" />
       <LinkItem name="Networks" src={networks} to="networks" />
     </div>
   );
