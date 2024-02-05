@@ -1,6 +1,8 @@
-import { addAccounts } from './effects/addAccounts.ts';
+import { addAccounts } from './effects/addAccounts';
+import { getAccountsIds } from './effects/getAccountsIds';
 
 export const accounts = {
-  data: 1,
+  // effects
   addAccounts,
+  getAccountsIds,
 };

@@ -1,8 +1,14 @@
 import { action } from '../../../../react-vault';
 
 export const initPage = action(({ slice, payload }: any) => {
+  const list = [];
+  const map: any = {};
+
   payload.transactions.forEach((tx: any) => {
-    slice.list.push(tx.transactionId);
-    slice.map[tx.transactionId] = tx;
+    list.push(tx.transactionId);
+    map[tx.transactionId] = tx;
   });
+
+  slice.list = list;
+  slice.map = map;
 });

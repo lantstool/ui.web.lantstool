@@ -5,7 +5,7 @@ export const getOptions: any = async (
 ) => {
   if (!accountId) return;
 
-  const accessKeyList = await getAccessKeyList({ accountId });
+  const accessKeyList = await getAccessKeyList(accountId);
 
   const publicKey = accessKeyList.keys.map((key: any) => ({
     value: key.public_key,

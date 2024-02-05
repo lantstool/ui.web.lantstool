@@ -1,4 +1,4 @@
-import { useMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../react-vault';
 import { Transaction } from './Transaction/Transaction.tsx';
 import cn from './Sidebar.module.css';
@@ -10,7 +10,7 @@ export const Sidebar = () => {
   const onReorderTransactions = useStoreEffect(
     (store: any) => store.transactions.onReorderTransactions,
   );
-  const match: any = useMatch('/transactions/:transactionId');
+  const params = useParams();
 
   const onDragEnd = (result: any) => {
     if (!result.destination) return;
@@ -38,7 +38,7 @@ export const Sidebar = () => {
                       <Transaction
                         key={id}
                         transaction={transactions.map[id]}
-                        isActive={id === match?.params?.transactionId}
+                        isActive={id === params?.transactionId}
                       />
                     </div>
                   )}
