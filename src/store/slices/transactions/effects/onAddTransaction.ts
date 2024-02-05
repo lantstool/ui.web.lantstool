@@ -5,7 +5,7 @@ const createTx = (order: number, transactionName: string, networkId: string) => 
   const transactionId = v1();
 
   return {
-    spaceId: '1s',
+    spaceId: 'space1',
     networkId,
     transactionId,
     name: transactionName,
@@ -43,10 +43,10 @@ export const onAddTransaction = effect(async ({ payload, slice, store }: any) =>
     const [txOrder, txCounter] = await Promise.all([
       idb.countFromIndex(
         'transactions',
-        'networkIdOrder',
-        IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
+        'spaceId_networkId_order',
+        IDBKeyRange.bound(['space1', networkId, 0], ['space1', networkId, Infinity]),
       ),
-      idb.get('transactions-counter', networkId),
+      idb.get('transactions-counter', ['space1', networkId]),
     ]);
     txCounter.count += 1;
 

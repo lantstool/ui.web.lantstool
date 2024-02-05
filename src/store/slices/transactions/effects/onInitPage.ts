@@ -8,8 +8,8 @@ export const onInitPage = effect(async ({ payload, slice, store }: any) => {
   try {
     const transactions = await idb.getAllFromIndex(
       'transactions',
-      'networkIdOrder',
-      IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
+      'spaceId_networkId_order',
+      IDBKeyRange.bound(['space1', networkId, 0], ['space1', networkId, Infinity]),
     );
 
     payload(false);

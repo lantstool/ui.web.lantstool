@@ -7,12 +7,12 @@ import { effect } from '../../../../react-vault';
 
 const updateTxsOrder = async (idb: any, txOrder: number, networkId: string) => {
   const tx = idb.transaction('transactions', 'readwrite');
-  const index = tx.store.index('networkIdOrder');
+  const index = tx.store.index('spaceId_networkId_order');
 
   const updatedTxsOrder: any = {};
 
   for await (const cursor of index.iterate(
-    IDBKeyRange.bound([networkId, txOrder], [networkId, Infinity]),
+    IDBKeyRange.bound(['space1', networkId, txOrder], ['space1', networkId, Infinity]),
   )) {
     const transaction = { ...cursor.value, order: cursor.value.order - 1 };
     updatedTxsOrder[transaction.transactionId] = transaction.order;
