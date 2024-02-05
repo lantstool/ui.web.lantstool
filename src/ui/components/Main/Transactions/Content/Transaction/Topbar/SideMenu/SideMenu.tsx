@@ -30,6 +30,7 @@ export const SideMenu = ({ transactionId }: any) => {
 
   const duplicate = () => {
     onDuplicateTransaction({ transactionId, navigate });
+    setAnchorEl(null);
   };
 
   return (

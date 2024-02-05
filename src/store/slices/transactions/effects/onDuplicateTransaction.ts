@@ -17,20 +17,26 @@ const updateTxsOrder = async (idb: any, order: number, networkId: string) => {
   const tx = idb.transaction('transactions', 'readwrite');
   const index = tx.store.index('networkIdOrder');
 
-  const updatedTxsOrder: any = [];
-
   for await (const cursor of index.iterate(
     IDBKeyRange.bound([networkId, order], [networkId, Infinity]),
   )) {
     const transaction = { ...cursor.value, order: cursor.value.order + 1 };
-    updatedTxsOrder.push({ [transaction.transactionId]: transaction.order });
-    // idb.put('transactions', transaction);
-    cursor.update(transaction);
+    idb.put('transactions', transaction);
+  }
+
+  const reorderedMap: any = {};
+  const reorderedList: any = [];
+
+  for await (const cursor of index.iterate(
+    IDBKeyRange.bound([networkId, 0], [networkId, Infinity]),
+  )) {
+    const transaction = { ...cursor.value, order: cursor.value.order };
+    reorderedMap[transaction.transactionId] = transaction;
+    reorderedList.push(transaction.transactionId);
   }
 
   await tx.done;
-
-  return updatedTxsOrder;
+  return { reorderedMap, reorderedList };
 };
 
 export const onDuplicateTransaction = effect(async ({ payload, slice, store }: any) => {
@@ -39,7 +45,6 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
   const networkId = store.getState((store: any) => store.networks.current.networkId);
   const [idb] = store.getEntities((store: any) => store.idb);
   const map = store.getState((store: any) => store.transactions.map);
-  const list = store.getState((store: any) => store.transactions.list);
 
   const transaction = map[transactionId];
 
@@ -47,7 +52,7 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
     const duplicate = duplicateTx(transaction);
     const txOrder = transaction.order + 1;
 
-    const updateOrder = await updateTxsOrder(idb, txOrder, networkId);
+    const { reorderedMap, reorderedList } = await updateTxsOrder(idb, txOrder, networkId);
 
     const counter = await idb.get('transactions-counter', networkId);
     counter.count += 1;
@@ -57,8 +62,8 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
       idb.put('transactions-counter', counter),
     ]);
 
-    duplicateTransaction({ updateOrder, duplicate });
-    // navigate(`${duplicate.transactionId}`);
+    duplicateTransaction({ duplicate, reorderedMap, reorderedList });
+    navigate(`/${networkId}/transactions/${duplicate.transactionId}`);
   } catch (e) {
     console.log(e);
   }
