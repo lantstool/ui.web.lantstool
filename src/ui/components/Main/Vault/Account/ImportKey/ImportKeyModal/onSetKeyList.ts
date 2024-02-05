@@ -3,6 +3,6 @@ export const onSetKeyList: any = async (
   accountId: any,
   setKeyList: any,
 ) => {
-  const accessKeyList = await getAccessKeyList({ accountId });
+  const accessKeyList = await getAccessKeyList(accountId);
   setKeyList(accessKeyList.keys);
 };

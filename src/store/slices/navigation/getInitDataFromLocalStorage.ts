@@ -3,7 +3,6 @@ import { effect } from '../../../react-vault';
 export const getInitDataFromLocalStorage = effect(({ slice }: any) => {
   const setInitData = slice.getActions((slice: any) => slice.setInitData);
   const navigation = localStorage.getItem('[Near-Devtools][0][navigation]');
-  console.log(navigation);
 
   if (navigation) {
     const data = JSON.parse(navigation);
@@ -12,7 +11,7 @@ export const getInitDataFromLocalStorage = effect(({ slice }: any) => {
   }
 
   const data = {
-    route: '/testnet1',
+    route: '/testnet',
     routes: {},
   };
   setInitData(data);

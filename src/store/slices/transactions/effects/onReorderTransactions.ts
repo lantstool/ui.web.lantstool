@@ -26,7 +26,7 @@ export const onReorderTransactions = effect(async ({ payload, slice, store }: an
   try {
     const reorderMap = reorder(list, currentOrder, newOrder);
     const reorderList = Object.keys(reorderMap);
-    const transactions = await idb.getAll('transactions');
+    const transactions = await idb.getAll('transactions'); // TODO BAD! get only spaceId->networkId txs
 
     await Promise.all(
       reorderList.map((id, index) => {

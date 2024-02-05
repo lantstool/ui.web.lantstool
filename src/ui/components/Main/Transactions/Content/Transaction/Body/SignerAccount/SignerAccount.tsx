@@ -18,7 +18,7 @@ const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
 
 export const SignerAccount = ({ form }: any) => {
   const { control, setValue } = form;
-  const getAccountsIds = useStoreEffect((store: any) => store.vault.getAccountsIds);
+  const getAccountsIds = useStoreEffect((store: any) => store.accounts.getAccountsIds);
   const [options, setOptions] = useState([]);
 
   useEffect(() => {

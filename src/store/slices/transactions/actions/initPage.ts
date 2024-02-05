@@ -1,9 +1,8 @@
 import { action } from '../../../../react-vault';
-import { initState } from '../initState.js';
 
 export const initPage = action(({ slice, payload }: any) => {
-  const list = [...initState.list];
-  const map: any = { ...initState.map };
+  const list = [];
+  const map: any = {};
 
   payload.transactions.forEach((tx: any) => {
     list.push(tx.transactionId);

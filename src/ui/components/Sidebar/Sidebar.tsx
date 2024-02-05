@@ -5,7 +5,7 @@ import { Network } from './Network/Network.tsx';
 export const Sidebar = () => {
   return (
     <div className={cn.container}>
-      <h2 className={cn.title}>Near Devtools</h2>
+      <h2 className={cn.title}>Lantstool</h2>
       <Network />
       <Navigation />
     </div>

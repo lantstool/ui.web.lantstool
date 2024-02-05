@@ -11,13 +11,14 @@ import cn from './SignerKey.module.css';
 
 export const SignerKey = ({ form }: any) => {
   const { control } = form;
-  const getAccount = useStoreEffect((store: any) => store.vault.getAccount);
+  const getAccessKeyList = useStoreEffect((store: any) => store.getAccessKeyList);
+  const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
   const [options, setOptions] = useState([]);
   const accountId = useWatch({ control, name: 'signerId.value' });
   const signerKey = useWatch({ control, name: 'signerKey' });
 
   useEffect(() => {
-    getOptions(accountId, getAccount, setOptions);
+    getOptions(accountId, getAccessKeyList, getKeys, setOptions);
   }, [accountId]);
 
   return (

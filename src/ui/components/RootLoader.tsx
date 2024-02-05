@@ -18,7 +18,6 @@ export const RootLoader = () => {
 
   useEffect(() => {
     if (location.pathname === '/') return; // Skip initial render when location is '/'
-    console.log('RootLoader: setCurrentLocation', location.pathname);
     setCurrentLocation(location);// TODO rename to save
   }, [location, setCurrentLocation]);
 

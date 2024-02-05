@@ -6,7 +6,6 @@ import { getInitDataFromLocalStorage } from "./getInitDataFromLocalStorage.ts";
 
 const saveDynamicRoute = (slice: any, pattern: string, pathname: string, pathToSave: any) => {
   const match = matchPath(pattern, pathname);
-  console.log('saveDynamicRoute', match);
   if (!match) return;
   slice.routes = set(slice.routes, pathToSave(match.params), match.pathname);
 };
@@ -43,7 +42,6 @@ export const navigation = {
     );
 
     const nav = current(slice);
-    console.log('nav', nav);
     // TODO move to effect
     setTimeout(
       () =>
