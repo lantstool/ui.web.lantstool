@@ -1,7 +1,7 @@
 import { effect } from '../../../../react-vault';
 import { v4 } from 'uuid';
 
-const spaceId = 'space-uuid'; // TODO - get the real spaceId from store
+const spaceId = 'space1'; // TODO - get the real spaceId from store
 
 export const createNetwork = effect(async ({ payload, slice, store }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);

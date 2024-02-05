@@ -1,11 +1,10 @@
 import { effect } from '../../../../react-vault';
-import { v4 } from 'uuid';
+import { v1 } from 'uuid';
 
 const createTx = (order: number, transactionName: string, networkId: string) => {
-  const transactionId = v4();
+  const transactionId = v1();
 
   return {
-    userId: '1u',
     spaceId: '1s',
     networkId,
     transactionId,

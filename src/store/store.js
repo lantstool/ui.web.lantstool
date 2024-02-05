@@ -1,7 +1,8 @@
 import { createStore } from '../react-vault/index.ts';
 import { transactions } from './slices/transactions/transactions';
 import { vault } from './slices/vault/index';
-import { keyVault } from './slices/keyVault/keyVault';
+import { keys } from './slices/keys/keys';
+import { accounts } from "./slices/accounts/accounts";
 import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 import { networks } from './slices/networks/networks';
@@ -15,7 +16,8 @@ export const store = createStore({
   onInitApp,
   getAccessKeyList,
   // slices
-  keyVault,
+  keys,
+  accounts,
   networks,
   transactions,
   vault,

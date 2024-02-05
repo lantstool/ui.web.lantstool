@@ -1,19 +1,16 @@
-export const setupSpaces = async (db: any, ids: any) => {
+export const setupSpaces = async (db: any) => {
   const spaces = db.createObjectStore('spaces', { keyPath: 'spaceId' });
-  spaces.createIndex('members', 'members.list', { multiEntry: true });
+  spaces.createIndex('createdAt', 'createdAt');
 
   await spaces.add({
-    spaceId: ids.spaceId,
+    spaceId: 'space1',
     name: 'Personal',
     createdAt: Date.now(),
-    members: {
-      list: [ids.userId],
-      map: {
-        [ids.userId]: {
-          userId: ids.userId,
-          role: 'owner',
-        },
-      },
-    },
+  });
+
+  await spaces.add({
+    spaceId: 'space2',
+    name: 'General',
+    createdAt: Date.now() + 1,
   });
 };

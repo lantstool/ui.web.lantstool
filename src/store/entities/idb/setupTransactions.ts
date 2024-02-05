@@ -1,11 +1,15 @@
-export const setupTransactions = async (db: any, ids: any) => {
+export const setupTransactions = async (db: any) => {
   const transactions = db.createObjectStore('transactions', { keyPath: 'transactionId' });
-  transactions.createIndex('networkIdOrder', ['networkId', 'order']);
+  transactions.createIndex('spaceId_networkId_order', ['spaceId', 'networkId', 'order']);
 
   const transactionsCounter = db.createObjectStore('transactions-counter', {
-    keyPath: 'networkId',
+    keyPath: ['spaceId', 'networkId'],
   });
 
-  await transactionsCounter.add({ networkId: ids.testnetId, count: 0 });
-  await transactionsCounter.add({ networkId: ids.mainnetId, count: 0 });
+  await Promise.all([
+    transactionsCounter.add({ spaceId: 'space1', networkId: 'testnet', count: 0 }),
+    transactionsCounter.add({ spaceId: 'space1', networkId: 'mainnet', count: 0 }),
+    transactionsCounter.add({ spaceId: 'space2', networkId: 'testnet', count: 0 }),
+    transactionsCounter.add({ spaceId: 'space2', networkId: 'mainnet', count: 0 }),
+  ]);
 };
