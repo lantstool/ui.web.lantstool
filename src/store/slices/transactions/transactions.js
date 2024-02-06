@@ -8,6 +8,7 @@ import { onEditTransactionName } from './effects/onEditTransactionName';
 import { getTransactionCount } from './effects/getTransactionCount';
 import { onReorderTransactions } from './effects/onReorderTransactions';
 import { getAccountBalance } from './effects/getAccountBalance';
+import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 
 export const transactions = {
   // init state
@@ -25,4 +26,5 @@ export const transactions = {
   getTransactionCount,
   onReorderTransactions,
   getAccountBalance,
+  onDuplicateTransaction,
 };
