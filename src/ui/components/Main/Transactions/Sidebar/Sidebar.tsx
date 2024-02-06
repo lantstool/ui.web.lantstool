@@ -3,7 +3,7 @@ import { useStoreEffect, useStoreState } from '../../../../../react-vault';
 import { Transaction } from './Transaction/Transaction.tsx';
 import cn from './Sidebar.module.css';
 import { AddTransaction } from '../general/AddTransaction/AddTransaction.tsx';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
 export const Sidebar = () => {
   const transactions: any = useStoreState((store: any) => store.transactions);
