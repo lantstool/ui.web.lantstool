@@ -22,11 +22,20 @@ export const onReorderTransactions = effect(async ({ payload, slice, store }: an
   const [idb] = store.getEntities((store: any) => store.idb);
   const reorderTransactions = slice.getActions((slice: any) => slice.reorderTransactions);
   const list = store.getState((store: any) => store.transactions.map);
+  const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const spaceId = store.getState((store: any) => store.networks.current.spaceId);
 
   try {
     const reorderMap = reorder(list, currentOrder, newOrder);
     const reorderList = Object.keys(reorderMap);
-    const transactions = await idb.getAll('transactions'); // TODO BAD! get only spaceId->networkId txs
+
+    reorderTransactions({ reorderMap, reorderList });
+
+    const transactions = await idb.getAllFromIndex(
+      'transactions',
+      'spaceId_networkId_order',
+      IDBKeyRange.bound(['space1', networkId, 0], [spaceId, networkId, Infinity]),
+    );
 
     await Promise.all(
       reorderList.map((id, index) => {
@@ -37,8 +46,6 @@ export const onReorderTransactions = effect(async ({ payload, slice, store }: an
         }
       }),
     );
-
-    reorderTransactions({ reorderMap, reorderList });
   } catch (e) {
     console.log(e);
   }
