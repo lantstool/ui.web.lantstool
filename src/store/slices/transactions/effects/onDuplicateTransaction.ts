@@ -13,12 +13,12 @@ const duplicateTx = (transaction: any) => {
   };
 };
 
-const updateTxsOrder = async (idb: any, order: number, networkId: string) => {
+const updateTxsOrder = async (idb: any, order: number, networkId: string, space: any) => {
   const tx = idb.transaction('transactions', 'readwrite');
   const index = tx.store.index('spaceId_networkId_order');
 
   for await (const cursor of index.iterate(
-    IDBKeyRange.bound(['space1', networkId, order], ['space1', networkId, Infinity]),
+    IDBKeyRange.bound([space, networkId, order], [space, networkId, Infinity]),
   )) {
     const transaction = { ...cursor.value, order: cursor.value.order + 1 };
     idb.put('transactions', transaction);
@@ -27,7 +27,7 @@ const updateTxsOrder = async (idb: any, order: number, networkId: string) => {
   await tx.done;
 };
 
-const getNewOrders = async (idb: any, networkId: string) => {
+const getNewOrders = async (idb: any, networkId: string, space: any) => {
   const tx = idb.transaction('transactions', 'readwrite');
   const index = tx.store.index('spaceId_networkId_order');
 
@@ -35,7 +35,7 @@ const getNewOrders = async (idb: any, networkId: string) => {
   const reorderedList: any = [];
 
   for await (const cursor of index.iterate(
-    IDBKeyRange.bound(['space1', networkId, 0], ['space1', networkId, Infinity]),
+    IDBKeyRange.bound([space, networkId, 0], [space, networkId, Infinity]),
   )) {
     const transaction = { ...cursor.value, order: cursor.value.order };
     reorderedMap[transaction.transactionId] = transaction;
@@ -51,20 +51,21 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
   const { transactionId, navigate } = payload;
   const duplicateTransaction = slice.getActions((slice: any) => slice.duplicateTransaction);
   const networkId = store.getState((store: any) => store.networks.current.networkId);
+
   const [idb] = store.getEntities((store: any) => store.idb);
   const map = store.getState((store: any) => store.transactions.map);
-
   const transaction = map[transactionId];
+  const space = transaction.spaceId;
 
   try {
     const duplicate = duplicateTx(transaction);
     const txOrder = transaction.order + 1;
 
-    await updateTxsOrder(idb, txOrder, networkId);
+    await updateTxsOrder(idb, txOrder, networkId, space);
 
-    const { reorderedMap, reorderedList } = await getNewOrders(idb, networkId);
+    const { reorderedMap, reorderedList } = await getNewOrders(idb, networkId, space);
 
-    const counter = await idb.get('transactions-counter', ['space1', networkId]);
+    const counter = await idb.get('transactions-counter', [space, networkId]);
     counter.count += 1;
 
     await Promise.all([
