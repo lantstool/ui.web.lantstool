@@ -53,7 +53,7 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
     const transactions = await idb.getAllFromIndex(
       'transactions',
       'spaceId_networkId_order',
-      IDBKeyRange.bound(['space1', networkId, 0], [spaceId, networkId, Infinity]),
+      IDBKeyRange.bound([spaceId, networkId, 0], [spaceId, networkId, Infinity]),
     );
 
     duplicateTransaction({ transactions });
