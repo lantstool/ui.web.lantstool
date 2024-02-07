@@ -1,0 +1,25 @@
+.container {
+  width: calc(100% - 20px);
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 10px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.title {
+  margin: 10px 5px;
+  width: 100%;
+  height: auto;
+  word-break: break-all;
+}
+
+.container:hover {
+  background-color: #7dd7b3;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #53b689;
+}

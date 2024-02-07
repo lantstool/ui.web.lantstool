@@ -23,7 +23,7 @@ export const NetworkLayout = () => {
   if (loading) return null;
 
   return (
-    <div className={cn.app}>
+    <div className={cn.root}>
       <Sidebar />
       <div className={cn.main}>
         <Outlet />

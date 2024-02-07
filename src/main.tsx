@@ -6,9 +6,9 @@ import { StoreProvider } from './react-vault';
 import { router } from './ui/router.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <>
     <StoreProvider store={store}>
       <RouterProvider router={router} />
     </StoreProvider>
-  </StrictMode>,
+  </>,
 );
