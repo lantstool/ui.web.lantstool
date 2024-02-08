@@ -14,12 +14,12 @@ export const SignerKey = ({ form }: any) => {
   const getAccessKeyList = useStoreEffect((store: any) => store.getAccessKeyList);
   const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
   const [options, setOptions] = useState([]);
-  const accountId = useWatch({ control, name: 'signerId.value' });
+  const signerId = useWatch({ control, name: 'signerId.value' });
   const signerKey = useWatch({ control, name: 'signerKey' });
 
   useEffect(() => {
-    getOptions(accountId, getAccessKeyList, getKeys, setOptions);
-  }, [accountId]);
+    getOptions(signerId, getAccessKeyList, getKeys, setOptions);
+  }, [signerId]);
 
   return (
     <div className={cn.signerKey}>

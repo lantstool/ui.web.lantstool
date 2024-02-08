@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useStoreState } from "../../../../../../react-vault";
 import cn from './Result.module.css';
 
@@ -11,6 +11,7 @@ export const Result = () => {
   return (
     <div className={cn.call}>
       <h1>Result: {callId}</h1>
+      <Link to="..">Back</Link>
     </div>
   );
 };

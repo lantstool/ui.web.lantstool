@@ -14,7 +14,7 @@ export const Calls = () => {
   useNavigateToSavedRoute('/:currentNetworkId/calls');
 
   useEffect(() => {
-    getCalls(setLoading);
+    getCalls(setLoading);  // TODO fetch only ids, not all data
   }, []);
 
   if (loading) return null;

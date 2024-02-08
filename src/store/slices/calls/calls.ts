@@ -1,19 +1,19 @@
 import { initPage } from './actions/initPage';
 import { addCall } from './actions/addCall.ts';
-import { updateTransaction } from './actions/updateTransaction';
+import { putCall } from './actions/putCall.ts';
 import { deleteTransaction } from './actions/deleteTransaction';
 import { reorderTransactions } from './actions/reorderTransactions';
 import { duplicateTransaction } from './actions/duplicateTransaction';
 import { createCall } from './effects/createCall.ts';
-import { onSendTransaction } from './effects/onSendTransaction/onSendTransaction';
 import { getCalls } from './effects/getCalls.ts';
-import { onSaveTransaction } from './effects/onSaveTransaction';
+import { saveCall } from './effects/saveCall.ts';
 import { onDeleteTransaction } from './effects/onDeleteTransaction';
 import { onEditTransactionName } from './effects/onEditTransactionName';
 import { getCallsCount } from './effects/getCallsCount.ts';
 import { onReorderTransactions } from './effects/onReorderTransactions';
 import { getAccountBalance } from './effects/getAccountBalance';
 import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
+import { callMethod } from './effects/callMethod.ts';
 
 export const calls = {
   // init state
@@ -22,19 +22,19 @@ export const calls = {
   // actions
   initPage,
   addCall,
-  updateTransaction,
+  putCall,
   deleteTransaction,
   reorderTransactions,
   duplicateTransaction,
   // effects
   createCall,
-  onSendTransaction,
   getCalls,
-  onSaveTransaction,
+  saveCall,
   onDeleteTransaction,
   onEditTransactionName,
   getCallsCount,
   onReorderTransactions,
   getAccountBalance,
   onDuplicateTransaction,
+  callMethod,
 };

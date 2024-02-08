@@ -8,10 +8,11 @@ export const Call = () => {
   const { callId } = useParams();
   const call = useStoreState((store: any) => store.calls.map[callId]);
 
-  useNavigateToSavedRoute('/:currentNetworkId/calls/:callId');
+  // TODO fetch data about Call here
+  // useNavigateToSavedRoute('/:currentNetworkId/calls/:callId');
 
   return (
-    <div className={cn.call}>
+    <div key={callId} className={cn.call}>
       <Topbar call={call} />
       <Outlet />
     </div>

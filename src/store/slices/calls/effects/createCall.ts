@@ -11,6 +11,9 @@ const generateCall = (order: number, name: string, spaceId: string, networkId: s
     name,
     createdAt: Date.now(),
     order,
+    contractId: '',
+    method: '',
+    arguments: '{}',
     signerId: '',
     signerKey: '',
   };
@@ -19,8 +22,7 @@ const generateCall = (order: number, name: string, spaceId: string, networkId: s
 export const createCall = effect(async ({ payload, slice, store }: any) => {
   const { formValues, close, navigate } = payload;
   const [idb] = store.getEntities((store: any) => store.idb);
-  const spaceId = store.getState((store: any) => store.networks.current.spaceId);
-  const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
   const addCall = slice.getActions((slice: any) => slice.addCall);
 
   try {
@@ -42,7 +44,7 @@ export const createCall = effect(async ({ payload, slice, store }: any) => {
     ]);
 
     addCall(call);
-    navigate(`${call.callId}`);
+    navigate(call.callId);
     close();
   } catch (e) {
     console.log(e);

@@ -1,17 +1,14 @@
 import { effect } from '../../../../react-vault';
 
-export const getAccountsIds = effect(async ({ store }: any) => {
+export const getContractMethods = effect(async ({ store, payload: contractId }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);
   const spaceId = store.getState((store: any) => store.networks.current.spaceId);
   const networkId = store.getState((store: any) => store.networks.current.networkId);
 
   try {
-    const records = await idb.getAllKeysFromIndex(
-      'accounts',
-      'spaceId_networkId_importedAt',
-      IDBKeyRange.bound([spaceId, networkId, -Infinity], [spaceId, networkId, Infinity]),
-    );
-    return records.map(([, , accountId]) => accountId);
+    // TODO check if account has a contract
+    const account = await idb.get('accounts', [spaceId, networkId, contractId]);
+    return account.contract?.methods || [];
   } catch (e) {
     console.log(e);
   }
