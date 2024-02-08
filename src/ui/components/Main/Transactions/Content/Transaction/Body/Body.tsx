@@ -7,8 +7,8 @@ import { SignerKey } from './SignerKey/SignerKey.tsx';
 import { useMemo, useEffect } from 'react';
 import { Button } from '../../../../general/Button/Button.tsx';
 import cn from './Body.module.css';
-import sendTransaction from '../../../../../../../assets/sendTransaction.svg';
-import saveIcon from '../../../../../../../assets/saveIcon.svg';
+import sendTransaction from '../../../../../../assets/sendTransaction.svg';
+import saveIcon from '../../../../../../assets/saveIcon.svg';
 
 const getFormDefaultValues = (transaction: any) => {
   return {

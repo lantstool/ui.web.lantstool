@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../../general/Button/Button.tsx';
-import addIcon from '../../../../../../assets/addIcon.svg';
+import addIcon from '../../../../../assets/addIcon.svg';
 import { AddAccountModal } from './AddAccountModal/AddAccountModal.tsx';
 
 export const AddAccount = ({ list, styles }: any) => {

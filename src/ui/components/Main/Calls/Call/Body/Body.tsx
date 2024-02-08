@@ -7,8 +7,8 @@ import { useMemo, useEffect } from 'react';
 import { Button } from '../../../general/Button/Button.tsx';
 import { Contract } from './Contract/Contract.tsx';
 import { Method } from './Method/Method.tsx';
-import sendTransaction from '../../../../../../assets/sendTransaction.svg';
-import saveIcon from '../../../../../../assets/saveIcon.svg';
+import sendTransaction from '../../../../../assets/sendTransaction.svg';
+import saveIcon from '../../../../../assets/saveIcon.svg';
 import cn from './Body.module.css';
 import { useParams, Link } from 'react-router-dom';
 

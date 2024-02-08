@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../../general/Button/Button.tsx';
-import addIcon from '../../../../../../assets/addIcon.svg';
+import addIcon from '../../../../../assets/addIcon.svg';
 import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal.tsx';
 
 export const AddTransaction = ({ styles }: any) => {

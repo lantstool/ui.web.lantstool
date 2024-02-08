@@ -1,8 +1,8 @@
 import cn from './Label.module.css';
-import ledger from '../../../../../../../assets/ledger.svg';
-import fullAccess from '../../../../../../../assets/fullAccess.svg';
-import locally from '../../../../../../../assets/locally.svg';
-import functionCall from '../../../../../../../assets/functionCall.svg';
+import ledger from '../../../../../../assets/ledger.svg';
+import fullAccess from '../../../../../../assets/fullAccess.svg';
+import locally from '../../../../../../assets/locally.svg';
+import functionCall from '../../../../../../assets/functionCall.svg';
 import cnm from 'classnames';
 
 const types: any = {
