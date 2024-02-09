@@ -1,5 +1,5 @@
 import cn from './Topbar.module.css';
-import { SideMenu } from './SideMenu/SideMenu.tsx';
+// import { SideMenu } from './SideMenu/SideMenu.tsx';
 import { useMemo } from 'react';
 
 const getFormDefaultValues = (call: any) => {
@@ -11,7 +11,7 @@ const getFormDefaultValues = (call: any) => {
 
 export const Topbar = ({ call }: any) => {
   const formDefaultValues = useMemo(() => getFormDefaultValues(call), [call]);
-  const { callId, name } = formDefaultValues;
+  const { name } = formDefaultValues;
 
   return (
     <div className={cn.topbar}>

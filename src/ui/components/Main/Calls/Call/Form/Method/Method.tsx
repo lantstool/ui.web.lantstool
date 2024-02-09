@@ -1,5 +1,5 @@
 import { Controller, useWatch } from 'react-hook-form';
-import { useStoreEffect, useStoreState } from '../../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../../../react-vault';
 import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import { selectStyles } from '../general/selectStyles.ts';
@@ -19,8 +19,8 @@ const getOptions: any = async (contractId: any, getContractMethods: any, setOpti
   setOptions(options);
 };
 
-export const Method = ({ form, call }: any) => {
-  const { control, setValue } = form;
+export const Method = ({ form }: any) => {
+  const { control } = form;
   const getContractMethods = useStoreEffect((store: any) => store.accounts.getContractMethods);
   const [options, setOptions] = useState([]);
 

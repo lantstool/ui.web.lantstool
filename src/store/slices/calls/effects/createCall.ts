@@ -13,7 +13,7 @@ const generateCall = (order: number, name: string, spaceId: string, networkId: s
     order,
     contractId: '',
     method: '',
-    arguments: '{}',
+    arguments: '',
     signerId: '',
     signerKey: '',
   };

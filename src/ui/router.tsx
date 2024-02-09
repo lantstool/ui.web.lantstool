@@ -7,7 +7,8 @@ import { RootLoader } from './components/RootLoader.tsx';
 import { NetworkLayout } from './components/NetworkLayout.tsx';
 import { Keys } from './components/Main/Keys/Keys.tsx';
 import { Accounts } from './components/Main/Accounts/Accounts.tsx';
-import { routes as calls } from "./components/Main/Calls/routes.tsx";
+import { Calls } from "./components/Main/Calls/Calls.tsx";
+import { Call } from "./components/Main/Calls/Call/Call.tsx";
 
 export const router = createMemoryRouter(
   createRoutesFromElements(
@@ -23,7 +24,10 @@ export const router = createMemoryRouter(
         <Route path="transactions" element={<Transactions />}>
           <Route path=":transactionId" element={<Content />} />
         </Route>
-        {calls}
+        {/* Calls */}
+        <Route path="calls" element={<Calls />}>
+          <Route path=":callId" element={<Call />} />
+        </Route>
         {/* Networks */}
         <Route path="networks" element={<Networks />} />
       </Route>

@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import { selectStyles } from '../general/selectStyles.ts';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
-import cn from './Contract.module.css';
+import cn from './ContractId.module.css';
 import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
 
 // TODO show only contract here
@@ -18,7 +18,7 @@ const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
 };
 
 
-export const Contract = ({ form }: any) => {
+export const ContractId = ({ form }: any) => {
   const { control, setValue } = form;
   const getAccountsIds = useStoreEffect((store: any) => store.accounts.getAccountsIds);
   const [options, setOptions] = useState([]);

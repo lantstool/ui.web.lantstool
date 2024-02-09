@@ -1,20 +1,25 @@
 import { Topbar } from './Topbar/Topbar.tsx';
 import cn from './Call.module.css';
-import { useParams, Outlet } from 'react-router-dom';
-import { useStoreState } from '../../../../../react-vault';
-import { useNavigateToSavedRoute } from "../../../../../store/slices/navigation/useNavigateToSavedRoute.ts";
+import { useParams } from 'react-router-dom';
+import { useStoreEffect, useStoreState } from '../../../../../react-vault';
+import { Form } from './Form/Form.tsx';
+import { useEffect } from 'react';
 
 export const Call = () => {
   const { callId } = useParams();
-  const call = useStoreState((store: any) => store.calls.map[callId]);
+  const call: any = useStoreState((store: any) => store.calls.records[callId]);
+  const loadCall = useStoreEffect((store: any) => store.calls.loadCall);
 
-  // TODO fetch data about Call here
-  // useNavigateToSavedRoute('/:currentNetworkId/calls/:callId');
+  useEffect(() => {
+    loadCall(callId);
+  }, [callId]);
+
+  if (!call) return null;
 
   return (
-    <div key={callId} className={cn.call}>
+    <div className={cn.call} key={callId}>
       <Topbar call={call} />
-      <Outlet />
+      <Form call={call} />
     </div>
   );
 };
