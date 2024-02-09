@@ -1,4 +1,4 @@
-import { initPage } from './actions/initPage';
+import { setCalls } from './actions/setCalls.ts';
 import { addCall } from './actions/addCall.ts';
 import { putCall } from './actions/putCall.ts';
 import { createCall } from './effects/createCall.ts';
@@ -23,7 +23,7 @@ export const calls = {
   records: { a: 1 },
   temporaryFormValues: { a: 1 },
   // actions
-  initPage,
+  setCalls,
   addCall,
   putCall,
   // effects

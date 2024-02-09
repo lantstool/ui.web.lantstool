@@ -1,20 +1,19 @@
 import { effect } from '../../../../react-vault';
 
-export const getCalls = effect(async ({ payload, slice, store }: any) => {
+export const getCalls = effect(async ({ payload: setLoading, slice, store }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);
-  const initPage = slice.getActions((slice: any) => slice.initPage);
-  const spaceId = store.getState((store: any) => store.networks.current.spaceId);
-  const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const setCalls = slice.getActions((slice: any) => slice.setCalls);
+  const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
     const calls = await idb.getAllFromIndex(
       'calls',
       'spaceId_networkId_order',
-      IDBKeyRange.bound([spaceId, networkId, 0], [spaceId, networkId, Infinity]),
+      IDBKeyRange.bound([spaceId, networkId, -Infinity], [spaceId, networkId, Infinity]),
     );
-
-    payload(false);
-    initPage(calls);
+    console.log(calls);
+    setCalls(calls);
+    setLoading(false);
   } catch (e) {
     console.log(e);
   }
