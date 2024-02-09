@@ -13,6 +13,7 @@ import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 import { callMethod } from './effects/callMethod.ts';
 import { loadCall } from './effects/loadCall.ts';
 import { putTemporaryFormValues } from "./actions/putTemporaryFormValues.ts";
+import { revertCall } from "./effects/revertCall.ts";
 
 export const calls = {
   // init state
@@ -38,4 +39,5 @@ export const calls = {
   callMethod,
   loadCall,
   putTemporaryFormValues,
+  revertCall,
 };

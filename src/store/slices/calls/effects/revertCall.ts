@@ -9,25 +9,12 @@ const getFormValues = (call: any) => ({
   signer: call.signer,
 });
 
-export const saveCall = effect(async ({ payload: form, slice, store }: any) => {
+export const revertCall = effect(({ payload: form, slice }: any) => {
   const values = form.getValues();
   const callId = values.callId;
-  const [idb] = store.getEntities((store: any) => store.idb);
   const oldCall = slice.getState((slice: any) => slice.records[callId]);
-  const putCall = slice.getActions((slice: any) => slice.putCall);
   const putTemporaryFormValues = slice.getActions((slice: any) => slice.putTemporaryFormValues);
 
-  const call = {
-    ...oldCall,
-    ...values,
-  };
-
-  try {
-    await idb.put('calls', call);
-    putCall(call);
-    putTemporaryFormValues({ callId, values: null });
-    form.reset(getFormValues(call))
-  } catch (e) {
-    console.log(e);
-  }
+  putTemporaryFormValues({ callId, values: null });
+  form.reset(getFormValues(oldCall));
 });

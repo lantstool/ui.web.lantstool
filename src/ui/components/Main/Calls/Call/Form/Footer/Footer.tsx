@@ -9,9 +9,11 @@ import { useFormState } from 'react-hook-form';
 export const Footer = ({ form }: any) => {
   const callMethod = useStoreEffect((store: any) => store.calls.callMethod);
   const saveCall = useStoreEffect((store: any) => store.calls.saveCall);
+  const revertCall = useStoreEffect((store: any) => store.calls.revertCall);
   const { isDirty } = useFormState({ control: form.control });
 
   const save = () => saveCall(form);
+  const revert = () => revertCall(form);
 
   const submit = form.handleSubmit((values: any) => {
     console.log(values);
@@ -25,7 +27,7 @@ export const Footer = ({ form }: any) => {
       </div>
       {isDirty && (
         <div className={cn.actions}>
-          <button className={cn.saveButton} type="button" onClick={save}>
+          <button className={cn.saveButton} type="button" onClick={revert}>
             <img src={restore} alt="Revert" />
           </button>
           <button className={cn.saveButton} type="button" onClick={save}>
