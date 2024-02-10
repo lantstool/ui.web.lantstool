@@ -20,6 +20,7 @@ export const saveCall = effect(async ({ payload: form, slice, store }: any) => {
   const call = {
     ...oldCall,
     ...values,
+    result: null, // We don't want to save a call execution result data in DB
   };
 
   try {

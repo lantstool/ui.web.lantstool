@@ -11,7 +11,6 @@ export const getCalls = effect(async ({ payload: setLoading, slice, store }: any
       'spaceId_networkId_order',
       IDBKeyRange.bound([spaceId, networkId, -Infinity], [spaceId, networkId, Infinity]),
     );
-    console.log(calls);
     setCalls(calls);
     setLoading(false);
   } catch (e) {
