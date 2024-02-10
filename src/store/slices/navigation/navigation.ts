@@ -36,6 +36,13 @@ export const navigation = {
 
     saveDynamicRoute(
       slice,
+      '/:currentNetworkId/calls/:callId',
+      pathname,
+      ({ currentNetworkId }) => `${currentNetworkId}.calls.route`,
+    );
+
+    saveDynamicRoute(
+      slice,
       '/:currentNetworkId/vault/:accountId',
       pathname,
       ({ currentNetworkId }) => `${currentNetworkId}.vault.route`,

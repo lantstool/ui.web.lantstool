@@ -13,7 +13,17 @@ const account2 = {
   networkId: 'testnet',
   accountId: 'eclpseeer-multisig-test-1.testnet',
   importedAt: Date.now() + 1,
-  contract: null,
+  contract: {
+    name: 'Multisig v1',
+    methods: [
+      { name: 'add_request', type: 'change' },
+      { name: 'list_request_ids', type: 'view' },
+      { name: 'get_request', type: 'view' },
+      { name: 'get_num_confirmations', type: 'view' },
+      { name: 'get_request_nonce', type: 'view' },
+      { name: 'get_confirmations', type: 'view' },
+    ],
+  },
 };
 
 export const addAccounts = effect(async ({ store }: any) => {

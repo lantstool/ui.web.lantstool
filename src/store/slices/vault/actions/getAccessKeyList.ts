@@ -1,5 +1,5 @@
-import { action } from "../../../../react-vault";
+import { action } from '../../../../react-vault';
 
 export const getAccessKeyList = action(({ slice, payload }: any) => {
-  slice.accessKeyList = payload.keys
+  slice.accessKeyList = payload.keys;
 });
