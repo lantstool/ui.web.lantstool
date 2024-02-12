@@ -1,0 +1,37 @@
+.account {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    'a'
+    'b';
+}
+
+.topbar {
+  grid-area: a;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background-color: #DBF0E6;
+}
+
+.main {
+  grid-area: b;
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 100%;
+  grid-template-areas:
+    'a b';
+}
+
+.sidebar {
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid gainsboro;
+}
+
+.content {
+  grid-area: b;
+}

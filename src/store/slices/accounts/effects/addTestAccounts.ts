@@ -26,7 +26,7 @@ const account2 = {
   },
 };
 
-export const addAccounts = effect(async ({ store }: any) => {
+export const addTestAccounts = effect(async ({ store }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);
 
   try {

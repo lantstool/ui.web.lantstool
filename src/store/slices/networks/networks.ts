@@ -13,7 +13,7 @@ import { updateNetwork } from './actions/updateNetwork.ts';
 export const networks = {
   current: null,
   list: [],
-  map: { a: 1 }, // TODO: fix bug - react-vault remove empty object from model
+  map: {},
   // actions
   setNetworks,
   addNetwork,

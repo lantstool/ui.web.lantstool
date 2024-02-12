@@ -1,10 +1,14 @@
-.container {
-  min-height: 100%;
-  display: grid;
-  grid-template-columns: 300px 20px auto 10px;
-  grid-template-rows: 10px auto 10px;
-  grid-template-areas:
-    ' a . . .'
-    ' a . b .'
-    ' a . . .';
+.accounts {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  width: 1000px;
+  height: 100%;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
 }

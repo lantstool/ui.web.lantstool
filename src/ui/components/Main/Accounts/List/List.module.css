@@ -1,0 +1,29 @@
+.container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  grid-template-areas:
+    'a'
+    'b';
+}
+
+.topbar {
+  grid-area: a;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background-color: #DBF0E6;
+}
+
+.list {
+  grid-area: b;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gainsboro;
+  padding: 0 24px;
+}

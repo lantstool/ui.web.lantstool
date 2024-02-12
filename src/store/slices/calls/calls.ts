@@ -17,11 +17,9 @@ import { revertCall } from "./effects/revertCall.ts";
 
 export const calls = {
   // init state
-  list: [],
-  map: { a: 1 }, // TODO need to fix a bug - react-vault remove empty object from model
   ids: [],
-  records: { a: 1 },
-  temporaryFormValues: { a: 1 },
+  records: {},
+  temporaryFormValues: {},
   // actions
   setCalls,
   addCall,
