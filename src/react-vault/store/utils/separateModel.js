@@ -8,9 +8,13 @@ const setHandlerToCollection = ({ model, key, value: { handler, type }, path, co
     handler,
   });
 };
-// TODO REFACTOR!!!
-// Поточно пустий обєкт {} пропадає зі state
+
 const mapValuesToModel = (model, rawModel, path = []) => {
+  if (Object.keys(rawModel).length === 0) {
+    set(model.initState, path, rawModel);
+    return;
+  }
+
   Object.entries(rawModel).forEach(([key, value]) => {
     const currentPath = [...path, key];
 
