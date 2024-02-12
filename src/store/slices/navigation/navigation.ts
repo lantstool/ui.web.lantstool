@@ -6,7 +6,6 @@ import { getInitDataFromLocalStorage } from './getInitDataFromLocalStorage.ts';
 
 const saveDynamicRoute = (slice: any, pattern: string, pathname: string, pathToSave: any) => {
   const match = matchPath(pattern, pathname);
-  console.log(match);
   if (!match) return;
   slice.routes = set(slice.routes, pathToSave(match.params), match.pathname);
 };
