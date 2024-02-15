@@ -1,0 +1,11 @@
+.buttonRemove {
+  display: flex;
+  justify-content: center;
+  width: 10px;
+  color: #FFFFFF;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+

@@ -5,7 +5,13 @@ const account1 = {
   networkId: 'testnet',
   accountId: 'eclipseer.testnet',
   importedAt: Date.now(),
-  contract: null,
+  contract: {
+    name: '',
+    methods: {
+      change: [],
+      view: [],
+    },
+  },
 };
 
 const account2 = {
@@ -15,14 +21,16 @@ const account2 = {
   importedAt: Date.now() + 1,
   contract: {
     name: 'Multisig v1',
-    methods: [
-      { name: 'add_request', type: 'change' },
-      { name: 'list_request_ids', type: 'view' },
-      { name: 'get_request', type: 'view' },
-      { name: 'get_num_confirmations', type: 'view' },
-      { name: 'get_request_nonce', type: 'view' },
-      { name: 'get_confirmations', type: 'view' },
-    ],
+    methods: {
+      change: [{ name: 'add_request' }],
+      view: [
+        { name: 'list_request_ids' },
+        { name: 'get_request' },
+        { name: 'get_num_confirmations' },
+        { name: 'get_request_nonce' },
+        { name: 'get_confirmations' },
+      ],
+    },
   },
 };
 

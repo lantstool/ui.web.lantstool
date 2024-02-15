@@ -34,4 +34,7 @@
 
 .content {
   grid-area: b;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
 }
