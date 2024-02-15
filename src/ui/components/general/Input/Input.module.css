@@ -25,6 +25,7 @@
 
 .textarea {
   height: auto;
-  resize: none;
+  min-height: 100px;
+  resize: vertical;
   word-break: break-all;
 }

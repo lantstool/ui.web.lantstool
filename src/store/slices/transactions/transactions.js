@@ -13,8 +13,8 @@ import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 export const transactions = {
   // init state
   list: [],
-  map: { a: 1 },
-
+  map: {},
+  // actions
   ...actions,
   // effects
   onAddTransaction,

@@ -1,13 +1,14 @@
-import { createStore } from '../react-vault/index.ts';
+import { createStore } from '../react-vault';
 import { transactions } from './slices/transactions/transactions';
-import { vault } from './slices/vault/index';
-import { keys } from './slices/keys/keys.ts';
+import { calls } from './slices/calls/calls.js';
+import { keys } from './slices/keys/keys';
 import { accounts } from './slices/accounts/accounts';
+import { contracts } from './slices/contracts/contracts.ts';
 import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 import { networks } from './slices/networks/networks';
 import { navigation } from './slices/navigation/navigation';
-import { getAccessKeyList } from './effects/getAccessKeyList.ts';
+import { getAccessKeyList } from './effects/getAccessKeyList';
 
 export const store = createStore({
   // entities
@@ -20,6 +21,7 @@ export const store = createStore({
   accounts,
   networks,
   transactions,
-  vault,
+  calls,
+  contracts,
   navigation,
 });

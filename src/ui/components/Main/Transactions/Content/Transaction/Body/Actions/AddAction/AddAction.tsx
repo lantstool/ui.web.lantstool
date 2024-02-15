@@ -3,7 +3,7 @@ import { Modal } from '../../../../../../../general/Modal/Modal.tsx';
 import { appendAction } from './appendAction.ts';
 import cn from './AddAction.module.css';
 import { Button } from '../../../../../../general/Button/Button.tsx';
-import addIcon from '../../../../../../../../../assets/addIcon.svg';
+import addIcon from '../../../../../../../../assets/addIcon.svg';
 
 export const AddAction = ({ append }: any) => {
   const [isOpen, setOpen] = useState(false);

@@ -1,5 +1,5 @@
 import cn from './BalanceLabel.module.css';
-import nearIcon from '../../../../../../../../../assets/nearIcon.svg';
+import nearIcon from '../../../../../../../../assets/nearIcon.svg';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../../react-vault';

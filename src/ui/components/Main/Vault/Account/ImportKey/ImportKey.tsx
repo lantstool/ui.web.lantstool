@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useStoreAction } from '../../../../../../react-vault';
-import addIcon from '../../../../../../assets/addIcon.svg';
+import addIcon from '../../../../../assets/addIcon.svg';
 import { Button } from '../../../general/Button/Button.tsx';
 import { ImportKeyModal } from './ImportKeyModal/ImportKeyModal.tsx';
 
