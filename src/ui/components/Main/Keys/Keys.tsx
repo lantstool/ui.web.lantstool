@@ -2,13 +2,14 @@ import cn from './Keys.module.css';
 import {useStoreEffect, useStoreState} from '../../../../react-vault';
 import { useEffect, useState } from 'react';
 import { Button } from '../general/Button/Button.tsx';
-import addIcon from '../../../../assets/addIcon.svg';
+import addIcon from '../../../assets/addIcon.svg'
 import { ImportKeyModal } from './ImportKeyModal/ImportKeyModal.tsx';
 
 export const Keys = () => {
   const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
   const addKey = useStoreEffect((store: any) => store.keys.addKey);
   const keys = useStoreState((store: any) => store.keys)
+    console.log(keys)
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {

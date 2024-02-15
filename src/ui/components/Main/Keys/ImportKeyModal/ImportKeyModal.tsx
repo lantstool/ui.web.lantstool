@@ -1,10 +1,10 @@
 import cn from './ImportKeyModal.module.css';
 import { ModalGroup } from './general/ModalGroup/ModalGroup.tsx';
-import seedPhrase from '../../../../../assets/seedPhrase.svg';
-import privateKey from '../../../../../assets/privateKey.svg';
-import file from '../../../../../assets/file.svg';
-import ledger from '../../../../../assets/ledger.svg';
-import myNearWallet from '../../../../../assets/myNearWallet.svg';
+import seedPhrase from '../../../../assets/seedPhrase.svg'
+import privateKey from '../../../../assets/privateKey.svg';
+import file from '../../../../assets/file.svg';
+import ledger from '../../../../assets/ledger.svg';
+import myNearWallet from '../../../../assets/myNearWallet.svg';
 import cnm from 'classnames';
 
 export const ImportKeyModal = ({ isOpen, close }) => {

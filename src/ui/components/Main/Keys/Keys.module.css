@@ -4,7 +4,7 @@
   grid-template-columns: auto 800px auto;
   grid-template-rows: 70px auto 10px;
   grid-template-areas:
-    '.  a .'
+    '. a .'
     '. b .'
     '. b .';
 }
