@@ -1,32 +1,14 @@
 import cn from './Account.module.css';
 import { Link, useParams, Outlet } from 'react-router-dom';
 import { useStoreEffect } from "../../../../../react-vault";
-import { useEffect, useState } from "react";
-
-const useLoader = (fn: any, deps: any = []) => {
-  const [isLoading, setLoading] = useState(true);
-  const [result, setResult] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const res = await fn();
-      setResult(res);
-      setLoading(false);
-    })()
-  }, deps);
-
-  return [isLoading, result];
-}
+import { useLoader } from "../../../../../store/hooks/useLoader.ts";
 
 export const Account = () => {
   const { accountId } = useParams();
   const onMountAccount = useStoreEffect((store: any) => store.accounts.onMountAccount);
-  // const addTestAccounts = useStoreEffect((store: any) => store.accounts.addTestAccounts);
   const [isLoading] = useLoader(() => onMountAccount(accountId));
 
   if (isLoading) return null;
-  // addTestAccounts();
   return (
     <div className={cn.account}>
       <div className={cn.topbar}>

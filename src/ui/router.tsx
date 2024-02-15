@@ -8,6 +8,7 @@ import { Keys } from './components/Main/Keys/Keys.tsx';
 import { Calls } from './components/Main/Calls/Calls.tsx';
 import { Call } from './components/Main/Calls/Call/Call.tsx';
 import { routes as accounts } from './components/Main/Accounts/routes.tsx';
+import { routes as contracts } from './components/Main/Contracts/routes.tsx';
 
 export const router = createMemoryRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ export const router = createMemoryRouter(
         {/* Keys */}
         <Route path="keys" element={<Keys />} />
         {accounts}
+        {contracts}
         {/* Transactions */}
         <Route path="transactions" element={<Transactions />}>
           <Route path=":transactionId" element={<Content />} />

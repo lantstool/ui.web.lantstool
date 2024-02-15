@@ -6,6 +6,8 @@ import { Outlet } from 'react-router-dom';
 export const Accounts = () => {
   const ids: string[] = useStoreState((store: any) => store.accounts.ids);
   const getOnceAccounts = useStoreEffect((store: any) => store.accounts.getOnceAccounts);
+  // const addTestAccounts = useStoreEffect((store: any) => store.accounts.addTestAccounts);
+  // addTestAccounts();
 
   useEffect(() => {
     getOnceAccounts();

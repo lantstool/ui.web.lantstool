@@ -1,6 +1,7 @@
 import { setupSpaces } from './setupSpaces.ts';
 import { setupNetworks } from './setupNetworks.ts';
 import { setupAccounts } from './setupAccounts.ts';
+import { setupContracts } from "./setupContracts.ts";
 import { setupKeys } from "./setupKeys.ts";
 import { setupTransactions } from './setupTransactions.ts';
 import { setupCalls } from "./setupCalls.ts";
@@ -11,6 +12,7 @@ export const setup = async (db: any) => {
   await setupNetworks(db);
   setupKeys(db);
   setupAccounts(db);
+  setupContracts(db);
   await setupTransactions(db);
   await setupCalls(db);
 };
