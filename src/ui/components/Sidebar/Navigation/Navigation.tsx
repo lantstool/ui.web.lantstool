@@ -10,7 +10,7 @@ export const Navigation = () => {
   return (
     <div className={cn.navigation}>
       <LinkItem name="Accounts" src={vault} to="accounts" />
-      <LinkItem name="Keys" src={vault} to="keys" />
+      <LinkItem name="Keys" src={vault} to="index" />
       <LinkItem name="Transactions" src={transaction} to="transactions" />
       {/*<LinkItem name="Networks" src={networks} to="networks" />*/}
     </div>

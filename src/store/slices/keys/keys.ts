@@ -1,11 +1,9 @@
-import { addAccount } from './actions/addAccount';
-import { addKey } from './effects/addKey';
-import { getKeys } from './effects/getKeys';
-import { getKey } from './effects/getKey';
+import { initState } from './initState.ts';
+import { effects } from './effects';
+import { actions } from './actions';
 
 export const keys = {
-  addAccount,
-  addKey,
-  getKeys,
-  getKey,
+  ...initState,
+  ...effects,
+  ...actions,
 };

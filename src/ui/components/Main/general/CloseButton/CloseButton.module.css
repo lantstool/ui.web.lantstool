@@ -1,16 +1,15 @@
 .btnClose {
-    grid-area: b;
-    width: 26px;
-    height: 26px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: #ffffff;
-    background-color: #B6C8C0;
-    border: 1px solid #ffffff;
-    cursor: pointer;
+  grid-area: c;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
 }
-.btnClose:hover {
-    background-color: #7dd7b3;
+
+.icon {
+  font-size: 24px !important;
+  color: rgba(211, 211, 211, 1) !important;
+}
+
+.icon:hover {
+  color: rgba(211, 211, 211, 1) !important;
 }

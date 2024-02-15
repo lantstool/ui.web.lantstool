@@ -1,7 +1,7 @@
 import { toCamelCase } from '../../../../../../../../store/helpers/toCamelCase.ts';
 
 /**
- * Transforms an array of objects into an object where the keys are the value of `publicKey` property of each object,
+ * Transforms an array of objects into an object where the index are the value of `publicKey` property of each object,
  * and the values are the objects themselves.
  *
  * @param {any[]} list - The array of objects to transform.
@@ -14,10 +14,10 @@ const transformKeys = (list: any[]): object =>
   }, {});
 
 /**
- * Filters an array of chain keys based on the presence of corresponding keys in the imported keys.
- * @param {any[]} chainKeys - The array of chain keys to filter.
- * @param {any[]} importedKeys - The object of imported keys to compare against.
- * @returns {any[]} - The filtered array of chain keys.
+ * Filters an array of chain index based on the presence of corresponding index in the imported index.
+ * @param {any[]} chainKeys - The array of chain index to filter.
+ * @param {any[]} importedKeys - The object of imported index to compare against.
+ * @returns {any[]} - The filtered array of chain index.
  */
 const filterKeys = (chainKeys: any[], importedKeys: object): any[] =>
   chainKeys.filter((chainKey: any) => importedKeys[chainKey.publicKey]);
@@ -27,7 +27,7 @@ const filterKeys = (chainKeys: any[], importedKeys: object): any[] =>
  *
  * @param {string} accountId - The account ID.
  * @param {Function} getAccessKeyList - Function that returns the chain access key list for the account.
- * @param {Function} getImportedKeys - Function that returns the imported keys.
+ * @param {Function} getImportedKeys - Function that returns the imported index.
  * @param {Function} setOptions - Function to set the options.
  *
  * @returns {Promise<void>} - A promise that resolves when the options are set.

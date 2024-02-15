@@ -1,8 +1,8 @@
 import { createStore } from '../react-vault/index.ts';
 import { transactions } from './slices/transactions/transactions';
 import { vault } from './slices/vault/index';
-import { keys } from './slices/keys/keys';
-import { accounts } from "./slices/accounts/accounts";
+import { keys } from './slices/keys/keys.ts';
+import { accounts } from './slices/accounts/accounts';
 import { idb } from './entities/idb/idb';
 import { onInitApp } from './effects/onInitApp.ts';
 import { networks } from './slices/networks/networks';
