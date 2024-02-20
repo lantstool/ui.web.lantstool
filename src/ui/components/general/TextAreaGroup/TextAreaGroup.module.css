@@ -1,0 +1,14 @@
+.inputGroup {
+    margin: 10px 0;
+}
+
+.inputGroup > label {
+    display: flex;
+}
+
+.error {
+    height: 26px;
+    color: #ef2929;
+    font-size: 10px;
+    font-weight: 300;
+}

@@ -1,0 +1,24 @@
+.topBar {
+    grid-area: a;
+    display: grid;
+    grid-template-columns: 12px 162px auto 162px 12px;
+    grid-template-areas: '. c d . .';
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    background-color: rgba(219, 240, 230, 1);
+}
+
+.title {
+    grid-area: d;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    align-self: center;
+    justify-self: center;
+}
+
+.button {
+    grid-area: c;
+    align-self: center;
+}

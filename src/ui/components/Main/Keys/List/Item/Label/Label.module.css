@@ -1,0 +1,26 @@
+.label {
+  grid-area: a;
+  align-self: center;
+  border-radius: 16px;
+}
+
+.lantstool {
+  background-color: #4ab584;
+}
+
+.ledger {
+  background-color: #42b0ee;
+}
+
+.myNearWallet {
+  background-color: #8b56ec;
+}
+
+.text {
+  margin: 4px 16px;
+  color: white;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

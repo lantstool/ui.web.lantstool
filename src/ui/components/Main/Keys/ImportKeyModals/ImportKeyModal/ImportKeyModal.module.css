@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.groupTitle {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.importContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  gap: 38px;
+  margin-bottom: 24px;
+}
+
+.imgContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 16px;
+  border: 1px solid rgba(239, 239, 239, 1);
+}
+
+.imgContainer:hover {
+  box-shadow: 0 0 3px 1px rgba(239, 239, 239, 1);
+}
+
+.disabled:hover {
+  box-shadow: none;
+}

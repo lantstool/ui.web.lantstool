@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 12px;
+  border-bottom: 1px solid #e9f6f0;
+}
+
+.container:last-child {
+  border-bottom: none;
+}
+
+.key {
+  grid-column: 1 / 1;
+  font-size: 16px;
+  color: #153325;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 15px 40px;
+  grid-template-areas: 'a . b';
+}
+
+.btn {
+  grid-area: b;
+}

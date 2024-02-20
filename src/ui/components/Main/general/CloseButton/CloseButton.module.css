@@ -1,15 +1,16 @@
 .btnClose {
   grid-area: c;
-  height: 24px;
-  width: 24px;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 }
 
-.icon {
-  font-size: 24px !important;
-  color: rgba(211, 211, 211, 1) !important;
+.icon{
+  stroke: #D3D3D3;
+  fill: #D3D3D3;
 }
 
-.icon:hover {
-  color: rgba(211, 211, 211, 1) !important;
+.icon:hover{
+  stroke: #ABABAB;
+  fill: #ABABAB;
 }

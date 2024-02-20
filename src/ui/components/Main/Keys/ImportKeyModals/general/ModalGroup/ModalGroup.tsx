@@ -1,7 +1,7 @@
 import { Modal } from '../../../../../general/Modal/Modal.tsx';
 import cn from './ModalGroup.module.css';
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { CloseButton } from '../../../../general/CloseButton/CloseButton.tsx';
+import { BackIcon } from '../../../../../../assets/components/BackIcon.tsx';
 
 export const ModalGroup = ({ children, isOpen, closeModal, prevStep, text }: any) => {
   return (
@@ -9,9 +9,9 @@ export const ModalGroup = ({ children, isOpen, closeModal, prevStep, text }: any
       <div className={cn.container}>
         <div className={cn.btnGroup}>
           {prevStep && (
-            <button className={cn.prevBtn} onClick={prevStep}>
-              <ArrowBackRoundedIcon />
-            </button>
+            <div className={cn.prevBtn} onClick={prevStep}>
+              <BackIcon style={cn.icon} />
+            </div>
           )}
           <h2 className={cn.title}>{text}</h2>
           <CloseButton close={closeModal} />
