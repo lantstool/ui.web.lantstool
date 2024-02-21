@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 12px;
+  height: 49px;
   border-bottom: 1px solid #e9f6f0;
 }
 
@@ -10,10 +11,13 @@
   border-bottom: none;
 }
 
+.link{
+  height: 49px;
+}
+
 .key {
-  grid-column: 1 / 1;
   font-size: 16px;
-  color: #153325;
+  color: var(--Text-Dark);
   font-style: normal;
   font-weight: 400;
   line-height: normal;

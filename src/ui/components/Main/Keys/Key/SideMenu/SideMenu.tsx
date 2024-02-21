@@ -6,10 +6,11 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import { Menu, MenuItem } from '@mui/material';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 
-export const SideMenu = (keyId: any) => {
+
+export const SideMenu = ({ keyId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const onRemoveAccount = useStoreEffect((store: any) => store.vault.onRemoveAccount);
+  const deleteKey = useStoreEffect((store: any) => store.keys.deleteKey);
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -22,7 +23,7 @@ export const SideMenu = (keyId: any) => {
   };
 
   const remove = () => {
-    // onRemoveAccount({ keyId, navigate });
+    deleteKey({ keyId, navigate });
     setOpen(false);
   };
 
@@ -38,7 +39,7 @@ export const SideMenu = (keyId: any) => {
     <>
       <div>
         <button className={cn.sideMenuButton} onClick={openMenu}>
-          <MoreVertOutlinedIcon />
+          <MoreVertOutlinedIcon className={cn.icon} />
         </button>
         <Menu
           anchorEl={anchorEl}

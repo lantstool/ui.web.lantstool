@@ -1,18 +1,18 @@
-import {effect} from "../../../../react-vault";
-
+import { effect } from '../../../../react-vault';
 
 export const deleteKey = effect(async ({ slice, store, payload }: any) => {
-    const { data, wallet, derivationPath } = payload;
-    const [idb] = store.getEntities((store: any) => store.idb);
-    const setKey = slice.getActions((slice: any) => slice.setKey);
-    const networkId = store.getState((store: any) => store.networks.current.networkId);
-    const spaceId = store.getState((store: any) => store.networks.current.spaceId);
+  const { keyId, navigate } = payload;
+  const [idb] = store.getEntities((store: any) => store.idb);
+  const removeKey = slice.getActions((slice: any) => slice.removeKey);
+  const networkId = store.getState((slice: any) => slice.networks.current.networkId);
+  const spaceId = store.getState((slice: any) => slice.networks.current.spaceId);
 
-    try {
+  try {
+    await idb.delete('keys', [spaceId,networkId,keyId]);
 
-        // await idb.delete('keys');
-
-    } catch (e) {
-        console.log(e);
-    }
+    removeKey(keyId);
+    navigate(`/${networkId}/keys`);
+  } catch (e) {
+    console.log(e);
+  }
 });

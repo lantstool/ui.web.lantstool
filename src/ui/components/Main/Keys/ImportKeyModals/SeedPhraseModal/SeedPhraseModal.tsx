@@ -22,7 +22,7 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     defaultValues: {
       publicKey: null,
       seedPhrase: null,
-      derivationPath: null,
+      derivationPath: KEY_DERIVATION_PATH,
     },
   });
 
@@ -42,12 +42,9 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     setStep('selectImport');
   };
 
-  useEffect(() => {
-    setValue('derivationPath', KEY_DERIVATION_PATH);
-  }, []);
 
   const onSubmit = (data: any) => {
-    const phraseData: any = parseSeedPhrase(data.seedPhrase);
+    const phraseData: any = parseSeedPhrase(data.seedPhrase,derivationPath);
     setValue('publicKey', phraseData.publicKey);
     addKey({ data: phraseData, wallet: 'lantstool', derivationPath });
     resetField('seedPhrase');

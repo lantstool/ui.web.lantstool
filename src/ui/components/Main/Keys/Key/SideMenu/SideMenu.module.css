@@ -6,3 +6,11 @@
   border: none;
   cursor: pointer;
 }
+
+.icon{
+  color: #87b19e !important;
+}
+
+.icon:hover{
+  color: var(--Color-Grey-100) !important;
+}

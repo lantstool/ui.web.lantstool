@@ -1,11 +1,9 @@
 .topBar {
     grid-area: a;
-    display: grid;
-    grid-template-columns: 12px 162px auto 162px 12px;
-    grid-template-areas: '. c d . .';
-    width: 100%;
-    border-radius: 16px 16px 0 0;
-    background-color: rgba(219, 240, 230, 1);
+    display: flex;
+    justify-content: center;
+    border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
+    background-color: var(--Color-Green-300);
 }
 
 .title {
@@ -16,9 +14,4 @@
     letter-spacing: 0.01em;
     align-self: center;
     justify-self: center;
-}
-
-.button {
-    grid-area: c;
-    align-self: center;
 }

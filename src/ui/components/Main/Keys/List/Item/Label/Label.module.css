@@ -24,3 +24,7 @@
   font-weight: 600;
   line-height: normal;
 }
+
+.text:first-letter{
+  text-transform: uppercase;
+}

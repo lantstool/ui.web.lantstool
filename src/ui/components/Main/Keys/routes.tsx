@@ -1,11 +1,11 @@
-import { Route, useParams } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Keys } from './Keys.tsx';
-import {Key} from "./Key/Key.tsx";
+import { Key } from './Key/Key.tsx';
+import { RoutWrapper } from './RoutWrapper.tsx';
 
 export const routes = (
-    <Route path="keys" element={<Keys />}>
-      <Route index path=":keyId" element={<Key/>} />
-    </Route>
-)
-
-
+  <Route path="keys" element={<RoutWrapper />}>
+    <Route index element={<Keys />} />
+    <Route path=":key" element={<Key />} />
+  </Route>
+);

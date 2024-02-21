@@ -13,7 +13,7 @@ export const List = () => {
         <p className={cn.subtitle}>Wallet</p>
       </div>
       {ids.map((key: any) => (
-        <Item key={records[key].importedAt} data={records[key]} />
+        <Item key={records[key].privateKey} data={records[key]} />
       ))}
     </div>
   );

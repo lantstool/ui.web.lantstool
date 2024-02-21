@@ -4,6 +4,7 @@
 
 .inputGroup > label {
     display: flex;
+    margin-bottom: 8px;
 }
 
 .error {
