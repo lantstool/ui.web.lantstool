@@ -1,4 +1,4 @@
-import cn from './TextArea.module.css';
+import cn from './Textarea.module.css';
 import cnm from "classnames";
 
 
@@ -13,7 +13,7 @@ type Props = {
   errors?: any;
 };
 
-export const TextArea = ({
+export const Textarea = ({
   register,
   name,
   id,

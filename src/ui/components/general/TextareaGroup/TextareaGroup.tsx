@@ -1,7 +1,7 @@
-import cn from './TextAreaGroup.module.css';
-import { TextArea } from '../TextArea/TextArea.tsx';
+import cn from './TextareaGroup.module.css';
+import { Textarea } from '../Textarea/Textarea.tsx';
 
-export const TextAreaGroup = ({
+export const TextareaGroup = ({
   name,
   register,
   disabled,
@@ -12,7 +12,7 @@ export const TextAreaGroup = ({
 }: any) => (
   <div className={cn.inputGroup}>
     <label htmlFor={name}>{label}</label>
-    <TextArea
+    <Textarea
       name={name}
       register={register}
       disabled={disabled}

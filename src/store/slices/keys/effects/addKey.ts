@@ -5,7 +5,7 @@ const createdKey = (data: any, wallet: any, networkId: any, spaceId: any, deriva
     spaceId,
     networkId,
     wallet: wallet,
-    publicKey: data.publicKey || null,
+    publicKey: data.publicKey,
     privateKey: data.secretKey || data.privateKey,
     seedPhrase: data.seedPhrase || null,
     derivationPath,
@@ -17,8 +17,7 @@ export const addKey = effect(async ({ slice, store, payload }: any) => {
   const { data, wallet, derivationPath } = payload;
   const [idb] = store.getEntities((store: any) => store.idb);
   const createKey = slice.getActions((slice: any) => slice.createKey);
-  const networkId = store.getState((store: any) => store.networks.current.networkId);
-  const spaceId = store.getState((store: any) => store.networks.current.spaceId);
+  const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
     const key = createdKey(data, wallet, networkId, spaceId, derivationPath);

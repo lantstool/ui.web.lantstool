@@ -8,7 +8,7 @@ import { createSchema } from './schema.ts';
 import { parseSeedPhrase, KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextAreaGroup } from '../../../../general/TextAreaGroup/TextAreaGroup.tsx';
+import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.tsx';
 
 export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
@@ -62,7 +62,7 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
             Make sure you type the correct 12 words without extra spaces or symbols.
           </p>
           <div className={cn.seedWrapper}>
-            <TextAreaGroup
+            <TextareaGroup
               register={register}
               name="seedPhrase"
               rows={4}

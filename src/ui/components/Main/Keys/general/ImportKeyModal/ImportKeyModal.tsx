@@ -9,8 +9,8 @@ import myNearWallet from '../../../../../assets/myNearWallet.svg';
 import cnm from 'classnames';
 
 export const ImportKeyModal = ({ isOpen, close, setStep }) => {
-  const onSeedPhrase = () => setStep('seedPhrase');
-  const onPrivateKey = () => setStep('privateKey');
+  const toSeedPhrase = () => setStep('seedPhrase');
+  const toPrivateKey = () => setStep('privateKey');
 
   return (
     <ModalGroup isOpen={isOpen} closeModal={close} text={'Import Key'}>
@@ -26,13 +26,13 @@ export const ImportKeyModal = ({ isOpen, close, setStep }) => {
             styles={cn.imgContainer}
             src={seedPhrase}
             text="Seed Phrase"
-            selectStep={onSeedPhrase}
+            selectStep={toSeedPhrase}
           />
           <IconGroup
             styles={cn.imgContainer}
             src={privateKey}
             text="Private Key"
-            selectStep={onPrivateKey}
+            selectStep={toPrivateKey}
           />
           <IconGroup
             styles={cnm(cn.imgContainer, cn.disabled)}

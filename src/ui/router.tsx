@@ -14,19 +14,15 @@ export const router = createMemoryRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLoader />}>
       <Route path=":currentNetworkId" element={<NetworkLayout />}>
-        {/* List */}
         {keys}
         {accounts}
         {contracts}
-        {/* Transactions */}
         <Route path="transactions" element={<Transactions />}>
           <Route path=":transactionId" element={<Content />} />
         </Route>
-        {/* Calls */}
         <Route path="calls" element={<Calls />}>
           <Route path=":callId" element={<Call />} />
         </Route>
-        {/* Networks */}
         <Route path="networks" element={<Networks />} />
       </Route>
     </Route>,

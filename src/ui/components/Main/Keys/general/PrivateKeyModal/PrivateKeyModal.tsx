@@ -1,6 +1,6 @@
 import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
 import cn from './PrivateKeyModal.module.css';
-import { TextAreaGroup } from '../../../../general/TextAreaGroup/TextAreaGroup.tsx';
+import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './schema.ts';
@@ -67,7 +67,7 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
             Make sure you type the correct ed25519 private key without extra spaces or symbols
           </h2>
           <div className={cn.privateWrapper}>
-            <TextAreaGroup
+            <TextareaGroup
                 register={register}
                 name="privateKey"
                 rows={4}

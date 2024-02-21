@@ -14,7 +14,7 @@ export const DeleteModal = ({ isOpen, closeModal, remove }: any) => {
           <Title text="Remove account" />
         </div>
         <Subtitle
-          text="Are you sure to remove this account from the vault? It will also remove all index from this
+          text="Are you sure to remove this account from the vault? It will also remove all keys from this
         vault. Notice this action only removes data locally from this app and DOESN'T make any
         changes on the blockchain."
         />
