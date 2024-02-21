@@ -1,6 +1,6 @@
-import { ImportKeyModal } from './ImportKeyModal/ImportKeyModal.tsx';
-import { SeedPhraseModal } from './SeedPhraseModal/SeedPhraseModal.tsx';
-import { PrivateKeyModal } from './PrivateKeyModal/PrivateKeyModal.tsx';
+import { ImportKeyModal } from '../ImportKeyModal/ImportKeyModal.tsx';
+import { SeedPhraseModal } from '../SeedPhraseModal/SeedPhraseModal.tsx';
+import { PrivateKeyModal } from '../PrivateKeyModal/PrivateKeyModal.tsx';
 import { useState } from 'react';
 
 export const ImportModals = ({ isOpen, setOpen }) => {

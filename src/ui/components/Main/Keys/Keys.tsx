@@ -1,23 +1,21 @@
-import cn from './Keys.module.css';
-import { useState } from 'react';
-import { ImportModals } from './ImportKeyModals/ImportModals.tsx';
-import { List } from './List/List.tsx';
-import { TopBar } from './TopBar/TopBar.tsx';
-import { BottomBar } from './BottomBar/BottomBar.tsx';
+import { Outlet } from 'react-router-dom';
+import {useStoreEffect, useStoreState} from '../../../../react-vault';
+import { useEffect } from 'react';
+import {Empty} from "./Empty/Empty.tsx";
 
 export const Keys = () => {
-  const [isOpen, setOpen] = useState(false);
+  const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
+  const ids: string[] = useStoreState((store: any) => store.keys.ids);
 
-  const openModal = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    getKeys();
+  }, []);
+
+  if (ids.length === 0) return <Empty/>
 
   return (
-    <div className={cn.container}>
-      <TopBar />
-      <ImportModals isOpen={isOpen} setOpen={setOpen} />
-      <List />
-      <BottomBar openModal={openModal} />
+    <div>
+      <Outlet />
     </div>
   );
 };

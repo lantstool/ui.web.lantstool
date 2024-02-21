@@ -1,6 +1,6 @@
 import cn from './BottomBar.module.css';
-import { Button } from '../../general/Button/Button.tsx';
-import addIcon from '../../../../assets/addIcon.svg';
+import { Button } from '../../../general/Button/Button.tsx';
+import addIcon from '../../../../../assets/addIcon.svg';
 
 export const BottomBar = ({ openModal }) => {
   return (

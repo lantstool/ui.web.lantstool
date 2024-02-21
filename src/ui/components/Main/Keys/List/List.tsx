@@ -1,20 +1,23 @@
 import cn from './List.module.css';
-import { Item } from './Item/Item.tsx';
-import { useStoreState } from '../../../../../react-vault';
+import { useState } from 'react';
+import { ImportModals } from '../general/ImportKeyModals/ImportModals.tsx';
+import { KeyList } from './KeyList/KeyList.tsx';
+import { TopBar } from './TopBar/TopBar.tsx';
+import { BottomBar } from './BottomBar/BottomBar.tsx';
 
 export const List = () => {
-  const ids: any = useStoreState((store: any) => store.keys.ids);
-  const records: any = useStoreState((store: any) => store.keys.records);
+  const [isOpen, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
+  };
 
   return (
-    <div className={cn.list}>
-      <div className={cn.head}>
-        <p className={cn.subtitle}>Access Key</p>
-        <p className={cn.subtitle}>Wallet</p>
-      </div>
-      {ids.map((key: any) => (
-        <Item key={records[key].privateKey} data={records[key]} />
-      ))}
+    <div className={cn.container}>
+      <TopBar />
+      <ImportModals isOpen={isOpen} setOpen={setOpen} />
+      <KeyList />
+      <BottomBar openModal={openModal} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { CopyButton } from '../../../general/CopyButton/CopyButton.tsx';
+import { CopyButton } from '../../../../general/CopyButton/CopyButton.tsx';
 import { Label } from './Label/Label.tsx';
 import cn from './Item.module.css';
 import { NavLink, useParams } from 'react-router-dom';

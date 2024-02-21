@@ -1,6 +1,6 @@
 import cn from './Empty.module.css'
 import { useState } from 'react';
-import { ImportModals } from '../ImportKeyModals/ImportModals.tsx';
+import { ImportModals } from '../general/ImportKeyModals/ImportModals.tsx';
 import { Button } from '../../general/Button/Button.tsx';
 import addIcon from '../../../../assets/addIcon.svg';
 

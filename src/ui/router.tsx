@@ -14,7 +14,7 @@ export const router = createMemoryRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLoader />}>
       <Route path=":currentNetworkId" element={<NetworkLayout />}>
-        {/* Keys */}
+        {/* List */}
         {keys}
         {accounts}
         {contracts}
