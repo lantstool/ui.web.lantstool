@@ -10,11 +10,12 @@ import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.tsx';
+import { useMemo } from 'react';
 
 export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
   const addKey = useStoreEffect((store: any) => store.keys.addKey);
   const records: any = useStoreState((store: any) => store.keys.records);
-  const schema: any = createSchema(records);
+  const schema: any = useMemo(() => createSchema(records), [records]);
 
   const form = useForm({
     resolver: yupResolver(schema),
@@ -34,16 +35,14 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     formState: { errors, dirtyFields },
   } = form;
 
-  const derivationPath = useWatch({ control, name: 'derivationPath' });
   const publicKey = useWatch({ control, name: 'publicKey' });
 
   const prevStep = () => {
     setStep('selectImport');
   };
 
-  const onSubmit = (data: any) => {
-    addKey({ data, wallet: 'lantstool', derivationPath, setValue });
-    resetField('seedPhrase');
+  const onSubmit = (formValue: any) => {
+    addKey({ formValue, wallet: 'lantstool', setValue, resetField });
   };
 
   return (

@@ -15,10 +15,10 @@ export const createSchema: any = (records: any) => {
     privateKey: yup
       .string()
       .required('Empty field')
-      .test('matches', "Can't generate Key Pair from provided private key", function (value): any {
+      .test('matches', "Can't generate Key Pair from provided private key", (value): any => {
         return isValidPublicKey(value);
       })
-      .test('matches', 'This key already exists', function (value) {
+      .test('matches', 'This key already exists', (value): any => {
         return !list.find((el: any) => el.privateKey === value);
       }),
   });

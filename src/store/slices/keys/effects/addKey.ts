@@ -10,41 +10,44 @@ const createdKey = (data: any, wallet: any, networkId: any, spaceId: any, deriva
     publicKey: data.publicKey,
     privateKey: data.secretKey || data.privateKey,
     seedPhrase: data.seedPhrase || null,
-    derivationPath,
+    derivationPath: derivationPath || null,
     importedAt: Date.now(),
   };
 };
 
-const keyFromPrivateKey: any = (data: any, setValue: any) => {
-  const pk: any = KeyPair.fromString(data.privateKey).getPublicKey().toString();
+const keyFromPrivateKey: any = (formValue: any, setValue: any) => {
+  const pk: any = KeyPair.fromString(formValue.privateKey).getPublicKey().toString();
   setValue('publicKey', pk);
   return {
     publicKey: pk,
-    privateKey: data,
+    privateKey: formValue.privateKey,
   };
 };
 
-const keyFromSeedPhrase: any = (data: any, setValue: any, derivationPath: any) => {
-  const phraseData: any = parseSeedPhrase(data.seedPhrase, derivationPath);
+const keyFromSeedPhrase: any = (formValue: any, setValue: any) => {
+  const phraseData: any = parseSeedPhrase(formValue.seedPhrase, formValue.derivationPath);
   setValue('publicKey', phraseData.publicKey);
   return phraseData;
 };
 
 export const addKey = effect(async ({ slice, store, payload }: any) => {
-  const { data, setValue, wallet, derivationPath } = payload;
+  const { formValue, setValue, wallet, resetField } = payload;
+  const { derivationPath } = formValue;
   const [idb] = store.getEntities((store: any) => store.idb);
   const createKey = slice.getActions((slice: any) => slice.createKey);
   const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
-    const newData = derivationPath
-      ? keyFromSeedPhrase(data, setValue, derivationPath)
-      : keyFromPrivateKey(data, setValue);
+    const data = derivationPath
+      ? keyFromSeedPhrase(formValue, setValue, resetField)
+      : keyFromPrivateKey(formValue, setValue, resetField);
 
-    const key = createdKey(newData, wallet, networkId, spaceId, derivationPath);
+    const key = createdKey(data, wallet, networkId, spaceId, derivationPath);
 
     await idb.put('keys', key);
     createKey(key);
+
+    derivationPath ? resetField('seedPhrase') : resetField('privateKey');
   } catch (e) {
     console.log(e);
   }

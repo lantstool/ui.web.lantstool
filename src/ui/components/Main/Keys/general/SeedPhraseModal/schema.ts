@@ -6,7 +6,7 @@ export const createSchema = (records: any) => {
     seedPhrase: yup
       .string()
       .required('Empty field')
-      .test('matches', 'This key already exists', function (value, values) {
+      .test('matches', 'This key already exists', (value, values) => {
         return !list.find(
           (el: any) =>
             el.seedPhrase === value && el.derivationPath === values.from[0].value.derivationPath,

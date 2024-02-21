@@ -8,11 +8,12 @@ import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { Button } from '../../../general/Button/Button.tsx';
 import addIcon from '../../../../../assets/addIcon.svg';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.tsx';
+import { useMemo } from 'react';
 
 export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
   const addKey = useStoreEffect((store: any) => store.keys.addKey);
   const records = useStoreState((store: any) => store.keys.records);
-  const schema = createSchema(records);
+  const schema: any = useMemo(() => createSchema(records), [records]);
 
   const form = useForm({
     resolver: yupResolver(schema),
@@ -38,9 +39,8 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
     setStep('selectImport');
   };
 
-  const onSubmit = (data: any) => {
-    addKey({ data, wallet: 'lantstool', setValue });
-    resetField('privateKey');
+  const onSubmit = (formValue: any) => {
+    addKey({ formValue, wallet: 'lantstool', setValue, resetField });
   };
 
   return (
