@@ -25,10 +25,11 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: auto 15px 40px;
+  grid-template-columns: auto 15px 22px;
   grid-template-areas: 'a . b';
 }
 
 .btn {
   grid-area: b;
+  justify-self: end;
 }
