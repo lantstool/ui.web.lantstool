@@ -14,10 +14,12 @@ export const List = () => {
 
   return (
     <div className={cn.container}>
-      <TopBar />
-      <ImportModals isOpen={isOpen} setOpen={setOpen} />
-      <KeyList />
-      <BottomBar openModal={openModal} />
+      <div className={cn.wrapper}>
+        <TopBar />
+        <ImportModals isOpen={isOpen} setOpen={setOpen} />
+        <KeyList />
+        <BottomBar openModal={openModal} />
+      </div>
     </div>
   );
 };
