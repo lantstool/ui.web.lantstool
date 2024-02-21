@@ -37,11 +37,11 @@ export const addKey = effect(async ({ slice, store, payload }: any) => {
   const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
-    const formatData = derivationPath
+    const newData = derivationPath
       ? keyFromSeedPhrase(data, setValue, derivationPath)
       : keyFromPrivateKey(data, setValue);
 
-    const key = createdKey(formatData, wallet, networkId, spaceId, derivationPath);
+    const key = createdKey(newData, wallet, networkId, spaceId, derivationPath);
 
     await idb.put('keys', key);
     createKey(key);
