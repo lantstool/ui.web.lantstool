@@ -1,67 +1,53 @@
 import { effect } from '../../../../react-vault';
+import { KeyPair } from 'near-api-js';
+import { parseSeedPhrase } from 'near-seed-phrase';
 
-const key1 = {
-  spaceId: 'space1',
-  networkId: 'testnet',
-  wallet: 'lantstool',
-  publicKey: 'ed25519:EU3JT4N2ahWEzVPfcjEutG89ZDfX1vcqeYz9N1DDest6',
-  privateKey:
-    'ed25519:4bHM2QyM1yAgZoVazdLudgJGPmeKQFJNEND3ygt6ajPe6UUZYUmsWUxEuiRgLqygcUsUEPqeAyreGoWX5XCAP8DG',
-  seedPhrase: 'chronic adjust pig pistol candy laugh rigid beauty movie high cruel conduct',
-  importedAt: Date.now(),
+const createdKey = (data: any, wallet: any, networkId: any, spaceId: any, derivationPath: any) => {
+  return {
+    spaceId,
+    networkId,
+    wallet: wallet,
+    publicKey: data.publicKey,
+    privateKey: data.secretKey || data.privateKey,
+    seedPhrase: data.seedPhrase || null,
+    derivationPath: derivationPath || null,
+    importedAt: Date.now(),
+  };
 };
 
-const key2 = {
-  spaceId: 'space1',
-  networkId: 'testnet',
-  wallet: 'lantstool',
-  publicKey: 'ed25519:F2RJPxru3LrZyfDr8YVidkofo5Mk33eU5NRV9PF6FcWe',
-  privateKey:
-    'ed25519:vSycBnBa5XHZLAPHTRBSTAXaSsBYALrG6o2LvgfWLCZFLQ1iKBRpVBgWRCXdA48m9veMSVFQvho5RdxeXVGQdrr',
-  seedPhrase: 'float lock segment adult deliver dinner client reunion turtle wheel small spell',
-  importedAt: Date.now() + 1,
+const keyFromPrivateKey: any = (formValue: any, setValue: any) => {
+  const pk: any = KeyPair.fromString(formValue.privateKey).getPublicKey().toString();
+  setValue('publicKey', pk);
+  return {
+    publicKey: pk,
+    privateKey: formValue.privateKey,
+  };
 };
 
-const key3 = {
-  spaceId: 'space1',
-  networkId: 'testnet',
-  wallet: 'myNearWallet',
-  publicKey: 'ed25519:6a2jKyeLxy5nS8tTR6pLHdD1hc9eaEQdqyXFx1QboYVR',
-  privateKey: null,
-  seedPhrase: null,
-  importedAt: Date.now() + 2,
+const keyFromSeedPhrase: any = (formValue: any, setValue: any) => {
+  const phraseData: any = parseSeedPhrase(formValue.seedPhrase, formValue.derivationPath);
+  setValue('publicKey', phraseData.publicKey);
+  return phraseData;
 };
 
-const key4 = {
-  spaceId: 'space1',
-  networkId: 'mainnet',
-  wallet: 'myNearWallet',
-  publicKey: 'ed25519:73MDBFZMbJBNY4nnwZSdUy6TiQshsfR4zA6mLMJed8ot',
-  privateKey: null,
-  seedPhrase: null,
-  importedAt: Date.now() + 3,
-};
-
-const key5 = {
-  spaceId: 'space2',
-  networkId: 'testnet',
-  wallet: 'lantstool',
-  publicKey: 'ed25519:EU3JT4N2ahWEzVPfcjEutG89ZDfX1vcqeYz9N1DDest6',
-  privateKey:
-    'ed25519:4bHM2QyM1yAgZoVazdLudgJGPmeKQFJNEND3ygt6ajPe6UUZYUmsWUxEuiRgLqygcUsUEPqeAyreGoWX5XCAP8DG',
-  seedPhrase: 'chronic adjust pig pistol candy laugh rigid beauty movie high cruel conduct',
-  importedAt: Date.now() + 4,
-};
-
-export const addKey = effect(async ({ store }: any) => {
+export const addKey = effect(async ({ slice, store, payload }: any) => {
+  const { formValue, setValue, wallet, resetField } = payload;
+  const { derivationPath } = formValue;
   const [idb] = store.getEntities((store: any) => store.idb);
+  const createKey = slice.getActions((slice: any) => slice.createKey);
+  const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
-    await idb.put('keys', key1);
-    await idb.put('keys', key2);
-    await idb.put('keys', key3);
-    await idb.put('keys', key4);
-    await idb.put('keys', key5);
+    const data = derivationPath
+      ? keyFromSeedPhrase(formValue, setValue, resetField)
+      : keyFromPrivateKey(formValue, setValue, resetField);
+
+    const key = createdKey(data, wallet, networkId, spaceId, derivationPath);
+
+    await idb.put('keys', key);
+    createKey(key);
+
+    derivationPath ? resetField('seedPhrase') : resetField('privateKey');
   } catch (e) {
     console.log(e);
   }

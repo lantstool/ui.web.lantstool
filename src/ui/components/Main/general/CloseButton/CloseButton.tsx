@@ -1,10 +1,10 @@
 import cn from './CloseButton.module.css';
-import CloseIcon from '@mui/icons-material/Close';
+import { CloseIcon } from '../../../../assets/components/CloseIcon.tsx';
 
 export const CloseButton = ({ close }: any) => {
   return (
-    <button className={cn.btnClose} onClick={close}>
-      <CloseIcon />
-    </button>
+    <div className={cn.btnClose} onClick={close}>
+      <CloseIcon style={cn.icon} />
+    </div>
   );
 };

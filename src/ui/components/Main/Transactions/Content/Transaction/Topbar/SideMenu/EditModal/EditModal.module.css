@@ -22,7 +22,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 26px auto 26px;
-  grid-template-areas: '. a b';
+  grid-template-areas: '. a c';
   align-items: center;
 }
 

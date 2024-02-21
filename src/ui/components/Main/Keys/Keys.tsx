@@ -1,21 +1,21 @@
-import cn from './Keys.module.css';
-import { useStoreEffect } from "../../../../react-vault";
-import { useEffect } from "react";
+import { Outlet } from 'react-router-dom';
+import {useStoreEffect, useStoreState} from '../../../../react-vault';
+import { useEffect } from 'react';
+import {Empty} from "./Empty/Empty.tsx";
 
-export const Keys = () =>  {
-  const getKeys = useStoreEffect((store) => store.keys.getKeys);
-  const addKey = useStoreEffect((store) => store.keys.addKey);
+export const Keys = () => {
+  const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
+  const ids: string[] = useStoreState((store: any) => store.keys.ids);
 
   useEffect(() => {
     getKeys();
   }, []);
 
+  if (ids.length === 0) return <Empty/>
+
   return (
-    <div className={cn.container}>
-      KeyVault
-      <div>
-        <button type="button" onClick={addKey}>Add Key</button>
-      </div>
+    <div>
+      <Outlet />
     </div>
   );
 };

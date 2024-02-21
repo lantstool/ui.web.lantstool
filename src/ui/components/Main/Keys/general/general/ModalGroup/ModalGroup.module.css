@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 436px;
+  height: 540px;
+  padding: 28px 32px 32px 32px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: calc(50%);
+  left: calc(50% + 125px);
+  transform: translate(-50%, -50%);
+}
+.btnGroup {
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: 'a b c';
+  align-items: center;
+}
+
+.title {
+  grid-area: b;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  align-items: center;
+  justify-self: center;
+}
+
+.prevBtn {
+  grid-area: a;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.icon{
+  stroke: #D3D3D3;
+  fill: #D3D3D3;
+}
+
+.icon:hover{
+  stroke: #ABABAB;
+  fill: #ABABAB;
+}

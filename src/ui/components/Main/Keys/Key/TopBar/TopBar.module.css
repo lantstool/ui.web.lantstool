@@ -1,0 +1,34 @@
+.container {
+  grid-area: a;
+  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
+  background: var(--Color-Green-300);
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 24px;
+}
+
+.link {
+  height: 24px;
+}
+
+.icon {
+  stroke: #87b19e;
+  fill: #87b19e;
+}
+
+.icon:hover {
+  stroke: #ababab;
+  fill: #ababab;
+}
+
+.title {
+  color: var(--Text-Dark);
+  font-size: var(--Font-Size-H2);
+  font-style: normal;
+  font-weight: var(--Font-Weight-600);
+}
