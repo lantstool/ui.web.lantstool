@@ -33,10 +33,12 @@
 
 .buttonWrapper {
   display: flex;
+  justify-content: space-between;
+  width: 52px;
 }
 
 .hide {
-  color: #081c15;
+  color: var(--Text-Dark);
   font-weight: 600;
   max-width: 650px;
   height: 38px;
