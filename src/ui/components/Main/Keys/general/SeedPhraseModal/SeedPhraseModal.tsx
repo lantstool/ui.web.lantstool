@@ -6,7 +6,6 @@ import cn from './SeedPhraseModal.module.css';
 import addIcon from '../../../../../assets/addIcon.svg';
 import { createSchema } from './schema.ts';
 import { parseSeedPhrase, KEY_DERIVATION_PATH } from 'near-seed-phrase';
-import { useEffect } from 'react';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextAreaGroup } from '../../../../general/TextAreaGroup/TextAreaGroup.tsx';
