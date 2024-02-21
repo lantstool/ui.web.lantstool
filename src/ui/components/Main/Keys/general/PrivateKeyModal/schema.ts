@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { KeyPair } from 'near-api-js';
 
-const secretKeySize = (value: any) => {
+const isValidPublicKey = (value: any) => {
   try {
     return KeyPair.fromString(value).getPublicKey().toString();
   } catch {
@@ -15,8 +15,8 @@ export const createSchema: any = (records: any) => {
     privateKey: yup
       .string()
       .required('Empty field')
-      .test('matches', 'Bad private key size', function (value): any {
-        return secretKeySize(value);
+      .test('matches', "Can't generate Key Pair from provided private key", function (value): any {
+        return isValidPublicKey(value);
       })
       .test('matches', 'This key already exists', function (value) {
         return !list.find((el: any) => el.privateKey === value);

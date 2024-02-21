@@ -5,7 +5,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import cn from './SeedPhraseModal.module.css';
 import addIcon from '../../../../../assets/addIcon.svg';
 import { createSchema } from './schema.ts';
-import { parseSeedPhrase, KEY_DERIVATION_PATH } from 'near-seed-phrase';
+import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
@@ -41,11 +41,8 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     setStep('selectImport');
   };
 
-
   const onSubmit = (data: any) => {
-    const phraseData: any = parseSeedPhrase(data.seedPhrase,derivationPath);
-    setValue('publicKey', phraseData.publicKey);
-    addKey({ data: phraseData, wallet: 'lantstool', derivationPath });
+    addKey({ data, wallet: 'lantstool', derivationPath, setValue });
     resetField('seedPhrase');
   };
 

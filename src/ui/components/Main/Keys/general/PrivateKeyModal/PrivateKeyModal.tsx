@@ -7,14 +7,12 @@ import { createSchema } from './schema.ts';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { Button } from '../../../general/Button/Button.tsx';
 import addIcon from '../../../../../assets/addIcon.svg';
-import { KeyPair } from 'near-api-js';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.tsx';
 
 export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
   const addKey = useStoreEffect((store: any) => store.keys.addKey);
   const records = useStoreState((store: any) => store.keys.records);
   const schema = createSchema(records);
-
 
   const form = useForm({
     resolver: yupResolver(schema),
@@ -41,16 +39,7 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
   };
 
   const onSubmit = (data: any) => {
-    const pk = KeyPair.fromString(data.privateKey).getPublicKey().toString();
-    setValue('publicKey', pk);
-    addKey({
-      data: {
-        publicKey: data.publicKey,
-        privateKey: data.privateKey,
-        seedPhrase: null,
-      },
-      wallet: 'lantstool',
-    });
+    addKey({ data, wallet: 'lantstool', setValue });
     resetField('privateKey');
   };
 
@@ -68,11 +57,11 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
           </h2>
           <div className={cn.privateWrapper}>
             <TextareaGroup
-                register={register}
-                name="privateKey"
-                rows={4}
-                errors={errors?.privateKey?.message}
-                label="Private key"
+              register={register}
+              name="privateKey"
+              rows={4}
+              errors={errors?.privateKey?.message}
+              label="Private key"
             />
           </div>
           <MessageGroup

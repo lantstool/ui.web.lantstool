@@ -1,6 +1,6 @@
 import { EditorView } from '@uiw/react-codemirror';
 
-export const theme = (errors) =>
+export const theme = (errors:any) =>
   EditorView.theme({
     '&': {
       color: '#214131',
