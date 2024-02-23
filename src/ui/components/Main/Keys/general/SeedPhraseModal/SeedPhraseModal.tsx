@@ -1,4 +1,4 @@
-import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.tsx';
 import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
 import { Button } from '../../../general/Button/Button.tsx';
 import { useForm, useWatch } from 'react-hook-form';

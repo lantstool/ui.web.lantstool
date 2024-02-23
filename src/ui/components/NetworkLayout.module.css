@@ -18,13 +18,16 @@
 :root {
   --Border-Radius-3: 16px;
   --Color-Green-300: #dbf0e6;
+  --Color-Green-400: #cceadd;
   --Color-Olive-300: #87b19e;
   --Color-Grey-100: #ababab;
   --Text-Dark: #153325;
   --Box-Shadow-025: 0 0 5px 0 rgba(0, 0, 0, 0.25);
   --Spacing-8: 24px;
-  --Card-Bar: #E9F6F0;
-  --Font-Size-H1:18px;
-  --Font-Size-H2:16px;
+  --Card-Bar: #e9f6f0;
+  --Font-Size-H1: 18px;
+  --Font-Size-H2: 16px;
   --Font-Weight-600: 600;
+  --Color-Green-1700: #327b5a;
+  --Color-Green-1500: #3E986F;
 }

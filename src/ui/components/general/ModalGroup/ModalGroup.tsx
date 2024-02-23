@@ -1,7 +1,7 @@
-import { Modal } from '../../../../../general/Modal/Modal.tsx';
+import { Modal } from '../Modal/Modal.tsx';
 import cn from './ModalGroup.module.css';
-import { CloseButton } from '../../../../general/CloseButton/CloseButton.tsx';
-import { BackIcon } from '../../../../../../assets/components/BackIcon.tsx';
+import { CloseButton } from '../../Main/general/CloseButton/CloseButton.tsx';
+import { BackIcon } from '../../../assets/components/BackIcon.tsx';
 
 export const ModalGroup = ({ children, isOpen, closeModal, prevStep, text }: any) => {
   return (
