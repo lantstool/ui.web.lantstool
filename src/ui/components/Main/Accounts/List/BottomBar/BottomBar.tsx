@@ -5,7 +5,7 @@ import cn from './BottomBar.module.css';
 export const BottomBar = ({ openModal }) => {
   return (
     <div className={cn.bottom}>
-      <Button text="Import key" onClick={openModal} src={addIcon} style="secondary" />
+      <Button text="Import account" onClick={openModal} src={addIcon} style="secondary" />
     </div>
   );
 };

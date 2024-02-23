@@ -65,7 +65,7 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
           />
         </div>
         <div className={cn.button}>
-          <Button text="Import key" type="submit" src={addIcon} style="secondary" />
+          <Button text="Import" type="submit" src={addIcon} style="secondary" />
         </div>
       </form>
     </ModalGroup>
