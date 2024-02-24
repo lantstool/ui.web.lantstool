@@ -10,8 +10,8 @@ const getAccount = (spaceId: any, networkId: any, accountId: any, accountName: a
     contract: {
       name: null,
       methods: {
-        change: null, //array
-        view: null, //array
+        change: [],
+        view: [],
       },
     },
   };
