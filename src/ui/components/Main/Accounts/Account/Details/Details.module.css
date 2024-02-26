@@ -1,0 +1,12 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 25px;
+}
+
+.title {
+  color: var(--Text-Dark);
+  font-size: 18px;
+  font-weight: 600;
+}

@@ -1,0 +1,35 @@
+.topbar {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: 24px 25px auto 25px 24px;
+  align-items: center;
+  grid-template-areas: '. a b c .';
+  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
+  background-color: var(--Color-Green-300);
+}
+
+.btnBack {
+  grid-area: a;
+}
+
+.icon {
+  stroke: var(--Color-Olive-300);
+  fill: var(--Color-Olive-300);
+}
+
+.icon:hover {
+  stroke: var(--Color-Grey-100);
+  fill: var(--Color-Grey-100);
+}
+
+.title {
+  grid-area: b;
+  color: var(--Text-Dark);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sideMenu {
+  grid-area: c;
+}

@@ -1,0 +1,24 @@
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+.title {
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.data {
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -1,7 +1,8 @@
 import cn from './Account.module.css';
 import { Link, useParams, Outlet } from 'react-router-dom';
-import { useStoreEffect } from "../../../../../react-vault";
-import { useLoader } from "../../../../../store/hooks/useLoader.ts";
+import { useStoreEffect } from '../../../../../react-vault';
+import { useLoader } from '../../../../../store/hooks/useLoader.ts';
+import { TopBar } from './TopBar/TopBar.tsx';
 
 export const Account = () => {
   const { accountId } = useParams();
@@ -9,17 +10,21 @@ export const Account = () => {
   const [isLoading] = useLoader(() => onMountAccount(accountId));
 
   if (isLoading) return null;
+
   return (
     <div className={cn.account}>
-      <div className={cn.topbar}>
-        <Link to="..">Back</Link>
-        <span>{accountId}</span>
-      </div>
+      <TopBar accountId={accountId} />
       <div className={cn.main}>
         <div className={cn.sidebar}>
-          <Link to="general">General</Link>
-          <Link to="keys">Keys</Link>
-          <Link to="contract">Contract</Link>
+          <Link className={cn.link} to="details">
+            Details
+          </Link>
+          <Link className={cn.link} to="keys">
+            Keys
+          </Link>
+          <Link className={cn.link} to="contract">
+            Contract
+          </Link>
         </div>
         <div className={cn.content}>
           <Outlet />

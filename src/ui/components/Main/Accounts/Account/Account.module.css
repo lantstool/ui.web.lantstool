@@ -8,33 +8,41 @@
     'b';
 }
 
-.topbar {
-  grid-area: a;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  background-color: #DBF0E6;
-}
-
 .main {
   grid-area: b;
-  display: grid;
-  grid-template-columns: 200px auto;
-  grid-template-rows: 100%;
-  grid-template-areas:
-    'a b';
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar {
-  grid-area: a;
   display: flex;
-  flex-direction: column;
+  padding: 12px 20px;
+  justify-content: center;
   align-items: center;
-  border-right: 1px solid gainsboro;
+  gap: 4px;
+  align-self: stretch;
+  border-bottom: 1px solid var(--Color-Green-400);
+}
+
+.link {
+  width: 120px;
+  padding: 8px 0;
+  text-align: center;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.link:hover {
+  background-color: var(--Color-Green-200);
+  box-shadow: var(--Box-Shadow-025);
+  border-radius: var(--Border-Radius-2);
 }
 
 .content {
   grid-area: b;
+  max-width: 850px;
+  width: 100%;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  align-self: center;
 }

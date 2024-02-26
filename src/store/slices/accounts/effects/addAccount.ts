@@ -5,7 +5,7 @@ const getAccount = (spaceId: any, networkId: any, accountId: any, accountName: a
     spaceId,
     networkId,
     accountId,
-    accountName,
+    accountName: accountName ? accountName : null,
     importedAt: Date.now() + 1,
     contract: {
       name: null,
