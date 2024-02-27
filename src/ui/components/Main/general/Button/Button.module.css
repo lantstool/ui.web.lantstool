@@ -1,30 +1,37 @@
 .button {
-  height: 40px;
   display: flex;
-  align-items: center;
+  justify-content: center;
   align-self: center;
-  padding: 0 30px;
-  border-radius: 10px;
-  color: #ffffff;
-  background-color: #438668;
+  align-items: center;
+  gap: var(--Spacing-3);
+  margin: 0;
+  padding: var(--Spacing-5) var(--Spacing-9);
+  border-radius: 8px;
+  background: var(--Button-Primary);
   cursor: pointer;
 }
+
 .button:hover {
-  background-color: #7dd7b3;
+  background-color: var(--Button-Hover);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 }
+
 .primary {
   border: 2px solid #d4ffeb;
 }
+
 .secondary {
   border: none;
 }
+
 .text {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
+  color: #fff;
 }
+
 .icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
+  width: 16px;
+  height: 16px;
 }

@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: center;
-
 }
 
 .wrapper {
@@ -15,8 +14,8 @@
     'b';
   box-shadow: var(--Box-Shadow-025);
   border-radius: var(--Border-Radius-3);
+  background-color: white;
 }
-
 
 .body {
   grid-area: b;
@@ -30,7 +29,7 @@
   text-align: center;
 }
 
-.walletWrapper{
+.walletWrapper {
   margin: 28px 32px;
 }
 
@@ -43,11 +42,10 @@
   line-height: normal;
 }
 
-.wallet{
+.wallet {
   margin: 0;
 }
 
 .wallet:first-letter {
   text-transform: uppercase;
 }
-

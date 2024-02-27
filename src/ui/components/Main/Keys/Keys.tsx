@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import {useStoreEffect, useStoreState} from '../../../../react-vault';
+import { useStoreEffect, useStoreState } from '../../../../react-vault';
 import { useEffect } from 'react';
-import {Empty} from "./Empty/Empty.tsx";
+import { Empty } from './Empty/Empty.tsx';
+import cn from './Keys.module.css';
 
 export const Keys = () => {
   const getKeys = useStoreEffect((store: any) => store.keys.getKeys);
@@ -11,10 +12,10 @@ export const Keys = () => {
     getKeys();
   }, []);
 
-  if (ids.length === 0) return <Empty/>
+  if (ids.length === 0) return <Empty />;
 
   return (
-    <div>
+    <div className={cn.container}>
       <Outlet />
     </div>
   );
