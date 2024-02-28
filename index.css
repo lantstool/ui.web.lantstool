@@ -1,0 +1,45 @@
+:root {
+  --Border-Radius-2: 12px;
+  --Border-Radius-3: 16px;
+  --Color-Green-200: #e9f6f0;
+  --Color-Green-300: #dbf0e6;
+  --Color-Green-400: #cceadd;
+  --Color-Green-1700: #327b5a;
+  --Color-Green-1500: #3e986f;
+  --Color-Olive-300: #87b19e;
+  --Color-Grey-100: #ababab;
+  --Text-Dark: #153325;
+  --Box-Shadow-025: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  --Card-Bar: #e9f6f0;
+  --Font-Size-H1: 18px;
+  --Font-Size-H2: 16px;
+  --Font-Weight-600: 600;
+  --Button-Primary: #44a77a;
+  --Button-Hover: #58bb8e;
+  --Spacing-3: 4px;
+  --Spacing-5: 12px;
+  --Spacing-8: 24px;
+  --Spacing-9: 28px;
+}
+
+body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  margin: 0;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4eb284;
+}
