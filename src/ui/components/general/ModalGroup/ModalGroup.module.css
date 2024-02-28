@@ -4,14 +4,15 @@
   width: 436px;
   height: 540px;
   padding: 28px 32px 32px 32px;
-  border-radius: 8px;
+  border-radius: var(--Border-Radius-3);
   background-color: #ffffff;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: calc(50%);
   left: calc(50% + 125px);
   transform: translate(-50%, -50%);
 }
+
 .btnGroup {
   display: grid;
   grid-template-columns: 26px auto 26px;

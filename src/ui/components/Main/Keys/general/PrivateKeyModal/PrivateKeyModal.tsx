@@ -1,4 +1,4 @@
-import { ModalGroup } from '../general/ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.tsx';
 import cn from './PrivateKeyModal.module.css';
 import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
 import { useForm, useWatch } from 'react-hook-form';
