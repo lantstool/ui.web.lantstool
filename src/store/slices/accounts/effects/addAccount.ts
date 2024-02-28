@@ -5,13 +5,13 @@ const getAccount = (spaceId: any, networkId: any, accountId: any, accountName: a
     spaceId,
     networkId,
     accountId,
-    accountName: accountName ? accountName : null,
-    importedAt: Date.now() + 1,
+    accountName,
+    importedAt: Date.now(),
     contract: {
       name: null,
       methods: {
-        change: null, //array
-        view: null, //array
+        change: [],
+        view: [],
       },
     },
   };
