@@ -10,6 +10,6 @@ export const createSchema = (records: any) => {
       .test('matches', 'This account already exists', (value) => {
         return !list.find((el: any) => el.accountId === value);
       }),
-    accountName: yup.string().max(84),
+    accountName: yup.string().required('Empty field').max(84),
   });
 };

@@ -13,7 +13,7 @@ export const Empty = () => {
   return (
     <div className={cn.container}>
       <ImportAccount isOpen={isOpen} setOpen={setOpen} />
-      <Button text="Import account" onClick={openModal} src={addIcon} style="secondary" />
+      <Button text="Import" onClick={openModal} src={addIcon} style="secondary" />
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const AccountsList = () => {
       </div>
       <div className={cn.list}>
         {ids.map((accountId: any) => (
-          <Link key={accountId} className={cn.item} to={`${accountId}/general`}>
+          <Link key={accountId} className={cn.item} to={`${accountId}/details`}>
             <p className={cn.subtitle}>{records[accountId].accountId}</p>
             <p className={cn.subtitle}>{records[accountId].accountName}</p>
             {records[accountId].contract.name && (
