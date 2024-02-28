@@ -1,6 +1,7 @@
 import cn from './AccountsList.module.css';
 import { Link } from 'react-router-dom';
 import { useStoreState } from '../../../../../../react-vault';
+import { CopyButton } from '../../../general/CopyButton/CopyButton.tsx';
 
 export const AccountsList = () => {
   const ids: string[] = useStoreState((store: any) => store.accounts.ids);
@@ -18,7 +19,12 @@ export const AccountsList = () => {
           <Link key={accountId} className={cn.item} to={`${accountId}/general`}>
             <p className={cn.subtitle}>{records[accountId].accountId}</p>
             <p className={cn.subtitle}>{records[accountId].accountName}</p>
-            <p className={cn.subtitle}>{records[accountId].contract.name}</p>
+            {records[accountId].contract.name && (
+              <div className={cn.contract}>
+                <p className={cn.subtitle}>{records[accountId].contract.name}</p>
+                <CopyButton text={records[accountId].contract.name} />
+              </div>
+            )}
           </Link>
         ))}
       </div>

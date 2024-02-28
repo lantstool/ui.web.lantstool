@@ -8,6 +8,7 @@ export const CopyButton = ({ text }: any) => {
 
   const copyTextToClipboard = (e: any) => {
     e.stopPropagation();
+    e.preventDefault();
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => {
