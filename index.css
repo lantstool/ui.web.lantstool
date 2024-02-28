@@ -30,13 +30,16 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
 }
+
 a {
   text-decoration: none;
 }
+
 ::-webkit-scrollbar {
   margin: 0;
   width: 3px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #4eb284;
 }
