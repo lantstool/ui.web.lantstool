@@ -1,0 +1,23 @@
+.textarea {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  border: 1px solid #40916C;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  background-color: inherit;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  height: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+  word-break: break-all;
+}
+
+.errors{
+  border: 1px solid red;
+}

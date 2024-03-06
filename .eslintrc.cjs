@@ -15,5 +15,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     "@typescript-eslint/ban-ts-comment": 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

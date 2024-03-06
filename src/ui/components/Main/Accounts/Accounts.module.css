@@ -1,0 +1,16 @@
+.accounts {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 25px;
+}
+
+.card {
+  max-width: 1600px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: var(--Border-Radius-3);
+  box-shadow: var(--Box-Shadow-025);
+}

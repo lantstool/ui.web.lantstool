@@ -1,7 +1,7 @@
-import { Modal } from '../../../../../../general/Modal/Modal.tsx';
+import { Modal} from "../../../../../../general/Modal/Modal.tsx";
 import cn from './ModalGroup.module.css';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import { CloseButton } from '../../../../../general/CloseButton/CloseButton.tsx';
+import { CloseButton} from "../../../../../general/CloseButton/CloseButton.tsx";
 
 export const ModalGroup = ({ children, isOpen, closeModal, prevStep }: any) => {
   return (

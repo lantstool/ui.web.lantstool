@@ -1,0 +1,39 @@
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 32px 34px 24px 145px 85px 70px 64px 20px 40px;
+  grid-template-areas:
+    '.'
+    'a'
+    '.'
+    'b'
+    'c'
+    'd'
+    'e'
+    '.'
+    'f';
+}
+
+.title {
+  grid-area: a;
+  margin: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.seedWrapper {
+  grid-area: b;
+}
+
+.derivationWrapper {
+  grid-area: c;
+}
+
+.buttonWrapper {
+  grid-area: f;
+  display: flex;
+  flex-direction: column;
+}

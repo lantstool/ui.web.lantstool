@@ -1,4 +1,4 @@
-import cn from '../Sidebar.module.css';
+import cn from './Network.module.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Menu, MenuItem } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
@@ -47,7 +47,7 @@ export const Network = () => {
   return (
     <>
       <div className={cn.subtitleGroup} onClick={handleClick}>
-        <h4 className={cn.subtitle}>{current.name}</h4>
+        <h4 className={cn.networkId}>{current.networkId}</h4>
         <KeyboardArrowDownIcon style={{ color: 'white' }} />
       </div>
       <Menu
@@ -60,7 +60,7 @@ export const Network = () => {
       >
         {items.map((network: any) => (
           <MenuItem key={network.networkId} onClick={() => handleMenuItemClick(network.networkId)}>
-            {network.name}
+            {network.networkId}
           </MenuItem>
         ))}
       </Menu>

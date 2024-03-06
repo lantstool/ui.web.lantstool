@@ -5,7 +5,7 @@ export const getNetwork = effect(async ({ payload: networkId, slice, store }: an
   const setCurrentNetwork = slice.getActions((slice: any) => slice.setCurrentNetwork);
 
   try {
-    const network = await idb.get('networks', networkId);
+    const network = await idb.get('networks', ['space1', networkId]);
     setCurrentNetwork(network);
   } catch (e) {
     console.log(e);

@@ -1,12 +1,12 @@
 .input {
-  height: 48px;
+  height: 52px;
   width: 100%;
   position: relative;
   display: inline-flex;
   border: 1px solid #40916C;
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
   background-color: inherit;
   box-sizing: border-box;
   padding: 5px 15px;
@@ -17,14 +17,19 @@
 }
 
 .error {
-  color: red;
-  font-size: 14px;
-  text-shadow: 0 0 5px black;
-  margin-top: 4px;
+  height: 26px;
+  color: #ef2929;
+  font-size: 10px;
+  font-weight: 300;
 }
 
 .textarea {
+  font-family: 'Montserrat', sans-serif;
   height: auto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   resize: none;
   word-break: break-all;
 }

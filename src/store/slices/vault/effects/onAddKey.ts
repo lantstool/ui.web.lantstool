@@ -1,5 +1,6 @@
 import { effect } from '../../../../react-vault';
 import { JsonRpcProvider } from 'near-api-js/lib/providers';
+import { toCamelCase } from '../../../helpers/toCamelCase.ts';
 
 export const onAddKey = effect(async ({ payload, slice, store }: any) => {
   const { publicKey, privateKey, seedPhrase, accountId, storageType } = payload;
@@ -18,12 +19,15 @@ export const onAddKey = effect(async ({ payload, slice, store }: any) => {
       public_key: publicKey,
     });
 
+    const permission =
+      response.permission === 'FullAccess' ? 'FullAccess' : toCamelCase(response.permission);
+
     const keyData = {
       accountId,
       publicKey,
       privateKey,
       seedPhrase,
-      permission: response.permission,
+      permission,
       storageType,
     };
 

@@ -10,7 +10,7 @@ const getType = (style: any) => {
   return types[style] === undefined ? types['primary'] : types[style];
 };
 
-export const Button = ({ text, onClick, src, style, type }: any) => {
+export const Button = ({ text, onClick, src, style, type = 'button' }: any) => {
   const classColor = getType(style);
 
   return (

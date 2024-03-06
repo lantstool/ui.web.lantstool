@@ -2,11 +2,10 @@ import { action, effect } from '../../../react-vault';
 import { matchPath } from 'react-router-dom';
 import { get, set } from 'lodash';
 import { current } from 'immer';
-import { getInitDataFromLocalStorage } from "./getInitDataFromLocalStorage.ts";
+import { getInitDataFromLocalStorage } from './getInitDataFromLocalStorage.ts';
 
 const saveDynamicRoute = (slice: any, pattern: string, pathname: string, pathToSave: any) => {
   const match = matchPath(pattern, pathname);
-  console.log('saveDynamicRoute', match);
   if (!match) return;
   slice.routes = set(slice.routes, pathToSave(match.params), match.pathname);
 };
@@ -15,7 +14,7 @@ const splitPathname = (pathname: string) => pathname.substring(1).replaceAll('/'
 
 export const navigation = {
   route: null,
-  routes: { a: 0 },
+  routes: {},
 
   setCurrentLocation: action(({ payload: location, slice }) => {
     const { pathname } = location;
@@ -37,20 +36,22 @@ export const navigation = {
 
     saveDynamicRoute(
       slice,
-      '/:currentNetworkId/vault/:accountId',
+      '/:currentNetworkId/calls/:callId',
       pathname,
-      ({ currentNetworkId }) => `${currentNetworkId}.vault.route`,
+      ({ currentNetworkId }) => `${currentNetworkId}.calls.route`,
+    );
+
+    saveDynamicRoute(
+      slice,
+      '/:currentNetworkId/contracts/:contractId',
+      pathname,
+      ({ currentNetworkId }) => `${currentNetworkId}.contracts.route`,
     );
 
     const nav = current(slice);
-    console.log('nav', nav);
     // TODO move to effect
     setTimeout(
-      () =>
-        localStorage.setItem(
-          '[Near-Devtools][0][navigation]',
-          JSON.stringify(nav),
-        ),
+      () => localStorage.setItem('[Near-Devtools][0][navigation]', JSON.stringify(nav)),
       0,
     );
   }),

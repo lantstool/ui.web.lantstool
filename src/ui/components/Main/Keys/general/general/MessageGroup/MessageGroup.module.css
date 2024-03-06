@@ -1,0 +1,25 @@
+.message {
+    grid-area: e;
+}
+
+.subtitle {
+    margin: 0 10px;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    white-space: break-spaces;
+    color: #327b5a;
+}
+
+.note{
+    color: #153325;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.link{
+    color: #44A77A;
+}

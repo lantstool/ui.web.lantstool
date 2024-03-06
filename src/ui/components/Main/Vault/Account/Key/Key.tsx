@@ -10,7 +10,7 @@ export const Key = ({ keyData }: any) => {
   const onRemoveKey = useStoreEffect((store: any) => store.vault.onRemoveKey);
   const permissions = permission === 'FullAccess' ? 'Full access' : 'Function call';
   const permissionType = permission === 'FullAccess' ? 'fullAccess' : 'functionCall';
-  const receiverId = permission !== 'FullAccess' ? `: ${permission?.FunctionCall.receiver_id}` : '';
+  const receiverId = permission !== 'FullAccess' ? `: ${permission?.functionCall.receiverId}` : '';
 
   const removeKey = () => {
     onRemoveKey(keyData);
