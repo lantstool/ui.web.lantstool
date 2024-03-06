@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.title{
+  margin: 32px 0 10px 0;
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btnWrapper{
+  margin-top: 10px;
+}

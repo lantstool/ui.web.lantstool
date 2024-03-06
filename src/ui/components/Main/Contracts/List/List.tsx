@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useStoreState } from '../../../../../react-vault';
 import { Item } from './Item/Item.tsx';
 import cn from './List.module.css';
-import { CreateCall } from '../general/CreateCall/CreateCall.tsx';
+import { CreateContract } from '../general/CreateContract/CreateContract.tsx';
 
 export const List = ({ ids }: any) => {
   const records: any = useStoreState((store: any) => store.contracts.records);
@@ -10,6 +10,7 @@ export const List = ({ ids }: any) => {
 
   return (
     <div className={cn.container}>
+      <h1 className={cn.title}>Contracts</h1>
       <div className={cn.list}>
         {ids.map((contractId: any) => (
           <Item
@@ -20,7 +21,9 @@ export const List = ({ ids }: any) => {
           />
         ))}
       </div>
-      <CreateCall styles={cn.modalContainer} />
+      <div className={cn.bottom}>
+        <CreateContract styles={cn.modalContainer} />
+      </div>
     </div>
   );
 };

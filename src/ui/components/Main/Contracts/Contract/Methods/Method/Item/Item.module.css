@@ -1,0 +1,37 @@
+.container {
+  max-width: 754px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 55px auto 55px;
+  grid-template-areas: '. a b';
+  gap: var(--Spacing-6);
+}
+
+.wrapper {
+  grid-area: a;
+  max-width: 616px;
+  width: 100%;
+}
+
+.deleteBtn {
+  grid-area: b;
+  align-self: center;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+}
+
+.icon {
+  fill: var(--Color-Grey-100);
+  width: 26px;
+  height: 26px;
+}
+
+.deleteBtn:hover {
+  .icon {
+    fill: var(--Color-Grey-200);
+    cursor: pointer;
+  }
+}

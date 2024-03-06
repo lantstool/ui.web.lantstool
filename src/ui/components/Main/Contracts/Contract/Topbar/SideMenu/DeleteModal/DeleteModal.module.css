@@ -22,4 +22,6 @@
   align-items: center;
 }
 
-
+.closeWrapper{
+  grid-area: b;
+}

@@ -7,6 +7,10 @@ const generateCall = (name: string, spaceId: string) => {
     spaceId,
     contractId,
     name,
+    methods: {
+      change: [],
+      view: [],
+    },
     createdAt: Date.now(),
   };
 };

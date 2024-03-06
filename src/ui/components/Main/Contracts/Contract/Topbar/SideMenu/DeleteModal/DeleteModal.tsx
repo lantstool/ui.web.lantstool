@@ -7,10 +7,8 @@ import { Subtitle } from '../../../../../general/Subtitle/Subtitle.tsx';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../../general/Button/Button.tsx';
 
-export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
-  const onDeleteTransaction = useStoreEffect(
-    (store: any) => store.transactions.onDeleteTransaction,
-  );
+export const DeleteModal = ({ isOpen, contractId, setOpen }: any) => {
+  const deleteContract = useStoreEffect((store: any) => store.contracts.deleteContract);
   const navigate = useNavigate();
 
   const open = isOpen === 'deleteModal';
@@ -20,7 +18,7 @@ export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
   };
 
   const remove = () => {
-    onDeleteTransaction({ transactionId, navigate });
+    deleteContract({ contractId, navigate });
     setOpen(false);
   };
 
@@ -28,12 +26,14 @@ export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
     <Modal isOpen={open} close={closeModal}>
       <div className={cn.container}>
         <div className={cn.header}>
-          <Title text="Remove transaction" />
-          <CloseButton close={closeModal} />
+          <Title text="Remove Contract" />
+          <div className={cn.closeWrapper}>
+            <CloseButton close={closeModal} />
+          </div>
         </div>
         <Subtitle
-          text="Are you sure to remove this transaction? It will also remove all data from this
-          transaction."
+          text="Are you sure to remove this contract? It will also remove all data from this
+          contract."
         />
         <Button text="Remove" onClick={remove} style="secondary" />
       </div>
