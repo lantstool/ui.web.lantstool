@@ -7,7 +7,8 @@ export const Result = ({ result }: any) => {
   return (
     <div className={cn.result}>
       <h3>Result:</h3>
-      <pre style={{ textWrap: "wrap" }}>{getFormattedJSON(result)}</pre>
+      {/*  @ts-ignore */}
+      <pre style={{ textWrap: 'wrap' }}>{getFormattedJSON(result)}</pre>
     </div>
   );
 };
