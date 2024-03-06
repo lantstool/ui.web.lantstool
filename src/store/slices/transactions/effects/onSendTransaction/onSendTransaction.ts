@@ -8,16 +8,17 @@ const getSignerPrivateKey = async (publicKey: string, getKey: any) => {
   return key.privateKey;
 };
 
-export const onSendTransaction = effect(async ({ payload: form, store }: any) => {
+export const onSendTransaction = effect(async ({ payload, store }: any) => {
+  const { formValues, setResult } = payload;
   const { networkId, url } = store.getState((store: any) => store.networks.current);
   const getKey = store.getEffects((store: any) => store.keys.getKey);
 
   try {
     const provider = new JsonRpcProvider({ url: url.rpc });
-    const transaction = await createTx({ provider, form });
+    const transaction = await createTx({ provider, form: formValues });
     console.log(transaction);
 
-    const privateKey = await getSignerPrivateKey(form.signerKey.value, getKey);
+    const privateKey = await getSignerPrivateKey(formValues.signerKey.value, getKey);
 
     const signedTx = await signTx({
       transaction,
@@ -25,10 +26,11 @@ export const onSendTransaction = effect(async ({ payload: form, store }: any) =>
       privateKey,
     });
 
-    const a = await provider.sendTransaction(signedTx);
-    console.log(a);
-    console.log(a.status);
+    const result = await provider.sendTransaction(signedTx);
+    console.log(result);
+    setResult(result.status)
   } catch (e) {
     console.log(e);
+    setResult(`Error: ${e.message}`)
   }
 });

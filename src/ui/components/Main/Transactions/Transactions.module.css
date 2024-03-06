@@ -1,11 +1,16 @@
 .transactions {
   height: 100%;
-  display: grid;
-  grid-template-columns: 300px 20px auto 20px;
-  grid-template-rows: 10px calc(99vh - 30px) 10px;
-  grid-template-areas:
-    'a . . .'
-    'a . b .'
-    'a . . .';
+  display: flex;
+  gap: 24px;
+  padding: 0 24px;
+  justify-content: center;
+  /*height: 100%;*/
+  /*display: grid;*/
+  /*grid-template-columns: 300px 20px auto 20px;*/
+  /*grid-template-rows: 10px calc(99vh - 30px) 10px;*/
+  /*grid-template-areas:*/
+  /*  'a . . .'*/
+  /*  'a . b .'*/
+  /*  'a . . .';*/
 }
 

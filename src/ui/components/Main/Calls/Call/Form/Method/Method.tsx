@@ -1,6 +1,6 @@
 import { Controller, useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
-import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { useEffect, useState } from 'react';
 import { selectStyles } from '../general/selectStyles.ts';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
@@ -44,7 +44,7 @@ export const Method = ({ form }: any) => {
         name="method"
         control={control}
         render={({ field }: any) => (
-          <Select
+          <CreatableSelect
             {...field}
             onChange={onChange(field)}
             isSearchable
