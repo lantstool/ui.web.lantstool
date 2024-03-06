@@ -1,6 +1,6 @@
 import { createMemoryRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { Transactions } from './components/Main/Transactions/Transactions.tsx';
-import { Content } from './components/Main/Transactions/Content/Content.tsx';
+import { Transaction } from './components/Main/Transactions/Transaction/Transaction.tsx';
 import { Networks } from './components/Main/Networks/Networks.tsx';
 import { RootLoader } from './components/RootLoader.tsx';
 import { NetworkLayout } from './components/NetworkLayout.tsx';
@@ -18,7 +18,7 @@ export const router = createMemoryRouter(
         {accounts}
         {contracts}
         <Route path="transactions" element={<Transactions />}>
-          <Route path=":transactionId" element={<Content />} />
+          <Route path=":transactionId" element={<Transaction />} />
         </Route>
         <Route path="calls" element={<Calls />}>
           <Route path=":callId" element={<Call />} />

@@ -1,3 +1,3 @@
 export const Keys = () => {
-  return <div>keys</div>;
+  return <div>Keys</div>;
 };
