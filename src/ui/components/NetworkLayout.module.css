@@ -3,7 +3,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 250px auto;
-  grid-template-rows: 8px auto 8px;
+  grid-template-rows: 8px calc(100vh - 16px) 8px;
   grid-template-areas:
     'a . '
     'a b '
@@ -13,4 +13,6 @@
 
 .main {
   grid-area: b;
+  height: 100%;
+  width: 100%;
 }

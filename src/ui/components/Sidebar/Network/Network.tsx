@@ -47,7 +47,7 @@ export const Network = () => {
   return (
     <>
       <div className={cn.subtitleGroup} onClick={handleClick}>
-        <h4 className={cn.subtitle}>{current.networkId}</h4>
+        <h4 className={cn.networkId}>{current.networkId}</h4>
         <KeyboardArrowDownIcon style={{ color: 'white' }} />
       </div>
       <Menu
