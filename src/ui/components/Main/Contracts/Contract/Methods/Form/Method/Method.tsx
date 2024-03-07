@@ -1,6 +1,6 @@
-import { Button } from '../../../../general/Button/Button.tsx';
+import { Button } from '../../../../../general/Button/Button.tsx';
 import { useFieldArray } from 'react-hook-form';
-import addIcon from '../../../../../../assets/addIcon.svg';
+import addIcon from '../../../../../../../assets/addIcon.svg';
 import cn from './Method.module.css';
 import { Item } from './Item/Item.tsx';
 

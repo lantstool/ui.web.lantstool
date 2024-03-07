@@ -5,23 +5,6 @@
   overflow: auto;
 }
 
-.btnWrapper {
-  display: flex;
-  margin: 32px 24px 0 24px;
-  padding: var(--Spacing-8) 0;
-  justify-content: center;
-  align-items: center;
-  gap: var(--Spacing-8);
-  border-top: var(--Spacing-1) solid var(--Color-Green-500);
-}
-
-.editWrapper {
-  margin-top: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .addWrapper {
   display: flex;
   flex-direction: column;
