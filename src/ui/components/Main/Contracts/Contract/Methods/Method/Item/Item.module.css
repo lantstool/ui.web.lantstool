@@ -3,14 +3,26 @@
   width: 100%;
   display: grid;
   grid-template-columns: 55px auto 55px;
-  grid-template-areas: '. a b';
-  gap: var(--Spacing-6);
+  grid-auto-rows: 52px 15px;
+  grid-template-areas:
+    '. a b'
+    '. c .';
+
 }
 
 .wrapper {
   grid-area: a;
   max-width: 616px;
   width: 100%;
+}
+
+.error {
+  grid-area: c;
+  height: 12px;
+  margin: 4px 0 0 0;
+  color: var(--Color-Red-500);
+  font-size: 10px;
+  font-weight: 500;
 }
 
 .deleteBtn {

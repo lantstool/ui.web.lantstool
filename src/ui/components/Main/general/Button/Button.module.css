@@ -7,21 +7,38 @@
   margin: 0;
   padding: var(--Spacing-5) var(--Spacing-9);
   border-radius: 8px;
-  background: var(--Button-Primary);
   cursor: pointer;
 }
 
-.button:hover {
-  background-color: var(--Button-Hover);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-}
-
 .primary {
+  background: var(--Button-Primary);
   border: 2px solid #d4ffeb;
 }
 
+.secondary:hover {
+  background-color: var(--Button-Hover);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
 .secondary {
+  background: var(--Button-Primary);
   border: none;
+}
+
+.outlined {
+  background: #fff;
+  border: var(--Spacing-1) solid var(--Color-Olive-300);
+}
+
+.outlined:hover {
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.textOutlined {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--Color-Olive-300);
 }
 
 .text {

@@ -2,29 +2,36 @@ import { Button } from '../../../../general/Button/Button.tsx';
 import { useFieldArray } from 'react-hook-form';
 import addIcon from '../../../../../../assets/addIcon.svg';
 import cn from './Method.module.css';
-import { createMethod } from './createMethod.ts';
 import { Item } from './Item/Item.tsx';
 
 export const Method = ({ type, edit, text, form }) => {
-  const { register, control } = form;
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = form;
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: type,
   });
 
-  const addMethod = () => createMethod(append);
+  const isShowTitle = fields.length > 0 || edit;
+
+  const addMethod = () => (errors?.[type] ? null : append({ methodName: '' }));
+
   const deleteMethod = (index: any) => remove(index);
 
   return (
     <div className={cn.container}>
-      {(fields.length > 0 || edit) && <h2 className={cn.title}>{`${text} Methods`}</h2>}
-      {fields.map((el: any, index: any) => (
+      {isShowTitle && <h2 className={cn.title}>{`${text} Methods`}</h2>}
+      {fields.map((field: any, index: any) => (
         <Item
-          key={el.methodId}
+          key={field.id}
           edit={edit}
           type={type}
           index={index}
+          errors={errors?.[type]?.[index]}
           deleteMethod={deleteMethod}
           register={register}
         />

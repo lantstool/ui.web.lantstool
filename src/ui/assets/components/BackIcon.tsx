@@ -1,16 +1,24 @@
 export const BackIcon = ({ style }) => {
   return (
-    <svg className={style} viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clipPath="url(#clip0_46_1069)">
+    <svg
+      className={style}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_965_413)">
         <path
-          d="M5.00001 16.5689C5.00001 17.4855 5.75001 18.2355 6.66667 18.2355H13.3333C14.25 18.2355 15 17.4855 15 16.5689V6.56887H5.00001V16.5689ZM6.66667 8.23553H13.3333V16.5689H6.66667V8.23553ZM12.9167 4.06887L12.0833 3.23553H7.91667L7.08334 4.06887H4.16667V5.73553H15.8333V4.06887H12.9167Z"
-          fill="white"
-          fillOpacity="0.7"
+          d="M12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23Z"
+          strokeWidth="2.5"
+          fill={'none'}
         />
+        <path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" strokeWidth="0.5" />
       </g>
       <defs>
-        <clipPath id="clip0_46_1069">
-          <rect width="20" height="20" fill="white" transform="translate(0 0.735535)" />
+        <clipPath id="clip0_965_413">
+          <rect width="24" height="24" fill="white" />
         </clipPath>
       </defs>
     </svg>

@@ -3,16 +3,16 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .title{
-  margin: 32px 0 10px 0;
+  margin: 32px 0 14px 0;
   color: var(--Text-Dark);
   font-size: 16px;
   font-weight: 600;
 }
 
 .btnWrapper{
-  margin-top: 10px;
+  margin-top: 14px;
 }
