@@ -1,15 +1,15 @@
 .inputGroup {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .inputGroup > label {
-    display: flex;
-    margin-bottom: 8px;
+  display: flex;
+  margin-bottom: 8px;
 }
 
 .error {
-    height: 26px;
-    color: #ef2929;
-    font-size: 10px;
-    font-weight: 300;
+  height: 26px;
+  color: var(--Color-Red-500);
+  font-size: 10px;
+  font-weight: 300;
 }

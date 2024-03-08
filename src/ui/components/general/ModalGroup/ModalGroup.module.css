@@ -36,6 +36,9 @@
   cursor: pointer;
 }
 
+.closeBtn{
+  grid-area: c;
+}
 
 .icon{
   stroke: #D3D3D3;
