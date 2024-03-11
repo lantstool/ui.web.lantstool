@@ -1,6 +1,6 @@
 import { effect } from '../../../../react-vault';
 
-export const addContract = effect(async ({ slice, store, payload }: any) => {
+export const updateContract = effect(async ({ slice, store, payload }: any) => {
   const { contractId, accountId } = payload;
   const [idb] = store.getEntities((store: any) => store.idb);
   const account = store.getState((store: any) => store.accounts.records[accountId]);
