@@ -1,5 +1,5 @@
 .topbar {
-  grid-area: a;
+  height: 72px;
   display: grid;
   grid-template-columns: 24px 25px auto 25px 24px;
   align-items: center;

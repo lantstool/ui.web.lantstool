@@ -12,7 +12,12 @@
 
 .primary {
   background: var(--Button-Primary);
-  border: 2px solid #d4ffeb;
+  border: none;
+}
+
+.primary:hover {
+  background-color: var(--Button-Hover);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .secondary:hover {

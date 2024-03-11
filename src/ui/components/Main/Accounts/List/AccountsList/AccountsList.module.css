@@ -18,7 +18,7 @@
 
 .list {
   display: flex;
-  height: calc(82vh - 14px);
+  height: calc(81vh - 15px);
   overflow-y: auto;
   flex-direction: column;
 }

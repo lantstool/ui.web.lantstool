@@ -1,0 +1,14 @@
+.link {
+  width: 120px;
+  padding: 8px 0;
+  text-align: center;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.active {
+  background-color: var(--Color-Green-200);
+  box-shadow: var(--Box-Shadow-025);
+  border-radius: var(--Border-Radius-2);
+}

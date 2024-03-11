@@ -1,8 +1,8 @@
-import { useStoreEffect } from '../../../../../../../react-vault';
+import {useStoreEffect, useStoreState} from '../../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './schema.ts';
+import { createSchema } from './schema.ts';
 import { Button } from '../../../../general/Button/Button.tsx';
 import { Modal as GeneralModal } from '../../../../../general/Modal/Modal.tsx';
 import { CloseButton } from '../../../../general/CloseButton/CloseButton.tsx';
@@ -13,6 +13,8 @@ import cn from './Modal.module.css';
 
 export const Modal = ({ isOpen, close, styles }: any) => {
   const createContract = useStoreEffect((store: any) => store.contracts.createContract);
+  const contracts = useStoreState((store:any) => store.contracts.records)
+  const schema = createSchema (contracts)
   const navigate = useNavigate();
 
   const {

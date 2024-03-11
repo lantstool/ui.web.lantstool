@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  width: 100%;
+  max-width: 1600px;
+  background-color: white;
+  border-radius: var(--Border-Radius-3);
+  box-shadow: var(--Box-Shadow-025);
 }
 
 .topbar {
-  height: 60px;
+  height: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
