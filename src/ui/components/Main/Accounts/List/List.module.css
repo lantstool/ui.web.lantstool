@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 100%;
   max-width: 1600px;
+  height: 100%;
   background-color: white;
   border-radius: var(--Border-Radius-3);
   box-shadow: var(--Box-Shadow-025);

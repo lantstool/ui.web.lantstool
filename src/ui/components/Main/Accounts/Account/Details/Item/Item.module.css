@@ -1,23 +1,26 @@
 .item {
-  display: flex;
+  display: grid;
   width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex: 1 0 0;
+  grid-template-columns: 1fr 1fr 1.8fr;
+  grid-template-areas: 'a . b';
 }
 
 .title {
+  grid-area: a;
   color: var(--Text-Dark);
   font-size: 16px;
   font-weight: 400;
 }
 
 .wrapper {
+  grid-area: b;
   display: flex;
+  justify-content: end;
   gap: 12px;
 }
 
 .data {
+  word-break: break-all;
   color: var(--Text-Dark);
   font-size: 16px;
   font-weight: 500;

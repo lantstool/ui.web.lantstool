@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: 32px 34px 24px 145px 85px 85px 64px 15px 40px;
+  grid-template-rows: 32px 34px 24px 145px 85px 80px 70px 15px 40px;
   grid-template-areas:
     '.'
     'a'
