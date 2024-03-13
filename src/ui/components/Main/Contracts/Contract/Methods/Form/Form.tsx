@@ -54,7 +54,7 @@ export const Form = ({
 
       {isEditMode && (
         <div className={cn.btnWrapper}>
-          <Button src={closeBtnGreen} text="Cansel" style="outlined" onClick={closeEdit} />
+          <Button src={closeBtnGreen} text="Cancel" style="outlined" onClick={closeEdit} />
           <Button src={saveIcon} text="Save" style="secondary" type="submit" />
         </div>
       )}

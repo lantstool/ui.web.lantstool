@@ -6,9 +6,11 @@ import { setAccounts } from './actions/setAccounts.ts';
 import { onMountAccount } from './effects/onMountAccount.ts';
 import { setAccountChainDetails } from './actions/setAccountChainDetails.ts';
 import { setAccount } from './actions/setAccount.ts';
+import { setContract } from './actions/setContract.ts';
 import { addAccount } from './effects/addAccount.ts';
 import { removeAccount } from './actions/removeAccount.ts';
 import { deleteAccount } from './effects/deleteAccount.ts';
+import { updateContract } from './effects/updateContract.ts';
 
 export const accounts = {
   ids: [],
@@ -18,6 +20,7 @@ export const accounts = {
   removeAccount,
   setAccounts,
   setAccountChainDetails,
+  setContract,
   // effects
   getOnceAccounts,
   onMountAccount,
@@ -26,4 +29,5 @@ export const accounts = {
   getContractMethods,
   addAccount,
   deleteAccount,
+  addContract: updateContract,
 };

@@ -1,15 +1,13 @@
 .account {
   height: 100%;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 60px auto;
-  grid-template-areas:
-    'a'
-    'b';
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  border-radius: var(--Border-Radius-3);
+  box-shadow: var(--Box-Shadow-025);
 }
 
 .main {
-  grid-area: b;
   display: flex;
   flex-direction: column;
 }
@@ -24,25 +22,11 @@
   border-bottom: 1px solid var(--Color-Green-400);
 }
 
-.link {
-  width: 120px;
-  padding: 8px 0;
-  text-align: center;
-  color: var(--Text-Dark);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.link:hover {
-  background-color: var(--Color-Green-200);
-  box-shadow: var(--Box-Shadow-025);
-  border-radius: var(--Border-Radius-2);
-}
-
 .content {
-  grid-area: b;
   max-width: 850px;
   width: 100%;
   display: grid;
   align-self: center;
+  align-items: center;
+  align-content: center;
 }

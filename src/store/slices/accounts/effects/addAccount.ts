@@ -7,13 +7,7 @@ const getAccount = (spaceId: any, networkId: any, accountId: any, accountName: a
     accountId,
     accountName,
     importedAt: Date.now(),
-    contract: {
-      name: null,
-      methods: {
-        change: [],
-        view: [],
-      },
-    },
+    contractId: null,
   };
 };
 

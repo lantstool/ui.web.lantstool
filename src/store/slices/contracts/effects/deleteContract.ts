@@ -15,10 +15,24 @@ export const deleteContract = effect(async ({ slice, store, payload }: any) => {
   const [idb] = store.getEntities((store: any) => store.idb);
   const removeContract = slice.getActions((slice: any) => slice.removeContract);
   const ids = store.getState((store: any) => store.contracts.ids);
-  const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const { spaceId, networkId } = store.getState((store: any) => store.networks.current);
 
   try {
     const nextRoute = getNextRoute(ids, contractId, networkId);
+    const accounts = await idb.getAllFromIndex(
+      'accounts',
+      'spaceId_networkId_importedAt',
+      IDBKeyRange.bound([spaceId, networkId, -Infinity], [spaceId, networkId, Infinity]),
+    );
+
+    await Promise.all(
+      accounts
+        .filter((el: any) => el.contractId === contractId)
+        .map((account: any) => {
+          account.contractId = null;
+          return idb.put('accounts', account);
+        }),
+    );
 
     await idb.delete('contracts', contractId);
     removeContract(contractId);
