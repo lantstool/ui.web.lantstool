@@ -31,7 +31,7 @@ export const Form = ({ accountId, contract }) => {
   const { control } = form;
 
   useEffect(() => {
-    getOptions(Object.values(records), setOptions);
+    getOptions(records, setOptions);
   }, []);
 
   const onChange = (field: any) => (event: any) => {
