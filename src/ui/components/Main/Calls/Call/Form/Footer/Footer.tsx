@@ -16,7 +16,6 @@ export const Footer = ({ form }: any) => {
   const revert = () => revertCall(form);
 
   const submit = form.handleSubmit((values: any) => {
-    console.log(values);
     callMethod(values);
   });
 

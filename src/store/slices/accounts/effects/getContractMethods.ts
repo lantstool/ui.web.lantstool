@@ -8,7 +8,20 @@ export const getContractMethods = effect(async ({ store, payload: contractId }: 
   try {
     // TODO check if account has a contract
     const account = await idb.get('accounts', [spaceId, networkId, contractId]);
-    return account.contract?.methods || [];
+    const contract = await idb.get('contracts', account.contractId);
+    const allMethods = contract?.methods
+      ? [
+          ...contract.methods.view.map((method: any) => ({
+            methodName: method.methodName,
+            type: 'view',
+          })),
+          // ...contract.methods.change.map((method: any) => ({
+          //   methodName: method.methodName,
+          //   type: 'change',
+          // })),
+        ]
+      : [];
+    return  allMethods;
   } catch (e) {
     console.log(e);
   }

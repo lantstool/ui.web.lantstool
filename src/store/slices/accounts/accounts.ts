@@ -11,6 +11,7 @@ import { addAccount } from './effects/addAccount.ts';
 import { removeAccount } from './actions/removeAccount.ts';
 import { deleteAccount } from './effects/deleteAccount.ts';
 import { updateContract } from './effects/updateContract.ts';
+import { getAccountsWithContract } from './effects/getAccountsWithContract.ts';
 
 export const accounts = {
   ids: [],
@@ -29,5 +30,6 @@ export const accounts = {
   getContractMethods,
   addAccount,
   deleteAccount,
-  addContract: updateContract,
+  updateContract,
+  getAccountsWithContract,
 };

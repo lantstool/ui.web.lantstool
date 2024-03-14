@@ -1,5 +1,5 @@
 .permission {
-  width: 110px;
+  width: 80px;
   height: 20px;
   display: flex;
   justify-content: center;
@@ -7,12 +7,12 @@
   border-radius: 5px;
 }
 
-.fullAccess {
-  background: #3FAEC6;
+.change {
+  background: #6c40ca;
 }
 
-.functionCall {
-  background: #F4BD51;
+.view {
+  background: #24ca74;
 }
 
 .text {
