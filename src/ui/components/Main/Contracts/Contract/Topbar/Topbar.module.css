@@ -4,7 +4,7 @@
   grid-template-columns: 54px auto 10px 20px 24px;
   grid-template-rows: auto;
   grid-template-areas: '. a . b .';
-  background: var(--Card-Bar, #E9F6F0);
+  background: var(--Card-Bar, #e9f6f0);
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   color: var(--Text-Dark);

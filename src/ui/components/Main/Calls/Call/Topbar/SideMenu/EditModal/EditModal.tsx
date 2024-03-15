@@ -1,6 +1,6 @@
 import cn from './EditModal.module.css';
 import { Modal } from '../../../../../../general/Modal/Modal.tsx';
-import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.ts';
@@ -10,19 +10,17 @@ import { Title } from '../../../../../general/Title/Title.tsx';
 import { ErrorMessage } from '../../../../../general/ErrorMessage/ErrorMessage.tsx';
 import { Button } from '../../../../../general/Button/Button.tsx';
 
-export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
-  const onEditTransactionName = useStoreEffect(
-    (store: any) => store.transactions.onEditTransactionName,
-  );
-  const txName: any = useStoreState((state: any) => state.transactions.map[transactionId]?.name);
+export const EditModal = ({ isOpen, setOpen,callId, name }: any) => {
+  const editCallName = useStoreEffect((store: any) => store.calls.editCallName);
 
   const open = isOpen === 'editModal';
 
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
-    defaultValues: { transactionName: txName },
+    defaultValues: { callName: name },
   });
+
   const {
     register,
     control,
@@ -31,9 +29,9 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
     reset,
   } = form;
 
-  const transactionName = useWatch({
+  const callName = useWatch({
     control,
-    name: 'transactionName',
+    name: 'callName',
   });
 
   const closeModal = () => {
@@ -42,7 +40,7 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
   };
 
   const edit = () => {
-    onEditTransactionName({ transactionId, transactionName });
+    editCallName({callId, callName });
     setOpen(null);
   };
 
@@ -51,19 +49,21 @@ export const EditModal = ({ isOpen, setOpen, transactionId }: any) => {
       <div className={cn.container}>
         <div className={cn.wrapper}>
           <Title text="Edit name" />
-          <CloseButton close={closeModal} />
+          <div className={cn.closeBtn}>
+            <CloseButton close={closeModal} />
+          </div>
         </div>
         <div className={cn.inputContainer}>
           <InputGroup
             register={register}
-            name="transactionName"
+            name="callName"
             textarea={true}
             rows={4}
-            label="Transaction name"
+            label="Call name"
           />
-          <ErrorMessage error={errors.transactionName?.message} />
+          <ErrorMessage error={errors.callName?.message} />
         </div>
-        <Button text="Save" onClick={handleSubmit(edit)} style="secondary" />
+        <Button text="Save" onClick={handleSubmit(edit)} />
       </div>
     </Modal>
   );

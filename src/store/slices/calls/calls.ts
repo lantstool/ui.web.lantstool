@@ -1,19 +1,22 @@
 import { setCalls } from './actions/setCalls.ts';
 import { addCall } from './actions/addCall.ts';
 import { putCall } from './actions/putCall.ts';
+import { updateCall } from './actions/updateCall.ts';
+import { putTemporaryFormValues } from './actions/putTemporaryFormValues.ts';
+import { updateCallsPosition } from './actions/updateCallsPositon.ts';
+import { removeCall } from './actions/removeCall.ts';
 import { createCall } from './effects/createCall.ts';
 import { getCalls } from './effects/getCalls.ts';
 import { saveCall } from './effects/saveCall.ts';
-import { onDeleteTransaction } from './effects/onDeleteTransaction';
-import { onEditTransactionName } from './effects/onEditTransactionName';
+import { deleteCall } from './effects/deleteCall.ts';
 import { getCallsCount } from './effects/getCallsCount.ts';
-import { onReorderTransactions } from './effects/onReorderTransactions';
+import { reorderCalls } from './effects/reorderCalls.ts';
 import { getAccountBalance } from './effects/getAccountBalance';
 import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 import { callMethod } from './effects/callMethod.ts';
 import { loadCall } from './effects/loadCall.ts';
-import { putTemporaryFormValues } from "./actions/putTemporaryFormValues.ts";
-import { revertCall } from "./effects/revertCall.ts";
+import { revertCall } from './effects/revertCall.ts';
+import { editCallName } from './effects/editCallName.ts';
 
 export const calls = {
   // init state
@@ -24,18 +27,21 @@ export const calls = {
   setCalls,
   addCall,
   putCall,
+  updateCall,
+  updateCallsPosition,
+  removeCall,
   // effects
   createCall,
   getCalls,
   saveCall,
-  onDeleteTransaction,
-  onEditTransactionName,
+  deleteCall,
   getCallsCount,
-  onReorderTransactions,
+  reorderCalls,
   getAccountBalance,
   onDuplicateTransaction,
   callMethod,
   loadCall,
   putTemporaryFormValues,
   revertCall,
+  editCallName,
 };

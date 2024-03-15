@@ -2,9 +2,9 @@ import cn from './Footer.module.css';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { Button } from '../../../../general/Button/Button.tsx';
 import sendTransaction from '../../../../../../assets/sendTransaction.svg';
-import restore from '../../../../../../assets/restore_white_24dp.svg';
-import saveIcon from '../../../../../../assets/saveIcon.svg';
 import { useFormState } from 'react-hook-form';
+import { RestorIcon } from '../../../../../../assets/components/RestorIcon.tsx';
+import { SaveIcon } from '../../../../../../assets/components/SaveIcon.tsx';
 
 export const Footer = ({ form }: any) => {
   const callMethod = useStoreEffect((store: any) => store.calls.callMethod);
@@ -27,10 +27,10 @@ export const Footer = ({ form }: any) => {
       {isDirty && (
         <div className={cn.actions}>
           <button className={cn.saveButton} type="button" onClick={revert}>
-            <img src={restore} alt="Revert" />
+            <RestorIcon style={cn.icon} />
           </button>
           <button className={cn.saveButton} type="button" onClick={save}>
-            <img src={saveIcon} alt="Save the call" />
+            <SaveIcon style={cn.icon} />
           </button>
         </div>
       )}
