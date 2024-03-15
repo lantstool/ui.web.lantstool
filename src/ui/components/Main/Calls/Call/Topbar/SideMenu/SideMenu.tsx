@@ -4,16 +4,10 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import { Menu, MenuItem } from '@mui/material';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { EditModal } from './EditModal/EditModal.tsx';
-import { useStoreEffect } from '../../../../../../../react-vault';
-import { useNavigate } from 'react-router-dom';
 
-export const SideMenu = ({ transactionId }: any) => {
+export const SideMenu = ({ callId, name }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const navigate = useNavigate();
-  const onDuplicateTransaction = useStoreEffect(
-    (store: any) => store.transactions.onDuplicateTransaction,
-  );
 
   const openModal = (type: any) => {
     setAnchorEl(null);
@@ -26,11 +20,6 @@ export const SideMenu = ({ transactionId }: any) => {
 
   const openMenu = (event: any) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const duplicate = () => {
-    onDuplicateTransaction({ transactionId, navigate });
-    setAnchorEl(null);
   };
 
   return (
@@ -47,15 +36,14 @@ export const SideMenu = ({ transactionId }: any) => {
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
           <MenuItem onClick={() => openModal('editModal')}>Edit name</MenuItem>
-          <MenuItem onClick={duplicate}>Duplicate</MenuItem>
           <MenuItem onClick={() => openModal('deleteModal')}>Remove</MenuItem>
         </Menu>
       </div>
       {isOpen === 'editModal' && (
-        <EditModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+        <EditModal isOpen={isOpen} setOpen={setOpen} callId={callId} name={name} />
       )}
       {isOpen === 'deleteModal' && (
-        <DeleteModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+        <DeleteModal isOpen={isOpen} setOpen={setOpen} callId={callId} />
       )}
     </>
   );

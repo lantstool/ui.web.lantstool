@@ -11,7 +11,7 @@ export const Methods = ({ contract }: any) => {
   return (
     <div className={cn.methods}>
       {change && (
-        <div className={cn.wrapper}>
+        <div>
           <h4 className={cn.title}>Change methods</h4>
           {contract.methods.change.map((method: any) => (
             <div key={method.methodName}>
@@ -21,7 +21,7 @@ export const Methods = ({ contract }: any) => {
         </div>
       )}
       {view && (
-        <div className={cn.wrapper}>
+        <div>
           <h4 className={cn.title}>View methods</h4>
           {contract.methods.view.map((method: any) => (
             <div key={method.methodName}>

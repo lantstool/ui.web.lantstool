@@ -9,9 +9,8 @@ export const updateContract = effect(async ({ slice, store, payload }: any) => {
   try {
     const newAccount = {
       ...account,
-      contractId,
+      contractId: contractId || null,
     };
-
     await idb.put('accounts', newAccount);
     setContract({ newAccount, accountId });
   } catch (e) {

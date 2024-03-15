@@ -11,7 +11,6 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
   const call = slice.getState((slice: any) => slice.records[formValues.callId]);
   const putCall = slice.getActions((slice: any) => slice.putCall);
 
-  console.log(formValues);
   try {
     const body = {
       jsonrpc: '2.0',

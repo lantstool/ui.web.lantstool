@@ -1,20 +1,18 @@
-import { components, OptionProps } from "react-select";
-import cn from "./Option.module.css";
-import { PermissionLabel } from "../PermissionLabel/PermissionLabel.tsx";
+import { components, OptionProps } from 'react-select';
+import cn from './Option.module.css';
+import { PermissionLabel } from '../PermissionLabel/PermissionLabel.tsx';
 
 interface Option {
   readonly value: string;
   readonly label: string;
-  readonly permission: any;
+  readonly type: any;
 }
-
-const getText = (publicKey: any) => publicKey.slice('ed25519:'.length);
 
 export const Option = ({ children, ...props }: OptionProps<Option>) => (
   <components.Option {...props}>
     <div className={cn.container}>
-      {getText(props.data.value)}
-      <PermissionLabel permission={props.data.permission} />
+      {props.data.value}
+      <PermissionLabel permission={props.data.type} />
     </div>
   </components.Option>
 );

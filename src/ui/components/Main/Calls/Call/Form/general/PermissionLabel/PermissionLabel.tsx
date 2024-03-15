@@ -3,12 +3,12 @@ import cn from './PermissionLabel.module.css';
 import { useMemo } from 'react';
 
 const types: any = {
-  fullAccess: { text: 'Full Access', className: cn.fullAccess },
-  functionCall: { text: 'Function Call', className: cn.functionCall },
+  change: { text: 'Change', className: cn.change },
+  view: { text: 'View', className: cn.view },
 };
 
 const getType = (permission: any) =>
-  permission === 'FullAccess' ? types.fullAccess : types.functionCall;
+  permission === 'change' ? types.change : types.view;
 
 export const PermissionLabel = ({ permission }: any) => {
   const { text, className } = useMemo(() => getType(permission), [permission]);

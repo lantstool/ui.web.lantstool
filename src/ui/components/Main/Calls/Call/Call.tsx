@@ -18,7 +18,7 @@ export const Call = () => {
 
   return (
     <div className={cn.call} key={callId}>
-      <Topbar call={call} />
+      <Topbar call={call} callId={callId}/>
       <Form call={call} />
     </div>
   );

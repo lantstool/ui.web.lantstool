@@ -26,4 +26,7 @@
   align-items: center;
 }
 
+.closeBtn{
+  grid-area: b;
+}
 

@@ -22,7 +22,7 @@ const getDefaultFormValues = (contract: any) => ({
 });
 
 export const Form = ({ accountId, contract }) => {
-  const addContract = useStoreEffect((store: any) => store.accounts.addContract);
+  const updateContract = useStoreEffect((store: any) => store.accounts.updateContract);
   const [options, setOptions]: any = useState([]);
   const records: any = useStoreState((store: any) => store.contracts.records);
 
@@ -35,7 +35,7 @@ export const Form = ({ accountId, contract }) => {
   }, []);
 
   const onChange = (field: any) => (event: any) => {
-    addContract({ contractId: event?.contractId, accountId });
+    updateContract({ contractId: event?.contractId, accountId });
     field.onChange(event);
   };
 
