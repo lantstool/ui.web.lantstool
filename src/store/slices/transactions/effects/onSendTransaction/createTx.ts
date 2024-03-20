@@ -8,7 +8,7 @@ export const createTx = async ({ provider, form }: any) => {
 
   const signerAccountId = signerId.value;
   const signerPublicKey = signerKey.value;
-  const receiverId = receiver[receiver.type].accountId;
+  const receiverId = receiver.value;
 
   const accessKey = await provider.query(`access_key/${signerAccountId}/${signerPublicKey}`, '');
   const nonce = accessKey.nonce + 1;

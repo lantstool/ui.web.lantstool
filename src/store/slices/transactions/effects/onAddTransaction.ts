@@ -13,22 +13,7 @@ const createTx = (order: number, transactionName: string, networkId: string) => 
     order,
     signerId: '',
     signerKey: '',
-
-    receiver: {
-      type: 'existing',
-      existing: {
-        accountId: '',
-      },
-      newNamed: {
-        accountId: '',
-      },
-      newImplicit: {
-        accountId: '',
-        seedPhrase: '',
-        privateKey: '',
-        publicKey: '',
-      },
-    },
+    receiver: '',
     actions: [],
   };
 };

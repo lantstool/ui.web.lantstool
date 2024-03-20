@@ -1,11 +1,21 @@
-.buttonRemove {
+.menuButton {
   display: flex;
   justify-content: center;
   width: 10px;
-  color: #FFFFFF;
+  color: var(--Color-Olive-300);
   background: none;
   border: none;
   cursor: pointer;
 }
 
+.menuButton:hover {
+  color: var(--Color-Olive-400);
+}
 
+.active {
+  color: var(--Color-Olive-400);
+}
+
+.menuContainer {
+  position: relative;
+}

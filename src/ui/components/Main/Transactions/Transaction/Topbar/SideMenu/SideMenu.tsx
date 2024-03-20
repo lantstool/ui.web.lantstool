@@ -1,61 +1,63 @@
 import cn from './SideMenu.module.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import { Menu, MenuItem } from '@mui/material';
-import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
-import { EditModal } from './EditModal/EditModal.tsx';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
+import cnm from 'classnames';
+import { EditModal } from './EditModal/EditModal.tsx';
+import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
+import { Popup } from './Popup/Popup.tsx';
 
 export const SideMenu = ({ transactionId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const menuRef = useRef(null);
+
   const navigate = useNavigate();
   const onDuplicateTransaction = useStoreEffect(
     (store: any) => store.transactions.onDuplicateTransaction,
   );
 
   const openModal = (type: any) => {
-    setAnchorEl(null);
-    setOpen(type);
+    setAnchorEl(type);
+    setOpen(!isOpen);
   };
 
-  const closeMenu = () => {
-    setAnchorEl(null);
-  };
-
-  const openMenu = (event: any) => {
-    setAnchorEl(event.currentTarget);
+  const openMenu = () => {
+    setOpen(!isOpen);
   };
 
   const duplicate = () => {
     onDuplicateTransaction({ transactionId, navigate });
     setAnchorEl(null);
+    setOpen(!isOpen);
+  };
+
+  const handleClickOutside = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <div>
-        <button className={cn.buttonRemove} onClick={openMenu}>
+      <div className={cn.menuContainer} ref={menuRef}>
+        <button className={cnm(cn.menuButton, isOpen && cn.active)} onClick={openMenu}>
           <MoreVertOutlinedIcon />
         </button>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={closeMenu}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <MenuItem onClick={() => openModal('editModal')}>Edit name</MenuItem>
-          <MenuItem onClick={duplicate}>Duplicate</MenuItem>
-          <MenuItem onClick={() => openModal('deleteModal')}>Remove</MenuItem>
-        </Menu>
+        {isOpen && (
+          <Popup
+            isOpen={isOpen}
+            openModal={openModal}
+            duplicate={duplicate}
+            handleClose={handleClickOutside}
+            position='left'
+          />
+        )}
       </div>
-      {isOpen === 'editModal' && (
-        <EditModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      {anchorEl === 'editModal' && (
+        <EditModal isOpen={anchorEl} setOpen={setAnchorEl} transactionId={transactionId} />
       )}
-      {isOpen === 'deleteModal' && (
-        <DeleteModal isOpen={isOpen} setOpen={setOpen} transactionId={transactionId} />
+      {anchorEl === 'deleteModal' && (
+        <DeleteModal isOpen={anchorEl} setOpen={setAnchorEl} transactionId={transactionId} />
       )}
     </>
   );

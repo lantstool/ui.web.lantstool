@@ -7,17 +7,16 @@
 }
 
 .modalContainer {
+  padding: 28px 32px 32px 32px;
   width: 450px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 25px;
   background: #ffffff;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
+  box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: 50%;
   left: calc(50% + 135px);
   transform: translate(-50%, -50%);
-  border-radius: 8px;
+  border-radius: var(--Border-Radius-3);
 }

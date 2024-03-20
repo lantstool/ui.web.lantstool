@@ -1,26 +1,17 @@
 .permission {
-  width: 110px;
-  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-}
-
-.fullAccess {
-  background: #3FAEC6;
-}
-
-.functionCall {
-  background: #F4BD51;
+  border-radius: 6px;
+  height: 16px;
+  background: var(--Color-Olive-300);
+  padding: 0 var(--Spacing-6);
 }
 
 .text {
-  color: #FFF;
-  font-size: 9px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  color: #fff;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
   text-transform: uppercase;
 }
-

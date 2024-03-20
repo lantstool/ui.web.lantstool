@@ -4,7 +4,7 @@ import { PermissionLabel } from '../PermissionLabel/PermissionLabel.tsx';
 export const SelectHeadLabel = ({ permission, text }: any) => {
   return (
     <div className={cn.head}>
-      <span>{text}</span>
+      <p className={cn.title}>{text}</p>
       {permission && <PermissionLabel permission={permission?.permission} />}
     </div>
   );

@@ -12,7 +12,7 @@ export const AddTransaction = ({ styles }: any) => {
 
   return (
     <>
-      <Button text="Add transaction" onClick={openModal} src={addIcon} type="submit" />
+      <Button text="Create Transaction" onClick={openModal} src={addIcon} type="submit" />
       {isOpen && <AddTransactionModal styles={styles} isOpen={isOpen} setOpen={setOpen} />}
     </>
   );

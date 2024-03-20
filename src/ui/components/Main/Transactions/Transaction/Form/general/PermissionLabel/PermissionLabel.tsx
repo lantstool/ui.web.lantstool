@@ -1,20 +1,19 @@
-import cnm from 'classnames';
 import cn from './PermissionLabel.module.css';
 import { useMemo } from 'react';
 
 const types: any = {
-  fullAccess: { text: 'Full Access', className: cn.fullAccess },
-  functionCall: { text: 'Function Call', className: cn.functionCall },
+  fullAccess: { text: 'Full Access' },
+  functionCall: { text: 'Function Call' },
 };
 
 const getType = (permission: any) =>
   permission === 'FullAccess' ? types.fullAccess : types.functionCall;
 
 export const PermissionLabel = ({ permission }: any) => {
-  const { text, className } = useMemo(() => getType(permission), [permission]);
+  const { text } = useMemo(() => getType(permission), [permission]);
 
   return (
-    <div className={cnm(cn.permission, className)}>
+    <div className={cn.permission}>
       <span className={cn.text}>{text}</span>
     </div>
   );

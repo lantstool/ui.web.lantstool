@@ -1,44 +1,54 @@
 .container {
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  background-color: #438668;
-  border-radius: 16px;
-  padding: 15px 0;
+  background-color: var(--Card-Body);
+  box-shadow: var(--Box-Shadow-020);
+  border-radius: var(--Border-Radius-3);
+}
+
+.topBar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--Color-Green-200);
+  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .modalContainer {
-  height: 350px;
-  width: 450px;
+  padding: 28px 32px 32px 32px;
+  width: 486px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 25px;
   background: #ffffff;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
+  box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: 50%;
-  left: calc(50% + 270px);
+  left: calc(50% + 375px);
   transform: translate(-50%, -50%);
-  border-radius: 8px;
+  border-radius: var(--Border-Radius-3);
 }
 
 .wrapper {
   width: 100%;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 120px);
   overflow: auto;
 }
 
-.addTransactionButton {
-  height: 30px;
-  width: calc(100% - 10px);
-  margin-top: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.addTransactionButton:hover {
-  transform: scale(1.01);
+.bottomBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  background: var(--Color-Green-200);
+  border-radius: 0 0 var(--Border-Radius-3) var(--Border-Radius-3);
 }

@@ -9,11 +9,13 @@ import { getTransactionCount } from './effects/getTransactionCount';
 import { onReorderTransactions } from './effects/onReorderTransactions';
 import { getAccountBalance } from './effects/getAccountBalance';
 import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
+import { revertTransaction } from './effects/revertTransaction';
 
 export const transactions = {
   // init state
   list: [],
   map: {},
+  temporaryFormValues: {},
   // actions
   ...actions,
   // effects
@@ -27,4 +29,5 @@ export const transactions = {
   onReorderTransactions,
   getAccountBalance,
   onDuplicateTransaction,
+  revertTransaction,
 };

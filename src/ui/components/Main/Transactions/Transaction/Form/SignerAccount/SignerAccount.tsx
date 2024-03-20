@@ -1,11 +1,10 @@
-import { Controller } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
-import Select from 'react-select';
 import { useEffect, useState } from 'react';
-import { selectStyles } from '../general/selectStyles.ts';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
 import cn from './SignerAccount.module.css';
-import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
+import { BalanceLabel } from '../general/BalanceLabel/BalanceLabel.tsx';
+import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { ClearIndicator } from '../general/ClearIndicator/ClearIndicator.tsx';
 
 const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
   const accounts = await getAccountsIds();
@@ -31,25 +30,24 @@ export const SignerAccount = ({ form }: any) => {
   };
 
   return (
-    <div>
-      <div className={cn.head}>
-        <p>Account Id</p>
-        <BalanceLabel form={form} />
-      </div>
-      <Controller
-        name="signerId"
-        control={control}
-        render={({ field }: any) => (
-          <Select
-            {...field}
-            onChange={onChange(field)}
-            isSearchable
-            components={{ IndicatorsContainer }}
-            options={options}
-            styles={selectStyles}
-          />
-        )}
-      />
+    <div className={cn.signerAccount}>
+      <>
+        <FormSelectGroup
+          name="signerId"
+          isSearchable={true}
+          isClearable={true}
+          onChange={onChange}
+          control={control}
+          options={options}
+          creatableSelect={true}
+          components={{ ClearIndicator, IndicatorsContainer }}
+        >
+          <div className={cn.head}>
+            <p className={cn.title}>Account Id</p>
+            <BalanceLabel form={form} />
+          </div>
+        </FormSelectGroup>
+      </>
     </div>
   );
 };

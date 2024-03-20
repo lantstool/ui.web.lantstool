@@ -5,12 +5,15 @@ import cn from './IndicatorsContainer.module.css';
 export const IndicatorsContainer = ({ children, ...props }: any) => {
   return (
     <components.IndicatorsContainer {...props}>
+      {children[0]}
+      {children[1]}
+      {children[2]}
       <div className={cn.container}>
-        <div onMouseDown={(e) => e.stopPropagation()}>
+        <div className={cn.copyButton} onMouseDown={(e) => e.stopPropagation()}>
           <CopyButton text={props.selectProps.value?.value} />
         </div>
-        {children}
       </div>
+      {children[3]}
     </components.IndicatorsContainer>
   );
 };

@@ -13,6 +13,7 @@ const transfer = (append: any) =>
     name: 'Transfer',
     type: 'Transfer',
     amount: '',
+    amountType: '',
   });
 
 const addKey = (append: any) =>

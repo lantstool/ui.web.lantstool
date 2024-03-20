@@ -8,7 +8,8 @@
 }
 
 .error {
-  height: 26px;
+  padding: var(--Spacing-4);
+  height: 24px;
   color: var(--Color-Red-500);
   font-size: 10px;
   font-weight: 300;

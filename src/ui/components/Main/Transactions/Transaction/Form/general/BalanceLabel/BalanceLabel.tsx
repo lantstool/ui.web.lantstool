@@ -1,5 +1,4 @@
 import cn from './BalanceLabel.module.css';
-import nearIcon from '../../../../../../../assets/nearIcon.svg';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
@@ -24,8 +23,7 @@ export const BalanceLabel = ({ form }) => {
 
   return (
     <div className={cn.container}>
-      <p className={cn.balance}>{balance}</p>
-      <img className={cn.nearIcon} src={nearIcon} alt="#" />
+      <p className={cn.balance}>{balance} NEAR</p>
     </div>
   );
 };
