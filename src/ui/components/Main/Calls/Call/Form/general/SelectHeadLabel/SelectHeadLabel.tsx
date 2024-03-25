@@ -5,7 +5,7 @@ export const SelectHeadLabel = ({ permission, text }: any) => {
   return (
     <div className={cn.head}>
       <span>{text}</span>
-      {permission && <PermissionLabel permission={permission?.permission} />}
+      {permission && <PermissionLabel permission={permission} />}
     </div>
   );
 };

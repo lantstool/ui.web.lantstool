@@ -2,7 +2,7 @@
   display: grid;
   margin: 0 12px;
   padding: 12px;
-  grid-template-columns: calc(42% - 2px) calc(22% + 8px) 31%;
+  grid-template-columns: 2.4fr 1.5fr 1.5fr;
   gap: 32px;
   border-bottom: 1px solid var(--Color-Green-400);
 }
@@ -18,7 +18,7 @@
 
 .list {
   display: flex;
-  height: calc(82vh - 14px);
+  height: calc(81vh - 15px);
   overflow-y: auto;
   flex-direction: column;
 }
@@ -37,7 +37,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: calc(42% - 2px) calc(22% + 8px) 31%;
+  grid-template-columns: 2.4fr 1.5fr 1.5fr;
   gap: 32px;
   height: 50px;
   align-items: center;

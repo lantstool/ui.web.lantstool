@@ -1,5 +1,5 @@
 .topbar {
-  grid-area: a;
+  height: 72px;
   display: grid;
   grid-template-columns: 24px 25px auto 25px 24px;
   align-items: center;
@@ -23,7 +23,14 @@
 }
 
 .title {
+
   grid-area: b;
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   color: var(--Text-Dark);
   font-size: 18px;
   font-weight: 600;

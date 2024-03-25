@@ -1,6 +1,14 @@
-.header{
+.header {
   display: grid;
   grid-template-columns: 26px auto 26px;
   grid-template-areas: ' . a b ';
   align-items: center;
+}
+
+.subtitle {
+  margin: 33px 0 12px 0;
+}
+
+.closeBtn {
+  grid-area: b;
 }

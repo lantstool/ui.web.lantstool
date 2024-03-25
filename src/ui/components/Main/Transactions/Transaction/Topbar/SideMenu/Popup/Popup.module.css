@@ -1,0 +1,93 @@
+.popup {
+  position: absolute;
+  top: 32px;
+}
+
+.positionRight {
+  left: 131px;
+}
+
+.positionLeft {
+  right: 0;
+}
+
+.positionCenter {
+  left: 70px;
+}
+
+.triangle {
+  position: absolute;
+  top: -3px;
+  border-radius: 3px;
+  background: white;
+  box-shadow: var(--Box-Shadow-020);
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  z-index: 100;
+}
+
+.triangleRight {
+  right: 117px;
+}
+
+.triangleLeft {
+  right: 4px;
+}
+
+.triangleCenter {
+  right: 56px;
+}
+
+.buttonWrapper {
+  box-shadow: var(--Box-Shadow-020);
+  border-radius: var(--Spacing-4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.button {
+  width: 135px;
+  background-color: white;
+  border: none;
+  display: flex;
+  height: 40px;
+  padding: 0 20px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  word-break: normal;
+}
+
+.button:hover {
+  background-color: var(--Color-Green-200);
+  cursor: pointer;
+}
+
+.button:first-child {
+  border-radius: var(--Spacing-4) var(--Spacing-4) 0 0;
+}
+
+.button:last-child {
+  border-radius: 0 0 var(--Spacing-4) var(--Spacing-4);
+}
+
+.buttonText {
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}

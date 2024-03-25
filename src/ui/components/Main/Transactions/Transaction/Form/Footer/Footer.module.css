@@ -1,0 +1,39 @@
+.bottomBar {
+  grid-area: c;
+  background-color: var(--Color-Green-200);
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: var(--Text-Dark);
+  display: grid;
+  grid-template-columns: 112px auto 72px 40px;
+  grid-template-areas: '. d e .';
+  align-items: center;
+}
+
+.sendTransaction {
+  grid-area: d;
+  justify-self: center;
+}
+
+.buttonWrapper {
+  grid-area: e;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--Color-Olive-300);
+}
+
+.button:hover {
+  .icon {
+    fill: var(--Color-Olive-400);
+  }
+}

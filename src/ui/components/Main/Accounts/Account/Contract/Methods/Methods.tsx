@@ -1,20 +1,35 @@
 import cn from './Methods.module.css';
 
-export const Methods = ({ account }: any) => {
+const isExistMethods = (contract: any) => ({
+  view: contract?.methods.view.length > 0,
+  change: contract?.methods.change.length > 0,
+});
+
+export const Methods = ({ contract }: any) => {
+  const { view, change } = isExistMethods(contract);
+
   return (
     <div className={cn.methods}>
-      <h4>Change methods</h4>
-      {account.contract.methods.change.map(method => (
-        <div key={method.name}>
-          <p>{method.name}</p>
+      {change && (
+        <div>
+          <h4 className={cn.title}>Change methods</h4>
+          {contract.methods.change.map((method: any) => (
+            <div key={method.methodName}>
+              <p className={cn.subtitle}>{method.methodName}</p>
+            </div>
+          ))}
         </div>
-      ))}
-      <h4>View methods</h4>
-      {account.contract.methods.view.map(method => (
-        <div key={method.name}>
-          <p>{method.name}</p>
+      )}
+      {view && (
+        <div>
+          <h4 className={cn.title}>View methods</h4>
+          {contract.methods.view.map((method: any) => (
+            <div key={method.methodName}>
+              <p className={cn.subtitle}>{method.methodName}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };

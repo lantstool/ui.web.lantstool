@@ -1,13 +1,11 @@
-import Select from 'react-select';
-import { Controller, useWatch } from 'react-hook-form';
+import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { selectStyles } from '../general/selectStyles.ts';
 import { Option } from '../general/Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
 import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.tsx';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
-import cn from './SignerKey.module.css';
+import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
 
 export const SignerKey = ({ form }: any) => {
   const { control } = form;
@@ -22,21 +20,15 @@ export const SignerKey = ({ form }: any) => {
   }, [accountId]);
 
   return (
-    <div className={cn.signerKey}>
-      <SelectHeadLabel text="Access Key" permission={signerKey} />
-      <Controller
+    <>
+      <FormSelectGroup
         name="signerKey"
         control={control}
-        render={({ field }: any) => (
-          <Select
-            {...field}
-            components={{ Option, IndicatorsContainer }}
-            isSearchable
-            options={options}
-            styles={selectStyles}
-          />
-        )}
-      />
-    </div>
+        options={options}
+        components={{ Option, IndicatorsContainer }}
+      >
+        <SelectHeadLabel text="Access Key" permission={signerKey} />
+      </FormSelectGroup>
+    </>
   );
 };

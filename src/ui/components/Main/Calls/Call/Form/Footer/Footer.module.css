@@ -3,7 +3,7 @@
   background-color: #40916c;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
-  color: white;
+  background: var(--Card-Bar);
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 40px;
   grid-template-areas: '. . a b .';
@@ -30,4 +30,8 @@
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.icon{
+  fill: #87b19e;
 }

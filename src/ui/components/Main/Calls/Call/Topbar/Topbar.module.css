@@ -1,18 +1,19 @@
 .topbar {
   height: 60px;
   display: grid;
-  grid-template-columns: 40px auto 20px 10px 30px;
+  grid-template-columns: 54px auto 10px 20px 24px;
   grid-template-rows: auto;
   grid-template-areas: '. a . b .';
-  background-color: #40916c;
+  background: var(--Card-Bar);
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  color: white;
+  color: var(--Text-Dark);
 }
 
 .name {
   grid-area: a;
   align-self: center;
+  text-align: center;
   font-size: 15px;
   font-style: normal;
   font-weight: 600;

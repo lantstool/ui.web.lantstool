@@ -3,7 +3,7 @@ import css from './Input.module.css';
 type Props = {
   register?: any;
   id?: string;
-  name: string;
+  name: any;
   placeholder?: string;
   textarea?: boolean;
   cols?: number;

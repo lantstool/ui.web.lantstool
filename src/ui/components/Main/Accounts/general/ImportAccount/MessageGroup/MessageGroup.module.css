@@ -4,6 +4,7 @@
 
 .subtitle {
   margin: 0 5px;
+  word-break: break-all;
   text-align: center;
   font-size: 12px;
   font-style: normal;

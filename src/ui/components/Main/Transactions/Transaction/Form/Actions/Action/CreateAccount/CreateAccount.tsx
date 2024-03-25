@@ -1,4 +1,5 @@
 import { useWatch } from "react-hook-form";
+import cn from './CreateAccount.module.css'
 
 export const CreateAccount = ({ form }: any) => {
   const accountId = useWatch({
@@ -6,5 +7,5 @@ export const CreateAccount = ({ form }: any) => {
     name: 'receiverId',
   });
 
-  return <p>{accountId}</p>;
+  return <p className={cn.title}>{accountId}</p>;
 };

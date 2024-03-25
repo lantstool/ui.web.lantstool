@@ -7,10 +7,8 @@ import { Subtitle } from '../../../../../general/Subtitle/Subtitle.tsx';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../../general/Button/Button.tsx';
 
-export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
-  const onDeleteTransaction = useStoreEffect(
-    (store: any) => store.transactions.onDeleteTransaction,
-  );
+export const DeleteModal = ({ isOpen, callId, setOpen }: any) => {
+  const deleteCall = useStoreEffect((store: any) => store.calls.deleteCall);
   const navigate = useNavigate();
 
   const open = isOpen === 'deleteModal';
@@ -20,7 +18,7 @@ export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
   };
 
   const remove = () => {
-    onDeleteTransaction({ transactionId, navigate });
+    deleteCall({ callId, navigate });
     setOpen(false);
   };
 
@@ -32,8 +30,8 @@ export const DeleteModal = ({ isOpen, transactionId, setOpen }: any) => {
           <CloseButton close={closeModal} />
         </div>
         <Subtitle
-          text="Are you sure to remove this transaction? It will also remove all data from this
-          transaction."
+          text="Are you sure to remove this call? It will also remove all data from this
+          call."
         />
         <Button text="Remove" onClick={remove} style="secondary" />
       </div>

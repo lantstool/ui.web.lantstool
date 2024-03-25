@@ -1,0 +1,14 @@
+.methods {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  overflow: auto;
+}
+
+.addWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

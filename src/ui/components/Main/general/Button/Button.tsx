@@ -2,8 +2,9 @@ import cn from './Button.module.css';
 import cnm from 'classnames';
 
 const types = {
-  primary: cn.primary,
-  secondary: cn.secondary,
+  primary: { button: cn.primary, btnText: cn.text },
+  secondary: { button: cn.secondary, btnText: cn.text },
+  outlined: { button: cn.outlined, btnText: cn.textOutlined },
 };
 
 const getType = (style: any) => {
@@ -11,12 +12,12 @@ const getType = (style: any) => {
 };
 
 export const Button = ({ text, onClick, src, style, type = 'button' }: any) => {
-  const classColor = getType(style);
+  const { button, btnText } = getType(style);
 
   return (
-    <button type={type} className={cnm(cn.button, classColor)} onClick={onClick}>
+    <button type={type} className={cnm(cn.button, button)} onClick={onClick}>
       {src && <img className={cn.icon} src={src} alt="#" />}
-      <p className={cn.text}>{text}</p>
+      <p className={btnText}>{text}</p>
     </button>
   );
 };

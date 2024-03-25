@@ -14,7 +14,9 @@ export const ModalGroup = ({ children, isOpen, closeModal, prevStep, text }: any
             </div>
           )}
           <h2 className={cn.title}>{text}</h2>
-          <CloseButton close={closeModal} />
+          <div className={cn.closeBtn}>
+            <CloseButton close={closeModal} />
+          </div>
         </div>
         {children}
       </div>

@@ -1,5 +1,18 @@
-.contract {
+.methods {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  justify-content: space-between;
+}
+
+.title{
+  color: var(--Text-Dark);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subtitle{
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 500;
 }

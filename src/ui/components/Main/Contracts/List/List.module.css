@@ -1,33 +1,47 @@
 .container {
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #438668;
-  border-radius: 16px;
-  padding: 15px;
+  background-color: white;
+  border-radius: var(--Border-Radius-3);
+  box-shadow: var(--Box-Shadow-020);
 }
 
 .modalContainer {
-  height: 350px;
-  width: 450px;
+  width: 486px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 25px;
   background: #ffffff;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
+  box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: 50%;
-  left: calc(50% + 270px);
+  left: calc(50% + 390px);
   transform: translate(-50%, -50%);
-  border-radius: 8px;
+  border-radius: var(--Border-Radius-3);
+  padding: var(--Spacing-9) var(--Spacing-10) var(--Spacing-10) var(--Spacing-10);
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--Text-Dark);
+  background: var(--Color-Green-200);
+  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
 }
 
 .list {
   width: 100%;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 145px);
   overflow: auto;
 }
 
@@ -41,4 +55,14 @@
 
 .addTransactionButton:hover {
   transform: scale(1.01);
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background: var(--Color-Green-200);
+  border-radius: 0 0 var(--Border-Radius-3) var(--Border-Radius-3);
 }

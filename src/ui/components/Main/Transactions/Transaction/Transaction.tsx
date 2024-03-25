@@ -1,8 +1,8 @@
 import { Topbar } from './Topbar/Topbar.tsx';
 import { Form } from './Form/Form.tsx';
 import cn from './Transaction.module.css';
-import { useParams } from "react-router-dom";
-import { useStoreState } from "../../../../../react-vault";
+import { useParams } from 'react-router-dom';
+import { useStoreState } from '../../../../../react-vault';
 
 export const Transaction = () => {
   const { transactionId } = useParams();

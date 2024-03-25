@@ -8,23 +8,25 @@ import cn from './ContractId.module.css';
 import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
 
 // TODO show only contract here
-const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
-  const accounts = await getAccountsIds();
-  const options = accounts.map((accountId: string) => ({
-    value: accountId,
-    label: accountId,
+const getOptions: any = async (getAccountsWithContract: any, setOptions: any) => {
+  const accounts = await getAccountsWithContract();
+
+  const options = accounts.map((account: any) => ({
+    value: account.accountId,
+    label: account.accountId,
   }));
   setOptions(options);
 };
 
-
 export const ContractId = ({ form }: any) => {
   const { control, setValue } = form;
-  const getAccountsIds = useStoreEffect((store: any) => store.accounts.getAccountsIds);
+  const getAccountsWithContract = useStoreEffect(
+    (store: any) => store.accounts.getAccountsWithContract,
+  );
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    getOptions(getAccountsIds, setOptions);
+    getOptions(getAccountsWithContract, setOptions);
   }, []);
 
   const onChange = (field: any) => (event: any) => {

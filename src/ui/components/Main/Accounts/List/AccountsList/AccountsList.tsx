@@ -6,6 +6,7 @@ import { CopyButton } from '../../../general/CopyButton/CopyButton.tsx';
 export const AccountsList = () => {
   const ids: string[] = useStoreState((store: any) => store.accounts.ids);
   const records: any = useStoreState((store: any) => store.accounts.records);
+  const contracts: any = useStoreState((store: any) => store.contracts.records);
 
   return (
     <div>
@@ -19,10 +20,10 @@ export const AccountsList = () => {
           <Link key={accountId} className={cn.item} to={`${accountId}/details`}>
             <p className={cn.subtitle}>{records[accountId].accountId}</p>
             <p className={cn.subtitle}>{records[accountId].accountName}</p>
-            {records[accountId].contract.name && (
+            {contracts[records[accountId].contractId] && (
               <div className={cn.contract}>
-                <p className={cn.subtitle}>{records[accountId].contract.name}</p>
-                <CopyButton text={records[accountId].contract.name} />
+                <p className={cn.subtitle}>{contracts[records[accountId].contractId].name}</p>
+                <CopyButton text={contracts[records[accountId].contractId].name} />
               </div>
             )}
           </Link>
