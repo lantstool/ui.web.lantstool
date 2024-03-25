@@ -5,6 +5,8 @@ import cnm from 'classnames';
 
 export const LinkItem = ({ name, src, to }: any) => {
   const route: any = useStoreState((store: any) => store.navigation.route);
+
+  //The second word after / is responsible for the navigation of our Sidebar
   const isActive = route.split('/')[2] === to;
 
   return (

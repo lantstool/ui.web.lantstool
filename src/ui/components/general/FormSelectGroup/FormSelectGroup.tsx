@@ -1,5 +1,6 @@
 import { FormSelect } from '../FormSelect/FormSelect.tsx';
 import cn from './FormSelectGroup.module.css';
+import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
 
 export const FormSelectGroup = ({
   name,
@@ -12,10 +13,20 @@ export const FormSelectGroup = ({
   children,
   error = false,
   creatableSelect = false,
+  form,
+  accountId,
+  label,
 }: any) => {
   return (
     <>
-      {children}
+      {children ? (
+        children
+      ) : (
+        <div className={cn.label}>
+          <p className={cn.subtitle}>{label}</p>
+          <BalanceLabel form={form} accountId={accountId} />
+        </div>
+      )}
       <div className={cn.errorSelect}>
         <FormSelect
           name={name}
@@ -29,7 +40,6 @@ export const FormSelectGroup = ({
           error={error}
         />
       </div>
-
       <div className={cn.error}>{error}</div>
     </>
   );

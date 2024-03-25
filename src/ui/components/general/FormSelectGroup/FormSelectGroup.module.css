@@ -10,5 +10,19 @@
   font-weight: 300;
 }
 
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--Spacing-4);
+}
 
+.subtitle {
+  margin: 0;
+  height: 17px;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-weight: 400;
+}
 

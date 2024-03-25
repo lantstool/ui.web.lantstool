@@ -15,13 +15,13 @@ export const FormSelect = ({
   creatableSelect = false,
 }: any) => {
   const style = selectStyles(error);
+  const SelectComponent = creatableSelect ? CreatableSelect : Select;
 
   return (
     <Controller
       name={name}
       control={control}
       render={({ field }: any) => {
-        const SelectComponent = creatableSelect ? CreatableSelect : Select;
         return (
           <SelectComponent
             {...field}

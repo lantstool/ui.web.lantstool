@@ -25,7 +25,6 @@ export const Result = ({ result, setResult, setOpen }: any) => {
           </>
         )}
       </div>
-
       <div className={cn.footer}>
         <Button onClick={closeResult} text={'Close'} style="outlined" />
       </div>

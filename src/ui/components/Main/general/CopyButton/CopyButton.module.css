@@ -5,14 +5,20 @@
   cursor: pointer;
 }
 
+.button:hover {
+  .icon {
+    fill: var(--Color-Olive-400);
+  }
+}
+
 .copy {
-  color: var(--Color-Olive-300);
+  fill: var(--Color-Olive-400);
 }
 
 .icon {
-  color: var(--Color-Grey-100);
+  fill: var(--Color-Grey-100);
 }
 
 .icon:hover {
-  color: var(--Color-Grey-200);
+  fill: var(--Color-Olive-400);
 }

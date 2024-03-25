@@ -3,9 +3,9 @@ import cnm from 'classnames';
 import { useMemo } from 'react';
 
 const popupPosition: any = {
-  right: { popup: cn.positionRight, triangle: cn.triangleRight },
-  left: { popup: cn.positionLeft, triangle: cn.triangleLeft },
-  center: { popup: cn.positionCenter, triangle: cn.triangleCenter },
+  bottomRight: { popup: cn.positionRight, triangle: cn.triangleRight },
+  bottomLeft: { popup: cn.positionLeft, triangle: cn.triangleLeft },
+  bottomCenter: { popup: cn.positionCenter, triangle: cn.triangleCenter },
 };
 
 const getType = (position: any) => popupPosition[position] || popupPosition.center;

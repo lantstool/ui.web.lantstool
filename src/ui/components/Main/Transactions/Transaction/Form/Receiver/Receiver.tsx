@@ -2,7 +2,6 @@ import { useWatch } from 'react-hook-form';
 import cn from './Receiver.module.css';
 import { useEffect, useState } from 'react';
 import { useStoreEffect } from '../../../../../../../react-vault';
-import { BalanceLabel } from '../general/BalanceLabel/BalanceLabel.tsx';
 import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
 import { ClearIndicator } from '../general/ClearIndicator/ClearIndicator.tsx';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
@@ -20,6 +19,7 @@ export const Receiver = ({ form }: any) => {
   const { control } = form;
   const getAccountsIds = useStoreEffect((store: any) => store.accounts.getAccountsIds);
   const [options, setOptions] = useState([]);
+  const accountId = useWatch({ control, name: 'receiver.value' });
 
   useEffect(() => {
     getOptions(getAccountsIds, setOptions);
@@ -37,7 +37,8 @@ export const Receiver = ({ form }: any) => {
   if (actions.length === 0) return null;
 
   return (
-    <div>
+    <>
+      <h3 className={cn.title}>Receiver</h3>
       <FormSelectGroup
         name="receiver"
         control={control}
@@ -47,13 +48,10 @@ export const Receiver = ({ form }: any) => {
         options={options}
         creatableSelect={true}
         components={{ ClearIndicator, IndicatorsContainer }}
-      >
-        <h3 className={cn.title}>Receiver</h3>
-        <div className={cn.head}>
-          <p className={cn.subtitle}>Account Id</p>
-          <BalanceLabel form={form} />
-        </div>
-      </FormSelectGroup>
-    </div>
+        form={form}
+        accountId={accountId}
+        label="Account Id"
+      />
+    </>
   );
 };

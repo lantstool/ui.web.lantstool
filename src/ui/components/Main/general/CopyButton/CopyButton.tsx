@@ -1,9 +1,8 @@
 import cn from './CopyButton.module.css';
-import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { CopyIcon } from '../../../../assets/components/CopyIcon.tsx';
 import { useState } from 'react';
 
-export const CopyButton = ({ text }: any) => {
+export const CopyButton = ({ text, size = 20 }: any) => {
   const [copied, setCopied] = useState(false);
 
   const copyTextToClipboard = (e: any) => {
@@ -19,9 +18,9 @@ export const CopyButton = ({ text }: any) => {
   return (
     <button onClick={copyTextToClipboard} className={cn.button} type="button">
       {copied ? (
-        <DoneOutlinedIcon className={cn.copy} sx={{ fontSize: 20 }} />
+        <CopyIcon style={cn.copy} size={size} />
       ) : (
-        <ContentCopyIcon className={cn.icon} sx={{ fontSize: 20 }} />
+        <CopyIcon style={cn.icon} size={size} />
       )}
     </button>
   );

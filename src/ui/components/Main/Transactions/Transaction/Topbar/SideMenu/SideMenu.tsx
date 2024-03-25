@@ -1,17 +1,16 @@
 import cn from './SideMenu.module.css';
-import { useState, useRef } from 'react';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
 import cnm from 'classnames';
 import { EditModal } from './EditModal/EditModal.tsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { Popup } from './Popup/Popup.tsx';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
 
 export const SideMenu = ({ transactionId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const menuRef = useRef(null);
 
   const navigate = useNavigate();
   const onDuplicateTransaction = useStoreEffect(
@@ -33,25 +32,23 @@ export const SideMenu = ({ transactionId }: any) => {
     setOpen(!isOpen);
   };
 
-  const handleClickOutside = () => {
+  const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <>
-      <div className={cn.menuContainer} ref={menuRef}>
+      <div className={cn.menuContainer}>
         <button className={cnm(cn.menuButton, isOpen && cn.active)} onClick={openMenu}>
-          <MoreVertOutlinedIcon />
+          <VerticalMoreIcon style={cnm(cn.icon, isOpen && cn.active)} size={24} />
         </button>
-        {isOpen && (
-          <Popup
-            isOpen={isOpen}
-            openModal={openModal}
-            duplicate={duplicate}
-            handleClose={handleClickOutside}
-            position='left'
-          />
-        )}
+        <Popup
+          isOpen={isOpen}
+          openModal={openModal}
+          duplicate={duplicate}
+          handleClose={handleClose}
+          position="bottomLeft"
+        />
       </div>
       {anchorEl === 'editModal' && (
         <EditModal isOpen={anchorEl} setOpen={setAnchorEl} transactionId={transactionId} />

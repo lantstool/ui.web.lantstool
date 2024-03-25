@@ -1,7 +1,6 @@
 import cn from './BalanceLabel.module.css';
 import { useEffect, useState } from 'react';
-import { useWatch } from 'react-hook-form';
-import { useStoreEffect } from '../../../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../react-vault';
 
 const getBalance: any = async (getAccountBalance: any, accountId: any, setBalance: any) => {
   if (!accountId) return;
@@ -9,11 +8,9 @@ const getBalance: any = async (getAccountBalance: any, accountId: any, setBalanc
   setBalance(balance);
 };
 
-export const BalanceLabel = ({ form }) => {
-  const { control } = form;
+export const BalanceLabel = ({ accountId }: any) => {
   const [balance, setBalance] = useState(null);
   const getAccountBalance = useStoreEffect((store: any) => store.transactions.getAccountBalance);
-  const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
     getBalance(getAccountBalance, accountId, setBalance);
