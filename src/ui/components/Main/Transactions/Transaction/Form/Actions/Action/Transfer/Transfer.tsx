@@ -4,12 +4,13 @@ import { Controller } from 'react-hook-form';
 import Select from 'react-select';
 import { transferSelectorStyles } from './transferSelectorStyles.ts';
 
+const options = [
+  { value: 'NEAR', label: 'NEAR' },
+  { value: 'yoctoNEAR', label: 'yoctoNEAR' },
+];
+
 export const Transfer = ({ form, getName }: any) => {
   const { register, control } = form;
-  const options = [
-    { value: 'NEAR', label: 'NEAR' },
-    { value: 'yoctoNEAR', label: 'yoctoNEAR' },
-  ];
 
   return (
     <div className={cn.transfer}>
