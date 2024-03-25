@@ -4,6 +4,7 @@ import { updateTransaction } from './updateTransaction.ts';
 import { deleteTransaction } from './deleteTransaction.ts';
 import { reorderTransactions } from './reorderTransactions.ts';
 import { duplicateTransaction } from './duplicateTransaction.ts';
+import { putTemporaryFormValues } from './putTemporaryFormValues.ts';
 
 export const actions: any = {
   initPage,
@@ -12,4 +13,5 @@ export const actions: any = {
   deleteTransaction,
   reorderTransactions,
   duplicateTransaction,
+  putTemporaryFormValues,
 };

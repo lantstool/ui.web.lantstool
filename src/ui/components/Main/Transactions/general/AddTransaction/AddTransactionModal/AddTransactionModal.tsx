@@ -64,20 +64,18 @@ export const AddTransactionModal = ({ styles, isOpen, setOpen }: any) => {
           <div className={styles}>
             <div className={cn.header}>
               <Title text="Add transaction" />
-              <CloseButton close={closeModal} />
+              <div className={cn.closeBtn}>
+                <CloseButton close={closeModal} />
+              </div>
             </div>
-            <Subtitle text="You can add your transaction and save all data for next time." />
+            <div className={cn.subtitle}>
+              <Subtitle text="Select the name of the transaction you want to create" />
+            </div>
             <div>
-              <InputGroup
-                register={register}
-                name="transactionName"
-                label="Transaction name"
-                textarea={true}
-                rows={4}
-              />
+              <InputGroup register={register} name="transactionName" label="Transaction Name" />
               <ErrorMessage error={errors.transactionName?.message} />
             </div>
-            <Button text="Add transaction" style="secondary" type="submit" />
+            <Button text="Create" style="secondary" type="submit" />
           </div>
         </form>
       </Modal>

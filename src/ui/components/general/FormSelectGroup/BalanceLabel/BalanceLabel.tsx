@@ -1,8 +1,6 @@
 import cn from './BalanceLabel.module.css';
-import nearIcon from '../../../../../../../assets/nearIcon.svg';
 import { useEffect, useState } from 'react';
-import { useWatch } from 'react-hook-form';
-import { useStoreEffect } from '../../../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../react-vault';
 
 const getBalance: any = async (getAccountBalance: any, accountId: any, setBalance: any) => {
   if (!accountId) return;
@@ -10,11 +8,9 @@ const getBalance: any = async (getAccountBalance: any, accountId: any, setBalanc
   setBalance(balance);
 };
 
-export const BalanceLabel = ({ form }) => {
-  const { control } = form;
+export const BalanceLabel = ({ accountId }: any) => {
   const [balance, setBalance] = useState(null);
   const getAccountBalance = useStoreEffect((store: any) => store.transactions.getAccountBalance);
-  const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
     getBalance(getAccountBalance, accountId, setBalance);
@@ -24,8 +20,7 @@ export const BalanceLabel = ({ form }) => {
 
   return (
     <div className={cn.container}>
-      <p className={cn.balance}>{balance}</p>
-      <img className={cn.nearIcon} src={nearIcon} alt="#" />
+      <p className={cn.balance}>{balance} NEAR</p>
     </div>
   );
 };

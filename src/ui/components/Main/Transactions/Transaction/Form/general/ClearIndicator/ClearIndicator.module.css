@@ -1,0 +1,23 @@
+.icon {
+  fill: var(--Color-Grey-100);
+  width: 16px;
+  height: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.copyButton {
+  width: 20px;
+  height: 16px;
+  border: none;
+  background: none;
+}
+.copyButton:hover {
+  cursor: pointer;
+  .icon {
+    fill: var(--Color-Grey-200);
+  }
+}

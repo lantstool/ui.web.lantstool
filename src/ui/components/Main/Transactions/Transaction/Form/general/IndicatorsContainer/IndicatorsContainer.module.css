@@ -1,4 +1,9 @@
 .container {
   display: flex;
   align-items: center;
+  margin: 0 2px 0 12px;
+}
+
+.copyButton {
+  padding-top: 5px;
 }

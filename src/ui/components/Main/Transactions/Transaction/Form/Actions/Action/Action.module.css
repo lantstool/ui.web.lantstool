@@ -1,29 +1,65 @@
 .action {
-  padding: 10px;
-  background-color: #40916c24;
-  border-radius: 10px;
+  padding: 23px 0;
+  background-color: #f8fcfa;
   margin-bottom: 20px;
+  border-radius: var(--Border-Radius-3);
+  border: 1px solid var(--Color-Green-300);
+  background: var(--Color-Green-100);
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 17px;
+  margin: 0 15px 0 24px;
 }
 
-.removeButton{
-  height: 100%;
+.order {
+  padding: 0;
+  margin: 0 15px 0 0;
+  color: var(--Color-Olive-300);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  color: var(--Color-Green-2000);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.removeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: none;
   padding: 0;
-  margin: 0;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
 }
 
-.deleteIcon{
-  font-size: 24px !important;
-  color: #B6C8C0;
+.icon {
+  fill: var(--Color-Olive-300);
+  width: 22px;
+  height: 22px;
 }
 
-.deleteIcon:hover{
-  color: #F00;
+.removeButton:hover {
+  background-color: #f8f5f5;
+  border-radius: 50%;
+  .icon {
+    fill: var(--Color-Red-500);
+    cursor: pointer;
+
+  }
 }
+
+.wrapper{
+  margin: 0 24px;
+}
+

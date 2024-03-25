@@ -13,6 +13,7 @@ const transfer = (append: any) =>
     name: 'Transfer',
     type: 'Transfer',
     amount: '',
+    amountType: 'NEAR',
   });
 
 const addKey = (append: any) =>

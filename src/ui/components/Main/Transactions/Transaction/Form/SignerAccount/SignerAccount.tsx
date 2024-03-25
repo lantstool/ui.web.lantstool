@@ -1,11 +1,10 @@
-import { Controller } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
-import Select from 'react-select';
 import { useEffect, useState } from 'react';
-import { selectStyles } from '../general/selectStyles.ts';
 import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
 import cn from './SignerAccount.module.css';
-import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
+import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { ClearIndicator } from '../general/ClearIndicator/ClearIndicator.tsx';
+import { useWatch } from 'react-hook-form';
 
 const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
   const accounts = await getAccountsIds();
@@ -20,6 +19,7 @@ export const SignerAccount = ({ form }: any) => {
   const { control, setValue } = form;
   const getAccountsIds = useStoreEffect((store: any) => store.accounts.getAccountsIds);
   const [options, setOptions] = useState([]);
+  const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
     getOptions(getAccountsIds, setOptions);
@@ -31,24 +31,19 @@ export const SignerAccount = ({ form }: any) => {
   };
 
   return (
-    <div>
-      <div className={cn.head}>
-        <p>Account Id</p>
-        <BalanceLabel form={form} />
-      </div>
-      <Controller
+    <div className={cn.signerAccount}>
+      <FormSelectGroup
         name="signerId"
+        isSearchable={true}
+        isClearable={true}
+        onChange={onChange}
         control={control}
-        render={({ field }: any) => (
-          <Select
-            {...field}
-            onChange={onChange(field)}
-            isSearchable
-            components={{ IndicatorsContainer }}
-            options={options}
-            styles={selectStyles}
-          />
-        )}
+        options={options}
+        creatableSelect={true}
+        components={{ ClearIndicator, IndicatorsContainer }}
+        form={form}
+        accountId={accountId}
+        label="Account Id"
       />
     </div>
   );

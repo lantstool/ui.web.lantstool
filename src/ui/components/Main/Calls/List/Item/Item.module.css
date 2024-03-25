@@ -4,7 +4,6 @@
   align-items: center;
   margin: 0 10px;
   padding: var(--Spacing-4) 0;
-
 }
 
 .container:not(:last-child){
