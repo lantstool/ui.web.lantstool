@@ -16,17 +16,17 @@ export const Result = ({ result, setResult, setOpen }: any) => {
     <div>
       <div className={cn.container}>
         {!result ? (
-          'Loading...'
+          <p className={cn.subtitle}>Loading...</p>
         ) : (
           <>
-            <h3>Result</h3>
+            <h3 className={cn.title}>Result</h3>
             {/*  @ts-ignore */}
             <pre className={cn.subtitle} style={{ textWrap: 'wrap' }}>
               {getFormattedJSON(result.status)}
             </pre>
-            <h3>ID</h3>
-            <p>{result?.transaction_outcome?.id}</p>
-            <h3>Details</h3>
+            <h3 className={cn.title}>ID</h3>
+            <p className={cn.subtitle}>{result?.transaction_outcome?.id}</p>
+            <h3 className={cn.title}>Details</h3>
             {/*  @ts-ignore */}
             <pre className={cn.subtitle} style={{ textWrap: 'wrap' }}>
               {getFormattedJSON(result.status)}
