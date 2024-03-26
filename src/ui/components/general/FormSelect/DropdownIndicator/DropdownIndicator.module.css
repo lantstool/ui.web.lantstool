@@ -1,23 +1,32 @@
 .icon {
   fill: var(--Color-Grey-100);
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 12px;
 }
 
 .container {
+  margin-top: 4px;
   display: flex;
   align-items: center;
 }
 
-.copyButton {
+.button {
   width: 20px;
   height: 16px;
   border: none;
   background: none;
 }
-.copyButton:hover {
+
+.button:hover {
   cursor: pointer;
   .icon {
-    fill: var(--Color-Red-500);
+    fill: var(--Color-Olive-400);
+  }
+}
+
+.focused {
+  cursor: pointer;
+  .icon {
+    fill: var(--Color-Olive-400);
   }
 }

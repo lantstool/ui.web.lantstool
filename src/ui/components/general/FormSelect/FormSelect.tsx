@@ -2,6 +2,7 @@ import { Controller } from 'react-hook-form';
 import Select from 'react-select';
 import { selectStyles } from './formSelect.style.ts';
 import CreatableSelect from 'react-select/creatable';
+import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.tsx';
 
 export const FormSelect = ({
   control,
@@ -28,7 +29,7 @@ export const FormSelect = ({
             onChange={onChange ? onChange(field) : field.onChange}
             isClearable={isClearable}
             isSearchable={isSearchable}
-            components={components}
+            components={{ ...components, DropdownIndicator }}
             options={options}
             styles={style}
           />

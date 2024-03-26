@@ -16,7 +16,7 @@ export const BalanceLabel = ({ accountId }: any) => {
     getBalance(getAccountBalance, accountId, setBalance);
   }, [accountId]);
 
-  if (!balance) return;
+  if (!balance || !accountId) return;
 
   return (
     <div className={cn.container}>
