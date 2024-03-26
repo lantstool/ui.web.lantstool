@@ -28,9 +28,9 @@ export const onSendTransaction = effect(async ({ payload, store }: any) => {
 
     const result = await provider.sendTransaction(signedTx);
     console.log(result);
-    setResult(result)
+    setResult(result);
   } catch (e) {
     console.log(e);
-    setResult(`Error: ${e.message}`)
+    setResult(`Error: ${e.message}`);
   }
 });

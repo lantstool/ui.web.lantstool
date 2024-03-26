@@ -9,11 +9,13 @@ export const IndicatorsContainer = ({ children, ...props }: any) => (
     {children[0]}
     {children[1]}
     {children[2]}
-    <div className={cn.container}>
-      <div className={cn.copyButton} onMouseDown={(e) => e.stopPropagation()}>
-        <CopyButton text={props.selectProps.value?.value} size={16}/>
+    {props.selectProps.value?.value && (
+      <div className={cn.container}>
+        <div className={cn.copyButton} onMouseDown={(e) => e.stopPropagation()}>
+          <CopyButton text={props.selectProps.value?.value} size={16} />
+        </div>
       </div>
-    </div>
+    )}
     {children[3]}
   </components.IndicatorsContainer>
 );
