@@ -23,21 +23,6 @@
   font-weight: 600;
 }
 
-.modalContainer {
-  padding: 28px 32px 32px 32px;
-  width: 486px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
-  box-shadow: var(--Box-Shadow-025);
-  position: fixed;
-  top: 50%;
-  left: calc(50% + 375px);
-  transform: translate(-50%, -50%);
-  border-radius: var(--Border-Radius-3);
-}
-
 .wrapper {
   width: 100%;
   height: calc(100vh - 120px);

@@ -5,18 +5,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.modalContainer {
-  padding: 28px 32px 32px 32px;
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
-  box-shadow: var(--Box-Shadow-025);
-  position: fixed;
-  top: 50%;
-  left: calc(50% + 135px);
-  transform: translate(-50%, -50%);
-  border-radius: var(--Border-Radius-3);
-}
