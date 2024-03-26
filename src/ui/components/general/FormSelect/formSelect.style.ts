@@ -18,8 +18,8 @@ export const selectStyles = (error: any) => ({
     ...styles,
     borderRadius: '8px',
   }),
-  option: (base: any) => ({
-    ...base,
+  option: (styles: any) => ({
+    ...styles,
     fontSize: 15,
   }),
   indicatorSeparator: () => ({ display: 'none' }),

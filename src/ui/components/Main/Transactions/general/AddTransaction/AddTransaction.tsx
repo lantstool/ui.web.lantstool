@@ -1,19 +1,15 @@
-import { useState } from 'react';
 import { Button } from '../../../general/Button/Button.tsx';
 import addIcon from '../../../../../assets/addIcon.svg';
-import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal.tsx';
+import { useStoreEffect } from '../../../../../../react-vault';
+import { useNavigate } from 'react-router-dom';
 
-export const AddTransaction = ({ styles }: any) => {
-  const [isOpen, setOpen]: any = useState(false);
+export const AddTransaction = () => {
+  const onAddTransaction = useStoreEffect((store: any) => store.transactions.onAddTransaction);
+  const navigate = useNavigate();
 
-  const openModal = async () => {
-    setOpen(true);
+  const onSubmit = () => {
+    onAddTransaction(navigate);
   };
 
-  return (
-    <>
-      <Button text="Create Transaction" onClick={openModal} src={addIcon} type="submit" />
-      {isOpen && <AddTransactionModal styles={styles} isOpen={isOpen} setOpen={setOpen} />}
-    </>
-  );
+  return <Button text="Create Transaction" onClick={onSubmit} src={addIcon} type="submit" />;
 };
