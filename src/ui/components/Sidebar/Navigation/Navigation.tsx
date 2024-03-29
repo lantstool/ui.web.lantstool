@@ -11,7 +11,6 @@ export const Navigation = () => (
     <LinkItem name="Transactions" src={transaction} to="transactions" />
     <LinkItem name="Calls" src={environment} to="calls" />
     <LinkItem name="Accounts" src={spaces} to="accounts" />
-    <LinkItem name="Contracts" src={environment} to="contracts" />
     <LinkItem name="Keys" src={vault} to="keys" />
     <LinkItem name="Networks" src={networks} to="networks" />
   </div>

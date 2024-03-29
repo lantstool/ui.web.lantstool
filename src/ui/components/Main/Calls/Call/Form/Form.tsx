@@ -44,7 +44,7 @@ export const Form = ({ call }: any) => {
           <div>
             <h3 className={cn.title}>Contract</h3>
             <ContractId form={form} />
-            <Method form={form} call={call} />
+            <Method form={form} />
             <InputGroup
               register={form.register}
               name="arguments"

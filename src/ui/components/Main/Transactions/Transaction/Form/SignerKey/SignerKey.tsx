@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Option } from '../general/Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
 import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.tsx';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
 import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
 
 export const SignerKey = ({ form }: any) => {
@@ -21,12 +20,7 @@ export const SignerKey = ({ form }: any) => {
 
   return (
     <>
-      <FormSelectGroup
-        name="signerKey"
-        control={control}
-        options={options}
-        components={{ Option, IndicatorsContainer }}
-      >
+      <FormSelectGroup name="signerKey" control={control} options={options} components={{ Option }}>
         <SelectHeadLabel text="Access Key" permission={signerKey} />
       </FormSelectGroup>
     </>

@@ -1,9 +1,7 @@
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
 import cn from './SignerAccount.module.css';
 import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
-import { ClearIndicator } from '../general/ClearIndicator/ClearIndicator.tsx';
 import { useWatch } from 'react-hook-form';
 
 const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
@@ -40,8 +38,6 @@ export const SignerAccount = ({ form }: any) => {
         control={control}
         options={options}
         creatableSelect={true}
-        components={{ ClearIndicator, IndicatorsContainer }}
-        form={form}
         accountId={accountId}
         label="Account Id"
       />

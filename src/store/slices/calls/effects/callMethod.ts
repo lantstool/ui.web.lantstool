@@ -20,7 +20,7 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
         request_type: 'call_function',
         finality: 'final',
         account_id: formValues.contractId.value,
-        method_name: formValues.method.value,
+        method_name: formValues.method,
         args_base64: Buffer.from(formValues.arguments).toString('base64'),
       },
     };

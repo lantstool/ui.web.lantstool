@@ -6,7 +6,7 @@ import { selectStyles } from '../general/selectStyles.ts';
 import { Option } from '../general/Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
 import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.tsx';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
+import { IndicatorsContainer } from '../../../../../general/FormSelect/IndicatorsContainer/IndicatorsContainer.tsx';
 import cn from './SignerKey.module.css';
 
 export const SignerKey = ({ form }: any) => {

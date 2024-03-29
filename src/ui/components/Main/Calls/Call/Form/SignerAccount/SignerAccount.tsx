@@ -3,7 +3,7 @@ import { useStoreEffect } from '../../../../../../../react-vault';
 import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import { selectStyles } from '../general/selectStyles.ts';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
+import { IndicatorsContainer } from '../../../../../general/FormSelect/IndicatorsContainer/IndicatorsContainer.tsx';
 import cn from './SignerAccount.module.css';
 import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
 

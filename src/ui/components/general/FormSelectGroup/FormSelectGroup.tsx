@@ -13,7 +13,6 @@ export const FormSelectGroup = ({
   children,
   error = false,
   creatableSelect = false,
-  form,
   accountId,
   label,
 }: any) => {
@@ -24,7 +23,7 @@ export const FormSelectGroup = ({
       ) : (
         <div className={cn.label}>
           <p className={cn.subtitle}>{label}</p>
-          <BalanceLabel form={form} accountId={accountId} />
+          <BalanceLabel accountId={accountId} />
         </div>
       )}
       <div className={cn.errorSelect}>

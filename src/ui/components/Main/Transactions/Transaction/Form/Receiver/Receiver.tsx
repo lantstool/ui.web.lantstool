@@ -3,8 +3,6 @@ import cn from './Receiver.module.css';
 import { useEffect, useState } from 'react';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
-import { ClearIndicator } from '../general/ClearIndicator/ClearIndicator.tsx';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
 
 const getOptions: any = async (getAccountsIds: any, setOptions: any) => {
   const accounts = await getAccountsIds();
@@ -47,8 +45,6 @@ export const Receiver = ({ form }: any) => {
         isClearable={true}
         options={options}
         creatableSelect={true}
-        components={{ ClearIndicator, IndicatorsContainer }}
-        form={form}
         accountId={accountId}
         label="Account Id"
       />

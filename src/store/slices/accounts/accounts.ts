@@ -1,7 +1,6 @@
 import { getOnceAccounts } from './effects/getOnceAccounts.ts';
 import { addTestAccounts } from './effects/addTestAccounts.ts';
 import { getAccountsIds } from './effects/getAccountsIds';
-import { getContractMethods } from './effects/getContractMethods.ts';
 import { setAccounts } from './actions/setAccounts.ts';
 import { onMountAccount } from './effects/onMountAccount.ts';
 import { setAccountChainDetails } from './actions/setAccountChainDetails.ts';
@@ -10,8 +9,6 @@ import { setContract } from './actions/setContract.ts';
 import { addAccount } from './effects/addAccount.ts';
 import { removeAccount } from './actions/removeAccount.ts';
 import { deleteAccount } from './effects/deleteAccount.ts';
-import { updateContract } from './effects/updateContract.ts';
-import { getAccountsWithContract } from './effects/getAccountsWithContract.ts';
 
 export const accounts = {
   ids: [],
@@ -27,9 +24,6 @@ export const accounts = {
   onMountAccount,
   addTestAccounts,
   getAccountsIds,
-  getContractMethods,
   addAccount,
   deleteAccount,
-  updateContract,
-  getAccountsWithContract,
 };
