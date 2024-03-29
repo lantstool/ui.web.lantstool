@@ -1,49 +1,47 @@
 import cn from './SideMenu.module.css';
 import { useState } from 'react';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import { Menu, MenuItem } from '@mui/material';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { EditModal } from './EditModal/EditModal.tsx';
+import cnm from 'classnames';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
+import { Popup } from './Popup/Popup.tsx';
 
-export const SideMenu = ({ callId, name }: any) => {
+
+export const SideMenu = ({ callId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openModal = (type: any) => {
-    setAnchorEl(null);
-    setOpen(type);
+    setAnchorEl(type);
+    setOpen(!isOpen);
   };
 
-  const closeMenu = () => {
-    setAnchorEl(null);
+  const openMenu = () => {
+    setOpen(!isOpen);
   };
 
-  const openMenu = (event: any) => {
-    setAnchorEl(event.currentTarget);
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <div>
-        <button className={cn.buttonRemove} onClick={openMenu}>
-          <MoreVertOutlinedIcon />
+      <div className={cn.menuContainer}>
+        <button className={cnm(cn.menuButton, isOpen && cn.active)} onClick={openMenu}>
+          <VerticalMoreIcon style={cnm(cn.icon, isOpen && cn.active)} size={24} />
         </button>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={closeMenu}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <MenuItem onClick={() => openModal('editModal')}>Edit name</MenuItem>
-          <MenuItem onClick={() => openModal('deleteModal')}>Remove</MenuItem>
-        </Menu>
+        <Popup
+          isOpen={isOpen}
+          openModal={openModal}
+          handleClose={handleClose}
+          position="bottomLeft"
+        />
       </div>
-      {isOpen === 'editModal' && (
-        <EditModal isOpen={isOpen} setOpen={setOpen} callId={callId} name={name} />
+      {anchorEl === 'editModal' && (
+        <EditModal isOpen={anchorEl} setOpen={setAnchorEl} callId={callId} />
       )}
-      {isOpen === 'deleteModal' && (
-        <DeleteModal isOpen={isOpen} setOpen={setOpen} callId={callId} />
+      {anchorEl === 'deleteModal' && (
+        <DeleteModal isOpen={anchorEl} setOpen={setAnchorEl} callId={callId} />
       )}
     </>
   );
