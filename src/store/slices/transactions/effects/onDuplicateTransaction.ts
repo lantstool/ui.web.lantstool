@@ -5,11 +5,16 @@ const duplicateTx = (transaction: any) => {
   const transactionId = v4();
 
   return {
-    ...transaction,
     transactionId,
     name: `${transaction.name} - copy`,
     createdAt: new Date(),
     order: transaction.order + 1,
+    actions: transaction.actions,
+    networkId: transaction.networkId,
+    receiver: transaction.receiver,
+    signerId: transaction.signerId,
+    signerKey: transaction.signerKey,
+    spaceId: transaction.spaceId,
   };
 };
 
@@ -50,13 +55,7 @@ export const onDuplicateTransaction = effect(async ({ payload, slice, store }: a
       idb.put('transactions-counter', counter),
     ]);
 
-    const transactions = await idb.getAllFromIndex(
-      'transactions',
-      'spaceId_networkId_order',
-      IDBKeyRange.bound([spaceId, networkId, 0], [spaceId, networkId, Infinity]),
-    );
-
-    duplicateTransaction({ transactions });
+    duplicateTransaction(duplicate);
     navigate(`/${networkId}/transactions/${duplicate.transactionId}`);
   } catch (e) {
     console.log(e);
