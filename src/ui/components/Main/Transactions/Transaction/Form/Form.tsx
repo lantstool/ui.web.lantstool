@@ -4,9 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useStoreAction, useStoreState } from '../../../../../../react-vault';
 import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 import cn from './Form.module.css';
-import { Result } from './Result/Result.tsx';
 import { Footer } from './Footer/Footer.tsx';
 
 const getFormDefaultValues = (transaction: any) => {
@@ -20,6 +19,7 @@ const getFormDefaultValues = (transaction: any) => {
 };
 
 export const Form = ({ transaction }: any) => {
+  const setOpenResult: any = useStoreAction((store: any) => store.transactions.setOpenResult);
   const formDefaultValues: any = useMemo(() => getFormDefaultValues(transaction), [transaction]);
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.transactions.temporaryFormValues[transaction.transactionId],
@@ -30,12 +30,8 @@ export const Form = ({ transaction }: any) => {
   );
 
   const form: any = useForm({ defaultValues: formDefaultValues });
-  const [result, setResult] = useState('');
-  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
-    setResult('')
-    setOpen(false)
     form.reset(formDefaultValues);
     if (temporaryFormValues) form.reset(temporaryFormValues, { keepDefaultValues: true });
     return () => {
@@ -46,27 +42,31 @@ export const Form = ({ transaction }: any) => {
     };
   }, [transaction]);
 
+  const toResult = () => {
+    setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
+  };
 
   return (
     <>
-      {!result && !isOpen ? (
-        <>
-          <div className={cn.formScrollWrapper}>
-            <form className={cn.form}>
-              <div>
-                <h3 className={cn.title}>Sender</h3>
-                <SignerAccount form={form} />
-                <SignerKey form={form} />
-              </div>
-              <Actions form={form} />
-              <Receiver form={form} />
-            </form>
+      <div className={cn.formScrollWrapper}>
+        <form className={cn.form}>
+          <div className={cn.topNav}>
+            {transaction.result && (
+              <button className={cn.resultBtn} onClick={toResult}>
+                Result
+              </button>
+            )}
           </div>
-          <Footer form={form} setResult={setResult} setOpen={setOpen}/>
-        </>
-      ) : (
-        <Result result={result} setResult={setResult} setOpen={setOpen}/>
-      )}
+          <div>
+            <h3 className={cn.title}>Sender</h3>
+            <SignerAccount form={form} />
+            <SignerKey form={form} />
+          </div>
+          <Actions form={form} />
+          <Receiver form={form} />
+        </form>
+      </div>
+      <Footer form={form} />
     </>
   );
 };

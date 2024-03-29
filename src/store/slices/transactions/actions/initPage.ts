@@ -6,7 +6,7 @@ export const initPage = action(({ slice, payload }: any) => {
 
   payload.transactions.forEach((tx: any) => {
     list.push(tx.transactionId);
-    map[tx.transactionId] = tx;
+    map[tx.transactionId] = { ...tx, result: null, isOpen: false };
   });
 
   slice.list = list;

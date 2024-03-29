@@ -1,14 +1,10 @@
 import { action } from '../../../../react-vault';
 
-export const duplicateTransaction = action(({ slice, payload }: any) => {
-  const { transactions } = payload;
-
-  const reorderedList = transactions.map((el: any) => el.transactionId);
-  const reorderedMap = transactions.reduce((acc: any, tx: any) => {
-    acc[tx.transactionId] = tx;
-    return acc;
-  }, {});
-
-  slice.list = reorderedList;
-  slice.map = reorderedMap;
+export const duplicateTransaction = action(({ slice, payload: duplicate }: any) => {
+  slice.list.splice(duplicate.order, 0, duplicate.transactionId);
+  slice.map[duplicate.transactionId] = duplicate;
+  slice.list.forEach((transactionId: any, index: number) => {
+    const transaction = slice.map[transactionId];
+    transaction.order = index;
+  });
 });
