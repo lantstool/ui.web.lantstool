@@ -8,8 +8,14 @@ import { BackIcon } from '../../../../../assets/components/BackIcon.tsx';
 // TODO Move to utils
 const getFormattedJSON = (json: string) => JSON.stringify(json, null, 2);
 
-export const Result = ({ result, transaction }: any) => {
+const getResultValue = (transaction: any) => {
+  const currentResult = transaction.results.currentResult;
+  return transaction.results.records.find((el: any) => el.resultId === currentResult)?.result;
+};
+
+export const Result = ({ transaction }: any) => {
   const setOpenResult: any = useStoreAction((store: any) => store.transactions.setOpenResult);
+  const result = getResultValue(transaction);
 
   const closeResult = () => {
     setOpenResult({ transactionId: transaction.transactionId, isOpen: false });
@@ -23,7 +29,7 @@ export const Result = ({ result, transaction }: any) => {
             <BackIcon style={cn.icon} />
           </button>
         </div>
-        {!result ? (
+        {transaction.results.isLoading ? (
           <p className={cn.loader}>Loading...</p>
         ) : (
           <>

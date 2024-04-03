@@ -14,10 +14,10 @@ export const Transaction = () => {
   return (
     <div className={cn.transaction}>
       <Topbar transaction={transaction} />
-      {!transaction.isOpen ? (
+      {!transaction.results.isOpen ? (
         <Form transaction={transaction} />
       ) : (
-        <Result transaction={transaction} result={transaction.result} />
+        <Result transaction={transaction} />
       )}
     </div>
   );

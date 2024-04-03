@@ -7,8 +7,7 @@ const getFormValues = (transaction: any) => {
     signerKey: transaction.signerKey,
     receiver: transaction.receiver,
     actions: transaction.actions,
-    result: transaction.result,
-    isOpen: transaction.isOpen,
+    results: transaction.results,
   };
 };
 
@@ -40,8 +39,9 @@ export const onSaveTransaction = effect(async ({ payload: form, slice, store }: 
 
     await idb.put('transactions', newTransaction);
     putTemporaryFormValues({ transactionId, values: null });
-    updateTransaction(newTransaction);
-    form.reset(getFormValues(newTransaction));
+    //Update transaction and add result for state
+    updateTransaction({...newTransaction,results: values.results});
+    form.reset(getFormValues({...newTransaction,results: values.results}));
   } catch (e) {
     console.log(e);
   }

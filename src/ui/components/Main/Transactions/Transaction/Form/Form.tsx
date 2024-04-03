@@ -7,6 +7,7 @@ import { SignerKey } from './SignerKey/SignerKey.tsx';
 import { useMemo, useEffect } from 'react';
 import cn from './Form.module.css';
 import { Footer } from './Footer/Footer.tsx';
+import cnm from 'classnames';
 
 const getFormDefaultValues = (transaction: any) => {
   return {
@@ -15,6 +16,7 @@ const getFormDefaultValues = (transaction: any) => {
     signerKey: transaction.signerKey,
     receiver: transaction.receiver,
     actions: transaction.actions,
+    results: transaction.results,
   };
 };
 
@@ -24,16 +26,20 @@ export const Form = ({ transaction }: any) => {
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.transactions.temporaryFormValues[transaction.transactionId],
   );
-
   const putTemporaryFormValues: any = useStoreAction(
     (store: any) => store.transactions.putTemporaryFormValues,
   );
 
+  const isResults = transaction.results?.records.length > 0;
   const form: any = useForm({ defaultValues: formDefaultValues });
 
   useEffect(() => {
     form.reset(formDefaultValues);
-    if (temporaryFormValues) form.reset(temporaryFormValues, { keepDefaultValues: true });
+    if (temporaryFormValues)
+      form.reset(
+        { ...temporaryFormValues, results: transaction.results },
+        { keepDefaultValues: true },
+      );
     return () => {
       putTemporaryFormValues({
         values: form.getValues(),
@@ -49,14 +55,14 @@ export const Form = ({ transaction }: any) => {
   return (
     <>
       <div className={cn.formScrollWrapper}>
-        <form className={cn.form}>
-          <div className={cn.topNav}>
-            {transaction.result && (
-              <button className={cn.resultBtn} onClick={toResult}>
-                Result
-              </button>
-            )}
-          </div>
+        <div className={cnm(cn.topNav, isResults && cn.topNavActive)}>
+          {isResults && (
+            <button className={cn.resultBtn} onClick={toResult}>
+              Result
+            </button>
+          )}
+        </div>
+        <form className={cnm(cn.form,isResults && cn.formWithoutNav)}>
           <div>
             <h3 className={cn.title}>Sender</h3>
             <SignerAccount form={form} />
