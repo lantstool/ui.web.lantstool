@@ -17,7 +17,7 @@ export const onSendTransaction = effect(async ({ slice, payload, store }: any) =
   const setOpenResult = slice.getActions((slice: any) => slice.setOpenResult);
 
   try {
-    setOpenResult({ transactionId, isOpen: true });
+    setOpenResult({ transactionId, isOpen: true, isLoading: true });
 
     const provider = new JsonRpcProvider({ url: url.rpc });
     const transaction = await createTx({ provider, form: formValues });
