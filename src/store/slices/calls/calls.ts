@@ -5,6 +5,8 @@ import { updateCall } from './actions/updateCall.ts';
 import { putTemporaryFormValues } from './actions/putTemporaryFormValues.ts';
 import { updateCallsPosition } from './actions/updateCallsPositon.ts';
 import { removeCall } from './actions/removeCall.ts';
+import { setOpenResult } from './actions/setOpenResult.ts';
+import { addResult } from './actions/addResult.ts';
 import { createCall } from './effects/createCall.ts';
 import { getCalls } from './effects/getCalls.ts';
 import { saveCall } from './effects/saveCall.ts';
@@ -30,6 +32,8 @@ export const calls = {
   updateCall,
   updateCallsPosition,
   removeCall,
+  setOpenResult,
+  addResult,
   // effects
   createCall,
   getCalls,
