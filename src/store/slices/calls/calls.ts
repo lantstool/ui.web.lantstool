@@ -8,7 +8,7 @@ import { removeCall } from './actions/removeCall.ts';
 import { setOpenResult } from './actions/setOpenResult.ts';
 import { addResult } from './actions/addResult.ts';
 import { createCall } from './effects/createCall.ts';
-import { getCalls } from './effects/getCalls.ts';
+import { getOnceCalls } from './effects/getOnceCalls.ts';
 import { saveCall } from './effects/saveCall.ts';
 import { deleteCall } from './effects/deleteCall.ts';
 import { getCallsCount } from './effects/getCallsCount.ts';
@@ -36,7 +36,7 @@ export const calls = {
   addResult,
   // effects
   createCall,
-  getCalls,
+  getOnceCalls,
   saveCall,
   deleteCall,
   getCallsCount,
