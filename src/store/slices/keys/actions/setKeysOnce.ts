@@ -1,10 +1,14 @@
 import { action } from '../../../../react-vault';
 
 export const setKeysOnce = action(({ slice, payload: keys }: any) => {
+  const ids = [];
+  const records: any = {};
+
   keys.forEach((key: any) => {
-    slice.ids.push(key.publicKey);
-    slice.records[key.publicKey] = key;
+    ids.push(key.publicKey);
+    records[key.publicKey] = key;
   });
 
-  slice.isContractsLoadedToState = true;
+  slice.ids = ids;
+  slice.records = records;
 });
