@@ -3,6 +3,8 @@ import Select from 'react-select';
 import { selectStyles } from './formSelect.style.ts';
 import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.tsx';
+import { ClearIndicator } from './ClearIndicator/ClearIndicator.tsx';
+import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.tsx';
 
 export const FormSelect = ({
   control,
@@ -29,7 +31,7 @@ export const FormSelect = ({
             onChange={onChange ? onChange(field) : field.onChange}
             isClearable={isClearable}
             isSearchable={isSearchable}
-            components={{ ...components, DropdownIndicator }}
+            components={{ ...components, DropdownIndicator, ClearIndicator, IndicatorsContainer }}
             options={options}
             styles={style}
           />

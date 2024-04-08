@@ -1,32 +1,24 @@
-import { Controller } from 'react-hook-form';
-import { useStoreEffect } from '../../../../../../../react-vault';
-import Select from 'react-select';
+import { useStoreState } from '../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { selectStyles } from '../general/selectStyles.ts';
-import { IndicatorsContainer } from '../general/IndicatorsContainer/IndicatorsContainer.tsx';
-import cn from './ContractId.module.css';
-import { BalanceLabel } from './BalanceLabel/BalanceLabel.tsx';
+import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { useWatch } from 'react-hook-form';
 
-// TODO show only contract here
-const getOptions: any = async (getAccountsWithContract: any, setOptions: any) => {
-  const accounts = await getAccountsWithContract();
-
+const getOptions: any = async (accounts: any, setOptions: any) => {
   const options = accounts.map((account: any) => ({
-    value: account.accountId,
-    label: account.accountId,
+    value: account,
+    label: account,
   }));
   setOptions(options);
 };
 
 export const ContractId = ({ form }: any) => {
   const { control, setValue } = form;
-  const getAccountsWithContract = useStoreEffect(
-    (store: any) => store.accounts.getAccountsWithContract,
-  );
+  const accounts = useStoreState((state: any) => state.accounts.ids);
   const [options, setOptions] = useState([]);
+  const contractId = useWatch({ control, name: 'contractId.value' });
 
   useEffect(() => {
-    getOptions(getAccountsWithContract, setOptions);
+    getOptions(accounts, setOptions);
   }, []);
 
   const onChange = (field: any) => (event: any) => {
@@ -35,25 +27,16 @@ export const ContractId = ({ form }: any) => {
   };
 
   return (
-    <div>
-      <div className={cn.head}>
-        <p>Contract Id</p>
-        <BalanceLabel form={form} />
-      </div>
-      <Controller
-        name="contractId"
-        control={control}
-        render={({ field }: any) => (
-          <Select
-            {...field}
-            onChange={onChange(field)}
-            isSearchable
-            components={{ IndicatorsContainer }}
-            options={options}
-            styles={selectStyles}
-          />
-        )}
-      />
-    </div>
+    <FormSelectGroup
+      name="contractId"
+      accountId={contractId}
+      onChange={onChange}
+      label="Contract Id"
+      control={control}
+      options={options}
+      isSearchable={true}
+      isClearable={true}
+      creatableSelect={true}
+    />
   );
 };

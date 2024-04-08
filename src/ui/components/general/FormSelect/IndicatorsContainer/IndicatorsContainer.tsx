@@ -1,5 +1,5 @@
 import { components } from 'react-select';
-import { CopyButton } from '../../../../../general/CopyButton/CopyButton.tsx';
+import { CopyButton } from '../../../Main/general/CopyButton/CopyButton.tsx';
 import cn from './IndicatorsContainer.module.css';
 
 //We have in default 4 children :

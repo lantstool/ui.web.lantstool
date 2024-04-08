@@ -10,8 +10,8 @@ export const Footer = ({ form }) => {
   const sendTransaction = useStoreEffect((store: any) => store.transactions.onSendTransaction);
   const saveTransaction = useStoreEffect((store: any) => store.transactions.onSaveTransaction);
   const revertTransaction = useStoreEffect((store: any) => store.transactions.revertTransaction);
-  const { isDirty } = useFormState({ control: form.control });
-
+  const { isDirty, dirtyFields } = useFormState({ control: form.control });
+  console.log(dirtyFields)
   const onSubmit = form.handleSubmit((formValues: any) => {
     sendTransaction({ formValues });
   });

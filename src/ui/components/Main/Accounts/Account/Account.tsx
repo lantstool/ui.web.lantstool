@@ -20,7 +20,6 @@ export const Account = () => {
         <div className={cn.sidebar}>
           <AccountLink to="details" text='Details'/>
           <AccountLink to="keys" text='Keys'/>
-          <AccountLink to="contract" text='Contract'/>
         </div>
         <div className={cn.content}>
           <Outlet />

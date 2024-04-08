@@ -41,13 +41,6 @@ export const navigation = {
       ({ currentNetworkId }) => `${currentNetworkId}.calls.route`,
     );
 
-    saveDynamicRoute(
-      slice,
-      '/:currentNetworkId/contracts/:contractId',
-      pathname,
-      ({ currentNetworkId }) => `${currentNetworkId}.contracts.route`,
-    );
-
     const nav = current(slice);
     // TODO move to effect
     setTimeout(

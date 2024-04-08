@@ -9,7 +9,7 @@ const popupPosition: any = {
 };
 
 const getType = (position: any) => popupPosition[position] || popupPosition.center;
-export const Popup = ({ isOpen, openModal, duplicate, handleClose, position }: any) => {
+export const Popup = ({ isOpen, openModal, handleClose, position }: any) => {
   const { popup, arrow } = useMemo(() => getType(position), [position]);
 
   return (
@@ -17,16 +17,11 @@ export const Popup = ({ isOpen, openModal, duplicate, handleClose, position }: a
       {isOpen && (
         <>
           <div className={cnm(cn.popup, popup)}>
-            <div className={cnm(cn.triangle, arrow)} />
+            <div className={cnm(cn.arrow, arrow)} />
             <div className={cn.buttonWrapper}>
               <button className={cn.button} onClick={() => openModal('editModal')}>
                 <p className={cn.buttonText}>Edit name</p>
               </button>
-              {duplicate && (
-                <button className={cn.button} onClick={duplicate}>
-                  <p className={cn.buttonText}>Duplicate</p>
-                </button>
-              )}
               <button className={cn.button} onClick={() => openModal('deleteModal')}>
                 <p className={cn.buttonText}>Remove</p>
               </button>
