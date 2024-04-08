@@ -16,6 +16,7 @@ import { reorderCalls } from './effects/reorderCalls.ts';
 import { getAccountBalance } from './effects/getAccountBalance';
 import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 import { callMethod } from './effects/callMethod.ts';
+import { loadCall } from './effects/loadCall.ts';
 import { revertCall } from './effects/revertCall.ts';
 import { editCallName } from './effects/editCallName.ts';
 
@@ -43,6 +44,7 @@ export const calls = {
   getAccountBalance,
   onDuplicateTransaction,
   callMethod,
+  loadCall,
   putTemporaryFormValues,
   revertCall,
   editCallName,
