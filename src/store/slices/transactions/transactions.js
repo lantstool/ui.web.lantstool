@@ -1,7 +1,7 @@
 import { actions } from './actions/index.ts';
 import { onAddTransaction } from './effects/onAddTransaction';
 import { onSendTransaction } from './effects/onSendTransaction/onSendTransaction';
-import { getOnceTransactions } from './effects/getOnceTransactions';
+import { onInitPage } from './effects/onInitPage';
 import { onSaveTransaction } from './effects/onSaveTransaction';
 import { onDeleteTransaction } from './effects/onDeleteTransaction';
 import { onEditTransactionName } from './effects/onEditTransactionName';
@@ -21,7 +21,7 @@ export const transactions = {
   // effects
   onAddTransaction,
   onSendTransaction,
-  getOnceTransactions,
+  onInitPage,
   onSaveTransaction,
   onDeleteTransaction,
   onEditTransactionName,
