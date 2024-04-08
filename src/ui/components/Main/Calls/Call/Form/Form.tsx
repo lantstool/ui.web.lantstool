@@ -6,9 +6,7 @@ import { ContractId } from './ContractId/ContractId.tsx';
 import { Method } from './Method/Method.tsx';
 import cn from './Form.module.css';
 import { Footer } from './Footer/Footer.tsx';
-import cnm from 'classnames';
-import { createSchema } from './schema.ts';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Result } from './Result/Result.tsx';
 
 const getFormValues = (call: any) => ({
   callId: call.callId,
@@ -16,32 +14,20 @@ const getFormValues = (call: any) => ({
   method: call.method,
   arguments: call.arguments,
   signer: call.signer,
-  results: call.results,
 });
 
 export const Form = ({ call }: any) => {
-  const setOpenResult: any = useStoreAction((store: any) => store.calls.setOpenResult);
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.calls.temporaryFormValues[call.callId],
   );
   const putTemporaryFormValues = useStoreAction((store: any) => store.calls.putTemporaryFormValues);
-  const rpc = useStoreState((store: any) => store.networks.current.url.rpc);
   const formDefaultValues: any = useMemo(() => getFormValues(call), [call.callId]);
-  const isResults = call.results?.records.length > 0;
-
-  const schema = createSchema(rpc);
-  const form = useForm({
-    mode: 'all',
-    resolver: yupResolver(schema),
-    defaultValues: formDefaultValues,
-  });
+  const form = useForm({ defaultValues: formDefaultValues });
 
   // We save the current form data to store cuz we want to render all changes which ones
   // he did before navigate to another page again when user returns back to this call page
   useEffect(() => {
-    form.reset(formDefaultValues);
-    if (temporaryFormValues)
-      form.reset({ ...temporaryFormValues, results: call.results }, { keepDefaultValues: true });
+    if (temporaryFormValues) form.reset(temporaryFormValues, { keepDefaultValues: true });
     return () => {
       // TODO try to optimise and don't call it if the form haven't changed
       putTemporaryFormValues({
@@ -51,21 +37,10 @@ export const Form = ({ call }: any) => {
     };
   }, []);
 
-  const toResult = () => {
-    setOpenResult({ callId: call.callId, isOpen: true });
-  };
-
   return (
     <div className={cn.container}>
       <div className={cn.formScrollWrapper}>
-        <div className={cnm(cn.topNav, isResults && cn.topNavActive)}>
-          {isResults && (
-            <button className={cn.resultBtn} onClick={toResult}>
-              Result
-            </button>
-          )}
-        </div>
-        <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
+        <form className={cn.form}>
           <div>
             <h3 className={cn.title}>Contract</h3>
             <ContractId form={form} />
@@ -79,7 +54,9 @@ export const Form = ({ call }: any) => {
             />
           </div>
         </form>
+        {call.result && <Result result={call.result} />}
       </div>
+
       <Footer form={form} />
     </div>
   );

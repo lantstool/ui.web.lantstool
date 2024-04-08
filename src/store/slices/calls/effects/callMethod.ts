@@ -6,14 +6,12 @@ function parseJsonFromRawResponse(response: Uint8Array): any {
 }
 
 export const callMethod = effect(async ({ payload: formValues, slice, store }: any) => {
-  const { callId, contractId, method } = formValues;
-  const { url } = store.getState((store: any) => store.networks.current);
-  const addResult = slice.getActions((slice: any) => slice.addResult);
-  const setOpenResult = slice.getActions((slice: any) => slice.setOpenResult);
+  const { spaceId, networkId, url } = store.getState((store: any) => store.networks.current);
+  const getKey = store.getEffects((store: any) => store.keys.getKey);
+  const call = slice.getState((slice: any) => slice.records[formValues.callId]);
+  const putCall = slice.getActions((slice: any) => slice.putCall);
 
   try {
-    setOpenResult({ callId, isOpen: true, isLoading: true });
-
     const body = {
       jsonrpc: '2.0',
       id: 1,
@@ -21,8 +19,8 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
       params: {
         request_type: 'call_function',
         finality: 'final',
-        account_id: contractId.value,
-        method_name: method,
+        account_id: formValues.contractId.value,
+        method_name: formValues.method,
         args_base64: Buffer.from(formValues.arguments).toString('base64'),
       },
     };
@@ -37,11 +35,18 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
 
     const { result } = await response.json();
 
-    if (result.result) return addResult({ callId, result: Buffer.from(result.result).toString() });
+    if (result.result)
+      return putCall({
+        ...call,
+        result: Buffer.from(result.result).toString(),
+      });
 
-    if (result.error) return addResult({ callId, result: { error: result.error } });
+    if (result.error)
+      return putCall({
+        ...call,
+        result: result.error,
+      });
   } catch (e) {
-    addResult({ callId, result: { error: e.message } });
     console.log(e.message);
   }
 });
