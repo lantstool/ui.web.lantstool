@@ -17,4 +17,5 @@ export const setCalls = action(({ slice, payload: calls }: any) => {
 
   slice.ids = ids;
   slice.records = records;
+  slice.isCallsLoadedToState = true;
 });

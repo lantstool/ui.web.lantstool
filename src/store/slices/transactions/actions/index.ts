@@ -1,4 +1,4 @@
-import { initPage } from './initPage.ts';
+import { setOnceTransactions } from './setOnceTransactions.ts';
 import { addTransaction } from './addTransaction.ts';
 import { updateTransaction } from './updateTransaction.ts';
 import { deleteTransaction } from './deleteTransaction.ts';
@@ -9,7 +9,7 @@ import { addResult } from './addResult.ts';
 import { setOpenResult } from './setOpenResult.ts';
 
 export const actions: any = {
-  initPage,
+  setOnceTransactions,
   addTransaction,
   updateTransaction,
   deleteTransaction,
