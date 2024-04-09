@@ -7,6 +7,7 @@ import { duplicateTransaction } from './duplicateTransaction.ts';
 import { putTemporaryFormValues } from './putTemporaryFormValues.ts';
 import { addResult } from './addResult.ts';
 import { setOpenResult } from './setOpenResult.ts';
+import { resetState } from './resetState.ts';
 
 export const actions: any = {
   setOnceTransactions,
@@ -18,4 +19,5 @@ export const actions: any = {
   putTemporaryFormValues,
   addResult,
   setOpenResult,
+  resetState,
 };

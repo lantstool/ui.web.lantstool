@@ -18,6 +18,7 @@ const useGetMenuItems = () => {
 };
 
 export const Network = () => {
+  const resetStatePages = useStoreEffect((store: any) => store.networks.resetStatePages);
   const current: any = useStoreState((store: any) => store.networks.current);
   const getNetworks = useStoreEffect((store: any) => store.networks.getNetworks);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -40,6 +41,7 @@ export const Network = () => {
   };
 
   const handleMenuItemClick = (networkId: any) => {
+    resetStatePages()
     navigate(`/${networkId}`);
     handleClose();
   };
