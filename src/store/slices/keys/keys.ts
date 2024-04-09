@@ -3,10 +3,11 @@ import { removeKey } from './actions/removeKey.ts';
 import { setKeysOnce } from './actions/setKeysOnce.ts';
 import { addKey } from './effects/addKey.ts';
 import { createKey } from './actions/createKey.ts';
+import { resetState } from './actions/resetState.ts';
 import { deleteKey } from './effects/deleteKey.ts';
 import { getKey } from './effects/getKey.ts';
 import { getKeys } from './effects/getKeys.ts';
-import { loadKeysOnce } from "./effects/loadKeysOnce.ts";
+import { loadKeysOnce } from './effects/loadKeysOnce.ts';
 
 export const keys = {
   // init state
@@ -18,6 +19,7 @@ export const keys = {
   removeKey,
   createKey,
   setKeysOnce,
+  resetState,
   //effects
   addKey,
   deleteKey,
