@@ -27,7 +27,9 @@ export const DeleteModal = ({ isOpen, callId, setOpen }: any) => {
       <div className={cn.container}>
         <div className={cn.header}>
           <Title text="Remove transaction" />
-          <CloseButton close={closeModal} />
+          <div className={cn.closeBtn}>
+            <CloseButton close={closeModal} />
+          </div>
         </div>
         <Subtitle
           text="Are you sure to remove this call? It will also remove all data from this

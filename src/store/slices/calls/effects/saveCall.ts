@@ -9,6 +9,23 @@ const getFormValues = (call: any) => ({
   signer: call.signer,
 });
 
+const getNewCall = (values: any, oldCall: any) => {
+  return {
+    createdAt: oldCall.createdAt,
+    name: oldCall.name,
+    networkId: oldCall.networkId,
+    order: oldCall.order,
+    signerId: oldCall.signerId,
+    signerKey: oldCall.signerKey,
+    spaceId: oldCall.spaceId,
+    arguments: values.arguments,
+    callId: values.callId,
+    contractId: values.contractId,
+    method: values.method,
+    signer: values.signer,
+  };
+};
+
 export const saveCall = effect(async ({ payload: form, slice, store }: any) => {
   const values = form.getValues();
   const callId = values.callId;
@@ -16,18 +33,13 @@ export const saveCall = effect(async ({ payload: form, slice, store }: any) => {
   const oldCall = slice.getState((slice: any) => slice.records[callId]);
   const putCall = slice.getActions((slice: any) => slice.putCall);
   const putTemporaryFormValues = slice.getActions((slice: any) => slice.putTemporaryFormValues);
-
-  const call = {
-    ...oldCall,
-    ...values,
-    result: null, // We don't want to save a call execution result data in DB
-  };
+  const call = getNewCall(values, oldCall);
 
   try {
     await idb.put('calls', call);
-    putCall(call);
+    putCall({ ...call, results: values.results });
     putTemporaryFormValues({ callId, values: null });
-    form.reset(getFormValues(call))
+    form.reset(getFormValues({ ...call, results: values.results }));
   } catch (e) {
     console.log(e);
   }

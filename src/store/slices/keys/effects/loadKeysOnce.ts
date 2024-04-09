@@ -1,8 +1,8 @@
 import { effect } from '../../../../react-vault';
 
 export const loadKeysOnce = effect(async ({ slice, store }: any) => {
-  const isContractsLoadedToState = slice.getState((slice: any) => slice.isContractsLoadedToState);
-  if (isContractsLoadedToState) return;
+  const isKeysLoadedToState = slice.getState((slice: any) => slice.isKeysLoadedToState);
+  if (isKeysLoadedToState) return;
 
   const [idb] = store.getEntities((store: any) => store.idb);
   const { networkId, spaceId } = store.getState((slice: any) => slice.networks.current);

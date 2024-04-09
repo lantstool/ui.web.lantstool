@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useStoreAction, useStoreState } from '../../../../../../react-vault';
 import { SignerAccount } from './SignerAccount/SignerAccount.tsx';
 import { SignerKey } from './SignerKey/SignerKey.tsx';
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 import cn from './Form.module.css';
-import { Result } from './Result/Result.tsx';
 import { Footer } from './Footer/Footer.tsx';
+import cnm from 'classnames';
 
 const getFormDefaultValues = (transaction: any) => {
   return {
@@ -16,28 +16,30 @@ const getFormDefaultValues = (transaction: any) => {
     signerKey: transaction.signerKey,
     receiver: transaction.receiver,
     actions: transaction.actions,
+    results: transaction.results,
   };
 };
 
 export const Form = ({ transaction }: any) => {
+  const setOpenResult: any = useStoreAction((store: any) => store.transactions.setOpenResult);
   const formDefaultValues: any = useMemo(() => getFormDefaultValues(transaction), [transaction]);
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.transactions.temporaryFormValues[transaction.transactionId],
   );
-
   const putTemporaryFormValues: any = useStoreAction(
     (store: any) => store.transactions.putTemporaryFormValues,
   );
 
+  const isResults = transaction.results?.records.length > 0;
   const form: any = useForm({ defaultValues: formDefaultValues });
-  const [result, setResult] = useState('');
-  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
-    setResult('')
-    setOpen(false)
     form.reset(formDefaultValues);
-    if (temporaryFormValues) form.reset(temporaryFormValues, { keepDefaultValues: true });
+    if (temporaryFormValues)
+      form.reset(
+        { ...temporaryFormValues, results: transaction.results },
+        { keepDefaultValues: true },
+      );
     return () => {
       putTemporaryFormValues({
         values: form.getValues(),
@@ -46,27 +48,31 @@ export const Form = ({ transaction }: any) => {
     };
   }, [transaction]);
 
+  const toResult = () => {
+    setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
+  };
 
   return (
     <>
-      {!result && !isOpen ? (
-        <>
-          <div className={cn.formScrollWrapper}>
-            <form className={cn.form}>
-              <div>
-                <h3 className={cn.title}>Sender</h3>
-                <SignerAccount form={form} />
-                <SignerKey form={form} />
-              </div>
-              <Actions form={form} />
-              <Receiver form={form} />
-            </form>
+      <div className={cn.formScrollWrapper}>
+        <div className={cnm(cn.topNav, isResults && cn.topNavActive)}>
+          {isResults && (
+            <button className={cn.resultBtn} onClick={toResult}>
+              Result
+            </button>
+          )}
+        </div>
+        <form className={cnm(cn.form,isResults && cn.formWithoutNav)}>
+          <div>
+            <h3 className={cn.title}>Sender</h3>
+            <SignerAccount form={form} />
+            <SignerKey form={form} />
           </div>
-          <Footer form={form} setResult={setResult} setOpen={setOpen}/>
-        </>
-      ) : (
-        <Result result={result} setResult={setResult} setOpen={setOpen}/>
-      )}
+          <Actions form={form} />
+          <Receiver form={form} />
+        </form>
+      </div>
+      <Footer form={form} />
     </>
   );
 };

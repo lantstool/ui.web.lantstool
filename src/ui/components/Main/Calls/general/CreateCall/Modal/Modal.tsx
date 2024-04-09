@@ -46,7 +46,9 @@ export const Modal = ({ styles, isOpen, close }: any) => {
         <div className={styles}>
           <div className={cn.header}>
             <Title text="Create Call" />
-            <CloseButton close={close} />
+            <div className={cn.closeBtn}>
+              <CloseButton close={close} />
+            </div>
           </div>
           <div>
             <InputGroup

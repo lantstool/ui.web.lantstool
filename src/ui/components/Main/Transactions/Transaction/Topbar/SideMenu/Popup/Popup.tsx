@@ -3,21 +3,21 @@ import cnm from 'classnames';
 import { useMemo } from 'react';
 
 const popupPosition: any = {
-  bottomRight: { popup: cn.positionRight, triangle: cn.triangleRight },
-  bottomLeft: { popup: cn.positionLeft, triangle: cn.triangleLeft },
-  bottomCenter: { popup: cn.positionCenter, triangle: cn.triangleCenter },
+  bottomRight: { popup: cn.positionRight, arrow: cn.arrowRight },
+  bottomLeft: { popup: cn.positionLeft, arrow: cn.arrowLeft },
+  bottomCenter: { popup: cn.positionCenter, arrow: cn.arrowCenter },
 };
 
 const getType = (position: any) => popupPosition[position] || popupPosition.center;
 export const Popup = ({ isOpen, openModal, duplicate, handleClose, position }: any) => {
-  const { popup, triangle } = useMemo(() => getType(position), [position]);
+  const { popup, arrow } = useMemo(() => getType(position), [position]);
 
   return (
     <>
       {isOpen && (
         <>
           <div className={cnm(cn.popup, popup)}>
-            <div className={cnm(cn.triangle, triangle)} />
+            <div className={cnm(cn.arrow, arrow)} />
             <div className={cn.buttonWrapper}>
               <button className={cn.button} onClick={() => openModal('editModal')}>
                 <p className={cn.buttonText}>Edit name</p>

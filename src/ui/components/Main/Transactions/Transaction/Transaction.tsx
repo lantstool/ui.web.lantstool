@@ -3,6 +3,7 @@ import { Form } from './Form/Form.tsx';
 import cn from './Transaction.module.css';
 import { useParams } from 'react-router-dom';
 import { useStoreState } from '../../../../../react-vault';
+import { Result } from './Result/Result.tsx';
 
 export const Transaction = () => {
   const { transactionId } = useParams();
@@ -13,7 +14,11 @@ export const Transaction = () => {
   return (
     <div className={cn.transaction}>
       <Topbar transaction={transaction} />
-      <Form transaction={transaction} />
+      {!transaction.results.isOpen ? (
+        <Form transaction={transaction} />
+      ) : (
+        <Result transaction={transaction} />
+      )}
     </div>
   );
 };

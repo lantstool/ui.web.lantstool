@@ -11,7 +11,7 @@
   box-shadow: 2px 1px 4px 2px rgba(0, 0, 0, 0.26);
   position: fixed;
   top: calc(50%);
-  left: calc(50% + 270px);
+  left: calc(50% + 375px);
   transform: translate(-50%, -50%);
 }
 
@@ -22,4 +22,6 @@
   align-items: center;
 }
 
-
+.closeBtn{
+  grid-area: b;
+}
