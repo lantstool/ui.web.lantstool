@@ -9,7 +9,7 @@ import { deleteNetwork } from './effects/deleteNetwork.ts';
 import { removeNetwork } from './actions/removeNetwork.ts';
 import { editNetwork } from './effects/editNetwork.ts';
 import { updateNetwork } from './actions/updateNetwork.ts';
-import { resetStatePages } from './effects/resetStatePages.ts';
+import { changeNetwork } from './effects/changeNetwork.ts';
 
 export const networks = {
   current: null,
@@ -28,5 +28,5 @@ export const networks = {
   createNetwork,
   deleteNetwork,
   editNetwork,
-  resetStatePages,
+  changeNetwork,
 };

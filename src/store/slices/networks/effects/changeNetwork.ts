@@ -1,6 +1,6 @@
 import { effect } from '../../../../react-vault';
 
-export const resetStatePages = effect(async ({ store, payload }: any) => {
+export const changeNetwork = effect(async ({ store, payload }: any) => {
   const { navigate, networkId } = payload;
   const resetStateCalls = store.getActions((store: any) => store.calls.resetState);
   const resetStateTransactions = store.getActions((store: any) => store.transactions.resetState);
