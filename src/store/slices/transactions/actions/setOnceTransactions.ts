@@ -1,6 +1,6 @@
 import { action } from '../../../../react-vault';
 
-export const initPage = action(({ slice, payload }: any) => {
+export const setOnceTransactions = action(({ slice, payload }: any) => {
   const list = [];
   const map: any = {};
   const results = {
@@ -17,4 +17,5 @@ export const initPage = action(({ slice, payload }: any) => {
 
   slice.list = list;
   slice.map = map;
+  slice.isTransactionsLoadedToState = true;
 });
