@@ -41,8 +41,7 @@ export const Network = () => {
   };
 
   const handleMenuItemClick = (networkId: any) => {
-    resetStatePages()
-    navigate(`/${networkId}`);
+    resetStatePages({ navigate, networkId });
     handleClose();
   };
 
