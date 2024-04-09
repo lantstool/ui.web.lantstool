@@ -12,7 +12,11 @@ const getOptions: any = async (accounts: any, setOptions: any) => {
 };
 
 export const ContractId = ({ form }: any) => {
-  const { control, setValue } = form;
+  const {
+    control,
+    setValue,
+    formState: { errors },
+  } = form;
   const accounts = useStoreState((state: any) => state.accounts.ids);
   const [options, setOptions] = useState([]);
   const contractId = useWatch({ control, name: 'contractId.value' });
@@ -37,6 +41,7 @@ export const ContractId = ({ form }: any) => {
       isSearchable={true}
       isClearable={true}
       creatableSelect={true}
+      error={errors?.contractId?.message}
     />
   );
 };

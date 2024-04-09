@@ -17,7 +17,7 @@ export const Popup = ({ isOpen, openModal, duplicate, handleClose, position }: a
       {isOpen && (
         <>
           <div className={cnm(cn.popup, popup)}>
-            <div className={cnm(cn.triangle, arrow)} />
+            <div className={cnm(cn.arrow, arrow)} />
             <div className={cn.buttonWrapper}>
               <button className={cn.button} onClick={() => openModal('editModal')}>
                 <p className={cn.buttonText}>Edit name</p>
