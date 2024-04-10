@@ -18,11 +18,13 @@ export const Account = () => {
       <TopBar accountId={accountId} />
       <div className={cn.main}>
         <div className={cn.sidebar}>
-          <AccountLink to="details" text='Details'/>
-          <AccountLink to="keys" text='Keys'/>
+          <AccountLink to="details" text="Details" />
+          <AccountLink to="keys" text="Keys" />
         </div>
         <div className={cn.content}>
-          <Outlet />
+          <div className={cn.wrapper}>
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

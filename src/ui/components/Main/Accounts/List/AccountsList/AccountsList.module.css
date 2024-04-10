@@ -53,8 +53,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.contract {
-  display: flex;
-  justify-content: space-between;
-}

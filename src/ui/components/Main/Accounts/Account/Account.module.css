@@ -21,12 +21,14 @@
   align-self: stretch;
   border-bottom: 1px solid var(--Color-Green-400);
 }
+.wrapper {
+  padding: 0 100px;
+}
 
 .content {
-  max-width: 850px;
   width: 100%;
   display: grid;
   align-self: center;
-  align-items: center;
-  align-content: center;
+  height: calc(100vh - 160px);
+  overflow-y: auto;
 }
