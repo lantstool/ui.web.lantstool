@@ -11,4 +11,5 @@ export const setAccounts = action(({ slice, payload: accounts }: any) => {
 
   slice.ids = ids;
   slice.records = records;
+  slice.isAccountsLoadedToState = true;
 });

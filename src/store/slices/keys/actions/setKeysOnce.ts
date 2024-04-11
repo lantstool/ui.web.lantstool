@@ -6,5 +6,5 @@ export const setKeysOnce = action(({ slice, payload: keys }: any) => {
     slice.records[key.publicKey] = key;
   });
 
-  slice.isContractsLoadedToState = true;
+  slice.isKeysLoadedToState = true;
 });

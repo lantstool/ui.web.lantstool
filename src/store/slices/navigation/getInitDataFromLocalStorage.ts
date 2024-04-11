@@ -11,7 +11,7 @@ export const getInitDataFromLocalStorage = effect(({ slice }: any) => {
   }
 
   const data = {
-    route: '/testnet',
+    route: '/testnet/transactions',
     routes: {},
   };
   setInitData(data);

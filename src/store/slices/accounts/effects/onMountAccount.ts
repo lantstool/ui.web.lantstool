@@ -7,6 +7,7 @@ export const onMountAccount = effect(async ({ payload: accountId, store, slice }
   const { rpc } = store.getState((store: any) => store.networks.current.url);
   const setAccountChainDetails = slice.getActions((slice: any) => slice.setAccountChainDetails);
   const networkId = store.getState((store: any) => store.networks.current.networkId);
+  const getKeyList = store.getEffects((store: any) => store.accounts.getKeyList);
 
   try {
     const config = {
@@ -18,8 +19,9 @@ export const onMountAccount = effect(async ({ payload: accountId, store, slice }
     const connection = await connect(config);
     const account = await connection.account(accountId);
     const balance = await account.getAccountBalance();
-
     setAccountChainDetails({ accountId, details: toCamelCase(response.result), balance });
+
+    await getKeyList(accountId);
   } catch (e) {
     console.log(e);
   }
