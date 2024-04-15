@@ -7,6 +7,7 @@ const getFormValues = (call: any) => ({
   method: call.method,
   arguments: call.arguments,
   signer: call.signer,
+  results: call.results,
 });
 
 export const revertCall = effect(({ payload: form, slice }: any) => {
