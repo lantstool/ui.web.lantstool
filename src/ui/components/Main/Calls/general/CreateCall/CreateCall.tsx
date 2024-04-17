@@ -7,12 +7,11 @@ export const CreateCall = ({ styles }: any) => {
   const [isOpen, setOpen]: any = useState(false);
 
   const open = () => setOpen(true);
-  const close = () => setOpen(false);
 
   return (
     <>
       <Button text="Create Call" onClick={open} src={addIcon} type="button" />
-      {isOpen && <Modal styles={styles} isOpen={isOpen} close={close} />}
+      {isOpen && <Modal styles={styles} isOpen={isOpen} setOpen={setOpen} />}
     </>
   );
 };

@@ -3,10 +3,8 @@ import { effect } from '../../../../react-vault';
 // TODO reuse this function in Form component
 const getFormValues = (call: any) => ({
   callId: call.callId,
-  contractId: call.contractId,
   method: call.method,
-  arguments: call.arguments,
-  signer: call.signer,
+  params: call.params,
   results: call.results,
 });
 

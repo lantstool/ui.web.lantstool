@@ -11,7 +11,7 @@ export const TextareaGroup = ({
   label,
 }: any) => (
   <div className={cn.inputGroup}>
-    <label htmlFor={name}>{label}</label>
+    <label className={cn.label} htmlFor={name}>{label}</label>
     <Textarea
       name={name}
       register={register}

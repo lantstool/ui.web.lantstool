@@ -5,6 +5,7 @@ import { useStoreEffect, useStoreState } from '../../../../../react-vault';
 import { Form } from './Form/Form.tsx';
 import { useLoader } from '../../../../../store/hooks/useLoader.ts';
 import { Result } from './Result/Result.tsx';
+import {Forms} from "./Forms/Forms.tsx";
 
 export const Call = () => {
   const { callId } = useParams();
@@ -18,7 +19,8 @@ export const Call = () => {
   return (
     <div className={cn.call} key={callId}>
       <Topbar call={call} callId={callId} />
-      {!call.results.isOpen ? <Form call={call} /> : <Result call={call} />}
+      {!call.results.isOpen ? <Forms call={call} /> : <Result call={call} />}
+      {/*{!call.results.isOpen ? <Form call={call} /> : <Result call={call} />}*/}
     </div>
   );
 };

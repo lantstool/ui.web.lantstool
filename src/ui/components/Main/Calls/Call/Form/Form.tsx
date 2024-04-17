@@ -13,9 +13,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 const getFormValues = (call: any) => ({
   callId: call.callId,
   contractId: call.contractId,
+  type: call.type,
   method: call.method,
   arguments: call.arguments,
-  signer: call.signer,
+  params: {
+    finality: '',
+    accountId: 'dev-1588039999690',
+    methodName: 'get_num',
+    argsBase64: 'e30=',
+  },
   results: call.results,
 });
 
@@ -66,18 +72,16 @@ export const Form = ({ call }: any) => {
           )}
         </div>
         <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
-          <div>
-            <h3 className={cn.title}>Contract</h3>
-            <ContractId form={form} />
-            <Method form={form} />
-            <InputGroup
-              register={form.register}
-              name="arguments"
-              label="Arguments"
-              textarea
-              rows={10}
-            />
-          </div>
+          <h3 className={cn.title}>Contract</h3>
+          <ContractId form={form} />
+          <Method form={form} />
+          <InputGroup
+            register={form.register}
+            name="arguments"
+            label="Arguments"
+            textarea
+            rows={10}
+          />
         </form>
       </div>
       <Footer form={form} />

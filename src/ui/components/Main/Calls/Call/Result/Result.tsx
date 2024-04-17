@@ -14,6 +14,8 @@ export const Result = ({ call }: any) => {
   const setOpenResult: any = useStoreAction((store: any) => store.calls.setOpenResult);
   const result = getResultValue(call);
 
+  const getFormattedJSON = (json: string) => JSON.stringify(json, null, 2);
+
   const closeResult = () => {
     setOpenResult({ callId: call.callId, isOpen: false });
   };
@@ -31,12 +33,12 @@ export const Result = ({ call }: any) => {
         ) : (
           <>
             <h3 className={cn.title}>Result</h3>
-            {!result.error ? (
+            {!result?.error ? (
               <>
-                <CodeMirror readOnly={true} value={result} extensions={[jsonLanguage]} />
+                <CodeMirror readOnly={true} value={getFormattedJSON(result)} extensions={[jsonLanguage]} />
               </>
             ) : (
-              <p className={cn.error}>{result.error}</p>
+              <p className={cn.error}>{getFormattedJSON(result)}</p>
             )}
           </>
         )}
