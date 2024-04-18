@@ -30,7 +30,12 @@ export const CallContractFunction = ({ call }: any) => {
     <FormGroup form={form} call={call} formDefaultValues={formDefaultValues}>
       <ContractId form={form} />
       <InputGroup register={form.register} name="params.method_name" label="Method name" />
-      <TextareaGroup register={form.register} name="params.args_base64" label="Args base64" rows={10} />
+      <TextareaGroup
+        register={form.register}
+        name="params.args_base64"
+        label="Args base64"
+        rows={10}
+      />
     </FormGroup>
   );
 };

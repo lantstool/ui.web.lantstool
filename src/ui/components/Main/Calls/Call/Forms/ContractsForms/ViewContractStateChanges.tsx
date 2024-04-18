@@ -27,6 +27,11 @@ export const ViewContractStateChanges = ({ call }: any) => {
   return (
     <FormGroup form={form} call={call} formDefaultValues={formDefaultValues}>
       <ContractIds form={form} />
+      <InputGroup
+        register={form.register}
+        label="Key prefix base64"
+        name="params.key_prefix_base64"
+      />
       <InputGroup register={form.register} label="Block Id" name="params.block_id" />
     </FormGroup>
   );
