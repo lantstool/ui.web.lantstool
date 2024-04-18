@@ -1,0 +1,16 @@
+.button {
+  padding: 10px 15px;
+  border: 1px solid var(--Color-Green-300);
+  background-color: white;
+  border-radius: 8px;
+}
+
+.button:hover {
+  box-shadow: var(--Box-Shadow-025);
+  cursor: pointer;
+}
+
+.text {
+  margin: 0;
+  font-size: 16px;
+}

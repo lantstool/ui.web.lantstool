@@ -1,6 +1,6 @@
-import { useStoreState } from '../../../../../../../react-vault';
+import { useStoreState } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
 import { useWatch } from 'react-hook-form';
 
 const getOptions: any = async (accounts: any, setOptions: any) => {
@@ -12,36 +12,26 @@ const getOptions: any = async (accounts: any, setOptions: any) => {
 };
 
 export const ContractId = ({ form }: any) => {
-  const {
-    control,
-    setValue,
-    formState: { errors },
-  } = form;
+  const { control } = form;
+
   const accounts = useStoreState((state: any) => state.accounts.ids);
   const [options, setOptions] = useState([]);
-  const contractId = useWatch({ control, name: 'contractId.value' });
+  const contractId = useWatch({ control, name: 'params.account_id.value' });
 
   useEffect(() => {
     getOptions(accounts, setOptions);
   }, []);
 
-  const onChange = (field: any) => (event: any) => {
-    field.onChange(event);
-    setValue('method', '');
-  };
-
   return (
     <FormSelectGroup
-      name="contractId"
+      name="params.account_id"
       accountId={contractId}
-      onChange={onChange}
       label="Contract Id"
       control={control}
       options={options}
       isSearchable={true}
       isClearable={true}
       creatableSelect={true}
-      error={errors?.contractId?.message}
     />
   );
 };

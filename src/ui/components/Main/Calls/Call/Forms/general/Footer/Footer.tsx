@@ -1,10 +1,10 @@
 import cn from './Footer.module.css';
-import { useStoreEffect } from '../../../../../../../react-vault';
-import { Button } from '../../../../general/Button/Button.tsx';
-import sendTransaction from '../../../../../../assets/sendTransaction.svg';
+import { useStoreEffect } from '../../../../../../../../react-vault';
+import { Button } from '../../../../../general/Button/Button.tsx';
+import sendTransaction from '../../../../../../../assets/sendTransaction.svg';
 import { useFormState } from 'react-hook-form';
-import { RestorIcon } from '../../../../../../assets/components/RestorIcon.tsx';
-import { SaveIcon } from '../../../../../../assets/components/SaveIcon.tsx';
+import { RestorIcon } from '../../../../../../../assets/components/RestorIcon.tsx';
+import { SaveIcon } from '../../../../../../../assets/components/SaveIcon.tsx';
 
 export const Footer = ({ form }: any) => {
   const callMethod = useStoreEffect((store: any) => store.calls.callMethod);
