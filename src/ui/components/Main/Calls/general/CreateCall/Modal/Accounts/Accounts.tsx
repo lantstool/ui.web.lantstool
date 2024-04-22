@@ -4,7 +4,7 @@ import { Item } from '../Item/Item.tsx';
 import { useNavigate } from 'react-router-dom';
 import { methods } from './methods.ts';
 
-export const AccessKeys = ({ closeModal, isOpen, setStep, styles }: any) => {
+export const Accounts = ({ closeModal, isOpen, setStep, styles }: any) => {
   const createCall = useStoreEffect((store: any) => store.calls.createCall);
   const navigate = useNavigate();
   const prev = () => setStep('selectRpcGroup');

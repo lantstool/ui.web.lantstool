@@ -31,6 +31,12 @@ const getBodyType = (method: any, params: any, type: any) => {
     all_access_key_changes: type === 'all_access_key_changes' && {
       account_ids: [params.account_ids.value],
     },
+    view_account: type === 'view_account' && {
+      account_id: params.account_id.value,
+    },
+    account_changes: type === 'account_changes' && {
+      account_ids: [params.account_ids.value],
+    },
   };
   return { jsonrpc: '2.0', id: 1, method, params: { ...params, ...bodyTypes[type] } };
 };
