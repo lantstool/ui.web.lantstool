@@ -1,9 +1,9 @@
 import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { Option } from '../../../../../Transactions/Transaction/Form/general/Option/Option.tsx';
+import { Option } from './Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
-import { SelectHeadLabel } from '../../../../../Transactions/Transaction/Form/general/SelectHeadLabel/SelectHeadLabel.tsx';
+import { SelectHeadLabel } from './SelectHeadLabel/SelectHeadLabel.tsx';
 import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
 
 export const SignerKey = ({ form }: any) => {

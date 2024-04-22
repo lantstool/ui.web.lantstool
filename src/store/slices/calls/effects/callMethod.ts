@@ -40,12 +40,11 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
   const { url } = store.getState((store: any) => store.networks.current);
   const addResult = slice.getActions((slice: any) => slice.addResult);
   const setOpenResult = slice.getActions((slice: any) => slice.setOpenResult);
-  console.log(formValues);
 
   try {
     setOpenResult({ callId, isOpen: true, isLoading: true });
     const body = getBodyType(method, params, type);
-    console.log(body);
+
     const response: any = await fetch(url.rpc, {
       method: 'POST',
       headers: {
@@ -54,8 +53,7 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
       body: JSON.stringify(body),
     });
     const { result, error } = await response.json();
-    console.log(result);
-    console.log(error);
+
     if (result) return addResult({ callId, result: { result } });
 
     if (error) return addResult({ callId, result: { error: error.data } });
