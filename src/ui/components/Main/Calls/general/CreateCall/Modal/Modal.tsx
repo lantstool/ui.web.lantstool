@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { SelectRpcGroup } from './SelectRpcGroup/SelectRpcGroup.tsx';
 import { AccessKeys } from './AccessKeys/AccessKeys.tsx';
-import {Accounts} from "./Accounts/Accounts.tsx";
+import { Accounts } from './Accounts/Accounts.tsx';
 import { Contracts } from './Contracts/Contracts.tsx';
+import { Block } from './Block/Block.tsx';
+import { Chunk } from './Chunk/Chunk.tsx';
+import { Gas } from './Gas/Gas.tsx';
 
 export const Modal = ({ styles, isOpen, setOpen }: any) => {
   const [step, setStep] = useState('selectRpcGroup');
@@ -21,10 +24,19 @@ export const Modal = ({ styles, isOpen, setOpen }: any) => {
         <AccessKeys closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
       )}
       {step === 'accounts' && (
-          <Accounts closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+        <Accounts closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
       )}
       {step === 'contracts' && (
         <Contracts closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+      )}
+      {step === 'block' && (
+        <Block closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+      )}
+      {step === 'chunk' && (
+        <Chunk closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+      )}
+      {step === 'gas' && (
+        <Gas closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
       )}
     </>
   );
