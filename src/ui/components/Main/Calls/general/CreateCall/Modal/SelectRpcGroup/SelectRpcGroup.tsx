@@ -3,7 +3,7 @@ import { Item } from '../Item/Item.tsx';
 
 const steps = [
   { type: 'accessKeys', text: 'Access Keys' },
-  { type: 'accounts', text: 'Accounts', disabled: true },
+  { type: 'accounts', text: 'Accounts' },
   { type: 'contracts', text: 'Contracts' },
   { type: 'block', text: 'Block', disabled: true },
   { type: 'chunk', text: 'Chunk', disabled: true },
@@ -19,7 +19,12 @@ export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal }: any) => 
   return (
     <ModalGroup isOpen={isOpen} closeModal={closeModal} styles={styles} text={'Select RPC Type'}>
       {steps.map((step: any) => (
-        <Item key={step.type} el={step} onClick={() => toStep(step.type)} disabled={step.disabled}/>
+        <Item
+          key={step.type}
+          el={step}
+          onClick={() => toStep(step.type)}
+          disabled={step.disabled}
+        />
       ))}
     </ModalGroup>
   );

@@ -15,7 +15,7 @@ const getFormValues = (call: any) => ({
   results: call.results,
 });
 
-export const ViewAccessKeyList = ({ call }: any) => {
+export const ViewAccount = ({ call }: any) => {
   const formDefaultValues: any = useMemo(() => getFormValues(call), [call.callId]);
 
   const form = useForm({
