@@ -1,12 +1,12 @@
 import { effect } from '../../../../react-vault';
 
 // TODO reuse this function in Form component
-const getFormValues = (call: any) => ({
+const getFormValues = (call: any, values:any) => ({
   callId: call.callId,
-  contractId: call.contractId,
+  params: call.params,
   method: call.method,
-  arguments: call.arguments,
-  signer: call.signer,
+  type: call.type,
+  results: values.results,
 });
 
 const getNewCall = (values: any, oldCall: any) => {
@@ -15,14 +15,11 @@ const getNewCall = (values: any, oldCall: any) => {
     name: oldCall.name,
     networkId: oldCall.networkId,
     order: oldCall.order,
-    signerId: oldCall.signerId,
-    signerKey: oldCall.signerKey,
     spaceId: oldCall.spaceId,
-    arguments: values.arguments,
     callId: values.callId,
-    contractId: values.contractId,
+    type: oldCall.type,
+    params: values.params,
     method: values.method,
-    signer: values.signer,
   };
 };
 
@@ -33,13 +30,13 @@ export const saveCall = effect(async ({ payload: form, slice, store }: any) => {
   const oldCall = slice.getState((slice: any) => slice.records[callId]);
   const putCall = slice.getActions((slice: any) => slice.putCall);
   const putTemporaryFormValues = slice.getActions((slice: any) => slice.putTemporaryFormValues);
-  const call = getNewCall(values, oldCall);
 
   try {
+    const call = getNewCall(values, oldCall);
     await idb.put('calls', call);
     putCall({ ...call, results: values.results });
     putTemporaryFormValues({ callId, values: null });
-    form.reset(getFormValues({ ...call, results: values.results }));
+    form.reset(getFormValues(call,values));
   } catch (e) {
     console.log(e);
   }

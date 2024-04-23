@@ -1,0 +1,37 @@
+.footer {
+  height: 60px;
+  background-color: #40916c;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  background: var(--Card-Bar);
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr 40px;
+  grid-template-areas: '. . a b .';
+  align-items: center;
+}
+
+.sendTransaction {
+  grid-area: a;
+  justify-self: center;
+}
+
+.actions {
+  grid-area: b;
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  gap: 24px;
+}
+
+.saveButton {
+  justify-self: center;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  fill: #87b19e;
+}

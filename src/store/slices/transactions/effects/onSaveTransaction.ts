@@ -1,13 +1,13 @@
 import { effect } from '../../../../react-vault';
 
-const getFormValues = (transaction: any) => {
+const getFormValues = (transaction: any, values: any) => {
   return {
     transactionId: transaction.transactionId,
     signerId: transaction.signerId,
     signerKey: transaction.signerKey,
     receiver: transaction.receiver,
     actions: transaction.actions,
-    results: transaction.results,
+    results: values.results,
   };
 };
 
@@ -40,8 +40,8 @@ export const onSaveTransaction = effect(async ({ payload: form, slice, store }: 
     await idb.put('transactions', newTransaction);
     putTemporaryFormValues({ transactionId, values: null });
     //Update transaction and add result for state
-    updateTransaction({...newTransaction,results: values.results});
-    form.reset(getFormValues({...newTransaction,results: values.results}));
+    updateTransaction({ ...newTransaction, results: values.results });
+    form.reset(getFormValues(newTransaction, values));
   } catch (e) {
     console.log(e);
   }

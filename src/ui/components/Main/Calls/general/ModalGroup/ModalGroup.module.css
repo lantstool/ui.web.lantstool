@@ -1,0 +1,29 @@
+.header {
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: ' a b c ';
+  align-items: center;
+}
+
+.prevBtn {
+  grid-area: a;
+}
+
+.backIcon {
+  fill: var(--Color-Grey-100);
+  stroke: var(--Color-Grey-100);
+}
+
+.backIcon:hover {
+  fill: var(--Color-Grey-200);
+  stroke: var(--Color-Grey-200);
+  cursor: pointer;
+}
+
+.title {
+  grid-area: b;
+}
+
+.closeBtn {
+  grid-area: c;
+}

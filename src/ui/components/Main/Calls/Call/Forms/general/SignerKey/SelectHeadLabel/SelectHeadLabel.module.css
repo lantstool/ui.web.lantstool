@@ -1,0 +1,14 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--Spacing-4);
+}
+
+.title{
+  height: 17px;
+  margin: 0;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-weight: 400;
+}

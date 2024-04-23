@@ -7,6 +7,7 @@ const getFormValues = (transaction: any) => ({
   signerId: transaction.signerId,
   signerKey: transaction.signerKey,
   receiver: transaction.receiver,
+  results: transaction.results,
 });
 
 export const revertTransaction = effect(({ payload: form, slice }: any) => {

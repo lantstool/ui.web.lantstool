@@ -1,0 +1,17 @@
+.permission {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  height: 16px;
+  background: var(--Color-Olive-300);
+  padding: 0 var(--Spacing-6);
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
