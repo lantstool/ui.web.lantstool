@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SelectRpcGroup } from './SelectRpcGroup/SelectRpcGroup.tsx';
 import { AccessKeys } from './AccessKeys/AccessKeys.tsx';
+import {Accounts} from "./Accounts/Accounts.tsx";
 import { Contracts } from './Contracts/Contracts.tsx';
 
 export const Modal = ({ styles, isOpen, setOpen }: any) => {
@@ -18,6 +19,9 @@ export const Modal = ({ styles, isOpen, setOpen }: any) => {
       )}
       {step === 'accessKeys' && (
         <AccessKeys closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+      )}
+      {step === 'accounts' && (
+          <Accounts closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
       )}
       {step === 'contracts' && (
         <Contracts closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />

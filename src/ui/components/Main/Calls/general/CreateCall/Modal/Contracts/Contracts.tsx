@@ -10,7 +10,6 @@ export const Contracts = ({ closeModal, isOpen, setStep, styles }: any) => {
   const prev = () => setStep('selectRpcGroup');
 
   const createdCall = (method: any) => {
-    console.log(method.type);
     createCall({ method, navigate, close: closeModal });
   };
 
