@@ -1,6 +1,6 @@
 import cn from './FormGroup.module.css';
 import cnm from 'classnames';
-import { Footer } from '../Footer/Footer.tsx';
+import { Footer } from './Footer/Footer.tsx';
 import { useStoreAction, useStoreState } from '../../../../../../../../react-vault';
 import { useEffect } from 'react';
 

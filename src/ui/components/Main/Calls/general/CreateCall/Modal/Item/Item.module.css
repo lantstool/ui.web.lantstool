@@ -10,6 +10,11 @@
   cursor: pointer;
 }
 
+.button:disabled {
+  box-shadow: none;
+  cursor: auto;
+}
+
 .text {
   margin: 0;
   font-size: 16px;

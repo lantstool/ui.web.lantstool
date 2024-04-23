@@ -18,6 +18,19 @@ const getBodyType = (method: any, params: any, type: any) => {
       account_id: params.account_id.value,
       args_base64: Buffer.from(params.args_base64).toString('base64'),
     },
+    view_access_key: type === 'view_access_key' && {
+      account_id: params.account_id.value,
+      public_key: params.public_key.value,
+    },
+    view_access_key_list: type === 'view_access_key_list' && {
+      account_id: params.account_id.value,
+    },
+    single_access_key_changes: type === 'single_access_key_changes' && {
+      keys: [{ account_id: params.account_id.value, public_key: params.public_key.value }],
+    },
+    all_access_key_changes: type === 'all_access_key_changes' && {
+      account_ids: [params.account_ids.value],
+    },
   };
   return { jsonrpc: '2.0', id: 1, method, params: { ...params, ...bodyTypes[type] } };
 };
@@ -27,7 +40,6 @@ export const callMethod = effect(async ({ payload: formValues, slice, store }: a
   const { url } = store.getState((store: any) => store.networks.current);
   const addResult = slice.getActions((slice: any) => slice.addResult);
   const setOpenResult = slice.getActions((slice: any) => slice.setOpenResult);
-  console.log(formValues);
 
   try {
     setOpenResult({ callId, isOpen: true, isLoading: true });
