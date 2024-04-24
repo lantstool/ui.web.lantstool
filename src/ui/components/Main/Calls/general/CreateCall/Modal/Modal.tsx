@@ -6,6 +6,7 @@ import { Contracts } from './Contracts/Contracts.tsx';
 import { Block } from './Block/Block.tsx';
 import { Chunk } from './Chunk/Chunk.tsx';
 import { Gas } from './Gas/Gas.tsx';
+import { Protocol } from './Protocol/Protocol.tsx';
 
 export const Modal = ({ styles, isOpen, setOpen }: any) => {
   const [step, setStep] = useState('selectRpcGroup');
@@ -37,6 +38,9 @@ export const Modal = ({ styles, isOpen, setOpen }: any) => {
       )}
       {step === 'gas' && (
         <Gas closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
+      )}
+      {step === 'protocol' && (
+        <Protocol closeModal={closeModal} isOpen={isOpen} setStep={setStep} styles={styles} />
       )}
     </>
   );

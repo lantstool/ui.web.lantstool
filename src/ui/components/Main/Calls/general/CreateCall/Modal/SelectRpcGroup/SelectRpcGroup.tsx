@@ -8,7 +8,7 @@ const steps = [
   { type: 'block', text: 'Block' },
   { type: 'chunk', text: 'Chunk' },
   { type: 'gas', text: 'Gas' },
-  { type: 'protocol', text: 'Protocol', disabled: true },
+  { type: 'protocol', text: 'Protocol' },
   { type: 'network', text: 'Network', disabled: true },
   { type: 'transactions', text: 'Transactions', disabled: true },
 ];
