@@ -66,8 +66,30 @@ const getBodyType = (method: any, params: any, type: any) => {
           }
         : { block_id: convertStringValue(params.block_id), shard_id: Number(params.shard_id) }),
     gas_price: type === 'gas_price' && [convertStringValue(params.value)],
+    EXPERIMENTAL_protocol_config:
+      type === 'EXPERIMENTAL_protocol_config' &&
+      (params.type === 'finality'
+        ? { finality: params.finality }
+        : { block_id: convertStringValue(params.block_id) }),
+    status: type === 'status' && params,
+    network_info: type === 'network_info' && params,
+    validators:
+      type === 'validators' &&
+      (params.type === 'epoch_id'
+        ? { epoch_id: params.epoch_id }
+        : [convertStringValue(params.block_id)]),
+    tx: type === 'tx' && {
+      ...params,
+      wait_until: params.wait_until.value,
+    },
+    EXPERIMENTAL_tx_status: type === 'EXPERIMENTAL_tx_status' && {
+      ...params,
+      wait_until: params.wait_until.value,
+    },
+    EXPERIMENTAL_receipt: type === 'EXPERIMENTAL_receipt' && params,
   };
 
+  if (type === 'EXPERIMENTAL_genesis_config') return { jsonrpc: '2.0', id: 1, method };
   return { jsonrpc: '2.0', id: 1, method, params: bodyTypes[type] };
 };
 

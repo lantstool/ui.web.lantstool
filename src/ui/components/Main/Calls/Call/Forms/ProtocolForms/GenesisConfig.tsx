@@ -16,9 +16,5 @@ export const GenesisConfig = ({ call }: any) => {
     defaultValues: formDefaultValues,
   });
 
-  return (
-    <FormGroup form={form} call={call} formDefaultValues={formDefaultValues}>
-    <div>empty</div>
-    </FormGroup>
-  );
+  return <FormGroup form={form} call={call} formDefaultValues={formDefaultValues} />;
 };

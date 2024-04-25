@@ -9,8 +9,8 @@ const steps = [
   { type: 'chunk', text: 'Chunk' },
   { type: 'gas', text: 'Gas' },
   { type: 'protocol', text: 'Protocol' },
-  { type: 'network', text: 'Network', disabled: true },
-  { type: 'transactions', text: 'Transactions', disabled: true },
+  { type: 'network', text: 'Network' },
+  { type: 'transactions', text: 'Transactions' },
 ];
 
 export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal }: any) => {
