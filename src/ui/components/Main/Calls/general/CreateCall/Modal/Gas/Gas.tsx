@@ -7,7 +7,11 @@ const method = {
   type: 'gas_price',
   text: 'Gas Price',
   method: 'gas_price',
-  params: [],
+  params: {
+    type: 'block',
+    block: '',
+    lastBlock: null,
+  },
 };
 
 export const Gas = ({ closeModal, isOpen, setStep, styles }: any) => {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup } from '../general/FormGroup/FormGroup.tsx';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
+import { SelectType } from './SelectType/SelectType.tsx';
 
 const getFormValues = (call: any) => ({
   callId: call.callId,
@@ -20,11 +20,7 @@ export const GasForm = ({ call }: any) => {
 
   return (
     <FormGroup form={form} call={call} formDefaultValues={formDefaultValues}>
-      <InputGroup
-        register={form.register}
-        label="Block - Height / Hash / null"
-        name="params.value"
-      />
+      <SelectType form={form} />
     </FormGroup>
   );
 };

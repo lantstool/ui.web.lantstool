@@ -65,7 +65,9 @@ const getBodyType = (method: any, params: any, type: any) => {
             chunk_id: params.chunk_id,
           }
         : { block_id: convertStringValue(params.block_id), shard_id: Number(params.shard_id) }),
-    gas_price: type === 'gas_price' && [convertStringValue(params.value)],
+    gas_price:
+      type === 'gas_price' &&
+      (params.type === 'block' ? [convertStringValue(params.block)] : [params.lastBlock]),
     EXPERIMENTAL_protocol_config:
       type === 'EXPERIMENTAL_protocol_config' &&
       (params.type === 'finality'
