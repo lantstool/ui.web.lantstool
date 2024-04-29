@@ -1,25 +1,15 @@
 import { useStoreEffect } from '../../../../../../../../react-vault';
-import { ModalGroup } from '../../../ModalGroup/ModalGroup.tsx';
-import { Item } from '../Item/Item.tsx';
 import { useNavigate } from 'react-router-dom';
+import { ModalGroup } from '../../../ModalGroup/ModalGroup.tsx';
+import { methods } from './methods.ts';
+import { Item } from '../Item/Item.tsx';
 
-const method = {
-  type: 'gas_price',
-  text: 'Gas Price',
-  method: 'gas_price',
-  params: {
-    type: 'block',
-    block: '',
-    lastBlock: null,
-  },
-};
-
-export const Gas = ({ closeModal, isOpen, setStep, styles }: any) => {
+export const Protocol = ({ closeModal, isOpen, setStep, styles }: any) => {
   const createCall = useStoreEffect((store: any) => store.calls.createCall);
   const navigate = useNavigate();
   const prev = () => setStep('selectRpcGroup');
 
-  const createdCall = () => {
+  const createdCall = (method: any) => {
     createCall({ method, navigate, close: closeModal });
   };
 
@@ -31,7 +21,9 @@ export const Gas = ({ closeModal, isOpen, setStep, styles }: any) => {
       prev={prev}
       text="Create Call"
     >
-      <Item key={method.type} el={method} onClick={createdCall} />
+      {methods.map((method: any) => (
+        <Item key={method.type} el={method} onClick={() => createdCall(method)} />
+      ))}
     </ModalGroup>
   );
 };
