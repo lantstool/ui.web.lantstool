@@ -18,16 +18,13 @@ const createTx = (order: number, transactionName: string, networkId: string) => 
   };
 };
 
-export const onAddTransaction = effect(async ({ payload: navigate, slice, store }: any) => {
+export const onAddTransaction = effect(async ({ payload, slice, store }: any) => {
+  const { navigate, transactionName } = payload;
   const networkId = store.getState((store: any) => store.networks.current.networkId);
   const [idb] = store.getEntities((store: any) => store.idb);
   const addTransaction = slice.getActions((slice: any) => slice.addTransaction);
-  const getTransactionCount = slice.getEffects((slice: any) => slice.getTransactionCount);
 
   try {
-    const count = await getTransactionCount();
-    const transactionName = `Transaction#${count}`;
-
     const [txOrder, txCounter] = await Promise.all([
       idb.countFromIndex(
         'transactions',
