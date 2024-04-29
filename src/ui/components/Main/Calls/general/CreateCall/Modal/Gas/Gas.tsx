@@ -2,6 +2,7 @@ import { useStoreEffect } from '../../../../../../../../react-vault';
 import { ModalGroup } from '../../../ModalGroup/ModalGroup.tsx';
 import { Item } from '../Item/Item.tsx';
 import { useNavigate } from 'react-router-dom';
+import { useWatch } from 'react-hook-form';
 
 const method = {
   type: 'gas_price',
@@ -14,13 +15,14 @@ const method = {
   },
 };
 
-export const Gas = ({ closeModal, isOpen, setStep, styles }: any) => {
+export const Gas = ({ closeModal, isOpen, setStep, styles, form }: any) => {
   const createCall = useStoreEffect((store: any) => store.calls.createCall);
   const navigate = useNavigate();
+  const name = useWatch({ control: form.control, name: 'callName' });
   const prev = () => setStep('selectRpcGroup');
 
   const createdCall = () => {
-    createCall({ method, navigate, close: closeModal });
+    createCall({ name, method, navigate, close: closeModal });
   };
 
   return (
