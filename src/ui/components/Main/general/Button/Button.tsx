@@ -11,11 +11,11 @@ const getType = (style: any) => {
   return types[style] === undefined ? types['primary'] : types[style];
 };
 
-export const Button = ({ text, onClick, src, style, type = 'button' }: any) => {
+export const Button = ({ text, disabled = false, onClick, src, style, type = 'button' }: any) => {
   const { button, btnText } = getType(style);
 
   return (
-    <button type={type} className={cnm(cn.button, button)} onClick={onClick}>
+    <button disabled={disabled} type={type} className={cnm(cn.button, button)} onClick={onClick}>
       {src && <img className={cn.icon} src={src} alt="#" />}
       <p className={btnText}>{text}</p>
     </button>

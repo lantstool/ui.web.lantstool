@@ -35,7 +35,7 @@ export const CreateName = ({ styles, isOpen, form, closeModal, setStep }: any) =
         rows={4}
         errors={errors.callName?.message}
       />
-      <Button text="Create name" style="secondary" onClick={nextStep} />
+      <Button disabled={errors.callName} text="Create name" style="secondary" onClick={nextStep} />
     </ModalGroup>
   );
 };
