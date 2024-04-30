@@ -95,8 +95,8 @@ const getBodyType = (method: any, params: any, type: any) => {
   return { jsonrpc: '2.0', id: 1, method, params: bodyTypes[type] };
 };
 
-export const callMethod = effect(async ({ payload: formValues, slice, store }: any) => {
-  const { callId, params, method, type } = formValues;
+export const callMethod = effect(async ({ payload, slice, store }: any) => {
+  const { callId, params, method, type } = payload;
   const { url } = store.getState((store: any) => store.networks.current);
   const addResult = slice.getActions((slice: any) => slice.addResult);
   const setOpenResult = slice.getActions((slice: any) => slice.setOpenResult);

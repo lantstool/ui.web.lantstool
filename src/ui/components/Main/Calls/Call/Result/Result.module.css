@@ -50,8 +50,16 @@
   margin: 0 40px;
 }
 
+.error {
+  margin: 16px 40px;
+  color: var(--Color-Red-500);
+}
+
 .footer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-areas: '. a b';
+  align-items: center;
   justify-content: center;
   height: 60px;
   background-color: var(--Color-Green-200);
@@ -59,7 +67,13 @@
   border-bottom-left-radius: 15px;
 }
 
-.error {
-  margin: 16px 40px;
-  color: var(--Color-Red-500);
+.closeBtn {
+  grid-area: a;
+  justify-self: center;
+}
+
+.resendBtn {
+  grid-area: b;
+  display: flex;
+  margin-right: 30px;
 }
