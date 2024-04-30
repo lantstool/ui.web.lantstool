@@ -13,14 +13,16 @@ const getResultValue = (transaction: any) => {
   return transaction.results.records.find((el: any) => el.resultId === currentResult)?.result;
 };
 
-const getValues = (transaction: any) => {
+const getValues = (transaction: any, temporaryFormValues: any) => {
+  const txValues = temporaryFormValues ? temporaryFormValues : transaction;
+
   return {
-    transactionId: transaction.transactionId,
-    signerId: transaction.signerId,
-    signerKey: transaction.signerKey,
-    receiver: transaction.receiver,
-    actions: transaction.actions,
-    results: transaction.results,
+    transactionId: txValues.transactionId,
+    signerId: txValues.signerId,
+    signerKey: txValues.signerKey,
+    receiver: txValues.receiver,
+    actions: txValues.actions,
+    results: txValues.results,
   };
 };
 
@@ -31,8 +33,9 @@ export const Result = ({ transaction }: any) => {
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.transactions.temporaryFormValues[transaction.transactionId],
   );
-  const txValues = getValues(temporaryFormValues);
 
+  const txValues = getValues(transaction, temporaryFormValues);
+  //
   const resend = () => {
     sendTransaction({ formValues: txValues });
   };
