@@ -1,8 +1,8 @@
-import { Button } from '../../../../general/Button/Button.tsx';
-import { ModalGroup } from '../../ModalGroup/ModalGroup.tsx';
-import { TextareaGroup } from '../../../../../general/TextareaGroup/TextareaGroup.tsx';
+import { Button } from '../../../../../general/Button/Button.tsx';
+import { ModalGroup } from '../../../ModalGroup/ModalGroup.tsx';
+import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaGroup.tsx';
 import { useEffect } from 'react';
-import { useStoreEffect } from '../../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useWatch } from 'react-hook-form';
 
 export const CreateName = ({ styles, isOpen, form, closeModal, setStep }: any) => {

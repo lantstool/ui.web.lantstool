@@ -9,10 +9,10 @@ import { Gas } from './Gas/Gas.tsx';
 import { Protocol } from './Protocol/Protocol.tsx';
 import { Network } from './Network/Network.tsx';
 import { Transactions } from './Transactions/Transactions.tsx';
-import { CreateName } from '../CreateName/CreateName.tsx';
+import { CreateName } from './CreateName/CreateName.tsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../CreateName/schema.ts';
+import { schema } from './CreateName/schema.ts';
 
 export const Modal = ({ styles, isOpen, setOpen }: any) => {
   const [step, setStep] = useState('createName');

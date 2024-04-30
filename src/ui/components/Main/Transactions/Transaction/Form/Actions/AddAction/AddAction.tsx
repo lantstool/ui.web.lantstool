@@ -4,6 +4,9 @@ import { appendAction } from './appendAction.ts';
 import cn from './AddAction.module.css';
 import { Button } from '../../../../../general/Button/Button.tsx';
 import addIcon from '../../../../../../../assets/addIcon.svg';
+import { Item } from './Item/Item.tsx';
+import { Title } from '../../../../../general/Title/Title.tsx';
+import { CloseButton } from '../../../../../general/CloseButton/CloseButton.tsx';
 
 export const AddAction = ({ append }: any) => {
   const [isOpen, setOpen] = useState(false);
@@ -52,14 +55,21 @@ export const AddAction = ({ append }: any) => {
       </div>
       <Modal isOpen={isOpen} close={closeModal}>
         <div className={cn.modal}>
-          <h3>Choose Action</h3>
-          <button onClick={createAccount}> Create Account</button>
-          <button onClick={transfer}>Transfer</button>
-          <button onClick={addKey}>Add Key</button>
-          <button onClick={deployContract}>Deploy Contract</button>
-          <button onClick={functionCall}>Function Call</button>
-          <button onClick={deleteKey}>Delete Key</button>
-          <button onClick={deleteAccount}>Delete Account</button>
+          <div className={cn.header}>
+            <div className={cn.title}>
+              <Title text="Choose Action" />
+            </div>
+            <div className={cn.closeBtn}>
+              <CloseButton close={closeModal} />
+            </div>
+          </div>
+          <Item onClick={createAccount} text="Create Account" />
+          <Item onClick={transfer} text="Transfer" />
+          <Item onClick={addKey} text="Add Key" />
+          <Item onClick={deployContract} text="Deploy Contract" />
+          <Item onClick={functionCall} text="Function Call" />
+          <Item onClick={deleteKey} text="Delete Key" />
+          <Item onClick={deleteAccount} text="Delete Account" />
         </div>
       </Modal>
     </>
