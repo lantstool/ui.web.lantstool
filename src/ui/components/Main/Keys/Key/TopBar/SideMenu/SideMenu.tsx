@@ -1,11 +1,11 @@
 import cn from './SideMenu.module.css';
 import { useState } from 'react';
-import { useStoreEffect } from '../../../../../../react-vault';
+import { useStoreEffect } from '../../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import { Menu, MenuItem } from '@mui/material';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
-
+import cnm from 'classnames';
+import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.tsx';
 
 export const SideMenu = ({ keyId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
@@ -37,19 +37,16 @@ export const SideMenu = ({ keyId }: any) => {
 
   return (
     <>
-      <div>
-        <button className={cn.sideMenuButton} onClick={openMenu}>
-          <MoreVertOutlinedIcon className={cn.icon} />
+      <div className={cn.menuContainer}>
+        <button className={cnm(cn.menuButton, anchorEl && cn.active)} onClick={openMenu}>
+          <VerticalMoreIcon style={cnm(cn.icon, anchorEl && cn.active)} size={24} />
         </button>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={closeMenu}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <MenuItem onClick={openModal}>Remove</MenuItem>
-        </Menu>
+        <Popup
+          isOpen={Boolean(anchorEl)}
+          openModal={openModal}
+          handleClose={closeMenu}
+          position="bottomLeft"
+        />
       </div>
       {isOpen && <DeleteModal isOpen={isOpen} closeModal={closeModal} remove={remove} />}
     </>
