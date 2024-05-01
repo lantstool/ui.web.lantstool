@@ -14,10 +14,17 @@ const steps = [
 ];
 
 export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal }: any) => {
+  const prev = () => setStep('createName');
   const toStep = (type: string) => setStep(type);
 
   return (
-    <ModalGroup isOpen={isOpen} closeModal={closeModal} styles={styles} text={'Select RPC Type'}>
+    <ModalGroup
+      prev={prev}
+      isOpen={isOpen}
+      closeModal={closeModal}
+      styles={styles}
+      text={'Select RPC Type'}
+    >
       {steps.map((step: any) => (
         <Item
           key={step.type}
