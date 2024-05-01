@@ -4,7 +4,7 @@ import { Footer } from './Footer/Footer.tsx';
 import { useStoreAction, useStoreState } from '../../../../../../../../react-vault';
 import { useEffect } from 'react';
 
-export const FormGroup = ({ children, call, form, formDefaultValues }) => {
+export const FormGroup = ({ children = null, call, form, formDefaultValues }) => {
   const setOpenResult: any = useStoreAction((store: any) => store.calls.setOpenResult);
   const temporaryFormValues: any = useStoreState(
     (store: any) => store.calls.temporaryFormValues[call.callId],

@@ -44,7 +44,7 @@ export const Sidebar = () => {
         </Droppable>
       </DragDropContext>
       <div className={cn.bottomBar}>
-        <AddTransaction />
+        <AddTransaction styles={cn.modalContainer} />
       </div>
     </div>
   );

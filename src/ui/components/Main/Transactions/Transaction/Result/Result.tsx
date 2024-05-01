@@ -2,7 +2,7 @@ import cn from './Result.module.css';
 import { Button } from '../../../general/Button/Button.tsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
-import { useStoreAction } from '../../../../../../react-vault';
+import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { BackIcon } from '../../../../../assets/components/BackIcon.tsx';
 
 // TODO Move to utils
@@ -13,10 +13,32 @@ const getResultValue = (transaction: any) => {
   return transaction.results.records.find((el: any) => el.resultId === currentResult)?.result;
 };
 
+const getValues = (transaction: any, temporaryFormValues: any) => {
+  const txValues = temporaryFormValues ? temporaryFormValues : transaction;
+
+  return {
+    transactionId: txValues.transactionId,
+    signerId: txValues.signerId,
+    signerKey: txValues.signerKey,
+    receiver: txValues.receiver,
+    actions: txValues.actions,
+    results: txValues.results,
+  };
+};
+
 export const Result = ({ transaction }: any) => {
+  const sendTransaction = useStoreEffect((store: any) => store.transactions.onSendTransaction);
   const setOpenResult: any = useStoreAction((store: any) => store.transactions.setOpenResult);
   const result = getResultValue(transaction);
+  const temporaryFormValues: any = useStoreState(
+    (store: any) => store.transactions.temporaryFormValues[transaction.transactionId],
+  );
 
+  const txValues = getValues(transaction, temporaryFormValues);
+  //
+  const resend = () => {
+    sendTransaction({ formValues: txValues });
+  };
   const closeResult = () => {
     setOpenResult({ transactionId: transaction.transactionId, isOpen: false });
   };
@@ -56,7 +78,14 @@ export const Result = ({ transaction }: any) => {
         )}
       </div>
       <div className={cn.footer}>
-        <Button onClick={closeResult} text={'Close'} style="outlined" />
+        <div className={cn.closeBtn}>
+          <Button onClick={closeResult} text="Close" style="outlined" />
+        </div>
+        <div className={cn.resendBtn}>
+          {!transaction.results.isLoading && (
+            <Button onClick={resend} text="Resend" style="secondary" />
+          )}
+        </div>
       </div>
     </div>
   );

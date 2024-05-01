@@ -1,0 +1,21 @@
+.container {
+  height: 62px;
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  border: 1px solid #40916c;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  background-color: inherit;
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.label {
+  margin: 0;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-weight: 400;
+}
