@@ -1,20 +1,21 @@
 import cn from './VisibleButton.module.css';
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import { Visibility } from '../../../../../../assets/components/Visibility.tsx';
+import { VisibilityOff } from '../../../../../../assets/components/VisibilityOff.tsx';
 
 export const VisibleButton = ({ visible, setVisible }: any) => {
   const toggleVisibility = () => {
     setVisible(!visible);
   };
+
   return (
     <>
       {visible ? (
         <button onClick={toggleVisibility} className={cn.button}>
-          <VisibilityOffOutlinedIcon className={cn.icon} sx={{ fontSize: 22 }} />
+          <VisibilityOff style={cn.icon} />
         </button>
       ) : (
         <button onClick={toggleVisibility} className={cn.button}>
-          <VisibilityRoundedIcon className={cn.icon} sx={{ fontSize: 22 }} />
+          <Visibility style={cn.icon} />
         </button>
       )}
     </>
