@@ -1,9 +1,9 @@
 import cn from './Network.module.css';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Menu, MenuItem } from '@mui/material';
+import { ArrowDownIcon } from '../../../assets/components/ArrowDownIcon.tsx';
 import { useEffect, useMemo, useState } from 'react';
 import { useStoreState, useStoreEffect } from '../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
+import { Popup } from './Popup/Popup.tsx';
 
 const useGetMenuItems = () => {
   const { current, list, map }: any = useStoreState((store: any) => store.networks);
@@ -21,10 +21,8 @@ export const Network = () => {
   const changeNetwork = useStoreEffect((store: any) => store.networks.changeNetwork);
   const current: any = useStoreState((store: any) => store.networks.current);
   const getNetworks = useStoreEffect((store: any) => store.networks.getNetworks);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
-
-  const open = Boolean(anchorEl);
 
   const items = useGetMenuItems();
 
@@ -32,39 +30,38 @@ export const Network = () => {
     getNetworks();
   }, []);
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
+  const openMenu = () => {
+    setOpen(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const closeMenu = () => {
+    setOpen(!isOpen);
+    console.log(1);
+    console.log(isOpen);
   };
 
   const handleMenuItemClick = (networkId: any) => {
     changeNetwork({ navigate, networkId });
-    handleClose();
+    closeMenu();
   };
 
   return (
-    <>
-      <div className={cn.subtitleGroup} onClick={handleClick}>
-        <h4 className={cn.networkId}>{current.networkId}</h4>
-        <KeyboardArrowDownIcon style={{ color: 'white' }} />
+    <div className={cn.network}>
+      <button onClick={openMenu} className={cn.networkBtn}>
+        <h2 className={cn.networkId}> {current.networkId}</h2>
+      </button>
+      <div className={cn.subtitleGroup}>
+        <button className={cn.networkBtn} onClick={openMenu}>
+          <ArrowDownIcon style={cn.icon} />
+        </button>
+        <Popup
+          isOpen={isOpen}
+          closeMenu={closeMenu}
+          position="bottomLeft"
+          items={items}
+          handleMenuItemClick={handleMenuItemClick}
+        />
       </div>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        {items.map((network: any) => (
-          <MenuItem key={network.networkId} onClick={() => handleMenuItemClick(network.networkId)}>
-            {network.networkId}
-          </MenuItem>
-        ))}
-      </Menu>
-    </>
+    </div>
   );
 };

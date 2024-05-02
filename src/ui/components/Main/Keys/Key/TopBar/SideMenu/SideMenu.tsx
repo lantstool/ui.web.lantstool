@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import cnm from 'classnames';
-import { Popup } from './Popup/Popup.tsx';
+import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.tsx';
 
-export const SideMenu = ({ accountId }: any) => {
+export const SideMenu = ({ keyId }: any) => {
   const [isOpen, setOpen]: any = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const deleteAccount = useStoreEffect((store: any) => store.accounts.deleteAccount);
+  const deleteKey = useStoreEffect((store: any) => store.keys.deleteKey);
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -23,7 +23,7 @@ export const SideMenu = ({ accountId }: any) => {
   };
 
   const remove = () => {
-    deleteAccount({ accountId, navigate });
+    deleteKey({ keyId, navigate });
     setOpen(false);
   };
 
