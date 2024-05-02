@@ -4,8 +4,8 @@
     padding: 0;
 }
 .icon {
-    color: #b6c8c0;
+    fill: #b6c8c0;
 }
 .icon:hover {
-    color: #40916c;
+    fill: #40916c;
 }
