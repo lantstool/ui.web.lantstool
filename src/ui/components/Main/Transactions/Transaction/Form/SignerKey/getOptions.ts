@@ -1,4 +1,4 @@
-import { toCamelCase } from '../../../../../../../store/helpers/toCamelCase.ts';
+import { toCamelCase } from '../../../../../../../store/helpers/toCamelCase.js';
 
 /**
  * Transforms an array of objects into an object where the keys are the value of `publicKey` property of each object,
