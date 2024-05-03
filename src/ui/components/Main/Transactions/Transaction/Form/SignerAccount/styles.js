@@ -1,5 +1,5 @@
-export const selectStylesTx = (error: any) => ({
-  control: (styles: any) => ({
+export const selectStylesTx = (error) => ({
+  control: (styles) => ({
     ...styles,
     border: !error ? '1px solid #40916C' : '1px solid red',
       boxShadow: 'none',
@@ -14,11 +14,11 @@ export const selectStylesTx = (error: any) => ({
     },
 
   }),
-  menu: (styles: any) => ({
+  menu: (styles) => ({
     ...styles,
     borderRadius: '8px',
   }),
-  option: (base: any) => ({
+  option: (base) => ({
     ...base,
     fontSize: 15,
   }),
