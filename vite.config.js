@@ -1,9 +1,8 @@
-import { defineConfig, type PluginOption } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import checker from 'vite-plugin-checker';
 import { visualizer } from 'rollup-plugin-visualizer';
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
       filename: 'analyse.html',
-    }) as PluginOption,
+    }),
   ],
   server: {
     port: 4901,
