@@ -1,6 +1,6 @@
 import { effect } from '../../../../react-vault';
 import { JsonRpcProvider } from 'near-api-js/lib/providers';
-import { toCamelCase } from '../../../helpers/toCamelCase.ts';
+import { toCamelCase } from '../../../helpers/toCamelCase.js';
 
 export const onAddKey = effect(async ({ payload, slice, store }: any) => {
   const { publicKey, privateKey, seedPhrase, accountId, storageType } = payload;

@@ -4,7 +4,7 @@ import { calls } from './slices/calls/calls.js';
 import { keys } from './slices/keys/keys';
 import { accounts } from './slices/accounts/accounts';
 import { idb } from './entities/idb/idb';
-import { onInitApp } from './effects/onInitApp.ts';
+import { onInitApp } from './effects/onInitApp.js';
 import { networks } from './slices/networks/networks';
 import { navigation } from './slices/navigation/navigation';
 import { getAccessKeyList } from './effects/getAccessKeyList';
