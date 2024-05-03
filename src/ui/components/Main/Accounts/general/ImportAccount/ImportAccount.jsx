@@ -1,7 +1,7 @@
 import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.jsx';
 import { useForm } from 'react-hook-form';
 import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.jsx';
-import { Button } from '../../../general/Button/Button.tsx';
+import { Button } from '../../../general/Button/Button.jsx';
 import cn from './ImportModal.module.css';
 import addIcon from '../../../../../assets/addIcon.svg';
 import { MessageGroup } from './MessageGroup/MessageGroup.jsx';

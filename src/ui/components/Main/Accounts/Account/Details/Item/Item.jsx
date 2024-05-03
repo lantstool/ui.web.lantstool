@@ -1,5 +1,5 @@
 import cn from './Item.module.css';
-import { CopyButton } from '../../../../general/CopyButton/CopyButton.tsx';
+import { CopyButton } from '../../../../general/CopyButton/CopyButton.jsx';
 
 export const Item = ({ title, data, copy = null }) => (
   <div className={cn.item}>
