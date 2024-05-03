@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
 import { useWatch } from 'react-hook-form';

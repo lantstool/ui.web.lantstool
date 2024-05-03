@@ -1,5 +1,5 @@
 import cn from '../../general/SelectSearchType/SelectSearchType.module.css';
-import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.jsx';
 import { useWatch } from 'react-hook-form';
 
 export const SelectType = ({ form }: any) => {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup } from '../general/FormGroup/FormGroup.tsx';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../general/InputGroup/InputGroup.jsx';
 
 const getFormValues = (call: any) => ({
   callId: call.callId,

@@ -5,11 +5,11 @@ import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../schema.ts';
 import { Button } from '../../../../general/Button/Button.tsx';
-import { Modal } from '../../../../../general/Modal/Modal.tsx';
+import { Modal } from '../../../../../general/Modal/Modal.jsx';
 import { Title } from '../../../../general/Title/Title.tsx';
 import { CloseButton } from '../../../../general/CloseButton/CloseButton.tsx';
 import { Subtitle } from '../../../../general/Subtitle/Subtitle.tsx';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../general/InputGroup/InputGroup.jsx';
 import { ErrorMessage } from '../../../../general/ErrorMessage/ErrorMessage.tsx';
 import cn from './AddTransactionModal.module.css';
 

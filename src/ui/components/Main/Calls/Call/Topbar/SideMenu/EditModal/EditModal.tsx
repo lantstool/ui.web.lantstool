@@ -1,10 +1,10 @@
 import cn from './EditModal.module.css';
-import { Modal } from '../../../../../../general/Modal/Modal.tsx';
+import { Modal } from '../../../../../../general/Modal/Modal.jsx';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.ts';
-import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.jsx';
 import { CloseButton } from '../../../../../general/CloseButton/CloseButton.tsx';
 import { Title } from '../../../../../general/Title/Title.tsx';
 import { ErrorMessage } from '../../../../../general/ErrorMessage/ErrorMessage.tsx';

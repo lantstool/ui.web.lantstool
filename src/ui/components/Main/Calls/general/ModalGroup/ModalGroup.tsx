@@ -1,6 +1,6 @@
-import { Modal } from '../../../../general/Modal/Modal.tsx';
+import { Modal } from '../../../../general/Modal/Modal.jsx';
 import cn from './ModalGroup.module.css';
-import { BackIcon } from '../../../../../assets/components/BackIcon.tsx';
+import { BackIcon } from '../../../../../assets/components/BackIcon.jsx';
 import { Title } from '../../../general/Title/Title.tsx';
 import { CloseButton } from '../../../general/CloseButton/CloseButton.tsx';
 

@@ -1,6 +1,6 @@
 import { Button } from '../../../../../general/Button/Button.tsx';
 import { ModalGroup } from '../../../ModalGroup/ModalGroup.tsx';
-import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaGroup.tsx';
+import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaGroup.jsx';
 import { useEffect } from 'react';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useWatch } from 'react-hook-form';

@@ -1,4 +1,4 @@
-import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
 
 const options = [
   { value: 'EXECUTED', label: 'EXECUTED' },

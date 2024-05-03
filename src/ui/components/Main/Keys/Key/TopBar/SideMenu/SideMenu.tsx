@@ -2,10 +2,10 @@ import cn from './SideMenu.module.css';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useNavigate } from 'react-router-dom';
-import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import cnm from 'classnames';
-import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.tsx';
+import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.jsx';
 
 export const SideMenu = ({ keyId }: any) => {
   const [isOpen, setOpen]: any = useState(false);

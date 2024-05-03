@@ -1,5 +1,5 @@
-import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.tsx';
-import { InputGroup } from '../../../../general/InputGroup/InputGroup.tsx';
+import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.jsx';
+import { InputGroup } from '../../../../general/InputGroup/InputGroup.jsx';
 import { Button } from '../../../general/Button/Button.tsx';
 import { useForm, useWatch } from 'react-hook-form';
 import cn from './SeedPhraseModal.module.css';
@@ -8,7 +8,7 @@ import { createSchema } from './schema.ts';
 import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { useStoreEffect, useStoreState } from '../../../../../../react-vault';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
+import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.jsx';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.tsx';
 import { useMemo } from 'react';
 

@@ -6,7 +6,7 @@ import cnm from 'classnames';
 import { EditModal } from './EditModal/EditModal.tsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { Popup } from './Popup/Popup.tsx';
-import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.jsx';
 
 export const SideMenu = ({ transactionId }: any) => {
   const [isOpen, setOpen]: any = useState(false);

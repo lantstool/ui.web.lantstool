@@ -1,5 +1,5 @@
 import cn from './Network.module.css';
-import { ArrowDownIcon } from '../../../assets/components/ArrowDownIcon.tsx';
+import { ArrowDownIcon } from '../../../assets/components/ArrowDownIcon.jsx';
 import { useEffect, useMemo, useState } from 'react';
 import { useStoreState, useStoreEffect } from '../../../../react-vault';
 import { useNavigate } from 'react-router-dom';

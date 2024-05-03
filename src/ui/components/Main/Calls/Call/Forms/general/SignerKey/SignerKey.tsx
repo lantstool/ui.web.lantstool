@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Option } from './Option/Option.tsx';
 import { getOptions } from './getOptions.ts';
 import { SelectHeadLabel } from './SelectHeadLabel/SelectHeadLabel.tsx';
-import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
 
 export const SignerKey = ({ form }: any) => {
   const { control } = form;

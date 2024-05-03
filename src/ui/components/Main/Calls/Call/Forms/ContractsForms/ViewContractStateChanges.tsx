@@ -2,7 +2,7 @@ import { FormGroup } from '../general/FormGroup/FormGroup.tsx';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { ContractIds } from '../general/ContractIds/ContractIds.tsx';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../general/InputGroup/InputGroup.jsx';
 
 const getFormValues = (call: any) => ({
   callId: call.callId,

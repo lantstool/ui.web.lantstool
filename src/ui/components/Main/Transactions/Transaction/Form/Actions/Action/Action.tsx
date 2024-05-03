@@ -6,7 +6,7 @@ import { FunctionCall } from './FunctionCall/FunctionCall.tsx';
 import { DeleteKey } from './DeleteKey/DeleteKey.tsx';
 import { DeleteAccount } from './DeleteAccount/DeleteAccount.tsx';
 import cn from './Action.module.css';
-import { DeleteIcon } from '../../../../../../../assets/components/DeleteIcon.tsx';
+import { DeleteIcon } from '../../../../../../../assets/components/DeleteIcon.jsx';
 
 export const Action = ({ form, action, index, remove }: any) => {
   const { type, name } = action;

@@ -1,6 +1,6 @@
 import cn from './VisibleButton.module.css';
-import { Visibility } from '../../../../../../assets/components/Visibility.tsx';
-import { VisibilityOff } from '../../../../../../assets/components/VisibilityOff.tsx';
+import { Visibility } from '../../../../../../assets/components/Visibility.jsx';
+import { VisibilityOff } from '../../../../../../assets/components/VisibilityOff.jsx';
 
 export const VisibleButton = ({ visible, setVisible }: any) => {
   const toggleVisibility = () => {

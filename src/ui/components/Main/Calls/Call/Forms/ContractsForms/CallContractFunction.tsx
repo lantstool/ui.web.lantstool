@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormGroup } from '../general/FormGroup/FormGroup.tsx';
 import { ContractId } from '../general/ContractId/ContractId.tsx';
-import { InputGroup } from '../../../../../general/InputGroup/InputGroup.tsx';
-import { TextareaGroup } from '../../../../../general/TextareaGroup/TextareaGroup.tsx';
+import { InputGroup } from '../../../../../general/InputGroup/InputGroup.jsx';
+import { TextareaGroup } from '../../../../../general/TextareaGroup/TextareaGroup.jsx';
 
 const getFormValues = (call: any) => ({
   callId: call.callId,

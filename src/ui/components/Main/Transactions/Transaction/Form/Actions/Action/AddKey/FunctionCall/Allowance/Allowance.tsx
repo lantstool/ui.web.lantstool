@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.jsx';
 import cn from './Allowance.module.css';
 
 export const Allowance = ({ form, getName }: any) => {

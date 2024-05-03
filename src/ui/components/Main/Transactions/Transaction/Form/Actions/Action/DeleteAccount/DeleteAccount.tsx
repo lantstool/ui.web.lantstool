@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
 
 export const DeleteAccount = ({ form, getName }: any) => {
   const { register } = form;

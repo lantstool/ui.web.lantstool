@@ -6,7 +6,7 @@ import { RootLoader } from './components/RootLoader.tsx';
 import { NetworkLayout } from './components/NetworkLayout.tsx';
 import { Calls } from './components/Main/Calls/Calls.tsx';
 import { Call } from './components/Main/Calls/Call/Call.tsx';
-import { routes as accounts } from './components/Main/Accounts/routes.tsx';
+import { routes as accounts } from './components/Main/Accounts/routes.jsx';
 import { routes as keys } from './components/Main/Keys/routes.tsx';
 
 export const router = createMemoryRouter(

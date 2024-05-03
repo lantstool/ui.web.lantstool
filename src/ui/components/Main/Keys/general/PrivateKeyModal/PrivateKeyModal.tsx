@@ -1,6 +1,6 @@
-import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.tsx';
+import { ModalGroup } from '../../../../general/ModalGroup/ModalGroup.jsx';
 import cn from './PrivateKeyModal.module.css';
-import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.tsx';
+import { TextareaGroup } from '../../../../general/TextareaGroup/TextareaGroup.jsx';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './schema.ts';

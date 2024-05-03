@@ -1,6 +1,6 @@
 import cn from './TopBar.module.css';
 import { NavLink } from 'react-router-dom';
-import { BackIcon } from '../../../../../assets/components/BackIcon.tsx';
+import { BackIcon } from '../../../../../assets/components/BackIcon.jsx';
 import { SideMenu } from './SideMenu/SideMenu.tsx';
 
 export const TopBar = ({ networkId, data }) => {

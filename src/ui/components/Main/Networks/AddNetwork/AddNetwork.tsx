@@ -1,8 +1,8 @@
-import { Modal } from '../../../general/Modal/Modal.tsx';
+import { Modal } from '../../../general/Modal/Modal.jsx';
 import { Title } from '../../general/Title/Title.tsx';
 import { CloseButton } from '../../general/CloseButton/CloseButton.tsx';
 import cn from './AddNetwork.module.css';
-import { InputGroup } from '../../../general/InputGroup/InputGroup.tsx';
+import { InputGroup } from '../../../general/InputGroup/InputGroup.jsx';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../react-vault';

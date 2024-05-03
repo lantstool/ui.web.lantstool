@@ -3,8 +3,8 @@ import { useStoreEffect } from '../../../../../../../../../react-vault';
 import { Button } from '../../../../../../general/Button/Button.tsx';
 import sendTransaction from '../../../../../../../../assets/sendTransaction.svg';
 import { useFormState } from 'react-hook-form';
-import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.tsx';
-import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.tsx';
+import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
+import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.jsx';
 
 export const Footer = ({ form }: any) => {
   const callMethod = useStoreEffect((store: any) => store.calls.callMethod);

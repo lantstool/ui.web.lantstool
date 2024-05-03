@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DeleteModal } from './DeleteModal/DeleteModal.tsx';
 import { EditModal } from './EditModal/EditModal.tsx';
 import cnm from 'classnames';
-import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.tsx';
+import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.jsx';
 import { Popup } from './Popup/Popup.tsx';
 
 

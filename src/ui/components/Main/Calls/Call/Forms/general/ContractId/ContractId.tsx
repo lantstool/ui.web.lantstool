@@ -1,6 +1,6 @@
 import { useStoreState } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
-import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.tsx';
+import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
 import { useWatch } from 'react-hook-form';
 
 const getOptions: any = async (accounts: any, setOptions: any) => {

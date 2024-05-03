@@ -1,6 +1,6 @@
 import cn from './Result.module.css';
 import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../react-vault';
-import { BackIcon } from '../../../../../assets/components/BackIcon.tsx';
+import { BackIcon } from '../../../../../assets/components/BackIcon.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
 import { Button } from '../../../general/Button/Button.tsx';
