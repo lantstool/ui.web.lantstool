@@ -1,7 +1,7 @@
 import { useStoreEffect } from '../../react-vault';
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import { useNavigateToSavedRoute } from '../../store/slices/navigation/useNavigateToSavedRoute.ts';
+import { useNavigateToSavedRoute } from '../../store/slices/navigation/useNavigateToSavedRoute.js';
 import { Sidebar } from './Sidebar/Sidebar.tsx';
 import cn from './NetworkLayout.module.css';
 

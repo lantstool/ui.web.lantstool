@@ -3,7 +3,7 @@ import { Empty } from './Empty/Empty.tsx';
 import cn from './Transactions.module.css';
 import { useStoreState, useStoreEffect } from '../../../../react-vault';
 import { Outlet } from 'react-router-dom';
-import { useNavigateToSavedRoute } from '../../../../store/slices/navigation/useNavigateToSavedRoute.ts';
+import { useNavigateToSavedRoute } from '../../../../store/slices/navigation/useNavigateToSavedRoute.js';
 import { useLoader } from '../../../../store/hooks/useLoader.js';
 
 export const Transactions = () => {
