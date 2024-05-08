@@ -7,7 +7,7 @@ import { toCamelCase } from '../../../../../../../store/helpers/toCamelCase.js';
  * @param {any[]} list - The array of objects to transform.
  * @returns {Object} - The transformed object.
  */
-const transformKeys = (list: any[]): object =>
+const transformKeys = (list) =>
   list.reduce((acc, key) => {
     acc[key.publicKey] = key;
     return acc;
@@ -19,8 +19,8 @@ const transformKeys = (list: any[]): object =>
  * @param {any[]} importedKeys - The object of imported keys to compare against.
  * @returns {any[]} - The filtered array of chain keys.
  */
-const filterKeys = (chainKeys: any[], importedKeys: object): any[] =>
-  chainKeys.filter((chainKey: any) => importedKeys[chainKey.publicKey]);
+const filterKeys = (chainKeys, importedKeys) =>
+  chainKeys.filter((chainKey) => importedKeys[chainKey.publicKey]);
 
 /**
  * Retrieves options for a given account.
@@ -33,11 +33,11 @@ const filterKeys = (chainKeys: any[], importedKeys: object): any[] =>
  * @returns {Promise<void>} - A promise that resolves when the options are set.
  */
 export const getOptions = async (
-  accountId: string,
-  getAccessKeyList: any,
-  getImportedKeys: any,
-  setOptions: any,
-): Promise<void> => {
+  accountId,
+  getAccessKeyList,
+  getImportedKeys,
+  setOptions,
+)=> {
   if (!accountId) return;
 
   const { keys: chainKeys } = await getAccessKeyList(accountId);
@@ -45,7 +45,7 @@ export const getOptions = async (
 
   const list = filterKeys(toCamelCase(chainKeys), transformKeys(importedKeys));
 
-  const options = list.map((key: any) => ({
+  const options = list.map((key) => ({
     value: key.publicKey,
     label: key.publicKey,
     permission: key.accessKey.permission,
