@@ -2,7 +2,7 @@ import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
 import { Option } from '../general/Option/Option.jsx';
-import { getOptions } from './getOptions.ts';
+import { getOptions } from './getOptions.js';
 import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.jsx';
 import { FormSelectGroup } from '../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
 
@@ -18,11 +18,23 @@ export const SignerKey = ({ form }) => {
     getOptions(accountId, getAccessKeyList, getKeys, setOptions);
   }, [accountId]);
 
+  const onChange = (field) => (event) => {
+    field.onChange(event);
+    form.setValue('actions', []);
+  };
+
+  if (!accountId) return null
+
   return (
-    <>
-      <FormSelectGroup name="signerKey" control={control} options={options} components={{ Option }}>
-        <SelectHeadLabel text="Access Key" permission={signerKey} />
-      </FormSelectGroup>
-    </>
+    <FormSelectGroup
+      name="signerKey"
+      control={control}
+      onChange={onChange}
+      options={options}
+      isClearable={true}
+      components={{ Option }}
+    >
+      <SelectHeadLabel text="Access Key" permission={signerKey} />
+    </FormSelectGroup>
   );
 };

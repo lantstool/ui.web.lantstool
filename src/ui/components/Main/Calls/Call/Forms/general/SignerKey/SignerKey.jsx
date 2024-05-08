@@ -2,7 +2,7 @@ import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useEffect, useState } from 'react';
 import { Option } from './Option/Option.jsx';
-import { getOptions } from './getOptions.ts';
+import { getOptions } from './getOptions.js';
 import { SelectHeadLabel } from './SelectHeadLabel/SelectHeadLabel.jsx';
 import { FormSelectGroup } from '../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
 
