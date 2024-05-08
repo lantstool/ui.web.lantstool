@@ -26,6 +26,7 @@ export const SignerAccount = ({ form }) => {
   const onChange = (field) => (event) => {
     field.onChange(event);
     setValue('signerKey', '');
+    setValue('actions', []);
   };
 
   return (
