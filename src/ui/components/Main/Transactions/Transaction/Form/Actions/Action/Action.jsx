@@ -20,9 +20,11 @@ export const Action = ({ form, action, index, remove }) => {
       <div className={cn.topbar}>
         <p className={cn.order}>#{order}</p>
         <h4 className={cn.title}>{name}</h4>
-        <button className={cn.removeButton} onClick={removeAction}>
-          <DeleteIcon style={cn.icon} />
-        </button>
+        {type !== 'FunctionCall' && (
+          <button className={cn.removeButton} onClick={removeAction}>
+            <DeleteIcon style={cn.icon} />
+          </button>
+        )}
       </div>
       <div className={cn.wrapper}>
         {type === 'CreateAccount' && <CreateAccount form={form} />}

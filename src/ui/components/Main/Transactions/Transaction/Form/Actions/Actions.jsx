@@ -11,7 +11,7 @@ export const Actions = ({ form }) => {
   });
 
   const keyType = useKeyType(append, form);
-  const text = keyType !== 'Empty' && keyType !== 'FullAccess' ? 'Action' : 'Actions';
+  const text = keyType !== 'FullAccess' ? 'Action' : 'Actions';
 
   return (
     <div>
