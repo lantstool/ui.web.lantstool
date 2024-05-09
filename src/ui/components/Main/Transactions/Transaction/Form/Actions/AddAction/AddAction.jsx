@@ -28,11 +28,6 @@ export const AddAction = ({ append }) => {
     closeModal();
   };
 
-  const functionCall = () => {
-    appendAction.functionCall(append);
-    closeModal();
-  };
-
   const deployContract = () => {
     appendAction.deployContract(append);
     closeModal();
@@ -67,7 +62,6 @@ export const AddAction = ({ append }) => {
           <Item onClick={transfer} text="Transfer" />
           <Item onClick={addKey} text="Add Key" />
           <Item onClick={deployContract} text="Deploy Contract" />
-          <Item onClick={functionCall} text="Function Call" />
           <Item onClick={deleteKey} text="Delete Key" />
           <Item onClick={deleteAccount} text="Delete Account" />
         </div>

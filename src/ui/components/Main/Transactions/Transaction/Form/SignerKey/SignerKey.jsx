@@ -20,10 +20,12 @@ export const SignerKey = ({ form }) => {
 
   const onChange = (field) => (event) => {
     field.onChange(event);
-    form.setValue('actions', []);
+    if (signerKey?.value !== event?.value) {
+      form.setValue('actions', []);
+    }
   };
 
-  if (!accountId) return null
+  if (!accountId) return null;
 
   return (
     <FormSelectGroup

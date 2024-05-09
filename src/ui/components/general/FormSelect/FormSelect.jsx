@@ -15,6 +15,7 @@ export const FormSelect = ({
   isSearchable = false,
   isClearable = false,
   error,
+  isDisabled,
   creatableSelect = false,
 }) => {
   const style = selectStyles(error);
@@ -28,6 +29,7 @@ export const FormSelect = ({
         return (
           <SelectComponent
             {...field}
+            isDisabled={isDisabled}
             onChange={onChange ? onChange(field) : field.onChange}
             isClearable={isClearable}
             isSearchable={isSearchable}

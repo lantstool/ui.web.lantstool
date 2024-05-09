@@ -38,6 +38,7 @@ export const Receiver = ({ form }) => {
     <>
       <h3 className={cn.title}>Receiver</h3>
       <FormSelectGroup
+        isDisabled={true}
         name="receiver"
         control={control}
         onChange={onChange}
