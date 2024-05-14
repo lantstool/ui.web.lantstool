@@ -12,6 +12,7 @@ export const Actions = ({ form }) => {
 
   const keyType = useKeyType(append, form);
   const text = keyType !== 'FullAccess' ? 'Action' : 'Actions';
+  const isDeleteAccount = fields.find((el) => el.type === 'DeleteAccount');
 
   return (
     <div>
@@ -19,7 +20,9 @@ export const Actions = ({ form }) => {
       {fields.map((action, index) => (
         <Action key={action.actionId} index={index} action={action} form={form} remove={remove} />
       ))}
-      {keyType === 'FullAccess' && <AddAction append={append} />}
+      {keyType === 'FullAccess' && !isDeleteAccount && (
+        <AddAction append={append} fields={fields} />
+      )}
     </div>
   );
 };

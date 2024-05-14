@@ -8,8 +8,10 @@ import { Item } from './Item/Item.jsx';
 import { Title } from '../../../../../general/Title/Title.jsx';
 import { CloseButton } from '../../../../../general/CloseButton/CloseButton.jsx';
 
-export const AddAction = ({ append }) => {
+export const AddAction = ({ append, fields }) => {
   const [isOpen, setOpen] = useState(false);
+  const isCreateAccount = fields.length <1;
+
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
@@ -58,7 +60,7 @@ export const AddAction = ({ append }) => {
               <CloseButton close={closeModal} />
             </div>
           </div>
-          <Item onClick={createAccount} text="Create Account" />
+          <Item onClick={createAccount} disabled={!isCreateAccount} text="Create Account" />
           <Item onClick={transfer} text="Transfer" />
           <Item onClick={addKey} text="Add Key" />
           <Item onClick={deployContract} text="Deploy Contract" />
