@@ -28,7 +28,7 @@ export const createCall = effect(async ({ payload, slice, store }) => {
   const [idb] = store.getEntities((store) => store.idb);
   const { spaceId, networkId } = store.getState((store) => store.networks.current);
   const addCall = slice.getActions((slice) => slice.addCall);
-  console.log(name)
+
   try {
     const [callsOrder, callsCounter] = await Promise.all([
       idb.countFromIndex(

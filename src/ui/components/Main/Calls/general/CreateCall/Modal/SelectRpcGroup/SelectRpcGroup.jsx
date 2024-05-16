@@ -1,21 +1,20 @@
 import { ModalGroup } from '../../../ModalGroup/ModalGroup.jsx';
-import { Item } from '../Item/Item.jsx';
+import { Button } from '../../../../../general/Button/Button.jsx';
+import { useWatch } from 'react-hook-form';
+import { useStoreEffect } from '../../../../../../../../react-vault/store/effects/useStoreEffect.js';
+import { useNavigate } from 'react-router-dom';
+import { MethodSelector } from './MethodSelector/MethodSelector.jsx';
 
-const steps = [
-  { type: 'accessKeys', text: 'Access Keys' },
-  { type: 'accounts', text: 'Accounts' },
-  { type: 'contracts', text: 'Contracts' },
-  { type: 'block', text: 'Block' },
-  { type: 'chunk', text: 'Chunk' },
-  { type: 'gas', text: 'Gas' },
-  { type: 'protocol', text: 'Protocol' },
-  { type: 'network', text: 'Network' },
-  { type: 'transactions', text: 'Transactions' },
-];
-
-export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal }) => {
+export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal, form }) => {
   const prev = () => setStep('createName');
-  const toStep = (type) => setStep(type);
+
+  const name = useWatch({ control: form.control, name: 'callName' });
+  const method = useWatch({ control: form.control, name: 'method' });
+  const createCall = useStoreEffect((store) => store.calls.createCall);
+  const navigate = useNavigate();
+  const createdCall = () => {
+    createCall({ name, method, navigate, close: closeModal });
+  };
 
   return (
     <ModalGroup
@@ -25,14 +24,8 @@ export const SelectRpcGroup = ({ styles, isOpen, setStep, closeModal }) => {
       styles={styles}
       text={'Select RPC Type'}
     >
-      {steps.map((step) => (
-        <Item
-          key={step.type}
-          el={step}
-          onClick={() => toStep(step.type)}
-          disabled={step.disabled}
-        />
-      ))}
+      <MethodSelector form={form} />
+      <Button disabled={!method} onClick={createdCall} text="Create" />
     </ModalGroup>
   );
 };
