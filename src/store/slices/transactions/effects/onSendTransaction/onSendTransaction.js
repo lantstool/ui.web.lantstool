@@ -21,7 +21,7 @@ export const onSendTransaction = effect(async ({ slice, payload, store }) => {
 
     const provider = new JsonRpcProvider({ url: url.rpc });
     const transaction = await createTx({ provider, form: formValues });
-    console.log(transaction);
+
     const privateKey = await getSignerPrivateKey(formValues.signerKey.value, getKey);
 
     const signedTx = await signTx({

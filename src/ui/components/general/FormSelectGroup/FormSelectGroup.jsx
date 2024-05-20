@@ -13,6 +13,7 @@ export const FormSelectGroup = ({
   children,
   error = false,
   creatableSelect = false,
+  isDisabled = false,
   accountId,
   label,
 }) => {
@@ -31,6 +32,7 @@ export const FormSelectGroup = ({
           name={name}
           control={control}
           onChange={onChange}
+          isDisabled={isDisabled}
           isSearchable={isSearchable}
           isClearable={isClearable}
           options={options}

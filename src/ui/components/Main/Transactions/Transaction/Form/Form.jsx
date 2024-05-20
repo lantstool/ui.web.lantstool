@@ -62,12 +62,10 @@ export const Form = ({ transaction }) => {
             </button>
           )}
         </div>
-        <form className={cnm(cn.form,isResults && cn.formWithoutNav)}>
-          <div>
-            <h3 className={cn.title}>Sender</h3>
-            <SignerAccount form={form} />
-            <SignerKey form={form} />
-          </div>
+        <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
+          <h3 className={cn.title}>Sender</h3>
+          <SignerAccount form={form} />
+          <SignerKey form={form} />
           <Actions form={form} />
           <Receiver form={form} />
         </form>
