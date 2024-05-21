@@ -17,7 +17,7 @@ const getNewCall = (values, oldCall) => {
     order: oldCall.order,
     spaceId: oldCall.spaceId,
     callId: values.callId,
-    type: oldCall.type,
+    type: values.type,
     params: values.params,
     method: values.method,
   };

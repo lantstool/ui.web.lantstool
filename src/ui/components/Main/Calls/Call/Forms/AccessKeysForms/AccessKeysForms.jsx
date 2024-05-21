@@ -3,11 +3,11 @@ import { ViewAccessKeyList } from './ViewAccessKeyList.jsx';
 import { ViewAccessKeyChangesSingle } from './ViewAccessKeyChangesSingle.jsx';
 import { ViewAccessKeyChangesAll } from './ViewAccessKeyChangesAll.jsx';
 
-export const AccessKeysForms = ({ call }) => (
+export const AccessKeysForms = ({ type, form }) => (
   <>
-    {call.type === 'view_access_key' && <ViewAccessKey call={call} />}
-    {call.type === 'view_access_key_list' && <ViewAccessKeyList call={call} />}
-    {call.type === 'single_access_key_changes' && <ViewAccessKeyChangesSingle call={call} />}
-    {call.type === 'all_access_key_changes' && <ViewAccessKeyChangesAll call={call} />}
+    {type === 'view_access_key' && <ViewAccessKey form={form} />}
+    {type === 'view_access_key_list' && <ViewAccessKeyList form={form} />}
+    {type === 'single_access_key_changes' && <ViewAccessKeyChangesSingle form={form} />}
+    {type === 'all_access_key_changes' && <ViewAccessKeyChangesAll form={form} />}
   </>
 );
