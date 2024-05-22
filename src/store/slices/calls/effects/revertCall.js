@@ -5,6 +5,7 @@ const getFormValues = (call) => ({
   callId: call.callId,
   method: call.method,
   params: call.params,
+  type: call.type,
   results: call.results,
 });
 

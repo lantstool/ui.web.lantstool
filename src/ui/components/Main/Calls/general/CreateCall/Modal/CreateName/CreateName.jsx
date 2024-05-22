@@ -4,8 +4,9 @@ import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaG
 import { useEffect } from 'react';
 import { useStoreEffect } from '../../../../../../../../react-vault';
 import { useWatch } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
-export const CreateName = ({ styles, isOpen, form, closeModal, setStep }) => {
+export const CreateName = ({ styles, isOpen, form, closeModal }) => {
   const getCallsCount = useStoreEffect((store) => store.calls.getCallsCount);
 
   const {
@@ -15,6 +16,8 @@ export const CreateName = ({ styles, isOpen, form, closeModal, setStep }) => {
   } = form;
 
   const name = useWatch({ control: form.control, name: 'callName' });
+  const createCall = useStoreEffect((store) => store.calls.createCall);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -23,8 +26,9 @@ export const CreateName = ({ styles, isOpen, form, closeModal, setStep }) => {
     })();
   }, [isOpen]);
 
-
-  const nextStep = () => setStep('selectRpcGroup');
+  const createdCall = () => {
+    createCall({ name, navigate, close: closeModal });
+  };
 
   return (
     <ModalGroup isOpen={isOpen} closeModal={closeModal} styles={styles} text="Create Call">
@@ -35,7 +39,12 @@ export const CreateName = ({ styles, isOpen, form, closeModal, setStep }) => {
         rows={4}
         errors={errors.callName?.message}
       />
-      <Button disabled={errors.callName} text="Create name" style="secondary" onClick={nextStep} />
+      <Button
+        disabled={errors.callName}
+        text="Create name"
+        style="secondary"
+        onClick={createdCall}
+      />
     </ModalGroup>
   );
 };

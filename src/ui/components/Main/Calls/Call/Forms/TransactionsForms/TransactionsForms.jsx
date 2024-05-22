@@ -2,10 +2,10 @@ import { TransactionStatus } from './TransactionStatus.jsx';
 import { TransactionStatusWithReceipts } from './TransactionStatusWithReceipts.jsx';
 import { ReceiptById } from './ReceiptById.jsx';
 
-export const TransactionsForms = ({ call }) => (
+export const TransactionsForms = ({ form, type }) => (
   <>
-    {call.type === 'tx' && <TransactionStatus call={call} />}
-    {call.type === 'EXPERIMENTAL_tx_status' && <TransactionStatusWithReceipts call={call} />}
-    {call.type === 'EXPERIMENTAL_receipt' && <ReceiptById call={call} />}
+    {type === 'tx' && <TransactionStatus form={form} />}
+    {type === 'EXPERIMENTAL_tx_status' && <TransactionStatusWithReceipts form={form} />}
+    {type === 'EXPERIMENTAL_receipt' && <ReceiptById form={form} />}
   </>
 );

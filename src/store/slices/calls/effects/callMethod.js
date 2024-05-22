@@ -103,7 +103,7 @@ export const callMethod = effect(async ({ payload, slice, store }) => {
 
   try {
     setOpenResult({ callId, isOpen: true, isLoading: true });
-    const body = getBodyType(method, params, type);
+    const body = getBodyType(method, params, type.value);
 
     const response = await fetch(url.rpc, {
       method: 'POST',
