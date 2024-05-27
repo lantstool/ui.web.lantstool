@@ -14,18 +14,16 @@ const getOptions = async (getAccountsIds, setOptions) => {
   setOptions(options);
 };
 
-const selectType = (actions) => {
+const selectType = (actions, signerKey) => {
   const findType = (type) => actions.find((el) => el.type === type);
-  const withoutTransfer = actions.filter((el) => el.type !== 'Transfer');
+  const filterType = actions.filter((el) => el.type !== 'Transfer' && el.type !== 'FunctionCall');
 
   if (findType('CreateAccount')) {
     return 'CreateAccount';
-  } else if (withoutTransfer.length === 0) {
-    return 'Transfer';
-  } else if (findType('FunctionCall')) {
+  } else if (filterType.length === 0 && !signerKey) {
+    return 'Enabled';
+  } else if (signerKey) {
     return 'FunctionCall';
-  } else if (actions.length === 0) {
-    return 'Empty';
   } else return 'Disabled';
 };
 
@@ -36,24 +34,23 @@ export const Receiver = ({ form }) => {
   const accountId = useWatch({ control, name: 'receiver.value' });
   const receiverId = useWatch({ control, name: 'signerKey.permission.functionCall.receiverId' });
   const signerId = useWatch({ control, name: 'signerId' });
-  console.log(accountId);
+  const signerKey = useWatch({ control: form.control, name: 'signerKey.permission.functionCall' });
+
   const actions = useWatch({
     control,
     name: 'actions',
   });
 
-  const receiverType = selectType(actions);
+  const receiverType = selectType(actions, signerKey);
 
   useEffect(() => {
     // Depending on the type, we clear or change the data so that no errors occur,
     // since we have 2 different types of inputs - InputGroup and FormSelectGroup
-    if (receiverType === 'Empty') {
-      setValue('receiver', '');
-    } else if (receiverType === 'FunctionCall') {
+    if (receiverType === 'FunctionCall') {
       setValue('receiver', receiverId);
     } else if (receiverType === 'Disabled') {
       setValue('receiver', signerId);
-    } else if (receiverType === 'Transfer') {
+    } else if (receiverType === 'Enabled') {
       setValue('receiver', '');
       getOptions(getAccountsIds, setOptions);
     } else if (receiverType === 'CreateAccount' && accountId) {
@@ -77,7 +74,7 @@ export const Receiver = ({ form }) => {
       {receiverType === 'FunctionCall' && (
         <InputGroup disabled={true} register={register} name="receiver" label="Account Id" />
       )}
-      {(receiverType === 'Transfer' || receiverType === 'Disabled') && (
+      {(receiverType === 'Enabled' || receiverType === 'Disabled') && (
         <FormSelectGroup
           isDisabled={receiverType === 'Disabled'}
           name="receiver"

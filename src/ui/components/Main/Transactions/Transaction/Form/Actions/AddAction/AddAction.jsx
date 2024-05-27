@@ -45,6 +45,11 @@ export const AddAction = ({ append, fields }) => {
     closeModal();
   };
 
+  const functionCall = () => {
+    appendAction.functionCall(append);
+    closeModal();
+  };
+
   return (
     <>
       <div className={cn.btnContainer}>
@@ -62,6 +67,7 @@ export const AddAction = ({ append, fields }) => {
           </div>
           <Item onClick={createAccount} disabled={!isCreateAccount} text="Create Account" />
           <Item onClick={transfer} text="Transfer" />
+          <Item onClick={functionCall} text="FunctionCall" />
           <Item onClick={addKey} text="Add Key" />
           <Item onClick={deployContract} text="Deploy Contract" />
           <Item onClick={deleteKey} text="Delete Key" />
