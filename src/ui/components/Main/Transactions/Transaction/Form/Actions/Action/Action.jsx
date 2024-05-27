@@ -7,9 +7,11 @@ import { DeleteKey } from './DeleteKey/DeleteKey.jsx';
 import { DeleteAccount } from './DeleteAccount/DeleteAccount.jsx';
 import cn from './Action.module.css';
 import { DeleteIcon } from '../../../../../../../assets/components/DeleteIcon.jsx';
+import { useWatch } from 'react-hook-form';
 
 export const Action = ({ form, action, index, remove }) => {
   const { type, name } = action;
+  const signerKey = useWatch({ control: form.control, name: 'signerKey.permission.functionCall' });
   const order = index + 1;
 
   const getName = (name) => `actions.${index}.${name}`;
@@ -20,7 +22,7 @@ export const Action = ({ form, action, index, remove }) => {
       <div className={cn.topbar}>
         <p className={cn.order}>#{order}</p>
         <h4 className={cn.title}>{name}</h4>
-        {type !== 'FunctionCall' && (
+        {!signerKey && (
           <button className={cn.removeButton} onClick={removeAction}>
             <DeleteIcon style={cn.icon} />
           </button>
