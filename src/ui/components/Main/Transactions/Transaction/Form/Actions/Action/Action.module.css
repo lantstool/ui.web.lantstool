@@ -8,14 +8,16 @@
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  grid-template-rows: 17px;
+  grid-template-areas: 'a b c';
   align-items: center;
-  height: 17px;
   margin: 0 15px 0 24px;
 }
 
 .order {
+  grid-area: a;
   padding: 0;
   margin: 0 15px 0 0;
   color: var(--Color-Olive-300);
@@ -24,6 +26,7 @@
 }
 
 .title {
+  grid-area: b;
   margin: 0;
   text-align: center;
   color: var(--Color-Green-2000);
@@ -32,6 +35,7 @@
 }
 
 .removeButton {
+  grid-area: c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,11 +59,9 @@
   .icon {
     fill: var(--Color-Red-500);
     cursor: pointer;
-
   }
 }
 
-.wrapper{
+.wrapper {
   margin: 0 24px;
 }
-
