@@ -21,11 +21,11 @@ const getBodyType = (method, params, type) => {
       ...params,
       account_ids: [params.account_ids.value],
     },
-    call_function: type === 'call_function' && {
-      ...params,
-      account_id: params.account_id.value,
-      args_base64: Buffer.from(params.args_base64).toString('base64'),
-    },
+    // call_function: type === 'call_function' && {
+    //   ...params,
+    //   account_id: params.account_id.value,
+    //   args_base64: Buffer.from(params.args_base64).toString('base64'),
+    // },
     view_access_key: type === 'view_access_key' && {
       ...params,
       account_id: params.account_id.value,
@@ -115,7 +115,6 @@ export const callMethod = effect(async ({ payload, slice, store }) => {
     const { result, error } = await response.json();
 
     if (result) return addResult({ callId, result: { result } });
-
     if (error) return addResult({ callId, result: { error: error.data } });
   } catch (e) {
     addResult({ callId, result: { error: e.message } });
