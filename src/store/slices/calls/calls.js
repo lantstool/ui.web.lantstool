@@ -19,6 +19,7 @@ import { onDuplicateTransaction } from './effects/onDuplicateTransaction';
 import { callMethod } from './effects/callMethod.js';
 import { revertCall } from './effects/revertCall.js';
 import { editCallName } from './effects/editCallName.js';
+import { callViewMethod } from './effects/callViewMethod.js';
 
 export const calls = {
   // init state
@@ -49,4 +50,5 @@ export const calls = {
   putTemporaryFormValues,
   revertCall,
   editCallName,
+  callViewMethod,
 };
