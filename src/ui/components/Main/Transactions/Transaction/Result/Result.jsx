@@ -26,6 +26,18 @@ const getValues = (transaction, temporaryFormValues) => {
   };
 };
 
+const getResultStatus = (status) => {
+  try {
+    if (status.SuccessValue) {
+      return getFormattedJSON({ SuccessValue: atob(status.SuccessValue) });
+    }
+    return getFormattedJSON(status);
+  } catch (e) {
+    return "Error during parsing result"
+  }
+
+}
+
 export const Result = ({ transaction }) => {
   const sendTransaction = useStoreEffect((store) => store.transactions.onSendTransaction);
   const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
@@ -56,12 +68,13 @@ export const Result = ({ transaction }) => {
         ) : (
           <>
             <h3 className={cn.title}>Result</h3>
-            {getFormattedJSON(result.status) ? (
+            {result.status ? (
               <>
-                {/*  @ts-ignore */}
-                <pre className={cn.subtitle} style={{ textWrap: 'wrap' }}>
-                  {getFormattedJSON(result.status)}
-                </pre>
+                <CodeMirror
+                  readOnly={true}
+                  value={getResultStatus(result.status)}
+                  extensions={[jsonLanguage]}
+                />
                 <h3 className={cn.title}>ID</h3>
                 <p className={cn.subtitle}>{result?.transaction_outcome?.id}</p>
                 <h3 className={cn.title}>Details</h3>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../react-vault';
 import { useLoader } from '../../../../../store/hooks/useLoader.js';
 import { Result } from './Result/Result.jsx';
-import {Forms} from "./Forms/Forms.jsx";
+import { Forms } from './Forms/Forms.jsx';
 
 export const Call = () => {
   const { callId } = useParams();
