@@ -5,4 +5,4 @@ status = 200
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "[...] script-src https://netlify-rum.netlify.app"
+    Content-Security-Policy = "script-src 'self' https://netlify-rum.netlify.app"
