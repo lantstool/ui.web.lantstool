@@ -32,6 +32,7 @@ export const onSendTransaction = effect(async ({ slice, payload, store }) => {
 
     const result = await provider.sendTransaction(signedTx);
     console.log(result);
+
     addResult({ transactionId, result });
   } catch (e) {
     console.log(e);

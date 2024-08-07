@@ -1,16 +1,16 @@
 .title {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 10px 0 5px 0;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0 5px 0;
 }
 
 .buttonWrapper {
-    display: flex;
-    margin-bottom: 5px;
-    gap: 15px;
+  display: flex;
+  margin-bottom: 5px;
+  gap: 15px;
 }
 
-.errorMessage{
-    margin: 0;
-    color: red;
+.errorMessage {
+  margin: 0;
+  color: red;
 }

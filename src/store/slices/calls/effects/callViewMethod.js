@@ -1,4 +1,22 @@
 import { effect } from '../../../../react-vault';
+import { fetchJson } from '../../../helpers/fetchJson.js';
+import { decompress } from 'fzstd';
+
+const setABItoResult = (callId, result, addResult) => {
+  const raw = decompress(new Uint8Array(result.result));
+  const json = new TextDecoder().decode(raw);
+  const res = JSON.parse(json);
+
+  addResult({
+    callId,
+    result: {
+      result: {
+        ...result,
+        result: res,
+      },
+    },
+  });
+};
 
 export const callViewMethod = effect(async ({ payload, slice, store }) => {
   const { callId, params } = payload;
@@ -9,28 +27,29 @@ export const callViewMethod = effect(async ({ payload, slice, store }) => {
   try {
     setOpenResult({ callId, isOpen: true, isLoading: true });
 
-    const body = {
-      jsonrpc: '2.0',
-      id: 0,
-      method: 'query',
-      params: {
-        request_type: 'call_function',
-        finality: 'final',
-        account_id: params.account_id.value,
-        method_name: params.method_name,
-        args_base64: Buffer.from(params.args_base64).toString('base64'),
-      },
-    };
+    const methodName = params.method_name.value;
 
-    const response = await fetch(url.rpc, {
+    // TODO: refactor and move to helpers
+    const { result, error } = await fetchJson(url.rpc, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 0,
+        method: 'query',
+        params: {
+          request_type: 'call_function',
+          finality: 'final',
+          account_id: params.account_id.value,
+          method_name: methodName,
+          args_base64: Buffer.from(params.args_base64).toString('base64'),
+        },
+      }),
     });
 
-    const { result, error } = await response.json();
+    if (methodName === '__contract_abi' && result) return setABItoResult(callId, result, addResult);
 
     if (result)
       return addResult({

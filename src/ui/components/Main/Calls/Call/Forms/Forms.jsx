@@ -5,7 +5,7 @@ import { useStoreAction } from '../../../../../../react-vault/store/actions/useS
 import { useStoreState } from '../../../../../../react-vault/store/state/useStoreState.js';
 import { useEffect, useMemo } from 'react';
 import { MethodSelector } from './MethodSelector/MethodSelector.jsx';
-import { ContractsForms } from './ContractsForms/ContractsForms.jsx';
+import { Contracts } from './Contracts/Contracts.jsx';
 import { useForm, useWatch } from 'react-hook-form';
 import { AccessKeysForms } from './AccessKeysForms/AccessKeysForms.jsx';
 import { AccountsForms } from './AccountsForms/AccountsForms.jsx';
@@ -16,15 +16,13 @@ import { TransactionsForms } from './TransactionsForms/TransactionsForms.jsx';
 import { ProtocolForms } from './ProtocolForms/ProtocolForms.jsx';
 import { NetworkForms } from './NetworkForms/NetworkForms.jsx';
 
-const getFormDefaultValues = (call) => {
-  return {
-    callId: call.callId,
-    type: call.type,
-    params: call.params,
-    method: call.method,
-    results: call.results,
-  };
-};
+const getFormDefaultValues = (call) => ({
+  callId: call.callId,
+  type: call.type,
+  params: call.params,
+  method: call.method,
+  results: call.results,
+});
 
 export const Forms = ({ call }) => {
   const setOpenResult = useStoreAction((store) => store.calls.setOpenResult);
@@ -43,8 +41,10 @@ export const Forms = ({ call }) => {
 
   useEffect(() => {
     form.reset(formDefaultValues);
+
     if (temporaryFormValues)
       form.reset({ ...temporaryFormValues, results: call.results }, { keepDefaultValues: true });
+
     return () => {
       putTemporaryFormValues({
         values: form.getValues(),
@@ -71,7 +71,7 @@ export const Forms = ({ call }) => {
         <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
           <h3 className={cn.title}>{type}</h3>
           <MethodSelector form={form} />
-          <ContractsForms form={form} type={type} />
+          <Contracts form={form} type={type} />
           <AccessKeysForms form={form} type={type} />
           <AccountsForms form={form} type={type} />
           <BlockForm form={form} type={type} />
