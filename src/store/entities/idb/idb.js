@@ -1,5 +1,5 @@
 import { entity } from '../../../react-vault';
-import { openDB } from 'idb/with-async-ittr';
+import { openDB } from 'idb';
 import { setup } from "./setup/setup.js";
 
 export const idb = entity(async () => {
