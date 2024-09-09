@@ -1,6 +1,5 @@
 import { effect } from '../../../../react-vault';
 
-
 export const getTransactionCount = effect(async ({ store }) => {
   const networkId = store.getState((store) => store.networks.current.networkId);
   const [idb] = store.getEntities((store) => store.idb);

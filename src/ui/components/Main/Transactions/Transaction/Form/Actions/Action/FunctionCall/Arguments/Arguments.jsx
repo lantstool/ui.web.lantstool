@@ -4,7 +4,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { Controller } from 'react-hook-form';
 import cn from './Arguments.module.css';
 
-export const Arguments = ({ form, name}) => {
+export const Arguments = ({ form, name }) => {
   const {
     control,
     formState: { errors },

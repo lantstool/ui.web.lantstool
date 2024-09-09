@@ -1,8 +1,4 @@
-export const getOptions = async (
-  accountId,
-  getAccessKeyList,
-  setOptions,
-) => {
+export const getOptions = async (accountId, getAccessKeyList, setOptions) => {
   if (!accountId) return;
 
   const accessKeyList = await getAccessKeyList(accountId);

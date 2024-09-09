@@ -1,6 +1,5 @@
 import cn from './Modal.module.css';
 
-
 export const Modal = ({ children, isOpen, close }) => {
   if (!isOpen) return null;
 

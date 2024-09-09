@@ -10,7 +10,7 @@ import { Title } from '../../../../../general/Title/Title.jsx';
 import { ErrorMessage } from '../../../../../general/ErrorMessage/ErrorMessage.jsx';
 import { Button } from '../../../../../general/Button/Button.jsx';
 
-export const EditModal = ({ isOpen, setOpen,callId, name }) => {
+export const EditModal = ({ isOpen, setOpen, callId, name }) => {
   const editCallName = useStoreEffect((store) => store.calls.editCallName);
 
   const open = isOpen === 'editModal';
@@ -40,7 +40,7 @@ export const EditModal = ({ isOpen, setOpen,callId, name }) => {
   };
 
   const edit = () => {
-    editCallName({callId, callName });
+    editCallName({ callId, callName });
     setOpen(null);
   };
 

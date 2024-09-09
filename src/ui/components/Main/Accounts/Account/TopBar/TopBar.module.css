@@ -23,7 +23,6 @@
 }
 
 .title {
-
   grid-area: b;
   display: -webkit-box;
   overflow: hidden;

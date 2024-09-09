@@ -36,7 +36,7 @@ export const saveCall = effect(async ({ payload: form, slice, store }) => {
     await idb.put('calls', call);
     putCall({ ...call, results: values.results });
     putTemporaryFormValues({ callId, values: null });
-    form.reset(getFormValues(call,values));
+    form.reset(getFormValues(call, values));
   } catch (e) {
     console.log(e);
   }

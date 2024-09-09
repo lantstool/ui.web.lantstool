@@ -15,9 +15,7 @@ import cn from './AddTransactionModal.module.css';
 
 export const AddTransactionModal = ({ styles, isOpen, setOpen }) => {
   const onAddTransaction = useStoreEffect((store) => store.transactions.onAddTransaction);
-  const getTransactionCount = useStoreEffect(
-    (store) => store.transactions.getTransactionCount,
-  );
+  const getTransactionCount = useStoreEffect((store) => store.transactions.getTransactionCount);
   const navigate = useNavigate();
 
   const {

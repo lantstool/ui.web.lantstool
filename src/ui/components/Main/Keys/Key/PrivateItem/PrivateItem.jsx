@@ -1,6 +1,6 @@
 import cn from './PrivateItem.module.css';
 import { useState } from 'react';
-import {hideText} from "../../../../../../store/helpers/hideText";
+import { hideText } from '../../../../../../store/helpers/hideText';
 import { CopyButton } from '../../../general/CopyButton/CopyButton.jsx';
 import { VisibleButton } from './VisibleButton/VisibleButton.jsx';
 

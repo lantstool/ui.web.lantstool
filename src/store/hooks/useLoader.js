@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useLoader = (fn, deps = []) => {
   const [isLoading, setLoading] = useState(true);
@@ -10,8 +10,8 @@ export const useLoader = (fn, deps = []) => {
       const res = await fn();
       setResult(res);
       setLoading(false);
-    })()
+    })();
   }, deps);
 
   return [isLoading, result];
-}
+};

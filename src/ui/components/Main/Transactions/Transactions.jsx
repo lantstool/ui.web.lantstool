@@ -8,9 +8,7 @@ import { useLoader } from '../../../../store/hooks/useLoader.js';
 
 export const Transactions = () => {
   const list = useStoreState((store) => store.transactions.list);
-  const getOnceTransactions = useStoreEffect(
-    (store) => store.transactions.getOnceTransactions,
-  );
+  const getOnceTransactions = useStoreEffect((store) => store.transactions.getOnceTransactions);
   const [isLoading] = useLoader(getOnceTransactions);
   useNavigateToSavedRoute('/:currentNetworkId/transactions');
 

@@ -6,12 +6,14 @@ import { mapModel } from '../utils/mapModel';
 
 const getSlice = (obj, path) => path.reduce((acc, key) => acc[key], obj);
 
-const createAction = ({ store, handler, path, key }) => (payload) => {
-  const state = produce(store.state.getState(), (draft) => {
-    handler({ payload, slice: getSlice(draft, path), store: draft });
-  });
-  store.state.setState({ nextState: state, payload, path, key });
-};
+const createAction =
+  ({ store, handler, path, key }) =>
+  (payload) => {
+    const state = produce(store.state.getState(), (draft) => {
+      handler({ payload, slice: getSlice(draft, path), store: draft });
+    });
+    store.state.setState({ nextState: state, payload, path, key });
+  };
 
 export const createActions = (store, model) => {
   const actions = mapModel(store, model.actions, createAction, actionType);

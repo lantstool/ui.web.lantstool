@@ -10,7 +10,7 @@ import { CloseButton } from '../../../../../general/CloseButton/CloseButton.jsx'
 
 export const AddAction = ({ append, fields }) => {
   const [isOpen, setOpen] = useState(false);
-  const isCreateAccount = fields.length <1;
+  const isCreateAccount = fields.length < 1;
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);

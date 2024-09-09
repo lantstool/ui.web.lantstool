@@ -1,4 +1,4 @@
-import { toCamelCase} from "../../../../../../../../store/helpers/toCamelCase.js";
+import { toCamelCase } from '../../../../../../../../store/helpers/toCamelCase.js';
 
 /**
  * Transforms an array of objects into an object where the keys are the value of `publicKey` property of each object,
@@ -32,12 +32,7 @@ const filterKeys = (chainKeys, importedKeys) =>
  *
  * @returns {Promise<void>} - A promise that resolves when the options are set.
  */
-export const getOptions = async (
-  accountId,
-  getAccessKeyList,
-  getImportedKeys,
-  setOptions,
-)=> {
+export const getOptions = async (accountId, getAccessKeyList, getImportedKeys, setOptions) => {
   if (!accountId) return;
 
   const { keys: chainKeys } = await getAccessKeyList(accountId);

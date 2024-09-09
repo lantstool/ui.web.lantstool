@@ -7,9 +7,7 @@ import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 
 export const Sidebar = () => {
   const transactions = useStoreState((store) => store.transactions);
-  const onReorderTransactions = useStoreEffect(
-    (store) => store.transactions.onReorderTransactions,
-  );
+  const onReorderTransactions = useStoreEffect((store) => store.transactions.onReorderTransactions);
   const params = useParams();
 
   const onDragEnd = (result) => {

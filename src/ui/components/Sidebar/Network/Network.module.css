@@ -1,4 +1,4 @@
-.network{
+.network {
   grid-area: b;
   justify-self: center;
   display: flex;
@@ -7,7 +7,6 @@
 }
 
 .subtitleGroup {
-
   position: relative;
 }
 
@@ -19,7 +18,6 @@
   font-weight: normal;
   text-transform: capitalize;
 }
-
 
 .networkBtn {
   display: flex;

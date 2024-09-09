@@ -15,13 +15,13 @@
   transform: translate(-50%, -50%);
 }
 
-.header{
+.header {
   display: grid;
   grid-template-columns: 26px auto 26px;
   grid-template-areas: ' . a b ';
   align-items: center;
 }
 
-.closeBtn{
+.closeBtn {
   grid-area: b;
 }

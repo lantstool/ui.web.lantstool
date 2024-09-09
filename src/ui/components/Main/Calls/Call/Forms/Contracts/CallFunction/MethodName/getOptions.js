@@ -12,7 +12,7 @@ const base64ToArrayBuffer = (base64String) => {
 const getExportedWasmFunctions = async (arrayBuffer) => {
   const module = await WebAssembly.compile(arrayBuffer);
   const exports = WebAssembly.Module.exports(module);
-  return exports.filter(exp => exp.kind === 'function');
+  return exports.filter((exp) => exp.kind === 'function');
 };
 
 export const getOptions = async (contractId, rpc, setOptions) => {
@@ -36,5 +36,4 @@ export const getOptions = async (contractId, rpc, setOptions) => {
     console.log(e);
     setOptions([]);
   }
-
 };

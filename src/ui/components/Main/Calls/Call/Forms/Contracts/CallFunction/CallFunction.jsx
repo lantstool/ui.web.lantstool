@@ -1,6 +1,6 @@
 import { ContractId } from './ContractId/ContractId.jsx';
 import { MethodName } from './MethodName/MethodName.jsx';
-import {Arguments } from './Arguments/Arguments.jsx';
+import { Arguments } from './Arguments/Arguments.jsx';
 
 export const CallFunction = ({ form }) => (
   <>

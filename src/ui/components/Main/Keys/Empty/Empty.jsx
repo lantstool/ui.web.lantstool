@@ -1,4 +1,4 @@
-import cn from './Empty.module.css'
+import cn from './Empty.module.css';
 import { useState } from 'react';
 import { ImportModals } from '../general/ImportKeyModals/ImportModals.jsx';
 import { Button } from '../../general/Button/Button.jsx';

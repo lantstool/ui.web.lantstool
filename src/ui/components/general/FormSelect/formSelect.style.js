@@ -12,7 +12,6 @@ export const selectStyles = (error) => ({
     ':hover': {
       border: !error ? '1px solid #40916C' : '1px solid red',
     },
-
   }),
   menu: (styles) => ({
     ...styles,

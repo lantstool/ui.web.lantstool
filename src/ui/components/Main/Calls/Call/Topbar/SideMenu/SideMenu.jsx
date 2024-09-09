@@ -6,7 +6,6 @@ import cnm from 'classnames';
 import { VerticalMoreIcon } from '../../../../../../assets/components/VerticalMoreIcon.jsx';
 import { Popup } from './Popup/Popup.jsx';
 
-
 export const SideMenu = ({ callId }) => {
   const [isOpen, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);

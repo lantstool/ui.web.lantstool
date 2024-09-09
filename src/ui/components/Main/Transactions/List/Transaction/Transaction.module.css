@@ -6,11 +6,11 @@
   padding: var(--Spacing-4) 0;
 }
 
-.container:not(:last-child){
+.container:not(:last-child) {
   border-bottom: 1px solid var(--Color-Green-300);
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   padding: var(--Spacing-5, 12px);
   align-items: center;
@@ -39,4 +39,3 @@
 .active {
   background-color: var(--Color-Green-200);
 }
-

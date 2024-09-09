@@ -1,10 +1,10 @@
 .title {
-    text-align: center;
-    grid-area: a;
-    margin: 0;
-    padding: 0;
-    align-self: center;
-    font-size: 24px;
-    font-weight: 600;
-    color: #081c15;
+  text-align: center;
+  grid-area: a;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #081c15;
 }

@@ -62,14 +62,13 @@
   gap: 10px;
   align-self: stretch;
   word-break: normal;
-  border-radius: var(--Spacing-4)
+  border-radius: var(--Spacing-4);
 }
 
 .button:hover {
   background-color: var(--Color-Green-200);
   cursor: pointer;
 }
-
 
 .buttonText {
   color: var(--Text-Dark);

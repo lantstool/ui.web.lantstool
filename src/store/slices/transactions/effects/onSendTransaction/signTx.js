@@ -15,4 +15,4 @@ export const signTx = async ({ transaction, networkId, privateKey }) => {
   );
 
   return signature;
-}
+};

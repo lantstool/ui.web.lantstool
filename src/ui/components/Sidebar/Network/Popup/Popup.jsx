@@ -30,7 +30,7 @@ export const Popup = ({ items, isOpen, handleMenuItemClick, closeMenu, position 
               ))}
             </div>
           </div>
-          <div className={cn.backdrop} onClick={()=>closeMenu()}/>
+          <div className={cn.backdrop} onClick={() => closeMenu()} />
         </>
       )}
     </>

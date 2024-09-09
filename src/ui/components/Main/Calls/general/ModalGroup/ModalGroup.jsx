@@ -14,7 +14,7 @@ export const ModalGroup = ({ isOpen, closeModal, styles, prev, children, text })
           </div>
         )}
         <div className={cn.title}>
-          <Title text={text}/>
+          <Title text={text} />
         </div>
         <div className={cn.closeBtn}>
           <CloseButton close={closeModal} />

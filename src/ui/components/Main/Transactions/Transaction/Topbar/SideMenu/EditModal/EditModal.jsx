@@ -11,9 +11,7 @@ import { ErrorMessage } from '../../../../../general/ErrorMessage/ErrorMessage.j
 import { Button } from '../../../../../general/Button/Button.jsx';
 
 export const EditModal = ({ isOpen, setOpen, transactionId }) => {
-  const onEditTransactionName = useStoreEffect(
-    (store) => store.transactions.onEditTransactionName,
-  );
+  const onEditTransactionName = useStoreEffect((store) => store.transactions.onEditTransactionName);
   const txName = useStoreState((state) => state.transactions.map[transactionId]?.name);
 
   const open = isOpen === 'editModal';

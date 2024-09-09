@@ -1,9 +1,9 @@
 export const replaceDotsToString = (id) => {
-    return id.replace(/\./g, '-dot-');
+  return id.replace(/\./g, '-dot-');
 };
 export const replaceStringToDots = (id) => {
-    return id.replace(/-dot-/g, '.');
+  return id.replace(/-dot-/g, '.');
 };
 export const hideText = (text) => {
-    return text.replace(/./g, '*');
+  return text.replace(/./g, '*');
 };

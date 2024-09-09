@@ -26,7 +26,7 @@ export const Result = ({ call }) => {
   };
 
   const resend = () => {
-    const callValue = temporaryFormValues? temporaryFormValues : call
+    const callValue = temporaryFormValues ? temporaryFormValues : call;
     callMethod(callValue);
   };
 

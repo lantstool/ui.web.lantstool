@@ -1,6 +1,6 @@
-import { useStoreAction, useStoreEffect } from "../../react-vault";
+import { useStoreAction, useStoreEffect } from '../../react-vault';
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 export const RootLoader = () => {
   const onInitApp = useStoreEffect((store) => store.onInitApp);
@@ -18,7 +18,7 @@ export const RootLoader = () => {
 
   useEffect(() => {
     if (location.pathname === '/') return; // Skip initial render when location is '/'
-    setCurrentLocation(location);// TODO rename to save
+    setCurrentLocation(location); // TODO rename to save
   }, [location, setCurrentLocation]);
 
   return loading ? null : <Outlet />;

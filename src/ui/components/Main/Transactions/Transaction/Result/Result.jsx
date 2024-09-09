@@ -33,10 +33,9 @@ const getResultStatus = (status) => {
     }
     return getFormattedJSON(status);
   } catch (e) {
-    return "Error during parsing result"
+    return 'Error during parsing result';
   }
-
-}
+};
 
 export const Result = ({ transaction }) => {
   const sendTransaction = useStoreEffect((store) => store.transactions.onSendTransaction);

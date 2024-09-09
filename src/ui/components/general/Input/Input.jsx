@@ -1,6 +1,5 @@
 import css from './Input.module.css';
 
-
 export const Input = ({
   register = () => ({}),
   id,

@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../../general/Button/Button.jsx';
 
 export const DeleteModal = ({ isOpen, transactionId, setOpen }) => {
-  const onDeleteTransaction = useStoreEffect(
-    (store) => store.transactions.onDeleteTransaction,
-  );
+  const onDeleteTransaction = useStoreEffect((store) => store.transactions.onDeleteTransaction);
   const navigate = useNavigate();
 
   const open = isOpen === 'deleteModal';

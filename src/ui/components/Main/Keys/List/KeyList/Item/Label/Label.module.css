@@ -27,6 +27,6 @@
   line-height: normal;
 }
 
-.text:first-letter{
+.text:first-letter {
   text-transform: uppercase;
 }

@@ -1,5 +1,5 @@
-import { useWatch } from "react-hook-form";
-import cn from './CreateAccount.module.css'
+import { useWatch } from 'react-hook-form';
+import cn from './CreateAccount.module.css';
 
 export const CreateAccount = ({ form }) => {
   const accountId = useWatch({

@@ -1,6 +1,6 @@
 import { InputGroup } from '../../../../../../../../general/InputGroup/InputGroup.jsx';
 import { Allowance } from './Allowance/Allowance.jsx';
-import { AllowedMethods } from "./AllowedMethods/AllowedMethods.jsx";
+import { AllowedMethods } from './AllowedMethods/AllowedMethods.jsx';
 
 export const FunctionCall = ({ form, getName }) => {
   return (

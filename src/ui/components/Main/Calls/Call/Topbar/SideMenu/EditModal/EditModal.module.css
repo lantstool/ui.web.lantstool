@@ -15,8 +15,8 @@
   padding: 25px;
 }
 
-.inputContainer{
-  color: #000000FF;
+.inputContainer {
+  color: #000000ff;
 }
 
 .wrapper {
@@ -26,7 +26,6 @@
   align-items: center;
 }
 
-.closeBtn{
+.closeBtn {
   grid-area: b;
 }
-

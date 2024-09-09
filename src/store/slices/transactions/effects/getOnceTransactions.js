@@ -1,9 +1,7 @@
 import { effect } from '../../../../react-vault';
 
 export const getOnceTransactions = effect(async ({ slice, store }) => {
-  const isTransactionsLoadedToState = slice.getState(
-    (slice) => slice.isTransactionsLoadedToState,
-  );
+  const isTransactionsLoadedToState = slice.getState((slice) => slice.isTransactionsLoadedToState);
   if (isTransactionsLoadedToState) return;
 
   const [idb] = store.getEntities((store) => store.idb);

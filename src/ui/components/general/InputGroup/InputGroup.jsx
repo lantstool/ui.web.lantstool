@@ -1,9 +1,21 @@
 import cn from './ImputGroup.module.css';
 import { Input } from '../Input/Input.jsx';
 
-export const InputGroup = ({ register, name, label, disabled, textarea, cols, rows, type,error }) => (
+export const InputGroup = ({
+  register,
+  name,
+  label,
+  disabled,
+  textarea,
+  cols,
+  rows,
+  type,
+  error,
+}) => (
   <div className={cn.inputGroup}>
-    <label className={cn.title} htmlFor={name}>{label}</label>
+    <label className={cn.title} htmlFor={name}>
+      {label}
+    </label>
     <Input
       name={name}
       type={type}
@@ -13,6 +25,6 @@ export const InputGroup = ({ register, name, label, disabled, textarea, cols, ro
       cols={cols}
       rows={rows}
     />
-      <div className={cn.error}>{error}</div>
+    <div className={cn.error}>{error}</div>
   </div>
 );

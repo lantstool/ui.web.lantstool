@@ -23,19 +23,19 @@
   line-height: normal;
 }
 
-.accountId{
+.accountId {
   grid-area: b;
 }
 
-.name{
+.name {
   grid-area: c;
 }
 
-.message{
+.message {
   grid-area: e;
 }
 
-.button{
+.button {
   grid-area: f;
   display: flex;
   justify-content: center;

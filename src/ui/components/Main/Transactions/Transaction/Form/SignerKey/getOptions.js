@@ -32,12 +32,7 @@ const filterKeys = (chainKeys, importedKeys) =>
  *
  * @returns {Promise<void>} - A promise that resolves when the options are set.
  */
-export const getOptions = async (
-  accountId,
-  getAccessKeyList,
-  getImportedKeys,
-  setOptions,
-)=> {
+export const getOptions = async (accountId, getAccessKeyList, getImportedKeys, setOptions) => {
   if (!accountId) return;
 
   const { keys: chainKeys } = await getAccessKeyList(accountId);

@@ -31,7 +31,7 @@
   background-color: #7dd7b3;
 }
 
-.header{
+.header {
   display: grid;
   grid-template-columns: 26px auto 26px;
   grid-template-areas: ' . a b ';

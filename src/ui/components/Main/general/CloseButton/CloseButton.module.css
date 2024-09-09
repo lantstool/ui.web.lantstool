@@ -5,12 +5,12 @@
   cursor: pointer;
 }
 
-.icon{
-  stroke: #D3D3D3;
-  fill: #D3D3D3;
+.icon {
+  stroke: #d3d3d3;
+  fill: #d3d3d3;
 }
 
-.icon:hover{
-  stroke: #ABABAB;
-  fill: #ABABAB;
+.icon:hover {
+  stroke: #ababab;
+  fill: #ababab;
 }
