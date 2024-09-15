@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #cdb9e5;
+  gap: 5px;
+}
