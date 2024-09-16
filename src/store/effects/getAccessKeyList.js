@@ -1,5 +1,5 @@
 import { JsonRpcProvider } from 'near-api-js/lib/providers';
-import { effect } from '../../react-vault';
+import { effect } from '../../react-vault/index.js';
 
 export const getAccessKeyList = effect(async ({ payload: accountId, store }) => {
   const { url } = store.getState((store) => store.networks.current);

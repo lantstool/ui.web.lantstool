@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const editCallName = effect(async ({ payload, slice, store }) => {
   const { callId, callName } = payload;

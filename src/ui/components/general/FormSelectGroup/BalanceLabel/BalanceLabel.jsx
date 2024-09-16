@@ -1,6 +1,6 @@
 import cn from './BalanceLabel.module.css';
 import { useEffect, useState } from 'react';
-import { useStoreEffect } from '../../../../../react-vault';
+import { useStoreEffect } from '../../../../../react-vault/index.js';
 
 const getBalance = async (getAccountBalance, accountId, setBalance) => {
   if (!accountId) return;

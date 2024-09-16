@@ -1,7 +1,6 @@
-### Муйбутні фічі
+### Future Features
 
-- Прокидування масиву селекторів в хуки / effects store.getWhatever
-- Прибрати спред оператори з слайсів. Це дозволить мати ефекти і екшини і ентітіс з
-  одинаковим іменем
-- Додати useSliceState / useSliceActions...
-- Додати reset store / slice
+- Passing an array of selectors into hooks / effects like store.getWhatever
+- Remove spread operators from slices. This will allow having effects, actions, and entities with the same name.
+- Add useSliceState / useSliceActions…
+- Add reset store / slice

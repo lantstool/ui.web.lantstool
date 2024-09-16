@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 // TODO reuse this function in Form component
 const getFormValues = (call) => ({

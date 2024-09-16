@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 const reorder = (list, currentOrder, newOrder) => {
   const keys = Object.keys(list);

@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { KeyPair } from 'near-api-js';
 import { parseSeedPhrase } from 'near-seed-phrase';
 

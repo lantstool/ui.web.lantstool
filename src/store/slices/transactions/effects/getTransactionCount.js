@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const getTransactionCount = effect(async ({ store }) => {
   const networkId = store.getState((store) => store.networks.current.networkId);

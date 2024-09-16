@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { v1 } from 'uuid';
 
 const createTx = (order, transactionName, networkId) => {

@@ -1,4 +1,4 @@
-import { createStore } from '../react-vault';
+import { createStore } from '../react-vault/index.js';
 import { transactions } from './slices/transactions/transactions';
 import { calls } from './slices/calls/calls.js';
 import { keys } from './slices/keys/keys';

@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { viewAccount } from '../../../helpers/rpc/viewAccount.js';
 import { toCamelCase } from '../../../helpers/toCamelCase.js';
 import { connect } from 'near-api-js';

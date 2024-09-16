@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const getAccountsIds = effect(async ({ store }) => {
   const [idb] = store.getEntities((store) => store.idb);

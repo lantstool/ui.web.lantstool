@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const setOnceTransactions = action(({ slice, payload }) => {
   const list = [];

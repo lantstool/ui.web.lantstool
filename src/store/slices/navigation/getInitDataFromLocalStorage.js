@@ -1,4 +1,4 @@
-import { effect } from '../../../react-vault';
+import { effect } from '../../../react-vault/index.js';
 
 export const getInitDataFromLocalStorage = effect(({ slice }) => {
   const setInitData = slice.getActions((slice) => slice.setInitData);

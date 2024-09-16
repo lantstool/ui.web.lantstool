@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const deleteTransaction = action(({ slice, payload }) => {
   const { transactionId, updatedTxsOrder } = payload;

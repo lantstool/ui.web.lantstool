@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const getOnceTransactions = effect(async ({ slice, store }) => {
   const isTransactionsLoadedToState = slice.getState((slice) => slice.isTransactionsLoadedToState);

@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const setOpenResult = action(({ slice, payload }) => {
   const { transactionId, isOpen, isLoading = false } = payload;

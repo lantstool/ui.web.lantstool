@@ -1,4 +1,4 @@
-import { entity } from '../../../react-vault';
+import { entity } from '../../../react-vault/index.js';
 import { openDB } from 'idb';
 import { setup } from './setup/setup.js';
 

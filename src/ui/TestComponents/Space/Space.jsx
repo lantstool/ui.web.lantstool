@@ -7,6 +7,12 @@ const getDestination = (navHistory, startPath) => {
   return nextRoute ? getDestination(navHistory, [...startPath, nextRoute]) : startPath;
 };
 
+const a = {
+  location,
+  pattern: '/space/:spaceId',
+
+}
+
 const handleNavigate = (location, navHistory, navigate) => {
   const match = matchPath('/space/:spaceId', location.pathname);
   if (!match) return;
@@ -17,13 +23,25 @@ const handleNavigate = (location, navHistory, navigate) => {
     return navigate('/page-not-found');
   }
 
-  const path = getDestination(navHistory, ['', 'space', spaceId]);
-  navigate(path.join('/'));
-  console.log('route', path.join('/'));
+  const path = getDestination(navHistory, ['', 'space', spaceId]).join('/');
+  navigate(path);
+  console.log('route', path);
 };
 
+const useNavigateToSavedDestination = () => {
+  const [isInit, setIsInit] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    handleNavigate(location, navHistory, navigate);
+    setIsInit(true);
+  }, [location]);
+
+
+}
+
 export const Space = ({ navHistory }) => {
-  const { spaceId } = useParams();
   const [isInit, setIsInit] = useState(false);
 
   const location = useLocation();

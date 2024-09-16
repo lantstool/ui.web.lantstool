@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const onEditTransactionName = effect(async ({ payload, slice, store }) => {
   const { transactionId, transactionName } = payload;

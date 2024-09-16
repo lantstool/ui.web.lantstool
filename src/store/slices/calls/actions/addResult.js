@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 import { v1 } from 'uuid';
 
 const createResult = (callId, result) => {

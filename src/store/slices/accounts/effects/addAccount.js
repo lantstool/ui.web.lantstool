@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 const getAccount = (spaceId, networkId, accountId, accountName) => {
   return {

@@ -1,4 +1,4 @@
-import { effect } from '../../react-vault';
+import { effect } from '../../react-vault/index.js';
 
 export const onInitApp = effect(async ({ store, payload }) => {
   const getInitDataFromLocalStorage = store.getEffects(

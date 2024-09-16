@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 // We want to fetch data from DB only once - after that we will have all actual data in the state
 export const getOnceAccounts = effect(async ({ store, slice }) => {

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { store } from './store/store.js';
 import { StoreProvider } from './react-vault';
-import { router } from './ui/router.jsx';
+import { router } from './ui/router/router.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StoreProvider store={store}>

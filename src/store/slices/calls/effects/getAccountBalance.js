@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { connect, utils } from 'near-api-js';
 
 const truncateNumber = (number) => {

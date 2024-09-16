@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const removeKey = action(({ slice, payload }) => {
   slice.ids = slice.ids.filter((keyId) => keyId !== payload);

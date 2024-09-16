@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const updateCallsPosition = action(({ slice, payload }) => {
   const { reorderMap, reorderList } = payload;

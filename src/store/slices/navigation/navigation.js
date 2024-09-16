@@ -1,4 +1,4 @@
-import { action, effect } from '../../../react-vault';
+import { action, effect } from '../../../react-vault/index.js';
 import { matchPath } from 'react-router-dom';
 import { get, set } from 'lodash';
 import { current } from 'immer';

@@ -1,4 +1,4 @@
-import { action } from '../../../../react-vault';
+import { action } from '../../../../react-vault/index.js';
 
 export const setCalls = action(({ slice, payload: calls }) => {
   const ids = [];

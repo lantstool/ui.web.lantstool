@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { viewAccessKeyList } from '../../../helpers/rpc/viewAccessKeyList.js';
 import { toCamelCase } from '../../../helpers/toCamelCase.js';
 

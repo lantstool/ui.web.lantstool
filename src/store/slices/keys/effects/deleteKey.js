@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 
 export const deleteKey = effect(async ({ slice, store, payload }) => {
   const { keyId, navigate } = payload;

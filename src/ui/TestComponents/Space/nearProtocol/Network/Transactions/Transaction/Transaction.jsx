@@ -19,6 +19,7 @@ export const Transaction = ({ navHistory }) => {
 
   useEffect(() => {
     // after success render update history
+    // ми можемо отримати цей шлях з історії
     updateHistory(navHistory, [
       '',
       'space',

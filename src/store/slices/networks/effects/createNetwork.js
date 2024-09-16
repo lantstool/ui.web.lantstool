@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault';
+import { effect } from '../../../../react-vault/index.js';
 import { v4 } from 'uuid';
 
 const spaceId = 'space1'; // TODO - get the real spaceId from store
