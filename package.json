@@ -25,17 +25,19 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
+    "react-page-visibility": "^7.0.0",
     "react-router-dom": "^6.26.1",
     "react-select": "^5.8.0",
     "uuid": "^10.0.0",
+    "wa-sqlite": "github:rhashimoto/wa-sqlite#v1.0.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.7.0",
     "prettier": "^3.3.3",
     "rollup-plugin-visualizer": "^5.12.0",
-    "sass": "^1.78.0",
-    "vite": "^5.4.3",
+    "sass": "^1.79.1",
+    "vite": "^5.4.6",
     "vite-plugin-checker": "^0.8.0",
     "vite-plugin-node-polyfills": "^0.22.0"
   }
