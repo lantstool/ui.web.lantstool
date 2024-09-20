@@ -1,7 +1,7 @@
 import cn from './Empty.module.css';
 import { useState } from 'react';
 import { ImportModals } from '../general/ImportKeyModals/ImportModals.jsx';
-import { Button } from '../../general/Button/Button.jsx';
+import { Button } from '../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../assets/addIcon.svg';
 
 export const Empty = () => {

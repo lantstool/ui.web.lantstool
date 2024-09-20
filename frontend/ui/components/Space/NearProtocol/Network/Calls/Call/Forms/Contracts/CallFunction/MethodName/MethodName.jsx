@@ -1,4 +1,4 @@
-import { FormSelectGroup } from '../../../../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
+import { FormSelectGroup } from '../../../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { SelectHeadLabel } from '../../../general/SignerKey/SelectHeadLabel/SelectHeadLabel.jsx';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';

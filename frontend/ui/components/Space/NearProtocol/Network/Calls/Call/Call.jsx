@@ -2,7 +2,7 @@ import { Topbar } from './Topbar/Topbar.jsx';
 import cn from './Call.module.css';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../../store/hooks/useLoader.js';
+import { useLoader } from '../../../../../../hooks/useLoader.js';
 import { Result } from './Result/Result.jsx';
 import { Forms } from './Forms/Forms.jsx';
 

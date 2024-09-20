@@ -1,5 +1,5 @@
 import cn from './Result.module.css';
-import { Button } from '../../../general/Button/Button.jsx';
+import { Button } from '../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
 import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';

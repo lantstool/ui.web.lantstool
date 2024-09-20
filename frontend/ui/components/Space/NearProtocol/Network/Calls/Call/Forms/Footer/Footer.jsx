@@ -1,6 +1,6 @@
 import cn from './Footer.module.css';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { Button } from '../../../../general/Button/Button.jsx';
+import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTransaction from '../../../../../../../../assets/sendTransaction.svg';
 import { useFormState } from 'react-hook-form';
 import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';

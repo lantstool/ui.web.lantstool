@@ -1,14 +1,14 @@
 import cn from './EditModal.module.css';
-import { Modal } from '../../../../../../../../general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';
-import { InputGroup } from '../../../../../../../../general/InputGroup/InputGroup.jsx';
-import { CloseButton } from '../../../../../general/CloseButton/CloseButton.jsx';
-import { Title } from '../../../../../general/Title/Title.jsx';
-import { ErrorMessage } from '../../../../../general/ErrorMessage/ErrorMessage.jsx';
-import { Button } from '../../../../../general/Button/Button.jsx';
+import { InputGroup } from '../../../../../../../../_general/InputGroup/InputGroup.jsx';
+import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
+import { Title } from '../../../../../_general/Title/Title.jsx';
+import { ErrorMessage } from '../../../../../_general/ErrorMessage/ErrorMessage.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 
 export const EditModal = ({ isOpen, setOpen, callId, name }) => {
   const editCallName = useStoreEffect((store) => store.calls.editCallName);

@@ -3,7 +3,7 @@ import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../..
 import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
-import { Button } from '../../../general/Button/Button.jsx';
+import { Button } from '../../../_general/Button/Button.jsx';
 
 const getResultValue = (call) => {
   const currentResult = call.results.currentResult;

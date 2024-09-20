@@ -1,6 +1,6 @@
-import { Button } from '../../../../../general/Button/Button.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 import { ModalGroup } from '../../../ModalGroup/ModalGroup.jsx';
-import { TextareaGroup } from '../../../../../../../../general/TextareaGroup/TextareaGroup.jsx';
+import { TextareaGroup } from '../../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useEffect } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
 import { useWatch } from 'react-hook-form';

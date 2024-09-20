@@ -2,8 +2,8 @@ import { useWatch } from 'react-hook-form';
 import cn from './Receiver.module.css';
 import { useEffect, useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { FormSelectGroup } from '../../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
+import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
+import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
 
 const getOptions = async (getAccountsIds, setOptions) => {
   const accounts = await getAccountsIds();

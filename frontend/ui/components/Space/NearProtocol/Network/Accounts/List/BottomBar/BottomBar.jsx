@@ -1,4 +1,4 @@
-import { Button } from '../../../general/Button/Button.jsx';
+import { Button } from '../../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../../assets/addIcon.svg';
 import cn from './BottomBar.module.css';
 

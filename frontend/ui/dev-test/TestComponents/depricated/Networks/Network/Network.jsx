@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../components/general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../components/_general/InputGroup/InputGroup.jsx';
 import { useForm } from 'react-hook-form';
 import cn from './Network.module.css';
 import { useStoreEffect } from '../../../../../../../react-vault/index.js';

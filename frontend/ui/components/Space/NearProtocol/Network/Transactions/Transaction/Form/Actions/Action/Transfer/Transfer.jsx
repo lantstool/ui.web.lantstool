@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import cn from './Transfer.module.css';
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';

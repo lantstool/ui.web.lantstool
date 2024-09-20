@@ -2,7 +2,7 @@ import cn from './Accounts.module.css';
 import { useStoreEffect, useStoreState } from '../../../../../../../react-vault/index.js';
 import { Outlet } from 'react-router-dom';
 import { Empty } from './Empty/Empty.jsx';
-import { useLoader } from '../../../../../../store/hooks/useLoader.js';
+import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Accounts = () => {
   const ids = useStoreState((store) => store.accounts.ids);

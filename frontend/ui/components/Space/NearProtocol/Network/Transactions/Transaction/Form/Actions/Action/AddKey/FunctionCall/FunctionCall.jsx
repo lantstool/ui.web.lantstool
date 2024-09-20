@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../../../../general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { Allowance } from './Allowance/Allowance.jsx';
 import { AllowedMethods } from './AllowedMethods/AllowedMethods.jsx';
 

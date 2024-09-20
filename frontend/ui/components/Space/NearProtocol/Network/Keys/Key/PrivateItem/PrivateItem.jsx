@@ -1,7 +1,7 @@
 import cn from './PrivateItem.module.css';
 import { useState } from 'react';
 import { hideText } from '../../../../../../../../store/helpers/hideText.js';
-import { CopyButton } from '../../../general/CopyButton/CopyButton.jsx';
+import { CopyButton } from '../../../_general/CopyButton/CopyButton.jsx';
 import { VisibleButton } from './VisibleButton/VisibleButton.jsx';
 
 export const PrivateItem = ({ text, label }) => {

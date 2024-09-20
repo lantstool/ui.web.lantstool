@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Modal } from '../../../../../../../../general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { appendAction } from './appendAction.js';
 import cn from './AddAction.module.css';
-import { Button } from '../../../../../general/Button/Button.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../../../../assets/addIcon.svg';
 import { Item } from './Item/Item.jsx';
-import { Title } from '../../../../../general/Title/Title.jsx';
-import { CloseButton } from '../../../../../general/CloseButton/CloseButton.jsx';
+import { Title } from '../../../../../_general/Title/Title.jsx';
+import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
 
 export const AddAction = ({ append, fields }) => {
   const [isOpen, setOpen] = useState(false);

@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../schema.js';
-import { Button } from '../../../../general/Button/Button.jsx';
-import { Modal } from '../../../../../../../general/Modal/Modal.jsx';
-import { Title } from '../../../../general/Title/Title.jsx';
-import { CloseButton } from '../../../../general/CloseButton/CloseButton.jsx';
-import { Subtitle } from '../../../../general/Subtitle/Subtitle.jsx';
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
-import { ErrorMessage } from '../../../../general/ErrorMessage/ErrorMessage.jsx';
+import { Button } from '../../../../_general/Button/Button.jsx';
+import { Modal } from '../../../../../../../_general/Modal/Modal.jsx';
+import { Title } from '../../../../_general/Title/Title.jsx';
+import { CloseButton } from '../../../../_general/CloseButton/CloseButton.jsx';
+import { Subtitle } from '../../../../_general/Subtitle/Subtitle.jsx';
+import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
+import { ErrorMessage } from '../../../../_general/ErrorMessage/ErrorMessage.jsx';
 import cn from './AddTransactionModal.module.css';
 
 export const AddTransactionModal = ({ styles, isOpen, setOpen }) => {

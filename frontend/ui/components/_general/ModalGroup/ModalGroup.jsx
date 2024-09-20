@@ -1,6 +1,6 @@
 import { Modal } from '../Modal/Modal.jsx';
 import cn from './ModalGroup.module.css';
-import { CloseButton } from '../../Space/NearProtocol/Network/general/CloseButton/CloseButton.jsx';
+import { CloseButton } from '../../Space/NearProtocol/Network/_general/CloseButton/CloseButton.jsx';
 import { BackIcon } from '../../../assets/components/BackIcon.jsx';
 
 export const ModalGroup = ({ children, isOpen, closeModal, prevStep, text }) => {

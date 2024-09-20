@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { WaitUntil } from '../general/WaitUntil/WaitUntil.jsx';
 
 export const TransactionStatusWithReceipts = ({ form }) => (

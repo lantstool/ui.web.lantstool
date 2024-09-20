@@ -1,4 +1,4 @@
-import { InputGroup } from '../../../../../../../../../general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { Arguments } from './Arguments/Arguments.jsx';
 
 export const FunctionCall = ({ form, getName }) => {

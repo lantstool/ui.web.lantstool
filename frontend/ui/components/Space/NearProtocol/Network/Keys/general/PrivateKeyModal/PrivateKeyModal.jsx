@@ -1,11 +1,11 @@
-import { ModalGroup } from '../../../../../../general/ModalGroup/ModalGroup.jsx';
+import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
 import cn from './PrivateKeyModal.module.css';
-import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaGroup.jsx';
+import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createSchema } from './schema.js';
 import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { Button } from '../../../general/Button/Button.jsx';
+import { Button } from '../../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../../assets/addIcon.svg';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.jsx';
 import { useMemo } from 'react';

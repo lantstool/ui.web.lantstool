@@ -1,7 +1,7 @@
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useEffect, useState } from 'react';
 import cn from './SignerAccount.module.css';
-import { FormSelectGroup } from '../../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
+import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { useWatch } from 'react-hook-form';
 
 const getOptions = async (getAccountsIds, setOptions) => {

@@ -1,6 +1,6 @@
-import { ModalGroup } from '../../../../../../general/ModalGroup/ModalGroup.jsx';
-import { InputGroup } from '../../../../../../general/InputGroup/InputGroup.jsx';
-import { Button } from '../../../general/Button/Button.jsx';
+import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
+import { InputGroup } from '../../../../../../_general/InputGroup/InputGroup.jsx';
+import { Button } from '../../../_general/Button/Button.jsx';
 import { useForm, useWatch } from 'react-hook-form';
 import cn from './SeedPhraseModal.module.css';
 import addIcon from '../../../../../../../assets/addIcon.svg';
@@ -8,7 +8,7 @@ import { createSchema } from './schema.js';
 import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextareaGroup } from '../../../../../../general/TextareaGroup/TextareaGroup.jsx';
+import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { MessageGroup } from '../general/MessageGroup/MessageGroup.jsx';
 import { useMemo } from 'react';
 

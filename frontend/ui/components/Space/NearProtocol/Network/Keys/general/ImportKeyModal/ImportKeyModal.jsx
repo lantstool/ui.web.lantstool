@@ -1,5 +1,5 @@
 import cn from './ImportKeyModal.module.css';
-import { ModalGroup } from '../../../../../../general/ModalGroup/ModalGroup.jsx';
+import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
 import { IconGroup } from './IconGroup/IconGroup.jsx';
 import seedPhrase from '../../../../../../../assets/seedPhrase.svg';
 import privateKey from '../../../../../../../assets/privateKey.svg';

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { useNavigateToSavedRoute } from '../../../../../../store/slices/navigation/useNavigateToSavedRoute.js';
 import { Empty } from './Empty/Empty.jsx';
 import cn from './Calls.module.css';
-import { useLoader } from '../../../../../../store/hooks/useLoader.js';
+import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Calls = () => {
   const ids = useStoreState((store) => store.calls.ids);

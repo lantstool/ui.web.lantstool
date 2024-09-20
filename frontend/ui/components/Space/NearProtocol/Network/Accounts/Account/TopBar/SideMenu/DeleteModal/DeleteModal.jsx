@@ -1,9 +1,9 @@
 import cn from './DeleteModal.module.css';
-import { Modal } from '../../../../../../../../general/Modal/Modal.jsx';
-import { CloseButton } from '../../../../../general/CloseButton/CloseButton.jsx';
-import { Title } from '../../../../../general/Title/Title.jsx';
-import { Subtitle } from '../../../../../general/Subtitle/Subtitle.jsx';
-import { Button } from '../../../../../general/Button/Button.jsx';
+import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
+import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
+import { Title } from '../../../../../_general/Title/Title.jsx';
+import { Subtitle } from '../../../../../_general/Subtitle/Subtitle.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 
 export const DeleteModal = ({ isOpen, closeModal, remove }) => (
   <Modal isOpen={isOpen} close={closeModal}>

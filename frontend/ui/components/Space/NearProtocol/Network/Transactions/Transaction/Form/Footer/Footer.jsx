@@ -1,5 +1,5 @@
 import cn from './Footer.module.css';
-import { Button } from '../../../../general/Button/Button.jsx';
+import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
 import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
 import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.jsx';

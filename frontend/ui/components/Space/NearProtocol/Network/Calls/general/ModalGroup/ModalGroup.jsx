@@ -1,8 +1,8 @@
-import { Modal } from '../../../../../../general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
 import cn from './ModalGroup.module.css';
 import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
-import { Title } from '../../../general/Title/Title.jsx';
-import { CloseButton } from '../../../general/CloseButton/CloseButton.jsx';
+import { Title } from '../../../_general/Title/Title.jsx';
+import { CloseButton } from '../../../_general/CloseButton/CloseButton.jsx';
 
 export const ModalGroup = ({ isOpen, closeModal, styles, prev, children, text }) => (
   <Modal isOpen={isOpen} close={closeModal}>

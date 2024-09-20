@@ -4,7 +4,7 @@ import { GetStarted } from '../components/GetStarted/GetStarted.jsx';
 import { SpaceRedirect } from '../components/Space/SpaceRedirect.jsx';
 import { Space } from '../components/Space/Space.jsx';
 import { Spaces } from '../components/Spaces/Spaces.jsx';
-import { CreateSpace } from '../components/Spaces/CreateSpace/CreateSpace.jsx';
+import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
 import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
 import { nearProtocol } from './nearProtocol/nearProtocol.jsx';
 

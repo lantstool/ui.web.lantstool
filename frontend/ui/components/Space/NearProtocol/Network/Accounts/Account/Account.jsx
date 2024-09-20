@@ -1,7 +1,7 @@
 import cn from './Account.module.css';
 import { useParams, Outlet } from 'react-router-dom';
 import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../../store/hooks/useLoader.js';
+import { useLoader } from '../../../../../../hooks/useLoader.js';
 import { TopBar } from './TopBar/TopBar.jsx';
 import { AccountLink } from './AccountLink/AccountLink.jsx';
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FormSelectGroup } from '../../../../../../../general/FormSelectGroup/FormSelectGroup.jsx';
+import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { methods, data } from './methods.js';
 
 const getOptions = async (data, setOptions) => {

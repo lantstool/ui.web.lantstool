@@ -1,5 +1,5 @@
 import { ContractId } from '../general/ContractId/ContractId.jsx';
-import { InputGroup } from '../../../../../../../general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
 
 export const ViewContractState = ({ form }) => (
   <>

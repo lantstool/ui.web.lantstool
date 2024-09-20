@@ -1,8 +1,8 @@
-import { Modal } from '../../../../../components/general/Modal/Modal.jsx';
-import { Title } from '../../../../../components/Space/NearProtocol/Network/general/Title/Title.jsx';
-import { CloseButton } from '../../../../../components/Space/NearProtocol/Network/general/CloseButton/CloseButton.jsx';
+import { Modal } from '../../../../../components/_general/Modal/Modal.jsx';
+import { Title } from '../../../../../components/Space/NearProtocol/Network/_general/Title/Title.jsx';
+import { CloseButton } from '../../../../../components/Space/NearProtocol/Network/_general/CloseButton/CloseButton.jsx';
 import cn from './AddNetwork.module.css';
-import { InputGroup } from '../../../../../components/general/InputGroup/InputGroup.jsx';
+import { InputGroup } from '../../../../../components/_general/InputGroup/InputGroup.jsx';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../react-vault/index.js';
