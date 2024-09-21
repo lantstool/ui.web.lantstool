@@ -1,20 +1,28 @@
-import { createSQLite, createDbConnection } from './db/init/createSQLite.js';
-import { createTables } from './db/init/createTables.js';
-import { spaces } from './db/requests/spaces/spaces.js';
+import { createSQLite, createDbConnection } from './db/utils/createSQLite.js';
+import { execute } from './db/utils/execute.js';
+import { handleRequest } from './db/requests/handleRequest.js';
+import { createTables } from './db/tables/createTables.js';
 
 const sqlite = await createSQLite();
 const db = await createDbConnection(sqlite);
 
 await createTables(sqlite, db);
 
-self.addEventListener('message', async (event) => {
-  const { request, payload } = event.data;
-  console.log('Worker request: ', event.data);
+self.addEventListener('message', async (messageEvent) => {
+  console.log('Worker receive the message:', messageEvent.data);
+  try {
+    const { request } = messageEvent.data;
 
-  if (request === 'spaces.getAll') await spaces.getAll(sqlite, db, payload);
-  if (request === 'spaces.create') await spaces.create(sqlite, db, payload);
+    const context = {
+      request,
+      execute: execute(sqlite, db),
+    };
+
+    await handleRequest(request.type, context);
+  } catch (e) {
+    console.error(e);
+  }
 });
 
-// Add callback INIT to be sure that worker started and ready to use
-
-self.postMessage({ request: 'start.ready' });
+// We need to notify main thread that worker is ready to work
+self.postMessage({ event: { type: 'backendReadyToWork' } });

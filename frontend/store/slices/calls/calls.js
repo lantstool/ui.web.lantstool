@@ -22,7 +22,7 @@ import { editCallName } from './effects/editCallName.js';
 import { callViewMethod } from './effects/callViewMethod.js';
 
 export const calls = {
-  // init state
+  // utils state
   ids: [],
   records: {},
   temporaryFormValues: {},

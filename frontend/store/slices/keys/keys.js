@@ -10,7 +10,7 @@ import { getKeys } from './effects/getKeys.js';
 import { loadKeysOnce } from './effects/loadKeysOnce.js';
 
 export const keys = {
-  // init state
+  // utils state
   isKeysLoadedToState: false,
   ids: [],
   records: {},

@@ -12,7 +12,7 @@ import { onDuplicateTransaction } from './effects/onDuplicateTransaction.js';
 import { revertTransaction } from './effects/revertTransaction.js';
 
 export const transactions = {
-  // init state
+  // utils state
   list: [],
   map: {},
   temporaryFormValues: {},

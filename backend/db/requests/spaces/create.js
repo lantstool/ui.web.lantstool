@@ -1,12 +1,8 @@
-export const create = async (sqlite, db) => {
+export const create = async ({ execute }) => {
   const query = `
-      INSERT INTO spaces (spaceId, name, type, createdAt, ownerId)
-      VALUES('s2', 'Personal', 'local', 12345, 'a1');
-    `;
+    INSERT INTO spaces (spaceId, name, type, createdAt, ownerId)
+    VALUES('s4', 'Personal', 'local', 12345, 'a1');
+  `;
 
-  await sqlite.exec(db, query, (row, col) => {
-    console.log('create callback ');
-    console.log(row);
-    console.log(col);
-  });
+  await execute(query);
 };

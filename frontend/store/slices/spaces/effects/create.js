@@ -4,7 +4,7 @@ export const create = effect(async ({ store }) => {
   const [backend] = store.getEntities((store) => store.backend);
 
   try {
-    backend.postMessage({ request: 'spaces.create' });
+    await backend.sendRequest('spaces.create');
     // get space id and set data to state
   } catch (e) {
     console.log(e);
