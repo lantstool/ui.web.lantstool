@@ -6,17 +6,24 @@ import { useLoader } from '../../../../../hooks/useLoader.js';
 import cn from './Transactions.module.css';
 
 export const Transactions = () => {
-  const list = useStoreState((store) => store.transactions.list);
-  const getOnceTransactions = useStoreEffect((store) => store.transactions.getOnceTransactions);
-  const [isLoading] = useLoader(getOnceTransactions);
-
-  if (isLoading) return null;
-  if (list.length === 0) return <Empty />;
+  // const list = useStoreState((store) => store.transactions.list);
+  // const getOnceTransactions = useStoreEffect((store) => store.transactions.getOnceTransactions);
+  // const [isLoading] = useLoader(getOnceTransactions);
+  //
+  // if (isLoading) return null;
+  // if (list.length === 0) return <Empty />;
 
   return (
-    <div className={cn.transactions}>
-      <List />
+    <div>
+      <h1>Transactions</h1>
       <Outlet />
     </div>
   );
+
+  // return (
+  //   <div className={cn.transactions}>
+  //     <List />
+  //     <Outlet />
+  //   </div>
+  // );
 };

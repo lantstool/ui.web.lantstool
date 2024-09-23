@@ -1,7 +1,9 @@
 import { getAll } from './getAll.js';
-import { create } from './create.js';
+import { createSpace } from './createSpace.js';
+import { deleteSpace } from './deleteSpace.js';
 
 export const spaces = {
   getAll,
-  create,
+  createSpace,
+  deleteSpace,
 }

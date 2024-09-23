@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Networks = () => {
   return (
     <div>
       <span>Networks</span>
-      <Outlet />
+      <Link to="create">Create Network</Link>
     </div>
   );
 };

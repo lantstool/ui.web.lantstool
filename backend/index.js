@@ -6,8 +6,14 @@ import { createTables } from './db/tables/createTables.js';
 const sqlite = await createSQLite();
 const db = await createDbConnection(sqlite);
 
+const dropTable = async (table) => execute(sqlite, db)(`DROP TABLE ${table}`);
+
+await dropTable('spaces');
+await dropTable('near_networks');
+
 await createTables(sqlite, db);
 
+// TODO: Add a logger and embed the ability to send it to devs for users
 self.addEventListener('message', async (messageEvent) => {
   console.log('Worker receive the message:', messageEvent.data);
   try {

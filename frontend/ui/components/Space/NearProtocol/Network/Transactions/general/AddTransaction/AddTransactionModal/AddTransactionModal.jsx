@@ -67,7 +67,7 @@ export const AddTransactionModal = ({ styles, isOpen, setOpen }) => {
               </div>
             </div>
             <div className={cn.subtitle}>
-              <Subtitle text="Select the name of the transaction you want to create" />
+              <Subtitle text="Select the name of the transaction you want to createSpace" />
             </div>
             <div>
               <InputGroup register={register} name="transactionName" label="Transaction Name" />

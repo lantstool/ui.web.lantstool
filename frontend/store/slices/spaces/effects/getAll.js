@@ -1,11 +1,13 @@
 import { effect } from '../../../../../react-vault/index.js';
 
-export const getAll = effect(async ({ store }) => {
+export const getAll = effect(async ({ store, slice }) => {
   const [backend] = store.getEntities((store) => store.backend);
+  const setAll = slice.getActions((slice) => slice.setAll);
 
   try {
-    const res = await backend.sendRequest('spaces.getAll');
-    console.log(res);
+    const spaces = await backend.sendRequest('spaces.getAll');
+    setAll(spaces);
+    console.log(spaces);
   } catch (e) {
     console.log(e);
   }

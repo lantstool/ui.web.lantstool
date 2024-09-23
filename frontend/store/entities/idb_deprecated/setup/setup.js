@@ -5,7 +5,7 @@ import { setupKeys } from './setupKeys.js';
 import { setupTransactions } from './setupTransactions.js';
 import { setupCalls } from './setupCalls.js';
 
-// If user open the app for the first time we need to create the database
+// If user open the app for the first time we need to createSpace the database
 export const setup = async (db) => {
   await setupSpaces(db);
   await setupNetworks(db);

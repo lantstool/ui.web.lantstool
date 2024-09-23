@@ -39,6 +39,7 @@
     "sass": "^1.79.1",
     "vite": "^5.4.6",
     "vite-plugin-checker": "^0.8.0",
-    "vite-plugin-node-polyfills": "^0.22.0"
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "vite-plugin-string": "^1.2.3"
   }
 }

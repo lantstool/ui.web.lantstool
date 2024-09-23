@@ -1,8 +1,10 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { App } from '../components/App.jsx';
 import { GetStarted } from '../components/GetStarted/GetStarted.jsx';
-import { SpaceRedirect } from '../components/Space/SpaceRedirect.jsx';
 import { Space } from '../components/Space/Space.jsx';
+import { SpaceId } from '../components/Space/SpaceId.jsx';
+import { SelectBlockchain } from '../components/Space/SelectBlockchain/SelectBlockchain.jsx';
+import { Settings } from '../components/Space/Settings/Settings.jsx';
 import { Spaces } from '../components/Spaces/Spaces.jsx';
 import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
 import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
@@ -13,8 +15,10 @@ export const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />}>
         <Route path="get-started" element={<GetStarted />} />
-        <Route path="space" element={<SpaceRedirect />}>
-          <Route path=":spaceId" element={<Space />}>
+        <Route path="space" element={<Space />}>
+          <Route path=":spaceId" element={<SpaceId />}>
+            <Route path="select-blockchain" element={<SelectBlockchain />} />
+            <Route path="settings" element={<Settings />} />
             {nearProtocol}
           </Route>
         </Route>
