@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { set } from 'lodash';
 
 // update next for all segments
-// createSpace
+// create
 
 const updateHistory = (navHistory, path) => {
   path.forEach((segment, index) => {

@@ -4,15 +4,15 @@ import cn from './Settings.module.scss';
 
 export const Settings = () => {
   const { spaceId } = useParams();
-  const _deleteSpace = useStoreEffect((store) => store.spaces.deleteSpace);
+  const remove = useStoreEffect((store) => store.spaces.remove);
   const navigate = useNavigate();
 
-  const deleteSpace = () => _deleteSpace({ spaceId, navigate });
+  const removeSpace = () => remove({ spaceId, navigate });
 
   return (
     <div className={cn.container}>
       <h1>Settings</h1>
-      <button onClick={deleteSpace}>Delete Space</button>
+      <button onClick={removeSpace}>Delete Space</button>
     </div>
   );
 };

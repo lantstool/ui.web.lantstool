@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-export const createSpace = async ({ execute, request }) => {
+export const create = async ({ execute, request }) => {
   const spaceId = uuid();
   const name = request.body.name;
   const type = 'local'; // In the future will be possible to select more space types

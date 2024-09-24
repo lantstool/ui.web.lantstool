@@ -5,11 +5,11 @@ import cn from './CreateSpace.module.scss';
 
 export const CreateSpace = () => {
   const navigate = useNavigate();
-  const createSpace = useStoreEffect((store) => store.spaces.createSpace);
+  const create = useStoreEffect((store) => store.spaces.create);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (values) => {
-    createSpace({ values, navigate });
+  const onSubmit = (formValues) => {
+    create({ formValues, navigate });
   };
 
   return (

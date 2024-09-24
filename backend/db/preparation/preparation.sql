@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_networks (
   PRIMARY KEY (spaceId, networkId),
   FOREIGN KEY (spaceId)
     REFERENCES spaces(spaceId)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS near_protocol_transactions (
