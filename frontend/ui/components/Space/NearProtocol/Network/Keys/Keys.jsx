@@ -6,10 +6,10 @@ import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Keys = () => {
   const ids = useStoreState((store) => store.keys.ids);
-  const loadKeysOnce = useStoreEffect((store) => store.keys.loadKeysOnce);
-  const [isLoading] = useLoader(loadKeysOnce);
-
-  if (isLoading) return null;
+  // const loadKeysOnce = useStoreEffect((store) => store.keys.loadKeysOnce);
+  // const [isLoading] = useLoader(loadKeysOnce);
+  //
+  // if (isLoading) return null;
   if (ids.length === 0) return <Empty />;
 
   return (

@@ -8,8 +8,10 @@ const db = await createDbConnection(sqlite);
 
 const dropTable = async (table) => execute(sqlite, db)(`DROP TABLE ${table}`);
 
-await dropTable('spaces');
-await dropTable('near_networks');
+// await dropTable('spaces');
+// await dropTable('near_protocol_networks');
+// await dropTable('near_protocol_transactions');
+// await dropTable('near_protocol_counters');
 
 await createTables(sqlite, db);
 
@@ -26,7 +28,7 @@ self.addEventListener('message', async (messageEvent) => {
 
     await handleRequest(request.type, context);
   } catch (e) {
-    console.error(e);
+    console.error('Internal Error', e);
   }
 });
 

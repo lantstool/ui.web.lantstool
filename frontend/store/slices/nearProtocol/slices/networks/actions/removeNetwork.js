@@ -1,4 +1,4 @@
-import { action } from '../../../../../react-vault/index.js';
+import { action } from '../../../../../../../react-vault/index.js';
 
 export const removeNetwork = action(({ slice, payload: networkId }) => {
   slice.list = slice.list.filter((id) => id !== networkId);

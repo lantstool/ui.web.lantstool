@@ -1,4 +1,4 @@
-import { effect } from '../../../../../react-vault/index.js';
+import { effect } from '../../../../../../../react-vault/index.js';
 
 export const changeNetwork = effect(async ({ store, payload }) => {
   const { navigate, networkId } = payload;

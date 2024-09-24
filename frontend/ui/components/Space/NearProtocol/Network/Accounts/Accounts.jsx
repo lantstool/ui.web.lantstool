@@ -6,12 +6,11 @@ import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Accounts = () => {
   const ids = useStoreState((store) => store.accounts.ids);
-  const getOnceAccounts = useStoreEffect((store) => store.accounts.getOnceAccounts);
-
-  const [isLoading] = useLoader(getOnceAccounts);
-
-  if (isLoading) return null;
-
+  // const getOnceAccounts = useStoreEffect((store) => store.accounts.getOnceAccounts);
+  //
+  // const [isLoading] = useLoader(getOnceAccounts);
+  //
+  // if (isLoading) return null;
   if (ids.length === 0) return <Empty />;
 
   return (

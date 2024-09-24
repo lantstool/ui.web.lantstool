@@ -4,10 +4,10 @@ import { useStoreState } from '../../../../../../../../react-vault/index.js';
 import cnm from 'classnames';
 
 export const LinkItem = ({ name, src, to }) => {
-  const route = useStoreState((store) => store.navigation.route);
+  // const route = useStoreState((store) => store.navigation.route);
 
   //The second word after / is responsible for the navigation of our List
-  const isActive = route.split('/')[2] === to;
+  const isActive = false //route.split('/')[2] === to;
 
   return (
     <Link className={cnm(cn.container, isActive && cn.active)} to={to}>

@@ -1,4 +1,4 @@
-import { action } from '../../../../../react-vault/index.js';
+import { action } from '../../../../../../../react-vault/index.js';
 
 export const addNetwork = action(({ slice, payload }) => {
   slice.list.push(payload.networkId);

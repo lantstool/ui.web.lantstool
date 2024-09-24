@@ -1,4 +1,4 @@
-import { effect } from '../../../../../react-vault/index.js';
+import { effect } from '../../../../../../../react-vault/index.js';
 
 export const getNetwork = effect(async ({ payload: networkId, slice, store }) => {
   const [idb] = store.getEntities((store) => store.idb);

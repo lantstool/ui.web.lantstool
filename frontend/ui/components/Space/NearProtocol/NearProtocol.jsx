@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
+import cn from './NearProtocol.module.scss';
 
 export const NearProtocol = () => {
   return (
-    <div>
-      <span>Sidebar Near</span>
+    <div className={cn.container}>
       <Outlet />
     </div>
   );
