@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_counters (
   networkId TEXT NOT NULL,
   transactions INTEGER NOT NULL,
   calls INTEGER NOT NULL,
+  PRIMARY KEY (spaceId, networkId),
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE
