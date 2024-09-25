@@ -11,8 +11,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 
 export const ImportAccount = ({ isOpen, setOpen }) => {
-  const addAccount = useStoreEffect((store) => store.accounts.addAccount);
-  const records = useStoreState((store) => store.accounts.records);
+  const addAccount = useStoreEffect((store) => store.nearProtocol.accounts.addAccount);
+  const records = useStoreState((store) => store.nearProtocol.accounts.records);
   const [accId, setAccId] = useState(null);
   const schema = createSchema(records);
 
@@ -65,7 +65,7 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
           />
         </div>
         <div className={cn.button}>
-          <Button text="Import" type="submit" src={addIcon} style="secondary" />
+          <Button text="Import Account" type="submit" src={addIcon} style="secondary" />
         </div>
       </form>
     </ModalGroup>

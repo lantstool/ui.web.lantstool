@@ -6,8 +6,8 @@ import cn from './Calls.module.css';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Calls = () => {
-  const ids = useStoreState((store) => store.calls.ids);
-  const getOnceCalls = useStoreEffect((store) => store.calls.getOnceCalls);
+  const ids = useStoreState((store) => store.nearProtocol.calls.ids);
+  // const getOnceCalls = useStoreEffect((store) => store.calls.getOnceCalls);
   // const [isLoading] = useLoader(getOnceCalls);
   //
   //

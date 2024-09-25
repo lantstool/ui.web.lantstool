@@ -1,10 +1,10 @@
 import cn from './Empty.module.css';
-import { AddTransaction } from '../general/AddTransaction/AddTransaction.jsx';
+import { CreateTransaction } from '../_general/CreateTransaction/CreateTransaction.jsx';
 
 export const Empty = () => {
   return (
     <div className={cn.empty}>
-      <AddTransaction styles={cn.modalContainer} />
+      <CreateTransaction styles={cn.modalContainer} />
     </div>
   );
 };

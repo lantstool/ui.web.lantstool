@@ -5,7 +5,7 @@ import cn from './Keys.module.css';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Keys = () => {
-  const ids = useStoreState((store) => store.keys.ids);
+  const ids = useStoreState((store) => store.nearProtocol.keys.ids);
   // const loadKeysOnce = useStoreEffect((store) => store.keys.loadKeysOnce);
   // const [isLoading] = useLoader(loadKeysOnce);
   //

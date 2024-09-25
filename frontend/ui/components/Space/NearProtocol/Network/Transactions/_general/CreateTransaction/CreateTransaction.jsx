@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Button } from '../../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../../assets/addIcon.svg';
-import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal.jsx';
+import { CreateModal } from './CreateModal/CreateModal.jsx';
 
-export const AddTransaction = ({ styles }) => {
+export const CreateTransaction = ({ styles }) => {
   const [isOpen, setOpen] = useState(false);
 
   const openModal = async () => {
@@ -13,7 +13,7 @@ export const AddTransaction = ({ styles }) => {
   return (
     <>
       <Button text="Create Transaction" onClick={openModal} src={addIcon} type="submit" />
-      {isOpen && <AddTransactionModal styles={styles} isOpen={isOpen} setOpen={setOpen} />}
+      {isOpen && <CreateModal styles={styles} isOpen={isOpen} setOpen={setOpen} />}
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Empty } from './Empty/Empty.jsx';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Accounts = () => {
-  const ids = useStoreState((store) => store.accounts.ids);
+  const ids = useStoreState((store) => store.nearProtocol.accounts.ids);
   // const getOnceAccounts = useStoreEffect((store) => store.accounts.getOnceAccounts);
   //
   // const [isLoading] = useLoader(getOnceAccounts);

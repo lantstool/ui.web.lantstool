@@ -2,12 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
 import { Transaction } from './Transaction/Transaction.jsx';
 import cn from './List.module.scss';
-import { AddTransaction } from '../general/AddTransaction/AddTransaction.jsx';
+import { CreateTransaction } from '../_general/CreateTransaction/CreateTransaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 
-export const List = () => {
-  const transactions = useStoreState((store) => store.transactions);
-  const onReorderTransactions = useStoreEffect((store) => store.transactions.onReorderTransactions);
+export const List = ({ list, map }) => {
+  const onReorderTransactions = useStoreEffect(
+    (store) => store.nearProtocol.transactions.onReorderTransactions,
+  );
   const params = useParams();
 
   const onDragEnd = (result) => {
@@ -28,11 +29,11 @@ export const List = () => {
         <Droppable droppableId="transactions">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef} className={cn.wrapper}>
-              {transactions.list.map((id, index) => (
+              {list.map((id, index) => (
                 <Transaction
                   index={index}
                   key={id}
-                  transaction={transactions.map[id]}
+                  transaction={map[id]}
                   isActive={id === params?.transactionId}
                 />
               ))}
@@ -42,7 +43,7 @@ export const List = () => {
         </Droppable>
       </DragDropContext>
       <div className={cn.bottomBar}>
-        <AddTransaction styles={cn.modalContainer} />
+        <CreateTransaction styles={cn.modalContainer} />
       </div>
     </div>
   );

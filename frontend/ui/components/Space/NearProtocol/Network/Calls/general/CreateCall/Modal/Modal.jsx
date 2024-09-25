@@ -1,8 +1,9 @@
-import { CreateName } from './CreateName/CreateName.jsx';
+import { Create } from './Create/Create.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './CreateName/schema.js';
+import { schema } from './Create/schema.js';
 
+// TODO: Why do we need form here? REFACTOR!
 export const Modal = ({ styles, isOpen, setOpen }) => {
   const form = useForm({
     mode: 'all',
@@ -16,7 +17,7 @@ export const Modal = ({ styles, isOpen, setOpen }) => {
 
   return (
     <form>
-      <CreateName closeModal={closeModal} isOpen={isOpen} styles={styles} form={form} />
+      <Create closeModal={closeModal} isOpen={isOpen} styles={styles} form={form} />
     </form>
   );
 };

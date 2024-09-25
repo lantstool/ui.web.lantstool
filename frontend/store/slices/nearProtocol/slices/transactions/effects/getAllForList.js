@@ -1,9 +1,6 @@
 import { effect } from '../../../../../../../react-vault/index.js';
 
-export const getOnceTransactions = effect(async ({ slice, store }) => {
-  const isTransactionsLoadedToState = slice.getState((slice) => slice.isTransactionsLoadedToState);
-  if (isTransactionsLoadedToState) return;
-
+export const getAllForList = effect(async ({ slice, store }) => {
   const [idb] = store.getEntities((store) => store.idb);
   const setOnceTransactions = slice.getActions((slice) => slice.setOnceTransactions);
   const networkId = store.getState((store) => store.networks.current.networkId);

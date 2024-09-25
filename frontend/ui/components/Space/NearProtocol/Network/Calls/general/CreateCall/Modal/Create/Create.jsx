@@ -6,8 +6,10 @@ import { useStoreEffect } from '../../../../../../../../../../../react-vault/ind
 import { useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-export const CreateName = ({ styles, isOpen, form, closeModal }) => {
-  const getCallsCount = useStoreEffect((store) => store.calls.getCallsCount);
+export const Create = ({ styles, isOpen, form, closeModal }) => {
+  const getCallsCount = useStoreEffect((store) => store.nearProtocol.calls.getCallsCount);
+  const createCall = useStoreEffect((store) => store.nearProtocol.calls.createCall);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -16,14 +18,12 @@ export const CreateName = ({ styles, isOpen, form, closeModal }) => {
   } = form;
 
   const name = useWatch({ control: form.control, name: 'callName' });
-  const createCall = useStoreEffect((store) => store.calls.createCall);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const count = await getCallsCount();
-      !name && setValue('callName', `Call#${count}`);
-    })();
+    // (async () => {
+    //   const count = await getCallsCount();
+    //   !name && setValue('callName', `Call#${count}`);
+    // })();
   }, [isOpen]);
 
   const createdCall = () => {

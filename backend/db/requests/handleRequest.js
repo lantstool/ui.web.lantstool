@@ -12,7 +12,9 @@ export const handleRequest = async (requestType, context) => {
   try {
     const handler = get(handlers, requestType);
     const result = await handler(context);
-    self.postMessage({ response: { id, type, status: 200, data: result || null } });
+    const data = result === undefined || result === null ? null : result;
+
+    self.postMessage({ response: { id, type, status: 200, data } });
   } catch (e) {
     self.postMessage({ response: { id, type, status: 400, error: e } });
   }
