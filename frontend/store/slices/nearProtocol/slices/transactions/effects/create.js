@@ -3,7 +3,7 @@ import { effect } from '../../../../../../../react-vault/index.js';
 export const create = effect(async ({ store, slice, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
   const { spaceId, networkId, formValues, navigate, closeModal } = payload;
-  // const addTransaction = slice.getActions((slice) => slice.addTransaction);
+  const pushTxToList = slice.getActions((slice) => slice.pushTxToList);
 
   try {
     const transaction = await backend.sendRequest('nearProtocol.transactions.create', {
@@ -11,8 +11,7 @@ export const create = effect(async ({ store, slice, payload }) => {
       networkId,
       name: formValues.name,
     });
-    console.log(transaction);
-
+    pushTxToList(transaction);
     closeModal();
     navigate(`${transaction.transactionId}`);
   } catch (e) {

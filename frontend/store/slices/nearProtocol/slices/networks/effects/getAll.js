@@ -1,14 +1,10 @@
 import { effect } from '../../../../../../../react-vault/index.js';
 
-export const getAll = effect(async ({ store, payload: spaceId }) => {
+export const getAll = effect(async ({ store, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
 
   try {
-    const networks = await backend.sendRequest('nearProtocol.networks.getAll', {
-      spaceId,
-    });
-    console.log('networks ', networks);
-    return networks;
+    return await backend.sendRequest('nearProtocol.networks.getAll', payload);
   } catch (e) {
     console.log(e);
   }

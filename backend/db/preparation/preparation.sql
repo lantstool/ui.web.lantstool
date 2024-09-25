@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_transactions (
   networkId TEXT NOT NULL,
   spaceId TEXT NOT NULL,
   name TEXT NOT NULL,
-  "order" INTEGER UNIQUE NOT NULL,
+  "order" INTEGER NOT NULL,
   createdAt INTEGER NOT NULL,
   body TEXT NOT NULL,
   FOREIGN KEY (spaceId, networkId)

@@ -48,6 +48,8 @@ export const create = async ({ execute, request }) => {
     COMMIT;
   `;
 
-  const [network] = await execute(query);
-  return network;
+  const [transaction] = await execute(query);
+  transaction.body = JSON.parse(transaction.body);
+
+  return transaction;
 };

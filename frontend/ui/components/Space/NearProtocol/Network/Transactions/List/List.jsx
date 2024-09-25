@@ -1,23 +1,23 @@
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
 import { Transaction } from './Transaction/Transaction.jsx';
-import cn from './List.module.scss';
 import { CreateTransaction } from '../_general/CreateTransaction/CreateTransaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
+import cn from './List.module.scss';
 
-export const List = ({ list, map }) => {
-  const onReorderTransactions = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onReorderTransactions,
-  );
-  const params = useParams();
+export const List = ({ txList }) => {
+  const txMap = useStoreState((store) => store.nearProtocol.transactions.txMap);
+  const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
+  const { spaceId, networkId, transactionId } = useParams();
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
-
-    const currentOrder = result.source.index;
-    const newOrder = result.destination.index;
-
-    onReorderTransactions({ currentOrder, newOrder });
+    reorder({
+      source: result.source.index,
+      destination: result.destination.index,
+      spaceId,
+      networkId,
+    });
   };
 
   return (
@@ -29,12 +29,12 @@ export const List = ({ list, map }) => {
         <Droppable droppableId="transactions">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef} className={cn.wrapper}>
-              {list.map((id, index) => (
+              {txList.map((txId, index) => (
                 <Transaction
                   index={index}
-                  key={id}
-                  transaction={map[id]}
-                  isActive={id === params?.transactionId}
+                  key={txId}
+                  transaction={txMap[txId]}
+                  isActive={txId === transactionId}
                 />
               ))}
               {provided.placeholder}

@@ -1,30 +1,22 @@
 import { List } from './List/List.jsx';
 import { Empty } from './Empty/Empty.jsx';
 import { useStoreState, useStoreEffect } from '../../../../../../../react-vault/index.js';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 import cn from './Transactions.module.scss';
 
 export const Transactions = () => {
-  // const list = useStoreState((store) => store.transactions.list);
-  const list = [];
-  const map = {};
-  // const getOnceTransactions = useStoreEffect((store) => store.transactions.getOnceTransactions);
-  // const [isLoading] = useLoader(getOnceTransactions);
-  //
-  // if (isLoading) return null;
-  if (list.length === 0) return <Empty />;
+  const txList = useStoreState((store) => store.nearProtocol.transactions.txList);
+  const getList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
+  const { spaceId, networkId } = useParams();
+  const [isLoading] = useLoader(getList, { spaceId, networkId });
 
-  // return (
-  //   <div>
-  //     <h1>Transactions</h1>
-  //     <Outlet />
-  //   </div>
-  // );
+  if (isLoading) return null;
+  if (txList.length === 0) return <Empty />;
 
   return (
     <div className={cn.transactions}>
-      <List list={list} map={map} />
+      <List txList={txList} />
       <Outlet />
     </div>
   );
