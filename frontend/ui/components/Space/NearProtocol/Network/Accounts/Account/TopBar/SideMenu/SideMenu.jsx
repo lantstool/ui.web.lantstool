@@ -1,4 +1,4 @@
-import cn from './SideMenu.module.css';
+import cn from './SideMenu.module.scss';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { Popup } from './Popup/Popup.jsx';
 export const SideMenu = ({ accountId }) => {
   const [isOpen, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const deleteAccount = useStoreEffect((store) => store.accounts.deleteAccount);
+  const deleteAccount = useStoreEffect((store) => store.nearProtocol.accounts.deleteAccount);
   const navigate = useNavigate();
 
   const openModal = () => {

@@ -5,7 +5,7 @@ import { useStoreAction, useStoreState } from '../../../../../../../../../react-
 import { SignerAccount } from './SignerAccount/SignerAccount.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { useMemo, useEffect } from 'react';
-import cn from './Form.module.css';
+import cn from './Form.module.scss';
 import { Footer } from './Footer/Footer.jsx';
 import cnm from 'classnames';
 
@@ -21,35 +21,38 @@ const getFormDefaultValues = (transaction) => {
 };
 
 export const Form = ({ transaction }) => {
-  const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
+  // const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
   const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
   const temporaryFormValues = useStoreState(
-    (store) => store.transactions.temporaryFormValues[transaction.transactionId],
+    (store) => store.nearProtocol.transactions.drafts[transaction.transactionId],
   );
   const putTemporaryFormValues = useStoreAction(
-    (store) => store.transactions.putTemporaryFormValues,
+    (store) => store.nearProtocol.transactions.putTemporaryFormValues,
   );
 
   const isResults = transaction.results?.records.length > 0;
   const form = useForm({ defaultValues: formDefaultValues });
 
-  useEffect(() => {
-    form.reset(formDefaultValues);
-    if (temporaryFormValues)
-      form.reset(
-        { ...temporaryFormValues, results: transaction.results },
-        { keepDefaultValues: true },
-      );
-    return () => {
-      putTemporaryFormValues({
-        values: form.getValues(),
-        transactionId: transaction.transactionId,
-      });
-    };
-  }, [transaction]);
+  // useEffect(() => {
+  //   form.reset(formDefaultValues);
+  //
+  //   if (temporaryFormValues) {
+  //     form.reset(
+  //       { ...temporaryFormValues, results: transaction.results },
+  //       { keepDefaultValues: true },
+  //     );
+  //   }
+  //
+  //   return () => {
+  //     putTemporaryFormValues({
+  //       values: form.getValues(),
+  //       transactionId: transaction.transactionId,
+  //     });
+  //   };
+  // }, [transaction]);
 
   const toResult = () => {
-    setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
+    // setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
   };
 
   return (
@@ -65,9 +68,9 @@ export const Form = ({ transaction }) => {
         <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
           <h3 className={cn.title}>Sender</h3>
           <SignerAccount form={form} />
-          <SignerKey form={form} />
-          <Actions form={form} />
-          <Receiver form={form} />
+          {/*<SignerKey form={form} />*/}
+          {/*<Actions form={form} />*/}
+          {/*<Receiver form={form} />*/}
         </form>
       </div>
       <Footer form={form} />

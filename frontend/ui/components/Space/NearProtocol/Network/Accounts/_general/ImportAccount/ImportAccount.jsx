@@ -1,8 +1,9 @@
+import { useParams } from 'react-router-dom';
 import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
 import { useForm } from 'react-hook-form';
 import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { Button } from '../../../_general/Button/Button.jsx';
-import cn from './ImportModal.module.css';
+import cn from './ImportModal.module.scss';
 import addIcon from '../../../../../../../assets/addIcon.svg';
 import { MessageGroup } from './MessageGroup/MessageGroup.jsx';
 import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
@@ -11,8 +12,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 
 export const ImportAccount = ({ isOpen, setOpen }) => {
-  const addAccount = useStoreEffect((store) => store.nearProtocol.accounts.addAccount);
+  const { spaceId, networkId } = useParams();
   const records = useStoreState((store) => store.nearProtocol.accounts.records);
+  const create = useStoreEffect((store) => store.nearProtocol.accounts.create);
   const [accId, setAccId] = useState(null);
   const schema = createSchema(records);
 
@@ -29,8 +31,8 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
     setOpen(false);
   };
 
-  const onSubmit = (formValue) => {
-    addAccount({ formValue, setAccId, resetField });
+  const onSubmit = (formValues) => {
+    create({ formValues, setAccId, resetField, spaceId, networkId });
   };
 
   return (

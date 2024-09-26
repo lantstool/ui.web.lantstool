@@ -4,6 +4,7 @@ import { Account } from '../../components/Space/NearProtocol/Network/Accounts/Ac
 import { Details } from '../../components/Space/NearProtocol/Network/Accounts/Account/Details/Details.jsx';
 import { Accounts } from '../../components/Space/NearProtocol/Network/Accounts/Accounts.jsx';
 import { List as AccountsList } from '../../components/Space/NearProtocol/Network/Accounts/List/List.jsx';
+import { AccountKeys } from '../../components/Space/NearProtocol/Network/Accounts/Account/AccountKeys/AccountKeys.jsx';
 import { Call } from '../../components/Space/NearProtocol/Network/Calls/Call/Call.jsx';
 import { Calls } from '../../components/Space/NearProtocol/Network/Calls/Calls.jsx';
 import { Key } from '../../components/Space/NearProtocol/Network/Keys/Key/Key.jsx';
@@ -33,7 +34,7 @@ export const network = (
       <Route index element={<AccountsList />} />
       <Route path=":accountId" element={<Account />}>
         <Route path="details" element={<Details />} />
-        <Route path="keys" element={<Keys />} />
+        <Route path="keys" element={<AccountKeys />} />
       </Route>
     </Route>
 

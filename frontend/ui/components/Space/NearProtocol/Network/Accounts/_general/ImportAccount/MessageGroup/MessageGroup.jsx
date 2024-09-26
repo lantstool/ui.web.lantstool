@@ -1,9 +1,7 @@
-import cn from './MessageGroup.module.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import cn from './MessageGroup.module.scss';
 
 export const MessageGroup = ({ errors, accountId, dirtyFields }) => {
-  const params = useParams();
-
   return (
     <div className={cn.message}>
       {!errors && accountId && !dirtyFields && (
@@ -12,7 +10,7 @@ export const MessageGroup = ({ errors, accountId, dirtyFields }) => {
           <p className={cn.subtitle}> was successfully imported</p>
           <p className={cn.note}>
             Note: To sign transactions, manually import the required account keys on the{' '}
-            <Link className={cn.link} to={`/${params.currentNetworkId}/keys`}>
+            <Link className={cn.link} to={`../keys`} relative="path">
               Keys
             </Link>{' '}
             page

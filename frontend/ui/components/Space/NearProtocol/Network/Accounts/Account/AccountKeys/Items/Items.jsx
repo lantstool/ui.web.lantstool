@@ -1,4 +1,4 @@
-import cn from './Items.module.css';
+import cn from './Items.module.scss';
 import cnm from 'classnames';
 import { CheckMarkIcon } from '../../../../../../../../assets/components/CheckMarkIcon.jsx';
 

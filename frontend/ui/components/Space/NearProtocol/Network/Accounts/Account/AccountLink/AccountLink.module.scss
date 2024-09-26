@@ -7,7 +7,8 @@
   font-weight: 600;
 }
 
-.active {
+.activeLink {
+  @extend .link;
   background-color: var(--Color-Green-200);
   box-shadow: var(--Box-Shadow-025);
   border-radius: var(--Border-Radius-2);

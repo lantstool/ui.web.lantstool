@@ -1,4 +1,4 @@
-import cn from './Popup.module.css';
+import cn from './Popup.module.scss';
 import cnm from 'classnames';
 import { useMemo } from 'react';
 

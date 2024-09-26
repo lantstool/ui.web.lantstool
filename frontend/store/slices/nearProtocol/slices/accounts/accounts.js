@@ -1,12 +1,12 @@
-import { getOnceAccounts } from './effects/getOnceAccounts.js';
-import { getAccountsIds } from './effects/getAccountsIds.js';
+import { getAll } from './effects/getAll.js';
+import { getIds } from './effects/getIds.js';
 import { setAccounts } from './actions/setAccounts.js';
 import { setKeyList } from './actions/setKeyList.js';
 import { onMountAccount } from './effects/onMountAccount.js';
 import { setAccountChainDetails } from './actions/setAccountChainDetails.js';
 import { setAccount } from './actions/setAccount.js';
 import { resetState } from './actions/resetState.js';
-import { addAccount } from './effects/addAccount.js';
+import { create } from './effects/create.js';
 import { removeAccount } from './actions/removeAccount.js';
 import { deleteAccount } from './effects/deleteAccount.js';
 import { getKeyList } from './effects/getKeyList.js';
@@ -14,7 +14,6 @@ import { getKeyList } from './effects/getKeyList.js';
 export const accounts = {
   ids: [],
   records: {},
-  isAccountsLoadedToState: false,
   // actions
   setAccount,
   removeAccount,
@@ -23,10 +22,10 @@ export const accounts = {
   resetState,
   setKeyList,
   // effects
-  getOnceAccounts,
+  getAll,
   onMountAccount,
-  getAccountsIds,
-  addAccount,
+  getIds,
+  create,
   deleteAccount,
   getKeyList,
 };

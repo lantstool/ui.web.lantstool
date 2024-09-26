@@ -35,6 +35,32 @@ CREATE TABLE IF NOT EXISTS near_protocol_transactions (
     ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS near_protocol_accounts (
+  accountId TEXT NOT NULL,
+  networkId TEXT NOT NULL,
+  spaceId TEXT NOT NULL,
+  localName TEXT,
+  createdAt INTEGER NOT NULL,
+  PRIMARY KEY (spaceId, networkId, accountId),
+  FOREIGN KEY (spaceId, networkId)
+    REFERENCES near_protocol_networks(spaceId, networkId)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS near_protocol_keys (
+  publicKey TEXT NOT NULL,
+  networkId TEXT NOT NULL,
+  spaceId TEXT NOT NULL,
+  createdAt INTEGER NOT NULL,
+  privateKey TEXT NOT NULL,
+  seedPhrase TEXT,
+  derivationPath TEXT NOT NULL,
+  PRIMARY KEY (spaceId, networkId, publicKey),
+  FOREIGN KEY (spaceId, networkId)
+    REFERENCES near_protocol_networks(spaceId, networkId)
+    ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS near_protocol_counters (
   spaceId TEXT NOT NULL,
   networkId TEXT NOT NULL,

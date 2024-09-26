@@ -1,7 +1,7 @@
-import cn from './List.module.css';
+import cn from './List.module.scss';
 import { useState } from 'react';
 import { BottomBar } from './BottomBar/BottomBar.jsx';
-import { ImportAccount } from '../general/ImportAccount/ImportAccount.jsx';
+import { ImportAccount } from '../_general/ImportAccount/ImportAccount.jsx';
 import { AccountsList } from './AccountsList/AccountsList.jsx';
 
 export const List = () => {

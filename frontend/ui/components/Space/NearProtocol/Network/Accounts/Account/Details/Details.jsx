@@ -1,6 +1,10 @@
-import cn from './Details.module.css';
+import { useLoader } from '../../../../../../../hooks/useLoader.js';
+import cn from './Details.module.scss';
 import { useParams } from 'react-router-dom';
-import { useStoreState } from '../../../../../../../../../react-vault/index.js';
+import {
+  useStoreEffect,
+  useStoreState,
+} from '../../../../../../../../../react-vault/index.js';
 import { utils } from 'near-api-js';
 import { Item } from './Item/Item.jsx';
 
@@ -11,7 +15,14 @@ const formatNumber = (number) => {
 
 export const Details = () => {
   const { accountId } = useParams();
-  const account = useStoreState((store) => store.accounts.records[accountId]);
+  const params = useParams();
+  const onMountAccount = useStoreEffect((store) => store.nearProtocol.accounts.onMountAccount);
+  const account = useStoreState((store) => store.nearProtocol.accounts.records[accountId]);
+  const [isLoading] = useLoader(onMountAccount, params);
+
+  if (isLoading) return null;
+  if (!account) return null;
+
   const balance = formatNumber(account.balance);
   const lockedForStorage = formatNumber(account.lockedForStorage);
   const available = formatNumber(account.available);

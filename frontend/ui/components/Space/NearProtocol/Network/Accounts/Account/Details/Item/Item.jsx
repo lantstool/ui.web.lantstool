@@ -1,4 +1,4 @@
-import cn from './Item.module.css';
+import cn from './Item.module.scss';
 import { CopyButton } from '../../../../_general/CopyButton/CopyButton.jsx';
 
 export const Item = ({ title, data, copy = null }) => (

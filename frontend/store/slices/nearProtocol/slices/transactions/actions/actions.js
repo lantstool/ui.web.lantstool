@@ -7,6 +7,7 @@ import { putTemporaryFormValues } from './putTemporaryFormValues.js';
 import { addResult } from './addResult.js';
 import { setOpenResult } from './setOpenResult.js';
 import { resetState } from './resetState.js';
+import { setTx } from './setTx.js';
 
 export const actions = {
   setList,
@@ -18,4 +19,5 @@ export const actions = {
   addResult,
   setOpenResult,
   resetState,
+  setTx,
 };

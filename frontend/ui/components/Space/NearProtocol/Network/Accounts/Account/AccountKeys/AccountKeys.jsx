@@ -1,6 +1,6 @@
 import { useStoreState } from '../../../../../../../../../react-vault/index.js';
 import { useParams } from 'react-router-dom';
-import cn from './Keys.module.css';
+import cn from './AccountKeys.module.scss';
 import { Items } from './Items/Items.jsx';
 
 const separateKeys = (keys) => {
@@ -9,9 +9,9 @@ const separateKeys = (keys) => {
   return { fullAccess, functionCall };
 };
 
-export const Keys = () => {
+export const AccountKeys = () => {
   const { accountId } = useParams();
-  const keys = useStoreState((store) => store.accounts.records[accountId].keys);
+  const keys = useStoreState((store) => store.nearProtocol.accounts.records[accountId].keys);
   const { fullAccess, functionCall } = separateKeys(keys);
 
   if (!keys) return <h4>Keys not exists</h4>;

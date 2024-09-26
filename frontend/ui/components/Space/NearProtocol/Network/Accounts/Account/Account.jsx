@@ -1,4 +1,4 @@
-import cn from './Account.module.css';
+import cn from './Account.module.scss';
 import { useParams, Outlet } from 'react-router-dom';
 import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
 import { useLoader } from '../../../../../../hooks/useLoader.js';
@@ -6,16 +6,9 @@ import { TopBar } from './TopBar/TopBar.jsx';
 import { AccountLink } from './AccountLink/AccountLink.jsx';
 
 export const Account = () => {
-  const { accountId } = useParams();
-
-  const onMountAccount = useStoreEffect((store) => store.accounts.onMountAccount);
-  const [isLoading] = useLoader(() => onMountAccount(accountId));
-
-  if (isLoading) return null;
-
   return (
     <div className={cn.account}>
-      <TopBar accountId={accountId} />
+      <TopBar />
       <div className={cn.main}>
         <div className={cn.sidebar}>
           <AccountLink to="details" text="Details" />

@@ -1,4 +1,4 @@
-import cn from './DeleteModal.module.css';
+import cn from './DeleteModal.module.scss';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
 import { Title } from '../../../../../_general/Title/Title.jsx';

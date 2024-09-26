@@ -10,7 +10,7 @@ const getBalance = async (getAccountBalance, accountId, setBalance) => {
 
 export const BalanceLabel = ({ accountId }) => {
   const [balance, setBalance] = useState(null);
-  const getAccountBalance = useStoreEffect((store) => store.transactions.getAccountBalance);
+  const getAccountBalance = useStoreEffect((store) => store.nearProtocol.transactions.getAccountBalance);
 
   useEffect(() => {
     getBalance(getAccountBalance, accountId, setBalance);

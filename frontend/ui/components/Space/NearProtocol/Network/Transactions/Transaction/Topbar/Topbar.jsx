@@ -17,7 +17,7 @@ export const Topbar = ({ transaction }) => {
     <div className={cn.topbar}>
       <h1 className={cn.name}>{name}</h1>
       <div className={cn.sideMenu}>
-        <SideMenu transactionId={transactionId} />
+        {/*<SideMenu transactionId={transactionId} />*/}
       </div>
     </div>
   );

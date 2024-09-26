@@ -7,9 +7,15 @@ import { useStoreEffect } from '../../../../../../../../../../react-vault/index.
 import { useFormState } from 'react-hook-form';
 
 export const Footer = ({ form }) => {
-  const sendTransaction = useStoreEffect((store) => store.transactions.onSendTransaction);
-  const saveTransaction = useStoreEffect((store) => store.transactions.onSaveTransaction);
-  const revertTransaction = useStoreEffect((store) => store.transactions.revertTransaction);
+  const sendTransaction = useStoreEffect(
+    (store) => store.nearProtocol.transactions.onSendTransaction,
+  );
+  const saveTransaction = useStoreEffect(
+    (store) => store.nearProtocol.transactions.onSaveTransaction,
+  );
+  const revertTransaction = useStoreEffect(
+    (store) => store.nearProtocol.transactions.revertTransaction,
+  );
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {

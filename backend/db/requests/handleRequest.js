@@ -11,6 +11,10 @@ export const handleRequest = async (requestType, context) => {
   const { id, type } = context.request;
   try {
     const handler = get(handlers, requestType);
+
+    if (!handler)
+      throw new Error(`Handler for '${requestType}' is not registered`);
+
     const result = await handler(context);
     const data = result === undefined || result === null ? null : result;
 

@@ -1,11 +1,12 @@
+import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useEffect, useState } from 'react';
-import cn from './SignerAccount.module.css';
+import cn from './SignerAccount.module.scss';
 import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { useWatch } from 'react-hook-form';
 
-const getOptions = async (getAccountsIds, setOptions) => {
-  const accounts = await getAccountsIds();
+const getOptions = async (getIds, setOptions, spaceId, networkId) => {
+  const accounts = await getIds({ spaceId, networkId });
   const options = accounts.map((accountId) => ({
     value: accountId,
     label: accountId,
@@ -14,13 +15,14 @@ const getOptions = async (getAccountsIds, setOptions) => {
 };
 
 export const SignerAccount = ({ form }) => {
+  const { spaceId, networkId } = useParams();
   const { control, setValue } = form;
-  const getAccountsIds = useStoreEffect((store) => store.accounts.getAccountsIds);
+  const getIds = useStoreEffect((store) => store.nearProtocol.accounts.getIds);
   const [options, setOptions] = useState([]);
   const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
-    getOptions(getAccountsIds, setOptions);
+    getOptions(getIds, setOptions, spaceId, networkId);
   }, []);
 
   const onChange = (field) => (event) => {
