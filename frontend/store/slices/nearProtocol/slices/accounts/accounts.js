@@ -2,30 +2,36 @@ import { getAll } from './effects/getAll.js';
 import { getIds } from './effects/getIds.js';
 import { setAccounts } from './actions/setAccounts.js';
 import { setKeyList } from './actions/setKeyList.js';
-import { onMountAccount } from './effects/onMountAccount.js';
-import { setAccountChainDetails } from './actions/setAccountChainDetails.js';
+import { setAccountDetails } from './actions/setAccountDetails.js';
 import { setAccount } from './actions/setAccount.js';
 import { resetState } from './actions/resetState.js';
+import { resetAccountDetails } from './actions/resetAccountDetails.js';
 import { create } from './effects/create.js';
 import { removeAccount } from './actions/removeAccount.js';
 import { deleteAccount } from './effects/deleteAccount.js';
 import { getKeyList } from './effects/getKeyList.js';
+import { getAccountDetails } from './effects/getAccountDetails.js';
 
 export const accounts = {
   ids: [],
   records: {},
+  account: {
+    details: {},
+    keys: [],
+  },
   // actions
   setAccount,
   removeAccount,
   setAccounts,
-  setAccountChainDetails,
+  setAccountDetails,
   resetState,
   setKeyList,
+  resetAccountDetails,
   // effects
-  getAll,
-  onMountAccount,
-  getIds,
   create,
+  getAll,
+  getIds,
+  getAccountDetails,
   deleteAccount,
   getKeyList,
 };

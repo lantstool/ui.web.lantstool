@@ -3,5 +3,8 @@ export const getAll = async ({ execute, request }) => {
     SELECT * FROM near_protocol_networks
     WHERE spaceId = '${request.body.spaceId}';
   `;
-  return await execute(query);
+
+  const networks = await execute(query);
+
+  return networks.map((network) => ({ ...network, rpcList: JSON.parse(network.rpcList) }));
 };
