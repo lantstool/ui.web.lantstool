@@ -6,7 +6,7 @@ export const Network = () => {
   const { networkId } = useParams();
 
   return (
-    <div className={cn.container}>
+    <div className={cn.network}>
       <Sidebar />
       <Outlet />
     </div>

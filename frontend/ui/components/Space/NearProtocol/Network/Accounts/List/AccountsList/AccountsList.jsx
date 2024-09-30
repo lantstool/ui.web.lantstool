@@ -7,7 +7,7 @@ export const AccountsList = () => {
   const records = useStoreState((store) => store.nearProtocol.accounts.records);
 
   return (
-    <div>
+    <>
       <div className={cn.wrapper}>
         <h4 className={cn.title}>Account Id</h4>
         <h4 className={cn.title}>Local Name</h4>
@@ -20,6 +20,6 @@ export const AccountsList = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 };

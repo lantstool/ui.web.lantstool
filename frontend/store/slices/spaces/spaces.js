@@ -6,6 +6,8 @@ import { remove } from './effects/remove.js';
 export const spaces = {
   // state
   list: [],
+  ids: [],
+  records: {},
   // actions
   setAll,
   // effects

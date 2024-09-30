@@ -1,11 +1,11 @@
 import { action } from '../../../../../../../react-vault/index.js';
 
 export const setNetworks = action(({ slice, payload: networks }) => {
-  slice.list = [];
-  slice.map = {};
+  slice.ids = [];
+  slice.records = {};
 
   networks.forEach((network) => {
-    slice.list.push(network.networkId);
-    slice.map[network.networkId] = network;
+    slice.ids.push(network.networkId);
+    slice.records[network.networkId] = network;
   });
 });

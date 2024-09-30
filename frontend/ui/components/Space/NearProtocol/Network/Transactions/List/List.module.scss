@@ -1,5 +1,7 @@
-.container {
-  width: 500px;
+.transactionList {
+  width: 100%;
+  min-width: 250px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,14 +35,14 @@
   box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: 50%;
-  left: calc(50% + 375px);
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: var(--Border-Radius-3);
 }
 
 .wrapper {
   width: 100%;
-  height: calc(100vh - 120px);
+  height: 100%;
   overflow: auto;
 }
 

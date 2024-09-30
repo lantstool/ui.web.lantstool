@@ -16,7 +16,7 @@
   box-shadow: var(--Box-Shadow-025);
   position: fixed;
   top: 50%;
-  left: calc(50% + 175px);
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: var(--Border-Radius-3);
 }

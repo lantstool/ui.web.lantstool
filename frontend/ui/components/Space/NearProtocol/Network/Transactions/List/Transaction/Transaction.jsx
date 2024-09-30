@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import cnm from 'classnames';
-import cn from './Transaction.module.css';
+import cn from './Transaction.module.scss';
 import { Draggable } from '@hello-pangea/dnd';
 
 export const Transaction = ({ index, transaction, isActive }) => (

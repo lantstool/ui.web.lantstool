@@ -1,10 +1,12 @@
 import { effect } from '../../../../../../../react-vault/index.js';
 
-export const getAll = effect(async ({ store, payload }) => {
+export const getAll = effect(async ({ store, slice, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
+  const setNetworks = slice.getActions((slice) => slice.setNetworks);
 
   try {
-    return await backend.sendRequest('nearProtocol.networks.getAll', payload);
+    const networks = await backend.sendRequest('nearProtocol.networks.getAll', payload);
+    setNetworks(networks);
   } catch (e) {
     console.log(e);
   }

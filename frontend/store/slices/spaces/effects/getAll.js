@@ -7,7 +7,6 @@ export const getAll = effect(async ({ store, slice }) => {
   try {
     const spaces = await backend.sendRequest('spaces.getAll');
     setAll(spaces);
-    console.log(spaces);
   } catch (e) {
     console.log(e);
   }

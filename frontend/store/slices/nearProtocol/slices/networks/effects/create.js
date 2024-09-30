@@ -9,7 +9,6 @@ export const create = effect(async ({ store, payload }) => {
       spaceId,
       formValues,
     });
-    console.log(network);
 
     navigate(`../../${network.networkId}/transactions`, { relative: 'path' });
   } catch (e) {

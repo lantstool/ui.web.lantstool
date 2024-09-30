@@ -21,7 +21,7 @@ export const List = ({ txList }) => {
   };
 
   return (
-    <div className={cn.container}>
+    <div className={cn.transactionList}>
       <div className={cn.topBar}>
         <h2 className={cn.title}>Transactions</h2>
       </div>

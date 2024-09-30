@@ -1,0 +1,13 @@
+.topbar {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: 150px 150px 150px auto;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b c .';
+
+  padding: 0 16px;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--Colors-Neutral-Gray-200, #E9ECEF);
+  background: var(--Colors-Neutral-Gray-00, #FFF);
+}

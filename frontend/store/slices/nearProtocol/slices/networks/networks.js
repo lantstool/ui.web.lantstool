@@ -12,8 +12,9 @@ import { updateNetwork } from './actions/updateNetwork.js';
 import { changeNetwork } from './effects/changeNetwork.js';
 
 export const networks = {
-  active: null,
-  list: [],
+  ids: [],
+  records: {},
+  network: null,
   // actions
   setNetworks,
   addNetwork,

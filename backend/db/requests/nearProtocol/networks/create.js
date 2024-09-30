@@ -20,7 +20,7 @@ const getNetworkId = async (rpc) => {
   return result.chain_id;
 };
 
-const validateSpaceIdHasExist = async (execute, spaceId) => {
+const validateSpaceId = async (execute, spaceId) => {
   const query = `
     SELECT spaceId FROM spaces WHERE spaceId = '${spaceId}';
   `;
@@ -33,7 +33,14 @@ const validateSpaceIdHasExist = async (execute, spaceId) => {
     `);
 };
 
-const validateNetworkIdHasNotExist = async (execute, spaceId, networkId) => {
+const validateNetworkId = async (execute, spaceId, networkId) => {
+  // We don't really expect that someone would create a network with id 'networks',
+  // but if it happens it will break the app.
+  if (networkId === 'networks')
+    throw new Error(`
+      You can't import network with ID 'networks' - 'networks' is an inner keyword
+    `);
+
   const query = `
     SELECT networkId FROM near_protocol_networks 
       WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
@@ -53,10 +60,10 @@ export const create = async ({ execute, request }) => {
   const rpcList = JSON.stringify([rpc]);
   const createdAt = Date.now();
 
-  await validateSpaceIdHasExist(execute, spaceId);
+  await validateSpaceId(execute, spaceId);
 
   const networkId = await getNetworkId(rpc);
-  await validateNetworkIdHasNotExist(execute, spaceId, networkId);
+  await validateNetworkId(execute, spaceId, networkId);
 
   const query = `
     BEGIN TRANSACTION;

@@ -1,11 +1,19 @@
-import { useStoreAction, useStoreEffect } from '../../../react-vault/index.js';
-import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useStoreEffect } from '../../../react-vault/index.js';
+import { Outlet } from 'react-router-dom';
+import { Topbar } from './Topbar/Topbar.jsx';
 import { useLoader } from '../hooks/useLoader.js';
+import cn from './App.module.scss';
 
 export const App = () => {
   const initApp = useStoreEffect((store) => store.initApp);
   const [isLoading] = useLoader(initApp);
 
-  return isLoading ? null : <Outlet />;
+  if (isLoading) return null;
+
+  return (
+    <div className={cn.app}>
+      <Topbar />
+      <Outlet />
+    </div>
+  );
 };
