@@ -1,0 +1,53 @@
+.formScrollWrapper {
+  grid-area: b;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+  margin: 66px 0 66px 0;
+}
+
+.formWithoutNav {
+  margin: 16px 0 0 0;
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+}
+
+.topNavActive {
+  border-bottom: 1px solid var(--Color-Green-300);
+  height: 50px;
+}
+
+.resultBtn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--Spacing-4);
+  background-color: var(--Button-Primary);
+  color: white;
+  margin-right: 40px;
+}
+
+.title {
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: var(--Color-Green-2000);
+  font-size: 16px;
+  font-weight: 600;
+}

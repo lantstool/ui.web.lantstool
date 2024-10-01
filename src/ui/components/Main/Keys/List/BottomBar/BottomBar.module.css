@@ -1,7 +1,0 @@
-.bottom{
-    grid-area: c;
-    display: flex;
-    justify-content: center;
-    background-color: var(--Card-Bar);
-    border-radius: 0 0 var(--Border-Radius-3) var(--Border-Radius-3);
-}

@@ -1,0 +1,16 @@
+.btnClose {
+  grid-area: c;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  stroke: #d3d3d3;
+  fill: #d3d3d3;
+}
+
+.icon:hover {
+  stroke: #ababab;
+  fill: #ababab;
+}

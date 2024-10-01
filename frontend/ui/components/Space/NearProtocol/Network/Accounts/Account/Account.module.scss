@@ -1,0 +1,34 @@
+.account {
+  height: 100%;
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  border-radius: var(--Border-Radius-3);
+  box-shadow: var(--Box-Shadow-025);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  border-bottom: 1px solid var(--Color-Green-400);
+}
+.wrapper {
+  padding: 0 100px;
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  align-self: center;
+  height: 100%;
+  overflow-y: auto;
+}

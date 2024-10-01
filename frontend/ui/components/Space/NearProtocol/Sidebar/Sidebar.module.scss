@@ -1,0 +1,33 @@
+.sidebar {
+  grid-area: a;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 15px 35px 10px 30px auto 10px 35px 15px;
+  grid-template-areas:
+    '.'
+    'a'
+    '.'
+    'b'
+    'c'
+    '.'
+    'd'
+    '.';
+  background-color: #2d6a4f;
+}
+
+.title {
+  grid-area: a;
+  margin: 0;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.subtitleWrapper {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+}

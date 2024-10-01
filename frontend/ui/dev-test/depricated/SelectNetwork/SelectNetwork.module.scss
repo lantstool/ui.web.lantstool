@@ -1,0 +1,31 @@
+.network {
+  grid-area: b;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtitleGroup {
+  position: relative;
+}
+
+.networkId {
+  margin: 10px 8px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.networkBtn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  fill: #898989;
+}

@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  grid-template-rows: 32px 34px 24px 145px 85px 80px 70px 15px 40px;
+  grid-template-areas:
+    '.'
+    'a'
+    '.'
+    'b'
+    'c'
+    'd'
+    'e'
+    '.'
+    'f';
+  height: 100%;
+}
+
+.title {
+  grid-area: a;
+  color: var(--Text-Dark);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.accountId {
+  grid-area: b;
+}
+
+.name {
+  grid-area: c;
+}
+
+.message {
+  grid-area: e;
+}
+
+.button {
+  grid-area: f;
+  display: flex;
+  justify-content: center;
+}
