@@ -17,15 +17,17 @@ export const Details = () => {
   const resetAccountDetails = useStoreAction(
     (store) => store.nearProtocol.accounts.resetAccountDetails,
   );
-  const account = useStoreState((store) => store.nearProtocol.accounts.account);
+  const details = useStoreState((store) => store.nearProtocol.accounts.account.details);
   const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId });
 
+  // We have to reset data because we will display the wrong data (of prev account)
+  // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);
 
   if (isLoading) return <p>Loading...</p>;
 
   const { localName, balance, lockedForStorage, available, storageUsage, hasDeployedContract } =
-    account.details;
+    details;
 
   return (
     <div className={cn.details}>

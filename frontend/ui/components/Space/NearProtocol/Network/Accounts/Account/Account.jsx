@@ -1,9 +1,7 @@
-import cn from './Account.module.scss';
-import { useParams, Outlet } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../hooks/useLoader.js';
+import { Outlet } from 'react-router-dom';
 import { TopBar } from './TopBar/TopBar.jsx';
 import { AccountLink } from './AccountLink/AccountLink.jsx';
+import cn from './Account.module.scss';
 
 export const Account = () => {
   return (

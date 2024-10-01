@@ -1,14 +1,22 @@
 export const create = async ({ execute, request }) => {
-  const { accountId, spaceId, networkId, localName } = request.body;
+  const { publicKey, spaceId, networkId, privateKey, seedPhrase, derivationPath } = request.body;
   const createdAt = Date.now();
 
   const query = `
     INSERT INTO near_protocol_keys 
-      (accountId, spaceId, networkId, localName, createdAt)
-    VALUES('${accountId}', '${spaceId}', '${networkId}', '${localName}', ${createdAt})
+      (publicKey, spaceId, networkId, createdAt, privateKey, seedPhrase, derivationPath)
+    VALUES(
+      '${publicKey}', 
+      '${spaceId}', 
+      '${networkId}', 
+      ${createdAt}, 
+      '${privateKey}', 
+      '${seedPhrase}',
+      '${derivationPath}'
+    )
     RETURNING *;
   `;
 
-  const [account] = await execute(query);
-  return account;
+  const [key] = await execute(query);
+  return key;
 };

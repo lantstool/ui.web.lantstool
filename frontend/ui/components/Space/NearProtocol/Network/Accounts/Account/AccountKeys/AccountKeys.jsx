@@ -1,20 +1,21 @@
-import { useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '../../../../../../../../../react-vault/index.js';
 import { useParams } from 'react-router-dom';
-import cn from './AccountKeys.module.scss';
 import { Items } from './Items/Items.jsx';
-
-const separateKeys = (keys) => {
-  const fullAccess = keys?.filter((key) => key.accessKey.permission === 'FullAccess');
-  const functionCall = keys?.filter((key) => key.accessKey.permission !== 'FullAccess');
-  return { fullAccess, functionCall };
-};
+import { useLoader } from '../../../../../../../hooks/useLoader.js';
+import cn from './AccountKeys.module.scss';
 
 export const AccountKeys = () => {
-  const { accountId } = useParams();
-  const keys = useStoreState((store) => store.nearProtocol.accounts.records[accountId].keys);
-  const { fullAccess, functionCall } = separateKeys(keys);
+  const { spaceId, networkId, accountId } = useParams();
+  const getAccountKeys = useStoreEffect((store) => store.nearProtocol.accounts.getAccountKeys);
+  const [isLoading, keys] = useLoader(getAccountKeys, { spaceId, networkId, accountId }, [
+    accountId,
+  ]);
+  const { fullAccess, functionCall } = keys;
 
-  if (!keys) return <h4>Keys not exists</h4>;
+  if (isLoading) return null;
+
+  if (fullAccess.length === 0 && functionCall.length === 0)
+    return <p>This account has no keys</p>;
 
   return (
     <div className={cn.keys}>

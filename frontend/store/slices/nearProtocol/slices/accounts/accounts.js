@@ -9,7 +9,7 @@ import { resetAccountDetails } from './actions/resetAccountDetails.js';
 import { create } from './effects/create.js';
 import { removeAccount } from './actions/removeAccount.js';
 import { deleteAccount } from './effects/deleteAccount.js';
-import { getKeyList } from './effects/getKeyList.js';
+import { getAccountKeys } from './effects/getAccountKeys.js';
 import { getAccountDetails } from './effects/getAccountDetails.js';
 
 export const accounts = {
@@ -33,5 +33,5 @@ export const accounts = {
   getIds,
   getAccountDetails,
   deleteAccount,
-  getKeyList,
+  getAccountKeys,
 };

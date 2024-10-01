@@ -3,24 +3,20 @@ import { viewAccount } from '../../../../../helpers/rpc/viewAccount.js';
 import { toCamelCase } from '../../../../../helpers/toCamelCase.js';
 import { connect } from 'near-api-js';
 
-
 export const getAccountDetails = effect(async ({ payload, store, slice }) => {
   const { spaceId, networkId, accountId } = payload;
-  const [backend] = store.getEntities((store) => store.backend);
+  const getActiveRpc = store.getEffects((store) => store.nearProtocol.networks.getActiveRpc);
   const setAccountDetails = slice.getActions((slice) => slice.setAccountDetails);
 
   try {
-    const { activeRpc } = await backend.sendRequest('nearProtocol.networks.getOne', {
-      spaceId,
-      networkId,
-    });
+    const rpc = await getActiveRpc({ spaceId, networkId });
 
     const config = {
       networkId: networkId,
-      nodeUrl: activeRpc,
+      nodeUrl: rpc,
     };
 
-    const response = await viewAccount(accountId, activeRpc);
+    const response = await viewAccount(accountId, rpc);
     const details = toCamelCase(response.result);
 
     const connection = await connect(config);
