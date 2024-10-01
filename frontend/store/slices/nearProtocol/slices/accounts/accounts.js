@@ -8,7 +8,7 @@ import { resetState } from './actions/resetState.js';
 import { resetAccountDetails } from './actions/resetAccountDetails.js';
 import { create } from './effects/create.js';
 import { removeAccount } from './actions/removeAccount.js';
-import { deleteAccount } from './effects/deleteAccount.js';
+import { remove } from './effects/remove.js';
 import { getAccountKeys } from './effects/getAccountKeys.js';
 import { getAccountDetails } from './effects/getAccountDetails.js';
 
@@ -32,6 +32,6 @@ export const accounts = {
   getAll,
   getIds,
   getAccountDetails,
-  deleteAccount,
+  remove,
   getAccountKeys,
 };
