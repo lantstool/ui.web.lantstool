@@ -8,7 +8,7 @@ import cnm from 'classnames';
 import { Popup } from './Popup/Popup.jsx';
 
 export const SideMenu = ({ accountId }) => {
-  const { spaceId } = useParams();
+  const { spaceId, networkId } = useParams();
   const [isOpen, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const removeAccount = useStoreEffect((store) => store.nearProtocol.accounts.remove);
@@ -24,7 +24,7 @@ export const SideMenu = ({ accountId }) => {
   };
 
   const remove = () => {
-    removeAccount({ spaceId, accountId, navigate });
+    removeAccount({ spaceId, networkId, accountId, navigate });
     setOpen(false);
   };
 
