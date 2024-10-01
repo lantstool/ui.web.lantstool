@@ -1,16 +1,17 @@
 import cn from './SideMenu.module.scss';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { VerticalMoreIcon } from '../../../../../../../../assets/components/VerticalMoreIcon.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cnm from 'classnames';
 import { Popup } from './Popup/Popup.jsx';
 
 export const SideMenu = ({ accountId }) => {
+  const { spaceId, networkId } = useParams();
   const [isOpen, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const deleteAccount = useStoreEffect((store) => store.nearProtocol.accounts.deleteAccount);
+  const removeAccount = useStoreEffect((store) => store.nearProtocol.accounts.remove);
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -23,7 +24,7 @@ export const SideMenu = ({ accountId }) => {
   };
 
   const remove = () => {
-    deleteAccount({ accountId, navigate });
+    removeAccount({ spaceId, networkId, accountId, navigate });
     setOpen(false);
   };
 
