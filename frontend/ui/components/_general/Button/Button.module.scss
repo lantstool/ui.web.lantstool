@@ -1,0 +1,146 @@
+@use 'frontend/ui/components/_general/styles/variables.module.scss' as *;
+@use 'frontend/ui/components/_general/styles/mixins.module.scss' as *;
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  width: max-content;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin lg-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+@mixin mg-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+@mixin sm-btn {
+  padding: 4px 8px;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+@mixin primary {
+  @include button;
+  background-color: $accent-600;
+  &:hover {
+    background-color: $accent-700;
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px #0085ff26;
+    background-color: $accent-600;
+  }
+  &:disabled {
+    background-color: $accent-100;
+    cursor: auto;
+  }
+}
+
+.primaryLg {
+  @include primary;
+  @include lg-btn;
+}
+
+.primaryMg {
+  @include primary;
+  @include mg-btn;
+}
+
+@mixin secondary {
+  @include button;
+  background: none;
+  border: 1px solid $neutral-200;
+  box-shadow: 0 2px 4px 0 #0000000d;
+
+  &:hover {
+    background-color: $neutral-50;
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px #b3bcc426;
+    background-color: $neutral-00;
+  }
+  &:disabled {
+    background: none;
+    cursor: auto;
+  }
+  &:disabled .secondaryText {
+    color: $neutral-500;
+  }
+  &:disabled .iconSecondary {
+    fill: $neutral-500;
+  }
+}
+
+.secondaryLg {
+  @include secondary;
+  @include lg-btn;
+}
+
+.secondaryMg {
+  @include secondary;
+  @include mg-btn;
+}
+
+.tertiary {
+  @include button;
+  @include sm-btn;
+  background: none;
+  &:hover {
+    background-color: $neutral-50;
+  }
+  &:focus {
+    background-color: $neutral-100;
+  }
+  &:disabled {
+    background: none;
+    cursor: auto;
+  }
+  &:disabled .tertiaryText {
+    color: $neutral-400;
+  }
+  &:disabled .iconTertiary {
+    fill: $neutral-400;
+  }
+}
+
+@mixin text {
+  @include h1-sm-medium;
+  margin: 0;
+}
+
+.primaryText {
+  @include text;
+  color: $neutral-00;
+}
+
+.secondaryText {
+  @include text;
+  color: $neutral-700;
+}
+
+.tertiaryText {
+  @include text;
+  color: $neutral-700;
+}
+
+.iconPrimary {
+  fill: $neutral-00;
+}
+
+.iconSecondary {
+  fill: $neutral-700;
+}
+
+.iconTertiary {
+  fill: $neutral-700;
+}
