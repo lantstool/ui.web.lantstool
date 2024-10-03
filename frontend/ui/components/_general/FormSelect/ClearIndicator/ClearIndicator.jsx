@@ -1,6 +1,6 @@
 import { components } from 'react-select';
 import cn from './ClearIndicator.module.css';
-import { CloseIcon } from '../../../../assets/components/CloseIcon.jsx';
+import { CloseIcon } from '../../IconsComponents/CloseIcon.jsx';
 
 export const ClearIndicator = ({ children, ...props }) => (
   <components.ClearIndicator {...props}>

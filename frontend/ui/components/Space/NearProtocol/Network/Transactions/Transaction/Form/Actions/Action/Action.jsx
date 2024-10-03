@@ -6,7 +6,7 @@ import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
 import { DeleteKey } from './DeleteKey/DeleteKey.jsx';
 import { DeleteAccount } from './DeleteAccount/DeleteAccount.jsx';
 import cn from './Action.module.css';
-import { DeleteIcon } from '../../../../../../../../../assets/components/DeleteIcon.jsx';
+import { DeleteIcon } from '../../../../../../../../_general/IconsComponents/DeleteIcon.jsx';
 import { useWatch } from 'react-hook-form';
 
 export const Action = ({ form, action, index, remove }) => {

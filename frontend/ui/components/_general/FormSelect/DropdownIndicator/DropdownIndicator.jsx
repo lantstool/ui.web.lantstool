@@ -1,6 +1,6 @@
 import { components } from 'react-select';
 import cn from './DropdownIndicator.module.css';
-import { ArrowDownIcon } from '../../../../assets/components/ArrowDownIcon.jsx';
+import { ArrowDownIcon } from '../../IconsComponents/ArrowDownIcon.jsx';
 import cnm from 'classnames';
 
 export const DropdownIndicator = ({ children, ...props }) => (

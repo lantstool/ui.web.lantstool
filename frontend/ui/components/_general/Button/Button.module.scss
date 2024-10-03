@@ -1,5 +1,5 @@
-@use 'frontend/ui/components/_general/styles/variables.module.scss' as *;
-@use 'frontend/ui/components/_general/styles/mixins.module.scss' as *;
+@use '../../../styles/variables.module.scss' as *;
+@use '../../../styles/mixins.module.scss' as *;
 
 @mixin button {
   display: flex;

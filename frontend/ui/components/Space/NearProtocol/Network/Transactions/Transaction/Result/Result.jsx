@@ -3,7 +3,7 @@ import { Button } from '../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
 import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
+import { BackIcon } from '../../../../../../_general/IconsComponents/BackIcon.jsx';
 
 // TODO Move to utils
 const getFormattedJSON = (json) => JSON.stringify(json, null, 2);
