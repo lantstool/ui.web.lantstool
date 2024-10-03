@@ -1,5 +1,4 @@
 import cn from './Button.module.scss';
-import { cloneElement } from 'react';
 
 const types = {
   primary: {
@@ -25,24 +24,22 @@ const getType = (color, size) => {
 };
 
 export const Button = ({
-  text = null,
+  children = null,
   color = 'primary',
   onClick,
   size = 'large',
   type = 'button',
-  iconLeft = null,
-  iconRight = null,
+  IconLeft = null,
+  IconRight = null,
   disabled = false,
 }) => {
   const { button, btnText, iconColor } = getType(color, size);
-  const cloneIconLeft = iconLeft && cloneElement(iconLeft, { style: iconColor });
-  const cloneIconRight = iconRight && cloneElement(iconRight, { style: iconColor });
 
   return (
     <button type={type} disabled={disabled} className={button} onClick={onClick}>
-      {iconLeft && cloneIconLeft}
-      {text && <h1 className={btnText}>{text}</h1>}
-      {iconRight && cloneIconRight}
+      {IconLeft && <IconLeft style={iconColor} />}
+      {children && <span className={btnText}>{children}</span>}
+      {IconRight && <IconRight style={iconColor} />}
     </button>
   );
 };

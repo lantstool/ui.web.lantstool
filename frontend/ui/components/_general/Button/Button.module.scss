@@ -61,7 +61,6 @@
   background: none;
   border: 1px solid $neutral-200;
   box-shadow: 0 2px 4px 0 #0000000d;
-
   &:hover {
     background-color: $neutral-50;
   }
@@ -114,7 +113,7 @@
 }
 
 @mixin text {
-  @include h1-sm-medium;
+  @include text-sm-medium;
   margin: 0;
 }
 
