@@ -15,8 +15,8 @@ export const importFromPrivateKey = effect(async ({ store, slice, payload }) => 
       spaceId,
       networkId,
       privateKey,
-      seedPhrase: null,
-      derivationPath: null,
+      seedPhrase: '',
+      derivationPath: '',
     });
 
     addKeyToList(key);

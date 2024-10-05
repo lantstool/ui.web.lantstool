@@ -1,4 +1,4 @@
-import cn from './VisibleButton.module.css';
+import cn from './VisibleButton.module.scss';
 import { Visibility } from '../../../../../../../../assets/components/Visibility.jsx';
 import { VisibilityOff } from '../../../../../../../../assets/components/VisibilityOff.jsx';
 

@@ -1,10 +1,9 @@
+import { utils } from './utils.js';
+
 export const create = async ({ execute, request }) => {
   const { publicKey, spaceId, networkId, privateKey, seedPhrase, derivationPath } = request.body;
   const createdAt = Date.now();
-
-  // SQLite won't allow us to insert the string with apostrophe like m/44'/397'/0' -
-  // we have to replace it with something else, for example - `
-  const dPath = derivationPath ? derivationPath.replaceAll("'", "`") : null;
+  const dPath = utils.derivationPath.serialize(derivationPath);
 
   const query = `
     INSERT INTO near_protocol_keys 

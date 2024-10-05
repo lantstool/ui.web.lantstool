@@ -10,7 +10,7 @@ export const deleteKey = effect(async ({ slice, store, payload }) => {
     await idb.delete('keys', [spaceId, networkId, keyId]);
 
     removeKey(keyId);
-    navigate(`/${networkId}/keys`);
+    navigate('..', { relative: 'path', replace: true });
   } catch (e) {
     console.log(e);
   }
