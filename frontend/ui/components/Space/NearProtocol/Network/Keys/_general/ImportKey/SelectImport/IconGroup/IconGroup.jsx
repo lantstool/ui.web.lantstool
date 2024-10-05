@@ -1,4 +1,4 @@
-import cn from './IconGroup.module.css';
+import cn from './IconGroup.module.scss';
 
 export const IconGroup = ({ src, text, styles, comingSoon = false, selectStep }) => {
   return (

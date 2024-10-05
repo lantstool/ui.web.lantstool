@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_keys (
   createdAt INTEGER NOT NULL,
   privateKey TEXT NOT NULL,
   seedPhrase TEXT,
-  derivationPath TEXT NOT NULL,
+  derivationPath TEXT,
   PRIMARY KEY (spaceId, networkId, publicKey),
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)

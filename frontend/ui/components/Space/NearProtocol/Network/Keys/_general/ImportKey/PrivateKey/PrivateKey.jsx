@@ -1,22 +1,23 @@
-import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
-import cn from './PrivateKeyModal.module.css';
-import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
+import { useParams } from 'react-router-dom';
+import { ModalGroup } from '../../../../../../../_general/ModalGroup/ModalGroup.jsx';
+import cn from './PrivateKey.module.scss';
+import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useForm, useWatch } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { createSchema } from './schema.js';
-import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { Button } from '../../../_general/Button/Button.jsx';
-import addIcon from '../../../../../../../assets/addIcon.svg';
-import { MessageGroup } from '../general/MessageGroup/MessageGroup.jsx';
-import { useMemo } from 'react';
+import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { Button } from '../../../../_general/Button/Button.jsx';
+import addIcon from '../../../../../../../../assets/addIcon.svg';
+import { MessageGroup } from '../_general/MessageGroup/MessageGroup.jsx';
 
-export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
-  const addKey = useStoreEffect((store) => store.keys.addKey);
-  const records = useStoreState((store) => store.keys.records);
-  const schema = useMemo(() => createSchema(records), [records]);
+export const PrivateKey = ({ isOpen, close, setStep }) => {
+  const { spaceId, networkId } = useParams();
+  const importFromPrivateKey = useStoreEffect(
+    (store) => store.nearProtocol.keys.importFromPrivateKey,
+  );
+  // TODO: When on Submit: send validation request to the backend when instead of fetching all data locally
+  // const schema = useMemo(() => createSchema(records), [records]);
 
   const form = useForm({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
     defaultValues: {
       publicKey: null,
       privateKey: null,
@@ -28,8 +29,7 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
     control,
     register,
     handleSubmit,
-    setValue,
-    resetField,
+    reset,
     formState: { errors, dirtyFields },
   } = form;
 
@@ -39,8 +39,8 @@ export const PrivateKeyModal = ({ isOpen, close, setStep }) => {
     setStep('selectImport');
   };
 
-  const onSubmit = (formValue) => {
-    addKey({ formValue, wallet: 'lantstool', setValue, resetField });
+  const onSubmit = (formValues) => {
+    importFromPrivateKey({ formValues, spaceId, networkId, reset });
   };
 
   return (

@@ -10,7 +10,7 @@ export const MessageGroup = ({ errors, publicKey, dirtyFields }) => {
           <p className={cn.subtitle}>{publicKey} was successfully imported</p>
           <p className={cn.note}>
             Note: Currently you need to add related accounts manually on the{' '}
-            <Link className={cn.link} to={`/${params.currentNetworkId}/accounts`}>
+            <Link className={cn.link} to="../accounts" relative="path">
               Accounts
             </Link>{' '}
             page

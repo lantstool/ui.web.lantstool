@@ -1,5 +1,8 @@
 import * as yup from 'yup';
 
+// TODO: Wrong validation for matches! We have to convert seed to private key and
+// only then compare it
+
 export const createSchema = (records) => {
   const list = Object.values(records);
   return yup.object({

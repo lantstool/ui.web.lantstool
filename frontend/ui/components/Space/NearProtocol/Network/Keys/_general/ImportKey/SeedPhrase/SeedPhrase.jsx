@@ -1,24 +1,26 @@
-import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
-import { InputGroup } from '../../../../../../_general/InputGroup/InputGroup.jsx';
-import { Button } from '../../../_general/Button/Button.jsx';
+import { useParams } from 'react-router-dom';
+import { ModalGroup } from '../../../../../../../_general/ModalGroup/ModalGroup.jsx';
+import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
+import { Button } from '../../../../_general/Button/Button.jsx';
 import { useForm, useWatch } from 'react-hook-form';
-import cn from './SeedPhraseModal.module.css';
-import addIcon from '../../../../../../../assets/addIcon.svg';
-import { createSchema } from './schema.js';
+import cn from './SeedPhrase.module.scss';
+import addIcon from '../../../../../../../../assets/addIcon.svg';
 import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
-import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
-import { MessageGroup } from '../general/MessageGroup/MessageGroup.jsx';
-import { useMemo } from 'react';
+import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+// import { yupResolver } from '@hookform/resolvers/yup';
+import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
+import { MessageGroup } from '../_general/MessageGroup/MessageGroup.jsx';
 
-export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
-  const addKey = useStoreEffect((store) => store.keys.addKey);
-  const records = useStoreState((store) => store.keys.records);
-  const schema = useMemo(() => createSchema(records), [records]);
+export const SeedPhrase = ({ isOpen, close, setStep }) => {
+  const { spaceId, networkId } = useParams();
+  const importFromSeedPhrase = useStoreEffect(
+    (store) => store.nearProtocol.keys.importFromSeedPhrase,
+  );
+  // TODO: send validation request to the backend instead of fetching all data locally
+  // const schema = useMemo(() => createSchema(records), [records]);
 
   const form = useForm({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
     defaultValues: {
       publicKey: null,
       seedPhrase: null,
@@ -30,8 +32,7 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     control,
     register,
     handleSubmit,
-    setValue,
-    resetField,
+    reset,
     formState: { errors, dirtyFields },
   } = form;
 
@@ -41,8 +42,8 @@ export const SeedPhraseModal = ({ isOpen, close, setStep }) => {
     setStep('selectImport');
   };
 
-  const onSubmit = (formValue) => {
-    addKey({ formValue, wallet: 'lantstool', setValue, resetField });
+  const onSubmit = (formValues) => {
+    importFromSeedPhrase({ formValues, spaceId, networkId, reset });
   };
 
   return (

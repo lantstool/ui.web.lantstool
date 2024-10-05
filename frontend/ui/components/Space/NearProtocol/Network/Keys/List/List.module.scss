@@ -7,7 +7,7 @@
   min-height: 100%;
   display: grid;
   grid-template-columns: 800px;
-  grid-template-rows: 70px calc(97vh - 120px) 60px;
+  grid-template-rows: 70px auto 60px;
   grid-template-areas:
     'a'
     'b'
