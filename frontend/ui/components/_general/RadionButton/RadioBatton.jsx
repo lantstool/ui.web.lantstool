@@ -25,7 +25,7 @@ export const RadioButton = ({ register, label, value, id, disabled }) => {
         disabled={disabled}
       />
       <span className={cnm(cn.customRadio, { [cn.focused]: isFocused })}></span>
-      {label}
+      <span className={cnm(cn.enabledText, { [cn.disabledText]: disabled })}>{label}</span>
     </label>
   );
 };

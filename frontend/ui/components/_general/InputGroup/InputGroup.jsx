@@ -1,5 +1,5 @@
 import cn from './ImputGroup.module.css';
-import { Input } from '../Input/Input.jsx';
+import { InputDPR } from '../InputDPR/InputDPR.jsx';
 
 export const InputGroup = ({
   register,
@@ -16,7 +16,7 @@ export const InputGroup = ({
     <label className={cn.title} htmlFor={name}>
       {label}
     </label>
-    <Input
+    <InputDPR
       name={name}
       type={type}
       register={register}

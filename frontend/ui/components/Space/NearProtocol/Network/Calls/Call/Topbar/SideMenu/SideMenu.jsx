@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { EditModal } from './EditModal/EditModal.jsx';
 import cnm from 'classnames';
-import { VerticalMoreIcon } from '../../../../../../../_general/IconsComponents/VerticalMoreIcon.jsx';
+import { VerticalMoreIcon } from '../../../../../../../_general/icons/VerticalMoreIcon.jsx';
 import { Popup } from './Popup/Popup.jsx';
 
 export const SideMenu = ({ callId }) => {

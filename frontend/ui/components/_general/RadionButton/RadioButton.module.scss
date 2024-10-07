@@ -66,6 +66,13 @@
     }
   }
 
+  .enabledText {
+    color: $neutral-700;
+  }
+  .disabledText {
+    color: $neutral-400;
+  }
+
   .customRadio {
     width: 14px;
     min-width: 14px;

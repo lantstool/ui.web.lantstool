@@ -2,7 +2,7 @@ import cn from './SideMenu.module.scss';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useNavigate, useParams } from 'react-router-dom';
-import { VerticalMoreIcon } from '../../../../../../../_general/IconsComponents/VerticalMoreIcon.jsx';
+import { VerticalMoreIcon } from '../../../../../../../_general/icons/VerticalMoreIcon.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cnm from 'classnames';
 import { Popup } from './Popup/Popup.jsx';

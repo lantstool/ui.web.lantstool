@@ -1,8 +1,8 @@
 import cn from './Footer.module.css';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
-import { RestorIcon } from '../../../../../../../_general/IconsComponents/RestorIcon.jsx';
-import { SaveIcon } from '../../../../../../../_general/IconsComponents/SaveIcon.jsx';
+import { RestorIcon } from '../../../../../../../_general/icons/RestorIcon.jsx';
+import { SaveIcon } from '../../../../../../../_general/icons/SaveIcon.jsx';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useFormState } from 'react-hook-form';
 
