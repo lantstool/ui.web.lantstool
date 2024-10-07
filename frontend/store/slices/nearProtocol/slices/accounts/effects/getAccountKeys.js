@@ -1,6 +1,4 @@
 import { effect } from '../../../../../../../react-vault/index.js';
-import { viewAccessKeyList } from '../../../../../helpers/rpc/viewAccessKeyList.js';
-import { toCamelCase } from '../../../../../helpers/toCamelCase.js';
 
 const getKeys = (onChainAccountKeys, allLocalKeys) => {
   const localKeysSet = new Set(allLocalKeys);
@@ -20,13 +18,11 @@ const getKeys = (onChainAccountKeys, allLocalKeys) => {
 export const getAccountKeys = effect(async ({ store, payload }) => {
   const { spaceId, networkId, accountId } = payload;
   const [backend] = store.getEntities((store) => store.backend);
-  const getActiveRpc = store.getEffects((store) => store.nearProtocol.networks.getActiveRpc);
+  const createRpc = store.getEffects((store) => store.nearProtocol.createRpc);
 
   try {
-    const rpc = await getActiveRpc({ spaceId, networkId });
-
-    const response = await viewAccessKeyList(accountId, rpc);
-    const onChainAccountKeys = toCamelCase(response.result.keys);
+    const rpc = await createRpc({ spaceId, networkId });
+    const { keys: onChainAccountKeys } = await rpc.keys.getKeyList(accountId);
 
     const allLocalKeys = await backend.sendRequest('nearProtocol.keys.getIds', {
       spaceId,

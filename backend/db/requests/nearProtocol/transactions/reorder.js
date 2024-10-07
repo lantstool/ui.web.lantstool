@@ -2,6 +2,7 @@ import { getListQuery } from './helpers/getListQuery.js';
 
 /*
   getReorderQuery generates a query like:
+
   UPDATE near_protocol_transactions
   SET "order" = CASE
     WHEN transactionId = 'tx1' THEN 1

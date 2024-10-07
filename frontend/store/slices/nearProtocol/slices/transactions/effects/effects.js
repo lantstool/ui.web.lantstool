@@ -1,5 +1,4 @@
 import { create } from './create.js';
-import { getAccountBalance } from './getAccountBalance.js';
 import { getCount } from './getCount.js';
 import { getList } from './getList.js';
 import { getTx } from './getTx.js';
@@ -21,7 +20,6 @@ export const effects = {
   onDeleteTransaction,
   onEditTransactionName,
   reorder,
-  getAccountBalance,
   onDuplicateTransaction,
   revertTransaction,
-}
+};

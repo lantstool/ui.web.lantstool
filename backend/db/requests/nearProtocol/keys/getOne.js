@@ -9,8 +9,6 @@ export const getOne = async ({ execute, request }) => {
   `;
 
   const [key] = await execute(query);
-  console.log('key', key);
-
   key.derivationPath = utils.derivationPath.deserialize(key.derivationPath);
 
   return key;
