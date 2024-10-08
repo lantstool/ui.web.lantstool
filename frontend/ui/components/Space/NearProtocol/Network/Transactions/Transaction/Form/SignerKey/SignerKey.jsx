@@ -25,7 +25,7 @@ export const SignerKey = ({ form }) => {
     }
   };
 
-  if (!accountId) return null;
+  // if (!accountId) return null;
 
   return (
     <FormSelectGroup
