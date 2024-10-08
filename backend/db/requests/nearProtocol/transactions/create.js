@@ -18,10 +18,10 @@ export const create = async ({ execute, request }) => {
 
   const body = JSON.stringify({
     signer: {
-      accountId: null,
-      publicKey: null,
+      accountId: '',
+      publicKey: '',
     },
-    receiver: null,
+    receiverId: '',
     actions: [],
   });
 

@@ -39,7 +39,7 @@ export const onSaveTransaction = effect(async ({ payload: form, slice, store }) 
 
     await idb.put('transactions', newTransaction);
     putTemporaryFormValues({ transactionId, values: null });
-    //Update transaction and add result for state
+    // Update transaction and add result for state
     updateTransaction({ ...newTransaction, results: values.results });
     form.reset(getFormValues(newTransaction, values));
   } catch (e) {

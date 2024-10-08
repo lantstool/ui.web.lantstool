@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { appendAction } from '../../../../../../ui/components/Space/NearProtocol/Network/Transactions/Transaction/Form/Actions/AddAction/appendAction.js';
+import { appendAction } from './AddAction/appendAction.js';
 import { useWatch } from 'react-hook-form';
 
 function getKeyType(signerKey) {

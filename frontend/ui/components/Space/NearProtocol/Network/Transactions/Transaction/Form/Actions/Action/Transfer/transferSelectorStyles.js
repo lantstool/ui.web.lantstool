@@ -1,4 +1,4 @@
-import { selectStyles } from '../../../general/selectStyles.js';
+import { selectStyles } from '../../../_general/selectStyles.js';
 
 export const transferSelectorStyles = {
   ...selectStyles,

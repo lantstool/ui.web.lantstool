@@ -9,7 +9,7 @@ import cn from './Form.module.scss';
 import { Footer } from './Footer/Footer.jsx';
 import cnm from 'classnames';
 
-const getFormDefaultValues = (transaction) => {
+const getDefaultValues = (transaction) => {
   return {
     transactionId: transaction.transactionId,
     signerId: transaction.signerId,
@@ -22,16 +22,17 @@ const getFormDefaultValues = (transaction) => {
 
 export const Form = ({ transaction }) => {
   // const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
-  const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
   const temporaryFormValues = useStoreState(
     (store) => store.nearProtocol.transactions.drafts[transaction.transactionId],
   );
   const putTemporaryFormValues = useStoreAction(
     (store) => store.nearProtocol.transactions.putTemporaryFormValues,
   );
+  // const defaultValues = useMemo(() => getDefaultValues(transaction), [transaction]);
+  const form = useForm({ defaultValues: transaction.body });
 
   const isResults = transaction.results?.records.length > 0;
-  const form = useForm({ defaultValues: formDefaultValues });
+
 
   // useEffect(() => {
   //   form.reset(formDefaultValues);
@@ -69,7 +70,7 @@ export const Form = ({ transaction }) => {
           <h3 className={cn.title}>Sender</h3>
           <SignerAccount form={form} />
           <SignerKey form={form} />
-          {/*<Actions form={form} />*/}
+          <Actions form={form} />
           {/*<Receiver form={form} />*/}
         </form>
       </div>

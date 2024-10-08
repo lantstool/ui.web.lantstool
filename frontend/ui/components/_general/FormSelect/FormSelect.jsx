@@ -8,7 +8,7 @@ import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.j
 
 export const FormSelect = ({
   control,
-  onChange = false,
+  onChange = null,
   options,
   name,
   components,
@@ -25,20 +25,19 @@ export const FormSelect = ({
     <Controller
       name={name}
       control={control}
-      render={({ field }) => {
-        return (
-          <SelectComponent
-            {...field}
-            isDisabled={isDisabled}
-            onChange={onChange ? onChange(field) : field.onChange}
-            isClearable={isClearable}
-            isSearchable={isSearchable}
-            components={{ ...components, DropdownIndicator, ClearIndicator, IndicatorsContainer }}
-            options={options}
-            styles={style}
-          />
-        );
-      }}
+      render={({ field }) => (
+        <SelectComponent
+          {...field}
+          value={options.find((option) => option.value === field.value)}
+          isDisabled={isDisabled}
+          onChange={onChange ? onChange(field) : (e) => field.onChange(e?.value || null)}
+          isClearable={isClearable}
+          isSearchable={isSearchable}
+          components={{ ...components, DropdownIndicator, ClearIndicator, IndicatorsContainer }}
+          options={options}
+          styles={style}
+        />
+      )}
     />
   );
 };

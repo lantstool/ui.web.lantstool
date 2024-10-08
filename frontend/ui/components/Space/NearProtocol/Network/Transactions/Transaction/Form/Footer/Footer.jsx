@@ -1,4 +1,4 @@
-import cn from './Footer.module.css';
+import cn from './Footer.module.scss';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
 import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
@@ -19,7 +19,8 @@ export const Footer = ({ form }) => {
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {
-    sendTransaction({ formValues });
+    console.log(formValues);
+    // sendTransaction({ formValues });
   });
 
   const revert = () => revertTransaction(form);

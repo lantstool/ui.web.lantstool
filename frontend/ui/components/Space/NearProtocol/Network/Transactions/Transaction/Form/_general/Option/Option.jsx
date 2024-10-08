@@ -8,7 +8,7 @@ export const Option = ({ children, ...props }) => (
   <components.Option {...props}>
     <div className={cn.container}>
       {getText(props.data.value)}
-      <PermissionLabel permission={props.data.permission} />
+      {/*<PermissionLabel permission={props.data.permission} />*/}
     </div>
   </components.Option>
 );

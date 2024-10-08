@@ -1,42 +1,40 @@
 import { useWatch } from 'react-hook-form';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { useEffect, useState } from 'react';
-import { Option } from '../general/Option/Option.jsx';
-import { getOptions } from './getOptions.js';
-import { SelectHeadLabel } from '../general/SelectHeadLabel/SelectHeadLabel.jsx';
+import { useState } from 'react';
+import { Option } from '../_general/Option/Option.jsx';
+import { SelectHeadLabel } from '../_general/SelectHeadLabel/SelectHeadLabel.jsx';
 import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
+import { useDropdownOptions } from './useDropdownOptions.js';
 
 export const SignerKey = ({ form }) => {
   const { control } = form;
-  const getAccessKeyList = useStoreEffect((store) => store.getAccessKeyList);
-  const getKeys = useStoreEffect((store) => store.keys.getKeys);
-  const [options, setOptions] = useState([]);
-  const accountId = useWatch({ control, name: 'signerId.value' });
-  const signerKey = useWatch({ control, name: 'signerKey' });
 
-  useEffect(() => {
-    getOptions(accountId, getAccessKeyList, getKeys, setOptions);
-  }, [accountId]);
+  const options = useDropdownOptions(control);
+  const signerKey = useWatch({ control, name: 'signer.publicKey' });
 
-  const onChange = (field) => (event) => {
-    field.onChange(event);
-    if (signerKey?.value !== event?.value) {
-      form.setValue('actions', []);
-    }
-  };
+  // useEffect(() => {
+  //   getOptions(accountId, getAccessKeyList, getKeys, setOptions);
+  // }, [accountId]);
+
+  // const onChange = (field) => (event) => {
+  //   field.onChange(event);
+  //   if (signerKey?.value !== event?.value) {
+  //     form.setValue('actions', []);
+  //   }
+  // };s
 
   // if (!accountId) return null;
 
   return (
     <FormSelectGroup
-      name="signerKey"
+      name="signer.publicKey"
       control={control}
-      onChange={onChange}
+      // onChange={onChange}
       options={options}
       isClearable={true}
       components={{ Option }}
     >
-      <SelectHeadLabel text="Access Key" permission={signerKey} />
+      {/*<SelectHeadLabel text="Access Key" permission={signerKey} />*/}
     </FormSelectGroup>
   );
 };
