@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
+// import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
 import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { Actions } from './Actions/Actions.jsx';
@@ -11,16 +11,15 @@ import cnm from 'classnames';
 
 export const Form = ({ transaction }) => {
   // const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
-  const temporaryFormValues = useStoreState(
-    (store) => store.nearProtocol.transactions.drafts[transaction.transactionId],
-  );
-  const putTemporaryFormValues = useStoreAction(
-    (store) => store.nearProtocol.transactions.putTemporaryFormValues,
-  );
+  // const temporaryFormValues = useStoreState(
+  //   (store) => store.nearProtocol.transactions.drafts[transaction.transactionId],
+  // );
+  // const putTemporaryFormValues = useStoreAction(
+  //   (store) => store.nearProtocol.transactions.putTemporaryFormValues,
+  // );
   const form = useForm({ defaultValues: transaction.body });
 
   const isResults = transaction.results?.records.length > 0;
-
 
   useEffect(() => {
     form.reset(transaction.body);

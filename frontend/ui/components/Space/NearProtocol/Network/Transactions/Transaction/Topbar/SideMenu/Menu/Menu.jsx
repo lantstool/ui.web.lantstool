@@ -1,10 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import {
-  useStoreEffect
-} from '../../../../../../../../../../../react-vault/index.js';
-import cn from './Menu.module.scss';
 import cnm from 'classnames';
 import { useMemo } from 'react';
+import { Duplicate } from './Duplicate/Duplicate.jsx';
+import cn from './Menu.module.scss';
 
 const popupPosition = {
   bottomRight: { popup: cn.positionRight, arrow: cn.arrowRight },
@@ -15,13 +12,7 @@ const popupPosition = {
 const getType = (position) => popupPosition[position] || popupPosition.center;
 
 export const Menu = ({ openEditModal, openRemoveModal, closeMenu, position }) => {
-  const navigate = useNavigate();
-  const onDuplicateTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onDuplicateTransaction,
-  );
   const { popup, arrow } = useMemo(() => getType(position), [position]);
-
-  const duplicateTx = () => {};
 
   return (
     <>
@@ -31,9 +22,7 @@ export const Menu = ({ openEditModal, openRemoveModal, closeMenu, position }) =>
           <button className={cn.button} onClick={openEditModal}>
             <p className={cn.buttonText}>Edit name</p>
           </button>
-          <button className={cn.button} onClick={duplicateTx}>
-            <p className={cn.buttonText}>Duplicate</p>
-          </button>
+          <Duplicate closeMenu={closeMenu} />
           <button className={cn.button} onClick={openRemoveModal}>
             <p className={cn.buttonText}>Remove</p>
           </button>

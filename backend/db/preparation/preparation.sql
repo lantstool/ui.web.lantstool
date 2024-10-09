@@ -61,6 +61,11 @@ CREATE TABLE IF NOT EXISTS near_protocol_keys (
     ON DELETE CASCADE
 );
 
+/*
+  We need this table only for manage transactions / calls names - when user create
+  a new tx/call we show the default name - Transaction#[counter + 1]
+  Call#[counter + 1]
+ */
 CREATE TABLE IF NOT EXISTS near_protocol_counters (
   spaceId TEXT NOT NULL,
   networkId TEXT NOT NULL,

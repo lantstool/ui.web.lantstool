@@ -6,7 +6,7 @@ export const Topbar = ({ transaction }) => {
     <div className={cn.topbar}>
       <h1 className={cn.name}>{transaction.name}</h1>
       <div className={cn.sideMenu}>
-        <SideMenu transaction={transaction}  />
+        <SideMenu transaction={transaction} />
       </div>
     </div>
   );

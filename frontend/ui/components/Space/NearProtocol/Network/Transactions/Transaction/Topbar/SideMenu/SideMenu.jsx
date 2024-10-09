@@ -17,13 +17,13 @@ export const SideMenu = ({ transaction }) => {
   const openEditModal = () => {
     closeMenu();
     setEditOpen(true);
-  }
+  };
   const closeEditModal = () => setEditOpen(false);
 
   const openRemoveModal = () => {
     closeMenu();
     setRemoveOpen(true);
-  }
+  };
   const closeRemoveModal = () => setRemoveOpen(false);
 
   return (
