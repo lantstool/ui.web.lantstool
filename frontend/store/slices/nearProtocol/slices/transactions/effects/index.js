@@ -5,7 +5,7 @@ import { getTx } from './getTx.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
 import { onDuplicateTransaction } from './onDuplicateTransaction.js';
-import { onEditTransactionName } from './onEditTransactionName.js';
+import { updateOneName } from './updateOneName.js';
 import { save } from './save.js';
 import { onSendTransaction } from './onSendTransaction/onSendTransaction.js';
 import { revertTransaction } from './revertTransaction.js';
@@ -18,7 +18,7 @@ export const effects = {
   onSendTransaction,
   save,
   removeOne,
-  onEditTransactionName,
+  updateOneName,
   reorder,
   onDuplicateTransaction,
   revertTransaction,

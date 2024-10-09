@@ -1,7 +1,7 @@
-import cn from './EditModal.module.scss';
+import cn from './EditNameModal.module.scss';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
-import { useStoreEffect, useStoreState } from '../../../../../../../../../../../react-vault/index.js';
-import { useForm, useWatch } from 'react-hook-form';
+import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';
 import { InputGroup } from '../../../../../../../../_general/InputGroup/InputGroup.jsx';
@@ -10,59 +10,50 @@ import { Title } from '../../../../../_general/Title/Title.jsx';
 import { ErrorMessage } from '../../../../../_general/ErrorMessage/ErrorMessage.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 
-export const EditModal = ({ isOpen, setOpen, transaction }) => {
+export const EditNameModal = ({ closeModal, transaction }) => {
   const { transactionId, name } = transaction;
-  const onEditTransactionName = useStoreEffect((store) => store.nearProtocol.transactions.onEditTransactionName);
-
-  const open = isOpen === 'editModal';
+  const updateOneName = useStoreEffect((store) => store.nearProtocol.transactions.updateOneName);
 
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
-    defaultValues: { transactionName: name },
+    defaultValues: { name },
   });
 
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
     reset,
   } = form;
 
-  const transactionName = useWatch({
-    control,
-    name: 'transactionName',
-  });
-
-  const closeModal = () => {
-    setOpen(null);
+  const close = () => {
+    closeModal();
     reset();
   };
 
-  const edit = () => {
-    onEditTransactionName({ transactionId, transactionName });
-    setOpen(null);
-  };
+  const editName = handleSubmit((formValues) => {
+    updateOneName({ formValues, transactionId, closeModal: close });
+  });
 
   return (
-    <Modal isOpen={open} close={closeModal}>
+    <Modal isOpen={open} close={close}>
       <div className={cn.container}>
         <div className={cn.wrapper}>
           <Title text="Edit name" />
-          <CloseButton close={closeModal} />
+          <CloseButton close={close} />
         </div>
         <div className={cn.inputContainer}>
           <InputGroup
             register={register}
-            name="transactionName"
+            name="name"
             textarea={true}
             rows={4}
             label="Transaction name"
           />
-          <ErrorMessage error={errors.transactionName?.message} />
+          <ErrorMessage error={errors.name?.message} />
         </div>
-        <Button text="Save" onClick={handleSubmit(edit)} style="secondary" />
+        <Button text="Save" onClick={editName} style="secondary" />
       </div>
     </Modal>
   );

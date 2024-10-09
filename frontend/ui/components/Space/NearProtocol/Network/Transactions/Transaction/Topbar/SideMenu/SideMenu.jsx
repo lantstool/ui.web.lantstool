@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import cnm from 'classnames';
-import { EditModal } from './EditModal/EditModal.jsx';
+import { EditNameModal } from './EditNameModal/EditNameModal.jsx';
 import { RemoveModal } from './RemoveModal/RemoveModal.jsx';
 import { Menu } from './Menu/Menu.jsx';
 import { VerticalMoreIcon } from '../../../../../../../../assets/components/VerticalMoreIcon.jsx';
@@ -41,7 +41,7 @@ export const SideMenu = ({ transaction }) => {
           />
         )}
       </div>
-      {isEditOpen && <EditModal closeModal={closeEditModal} transaction={transaction} />}
+      {isEditOpen && <EditNameModal closeModal={closeEditModal} transaction={transaction} />}
       {isRemoveOpen && <RemoveModal closeModal={closeRemoveModal} />}
     </>
   );

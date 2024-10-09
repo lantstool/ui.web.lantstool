@@ -6,6 +6,7 @@ import { addResult } from './addResult.js';
 import { setOpenResult } from './setOpenResult.js';
 import { resetState } from './resetState.js';
 import { setTx } from './setTx.js';
+import { editTxName } from './editTxName.js';
 
 export const actions = {
   setList,
@@ -16,4 +17,5 @@ export const actions = {
   setOpenResult,
   resetState,
   setTx,
+  editTxName,
 };
