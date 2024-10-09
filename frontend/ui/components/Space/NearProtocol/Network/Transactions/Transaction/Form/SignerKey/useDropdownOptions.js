@@ -9,6 +9,7 @@ const getOptions = (arr) =>
     .map((key) => ({
       value: key.publicKey,
       label: key.publicKey,
+      permission: key.accessKey.permission,
     }));
 
 const createOptionsFromKeys = ({ fullAccess, functionCall }) => [
@@ -26,12 +27,12 @@ export const useDropdownOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const getAccountKeys = useStoreEffect((store) => store.nearProtocol.accounts.getAccountKeys);
-  const accountId = useWatch({ control, name: 'signer.accountId' });
+  const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
     (async () => {
       try {
-        if (!accountId) return;
+        if (!accountId) return setOptions([]);
         const keys = await getAccountKeys({ spaceId, networkId, accountId });
         setOptions(createOptionsFromKeys(keys));
       } catch (e) {

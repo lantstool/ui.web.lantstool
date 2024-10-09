@@ -38,8 +38,8 @@ const getResultStatus = (status) => {
 };
 
 export const Result = ({ transaction }) => {
-  const sendTransaction = useStoreEffect((store) => store.transactions.onSendTransaction);
-  const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
+  const sendTransaction = useStoreEffect((store) => store.nearProtocol.transactions.onSendTransaction);
+  const setOpenResult = useStoreAction((store) => store.nearProtocol.transactions.setOpenResult);
   const result = getResultValue(transaction);
   const temporaryFormValues = useStoreState(
     (store) => store.transactions.temporaryFormValues[transaction.transactionId],

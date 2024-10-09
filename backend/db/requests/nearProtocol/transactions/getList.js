@@ -1,4 +1,4 @@
-import { getListQuery } from './helpers/getListQuery.js';
+import { getListQuery } from './queries/getListQuery.js';
 
 export const getList = async ({ execute, request }) => {
   const { spaceId, networkId } = request.body;

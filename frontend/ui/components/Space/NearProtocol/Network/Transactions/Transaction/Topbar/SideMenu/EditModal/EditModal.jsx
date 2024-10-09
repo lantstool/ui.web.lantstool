@@ -1,4 +1,4 @@
-import cn from './EditModal.module.css';
+import cn from './EditModal.module.scss';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { useStoreEffect, useStoreState } from '../../../../../../../../../../../react-vault/index.js';
 import { useForm, useWatch } from 'react-hook-form';
@@ -10,17 +10,18 @@ import { Title } from '../../../../../_general/Title/Title.jsx';
 import { ErrorMessage } from '../../../../../_general/ErrorMessage/ErrorMessage.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 
-export const EditModal = ({ isOpen, setOpen, transactionId }) => {
-  const onEditTransactionName = useStoreEffect((store) => store.transactions.onEditTransactionName);
-  const txName = useStoreState((state) => state.transactions.map[transactionId]?.name);
+export const EditModal = ({ isOpen, setOpen, transaction }) => {
+  const { transactionId, name } = transaction;
+  const onEditTransactionName = useStoreEffect((store) => store.nearProtocol.transactions.onEditTransactionName);
 
   const open = isOpen === 'editModal';
 
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
-    defaultValues: { transactionName: txName },
+    defaultValues: { transactionName: name },
   });
+
   const {
     register,
     control,

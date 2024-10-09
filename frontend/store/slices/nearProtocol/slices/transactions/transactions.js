@@ -1,5 +1,5 @@
-import { actions } from './actions/actions.js';
-import { effects } from './effects/effects.js';
+import { actions } from './actions/index.js';
+import { effects } from './effects/index.js';
 
 export const transactions = {
   // state

@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import cn from './Receiver.module.css';
+import cn from './Receiver.module.scss';
 import { useEffect, useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';

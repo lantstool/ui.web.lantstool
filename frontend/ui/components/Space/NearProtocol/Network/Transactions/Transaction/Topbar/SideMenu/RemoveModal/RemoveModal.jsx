@@ -1,29 +1,23 @@
-import cn from './DeleteModal.module.css';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
 import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
 import { Title } from '../../../../../_general/Title/Title.jsx';
 import { Subtitle } from '../../../../../_general/Subtitle/Subtitle.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../../../../_general/Button/Button.jsx';
+import cn from './RemoveModal.module.scss';
 
-export const DeleteModal = ({ isOpen, transactionId, setOpen }) => {
-  const onDeleteTransaction = useStoreEffect((store) => store.transactions.onDeleteTransaction);
+export const RemoveModal = ({ closeModal }) => {
+  const { spaceId, networkId, transactionId } = useParams();
   const navigate = useNavigate();
-
-  const open = isOpen === 'deleteModal';
-
-  const closeModal = () => {
-    setOpen(null);
-  };
+  const removeOne = useStoreEffect((store) => store.nearProtocol.transactions.removeOne);
 
   const remove = () => {
-    onDeleteTransaction({ transactionId, navigate });
-    setOpen(false);
+    removeOne({ spaceId, networkId, transactionId, navigate, closeModal });
   };
 
   return (
-    <Modal isOpen={open} close={closeModal}>
+    <Modal isOpen close={closeModal}>
       <div className={cn.container}>
         <div className={cn.header}>
           <Title text="Remove transaction" />

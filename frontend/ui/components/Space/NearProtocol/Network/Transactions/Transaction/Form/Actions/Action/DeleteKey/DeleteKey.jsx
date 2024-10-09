@@ -1,12 +1,12 @@
 import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../../../react-vault/index.js';
-import { selectStyles } from '../../../_general/selectStyles.js';
+import { selectStyles } from '../../../_general/components/selectStyles.js';
 import { Controller, useWatch } from 'react-hook-form';
 import { getOptions } from './getOptions.js';
 import cn from './DeleteKey.module.css';
-import { Option } from '../../../_general/Option/Option.jsx';
-import { SelectHeadLabel } from '../../../_general/SelectHeadLabel/SelectHeadLabel.jsx';
+import { Option } from '../../../_general/components/Option/Option.jsx';
+import { SelectHeadLabel } from '../../../_general/components/SelectHeadLabel/SelectHeadLabel.jsx';
 
 export const DeleteKey = ({ form, getName, action }) => {
   const [options, setOptions] = useState([]);

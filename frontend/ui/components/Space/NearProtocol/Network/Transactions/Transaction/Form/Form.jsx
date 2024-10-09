@@ -1,24 +1,13 @@
-import { Actions } from './Actions/Actions.jsx';
-import { Receiver } from './Receiver/Receiver.jsx';
 import { useForm } from 'react-hook-form';
 import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { SignerAccount } from './SignerAccount/SignerAccount.jsx';
+import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
-import { useMemo, useEffect } from 'react';
+import { Actions } from './Actions/Actions.jsx';
+import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
+import { useEffect } from 'react';
 import cn from './Form.module.scss';
 import { Footer } from './Footer/Footer.jsx';
 import cnm from 'classnames';
-
-const getDefaultValues = (transaction) => {
-  return {
-    transactionId: transaction.transactionId,
-    signerId: transaction.signerId,
-    signerKey: transaction.signerKey,
-    receiver: transaction.receiver,
-    actions: transaction.actions,
-    results: transaction.results,
-  };
-};
 
 export const Form = ({ transaction }) => {
   // const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
@@ -28,29 +17,28 @@ export const Form = ({ transaction }) => {
   const putTemporaryFormValues = useStoreAction(
     (store) => store.nearProtocol.transactions.putTemporaryFormValues,
   );
-  // const defaultValues = useMemo(() => getDefaultValues(transaction), [transaction]);
   const form = useForm({ defaultValues: transaction.body });
 
   const isResults = transaction.results?.records.length > 0;
 
 
-  // useEffect(() => {
-  //   form.reset(formDefaultValues);
-  //
-  //   if (temporaryFormValues) {
-  //     form.reset(
-  //       { ...temporaryFormValues, results: transaction.results },
-  //       { keepDefaultValues: true },
-  //     );
-  //   }
-  //
-  //   return () => {
-  //     putTemporaryFormValues({
-  //       values: form.getValues(),
-  //       transactionId: transaction.transactionId,
-  //     });
-  //   };
-  // }, [transaction]);
+  useEffect(() => {
+    form.reset(transaction.body);
+
+    // if (temporaryFormValues) {
+    //   form.reset(
+    //     { ...temporaryFormValues, results: transaction.results },
+    //     { keepDefaultValues: true },
+    //   );
+    // }
+    //
+    // return () => {
+    //   putTemporaryFormValues({
+    //     values: form.getValues(),
+    //     transactionId: transaction.transactionId,
+    //   });
+    // };
+  }, [transaction]);
 
   const toResult = () => {
     // setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
@@ -68,10 +56,10 @@ export const Form = ({ transaction }) => {
         </div>
         <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
           <h3 className={cn.title}>Sender</h3>
-          <SignerAccount form={form} />
+          <SignerId form={form} />
           <SignerKey form={form} />
           <Actions form={form} />
-          {/*<Receiver form={form} />*/}
+          <ReceiverId form={form} />
         </form>
       </div>
       <Footer form={form} />

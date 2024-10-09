@@ -1,18 +1,18 @@
-import cn from './Footer.module.scss';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
 import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
 import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.jsx';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useFormState } from 'react-hook-form';
+import cn from './Footer.module.scss';
 
 export const Footer = ({ form }) => {
+  const { transactionId } = useParams();
   const sendTransaction = useStoreEffect(
     (store) => store.nearProtocol.transactions.onSendTransaction,
   );
-  const saveTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onSaveTransaction,
-  );
+  const save = useStoreEffect((store) => store.nearProtocol.transactions.save);
   const revertTransaction = useStoreEffect(
     (store) => store.nearProtocol.transactions.revertTransaction,
   );
@@ -24,7 +24,7 @@ export const Footer = ({ form }) => {
   });
 
   const revert = () => revertTransaction(form);
-  const save = () => saveTransaction(form);
+  const saveTx = () => save({ form, transactionId });
 
   return (
     <div className={cn.bottomBar}>
@@ -36,7 +36,7 @@ export const Footer = ({ form }) => {
           <button className={cn.button} type="button" onClick={revert}>
             <RestorIcon style={cn.icon} />
           </button>
-          <button className={cn.button} type="button" onClick={save}>
+          <button className={cn.button} type="button" onClick={saveTx}>
             <SaveIcon style={cn.icon} />
           </button>
         </div>

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Topbar } from './Topbar/Topbar.jsx';
 import { Form } from './Form/Form.jsx';
 import { Result } from './Result/Result.jsx';
-import { useStoreState, useStoreEffect  } from '../../../../../../../../react-vault/index.js';
+import { useStoreState, useStoreEffect } from '../../../../../../../../react-vault/index.js';
 import { useLoader } from '../../../../../../hooks/useLoader.js';
 import cn from './Transaction.module.scss';
 
