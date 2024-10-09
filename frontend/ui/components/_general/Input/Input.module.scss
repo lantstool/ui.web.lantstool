@@ -1,0 +1,78 @@
+@use 'frontend/ui/styles/variables.module' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+
+.container {
+  position: relative;
+  height: 72px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.label {
+  @include text-sm-regular;
+  align-content: center;
+  color: $neutral-700;
+  padding: 2px 0;
+}
+
+@mixin input($border-color) {
+  @include text-sm-regular;
+  height: 22px;
+  width: calc(100% - 74px);
+  border-radius: 8px;
+  background: $neutral-50;
+  border: 1px solid $border-color;
+  outline: none;
+  padding: 8px 60px 8px 12px;
+}
+
+.input {
+  @include input($neutral-200);
+  &::placeholder {
+    color: $neutral-400;
+  }
+  &:hover {
+    border-color: $neutral-400;
+  }
+  &:focus {
+    border-color: $neutral-500;
+  }
+  &:disabled {
+    border: 1px solid $neutral-300;
+    background: $neutral-200;
+    color: $neutral-600;
+  }
+}
+
+.errorInput {
+  @include input($red-800);
+  background: $neutral-50;
+}
+
+.buttonWrapper {
+  position: absolute;
+  width: 48px;
+  display: flex;
+  justify-content: right;
+  right: 12px;
+  top: 44px;
+  gap: 8px;
+}
+
+.button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.icon {
+  fill: $neutral-600;
+}
