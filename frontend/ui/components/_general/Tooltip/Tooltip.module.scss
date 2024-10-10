@@ -1,0 +1,31 @@
+@use 'frontend/ui/styles/variables.module' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+
+@mixin tooltip($background-color, $text-color, $box-shadow: none) {
+  border-radius: 8px !important;
+  opacity: 1 !important;
+  background-color: $background-color !important;
+  font-size: 12px !important;
+  color: $text-color !important;
+  line-height: 16px !important;
+  font-weight: 500 !important;
+  padding: 8px 12px !important;
+  box-shadow: $box-shadow !important;
+  max-width: 320px !important;
+  ::before {
+    color: $background-color !important;
+    box-shadow: $box-shadow !important;
+  }
+}
+
+.tooltipBlack {
+  @include tooltip($neutral-800, $neutral-00);
+}
+
+.tooltipWhite {
+  @include tooltip(
+    $neutral-00,
+    $neutral-700,
+    (0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03))
+  );
+}
