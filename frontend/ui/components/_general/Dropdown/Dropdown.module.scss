@@ -1,7 +1,7 @@
 @use '../../../styles/variables.module.scss' as *;
 @use '../../../styles/mixins.module.scss' as *;
 
-.container{
+.container {
   position: relative;
   height: 72px;
   width: 100%;
@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.label{
+.label {
   @include text-sm-regular;
   align-content: center;
   color: $neutral-700;

@@ -1,12 +1,12 @@
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
-import { selectStyles } from './formSelect.style.js';
+import { selectStyles } from './formSelectDPR.style.js';
 import CreatableSelect from 'react-select/creatable';
-import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
-import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
-import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
+import { DropdownIndicatorDPR } from './DropdownIndicatorDRP/DropdownIndicatorDPR.jsx';
+import { ClearIndicatorDPR } from './ClearIndicatorDPR/ClearIndicatorDPR.jsx';
+import { IndicatorsContainerDPR } from './IndicatorsContainerDRP/IndicatorsContainerDPR.jsx';
 
-export const FormSelect = ({
+export const FormSelectDPR = ({
   control,
   onChange = false,
   options,
@@ -33,7 +33,7 @@ export const FormSelect = ({
             onChange={onChange ? onChange(field) : field.onChange}
             isClearable={isClearable}
             isSearchable={isSearchable}
-            components={{ ...components, DropdownIndicator, ClearIndicator, IndicatorsContainer }}
+            components={{ ...components, DropdownIndicator: DropdownIndicatorDPR, ClearIndicator: ClearIndicatorDPR, IndicatorsContainer: IndicatorsContainerDPR }}
             options={options}
             styles={style}
           />

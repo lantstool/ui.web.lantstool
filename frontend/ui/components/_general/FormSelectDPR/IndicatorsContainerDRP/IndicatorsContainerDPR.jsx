@@ -1,10 +1,10 @@
 import { components } from 'react-select';
 import { CopyButton } from '../../../Space/NearProtocol/Network/_general/CopyButton/CopyButton.jsx';
-import cn from './IndicatorsContainer.module.css';
+import cn from './IndicatorsContainerDPR.module.css';
 
 //We have in default 4 children :
 // [0] - clear, [1] - loading [2] - separator, [3] - dropDown
-export const IndicatorsContainer = ({ children, ...props }) => (
+export const IndicatorsContainerDPR = ({ children, ...props }) => (
   <components.IndicatorsContainer {...props}>
     {children[0]}
     {children[1]}

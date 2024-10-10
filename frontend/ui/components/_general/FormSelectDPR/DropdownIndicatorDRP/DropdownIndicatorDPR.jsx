@@ -1,9 +1,9 @@
 import { components } from 'react-select';
-import cn from './DropdownIndicator.module.css';
+import cn from './DropdownIndicatorDPR.module.css';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon.jsx';
 import cnm from 'classnames';
 
-export const DropdownIndicator = ({ children, ...props }) => (
+export const DropdownIndicatorDPR = ({ children, ...props }) => (
   <components.DropdownIndicator {...props}>
     <div className={cn.container}>
       <button className={cn.button} type="button">
