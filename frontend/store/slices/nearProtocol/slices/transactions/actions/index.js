@@ -1,21 +1,15 @@
 import { setList } from './setList.js';
 import { pushTxToList } from './pushTxToList.js';
-import { duplicateTransaction } from './duplicateTransaction.js';
 import { putTemporaryFormValues } from './putTemporaryFormValues.js';
-import { addResult } from './addResult.js';
-import { setOpenResult } from './setOpenResult.js';
-import { resetState } from './resetState.js';
 import { setTx } from './setTx.js';
 import { editTxName } from './editTxName.js';
+import { setResult } from './setResult.js';
 
 export const actions = {
   setList,
   pushTxToList,
-  duplicateTransaction,
   putTemporaryFormValues,
-  addResult,
-  setOpenResult,
-  resetState,
   setTx,
   editTxName,
+  setResult,
 };

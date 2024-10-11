@@ -7,7 +7,7 @@ import { removeOne } from './removeOne.js';
 import { duplicateOne } from './duplicateOne.js';
 import { updateOneName } from './updateOneName.js';
 import { save } from './save.js';
-import { onSendTransaction } from './onSendTransaction/onSendTransaction.js';
+import { sendOne } from './sendOne/sendOne.js';
 import { revertTransaction } from './revertTransaction.js';
 
 export const effects = {
@@ -16,7 +16,7 @@ export const effects = {
   getCount,
   create,
   getTx,
-  onSendTransaction,
+  sendOne,
   updateOneName,
   duplicateOne,
   revertTransaction,

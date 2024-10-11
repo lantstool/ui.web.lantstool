@@ -8,10 +8,8 @@ import { useFormState } from 'react-hook-form';
 import cn from './Footer.module.scss';
 
 export const Footer = ({ form }) => {
-  const { transactionId } = useParams();
-  const sendTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onSendTransaction,
-  );
+  const { spaceId, networkId, transactionId } = useParams();
+  const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
   const save = useStoreEffect((store) => store.nearProtocol.transactions.save);
   const revertTransaction = useStoreEffect(
     (store) => store.nearProtocol.transactions.revertTransaction,
@@ -19,8 +17,7 @@ export const Footer = ({ form }) => {
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {
-    console.log(formValues);
-    // sendTransaction({ formValues });
+    sendOne({ formValues, spaceId, networkId, transactionId });
   });
 
   const revert = () => revertTransaction(form);

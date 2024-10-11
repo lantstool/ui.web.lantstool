@@ -14,7 +14,6 @@ export const duplicateOne = effect(async ({ store, slice, payload }) => {
 
     setList(updatedList);
     closeMenu();
-    // navigate(`../${duplicate.transactionId}`, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);
   }
