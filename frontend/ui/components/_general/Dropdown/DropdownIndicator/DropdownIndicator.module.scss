@@ -14,9 +14,17 @@
   cursor: pointer;
 }
 
-.icon {
+@mixin icon($color) {
   padding: 0;
-  fill: $neutral-600;
+  fill: $color;
   width: 16px;
   height: 16px;
+}
+
+.iconEnabled {
+  @include icon($neutral-600);
+}
+
+.iconDisabled {
+  @include icon($neutral-400);
 }

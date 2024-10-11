@@ -1,10 +1,11 @@
 import cn from './Input.module.scss';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
+import { useWatch } from 'react-hook-form';
 
 export const Input = ({
   register = () => ({}),
-  value,
+  control,
   id,
   name,
   placeholder,
@@ -15,6 +16,11 @@ export const Input = ({
   type = 'text',
   disabled = false,
 }) => {
+  const value = useWatch({
+    control,
+    name,
+  });
+
   return (
     <div className={cn.container}>
       <label className={cn.label}>{label}</label>
@@ -24,15 +30,16 @@ export const Input = ({
         placeholder={placeholder}
         className={error ? cn.errorInput : cn.input}
         type={type}
-        value={value}
         disabled={disabled}
       />
-      <div className={cn.buttonWrapper}>
-        <button disabled={disabled} type="button" onClick={clear} className={cn.button}>
-          <BackspaceOutline style={cn.icon} />
-        </button>
-        <CopyButton disabled={disabled} copy={copy} />
-      </div>
+      {!disabled && value && (
+        <div className={cn.buttonWrapper}>
+          <button disabled={disabled} type="button" onClick={clear} className={cn.button}>
+            <BackspaceOutline style={cn.icon} />
+          </button>
+          <CopyButton disabled={disabled} copy={copy} />
+        </div>
+      )}
     </div>
   );
 };

@@ -18,8 +18,14 @@
 }
 
 @mixin input($border-color) {
-  @include text-sm-regular;
-  height: 22px;
+  @include text-mg-regular;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  max-height: 24px;
+  min-height: 24px;
   width: calc(100% - 74px);
   border-radius: 8px;
   background: $neutral-50;
@@ -57,7 +63,7 @@
   display: flex;
   justify-content: right;
   right: 12px;
-  top: 44px;
+  top: 43px;
   gap: 8px;
 }
 

@@ -10,7 +10,7 @@ export const IndicatorsContainer = ({ children, ...props }) => (
       {children[0]}
       {children[1]}
       {children[2]}
-      {props.selectProps.value?.value && (
+      {props.selectProps.value?.value && !props.isDisabled && (
         <div className={cn.copyContainer} onMouseDown={(e) => e.stopPropagation()}>
           <CopyButton copy={props.selectProps.value?.value} />
         </div>

@@ -1,5 +1,4 @@
 import cn from './Tooltip.module.scss';
-import 'react-tooltip/dist/react-tooltip.css';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 

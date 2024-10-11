@@ -7,12 +7,12 @@ export const DropdownIndicator = ({ isOpenMenu, children, ...props }) => (
   <components.DropdownIndicator {...props}>
     <div className={cn.container}>
       {props.selectProps.menuIsOpen ? (
-        <button type="button" className={cn.button}>
-          <ArrowUpOutline style={cn.icon} />
+        <button disabled={props.isDisabled} type="button" className={cn.button}>
+          <ArrowUpOutline style={props.isDisabled ? cn.iconDisabled : cn.iconEnabled} />
         </button>
       ) : (
-        <button type="button" className={cn.button}>
-          <ArrowDownOutline style={cn.icon} />
+        <button disabled={props.isDisabled} type="button" className={cn.button}>
+          <ArrowDownOutline style={props.isDisabled ? cn.iconDisabled : cn.iconEnabled} />
         </button>
       )}
       {children}
