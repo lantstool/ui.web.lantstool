@@ -1,8 +1,6 @@
 import { action } from '../../../../../react-vault/index.js';
 
 export const setAll = action(({ slice, payload }) => {
-  slice.list = payload; // TODO Remove
-
   slice.ids = [];
   slice.records = {};
 

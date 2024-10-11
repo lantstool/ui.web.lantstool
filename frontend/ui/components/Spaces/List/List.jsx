@@ -1,17 +1,23 @@
 import { Link } from 'react-router-dom';
+import { useStoreState } from '../../../../../react-vault/index.js';
 import cn from './List.module.scss';
 
-export const List = ({ list }) => {
+export const List = ({ ids }) => {
+  const records = useStoreState((store) => store.spaces.records);
+
   return (
     <div className={cn.container}>
-      {list.map((space) => (
-        <div key={space.spaceId} className={cn.row}>
-          <Link to={`/space/${space.spaceId}/select-blockchain`}>{space.name}</Link>
-          <span>{space.type}</span>
-          <span>{new Date(space.createdAt).toLocaleString()}</span>
-          <Link to={`/space/${space.spaceId}/settings`}>Settings</Link>
-        </div>
-      ))}
+      {ids.map((spaceId) => {
+        const { name, type, createdAt } = records[spaceId];
+        return (
+          <div key={spaceId} className={cn.row}>
+            <Link to={`/space/${spaceId}/select-blockchain`}>{name}</Link>
+            <span>{type}</span>
+            <span>{new Date(createdAt).toLocaleString()}</span>
+            <Link to={`/space/${spaceId}/settings`}>Settings</Link>
+          </div>
+        );
+      })}
     </div>
   );
 };

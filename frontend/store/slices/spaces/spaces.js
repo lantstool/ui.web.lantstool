@@ -1,15 +1,14 @@
-import { setAll } from './actions/setAll.js';
+import { actions } from './actions/index.js';
 import { getAll } from './effects/getAll.js';
 import { create } from './effects/create.js';
 import { remove } from './effects/remove.js';
 
 export const spaces = {
   // state
-  list: [],
   ids: [],
   records: {},
   // actions
-  setAll,
+  ...actions,
   // effects
   create,
   getAll,
