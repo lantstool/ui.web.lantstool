@@ -27,7 +27,7 @@ export const network = (
 
     <Route path="keys" element={<Keys />}>
       <Route index element={<KeysList />} />
-      <Route path=":key" element={<Key />} />
+      <Route path=":publicKey" element={<Key />} />
     </Route>
 
     <Route path="accounts" element={<Accounts />}>

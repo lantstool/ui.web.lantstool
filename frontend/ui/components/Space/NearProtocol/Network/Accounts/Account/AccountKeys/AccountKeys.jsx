@@ -10,9 +10,10 @@ export const AccountKeys = () => {
   const [isLoading, keys] = useLoader(getAccountKeys, { spaceId, networkId, accountId }, [
     accountId,
   ]);
-  const { fullAccess, functionCall } = keys;
 
-  if (isLoading) return null;
+  if (isLoading || !keys) return null;
+
+  const { fullAccess, functionCall } = keys;
 
   if (fullAccess.length === 0 && functionCall.length === 0)
     return <p>This account has no keys</p>;

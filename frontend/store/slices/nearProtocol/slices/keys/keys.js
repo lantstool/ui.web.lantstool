@@ -1,29 +1,22 @@
-import { addAccount } from './actions/addAccount.js';
-import { removeKey } from './actions/removeKey.js';
-import { setKeysOnce } from './actions/setKeysOnce.js';
-import { addKey } from './effects/addKey.js';
-import { createKey } from './actions/createKey.js';
-import { resetState } from './actions/resetState.js';
-import { deleteKey } from './effects/deleteKey.js';
+import { setKeyList } from './actions/setKeyList.js';
+import { addKeyToList } from './actions/addKeyToList.js';
+import { importFromPrivateKey } from './effects/importFromPrivateKey.js';
+import { importFromSeedPhrase } from './effects/importFromSeedPhrase.js';
+import { getKeyList } from './effects/getKeyList.js';
 import { getKey } from './effects/getKey.js';
-import { getKeys } from './effects/getKeys.js';
-import { loadKeysOnce } from './effects/loadKeysOnce.js';
+import { removeKey } from './effects/removeKey.js';
 
 export const keys = {
-  // utils state
-  isKeysLoadedToState: false,
+  //state
   ids: [],
   records: {},
   // actions
-  addAccount,
-  removeKey,
-  createKey,
-  setKeysOnce,
-  resetState,
+  setKeyList,
+  addKeyToList,
   //effects
-  addKey,
-  deleteKey,
+  importFromPrivateKey,
+  importFromSeedPhrase,
+  getKeyList,
   getKey,
-  getKeys,
-  loadKeysOnce,
+  removeKey,
 };

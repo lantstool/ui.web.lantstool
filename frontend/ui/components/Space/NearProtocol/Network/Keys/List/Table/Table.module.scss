@@ -1,0 +1,27 @@
+.table {
+  grid-area: b;
+  height: 100%;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 0 0 16px 16px;
+  padding: 0 12px;
+}
+
+.head {
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e9f6f0;
+}
+
+.subtitle {
+  margin: 12px 0 12px 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.subtitle:last-child {
+  margin-right: 76px;
+}

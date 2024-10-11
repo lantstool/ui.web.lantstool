@@ -17,11 +17,9 @@ export const create = async ({ execute, request }) => {
   const order = await getNewTransactionOrder(execute, spaceId, networkId);
 
   const body = JSON.stringify({
-    signer: {
-      accountId: null,
-      publicKey: null,
-    },
-    receiver: null,
+    signerId: null,
+    signerKey: null,
+    receiverId: null,
     actions: [],
   });
 

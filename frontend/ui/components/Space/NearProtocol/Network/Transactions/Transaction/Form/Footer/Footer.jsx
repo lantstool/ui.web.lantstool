@@ -1,29 +1,26 @@
-import cn from './Footer.module.css';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
 import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
 import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.jsx';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useFormState } from 'react-hook-form';
+import cn from './Footer.module.scss';
 
 export const Footer = ({ form }) => {
-  const sendTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onSendTransaction,
-  );
-  const saveTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.onSaveTransaction,
-  );
-  const revertTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.revertTransaction,
-  );
+  const { spaceId, networkId, transactionId } = useParams();
+  const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
+  const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
+  const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
+
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {
-    sendTransaction({ formValues });
+    sendOne({ formValues, spaceId, networkId, transactionId });
   });
 
-  const revert = () => revertTransaction(form);
-  const save = () => saveTransaction(form);
+  const revert = () => revertChanges({ form, transactionId });
+  const save = () => saveChanges({ form, transactionId });
 
   return (
     <div className={cn.bottomBar}>

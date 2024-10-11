@@ -1,76 +1,49 @@
-import { Actions } from './Actions/Actions.jsx';
-import { Receiver } from './Receiver/Receiver.jsx';
 import { useForm } from 'react-hook-form';
 import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { SignerAccount } from './SignerAccount/SignerAccount.jsx';
+import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
-import { useMemo, useEffect } from 'react';
-import cn from './Form.module.scss';
+import { Actions } from './Actions/Actions.jsx';
+import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
+import { useEffect } from 'react';
 import { Footer } from './Footer/Footer.jsx';
 import cnm from 'classnames';
+import cn from './Form.module.scss';
 
-const getFormDefaultValues = (transaction) => {
-  return {
-    transactionId: transaction.transactionId,
-    signerId: transaction.signerId,
-    signerKey: transaction.signerKey,
-    receiver: transaction.receiver,
-    actions: transaction.actions,
-    results: transaction.results,
-  };
-};
+export const Form = ({ transaction, isResultExists }) => {
+  const { transactionId, body } = transaction;
+  const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
+  const draft = useStoreState((store) => store.nearProtocol.transactions.drafts[transactionId]);
+  const setDraft = useStoreAction((store) => store.nearProtocol.transactions.setDraft);
 
-export const Form = ({ transaction }) => {
-  // const setOpenResult = useStoreAction((store) => store.transactions.setOpenResult);
-  const formDefaultValues = useMemo(() => getFormDefaultValues(transaction), [transaction]);
-  const temporaryFormValues = useStoreState(
-    (store) => store.nearProtocol.transactions.drafts[transaction.transactionId],
-  );
-  const putTemporaryFormValues = useStoreAction(
-    (store) => store.nearProtocol.transactions.putTemporaryFormValues,
-  );
+  const form = useForm({ defaultValues: body });
 
-  const isResults = transaction.results?.records.length > 0;
-  const form = useForm({ defaultValues: formDefaultValues });
+  useEffect(() => {
+    form.reset(body);
+    if (draft) form.reset(draft, { keepDefaultValues: true });
 
-  // useEffect(() => {
-  //   form.reset(formDefaultValues);
-  //
-  //   if (temporaryFormValues) {
-  //     form.reset(
-  //       { ...temporaryFormValues, results: transaction.results },
-  //       { keepDefaultValues: true },
-  //     );
-  //   }
-  //
-  //   return () => {
-  //     putTemporaryFormValues({
-  //       values: form.getValues(),
-  //       transactionId: transaction.transactionId,
-  //     });
-  //   };
-  // }, [transaction]);
+    return () => {
+      setDraft({ transactionId, draft: form.getValues() });
+    };
+  }, [transactionId]);
 
-  const toResult = () => {
-    // setOpenResult({ transactionId: transaction.transactionId, isOpen: true });
-  };
+  const openResult = () => setResult({ transactionId, isOpen: true });
 
   return (
     <>
       <div className={cn.formScrollWrapper}>
-        <div className={cnm(cn.topNav, isResults && cn.topNavActive)}>
-          {isResults && (
-            <button className={cn.resultBtn} onClick={toResult}>
+        <div className={cnm(cn.topNav, isResultExists && cn.topNavActive)}>
+          {isResultExists && (
+            <button className={cn.resultBtn} onClick={openResult}>
               Result
             </button>
           )}
         </div>
-        <form className={cnm(cn.form, isResults && cn.formWithoutNav)}>
+        <form className={cnm(cn.form, isResultExists && cn.formWithoutNav)}>
           <h3 className={cn.title}>Sender</h3>
-          <SignerAccount form={form} />
-          {/*<SignerKey form={form} />*/}
-          {/*<Actions form={form} />*/}
-          {/*<Receiver form={form} />*/}
+          <SignerId form={form} />
+          <SignerKey form={form} />
+          <Actions form={form} />
+          <ReceiverId form={form} />
         </form>
       </div>
       <Footer form={form} />

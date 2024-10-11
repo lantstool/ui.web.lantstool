@@ -1,4 +1,4 @@
-import cn from './TopBar.module.css';
+import cn from './TopBar.module.scss';
 
 export const TopBar = () => {
   return (

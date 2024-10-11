@@ -1,17 +1,17 @@
-import cn from './TopBar.module.css';
+import cn from './TopBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
 import { SideMenu } from './SideMenu/SideMenu.jsx';
 
-export const TopBar = ({ networkId, data }) => {
+export const TopBar = ({ publicKey }) => {
   return (
     <div className={cn.container}>
       <div className={cn.wrapper}>
-        <NavLink className={cn.link} to={`/${networkId}/keys`}>
+        <NavLink className={cn.link} to=".." relative="path">
           <BackIcon style={cn.icon} />
         </NavLink>
-        <h2 className={cn.title}>{data?.publicKey}</h2>
-        <SideMenu keyId={data?.publicKey} />
+        <h2 className={cn.title}>{publicKey}</h2>
+        <SideMenu />
       </div>
     </div>
   );

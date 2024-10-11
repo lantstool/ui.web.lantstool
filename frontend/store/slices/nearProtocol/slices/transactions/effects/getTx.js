@@ -6,7 +6,6 @@ export const getTx = effect(async ({ store, slice, payload: transactionId }) => 
 
   try {
     const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', transactionId);
-    console.log(transaction);
     setTx(transaction);
   } catch (e) {
     console.log(e);

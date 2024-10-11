@@ -1,6 +1,9 @@
+import { utils } from './utils.js';
+
 export const create = async ({ execute, request }) => {
   const { publicKey, spaceId, networkId, privateKey, seedPhrase, derivationPath } = request.body;
   const createdAt = Date.now();
+  const dPath = utils.derivationPath.serialize(derivationPath);
 
   const query = `
     INSERT INTO near_protocol_keys 
@@ -12,9 +15,9 @@ export const create = async ({ execute, request }) => {
       ${createdAt}, 
       '${privateKey}', 
       '${seedPhrase}',
-      '${derivationPath}'
+      '${dPath}'
     )
-    RETURNING *;
+    RETURNING publicKey, createdAt;
   `;
 
   const [key] = await execute(query);
