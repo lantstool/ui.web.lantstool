@@ -10,18 +10,17 @@ import cn from './Footer.module.scss';
 export const Footer = ({ form }) => {
   const { spaceId, networkId, transactionId } = useParams();
   const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
-  const save = useStoreEffect((store) => store.nearProtocol.transactions.save);
-  const revertTransaction = useStoreEffect(
-    (store) => store.nearProtocol.transactions.revertTransaction,
-  );
+  const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
+  const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
+
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {
     sendOne({ formValues, spaceId, networkId, transactionId });
   });
 
-  const revert = () => revertTransaction(form);
-  const saveTx = () => save({ form, transactionId });
+  const revert = () => revertChanges({ form, transactionId });
+  const save = () => saveChanges({ form, transactionId });
 
   return (
     <div className={cn.bottomBar}>
@@ -33,7 +32,7 @@ export const Footer = ({ form }) => {
           <button className={cn.button} type="button" onClick={revert}>
             <RestorIcon style={cn.icon} />
           </button>
-          <button className={cn.button} type="button" onClick={saveTx}>
+          <button className={cn.button} type="button" onClick={save}>
             <SaveIcon style={cn.icon} />
           </button>
         </div>

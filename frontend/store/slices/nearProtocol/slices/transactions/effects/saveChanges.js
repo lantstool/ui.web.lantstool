@@ -1,19 +1,19 @@
 import { effect } from '../../../../../../../react-vault/index.js';
 
-export const save = effect(async ({ payload, store }) => {
+export const saveChanges = effect(async ({ store, slice, payload }) => {
   const { form, transactionId } = payload;
   const [backend] = store.getEntities((store) => store.backend);
+  const setDraft = slice.getActions((slice) => slice.setDraft);
 
   const body = form.getValues();
-  console.log(body);
 
   try {
     await backend.sendRequest('nearProtocol.transactions.updateTxBody', {
       body,
       transactionId,
     });
-    // TODO: clear draft. Check if it's ok to save invalid data
-    // We want to reset isDirty state
+
+    setDraft({ transactionId, draft: null });
     form.reset(body);
   } catch (e) {
     console.log(e);

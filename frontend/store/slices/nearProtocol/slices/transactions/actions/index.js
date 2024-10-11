@@ -1,6 +1,6 @@
 import { setList } from './setList.js';
 import { pushTxToList } from './pushTxToList.js';
-import { putTemporaryFormValues } from './putTemporaryFormValues.js';
+import { setDraft } from './setDraft.js';
 import { setTx } from './setTx.js';
 import { editTxName } from './editTxName.js';
 import { setResult } from './setResult.js';
@@ -8,7 +8,7 @@ import { setResult } from './setResult.js';
 export const actions = {
   setList,
   pushTxToList,
-  putTemporaryFormValues,
+  setDraft,
   setTx,
   editTxName,
   setResult,
