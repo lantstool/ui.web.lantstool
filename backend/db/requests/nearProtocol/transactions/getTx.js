@@ -8,8 +8,6 @@ export const getTx = async ({ execute, request }) => {
   `;
   const [transaction] = await execute(query);
 
-  if (!transaction) throw new Error(`Transaction: ${transactionId} not found`);
-
   transaction.body = JSON.parse(transaction.body);
   return transaction;
 };

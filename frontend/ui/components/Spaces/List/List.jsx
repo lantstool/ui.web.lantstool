@@ -11,7 +11,7 @@ export const List = ({ ids }) => {
         const { name, type, createdAt } = records[spaceId];
         return (
           <div key={spaceId} className={cn.row}>
-            <Link to={`/space/${spaceId}/select-blockchain`}>{name}</Link>
+            <Link to={`/space/${spaceId}`}>{name}</Link>
             <span>{type}</span>
             <span>{new Date(createdAt).toLocaleString()}</span>
             <Link to={`/space/${spaceId}/settings`}>Settings</Link>

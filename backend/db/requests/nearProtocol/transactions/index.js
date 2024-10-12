@@ -7,6 +7,7 @@ import { updateOneName } from './updateOneName.js';
 import { duplicateOne } from './duplicateOne.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
+import { validateTransactionId } from './validateTransactionId.js';
 
 export const transactions = {
   create,
@@ -18,4 +19,5 @@ export const transactions = {
   duplicateOne,
   reorder,
   removeOne,
+  validateTransactionId,
 };
