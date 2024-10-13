@@ -1,0 +1,77 @@
+export const selectStyles = () => ({
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    boxShadow: 'none',
+    height: '20px',
+    padding: '0',
+    lineHeight: '20px',
+    fontSize: '14px',
+    fontWeight: 400,
+    backgroundColor: 'none',
+    borderRadius: '0 8px 8px 0',
+
+    maxWidth: '186px',
+    width: 'max-content',
+    ':hover': {
+      border: 'none',
+      cursor: state.isDisabled ? 'none' : 'pointer',
+    },
+  }),
+  input: (styles) => ({
+    ...styles,
+    margin: 0,
+    padding: 0,
+  }),
+  singleValue: (styles) => ({
+    ...styles,
+    margin: 0,
+    padding: 0,
+    color: '#495057',
+  }),
+  valueContainer: (styles) => ({
+    ...styles,
+    margin: 0,
+    padding: 0,
+    height: '24px',
+    color: '#495057',
+
+  }),
+  menu: (styles) => ({
+    ...styles,
+    borderRadius: '8px',
+    backgroundColor: '#FFFFFF',
+    margin: '5px 0px 0px 0px',
+    width: 'max-content',
+    padding: 0,
+  }),
+  menuList: (styles) => ({
+    ...styles,
+    borderRadius: '8px',
+    padding: '4px',
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    fontSize: 14,
+    borderRadius: '4px',
+    height: '100%',
+    minHeight: '32px',
+    maxWidth: '174px',
+    width: '100%',
+    padding: '6px 8px',
+    wordBreak: 'break-word',
+    backgroundColor: !state.isSelected ? '#fff' : '#0075FF',
+    color: state.isSelected ? '#ffffff' : '#212529',
+    ':hover': {
+      cursor: 'pointer',
+      backgroundColor: !state.isDisabled && !state.isSelected ? '#F1F3F5' : 'none',
+    },
+  }),
+  dropdownIndicator: () => ({
+    paddingLeft: '4px',
+  }),
+  indicatorSeparator: () => ({ display: 'none' }),
+});

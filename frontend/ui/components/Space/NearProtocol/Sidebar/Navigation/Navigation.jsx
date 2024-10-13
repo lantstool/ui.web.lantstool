@@ -1,15 +1,15 @@
-import cn from './Navigation.module.css';
+import cn from './Navigation.module.scss';
 import { LinkItem } from './LinkItem/LinkItem.jsx';
-import transaction from '../../../../../assets/transaction.svg';
-import vault from '../../../../../assets/vault.svg';
-import environment from '../../../../../assets/environment.svg';
-import spaces from '../../../../../assets/spaces.svg';
+import { TransactionFileBold } from '../../../../_general/icons/TransactionFileBold.jsx';
+import { CallsOutline } from '../../../../_general/icons/CallsOutline.jsx';
+import { AccountSquareOutline } from '../../../../_general/icons/AccountSquareOutline.jsx';
+import { KeySquareOutline } from '../../../../_general/icons/KeySquareOutline.jsx';
 
-export const Navigation = () => (
+export const Navigation = ({isOpen}) => (
   <div className={cn.navigation}>
-    <LinkItem name="Transactions" src={transaction} to="transactions" />
-    <LinkItem name="Calls" src={environment} to="calls" />
-    <LinkItem name="Accounts" src={spaces} to="accounts" />
-    <LinkItem name="Keys" src={vault} to="keys" />
+    <LinkItem isOpen={isOpen} name="Transactions" Icon={TransactionFileBold} to="transactions" />
+    <LinkItem isOpen={isOpen} name="Calls" Icon={CallsOutline} to="calls" />
+    <LinkItem isOpen={isOpen} name="Accounts" Icon={AccountSquareOutline} to="accounts" />
+    <LinkItem isOpen={isOpen} name="Keys" Icon={KeySquareOutline} to="keys" />
   </div>
 );

@@ -1,0 +1,54 @@
+@use 'frontend/ui/styles/variables.module' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+
+@mixin container($bg-color, $color) {
+  border-radius: 8px;
+  color: $neutral-600;
+  font-size: 16px;
+  background-color: $bg-color;
+  width: calc(100% - 24px);
+  height: 24px;
+  display: grid;
+  grid-template-columns: 16px auto;
+  grid-template-areas: 'a b';
+  align-items: center;
+  padding: 8px 12px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.container {
+  @include container($neutral-00, $neutral-600);
+  &:hover {
+    background-color: $neutral-50;
+    .icon {
+      fill: $neutral-800;
+    }
+    .title {
+      color: $neutral-800;
+    }
+  }
+}
+
+.title {
+  @include text-sm-regular;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  grid-area: b;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  grid-area: a;
+}
+
+.active {
+  @include container($neutral-100, $neutral-600);
+  .icon {
+    fill: $accent-600;
+  }
+  .title {
+    color: $neutral-800;
+  }
+}

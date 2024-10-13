@@ -1,9 +1,16 @@
-.network {
-  //min-height: 100vh;
+@mixin network($colum-width) {
   width: 100%;
   display: grid;
-  grid-template-columns: 220px auto;
+  grid-template-columns: $colum-width auto;
+  transition: 0.3s;
   grid-template-rows: auto;
-  grid-template-areas:
-    'a b';
+  grid-template-areas: 'a b';
+}
+
+.network {
+  @include network(200px);
+}
+
+.closedNetwork {
+  @include network(58px);
 }
