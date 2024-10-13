@@ -1,16 +1,18 @@
-import cn from './SideMenu.module.css';
+import { removeKey } from '../../../../../../../../../store/slices/nearProtocol/slices/keys/effects/removeKey.js';
+import cn from './SideMenu.module.scss';
 import { useState } from 'react';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { useNavigate } from 'react-router-dom';
-import { VerticalMoreIcon } from '../../../../../../../_general/icons/VerticalMoreIcon.jsx';
+import { useNavigate, useParams } from 'react-router-dom';
+import { VerticalMoreIcon } from '../../../../../../../../assets/components/VerticalMoreIcon.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cnm from 'classnames';
 import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.jsx';
 
-export const SideMenu = ({ keyId }) => {
+export const SideMenu = () => {
+  const { spaceId, networkId, publicKey } = useParams();
   const [isOpen, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const deleteKey = useStoreEffect((store) => store.keys.deleteKey);
+  const removeKey = useStoreEffect((store) => store.nearProtocol.keys.removeKey);
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -23,7 +25,7 @@ export const SideMenu = ({ keyId }) => {
   };
 
   const remove = () => {
-    deleteKey({ keyId, navigate });
+    removeKey({ spaceId, networkId, publicKey, navigate });
     setOpen(false);
   };
 

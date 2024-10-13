@@ -1,11 +1,10 @@
 import { effect } from '../../../../../../../react-vault/index.js';
 
-export const getKey = effect(async ({ store, payload: publicKey }) => {
-  const [idb] = store.getEntities((store) => store.idb);
-  const networkId = store.getState((slice) => slice.networks.current.networkId);
+export const getKey = effect(async ({ store, payload }) => {
+  const [backend] = store.getEntities((store) => store.backend);
 
   try {
-    return await idb.get('keys', ['space1', networkId, publicKey]);
+    return await backend.sendRequest('nearProtocol.keys.getOne', payload);
   } catch (e) {
     console.log(e);
   }

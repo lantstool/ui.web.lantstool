@@ -6,17 +6,15 @@ import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import cn from './List.module.scss';
 
 export const List = ({ txList }) => {
+  const { transactionId } = useParams();
   const txMap = useStoreState((store) => store.nearProtocol.transactions.txMap);
   const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
-  const { spaceId, networkId, transactionId } = useParams();
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
     reorder({
       source: result.source.index,
       destination: result.destination.index,
-      spaceId,
-      networkId,
     });
   };
 

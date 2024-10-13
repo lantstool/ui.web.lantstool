@@ -54,13 +54,18 @@ CREATE TABLE IF NOT EXISTS near_protocol_keys (
   createdAt INTEGER NOT NULL,
   privateKey TEXT NOT NULL,
   seedPhrase TEXT,
-  derivationPath TEXT NOT NULL,
+  derivationPath TEXT,
   PRIMARY KEY (spaceId, networkId, publicKey),
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE
 );
 
+/*
+  We need this table only for manage transactions / calls names - when user create
+  a new tx/call we show the default name - Transaction#[counter + 1]
+  Call#[counter + 1]
+ */
 CREATE TABLE IF NOT EXISTS near_protocol_counters (
   spaceId TEXT NOT NULL,
   networkId TEXT NOT NULL,

@@ -11,6 +11,7 @@ import { removeAccount } from './actions/removeAccount.js';
 import { remove } from './effects/remove.js';
 import { getAccountKeys } from './effects/getAccountKeys.js';
 import { getAccountDetails } from './effects/getAccountDetails.js';
+import { getAccountBalance } from './effects/getAccountBalance.js';
 
 export const accounts = {
   ids: [],
@@ -34,4 +35,5 @@ export const accounts = {
   getAccountDetails,
   remove,
   getAccountKeys,
+  getAccountBalance,
 };

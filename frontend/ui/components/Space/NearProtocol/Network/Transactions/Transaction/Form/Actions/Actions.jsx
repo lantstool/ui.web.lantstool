@@ -2,7 +2,7 @@ import { useFieldArray } from 'react-hook-form';
 import { Action } from './Action/Action.jsx';
 import { AddAction } from './AddAction/AddAction.jsx';
 import cn from './Actions.module.css';
-import { useKeyType } from '../../../../../../../../../store/slices/nearProtocol/slices/transactions/hooks/useKeyType.js';
+import { useKeyType } from './useKeyType.js';
 
 export const Actions = ({ form }) => {
   const { fields, append, remove } = useFieldArray({

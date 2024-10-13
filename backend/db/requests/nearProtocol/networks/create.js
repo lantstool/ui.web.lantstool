@@ -1,6 +1,6 @@
 import { fetchJson } from '../../../../../frontend/store/helpers/fetchJson.js';
 
-// TODO use near-api-js or move this code to utils
+// TODO move to effect
 const getNetworkId = async (rpc) => {
   const { result, error } = await fetchJson(rpc, {
     method: 'POST',
@@ -19,7 +19,7 @@ const getNetworkId = async (rpc) => {
 
   return result.chain_id;
 };
-
+// TODO probably useless validation
 const validateSpaceId = async (execute, spaceId) => {
   const query = `
     SELECT spaceId FROM spaces WHERE spaceId = '${spaceId}';

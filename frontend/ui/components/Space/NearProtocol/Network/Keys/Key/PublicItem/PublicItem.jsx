@@ -1,4 +1,4 @@
-import cn from './PublicItem.module.css';
+import cn from './PublicItem.module.scss';
 import { CopyButton } from '../../../_general/CopyButton/CopyButton.jsx';
 
 export const PublicItem = ({ text, label }) => {

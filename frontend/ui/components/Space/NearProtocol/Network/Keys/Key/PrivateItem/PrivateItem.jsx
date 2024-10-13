@@ -1,4 +1,4 @@
-import cn from './PrivateItem.module.css';
+import cn from './PrivateItem.module.scss';
 import { useState } from 'react';
 import { hideText } from '../../../../../../../../store/helpers/hideText.js';
 import { CopyButton } from '../../../_general/CopyButton/CopyButton.jsx';
