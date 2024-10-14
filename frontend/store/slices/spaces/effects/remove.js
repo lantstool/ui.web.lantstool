@@ -9,7 +9,7 @@ export const remove = effect(async ({ store, slice, payload }) => {
     await backend.sendRequest('spaces.remove', { spaceId });
     removeOneFromList(spaceId);
     // TODO Delete from navigate history
-    navigate('/spaces');
+    navigate('/spaces', { replace: true });
   } catch (e) {
     console.log(e);
   }

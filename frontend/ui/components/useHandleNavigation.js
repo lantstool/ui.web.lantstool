@@ -27,7 +27,7 @@ export const useHandleNavigation = () => {
     // If history has the record about user's last visit - redirect him to it
     if (get(history.get(), ['', 'next'])) {
       const destination = getDestination(history.get(), ['']).join('/');
-      navigate(destination);
+      navigate(destination, { replace: true });
       return;
     }
     // Next, we can have a situation either this is the user's first visit or user
@@ -36,7 +36,7 @@ export const useHandleNavigation = () => {
     (async () => {
       const count = await getCount();
       const destination = count === 0 ? '/get-started' : '/spaces';
-      navigate(destination);
+      navigate(destination, { replace: true });
     })();
   }, [match, history]);
 };

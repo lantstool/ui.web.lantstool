@@ -26,6 +26,7 @@ export const validateUrlParams = async (backend, navigate, params) => {
     if (e.code === 404)
       navigate('page-not-found', {
         state: { message: e.message },
+        replace: true,
       });
   }
 };

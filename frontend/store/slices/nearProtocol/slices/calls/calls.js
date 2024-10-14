@@ -14,7 +14,6 @@ import { saveCall } from './effects/saveCall.js';
 import { deleteCall } from './effects/deleteCall.js';
 import { getCallsCount } from './effects/getCallsCount.js';
 import { reorderCalls } from './effects/reorderCalls.js';
-import { onDuplicateTransaction } from './effects/onDuplicateTransaction.js';
 import { callMethod } from './effects/callMethod.js';
 import { revertCall } from './effects/revertCall.js';
 import { editCallName } from './effects/editCallName.js';
@@ -43,7 +42,6 @@ export const calls = {
   deleteCall,
   getCallsCount,
   reorderCalls,
-  onDuplicateTransaction,
   callMethod,
   putTemporaryFormValues,
   revertCall,
