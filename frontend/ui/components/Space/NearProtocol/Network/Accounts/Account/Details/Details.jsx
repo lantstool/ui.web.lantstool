@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   useStoreAction,
   useStoreEffect,
+  useStoreEntity,
   useStoreState,
 } from '../../../../../../../../../react-vault/index.js';
 import { Item } from './Item/Item.jsx';
@@ -18,11 +19,16 @@ export const Details = () => {
     (store) => store.nearProtocol.accounts.resetAccountDetails,
   );
   const details = useStoreState((store) => store.nearProtocol.accounts.account.details);
+  // const history = useStoreEntity((store) => store.history);
   const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId });
 
   // We have to reset data because we will display the wrong data (of prev account)
   // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);
+
+  // useEffect(() => {
+  //   history.update(['', 'space', spaceId, 'near-protocol', networkId, 'accounts', accountId]);
+  // }, []);
 
   if (isLoading) return <p>Loading...</p>;
 

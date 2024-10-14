@@ -15,7 +15,7 @@ import { entity } from '../../../react-vault/index.js';
       error: Object|undefined
     }
   }
-  #status: 200 (Ok) OR 400 (Error)
+  #status: 'ok' OR 'err'
   #error - { code: Number | undefined, message: String }
 
   EVENT
@@ -45,8 +45,8 @@ class Backend {
         console.error(e);
       }
     });
-    // It doesn't matter where we will set up a 'backend-ready-to-work' handler
-    // because all worker messages will be handled only after 'utils' func will be
+    // It doesn't matter where we will set up a 'backendReadyToWork' handler
+    // because all worker messages will be handled only after 'init' func will be
     // completed - creation of a new promise is a sync operation
     return new Promise((resolve) => {
       this.subscribers['backendReadyToWork'] = () => {
@@ -63,7 +63,7 @@ class Backend {
 
     return new Promise((resolve, reject) => {
       this.requests[id] = (response) => {
-        response.status === 200 ? resolve(response.data) : reject(response.error);
+        response.status === 'ok' ? resolve(response.data) : reject(response.error);
         delete this.requests[response.id];
       };
     });

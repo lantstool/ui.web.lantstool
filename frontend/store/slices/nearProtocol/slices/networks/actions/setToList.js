@@ -1,6 +1,6 @@
 import { action } from '../../../../../../../react-vault/index.js';
 
-export const setNetworks = action(({ slice, payload: networks }) => {
+export const setToList = action(({ slice, payload: networks }) => {
   slice.ids = [];
   slice.records = {};
 

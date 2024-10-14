@@ -1,6 +1,7 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { useHandleNavigation } from './useHandleNavigation.js';
 
 export const SpaceId = () => {
-  const { spaceId } = useParams();
+  useHandleNavigation();
   return <Outlet />;
 };

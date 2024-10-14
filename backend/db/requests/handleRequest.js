@@ -1,4 +1,4 @@
-import { spaces } from './spaces/spaces.js';
+import { spaces } from './spaces/index.js';
 import { nearProtocol } from './nearProtocol/nearProtocol.js';
 import get from 'lodash/get';
 
@@ -12,14 +12,20 @@ export const handleRequest = async (requestType, context) => {
   try {
     const handler = get(handlers, requestType);
 
-    if (!handler)
-      throw new Error(`Handler for '${requestType}' is not registered`);
+    if (!handler) throw new Error(`Handler for '${requestType}' is not registered`);
 
     const result = await handler(context);
     const data = result === undefined || result === null ? null : result;
 
-    self.postMessage({ response: { id, type, status: 200, data } });
+    self.postMessage({ response: { id, type, status: 'ok', data } });
   } catch (e) {
-    self.postMessage({ response: { id, type, status: 400, error: e } });
+    self.postMessage({
+      response: {
+        id,
+        type,
+        status: 'err',
+        error: { code: e.code, message: e.message },
+      },
+    });
   }
 };

@@ -1,29 +1,22 @@
 import Select from 'react-select';
-import { useEffect, useState } from 'react';
-import { useStoreEffect } from '../../../../../../../../../../../../react-vault/index.js';
 import { selectStyles } from '../../../_general/components/selectStyles.js';
 import { Controller, useWatch } from 'react-hook-form';
-import { getOptions } from './getOptions.js';
-import cn from './DeleteKey.module.css';
+import { useDropdownOptions } from './useDropdownOptions.js';
 import { Option } from '../../../_general/components/Option/Option.jsx';
 import { SelectHeadLabel } from '../../../_general/components/SelectHeadLabel/SelectHeadLabel.jsx';
+import cn from './DeleteKey.module.scss';
 
 export const DeleteKey = ({ form, getName, action }) => {
-  const [options, setOptions] = useState([]);
-  const getAccessKeyList = useStoreEffect((store) => store.getAccessKeyList);
   const { control, setValue } = form;
-  const accountId = useWatch({ control, name: 'signerId.value' });
   const actions = useWatch({ control, name: `actions` });
+  const options = useDropdownOptions(control);
+
   const findAction = actions.find((el) => el.actionId === action.actionId);
 
   const onChange = (field) => (event) => {
     field.onChange(event);
     setValue('accessKey', event);
   };
-
-  useEffect(() => {
-    getOptions(accountId, getAccessKeyList, setOptions);
-  }, [accountId]);
 
   return (
     <div className={cn.deleteKey}>

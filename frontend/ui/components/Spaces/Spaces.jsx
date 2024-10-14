@@ -6,18 +6,18 @@ import { useLoader } from '../../hooks/useLoader.js';
 import cn from './Spaces.module.scss';
 
 export const Spaces = () => {
-  const list = useStoreState((store) => store.spaces.list);
+  const ids = useStoreState((store) => store.spaces.ids);
   const getAll = useStoreEffect((store) => store.spaces.getAll);
   const [isLoading] = useLoader(getAll);
 
   if (isLoading) return null;
-  if (list.length === 0) return <Empty />;
+  if (ids.length === 0) return <Empty />;
 
   return (
     <div className={cn.container}>
       <h1>Spaces</h1>
       <Link to="create">Create Space</Link>
-      <List list={list} />
+      <List ids={ids} />
     </div>
   );
 };
