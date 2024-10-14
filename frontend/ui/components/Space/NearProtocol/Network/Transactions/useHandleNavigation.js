@@ -36,6 +36,6 @@ export const useHandleNavigation = () => {
       return navigate(destination, { replace: true });
     }
     // If it's a first visit or user made double click and want to go exactly to the transactions page
-    history.update(['', 'space', spaceId, 'near-protocol', networkId, 'transactions']);
+    history.update(location.pathname);
   }, [location.pathname]);
 };

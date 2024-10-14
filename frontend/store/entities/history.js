@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { get, set } from 'lodash';
 import { entity } from '../../../react-vault/index.js';
 
 class History {
@@ -16,7 +16,19 @@ class History {
     localStorage.setItem('Lantstool-history.1', JSON.stringify(this.history));
   }
 
-  update(path) {
+  getDestination(pathname) {
+    const arrPath = pathname.split('/');
+
+    const fn = (path) => {
+      const nextRoute = get(this.history, [...path, 'next']);
+      return nextRoute ? fn([...path, nextRoute]) : path;
+    };
+
+    return fn(arrPath);
+  }
+
+  update(pathname) {
+    const path = pathname.split('/');
     path.forEach((segment, index) => {
       if (index >= path.length - 1) return; // Last element is the end segment and doesn't have 'next'
       set(this.history, [...path.slice(0, index + 1), 'next'], path[index + 1]);

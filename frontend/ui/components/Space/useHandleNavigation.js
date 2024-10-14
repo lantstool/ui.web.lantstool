@@ -14,6 +14,8 @@ export const useHandleNavigation = () => {
   const history = useStoreEntity((store) => store.history);
   const match = matchPath('/space/:spaceId', location.pathname);
 
+  console.log(history.getDestination(location.pathname));
+
   useEffect(() => {
     if (!match) return;
 
