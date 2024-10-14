@@ -1,6 +1,10 @@
 import cn from './Result.module.css';
-import { useStoreAction, useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
-import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
+import {
+  useStoreAction,
+  useStoreEffect,
+  useStoreState,
+} from '../../../../../../../../../react-vault/index.js';
+import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
 import { Button } from '../../../_general/Button/Button.jsx';

@@ -1,38 +1,28 @@
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../react-vault/index.js';
+import { useStoreEffect } from '../../../../../react-vault/index.js';
 import { useLoader } from '../../../hooks/useLoader.js';
+import { Selector } from '../_general/Selector/Selector.jsx';
+import { useSpaceOptions } from './useSpaceOptions.jsx';
 import cn from './SelectSpace.module.scss';
-
-const getOptions = (ids, records) =>
-  ids.map((spaceId) => (
-    <option value={spaceId} key={spaceId}>
-      {records[spaceId].name}
-    </option>
-  ));
 
 export const SelectSpace = () => {
   const { spaceId } = useParams();
-  const ids = useStoreState((store) => store.spaces.ids);
-  const records = useStoreState((store) => store.spaces.records);
   const getAll = useStoreEffect((store) => store.spaces.getAll);
   const navigate = useNavigate();
-
   const [isLoading] = useLoader(getAll);
-
   const match = useMatch('/space/:spaceId/*');
+  const { options, defaultValue } = useSpaceOptions(spaceId);
+
   if (isLoading || !match) return null;
 
-  const options = getOptions(ids, records);
-
-  const onChange = (event) => {
-    if (event.target.value === 'manageSpaces') return navigate(`/spaces`);
-    navigate(`/space/${event.target.value}`);
+  const onChange = (option) => {
+    if (option.value === 'manageSpaces') return navigate(`/spaces`);
+    navigate(`/space/${option.value}`);
   };
 
   return (
-    <select value={spaceId} onChange={onChange} className={cn.selectSpace}>
-      {options}
-      <option value="manageSpaces">Manage Spaces</option>
-    </select>
+    <div className={cn.selectSpace}>
+      <Selector onChange={onChange} defaultValue={defaultValue} options={options} />
+    </div>
   );
 };

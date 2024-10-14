@@ -1,6 +1,6 @@
 import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
 import cn from './ModalGroup.module.css';
-import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
+import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 import { Title } from '../../../_general/Title/Title.jsx';
 import { CloseButton } from '../../../_general/CloseButton/CloseButton.jsx';
 

@@ -1,4 +1,4 @@
-import { FormSelect } from '../FormSelect/FormSelect.jsx';
+import { FormSelectDPR } from '../FormSelectDPR/FormSelectDPR.jsx';
 import cn from './FormSelectGroup.module.css';
 import { BalanceLabel } from './BalanceLabel/BalanceLabel.jsx';
 
@@ -28,7 +28,7 @@ export const FormSelectGroup = ({
         </div>
       )}
       <div className={cn.errorSelect}>
-        <FormSelect
+        <FormSelectDPR
           name={name}
           control={control}
           onChange={onChange}

@@ -1,5 +1,5 @@
 import cn from './CloseButton.module.css';
-import { CloseIcon } from '../../../../../../assets/components/CloseIcon.jsx';
+import { CloseIcon } from '../../../../../_general/icons/CloseIcon.jsx';
 
 export const CloseButton = ({ close }) => {
   return (

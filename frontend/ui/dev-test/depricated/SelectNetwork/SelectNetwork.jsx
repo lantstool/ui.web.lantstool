@@ -1,5 +1,5 @@
 import cn from './SelectNetwork.module.scss';
-import { ArrowDownIcon } from '../../../assets/components/ArrowDownIcon.jsx';
+import { ArrowDownIcon } from '../../../components/_general/icons/ArrowDownIcon.jsx';
 import { useEffect, useMemo, useState } from 'react';
 import { useStoreState, useStoreEffect } from '../../../../../react-vault/index.js';
 import { useNavigate, useParams } from 'react-router-dom';

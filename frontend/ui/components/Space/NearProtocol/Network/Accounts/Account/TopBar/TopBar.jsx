@@ -1,6 +1,6 @@
 import cn from './TopBar.module.scss';
 import { Link, useParams } from 'react-router-dom';
-import { BackIcon } from '../../../../../../../assets/components/BackIcon.jsx';
+import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 import { SideMenu } from './SideMenu/SideMenu.jsx';
 
 export const TopBar = () => {

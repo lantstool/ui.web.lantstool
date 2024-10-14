@@ -1,5 +1,6 @@
 import { useMatch, useNavigate } from 'react-router-dom';
 import cn from './SelectBlockchain.module.scss';
+import { Selector } from '../_general/Selector/Selector.jsx';
 
 export const SelectBlockchain = () => {
   const navigate = useNavigate();
@@ -11,12 +12,15 @@ export const SelectBlockchain = () => {
   if (segment === 'select-blockchain' || segment === 'settings') return null;
 
   const changeBlockchain = (event) => {
-    navigate(`space/${spaceId}/${event.target.value}`);
+    navigate(`space/${spaceId}/${event.value}`);
   };
 
   return (
-    <select value={segment} onChange={changeBlockchain} className={cn.selectBlockchain}>
-      <option value="near-protocol">Near Protocol</option>
-    </select>
+    <div className={cn.selectBlockchain}>
+      <Selector
+        onChange={changeBlockchain}
+        defaultValue={{ label: 'Near Protocol', value: 'near-protocol' }}
+      />
+    </div>
   );
 };

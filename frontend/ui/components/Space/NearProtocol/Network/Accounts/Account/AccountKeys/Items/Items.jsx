@@ -1,6 +1,6 @@
 import cn from './Items.module.scss';
 import cnm from 'classnames';
-import { CheckMarkIcon } from '../../../../../../../../assets/components/CheckMarkIcon.jsx';
+import { CheckMarkIcon } from '../../../../../../../_general/icons/CheckMarkIcon.jsx';
 
 export const Items = ({ keys, type, name }) => {
   if (keys.length === 0) return;

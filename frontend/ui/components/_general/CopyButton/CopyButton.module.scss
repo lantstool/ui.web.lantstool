@@ -1,0 +1,20 @@
+@use 'frontend/ui/styles/variables.module' as *;
+
+.button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.icon {
+  padding: 0;
+  fill: $neutral-600;
+  width: 16px;
+  height: 16px;
+}

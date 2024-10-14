@@ -1,5 +1,5 @@
 import cn from './CopyButton.module.css';
-import { CopyIcon } from '../../../../../../assets/components/CopyIcon.jsx';
+import { CopyIcon } from '../../../../../_general/icons/CopyIcon.jsx';
 import { useState } from 'react';
 
 export const CopyButton = ({ text, size = 20 }) => {

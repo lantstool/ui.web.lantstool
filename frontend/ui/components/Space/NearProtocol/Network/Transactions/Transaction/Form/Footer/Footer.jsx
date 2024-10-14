@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTx from '../../../../../../../../assets/sendTransaction.svg';
-import { RestorIcon } from '../../../../../../../../assets/components/RestorIcon.jsx';
-import { SaveIcon } from '../../../../../../../../assets/components/SaveIcon.jsx';
+import { RestorIcon } from '../../../../../../../_general/icons/RestorIcon.jsx';
+import { SaveIcon } from '../../../../../../../_general/icons/SaveIcon.jsx';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { useFormState } from 'react-hook-form';
 import cn from './Footer.module.scss';

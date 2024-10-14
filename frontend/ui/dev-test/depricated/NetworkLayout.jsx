@@ -2,7 +2,7 @@ import { useStoreEffect } from '../../../../react-vault/index.js';
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { useNavigateToSavedRoute } from './navigation/useNavigateToSavedRoute.js';
-import { Sidebar } from '../../components/Space/NearProtocol/Sidebar/Sidebar.jsx';
+import { Sidebar } from '../../components/Space/NearProtocol/Network/Sidebar/Sidebar.jsx';
 import cn from './NetworkLayout.module.css';
 
 export const NetworkLayout = () => {
