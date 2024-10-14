@@ -21,7 +21,6 @@ export const Transaction = () => {
   useLoader(getTx, transactionId, [transactionId]);
 
   useEffect(() => {
-    if (!transaction) return;
     history.update([
       '',
       'space',
@@ -31,7 +30,7 @@ export const Transaction = () => {
       'transactions',
       transactionId,
     ]);
-  }, [transaction]);
+  }, [transactionId]);
 
   // We use it instead of 'isLoading' to avoid a screen blinking
   if (!transaction) return null;

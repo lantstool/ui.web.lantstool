@@ -21,7 +21,7 @@ class History {
       if (index >= path.length - 1) return; // Last element is the end segment and doesn't have 'next'
       set(this.history, [...path.slice(0, index + 1), 'next'], path[index + 1]);
     });
-    console.log(this.history);
+    console.log('update history', this.history);
   }
 
   get() {

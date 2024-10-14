@@ -21,8 +21,7 @@ export const useHandleNavigation = () => {
       const destination = getDestination(history.get(), ['', 'space', match.params.spaceId]).join(
         '/',
       );
-      navigate(destination, { replace: true });
-      return;
+      return navigate(destination, { replace: true });
     }
 
     navigate('./select-blockchain', { relative: 'path', replace: true });
