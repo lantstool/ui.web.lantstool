@@ -3,7 +3,21 @@ import { entityType } from '../types.js';
 import { createEntitySelector } from './createEntitySelector.js';
 import { mapModel } from '../utils/mapModel.js';
 
-const createEntity = ({ handler, type }) => {
+const injectSlice = (store, path) => ({
+  getState: store.state.useSliceSelector(path),
+  getActions: store.actions.useSliceSelector(path),
+  getEffects: store.effects.useSliceSelector(path),
+  getEntities: store.entities.useSliceSelector(path),
+});
+
+const injectStore = (store) => ({
+  getState: store.state.useSelector,
+  getActions: store.actions.useSelector,
+  getEffects: store.effects.useSelector,
+  getEntities: store.entities.useSelector,
+});
+
+const createEntity = ({ handler, type, store, path }) => {
   const state = {
     value: null,
   };
@@ -11,7 +25,11 @@ const createEntity = ({ handler, type }) => {
     type,
     get: () => state.value,
     set: async (payload) => {
-      state.value = await handler(payload);
+      state.value = await handler({
+        store: injectStore(store),
+        slice: injectSlice(store, path),
+        payload,
+      });
       return state.value;
     },
   };

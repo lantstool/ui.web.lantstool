@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const useLoader = (fn, args = undefined, deps = []) => {
   const [isLoading, setLoading] = useState(true);
-  const [result, setResult] = useState(true);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
     (async () => {

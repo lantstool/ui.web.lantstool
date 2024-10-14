@@ -45,8 +45,8 @@ class Backend {
         console.error(e);
       }
     });
-    // It doesn't matter where we will set up a 'backend-ready-to-work' handler
-    // because all worker messages will be handled only after 'utils' func will be
+    // It doesn't matter where we will set up a 'backendReadyToWork' handler
+    // because all worker messages will be handled only after 'init' func will be
     // completed - creation of a new promise is a sync operation
     return new Promise((resolve) => {
       this.subscribers['backendReadyToWork'] = () => {
