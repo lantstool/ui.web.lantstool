@@ -5,23 +5,18 @@ import { Selector } from '../_general/Selector/Selector.jsx';
 import { useNetworkOptions } from './useNetworkOptions.jsx';
 import cn from './SelectNearNetwork.module.scss';
 
-const getDefaultValue = (options, networkId) =>
-  options.find((option) => option.networkId === networkId);
-
 export const SelectNearNetwork = () => {
   const { spaceId, networkId } = useParams();
   const getAll = useStoreEffect((store) => store.nearProtocol.networks.getAll);
-  const options = useNetworkOptions();
-  const defaultValue = getDefaultValue(options, networkId);
+  const { options, defaultValue } = useNetworkOptions(networkId);
   const navigate = useNavigate();
-
   const [isLoading] = useLoader(getAll, { spaceId }, [spaceId]);
   const match = useMatch('/space/:spaceId/near-protocol/*');
   // We also want to hide select when user go to '/near-protocol/networks' - we use networkId for that
   if (isLoading || !match || !networkId) return null;
 
   const onChange = (event) => {
-    navigate(`/space/${spaceId}/near-protocol/${event.networkId}`);
+    navigate(`/space/${spaceId}/near-protocol/${event.value}`);
   };
 
   return (

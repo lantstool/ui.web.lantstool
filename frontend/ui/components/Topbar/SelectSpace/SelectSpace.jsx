@@ -1,11 +1,9 @@
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '../../../../../react-vault/index.js';
 import { useLoader } from '../../../hooks/useLoader.js';
-import cn from './SelectSpace.module.scss';
 import { Selector } from '../_general/Selector/Selector.jsx';
 import { useSpaceOptions } from './useSpaceOptions.jsx';
-
-const getDefaultValue = (options, spaceId) => options.find((option) => option.spaceId === spaceId);
+import cn from './SelectSpace.module.scss';
 
 export const SelectSpace = () => {
   const { spaceId } = useParams();
@@ -13,14 +11,13 @@ export const SelectSpace = () => {
   const navigate = useNavigate();
   const [isLoading] = useLoader(getAll);
   const match = useMatch('/space/:spaceId/*');
-  const options = useSpaceOptions();
-  const defaultValue = getDefaultValue(options, spaceId);
+  const { options, defaultValue } = useSpaceOptions(spaceId);
 
   if (isLoading || !match) return null;
 
   const onChange = (option) => {
     if (option.value === 'manageSpaces') return navigate(`/spaces`);
-    navigate(`/space/${option.spaceId}`);
+    navigate(`/space/${option.value}`);
   };
 
   return (

@@ -7,6 +7,8 @@ import { keys } from './slices/keys/keys.js';
 import { setMinimize } from './actions/setMinimize.js';
 
 export const nearProtocol = {
+  isMinimize: false,
+  setMinimize,
   ...effects,
   // slices
   networks,
@@ -14,6 +16,4 @@ export const nearProtocol = {
   calls,
   accounts,
   keys,
-  isMinimize: false,
-  setMinimize,
 };
