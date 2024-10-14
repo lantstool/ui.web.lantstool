@@ -1,0 +1,31 @@
+.button {
+  width: 175px;
+  background-color: white;
+  border: none;
+  display: flex;
+  height: 40px;
+  padding: 0 20px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  word-break: normal;
+}
+
+.button:hover {
+  background-color: var(--Color-Green-200);
+  cursor: pointer;
+}
+
+.button:first-child {
+  border-radius: var(--Spacing-4) var(--Spacing-4) 0 0;
+}
+
+.button:last-child {
+  border-radius: 0 0 var(--Spacing-4) var(--Spacing-4);
+}
+
+.buttonText {
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 800px;
+  grid-template-rows: 70px auto 60px;
+  grid-template-areas:
+    'a'
+    'b'
+    'c';
+  box-shadow: var(--Box-Shadow-025);
+  border-radius: var(--Border-Radius-3);
+}

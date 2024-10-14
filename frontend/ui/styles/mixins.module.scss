@@ -1,0 +1,72 @@
+@use "variables.module" as *;
+
+@mixin base-typography($font-size, $line-height, $font-weight) {
+  font-size: $font-size;
+  line-height: $line-height;
+  text-align: left;
+  font-weight: $font-weight;
+}
+
+@mixin text-lg-regular {
+  @include base-typography($font-size-lg, $line-height-lg, 400);
+}
+
+@mixin text-lg-medium {
+  @include base-typography($font-size-lg, $line-height-lg, 500);
+}
+
+@mixin text-lg-semibold {
+  @include base-typography($font-size-lg, $line-height-lg, 600);
+}
+
+@mixin text-lg-bold {
+  @include base-typography($font-size-lg, $line-height-lg, 700);
+}
+
+@mixin text-mg-regular {
+  @include base-typography($font-size-mg, $line-height-mg, 400);
+}
+
+@mixin text-mg-medium {
+  @include base-typography($font-size-mg, $line-height-mg, 500);
+}
+
+@mixin text-mg-semibold {
+  @include base-typography($font-size-mg, $line-height-mg, 600);
+}
+
+@mixin text-mg-bold {
+  @include base-typography($font-size-mg, $line-height-mg, 700);
+}
+
+@mixin text-sm-regular {
+  @include base-typography($font-size-sm, $line-height-sm, 400);
+}
+
+@mixin text-sm-medium {
+  @include base-typography($font-size-sm, $line-height-sm, 500);
+}
+
+@mixin text-sm-semibold {
+  @include base-typography($font-size-sm, $line-height-sm, 600);
+}
+
+@mixin text-sm-bold {
+  @include base-typography($font-size-sm, $line-height-sm, 700);
+}
+
+@mixin text-xs-regular {
+  @include base-typography($font-size-xs, $line-height-xs, 400);
+}
+
+@mixin text-xs-medium {
+  @include base-typography($font-size-xs, $line-height-xs, 500);
+}
+
+@mixin text-xs-semibold {
+  @include base-typography($font-size-xs, $line-height-xs, 600);
+}
+
+@mixin text-xs-bold {
+  @include base-typography($font-size-xs, $line-height-xs, 700);
+}

@@ -1,0 +1,78 @@
+@use 'frontend/ui/styles/variables.module' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+
+@mixin label {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 4px;
+  margin: 0;
+  border-radius: 12px;
+  max-width: max-content;
+}
+
+@mixin span {
+  @include label;
+  @include text-sm-medium;
+}
+
+@mixin textStyle($textColor) {
+  color: $textColor;
+}
+
+@mixin iconStyle($iconColor) {
+  fill: $iconColor;
+}
+
+.text {
+  @include textStyle($neutral-700);
+}
+
+.icon {
+  @include iconStyle($neutral-700);
+}
+
+@mixin colorScheme($bgColor, $textColor, $iconColor) {
+  @include span;
+  background-color: $bgColor;
+  .text {
+    @include textStyle($textColor);
+  }
+  .icon {
+    @include iconStyle($iconColor);
+  }
+}
+
+.grey {
+  @include colorScheme($neutral-100, $neutral-700, $neutral-700);
+}
+
+.success {
+  @include colorScheme($green-50, $success-800, $success-800);
+}
+
+.error {
+  @include colorScheme($error-50, $error-800, $error-800);
+}
+
+.cyan {
+  @include colorScheme($cyan-50, $cyan-800, $cyan-800);
+}
+
+.blue {
+  @include colorScheme($blue-50, $blue-800, $blue-800);
+}
+
+.purple {
+  @include colorScheme($purple-50, $purple-800, $purple-800);
+}
+
+.red {
+  @include colorScheme($red-50, $red-800, $red-800);
+}
+
+.green {
+  @include colorScheme($green-50, $green-800, $green-800);
+}

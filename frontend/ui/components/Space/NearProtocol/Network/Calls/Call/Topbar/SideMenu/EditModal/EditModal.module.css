@@ -1,0 +1,31 @@
+.container {
+  grid-area: b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 450px;
+  height: 300px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
+  position: fixed;
+  top: calc(50%);
+  left: calc(50% + 375px);
+  transform: translate(-50%, -50%);
+  padding: 25px;
+}
+
+.inputContainer {
+  color: #000000ff;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 26px auto 26px;
+  grid-template-areas: '. a b';
+  align-items: center;
+}
+
+.closeBtn {
+  grid-area: b;
+}

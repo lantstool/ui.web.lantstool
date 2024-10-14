@@ -1,0 +1,79 @@
+.container {
+  height: calc(100vh - 136px);
+  padding: 0;
+  overflow-y: auto;
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  background-color: white;
+  border-bottom: 1px solid var(--Color-Green-300);
+}
+
+.backBtn {
+  margin: 15px 35px;
+  background: none;
+  border: none;
+}
+
+.icon {
+  width: 24px;
+  stroke: var(--Button-Primary);
+  fill: var(--Button-Primary);
+}
+
+.icon:hover {
+  cursor: pointer;
+  stroke: var(--Color-Green-1700);
+  fill: var(--Color-Green-1700);
+}
+
+.loader {
+  margin: 30px;
+}
+
+.title {
+  text-align: center;
+  color: var(--Text-Dark);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 30px;
+}
+
+.subtitle {
+  margin: 0 40px;
+}
+
+.error {
+  margin: 16px 40px;
+  color: var(--Color-Red-500);
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-areas: '. a b';
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background-color: var(--Color-Green-200);
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.closeBtn {
+  grid-area: a;
+  justify-self: center;
+}
+
+.resendBtn {
+  grid-area: b;
+  display: flex;
+  margin-right: 30px;
+}

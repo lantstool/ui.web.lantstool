@@ -1,0 +1,10 @@
+.transactions {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10px 300px 10px auto 10px;
+  grid-template-rows: 10px calc(100vh - 70px) 10px;
+  grid-template-areas:
+    '. . . . .'
+    '. a . b .'
+    '. . . . .';
+}

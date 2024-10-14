@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  height: 49px;
+  border-bottom: 1px solid #e9f6f0;
+}
+
+.container:last-child {
+  border-bottom: none;
+}
+
+.link {
+  height: 49px;
+}
+
+.key {
+  font-size: 16px;
+  color: var(--Text-Dark);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 15px 22px;
+  grid-template-areas: 'a . b';
+}
+
+.btn {
+  grid-area: b;
+  justify-self: end;
+}

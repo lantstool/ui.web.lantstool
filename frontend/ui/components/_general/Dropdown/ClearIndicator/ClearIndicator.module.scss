@@ -1,0 +1,24 @@
+@use 'frontend/ui/styles/variables.module' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  :hover{
+    cursor: pointer;
+  }
+}
+
+.button {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+}
+
+.icon {
+  fill: $neutral-600;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+}
