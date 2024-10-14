@@ -3,7 +3,7 @@ import cnm from 'classnames';
 import { EditNameModal } from './EditNameModal/EditNameModal.jsx';
 import { RemoveModal } from './RemoveModal/RemoveModal.jsx';
 import { Menu } from './Menu/Menu.jsx';
-import { VerticalMoreIcon } from '../../../../../../../../assets/components/VerticalMoreIcon.jsx';
+import { VerticalMoreIcon } from '../../../../../../../_general/icons/VerticalMoreIcon.jsx';
 import cn from './SideMenu.module.scss';
 
 export const SideMenu = ({ transaction }) => {
