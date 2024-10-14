@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { useHandleNavigation } from './useHandleNavigation.js';
+import { useManageRouting } from './useManageRouting.js';
 
 export const SpaceId = () => {
-  useHandleNavigation();
+  useManageRouting();
   return <Outlet />;
 };

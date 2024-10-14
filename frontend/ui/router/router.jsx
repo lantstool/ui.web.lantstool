@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { App } from '../components/App.jsx';
 import { GetStarted } from '../components/GetStarted/GetStarted.jsx';
 import { Space } from '../components/Space/Space.jsx';
-import { SpaceId } from '../components/Space/SpaceId.jsx';
+import { SpaceId } from '../components/Space/SpaceId/SpaceId.jsx';
 import { SelectBlockchain } from '../components/Space/SelectBlockchain/SelectBlockchain.jsx';
 import { Settings } from '../components/Space/Settings/Settings.jsx';
 import { Spaces } from '../components/Spaces/Spaces.jsx';

@@ -1,13 +1,11 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { TopBar } from './TopBar/TopBar.jsx';
 import { AccountLink } from './AccountLink/AccountLink.jsx';
-import { useHandleNavigation } from './useHandleNavigation.js';
+import { useManageRouting } from './useManageRouting.js';
 import cn from './Account.module.scss';
 
 export const Account = () => {
-  // const location = useLocation();
-  // console.log(window.location);
-  // useHandleNavigation();
+  useManageRouting()
 
   return (
     <div className={cn.account}>

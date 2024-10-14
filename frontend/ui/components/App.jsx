@@ -2,7 +2,7 @@ import { useStoreEffect } from '../../../react-vault/index.js';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Topbar } from './Topbar/Topbar.jsx';
 import { useLoader } from '../hooks/useLoader.js';
-import { useHandleNavigation } from './useHandleNavigation.js';
+import { useManageRouting } from './useManageRouting.js';
 import cn from './App.module.scss';
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
   const initApp = useStoreEffect((store) => store.initApp);
 
   const [isLoading] = useLoader(initApp, { navigate, params });
-  useHandleNavigation();
+  useManageRouting();
 
   if (isLoading) return null;
 
