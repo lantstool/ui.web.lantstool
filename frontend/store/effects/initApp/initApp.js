@@ -7,7 +7,7 @@ export const initApp = effect(async ({ store, payload }) => {
   const [, createHistory] = store.getEntities((store) => store.history);
 
   const backend = await createBackend();
-  await createHistory();
+  createHistory();
 
   await validateUrlParams(backend, navigate, params);
 });

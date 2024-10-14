@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import cn from './NearProtocol.module.scss';
+import { useManageRouting } from './useManageRouting.js';
 
 export const NearProtocol = () => {
+  useManageRouting();
   return <Outlet />;
 };

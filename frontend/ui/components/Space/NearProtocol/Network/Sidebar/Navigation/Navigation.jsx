@@ -11,5 +11,7 @@ export const Navigation = () => (
     <LinkItem name="Calls" Icon={CallsOutline} to="calls" />
     <LinkItem name="Accounts" Icon={AccountSquareOutline} to="accounts" />
     <LinkItem name="Keys" Icon={KeySquareOutline} to="keys" />
+    <LinkItem name="Tools" Icon={AccountSquareOutline} to="tools" />
+    <LinkItem name="Settings" Icon={CallsOutline} to="settings" />
   </div>
 );
