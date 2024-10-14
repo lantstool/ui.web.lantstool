@@ -1,21 +1,18 @@
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../react-vault/index.js';
+import { useStoreEffect } from '../../../../../react-vault/index.js';
 import { useLoader } from '../../../hooks/useLoader.js';
 import { Selector } from '../_general/Selector/Selector.jsx';
+import { useNetworkOptions } from './useNetworkOptions.jsx';
+import cn from './SelectNearNetwork.module.scss';
 
-const getOptions = (ids) =>
-  ids.map((networkId) => ({
-    label: networkId,
-    value: networkId,
-    networkId: networkId,
-  }));
+const getDefaultValue = (options, networkId) =>
+  options.find((option) => option.networkId === networkId);
 
 export const SelectNearNetwork = () => {
   const { spaceId, networkId } = useParams();
   const getAll = useStoreEffect((store) => store.nearProtocol.networks.getAll);
-  const ids = useStoreState((store) => store.nearProtocol.networks.ids);
-  const options = getOptions(ids, spaceId, networkId);
-  // const options = useGetOptions(spaceId, networkId);
+  const options = useNetworkOptions();
+  const defaultValue = getDefaultValue(options, networkId);
   const navigate = useNavigate();
 
   const [isLoading] = useLoader(getAll, { spaceId }, [spaceId]);
@@ -27,13 +24,9 @@ export const SelectNearNetwork = () => {
     navigate(`/space/${spaceId}/near-protocol/${event.networkId}`);
   };
 
-  const value = options.find((option) => option.networkId === networkId);
-
   return (
-    <Selector
-      onChange={onChange}
-      defaultValue={value}
-      options={[...options, { label: 'Manage Networks', value: 'networks', networkId: 'networks' }]}
-    />
+    <div className={cn.selectNearNetwork}>
+      <Selector onChange={onChange} defaultValue={defaultValue} options={options} />
+    </div>
   );
 };

@@ -5,7 +5,7 @@ import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
 import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
-import cn from './Dropdown.module.scss'
+import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
   control,
@@ -28,21 +28,19 @@ export const Dropdown = ({
       <Controller
         name={name}
         control={control}
-        render={({ field }) => {
-          return (
-            <SelectComponent
-              {...field}
-              placeholder="Input text"
-              isDisabled={isDisabled}
-              onChange={onChange ? onChange(field) : field.onChange}
-              isClearable={isClearable}
-              isSearchable={isSearchable}
-              components={{ DropdownIndicator, ClearIndicator, IndicatorsContainer }}
-              options={options}
-              styles={style}
-            />
-          );
-        }}
+        render={({ field }) => (
+          <SelectComponent
+            {...field}
+            placeholder="Input text"
+            isDisabled={isDisabled}
+            onChange={onChange ? onChange(field) : field.onChange}
+            isClearable={isClearable}
+            isSearchable={isSearchable}
+            components={{ DropdownIndicator, ClearIndicator, IndicatorsContainer }}
+            options={options}
+            styles={style}
+          />
+        )}
       />
     </div>
   );

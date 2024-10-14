@@ -10,7 +10,6 @@ export const selectStyles = () => ({
     fontWeight: 400,
     backgroundColor: 'none',
     borderRadius: '0 8px 8px 0',
-
     maxWidth: '186px',
     width: 'max-content',
     ':hover': {
@@ -35,7 +34,6 @@ export const selectStyles = () => ({
     padding: 0,
     height: '24px',
     color: '#495057',
-
   }),
   menu: (styles) => ({
     ...styles,
@@ -48,7 +46,7 @@ export const selectStyles = () => ({
   menuList: (styles) => ({
     ...styles,
     borderRadius: '8px',
-    padding: '4px',
+    fontSize: 14,
   }),
   option: (styles, state) => ({
     ...styles,

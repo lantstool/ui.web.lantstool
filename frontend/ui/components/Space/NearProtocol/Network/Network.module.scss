@@ -1,16 +1,6 @@
-@mixin network($colum-width) {
+.network {
   width: 100%;
   display: grid;
-  grid-template-columns: $colum-width auto;
-  transition: 0.3s;
+  grid-template-columns: auto auto auto;
   grid-template-rows: auto;
-  grid-template-areas: 'a b';
-}
-
-.network {
-  @include network(200px);
-}
-
-.closedNetwork {
-  @include network(58px);
 }

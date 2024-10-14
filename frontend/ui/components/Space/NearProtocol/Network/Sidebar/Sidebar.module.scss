@@ -1,14 +1,24 @@
-@use 'frontend/ui/styles/variables.module' as *;
+@use '../../../../../styles/variables.module' as *;
 
-.sidebar {
-  grid-area: a;
+@mixin sideBar($width) {
   padding: 8px;
   display: flex;
+  width: $width;
   flex-direction: column;
   justify-content: space-between;
   background-color: $neutral-00;
   border-right: 1px solid $neutral-200;
+  transition: 0.3s;
 }
+
+.sidebar {
+  @include sideBar(200px);
+}
+
+.minimizedSideBar{
+  @include sideBar(40px);
+}
+
 
 .button {
   width: max-content;

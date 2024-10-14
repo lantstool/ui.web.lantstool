@@ -1,5 +1,5 @@
-@use 'frontend/ui/styles/variables.module' as *;
-@use 'frontend/ui/styles/mixins.module' as *;
+@use '../../../../../../../styles/variables.module' as *;
+@use '../../../../../../../styles/mixins.module' as *;
 
 @mixin container($bg-color, $color) {
   border-radius: 8px;

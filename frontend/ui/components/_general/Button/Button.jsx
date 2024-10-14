@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import cn from './Button.module.scss';
 
 const types = {
@@ -33,7 +34,7 @@ export const Button = ({
   IconRight = null,
   disabled = false,
 }) => {
-  const { button, btnText, iconColor } = getType(color, size);
+  const { button, btnText, iconColor } = useMemo(() => getType(color, size), [color, size]);
 
   return (
     <button type={type} disabled={disabled} className={button} onClick={onClick}>

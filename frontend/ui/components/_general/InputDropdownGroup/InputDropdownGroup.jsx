@@ -1,15 +1,15 @@
 import { Controller } from 'react-hook-form';
 import Select from 'react-select';
-import { selectStyles } from './inputDropdown.style.js';
-import cn from './InputDropdown.module.scss';
+import { selectStyles } from './InputDropdownGroup.style.js';
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import cnm from 'classnames';
+import cn from './InputDropdownGroup.module.scss';
 
-export const InputDropdown = ({
+export const InputDropdownGroup = ({
   register = () => ({}),
   control,
   options,

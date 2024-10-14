@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import cn from './Label.module.scss';
 
 const types = {
@@ -16,7 +17,8 @@ const getType = (color) => {
 };
 
 export const Label = ({ color, children, Icon }) => {
-  const { label, text, iconColor } = getType(color);
+  const { label, text, iconColor } = useMemo(() => getType(color), [color]);
+
   return (
     <label className={label}>
       {Icon && <Icon style={iconColor} />}
