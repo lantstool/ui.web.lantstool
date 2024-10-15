@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
-const getNewTransactionOrder = async (execute, spaceId, networkId) => {
+const getNewCallOrder = async (execute, spaceId, networkId) => {
   const query = `
     SELECT COUNT(*) as 'order'
-    FROM near_protocol_transactions 
+    FROM near_protocol_calls 
     WHERE spaceId = '${spaceId}' AND networkId = '${networkId}'
   `;
   const [{ order }] = await execute(query);
@@ -12,24 +12,21 @@ const getNewTransactionOrder = async (execute, spaceId, networkId) => {
 
 export const createOne = async ({ execute, request }) => {
   const { spaceId, networkId, name } = request.body;
-  const transactionId = uuid();
+  const callId = uuid();
   const createdAt = Date.now();
-  const order = await getNewTransactionOrder(execute, spaceId, networkId);
+  const order = await getNewCallOrder(execute, spaceId, networkId);
 
   const body = JSON.stringify({
-    signerId: null,
-    signerKey: null,
-    receiverId: null,
-    actions: [],
+    method: null,
   });
 
   const query = `
     BEGIN TRANSACTION;
     
-    INSERT INTO near_protocol_transactions
-      (transactionId, networkId, spaceId, name, 'order', createdAt, body)
+    INSERT INTO near_protocol_calls
+      (callId, networkId, spaceId, name, 'order', createdAt, body)
     VALUES(
-      '${transactionId}', 
+      '${callId}', 
       '${networkId}', 
       '${spaceId}', 
       '${name}', 
@@ -40,14 +37,14 @@ export const createOne = async ({ execute, request }) => {
     RETURNING *;
     
     UPDATE near_protocol_counters
-    SET transactions = transactions + 1
+    SET calls = calls + 1
     WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
     
     COMMIT;
   `;
 
-  const [transaction] = await execute(query);
-  transaction.body = JSON.parse(transaction.body);
+  const [call] = await execute(query);
+  call.body = JSON.parse(call.body);
 
-  return transaction;
+  return call;
 };

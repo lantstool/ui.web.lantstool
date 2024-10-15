@@ -4,7 +4,7 @@ export const getCount = effect(async ({ store, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
 
   try {
-    return await backend.sendRequest('nearProtocol.transactions.getCount', payload);
+    return await backend.sendRequest('nearProtocol.calls.getCount', payload);
   } catch (e) {
     console.log(e);
   }
