@@ -35,6 +35,19 @@ CREATE TABLE IF NOT EXISTS near_protocol_transactions (
     ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS near_protocol_calls (
+  callId TEXT PRIMARY KEY,
+  networkId TEXT NOT NULL,
+  spaceId TEXT NOT NULL,
+  name TEXT NOT NULL,
+  "order" INTEGER NOT NULL,
+  createdAt INTEGER NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (spaceId, networkId)
+    REFERENCES near_protocol_networks(spaceId, networkId)
+    ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS near_protocol_accounts (
   accountId TEXT NOT NULL,
   networkId TEXT NOT NULL,

@@ -7,17 +7,17 @@ import cn from './Calls.module.scss';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Calls = () => {
-  const ids = useStoreState((store) => store.nearProtocol.calls.ids);
+  const list = useStoreState((store) => store.nearProtocol.calls.list);
   // const getOnceCalls = useStoreEffect((store) => store.calls.getOnceCalls);
   // const [isLoading] = useLoader(getOnceCalls);
   //
   useManageRouting();
   // if (isLoading) return null;
-  if (ids.length === 0) return <Empty />;
+  if (list.length === 0) return <Empty />;
 
   return (
     <div className={cn.calls}>
-      <List ids={ids} />
+      <List list={list} />
       <Outlet />
     </div>
   );

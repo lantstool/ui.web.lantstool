@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '../../../../../../../../react-vault/index.js';
 
 const convertStringValue = (value) => {
   return value === 'null' ? null : !isNaN(value) ? parseFloat(value) : value;

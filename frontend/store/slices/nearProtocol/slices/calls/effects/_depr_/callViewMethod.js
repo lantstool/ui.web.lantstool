@@ -1,5 +1,5 @@
-import { effect } from '../../../../../../../react-vault/index.js';
-import { fetchJson } from '../../../../../helpers/fetchJson.js';
+import { effect } from '../../../../../../../../react-vault/index.js';
+import { fetchJson } from '../../../../../../helpers/fetchJson.js';
 import { decompress } from 'fzstd';
 
 const setABItoResult = (callId, result, addResult) => {
