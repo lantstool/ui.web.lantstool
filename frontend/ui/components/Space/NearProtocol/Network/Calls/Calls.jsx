@@ -3,7 +3,7 @@ import { useStoreState, useStoreEffect } from '../../../../../../../react-vault/
 import { Outlet } from 'react-router-dom';
 import { Empty } from './Empty/Empty.jsx';
 import { useManageRouting } from './useManageRouting.js';
-import cn from './Calls.module.css';
+import cn from './Calls.module.scss';
 import { useLoader } from '../../../../../hooks/useLoader.js';
 
 export const Calls = () => {

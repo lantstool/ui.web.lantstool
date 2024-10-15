@@ -1,5 +1,5 @@
 import { ViewPlugin } from '@uiw/react-codemirror';
-import cn from './Arguments.module.css';
+import cn from './Arguments.module.scss';
 
 const createPanel = (view) => {
   const panel = document.createElement('div');

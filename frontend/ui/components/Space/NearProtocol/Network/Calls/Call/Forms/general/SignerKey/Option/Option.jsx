@@ -1,5 +1,5 @@
 import { components } from 'react-select';
-import cn from './Option.module.css';
+import cn from './Option.module.scss';
 import { PermissionLabel } from '../PermissionLabel/PermissionLabel.jsx';
 
 const getText = (publicKey) => publicKey.slice('ed25519:'.length);

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
 import { Item } from './Item/Item.jsx';
-import cn from './List.module.css';
+import cn from './List.module.scss';
 import { CreateCall } from '../general/CreateCall/CreateCall.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 

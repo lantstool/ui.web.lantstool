@@ -1,4 +1,4 @@
-import cn from './Result.module.css';
+import cn from './Result.module.scss';
 import {
   useStoreAction,
   useStoreEffect,

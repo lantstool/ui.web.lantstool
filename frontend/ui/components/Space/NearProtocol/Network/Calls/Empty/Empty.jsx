@@ -1,4 +1,4 @@
-import cn from './Empty.module.css';
+import cn from './Empty.module.scss';
 import { CreateCall } from '../general/CreateCall/CreateCall.jsx';
 
 export const Empty = () => {

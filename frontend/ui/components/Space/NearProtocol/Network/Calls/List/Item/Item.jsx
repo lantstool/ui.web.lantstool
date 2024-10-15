@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import cnm from 'classnames';
-import cn from './Item.module.css';
+import cn from './Item.module.scss';
 import { Draggable } from '@hello-pangea/dnd';
 
 export const Item = ({ callId, name, index, isActive }) => (

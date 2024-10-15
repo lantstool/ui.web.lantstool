@@ -1,4 +1,4 @@
-import cn from './Forms.module.css';
+import cn from './Forms.module.scss';
 import cnm from 'classnames';
 import { Footer } from './Footer/Footer.jsx';
 import { useStoreAction } from '../../../../../../../../../react-vault/store/actions/useStoreAction.js';

@@ -1,5 +1,5 @@
 import { Topbar } from './Topbar/Topbar.jsx';
-import cn from './Call.module.css';
+import cn from './Call.module.scss';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
 import { useLoader } from '../../../../../../hooks/useLoader.js';

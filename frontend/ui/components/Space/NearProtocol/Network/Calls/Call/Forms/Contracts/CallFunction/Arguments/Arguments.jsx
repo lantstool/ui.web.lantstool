@@ -2,7 +2,7 @@ import { theme } from './theme.js';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
 import { Controller } from 'react-hook-form';
-import cn from './Arguments.module.css';
+import cn from './Arguments.module.scss';
 
 export const Arguments = ({ form }) => {
   const {

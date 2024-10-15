@@ -1,4 +1,4 @@
-import cn from './SelectHeadLabel.module.css';
+import cn from './SelectHeadLabel.module.scss';
 import { PermissionLabel } from '../PermissionLabel/PermissionLabel.jsx';
 
 export const SelectHeadLabel = ({ permission, text }) => (

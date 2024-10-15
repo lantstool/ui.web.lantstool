@@ -1,4 +1,4 @@
-import cn from './Result.module.css';
+import cn from './Result.module.scss';
 import { Button } from '../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
