@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import cn from './SelectInputType.module.css';
+import cn from './SelectInputType.module.scss';
 import { InputGroup } from '../../../../../../../../../_general/InputGroup/InputGroup.jsx';
 
 export const SelectInputType = ({ form }) => {

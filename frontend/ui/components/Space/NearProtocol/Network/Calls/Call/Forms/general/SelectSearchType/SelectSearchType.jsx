@@ -1,6 +1,6 @@
 import { InputGroup } from '../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { useWatch } from 'react-hook-form';
-import cn from './SelectSearchType.module.css';
+import cn from './SelectSearchType.module.scss';
 
 export const SelectSearchType = ({ form }) => {
   const { register, control } = form;

@@ -1,4 +1,4 @@
-import cn from './SideMenu.module.css';
+import cn from './SideMenu.module.scss';
 import { useState } from 'react';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { EditModal } from './EditModal/EditModal.jsx';

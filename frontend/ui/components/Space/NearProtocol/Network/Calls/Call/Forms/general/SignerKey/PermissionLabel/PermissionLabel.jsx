@@ -1,4 +1,4 @@
-import cn from './PermissionLabel.module.css';
+import cn from './PermissionLabel.module.scss';
 import { useMemo } from 'react';
 
 const types = {

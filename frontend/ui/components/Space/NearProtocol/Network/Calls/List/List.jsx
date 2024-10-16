@@ -1,20 +1,20 @@
 import { useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
 import { Item } from './Item/Item.jsx';
-import cn from './List.module.css';
-import { CreateCall } from '../general/CreateCall/CreateCall.jsx';
+import cn from './List.module.scss';
+import { CreateCall } from '../_general/CreateCall/CreateCall.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 
-export const List = ({ ids }) => {
-  const records = useStoreState((store) => store.calls.records);
-  const reorderCalls = useStoreEffect((store) => store.calls.reorderCalls);
+export const List = ({ list }) => {
+  const reorder = useStoreEffect((store) => store.nearProtocol.calls.reorder);
   const params = useParams();
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
-    const currentOrder = result.source.index;
-    const newOrder = result.destination.index;
-    reorderCalls({ currentOrder, newOrder });
+    reorder({
+      source: result.source.index,
+      destination: result.destination.index,
+    });
   };
 
   return (
@@ -26,12 +26,11 @@ export const List = ({ ids }) => {
         <Droppable droppableId="calls">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef} className={cn.wrapper}>
-              {ids.map((callId, index) => (
+              {list.map((call, index) => (
                 <Item
-                  key={callId}
-                  isActive={callId === params?.callId}
-                  callId={callId}
-                  name={records[callId].name}
+                  key={call.callId}
+                  isActive={call.callId === params?.callId}
+                  call={call}
                   index={index}
                 />
               ))}
