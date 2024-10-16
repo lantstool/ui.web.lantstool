@@ -1,5 +1,5 @@
-@use '../../../styles/variables.module.scss' as *;
-@use '../../../styles/mixins.module.scss' as *;
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 @mixin button {
   display: flex;

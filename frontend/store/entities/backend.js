@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { entity } from '../../../react-vault/index.js';
-import BackendWorker from '../../../backend/index?worker';
+// import BackendWorker from '../../../backend/index?worker';
 
 /* Message Types
   REQUEST
@@ -31,7 +31,9 @@ class Backend {
   }
 
   init() {
-    this.worker = new BackendWorker();
+    this.worker = new Worker(new URL('../../../backend/index.js', import.meta.url), {
+      type: 'module',
+    });
     // Handle all incoming messages from worker. We have 2 different types of them
     this.worker.addEventListener('message', (messageEvent) => {
       console.log('Main thead receive the message:', messageEvent.data);
