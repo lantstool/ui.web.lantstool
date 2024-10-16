@@ -1,5 +1,5 @@
-@use 'frontend/ui/styles/variables.module' as *;
-@use 'frontend/ui/styles/mixins.module' as *;
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .radioContainer {
   display: flex;
