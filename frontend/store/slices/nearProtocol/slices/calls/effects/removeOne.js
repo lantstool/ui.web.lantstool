@@ -1,36 +1,36 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
-// TODO: handle the case when we delete the last tx in the list - we also need
-// to clear navigation state for transactions and we shouldn't navigate to last
-// deleted tx
+// TODO: handle the case when we delete the last call in the list - we also need
+// to clear navigation state for calls and we shouldn't navigate to last
+// deleted call
 
-const getDestination = (transactions, activeTxId) => {
-  // If we have only 1 tx and delete it - redirect to '/transactions'
-  if (transactions.length === 1) return `..`;
-  const index = transactions.findIndex((id) => id === activeTxId);
-  // If we want to delete the second or further tx - return the upper one
-  if (index > 0) return `../${transactions[index - 1]}`;
-  // If we want to delete is first tx in the list - return the lower one
-  if (index === 0) return `../${transactions[index + 1]}`;
+const getDestination = (calls, targetId) => {
+  // If we have only 1 call and delete it - redirect to '/calls'
+  if (calls.length === 1) return `..`;
+  const index = calls.findIndex(({ callId }) => callId === targetId);
+  // If we want to delete the second or further call - return the upper one
+  if (index > 0) return `../${calls[index - 1].callId}`;
+  // If we want to delete is first call in the list - return the lower one
+  if (index === 0) return `../${calls[index + 1].callId}`;
 };
 
 export const removeOne = effect(async ({ payload, slice, store }) => {
-  const { spaceId, networkId, transactionId, navigate, closeModal } = payload;
+  const { spaceId, networkId, callId, navigate, closeMenu } = payload;
   const [backend] = store.getEntities((store) => store.backend);
-  const txList = slice.getState((slice) => slice.txList);
+  const list = slice.getState((slice) => slice.list);
   const setList = slice.getActions((slice) => slice.setList);
 
   try {
-    const destination = getDestination(txList, transactionId);
+    const destination = getDestination(list, callId);
 
-    const updatedList = await backend.sendRequest('nearProtocol.transactions.removeOne', {
+    const updatedList = await backend.sendRequest('nearProtocol.calls.removeOne', {
       spaceId,
       networkId,
-      transactionId,
+      callId,
     });
 
     setList(updatedList);
-    closeModal();
+    closeMenu();
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);
