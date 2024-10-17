@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
 import { Transaction } from './Transaction/Transaction.jsx';
-import { CreateTransaction } from '../_general/CreateTransaction/CreateTransaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
+import { AddSquareOutline } from '../../../../../_general/icons/AddSquareOutline.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ txList }) => {
-  const { transactionId } = useParams();
+  const { spaceId, networkId, transactionId } = useParams();
   const txMap = useStoreState((store) => store.nearProtocol.transactions.txMap);
   const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
+  const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
+  const navigate = useNavigate();
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -18,11 +20,16 @@ export const List = ({ txList }) => {
     });
   };
 
+  const onSubmit = () => {
+    create({ spaceId, networkId, navigate });
+  };
+
   return (
     <div className={cn.transactionList}>
-      <div className={cn.topBar}>
-        <h2 className={cn.title}>Transactions</h2>
-      </div>
+      <button className={cn.topBar} onClick={onSubmit} type='submit'>
+        <AddSquareOutline style={cn.icon}/>
+        <h2 className={cn.title}>New transaction</h2>
+      </button>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="transactions">
           {(provided) => (
@@ -40,9 +47,6 @@ export const List = ({ txList }) => {
           )}
         </Droppable>
       </DragDropContext>
-      <div className={cn.bottomBar}>
-        <CreateTransaction styles={cn.modalContainer} />
-      </div>
     </div>
   );
 };

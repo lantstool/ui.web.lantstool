@@ -1,0 +1,24 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  height: 48px;
+}
+
+.name {
+  @include text-sm-medium;
+  padding: 4px;
+  border: none;
+  outline: none;
+}
+
+.sideMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}

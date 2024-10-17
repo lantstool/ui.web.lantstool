@@ -4,7 +4,7 @@ import cn from './CreateAccount.module.css';
 export const CreateAccount = ({ form }) => {
   const accountId = useWatch({
     control: form.control,
-    name: 'receiverId',
+    name: 'receiverId.value',
   });
 
   return <p className={cn.title}>{accountId}</p>;

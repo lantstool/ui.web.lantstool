@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { Topbar } from './Topbar/Topbar.jsx';
 import { Form } from './Form/Form.jsx';
 import { Result } from './Result/Result.jsx';
 import { useStoreState, useStoreEffect } from '../../../../../../../../react-vault/index.js';
@@ -20,11 +19,10 @@ export const Transaction = () => {
 
   return (
     <div className={cn.transaction}>
-      <Topbar transaction={transaction} />
       {txResult?.isOpen ? (
         <Result txResult={txResult} />
       ) : (
-        <Form isResultExists={Boolean(txResult)} transaction={transaction} />
+        <Form transaction={transaction} />
       )}
     </div>
   );

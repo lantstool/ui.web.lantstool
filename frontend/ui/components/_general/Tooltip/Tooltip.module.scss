@@ -1,5 +1,5 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 @mixin tooltip($background-color, $text-color, $box-shadow: none) {
   border-radius: 8px !important;

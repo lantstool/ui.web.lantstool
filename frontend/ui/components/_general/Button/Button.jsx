@@ -1,27 +1,50 @@
 import { useMemo } from 'react';
 import cn from './Button.module.scss';
 
-const types = {
-  primary: {
-    large: { button: cn.primaryLg, btnText: cn.primaryText, iconColor: cn.iconPrimary },
-    medium: { button: cn.primaryMg, btnText: cn.primaryText, iconColor: cn.iconPrimary },
-  },
-  secondary: {
-    large: { button: cn.secondaryLg, btnText: cn.secondaryText, iconColor: cn.iconSecondary },
-    medium: { button: cn.secondaryMg, btnText: cn.secondaryText, iconColor: cn.iconSecondary },
-  },
-  tertiary: {
-    small: { button: cn.tertiary, btnText: cn.tertiaryText, iconColor: cn.iconTertiary },
-  },
+const types = (isIcon) => {
+  return {
+    primary: {
+      large: {
+        button: isIcon ? cn.primaryLgIcon : cn.primaryLg,
+        btnText: cn.primaryText,
+        iconColor: cn.iconPrimary,
+      },
+      medium: {
+        button: isIcon ? cn.primaryMgIcon : cn.primaryMg,
+        btnText: cn.primaryText,
+        iconColor: cn.iconPrimary,
+      },
+    },
+    secondary: {
+      large: {
+        button: isIcon ? cn.secondaryLgIcon : cn.secondaryLg,
+        btnText: cn.secondaryText,
+        iconColor: cn.iconSecondary,
+      },
+      medium: {
+        button: isIcon ? cn.secondaryMgIcon : cn.secondaryMg,
+        btnText: cn.secondaryText,
+        iconColor: cn.iconSecondary,
+      },
+    },
+    tertiary: {
+      small: {
+        button: isIcon ? cn.tertiaryIcon : cn.tertiary,
+        btnText: cn.tertiaryText,
+        iconColor: cn.iconTertiary,
+      },
+    },
+  };
 };
 
-const getType = (color, size) => {
+const getType = (color, size, IconRight, IconLeft) => {
+  const isIcon = IconRight || IconLeft;
   if (size === 'small' || color === 'tertiary') {
-    return types['tertiary']['small'];
+    return types(isIcon)['tertiary']['small'];
   }
   if (color === 'primary') {
-    return types[color][size];
-  } else if (color === 'secondary') return types[color][size];
+    return types(isIcon)[color][size];
+  } else if (color === 'secondary') return types(isIcon)[color][size];
 };
 
 export const Button = ({
@@ -34,7 +57,10 @@ export const Button = ({
   IconRight = null,
   disabled = false,
 }) => {
-  const { button, btnText, iconColor } = useMemo(() => getType(color, size), [color, size]);
+  const { button, btnText, iconColor } = useMemo(
+    () => getType(color, size, IconRight, IconLeft),
+    [color, size, IconRight, IconLeft],
+  );
 
   return (
     <button type={type} disabled={disabled} className={button} onClick={onClick}>

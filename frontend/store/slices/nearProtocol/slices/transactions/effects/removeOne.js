@@ -15,7 +15,7 @@ const getDestination = (transactions, activeTxId) => {
 };
 
 export const removeOne = effect(async ({ payload, slice, store }) => {
-  const { spaceId, networkId, transactionId, navigate, closeModal } = payload;
+  const { spaceId, networkId, transactionId, navigate, closeMenu } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const txList = slice.getState((slice) => slice.txList);
   const setList = slice.getActions((slice) => slice.setList);
@@ -30,7 +30,7 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
     });
 
     setList(updatedList);
-    closeModal();
+    closeMenu();
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);
