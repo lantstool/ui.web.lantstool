@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@react-vault": ["react-vault/index.js"],
+      "@backend/*": ["backend/*"],
+      "@frontend/*": ["frontend/*"],
+      "@store/*": ["frontend/store/*"],
+      "@components/*": ["frontend/ui/components/*"],
+      "@hooks/*": ["frontend/ui/hooks/*"],
+      "@styles/*": ["frontend/ui/styles/*"],
+      "@assets/*": ["frontend/ui/assets/*"]
+    }
+  },
+  "exclude": ["node_modules", "public"]
+}
+
