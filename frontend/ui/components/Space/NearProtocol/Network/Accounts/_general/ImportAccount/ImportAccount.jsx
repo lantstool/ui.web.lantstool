@@ -53,9 +53,9 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
         <div className={cn.name}>
           <TextareaGroup
             register={register}
-            name="accountName"
+            name="note"
             rows={3}
-            errors={errors?.accountName?.message}
+            errors={errors?.note?.message}
             label="Name (optional)"
           />
         </div>
