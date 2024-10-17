@@ -104,6 +104,8 @@ class History {
       set(this.history, [...segments.slice(0, index + 1), 'next'], segments[index + 1]);
     });
   }
+  // TODO: Implement
+  remove(path) {}
 }
 
 export const history = entity(() => {

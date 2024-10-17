@@ -1,4 +1,4 @@
-import { createStore } from '../../react-vault/index.js';
+import { createStore } from '@react-vault';
 import { initApp } from './effects/initApp/initApp.js';
 import { backend } from './entities/backend.js';
 import { history } from './entities/history.js';
