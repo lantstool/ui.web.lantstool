@@ -1,13 +1,13 @@
 export const getOne = async ({ execute, request }) => {
-  const transactionId = request.body;
+  const callId = request.body;
 
   const query = `
-    SELECT transactionId, name, createdAt, body 
-    FROM near_protocol_transactions
-    WHERE transactionId = '${transactionId}';
+    SELECT callId, name, createdAt, body 
+    FROM near_protocol_calls
+    WHERE callId = '${callId}';
   `;
-  const [transaction] = await execute(query);
+  const [call] = await execute(query);
 
-  transaction.body = JSON.parse(transaction.body);
-  return transaction;
+  call.body = JSON.parse(call.body);
+  return call;
 };
