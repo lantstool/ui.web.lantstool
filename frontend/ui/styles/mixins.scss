@@ -1,5 +1,6 @@
 @use "variables" as *;
 
+
 @mixin base-typography($font-size, $line-height, $font-weight) {
   font-family: 'Inter', sans-serif;
   font-size: $font-size;
