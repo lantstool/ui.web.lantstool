@@ -11,6 +11,7 @@ export const List = ({ txList }) => {
   const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
   const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
   const navigate = useNavigate();
+
   const onDragEnd = (result) => {
     if (!result.destination) return;
     reorder({

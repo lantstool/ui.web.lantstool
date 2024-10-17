@@ -7,11 +7,11 @@ import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const { spaceId, networkId } = useParams();
-  const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
+  const createTx = useStoreEffect((store) => store.nearProtocol.transactions.create);
   const navigate = useNavigate();
 
-  const onSubmit = () => {
-    create({ spaceId, networkId, navigate });
+  const onClick = () => {
+    createTx({ spaceId, networkId, navigate });
   };
 
   return (
@@ -24,7 +24,7 @@ export const Empty = () => {
           Get a move on.
         </h2>
       </div>
-      <Button onClick={onSubmit} type="submit" size="large">
+      <Button onClick={onClick} size="large">
         Create transaction
       </Button>
     </div>

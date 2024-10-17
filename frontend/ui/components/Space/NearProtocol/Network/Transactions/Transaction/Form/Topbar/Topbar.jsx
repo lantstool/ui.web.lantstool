@@ -2,7 +2,7 @@ import { SideMenu } from './SideMenu/SideMenu.jsx';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import { HistoryOutline } from '../../../../../../../_general/icons/HistoryOutline.jsx';
 import { SaveOutline } from '../../../../../../../_general/icons/SaveOutline.jsx';
-import { EditName } from './SideMenu/EditNameModal/EditName.jsx';
+import { EditName } from './SideMenu/EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import {
   useStoreAction,
