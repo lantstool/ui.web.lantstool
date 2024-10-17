@@ -1,8 +1,8 @@
 import { useStoreEffect } from '@react-vault';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Topbar } from '@components/Topbar/Topbar.jsx';
-import { useLoader } from '@frontend/ui/hooks/useLoader.js';
-import { useManageRouting } from '@components/useManageRouting.js';
+import { Topbar } from './Topbar/Topbar.jsx';
+import { useLoader } from '@hooks/useLoader.js';
+import { useManageRouting } from './useManageRouting.js';
 import cn from './App.module.scss';
 
 export const App = () => {
