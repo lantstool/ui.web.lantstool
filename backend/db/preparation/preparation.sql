@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_accounts (
   accountId TEXT NOT NULL,
   networkId TEXT NOT NULL,
   spaceId TEXT NOT NULL,
-  localName TEXT,
+  note TEXT,
   createdAt INTEGER NOT NULL,
   PRIMARY KEY (spaceId, networkId, accountId),
   FOREIGN KEY (spaceId, networkId)
