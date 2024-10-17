@@ -1,38 +1,22 @@
+@use 'frontend/ui/styles/variables.module' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+
 .formScrollWrapper {
-  grid-area: b;
-  overflow: hidden;
-  overflow-y: auto;
-  height: 100%;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  overflow: auto;
+  height: calc(100vh - 128px);
+  padding: 40px 8px 0 8px;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 0 40px;
-  margin: 66px 0 66px 0;
+  width: 600px;
 }
 
-.formWithoutNav {
-  margin: 16px 0 0 0;
-}
-
-.topNav {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background-color: white;
-}
-
-.topNavActive {
-  border-bottom: 1px solid var(--Color-Green-300);
-  height: 50px;
-}
 
 .resultBtn {
   padding: 8px 16px;
@@ -44,10 +28,25 @@
   margin-right: 40px;
 }
 
+.details{
+  display: flex;
+  height: 24px;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.icon{
+  height: 21.5px;
+  width: 21.5px;
+  fill: $neutral-400;
+}
+
 .title {
-  margin: 0 0 20px 0;
+  margin: 0;
   text-align: center;
-  color: var(--Color-Green-2000);
+  color: $neutral-800;
   font-size: 16px;
   font-weight: 600;
 }

@@ -1,7 +1,8 @@
-@use '../../../styles/variables.module.scss' as *;
-@use '../../../styles/mixins.module.scss' as *;
+@use 'frontend/ui/styles/mixins.module' as *;
+@use 'frontend/ui/styles/variables.module' as *;
 
 @mixin button {
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +13,7 @@
 }
 
 @mixin lg-btn {
-  padding: 10px 16px;
+  padding: 12px 16px;
   border-radius: 8px;
   gap: 8px;
 }
@@ -23,10 +24,28 @@
   gap: 8px;
 }
 
+@mixin lg-btn-icon {
+  // padding 11 not 12 because 1px border taken
+  padding: 11px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+@mixin mg-btn-icon {
+  padding: 7px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
 @mixin sm-btn {
   padding: 4px 8px;
   border-radius: 4px;
   gap: 4px;
+}
+
+@mixin sm-icon {
+  padding: 4px;
+  border-radius: 4px;
 }
 
 @mixin primary {
@@ -50,9 +69,19 @@
   @include lg-btn;
 }
 
+.primaryLgIcon {
+  @include primary;
+  @include lg-btn-icon;
+}
+
 .primaryMg {
   @include primary;
   @include mg-btn;
+}
+
+.primaryMgIcon {
+  @include primary;
+  @include mg-btn-icon;
 }
 
 @mixin secondary {
@@ -84,14 +113,23 @@
   @include lg-btn;
 }
 
+.secondaryLgIcon {
+  @include secondary;
+  @include lg-btn-icon;
+}
+
 .secondaryMg {
   @include secondary;
   @include mg-btn;
 }
 
-.tertiary {
+.secondaryMgIcon {
+  @include secondary;
+  @include mg-btn-icon;
+}
+
+@mixin tertiary {
   @include button;
-  @include sm-btn;
   background: none;
   &:hover {
     background-color: $neutral-50;
@@ -111,8 +149,22 @@
   }
 }
 
+.tertiary {
+  @include tertiary;
+  @include sm-btn;
+}
+
+.tertiaryIcon {
+  @include tertiary;
+  @include sm-icon;
+}
+
 @mixin text {
-  @include text-sm-medium;
+  //@include text-sm-medium;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
   margin: 0;
 }
 

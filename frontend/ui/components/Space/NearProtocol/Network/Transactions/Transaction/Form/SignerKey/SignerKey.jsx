@@ -1,21 +1,19 @@
 import { Option } from '../_general/components/Option/Option.jsx';
-import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { useDropdownOptions } from './useDropdownOptions.js';
-import { SelectHeadLabel } from '../_general/components/SelectHeadLabel/SelectHeadLabel.jsx';
+import {Dropdown} from '../../../../../../../_general/Dropdown/Dropdown.jsx';
 
 export const SignerKey = ({ form }) => {
   const { control } = form;
   const options = useDropdownOptions(control);
 
   return (
-    <FormSelectGroup
+    <Dropdown
       name="signerKey"
       control={control}
       options={options}
       isClearable={true}
       components={{ Option }}
-    >
-      <SelectHeadLabel text="Access Key"  />
-    </FormSelectGroup>
+      label='Access key'
+    />
   );
 };
