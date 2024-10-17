@@ -32,14 +32,14 @@ export const Details = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  const { localName, balance, lockedForStorage, available, storageUsage, hasDeployedContract } =
+  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract } =
     details;
 
   return (
     <div className={cn.details}>
       <h2 className={cn.title}>Account Details</h2>
       <Item title="Account Id" data={accountId} copy={accountId} />
-      {localName && <Item title="Name" data={localName} />}
+      {note && <Item title="Name" data={note} />}
       {balance && <Item title="Account Balance" data={`${balance} NEAR`} />}
       {lockedForStorage && <Item title="Locked for Storage" data={`${lockedForStorage} NEAR`} />}
       {available && <Item title="Available for Use" data={`${available} NEAR`} />}

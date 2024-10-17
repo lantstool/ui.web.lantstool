@@ -16,7 +16,7 @@ export const AccountsList = () => {
         {ids.map((accountId) => (
           <Link key={accountId} className={cn.item} to={`${accountId}/details`}>
             <p className={cn.subtitle}>{records[accountId].accountId}</p>
-            <p className={cn.subtitle}>{records[accountId].localName}</p>
+            <p className={cn.subtitle}>{records[accountId].note}</p>
           </Link>
         ))}
       </div>
