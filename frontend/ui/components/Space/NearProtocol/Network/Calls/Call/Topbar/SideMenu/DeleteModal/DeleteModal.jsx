@@ -1,4 +1,4 @@
-import cn from './DeleteModal.module.css';
+import cn from './DeleteModal.module.scss';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
 import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';

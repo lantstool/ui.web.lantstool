@@ -1,4 +1,4 @@
-import cn from './Footer.module.css';
+import cn from './Footer.module.scss';
 import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import sendTransaction from '../../../../../../../../assets/sendTransaction.svg';

@@ -27,6 +27,13 @@ export default defineConfig({
   server: {
     port: 4901,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   preview: {
     port: 4901,
   },
@@ -35,6 +42,24 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      plugins: [
+        vitePluginString({
+          include: ['**/*.sql'],
+        }),
+      ],
+      output: {
+        format: 'es',
+        manualChunks: {
+          lodash: ['lodash'],
+          '@uiw/react-codemirror': ['@uiw/react-codemirror'],
+          '@codemirror/lang-json': ['@codemirror/lang-json'],
+        },
+      },
+    },
+  },
+  worker: {
+    format: 'es',
   },
   optimizeDeps: {
     exclude: ['wa-sqlite'],

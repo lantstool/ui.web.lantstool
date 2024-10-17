@@ -1,4 +1,4 @@
-import cn from '../../general/SelectSearchType/SelectSearchType.module.css';
+import cn from '../../general/SelectSearchType/SelectSearchType.module.scss';
 import { InputGroup } from '../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { useWatch } from 'react-hook-form';
 

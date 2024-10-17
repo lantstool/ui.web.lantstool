@@ -1,0 +1,17 @@
+.call {
+  grid-area: b;
+  width: 100%;
+  min-width: 450px;
+  max-width: 700px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto 60px;
+  grid-template-areas:
+    'a'
+    'b'
+    'c';
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}

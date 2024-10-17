@@ -1,4 +1,4 @@
-import cn from './Topbar.module.css';
+import cn from './Topbar.module.scss';
 import { SideMenu } from './SideMenu/SideMenu.jsx';
 import { useMemo } from 'react';
 

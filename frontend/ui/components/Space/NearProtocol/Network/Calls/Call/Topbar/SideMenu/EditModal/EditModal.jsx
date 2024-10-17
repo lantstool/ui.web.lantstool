@@ -1,4 +1,4 @@
-import cn from './EditModal.module.css';
+import cn from './EditModal.module.scss';
 import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
 import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
 import { useForm, useWatch } from 'react-hook-form';

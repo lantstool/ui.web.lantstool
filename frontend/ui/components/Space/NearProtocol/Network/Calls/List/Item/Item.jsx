@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import cnm from 'classnames';
-import cn from './Item.module.css';
+import cn from './Item.module.scss';
 import { Draggable } from '@hello-pangea/dnd';
 
-export const Item = ({ callId, name, index, isActive }) => (
-  <Draggable key={callId} draggableId={callId} index={index}>
+export const Item = ({ call, index, isActive }) => (
+  <Draggable draggableId={call.callId} index={index}>
     {(provided) => (
       <div
         className={cn.container}
@@ -12,8 +12,8 @@ export const Item = ({ callId, name, index, isActive }) => (
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <NavLink to={`${callId}`} className={cnm(cn.wrapper, isActive && cn.active)}>
-          <p className={cn.title}>{name}</p>
+        <NavLink to={`${call.callId}`} className={cnm(cn.wrapper, isActive && cn.active)}>
+          <p className={cn.title}>{call.name}</p>
         </NavLink>
       </div>
     )}
