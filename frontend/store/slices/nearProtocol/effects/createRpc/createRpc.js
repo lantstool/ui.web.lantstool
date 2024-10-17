@@ -1,5 +1,5 @@
 import { JsonRpcProvider } from 'near-api-js/lib/providers';
-import { effect } from '../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { account } from './account/index.js';
 import { keys } from './keys/index.js';
 import { protocol } from './protocol/index.js';

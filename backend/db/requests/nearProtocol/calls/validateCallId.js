@@ -4,22 +4,22 @@ export const validateCallId = async ({ execute, request }) => {
   // We also validate spaceId inside this function
   await validateNetworkId({ execute, request });
 
-  const { spaceId, networkId, transactionId } = request.body;
+  const { spaceId, networkId, callId } = request.body;
 
   const query = `
-    SELECT transactionId FROM near_protocol_transactions
-    WHERE transactionId = '${transactionId}'
+    SELECT callId FROM near_protocol_calls
+    WHERE callId = '${callId}'
       AND networkId = '${networkId}'
       AND spaceId = '${spaceId}';
   `;
 
-  const [transaction] = await execute(query);
+  const [call] = await execute(query);
 
-  if (!transaction) {
+  if (!call) {
     const error = new Error();
     error.message =
-      `In space '${spaceId}' and network '${networkId}' the transaction '${transactionId}' not found. ` +
-      `Please verify the transaction ID and try again.`;
+      `In space '${spaceId}' and network '${networkId}' the call '${callId}' not found. ` +
+      `Please verify the call ID and try again.`;
     error.code = 404;
     throw error;
   }
