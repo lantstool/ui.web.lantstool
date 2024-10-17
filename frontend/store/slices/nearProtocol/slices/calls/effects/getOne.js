@@ -1,12 +1,12 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
-export const getOne = effect(async ({ store, slice, payload: transactionId }) => {
+export const getOne = effect(async ({ store, slice, payload: callId }) => {
   const [backend] = store.getEntities((store) => store.backend);
-  const setTx = slice.getActions((slice) => slice.setTx);
+  const setOne = slice.getActions((slice) => slice.setOne);
 
   try {
-    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', transactionId);
-    setTx(transaction);
+    const call = await backend.sendRequest('nearProtocol.calls.getOne', callId);
+    setOne(call);
   } catch (e) {
     console.log(e);
   }

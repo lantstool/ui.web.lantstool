@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { Form } from './Form/Form.jsx';
 import { Result } from './Result/Result.jsx';
-import { useStoreState, useStoreEffect } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../hooks/useLoader.js';
-import { useSaveToHistory } from '../../../../../../hooks/useSaveToHistory.js';
+import { useStoreState, useStoreEffect } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import cn from './Transaction.module.scss';
 
 export const Transaction = () => {

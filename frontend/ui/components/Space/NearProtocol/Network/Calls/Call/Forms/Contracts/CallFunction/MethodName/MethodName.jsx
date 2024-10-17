@@ -3,7 +3,7 @@ import { SelectHeadLabel } from '../../../general/SignerKey/SelectHeadLabel/Sele
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { getOptions } from './getOptions.js';
-import { useStoreState } from '../../../../../../../../../../../../react-vault/store/state/useStoreState.js';
+import { useStoreState } from '@react-vault';
 
 export const MethodName = ({ form }) => {
   const { control } = form;

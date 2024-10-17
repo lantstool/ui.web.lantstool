@@ -16,13 +16,13 @@ const getType = (position) => popupPosition[position] || popupPosition.center;
 
 export const Menu = ({ closeMenu, position }) => {
   const { popup } = useMemo(() => getType(position), [position]);
-  const { spaceId, networkId, transactionId } = useParams();
+  const { spaceId, networkId, callId } = useParams();
   const navigate = useNavigate();
-  const removeOne = useStoreEffect((store) => store.nearProtocol.transactions.removeOne);
-  const duplicateOne = useStoreEffect((store) => store.nearProtocol.transactions.duplicateOne);
+  const removeOne = useStoreEffect((store) => store.nearProtocol.calls.removeOne);
+  const duplicateOne = useStoreEffect((store) => store.nearProtocol.calls.duplicateOne);
 
-  const remove = () => removeOne({ spaceId, networkId, transactionId, navigate, closeMenu });
-  const duplicate = () => duplicateOne({ spaceId, networkId, transactionId, closeMenu });
+  const remove = () => removeOne({ spaceId, networkId, callId, navigate, closeMenu });
+  const duplicate = () => duplicateOne({ spaceId, networkId, callId, closeMenu });
 
   return (
     <>

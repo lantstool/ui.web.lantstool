@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction, useStoreState } from '@react-vault';
 import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { Actions } from './Actions/Actions.jsx';

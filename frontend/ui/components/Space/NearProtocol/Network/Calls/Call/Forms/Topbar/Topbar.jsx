@@ -4,38 +4,35 @@ import { HistoryOutline } from '../../../../../../../_general/icons/HistoryOutli
 import { SaveOutline } from '../../../../../../../_general/icons/SaveOutline.jsx';
 import { EditName } from './SideMenu/EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
-import {
-  useStoreAction,
-  useStoreEffect,
-  useStoreState,
-} from '@react-vault';
+import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { useFormState } from 'react-hook-form';
 import cn from './Topbar.module.scss';
 
-export const Topbar = ({ form, transaction }) => {
-  const { spaceId, networkId, transactionId } = useParams();
-  const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
-  const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
-  const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
-  const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
-  const txResult = useStoreState((store) => store.nearProtocol.transactions.results[transactionId]);
+export const Topbar = ({ form, call }) => {
+  const { spaceId, networkId, callId } = useParams();
+  const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
+  // const sendOne = useStoreEffect((store) => store.nearProtocol.calls.sendOne);
+  const saveChanges = useStoreEffect((store) => store.nearProtocol.calls.saveChanges);
+  const revertChanges = useStoreEffect((store) => store.nearProtocol.calls.revertChanges);
+  const txResult = useStoreState((store) => store.nearProtocol.calls.results[callId]);
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {
-    sendOne({ formValues, spaceId, networkId, transactionId });
+    console.log(formValues);
+    // sendOne({ formValues, spaceId, networkId, callId });
   });
 
-  const revert = () => revertChanges({ form, transactionId });
-  const save = () => saveChanges({ form, transactionId });
-  const openResult = () => setResult({ transactionId, isOpen: true });
+  const revert = () => revertChanges({ form, callId });
+  const save = () => saveChanges({ form, callId });
+  const openResult = () => setResult({ callId, isOpen: true });
 
   return (
     <div className={cn.topbar}>
       <div>
-        <EditName transaction={transaction} />
+        <EditName call={call} />
       </div>
       <div className={cn.sideMenu}>
-        <SideMenu transaction={transaction} />
+        <SideMenu call={call} />
         {isDirty && (
           <>
             <Button size="medium" onClick={revert} color="secondary" IconLeft={HistoryOutline} />
@@ -50,7 +47,7 @@ export const Topbar = ({ form, transaction }) => {
           </Button>
         )}
         <Button size="medium" onClick={onSubmit}>
-          Send transaction
+          Send
         </Button>
       </div>
     </div>
