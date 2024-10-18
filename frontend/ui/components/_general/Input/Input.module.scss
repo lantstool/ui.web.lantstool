@@ -53,7 +53,7 @@
 }
 
 .errorInput {
-  @include input($red-800);
+  @include input($error-600);
   background: $neutral-50;
 }
 

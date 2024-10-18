@@ -1,75 +1,74 @@
 import { useParams } from 'react-router-dom';
-import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
+import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
 import { useForm } from 'react-hook-form';
-import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
-import { Button } from '../../../_general/Button/Button.jsx';
-import cn from './ImportModal.module.scss';
-import addIcon from '../../../../../../../assets/addIcon.svg';
-import { MessageGroup } from './MessageGroup/MessageGroup.jsx';
+import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { Button } from '../../../../../../_general/Button/Button.jsx';
+import { CloseCircleOutline } from '../../../../../../_general/icons/CloseCircleOutline.jsx';
+import cn from './ImportModal.module.scss';
 
 export const ImportAccount = ({ isOpen, setOpen }) => {
   const { spaceId, networkId } = useParams();
   const records = useStoreState((store) => store.nearProtocol.accounts.records);
   const create = useStoreEffect((store) => store.nearProtocol.accounts.create);
-  const [accId, setAccId] = useState(null);
   const schema = createSchema(records);
 
   const form = useForm({ resolver: yupResolver(schema) });
 
   const {
+    control,
     register,
     handleSubmit,
     resetField,
-    formState: { errors, dirtyFields },
+    clearErrors,
+    formState: { errors },
   } = form;
 
   const closeModal = () => {
+    clearErrors();
     setOpen(false);
   };
 
   const onSubmit = (formValues) => {
-    create({ formValues, setAccId, resetField, spaceId, networkId });
+    create({ formValues, resetField, spaceId, networkId });
+    closeModal();
   };
 
   return (
-    <ModalGroup isOpen={isOpen} closeModal={closeModal} text="Import Account">
+    <Modal isOpen={isOpen} closeModal={closeModal}>
       <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className={cn.title}>
-          Enter an account ID to track. You can add accounts that are currently not on-chain.
-        </h3>
-        <div className={cn.accountId}>
-          <TextareaGroup
+        <div className={cn.head}>
+          <h3 className={cn.title}>Import account</h3>
+          <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
+        </div>
+        <div className={errors?.accountId ? cn.wrapperError : cn.wrapper}>
+          <Input
+            control={control}
             register={register}
             name="accountId"
-            rows={3}
-            errors={errors?.accountId?.message}
-            label="Account Id"
+            error={errors?.accountId}
+            label="Enter an Account ID. You can also add accounts that are not yet on-chain."
           />
+          {errors?.accountId?.message && <p className={cn.error}>{errors?.accountId?.message}</p>}
         </div>
-        <div className={cn.name}>
-          <TextareaGroup
+        <div className={errors?.note ? cn.wrapperError : cn.wrapper}>
+          <Input
+            control={control}
             register={register}
             name="note"
-            rows={3}
-            errors={errors?.note?.message}
-            label="Name (optional)"
+            error={errors?.note}
+            label="Leave a short note about this account (optionally)."
           />
-        </div>
-        <div className={cn.message}>
-          <MessageGroup
-            errors={errors?.accountId}
-            accountId={accId}
-            dirtyFields={dirtyFields.accountId}
-          />
+          {errors?.note && <p className={cn.error}>{errors?.note?.message}</p>}
         </div>
         <div className={cn.button}>
-          <Button text="Import Account" type="submit" src={addIcon} style="secondary" />
+          <Button size="medium" type="submit">
+            Import
+          </Button>
         </div>
       </form>
-    </ModalGroup>
+    </Modal>
   );
 };
