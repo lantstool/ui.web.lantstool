@@ -10,11 +10,23 @@
   &:disabled {
     cursor: default;
   }
+  &:hover {
+    .icon {
+      fill: $neutral-800;
+    }
+  }
 }
 
 .icon {
   padding: 0;
   fill: $neutral-600;
+  width: 16px;
+  height: 16px;
+}
+
+.iconSecondary {
+  padding: 0;
+  fill: $neutral-700;
   width: 16px;
   height: 16px;
 }
