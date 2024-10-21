@@ -1,6 +1,6 @@
 import cnm from 'classnames';
 import { useStoreAction, useStoreState } from '@react-vault';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { MethodSelector } from './MethodSelector/MethodSelector.jsx';
 import { Contracts } from './Contracts/Contracts.jsx';
 import { useForm, useWatch } from 'react-hook-form';
@@ -13,7 +13,7 @@ import { Topbar } from './Topbar/Topbar.jsx';
 import { TransactionsForms } from './TransactionsForms/TransactionsForms.jsx';
 import { ProtocolForms } from './ProtocolForms/ProtocolForms.jsx';
 import { NetworkForms } from './NetworkForms/NetworkForms.jsx';
-import cn from './Forms.module.scss';
+import cn from './Form.module.scss';
 
 const getFormDefaultValues = (call) => ({
   callId: call.callId,
@@ -23,7 +23,7 @@ const getFormDefaultValues = (call) => ({
   results: call.results,
 });
 
-export const Forms = ({ call }) => {
+export const Form = ({ call }) => {
   const { callId, body } = call;
   const draft = useStoreState((store) => store.nearProtocol.calls.drafts[callId]);
   const setDraft = useStoreAction((store) => store.nearProtocol.calls.setDraft);
@@ -35,10 +35,7 @@ export const Forms = ({ call }) => {
   useEffect(() => {
     form.reset(body);
     if (draft) form.reset(draft, { keepDefaultValues: true });
-
-    return () => {
-      setDraft({ callId, draft: form.getValues() });
-    };
+    return () => setDraft({ callId, draft: form.getValues() });
   }, [callId]);
 
   // const isResults = call.results?.records.length > 0;
@@ -58,7 +55,6 @@ export const Forms = ({ call }) => {
         {/*  )}*/}
         {/*</div>*/}
         <form className={cnm(cn.form /*isResults && cn.formWithoutNav*/)}>
-          <h3 className={cn.title}>{type}</h3>
           <MethodSelector form={form} />
           {/*<Contracts form={form} type={type} />*/}
           {/*<AccessKeysForms form={form} type={type} />*/}

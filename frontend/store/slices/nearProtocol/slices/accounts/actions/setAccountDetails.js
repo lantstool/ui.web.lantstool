@@ -1,5 +1,5 @@
 import { utils } from 'near-api-js';
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 const formatNumber = (number) => {
   const formatNearAmount = utils.format.formatNearAmount(number);

@@ -9,14 +9,14 @@ import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
   control,
-  onChange = false,
+  onChange = null,
   options,
   name,
-  isSearchable = false,
-  isClearable = false,
   error,
   isDisabled,
   creatableSelect = false,
+  isSearchable = false,
+  isClearable = false,
   label,
 }) => {
   const style = selectStyles(error);

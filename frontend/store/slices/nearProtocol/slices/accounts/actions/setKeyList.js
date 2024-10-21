@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const setKeyList = action(({ slice, payload }) => {
   const { accountId, accountKeys, keyList } = payload;

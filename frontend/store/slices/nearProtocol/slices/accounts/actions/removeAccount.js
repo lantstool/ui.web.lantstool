@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const removeAccount = action(({ slice, payload }) => {
   slice.ids = slice.ids.filter((accountId) => accountId !== payload);

@@ -1,4 +1,4 @@
-import { useStoreState } from '../../../../../../../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 import { useEffect, useState } from 'react';
 import { FormSelectGroup } from '../../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { useWatch } from 'react-hook-form';

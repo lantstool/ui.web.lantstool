@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const resetState = action(({ slice }) => {
   slice.ids = [];

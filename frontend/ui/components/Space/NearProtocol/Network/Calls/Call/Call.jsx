@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
 import { Result } from './Result/Result.jsx';
-import { Forms } from './Forms/Forms.jsx';
+import { Form } from './Form/Form.jsx';
 import cn from './Call.module.scss';
 
 export const Call = () => {
@@ -19,7 +19,7 @@ export const Call = () => {
 
   return (
     <div className={cn.call}>
-      {result?.isOpen ? <Result result={result} /> : <Forms call={call} />}
+      {result?.isOpen ? <Result result={result} /> : <Form call={call} />}
     </div>
   );
 };

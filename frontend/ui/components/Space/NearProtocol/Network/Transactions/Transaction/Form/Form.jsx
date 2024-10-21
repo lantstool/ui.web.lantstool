@@ -19,12 +19,8 @@ export const Form = ({ transaction }) => {
   useEffect(() => {
     form.reset(body);
     if (draft) form.reset(draft, { keepDefaultValues: true });
-
-    return () => {
-      setDraft({ transactionId, draft: form.getValues() });
-    };
+    return () => setDraft({ transactionId, draft: form.getValues() });
   }, [transactionId]);
-
 
   return (
     <>
