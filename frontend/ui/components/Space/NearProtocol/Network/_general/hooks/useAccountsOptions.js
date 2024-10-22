@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 
 export const useAccountsOptions = () => {
   const { spaceId, networkId } = useParams();

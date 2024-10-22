@@ -9,7 +9,7 @@ import cn from './Call.module.scss';
 export const Call = () => {
   const { callId } = useParams();
   const call = useStoreState((store) => store.nearProtocol.calls.call);
-  const result = useStoreState((store) => store.nearProtocol.calls.results[callId]);
+  const callResult = useStoreState((store) => store.nearProtocol.calls.results[callId]);
   const getOne = useStoreEffect((store) => store.nearProtocol.calls.getOne);
 
   useLoader(getOne, callId, [callId]);
@@ -19,7 +19,7 @@ export const Call = () => {
 
   return (
     <div className={cn.call}>
-      {result?.isOpen ? <Result result={result} /> : <Form call={call} />}
+      {callResult?.isOpen ? <Result callResult={callResult} /> : <Form call={call} />}
     </div>
   );
 };

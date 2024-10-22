@@ -3,8 +3,8 @@ export const options = [
     label: 'Account',
     options: [
       {
-        value: 'getAccount',
-        label: 'Get Account Details',
+        value: 'getAccountData',
+        label: 'Get Account Data',
       },
     ],
   },

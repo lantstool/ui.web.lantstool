@@ -1,43 +1,24 @@
-import { useMemo } from 'react';
-import { Controller } from 'react-hook-form';
-import Select from 'react-select';
 import { options } from './options.js';
-
-const findOptionByValue = (options, targetValue) => {
-  for (const option of options) {
-    if (option.options) {
-      const found = findOptionByValue(option.options, targetValue);
-      if (found) return found;
-    }
-
-    if (option.value === targetValue) {
-      return option;
-    }
-  }
-  return '';
-};
+import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
 
 export const SelectMethod = ({ form }) => {
-  return (
-    <Controller
-      name="method"
-      control={form.control}
-      render={({ field }) => {
-        const value = useMemo(() => findOptionByValue(options, field.value), [field.value]);
+  // Somehow if we call form.setValue after field.onChange the Topbar don't see
+  // the form state change and don't update isDirty param properly
+  const onChange = (field) => (event) => {
+    form.setValue('params', null);
+    field.onChange(event ? event.value : '');
+  };
 
-        const onChange = (event) => {
-          field.onChange(event ? event.value : null);
-        };
-        return (
-          <Select
-            value={value}
-            onChange={onChange}
-            options={options}
-            isClearable={true}
-            isSearchable
-          />
-        );
-      }}
+  return (
+    <Dropdown
+      name="method"
+      label="RPC Method"
+      control={form.control}
+      onChange={onChange}
+      options={options}
+      placeholder="Select RPC method you want to use"
+      isClearable
+      isSearchable
     />
   );
 };

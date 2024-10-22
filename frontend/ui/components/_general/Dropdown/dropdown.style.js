@@ -65,15 +65,21 @@ export const selectStyles = (error) => ({
     padding: '4px',
     wordBreak: 'break-all',
   }),
-  option: (styles, state) => ({
+  option: (styles, { isSelected, isDisabled, isFocused }) => ({
     ...styles,
     fontSize: 14,
     borderRadius: '4px',
-    backgroundColor: state.isSelected ? '#0075FF' : '#fff',
-    color: state.isDisabled ? '#CED4DA' : state.isSelected ? '#ffffff' : '#212529',
+    backgroundColor: isDisabled
+      ? undefined
+      : isSelected
+        ? '#0075FF'
+        : isFocused
+          ? '#F1F3F5'
+          : undefined,
+    color: isDisabled ? '#CED4DA' : isSelected ? '#ffffff' : '#212529',
     ':hover': {
-      cursor: state.isDisabled ? 'default' : 'pointer',
-      backgroundColor: !state.isDisabled && !state.isSelected ? '#F1F3F5' : 'none',
+      cursor: isDisabled ? 'default' : 'pointer',
+      backgroundColor: !isDisabled && !isSelected ? '#F1F3F5' : 'none',
     },
   }),
   dropdownIndicator: () => ({

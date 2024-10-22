@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const getAccountBalance = effect(async ({ store, payload }) => {
   const { spaceId, networkId, accountId } = payload;

@@ -8,6 +8,17 @@ import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { useFormState } from 'react-hook-form';
 import cn from './Topbar.module.scss';
 
+/*
+  Known bug – the topbar incorrectly displays the “revert/save” buttons in the
+  following rare case:
+  1.The user navigates to the Call page where any RPC method is selected, while
+    the rest of the fields are empty.
+  2.The user deletes the method and then reselects the same one.
+
+  Visually, nothing seems to have changed, but the form considers itself to be dirty.
+  The bug is very minor, so there are no plans to fix it.
+*/
+
 export const Topbar = ({ form, call }) => {
   const { spaceId, networkId, callId } = useParams();
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
@@ -18,13 +29,13 @@ export const Topbar = ({ form, call }) => {
 
   const { isDirty } = useFormState({ control: form.control });
 
-  const onSubmit = form.handleSubmit((formValues) => {
-    executeOne({ spaceId, networkId, callId, formValues });
-  });
-
   const revert = () => revertChanges({ form, callId });
   const save = () => saveChanges({ form, callId });
   const openResult = () => setResult({ callId, isOpen: true });
+
+  const onSubmit = form.handleSubmit((formValues) => {
+    executeOne({ spaceId, networkId, callId, formValues });
+  });
 
   return (
     <div className={cn.topbar}>
