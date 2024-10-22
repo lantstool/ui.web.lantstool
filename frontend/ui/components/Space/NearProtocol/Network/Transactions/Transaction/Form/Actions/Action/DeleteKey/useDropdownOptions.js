@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 
 const getOptions = (arr) =>
   arr
@@ -26,7 +26,7 @@ export const useDropdownOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const getAccountKeys = useStoreEffect((store) => store.nearProtocol.accounts.getAccountKeys);
-  const accountId = useWatch({ control, name: 'signerId.value' });
+  const accountId = useWatch({ control, name: 'signerId' });
 
   useEffect(() => {
     (async () => {

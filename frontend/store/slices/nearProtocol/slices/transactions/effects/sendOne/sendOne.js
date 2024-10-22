@@ -16,7 +16,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     const { privateKey } = await getKey({
       spaceId,
       networkId,
-      publicKey: formValues.signerKey.value,
+      publicKey: formValues.signerKey,
     });
 
     const signedTx = await signTx({

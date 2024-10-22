@@ -6,8 +6,8 @@ import { Actions } from './Actions/Actions.jsx';
 import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
 import { useEffect } from 'react';
 import { AccountCircleOutline } from '../../../../../../_general/icons/AccountCircleOutline.jsx';
-import cn from './Form.module.scss';
 import { Topbar } from './Topbar/Topbar.jsx';
+import cn from './Form.module.scss';
 
 export const Form = ({ transaction }) => {
   const { transactionId, body } = transaction;
