@@ -1,7 +1,7 @@
 import cnm from 'classnames';
 import { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { CopyOutline } from '../../../../../../../../../_general/icons/CopyOutline.jsx';
 import { TrashBinOutline } from '../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import cn from './Menu.module.scss';

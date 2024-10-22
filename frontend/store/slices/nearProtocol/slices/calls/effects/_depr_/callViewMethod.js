@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { fetchJson } from '../../../../../../helpers/fetchJson.js';
 import { decompress } from 'fzstd';
 

@@ -1,5 +1,5 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const setOne = action(({ slice, payload }) => {
-  slice.transaction = payload;
+  slice.call = payload;
 });

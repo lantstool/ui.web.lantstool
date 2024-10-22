@@ -1,37 +1,19 @@
-import cn from './Result.module.scss';
-import {
-  useStoreAction,
-  useStoreEffect,
-  useStoreState,
-} from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction } from '@react-vault';
 import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
 import { Button } from '../../../_general/Button/Button.jsx';
+import cn from './Result.module.scss';
 
-const getResultValue = (call) => {
-  const currentResult = call.results.currentResult;
-  return call.results.records.find((el) => el.resultId === currentResult)?.result;
-};
+// TODO Move to utils
+const getFormattedJSON = (json) => JSON.stringify(json, null, 2);
 
-export const Result = ({ call }) => {
-  const setOpenResult = useStoreAction((store) => store.calls.setOpenResult);
-  const callMethod = useStoreEffect((store) => store.calls.callMethod);
-
-  const result = getResultValue(call);
-  const temporaryFormValues = useStoreState(
-    (store) => store.calls.temporaryFormValues[call.callId],
-  );
-
-  const getFormattedJSON = (json) => JSON.stringify(json, null, 2);
+export const Result = ({ callResult }) => {
+  const { result, isLoading, callId } = callResult;
+  const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
 
   const closeResult = () => {
-    setOpenResult({ callId: call.callId, isOpen: false });
-  };
-
-  const resend = () => {
-    const callValue = temporaryFormValues ? temporaryFormValues : call;
-    callMethod(callValue);
+    setResult({ callId, isOpen: false });
   };
 
   return (
@@ -42,7 +24,7 @@ export const Result = ({ call }) => {
             <BackIcon style={cn.icon} />
           </button>
         </div>
-        {call.results.isLoading ? (
+        {isLoading ? (
           <p className={cn.loader}>Loading...</p>
         ) : (
           <>
@@ -64,9 +46,6 @@ export const Result = ({ call }) => {
       <div className={cn.footer}>
         <div className={cn.closeBtn}>
           <Button onClick={closeResult} text="Close" style="outlined" />
-        </div>
-        <div className={cn.resendBtn}>
-          {!call.results.isLoading && <Button onClick={resend} text="Resend" style="secondary" />}
         </div>
       </div>
     </div>

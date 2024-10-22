@@ -6,6 +6,5 @@ export const transfer = (action) => {
       ? utils.format.parseNearAmount(action.amount)
       : action.amount;
 
-  // @ts-ignore
   return transactions.transfer(amount);
 };

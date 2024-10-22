@@ -1,18 +1,18 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const updateOneName = effect(async ({ payload, slice, store }) => {
-  const { transactionId, closeModal } = payload;
+  const { callId } = payload;
   const { name } = payload.formValues;
   const [backend] = store.getEntities((store) => store.backend);
-  const editTxName = slice.getActions((slice) => slice.editTxName);
+  const editOneName = slice.getActions((slice) => slice.editOneName);
 
   try {
-    await backend.sendRequest('nearProtocol.transactions.updateOneName', {
+    editOneName({ name, callId });
+
+    await backend.sendRequest('nearProtocol.calls.updateOneName', {
       name,
-      transactionId,
+      callId,
     });
-    editTxName({ name, transactionId });
-    closeModal();
   } catch (e) {
     console.log(e);
   }

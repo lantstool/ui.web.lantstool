@@ -1,4 +1,4 @@
-import { useAccountsOptions } from '../_general/hooks/useAccountsOptions.js';
+import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
 import cn from './SignerId.module.scss';
 

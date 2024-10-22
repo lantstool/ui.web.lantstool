@@ -1,19 +1,19 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const saveChanges = effect(async ({ store, slice, payload }) => {
-  const { form, transactionId } = payload;
+  const { form, callId } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const setDraft = slice.getActions((slice) => slice.setDraft);
 
   const body = form.getValues();
 
   try {
-    await backend.sendRequest('nearProtocol.transactions.updateTxBody', {
+    await backend.sendRequest('nearProtocol.calls.updateOneBody', {
       body,
-      transactionId,
+      callId,
     });
 
-    setDraft({ transactionId, draft: null });
+    setDraft({ callId, draft: null });
     form.reset(body);
   } catch (e) {
     console.log(e);

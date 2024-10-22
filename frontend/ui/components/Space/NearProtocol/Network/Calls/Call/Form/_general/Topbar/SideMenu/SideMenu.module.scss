@@ -1,0 +1,25 @@
+.menuButton {
+  display: flex;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  fill: var(--Color-Olive-300);
+}
+
+.menuButton:hover {
+  .icon {
+    fill: var(--Color-Olive-400);
+  }
+}
+
+.active {
+  fill: var(--Color-Olive-400);
+}
+
+.menuContainer {
+  position: relative;
+}
