@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { createTx } from './createTx.js';
 import { signTx } from './signTx.js';
 
@@ -16,7 +16,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     const { privateKey } = await getKey({
       spaceId,
       networkId,
-      publicKey: formValues.signerKey.value,
+      publicKey: formValues.signerKey,
     });
 
     const signedTx = await signTx({

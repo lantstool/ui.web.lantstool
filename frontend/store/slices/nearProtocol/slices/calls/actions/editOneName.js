@@ -1,7 +1,8 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const editOneName = action(({ slice, payload }) => {
-  const { transactionId, name } = payload;
-  slice.transaction.name = name;
-  slice.txMap[transactionId].name = name;
+  const { callId, name } = payload;
+
+  const call = slice.list.find((c) => c.callId === callId);
+  call.name = name;
 });

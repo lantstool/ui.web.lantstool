@@ -1,10 +1,10 @@
 export const updateOneBody = async ({ execute, request }) => {
-  const { transactionId, body } = request.body;
+  const { callId, body } = request.body;
 
   const query = `
-    UPDATE near_protocol_transactions
+    UPDATE near_protocol_calls
     SET body = '${JSON.stringify(body)}'
-    WHERE transactionId = '${transactionId}'
+    WHERE callId = '${callId}'
   `;
 
   await execute(query);

@@ -1,10 +1,10 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const revertChanges = effect(({ payload, slice }) => {
-  const { transactionId, form } = payload;
-  const transaction = slice.getState((slice) => slice.transaction);
+  const { callId, form } = payload;
+  const call = slice.getState((slice) => slice.call);
   const setDraft = slice.getActions((slice) => slice.setDraft);
 
-  setDraft({ transactionId, draft: null });
-  form.reset(transaction.body);
+  setDraft({ callId, draft: null });
+  form.reset(call.body);
 });

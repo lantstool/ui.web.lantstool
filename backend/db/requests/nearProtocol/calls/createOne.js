@@ -17,7 +17,8 @@ export const createOne = async ({ execute, request }) => {
   const order = await getNewCallOrder(execute, spaceId, networkId);
 
   const body = JSON.stringify({
-    method: null,
+    method: '',
+    params: null,
   });
 
   const query = `

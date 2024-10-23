@@ -1,4 +1,4 @@
-import { Option } from '../_general/components/Option/Option.jsx';
+import { Option } from '../_general/Option/Option.jsx';
 import { useDropdownOptions } from './useDropdownOptions.js';
 import {Dropdown} from '../../../../../../../_general/Dropdown/Dropdown.jsx';
 

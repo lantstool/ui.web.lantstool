@@ -8,7 +8,7 @@ import {
   useStoreAction,
   useStoreEffect,
   useStoreState,
-} from '../../../../../../../../../../react-vault/index.js';
+} from '@react-vault';
 import { useFormState } from 'react-hook-form';
 import cn from './Topbar.module.scss';
 

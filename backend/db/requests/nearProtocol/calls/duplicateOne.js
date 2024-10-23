@@ -4,21 +4,21 @@ import { getListForOrderUpdateQuery } from './queries/getListForOrderUpdateQuery
 import { v4 as uuid } from 'uuid';
 
 const updateList = async (execute, list) => {
-  const updatedList = list.map((transaction) => ({
-    ...transaction,
-    order: transaction.order + 1,
+  const updatedList = list.map((call) => ({
+    ...call,
+    order: call.order + 1,
   }));
   await execute(getUpdateOrderQuery(updatedList));
 };
 
-// Get the Tx data we want to duplicate
-const getTarget = async (execute, transactionId) => {
+// Get the Call data we want to duplicate
+const getTarget = async (execute, callId) => {
   const query = `
-    SELECT * FROM near_protocol_transactions
-    WHERE transactionId = '${transactionId}';
+    SELECT * FROM near_protocol_calls
+    WHERE callId = '${callId}';
   `;
-  const [transaction] = await execute(query);
-  return transaction;
+  const [call] = await execute(query);
+  return call;
 };
 
 const getDuplicateName = async (execute, name) => {
@@ -27,7 +27,7 @@ const getDuplicateName = async (execute, name) => {
 
   const query = `
     SELECT COUNT(*) as count
-    FROM near_protocol_transactions
+    FROM near_protocol_calls
     WHERE name LIKE '%${originName}%';
   `
   const [{ count }] = await execute(query);
@@ -38,15 +38,15 @@ const getDuplicateName = async (execute, name) => {
 
 const duplicate = async (execute, targetId) => {
   const target = await getTarget(execute, targetId);
-  const transactionId = uuid();
+  const callId = uuid();
   const name = await getDuplicateName(execute, target.name);
   const createdAt = Date.now();
 
   const query = `
-    INSERT INTO near_protocol_transactions
-      (transactionId, networkId, spaceId, name, 'order', createdAt, body)
+    INSERT INTO near_protocol_calls
+      (callId, networkId, spaceId, name, 'order', createdAt, body)
     VALUES(
-      '${transactionId}', 
+      '${callId}', 
       '${target.networkId}', 
       '${target.spaceId}', 
       '${name}', 
@@ -60,9 +60,9 @@ const duplicate = async (execute, targetId) => {
 
 export const duplicateOne = async ({ execute, request }) => {
   const { spaceId, networkId, targetId } = request.body;
-  // Get all transactions we have to do an order update
+  // Get all calls we have to do an order update
   const listForUpdate = await execute(getListForOrderUpdateQuery(spaceId, networkId, targetId));
-  // When we duplicate the last tx there is no transactions to update and query will fail
+  // When we duplicate the last tx there is no calls to update and query will fail
   if (listForUpdate.length > 0) await updateList(execute, listForUpdate);
   // Create a target copy with updated name
   await duplicate(execute, targetId);

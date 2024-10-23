@@ -1,9 +1,9 @@
 import Select from 'react-select';
-import { selectStyles } from '../../../_general/components/selectStyles.js';
+import { selectStyles } from '../../../_general/selectStyles.js';
 import { Controller, useWatch } from 'react-hook-form';
 import { useDropdownOptions } from './useDropdownOptions.js';
-import { Option } from '../../../_general/components/Option/Option.jsx';
-import { SelectHeadLabel } from '../../../_general/components/SelectHeadLabel/SelectHeadLabel.jsx';
+import { Option } from '../../../_general/Option/Option.jsx';
+import { SelectHeadLabel } from '../../../_general/SelectHeadLabel/SelectHeadLabel.jsx';
 import cn from './DeleteKey.module.scss';
 
 export const DeleteKey = ({ form, getName, action }) => {

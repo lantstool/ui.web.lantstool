@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 const getReorderedList = (calls, source, destination) => {
   // We need this to bypass Immer protection - you can't mutate Immer object outside Immer

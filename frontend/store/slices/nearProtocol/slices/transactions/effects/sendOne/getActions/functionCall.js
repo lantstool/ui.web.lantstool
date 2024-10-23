@@ -8,7 +8,5 @@ export const functionCall = (action) =>
     action.methodName,
     JSON.parse(action.arguments),
     tGas(action.gas),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     utils.format.parseNearAmount(action.deposit),
   );

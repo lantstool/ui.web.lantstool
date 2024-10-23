@@ -10,8 +10,8 @@ export const getAccountDetails = effect(async ({ store, slice, payload }) => {
     const rpc = await createRpc({ spaceId, networkId });
     const account = await backend.sendRequest('nearProtocol.accounts.getOne', accountId);
     const [details, balance] = await Promise.all([
-      rpc.account.viewAccount(accountId),
-      rpc.account.getBalance(accountId),
+      rpc.account.viewAccount({ accountId }),
+      rpc.account.getBalance({ accountId }),
     ]);
 
     setValue('note', account.note);

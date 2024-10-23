@@ -1,15 +1,15 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const duplicateOne = effect(async ({ store, slice, payload }) => {
-  const { spaceId, networkId, transactionId, closeMenu } = payload;
+  const { spaceId, networkId, callId, closeMenu } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const setList = slice.getActions((slice) => slice.setList);
 
   try {
-    const updatedList = await backend.sendRequest('nearProtocol.transactions.duplicateOne', {
+    const updatedList = await backend.sendRequest('nearProtocol.calls.duplicateOne', {
       spaceId,
       networkId,
-      targetId: transactionId,
+      targetId: callId,
     });
 
     setList(updatedList);

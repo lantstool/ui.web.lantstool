@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
-import { useStoreAction, useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction, useStoreState } from '@react-vault';
 import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { Actions } from './Actions/Actions.jsx';
 import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
 import { useEffect } from 'react';
 import { AccountCircleOutline } from '../../../../../../_general/icons/AccountCircleOutline.jsx';
-import cn from './Form.module.scss';
 import { Topbar } from './Topbar/Topbar.jsx';
+import cn from './Form.module.scss';
 
 export const Form = ({ transaction }) => {
   const { transactionId, body } = transaction;
@@ -19,12 +19,8 @@ export const Form = ({ transaction }) => {
   useEffect(() => {
     form.reset(body);
     if (draft) form.reset(draft, { keepDefaultValues: true });
-
-    return () => {
-      setDraft({ transactionId, draft: form.getValues() });
-    };
+    return () => setDraft({ transactionId, draft: form.getValues() });
   }, [transactionId]);
-
 
   return (
     <>

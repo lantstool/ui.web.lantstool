@@ -2,7 +2,7 @@ import cn from './Result.module.scss';
 import { Button } from '../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
-import { useStoreAction } from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction } from '@react-vault';
 import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 
 // TODO Move to utils
