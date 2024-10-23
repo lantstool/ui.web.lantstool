@@ -4,12 +4,16 @@ import { MethodName } from './MethodName/MethodName.jsx';
 import { Arguments } from './Arguments/Arguments.jsx';
 
 export const CallContractViewMethod = ({ form }) => {
-  useFieldsDefaultValues(form, { contractId: '', args: '{}' });
+  useFieldsDefaultValues(form, {
+    contractId: '',
+    methodName: '',
+    args: '',
+  });
 
   return (
     <>
       <ContractId form={form} />
-      {/*<MethodName form={form} />*/}
+      <MethodName form={form} />
       <Arguments form={form} />
     </>
   );

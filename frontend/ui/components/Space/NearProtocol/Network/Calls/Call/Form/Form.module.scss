@@ -55,3 +55,10 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}

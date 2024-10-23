@@ -7,6 +7,7 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const setResult = slice.getActions((slice) => slice.setResult);
 
   console.log(payload);
+
   try {
     setResult({ callId, isOpen: true, isLoading: true });
     const rpc = await createRpc({ spaceId, networkId });

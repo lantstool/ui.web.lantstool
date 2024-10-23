@@ -24,8 +24,10 @@ export const Form = ({ call }) => {
   return (
     <div className={cn.container}>
       <Topbar call={call} form={form} />
-      <SelectMethod form={form} />
-      {Fields && <Fields call={call} form={form} />}
+      <div className={cn.body}>
+        <SelectMethod form={form} />
+        {Fields && <Fields call={call} form={form} />}
+      </div>
     </div>
   );
 };
