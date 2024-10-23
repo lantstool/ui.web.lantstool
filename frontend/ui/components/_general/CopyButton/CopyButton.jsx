@@ -3,8 +3,19 @@ import { CheckCircleOutline } from '../icons/CheckCircleOutline.jsx';
 import { useState } from 'react';
 import cn from './CopyButton.module.scss';
 
-export const CopyButton = ({ color = 'primary', copy, disabled = false }) => {
+const types = {
+  default: cn.button,
+  bordered: cn.buttonBordered,
+  small: cn.buttonSmall,
+};
+
+const getType = (type) => {
+  return type? types[type]: type['default'];
+};
+
+export const CopyButton = ({ copy, disabled = false, type = 'default' }) => {
   const [copied, setCopied] = useState(false);
+  const buttonType = getType(type);
 
   const copyTextToClipboard = (e) => {
     e.stopPropagation();
@@ -13,14 +24,12 @@ export const CopyButton = ({ color = 'primary', copy, disabled = false }) => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
-    }, 1000);
+    }, 400);
   };
 
-  const iconColor = color === 'primary' ? cn.icon : cn.iconSecondary;
-
   return (
-    <button disabled={disabled} type="button" onClick={copyTextToClipboard} className={cn.button}>
-      {copied ? <CheckCircleOutline style={iconColor} /> : <CopyOutline style={iconColor} />}
+    <button disabled={disabled} type="button" onClick={copyTextToClipboard} className={buttonType}>
+      {copied ? <CheckCircleOutline style={cn.icon} /> : <CopyOutline style={cn.icon} />}
     </button>
   );
 };

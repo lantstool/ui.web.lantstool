@@ -3,10 +3,9 @@
 
 .container {
   position: relative;
-  height: 72px;
+  height: 96px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
 }
 
@@ -14,7 +13,7 @@
   @include text-sm-regular;
   align-content: center;
   color: $neutral-700;
-  padding: 2px 0;
+  margin: 0 0 10px 0;
 }
 
 @mixin input($border-color) {
@@ -81,4 +80,11 @@
 
 .icon {
   fill: $neutral-600;
+}
+
+.error {
+  @include text-xs-regular;
+  padding: 0;
+  margin: 8px 0 0 0;
+  color: $error-600;
 }

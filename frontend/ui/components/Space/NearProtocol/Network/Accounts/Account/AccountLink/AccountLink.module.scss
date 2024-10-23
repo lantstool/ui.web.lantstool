@@ -1,15 +1,20 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .link {
-  width: 120px;
-  padding: 8px 0;
-  text-align: center;
-  color: var(--Text-Dark);
-  font-size: 14px;
-  font-weight: 600;
+  @include text-sm-medium;
+  display: flex;
+  height: 24px;
+  padding: 2px 16px;
+  justify-content: center;
+  align-items: center;
+  color: $neutral-700;
 }
 
 .activeLink {
   @extend .link;
-  background-color: var(--Color-Green-200);
-  box-shadow: var(--Box-Shadow-025);
-  border-radius: var(--Border-Radius-2);
+  border-radius: 4px;
+  background: $neutral-00;
+  color: $neutral-800;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.07);
 }

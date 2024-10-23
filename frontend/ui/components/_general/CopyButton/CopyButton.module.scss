@@ -1,18 +1,57 @@
 @use '@styles/variables' as *;
 
-.button {
-  width: 16px;
-  height: 16px;
+@mixin button($padding) {
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0;
+  padding: $padding;
   &:disabled {
     cursor: default;
   }
   &:hover {
     .icon {
       fill: $neutral-800;
+    }
+  }
+}
+
+.button {
+  @include button(0);
+  width: 16px;
+  height: 16px;
+}
+
+.buttonBordered {
+  @include button(7px);
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    fill: $neutral-700;
+  }
+  &:focus{
+    box-shadow: $shadow-secondary;
+  }
+  &:hover {
+    .icon {
+      fill: $neutral-700;
+    }
+  }
+}
+
+.buttonSmall{
+  @include button(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    fill: $neutral-700;
+  }
+  &:hover {
+    .icon {
+      fill: $neutral-700;
     }
   }
 }

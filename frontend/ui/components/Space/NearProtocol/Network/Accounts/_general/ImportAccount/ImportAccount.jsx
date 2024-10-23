@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../../../../../_general/Input/Input.jsx';
-import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '../../../../../../_general/Button/Button.jsx';
@@ -15,11 +15,13 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
   const create = useStoreEffect((store) => store.nearProtocol.accounts.create);
   const schema = createSchema(records);
 
-  const form = useForm({ resolver: yupResolver(schema) });
+  const form = useForm({
+    defaultValues: { accountId: '', note: '' },
+    resolver: yupResolver(schema),
+  });
 
   const {
     control,
-    register,
     handleSubmit,
     resetField,
     clearErrors,
@@ -43,26 +45,20 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
           <h3 className={cn.title}>Import account</h3>
           <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
         </div>
-        <div className={errors?.accountId ? cn.wrapperError : cn.wrapper}>
-          <Input
-            control={control}
-            register={register}
-            name="accountId"
-            error={errors?.accountId}
-            label="Enter an Account ID. You can also add accounts that are not yet on-chain."
-          />
-          {errors?.accountId?.message && <p className={cn.error}>{errors?.accountId?.message}</p>}
-        </div>
-        <div className={errors?.note ? cn.wrapperError : cn.wrapper}>
-          <Input
-            control={control}
-            register={register}
-            name="note"
-            error={errors?.note}
-            label="Leave a short note about this account (optionally)."
-          />
-          {errors?.note && <p className={cn.error}>{errors?.note?.message}</p>}
-        </div>
+        <Input
+          control={control}
+          name="accountId"
+          error={errors?.accountId?.message}
+          placeholder="name.near"
+          label="Enter an Account ID. You can also add accounts that are not yet on-chain."
+        />
+        <Input
+          control={control}
+          name="note"
+          error={errors?.note}
+          placeholder="Work account"
+          label="Leave a short note about this account (optionally)."
+        />
         <div className={cn.button}>
           <Button size="medium" type="submit">
             Import

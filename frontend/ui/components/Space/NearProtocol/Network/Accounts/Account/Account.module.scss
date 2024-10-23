@@ -1,34 +1,41 @@
-.account {
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+
+.container {
+  position: relative;
   height: 100%;
-  max-width: 1000px;
+  max-width: 680px;
+  min-width: 610px;
+  padding: 40px 0;
   width: 100%;
   background-color: white;
-  border-radius: var(--Border-Radius-3);
-  box-shadow: var(--Box-Shadow-025);
 }
 
-.main {
+.backBtn{
+  position: absolute;
+  top: 40px;
+  left: -100px;
+}
+
+.account{
   display: flex;
   flex-direction: column;
-}
-
-.sidebar {
-  display: flex;
-  padding: 12px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  align-self: stretch;
-  border-bottom: 1px solid var(--Color-Green-400);
-}
-.wrapper {
-  padding: 0 100px;
-}
-
-.content {
+  justify-content: space-between;
   width: 100%;
-  display: grid;
-  align-self: center;
-  height: 100%;
-  overflow-y: auto;
+  min-width: 610px;
+  max-width: 680px;
+  gap: 24px;
 }
+
+.toggle {
+  border-radius: 8px;
+  display: flex;
+  padding: 4px;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+  background-color: $neutral-50;
+  width: max-content;
+}
+

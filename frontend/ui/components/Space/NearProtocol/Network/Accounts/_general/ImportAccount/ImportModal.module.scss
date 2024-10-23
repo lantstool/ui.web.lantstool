@@ -22,24 +22,6 @@
   margin: 0;
 }
 
-@mixin accountId($height) {
-  display: grid;
-  height: $height;
-  transition: 0.4s;
-  gap: 8px;
-}
-
-.wrapper {
-  @include accountId(74px);
-}
-
-.wrapperError {
-  @include accountId(96px);
-  .error{
-    transition: 0.3s;
-    opacity: 1;
-  }
-}
 
 .button {
   display: flex;

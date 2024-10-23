@@ -1,5 +1,5 @@
 import { utils } from 'near-api-js';
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 const formatNumber = (number) => {
   const formatNearAmount = utils.format.formatNearAmount(number);
@@ -7,10 +7,11 @@ const formatNumber = (number) => {
 };
 
 export const setAccountDetails = action(({ slice, payload }) => {
-  const { details, balance } = payload;
+  const { details, balance, account } = payload;
 
   slice.account.details = {};
-
+  slice.account.details.note = account.note;
+  slice.account.details.createdAt = account.createdAt;
   slice.account.details.storageUsage = details.storageUsage;
   slice.account.details.hasDeployedContract =
     details.codeHash !== '11111111111111111111111111111111';

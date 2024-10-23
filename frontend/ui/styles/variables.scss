@@ -23,16 +23,23 @@ $purple-50: #f5f0fd;
 $purple-800: #5400dc;
 
 //Other colors
-$accent-100: #8ac0ff;
-$accent-600: #0075ff;
-$accent-700: #0060d2;
+//$accent-100: #8ac0ff;
+//$accent-600: #0075ff;
+//$accent-700: #0060d2;
 $success-50: #ecfdf3;
 $success-800: #027a48;
 $error-50: #fdefef;
-$error-600: #ca2c2c;
 $error-800: #e03131;
 $warning-50: #fffaeb;
 $warning-800: #b54708;
+//New colors
+$accent-100: #ceded7;
+$accent-200: #bdd3c9;
+$accent-600: #497561;
+$accent-700: #375849;
+$error-600: #ca2c2c;
+
+$green-700: #307555;
 
 //Font-size
 $font-size-lg: 18px;
@@ -45,3 +52,7 @@ $line-height-lg: 24px;
 $line-height-mg: 24px;
 $line-height-sm: 20px;
 $line-height-xs: 16px;
+
+//Shadow
+$shadow-primary: 0 0 0 4px rgba(73, 117, 97, 0.18);
+$shadow-secondary: 0 0 0 4px rgba(179, 188, 196, 0.15);

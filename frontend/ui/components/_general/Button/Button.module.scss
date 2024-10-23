@@ -56,7 +56,7 @@
     background-color: $accent-700;
   }
   &:focus {
-    box-shadow: 0 0 0 4px #0085ff26;
+    box-shadow: $shadow-primary;
     background-color: $accent-600;
   }
   &:disabled {
@@ -89,12 +89,11 @@
   @include button;
   background: none;
   border: 1px solid $neutral-200;
-  box-shadow: 0 2px 4px 0 #0000000d;
   &:hover {
     background-color: $neutral-50;
   }
   &:focus {
-    box-shadow: 0 0 0 4px #b3bcc426;
+    box-shadow: $shadow-secondary;
     background-color: $neutral-00;
   }
   &:disabled {
@@ -122,6 +121,7 @@
 .secondaryMg {
   @include secondary;
   @include mg-btn;
+  padding: 7px 16px;
 }
 
 .secondaryMgIcon {

@@ -1,11 +1,37 @@
-.details {
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.empty{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: calc(100vh - 314px);
+}
+
+.icon{
+  fill: $accent-200;
+  width: 80px;
+  height: 80px;
 }
 
 .title {
-  color: var(--Text-Dark);
-  font-size: 18px;
-  font-weight: 600;
+  @include text-mg-medium;
+  color: $neutral-500;
+  padding: 0;
+  margin: 24px 0 0 0;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 12px;
+}
+
+.border{
+  margin: 24px 0;
+  border: 1px solid $neutral-200;
+  width: 100%;
+  padding: 0;
 }
