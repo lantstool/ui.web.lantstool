@@ -1,8 +1,9 @@
-import { useStoreEffect } from '../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
 import { Items } from './Items/Items.jsx';
-import { useLoader } from '../../../../../../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
 import cn from './AccountKeys.module.scss';
+import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
 
 export const AccountKeys = () => {
   const { spaceId, networkId, accountId } = useParams();
@@ -10,13 +11,18 @@ export const AccountKeys = () => {
   const [isLoading, keys] = useLoader(getAccountKeys, { spaceId, networkId, accountId }, [
     accountId,
   ]);
-
+  console.log(keys);
   if (isLoading || !keys) return null;
 
   const { fullAccess, functionCall } = keys;
 
   if (fullAccess.length === 0 && functionCall.length === 0)
-    return <p>This account has no keys</p>;
+    return (
+      <div className={cn.empty}>
+        <KeySquareBold style={cn.icon} />
+        <h1 className={cn.title}>This account is not yet on-chain or has no associated keys.</h1>
+      </div>
+    );
 
   return (
     <div className={cn.keys}>

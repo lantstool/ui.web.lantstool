@@ -34,7 +34,6 @@ export const Details = () => {
 
   const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId, setValue });
 
-
   // We have to reset data because we will display the wrong data (of prev account)
   // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);

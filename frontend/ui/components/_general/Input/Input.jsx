@@ -17,19 +17,23 @@ export const Input = ({
 }) => {
   const ref = useRef(null);
   const {
-    field: { value = '', onChange, onBlur: fieldOnBlur },
+    field: { value = '', onChange },
   } = useController({
     name,
     control,
   });
 
   const handleClear = () => {
-    onChange('');
     ref.current.focus();
+    onChange('');
+  };
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
   };
 
   return (
-    <div onBlur={onBlur} className={cn.container}>
+    <div className={cn.container}>
       <label className={cn.label}>{label}</label>
       <input
         ref={ref}
@@ -37,14 +41,20 @@ export const Input = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        onBlur={fieldOnBlur}
+        onBlur={onBlur}
         className={error ? cn.errorInput : cn.input}
         type={type}
         disabled={disabled}
       />
       {!disabled && value && (
         <div className={cn.buttonWrapper}>
-          <button disabled={disabled} type="button" onClick={handleClear} className={cn.button}>
+          <button
+            onMouseDown={handleMouseDown}
+            disabled={disabled}
+            type="button"
+            onClick={handleClear}
+            className={cn.button}
+          >
             <BackspaceOutline style={cn.icon} />
           </button>
           <CopyButton disabled={disabled} copy={value} />

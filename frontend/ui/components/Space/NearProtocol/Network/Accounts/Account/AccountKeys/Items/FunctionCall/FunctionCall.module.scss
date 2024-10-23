@@ -1,0 +1,70 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  @include text-sm-regular;
+  width: 144px;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
+  align-items: start;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.methodsContainer {
+  display: flex;
+  align-items: start;
+}
+
+.methodsWrapper {
+  display: flex;
+  align-items: start;
+}
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 4px;
+  max-width: 440px;
+  height: auto;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.showBtn{
+  @include text-sm-medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 4px;
+  margin: 0;
+  border-radius: 12px;
+  max-width: max-content;
+  background-color: $neutral-100;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

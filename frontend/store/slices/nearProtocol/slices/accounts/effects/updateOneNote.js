@@ -5,6 +5,7 @@ export const updateOneNote = effect(async ({ payload, slice, store }) => {
   const { note } = payload.formValues;
   const [backend] = store.getEntities((store) => store.backend);
   const editNote = slice.getActions((slice) => slice.editNote);
+  const setNotification = store.getActions((store) => store.setNotification);
 
   try {
     await backend.sendRequest('nearProtocol.accounts.updateOneNote', {
@@ -12,6 +13,7 @@ export const updateOneNote = effect(async ({ payload, slice, store }) => {
       accountId,
     });
     editNote({ note, accountId });
+    setNotification({ isOpen: true, message: 'Changes saved', color: 'success', daley: 1500 });
   } catch (e) {
     console.log(e);
   }

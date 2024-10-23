@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const setAccounts = action(({ slice, payload: accounts }) => {
   const ids = [];
@@ -11,5 +11,4 @@ export const setAccounts = action(({ slice, payload: accounts }) => {
 
   slice.ids = ids;
   slice.records = records;
-  slice.isAccountsLoadedToState = true;
 });
