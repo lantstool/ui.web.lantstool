@@ -1,8 +1,8 @@
 import { useStoreAction, useStoreState } from '@react-vault';
 import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { Topbar } from './_general/Topbar/Topbar.jsx';
-import { SelectMethod } from './_general/SelectMethod/SelectMethod.jsx';
+import { Topbar } from './Topbar/Topbar.jsx';
+import { SelectMethod } from './SelectMethod/SelectMethod.jsx';
 import { getFields } from './getFields.js';
 import cn from './Form.module.scss';
 
@@ -24,8 +24,10 @@ export const Form = ({ call }) => {
   return (
     <div className={cn.container}>
       <Topbar call={call} form={form} />
-      <SelectMethod form={form} />
-      {Fields && <Fields call={call} form={form} />}
+      <div className={cn.body}>
+        <SelectMethod form={form} />
+        {Fields && <Fields call={call} form={form} />}
+      </div>
     </div>
   );
 };

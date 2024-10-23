@@ -1,9 +1,9 @@
-import { GetAccountData } from './GetAccountData/GetAccountData.jsx';
-import { CallViewMethod } from './CallViewMethod/CallViewMethod.jsx';
+import { GetAccountData } from './methods/GetAccountData/GetAccountData.jsx';
+import { CallContractViewMethod } from './methods/CallContractViewMethod/CallContractViewMethod.jsx';
 
 const fields = {
   getAccountData: GetAccountData,
-  callViewMethod: CallViewMethod,
+  callContractViewMethod: CallContractViewMethod,
 };
 
 export const getFields = (method) => (!fields[method] ? null : fields[method]);

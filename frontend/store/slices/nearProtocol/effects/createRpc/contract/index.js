@@ -1,5 +1,7 @@
-import { getWasm } from './getWasm.js';
+import { viewCode } from './viewCode.js';
+import { callFunction } from './callFunction.js';
 
 export const contract = {
-  getWasm,
+  viewCode,
+  callFunction,
 };

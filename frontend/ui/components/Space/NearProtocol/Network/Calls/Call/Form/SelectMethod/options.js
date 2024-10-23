@@ -12,8 +12,8 @@ export const options = [
     label: 'Contract',
     options: [
       {
-        value: 'callViewMethod',
-        label: 'Call View Method',
+        value: 'callContractViewMethod',
+        label: 'Call Contract View Method',
       },
     ],
   },
