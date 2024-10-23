@@ -1,5 +1,5 @@
 import { options } from './options.js';
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
 
 export const SelectMethod = ({ form }) => {
   // Somehow if we call form.setValue after field.onChange the Topbar don't see

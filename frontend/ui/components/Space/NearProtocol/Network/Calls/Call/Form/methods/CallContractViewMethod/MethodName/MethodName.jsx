@@ -1,4 +1,4 @@
-import { FormSelectGroup } from '../../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
+import { FormSelectGroup } from '../../../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { getOptions } from './getOptions.js';
