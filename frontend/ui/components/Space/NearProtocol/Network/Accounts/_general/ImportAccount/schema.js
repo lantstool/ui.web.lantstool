@@ -6,6 +6,7 @@ export const createSchema = (records) => {
     accountId: yup
       .string()
       .required('Empty field')
+      .min(2)
       .max(84)
       .test('matches', 'This account already exists', (value) => {
         return !list.find((el) => el.accountId === value);

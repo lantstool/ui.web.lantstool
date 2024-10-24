@@ -60,7 +60,7 @@ export const InputDropdownGroup = ({
               <button disabled={disabled} type="button" onClick={clear} className={cn.button}>
                 <BackspaceOutline style={cn.icon} />
               </button>
-              <CopyButton disabled={disabled} copy={copy} />
+              <CopyButton disabled={disabled} value={copy} />
             </div>
           )}
         </div>

@@ -12,6 +12,7 @@ const dropTable = async (table) => execute(sqlite, db)(`DROP TABLE ${table}`);
 // await dropTable('near_protocol_counters');
 // await dropTable('near_protocol_accounts');
 // await dropTable('near_protocol_keys');
+// await dropTable('near_protocol_calls');
 
 await initDB(sqlite, db);
 

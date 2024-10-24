@@ -1,13 +1,16 @@
-import cn from './Modal.module.css';
+import cn from './Modal.module.scss';
 
-export const Modal = ({ children, isOpen, close }) => {
+export const Modal = ({ children, isOpen, closeModal }) => {
   if (!isOpen) return null;
 
   return (
-    <div className={cn.backstage} onMouseDown={close}>
-      <div className={cn.modal} onMouseDown={(e) => e.stopPropagation()}>
-        {children}
+    <>
+      <div className={cn.modal}>
+        <div onMouseDown={(e) => e.stopPropagation()}>
+          {children}
+        </div>
       </div>
-    </div>
+      <div className={cn.backstage} onMouseDown={closeModal} />
+    </>
   );
 };

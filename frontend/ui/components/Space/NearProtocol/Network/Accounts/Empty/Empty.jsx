@@ -1,8 +1,8 @@
-import addIcon from '../../../../../../assets/addIcon.svg';
-import { Button } from '../../_general/Button/Button.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 import { useState } from 'react';
-import cn from './Empty.module.scss';
+import { AccountSquareBold } from '../../../../../_general/icons/AccountSquareBold.jsx';
 import { ImportAccount } from '../_general/ImportAccount/ImportAccount.jsx';
+import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const [isOpen, setOpen] = useState(false);
@@ -12,8 +12,14 @@ export const Empty = () => {
 
   return (
     <div className={cn.container}>
+      <div className={cn.wrapper}>
+        <AccountSquareBold style={cn.icon} />
+        <h2 className={cn.title}>
+          Nothing here. Import your first account to use it within the app.
+        </h2>
+      </div>
+      <Button onClick={openModal}>Import account</Button>
       <ImportAccount isOpen={isOpen} setOpen={setOpen} />
-      <Button text="Import Account" onClick={openModal} src={addIcon} style="secondary" />
     </div>
   );
 };

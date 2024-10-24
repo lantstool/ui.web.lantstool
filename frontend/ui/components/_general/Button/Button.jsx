@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import cn from './Button.module.scss';
 
-const types = (isIcon) => {
+const types = (isIcon, children) => {
   return {
     primary: {
       large: {
@@ -29,7 +29,7 @@ const types = (isIcon) => {
     },
     tertiary: {
       small: {
-        button: isIcon ? cn.tertiaryIcon : cn.tertiary,
+        button: isIcon && !children ? cn.tertiaryIcon : cn.tertiary,
         btnText: cn.tertiaryText,
         iconColor: cn.iconTertiary,
       },
@@ -37,14 +37,14 @@ const types = (isIcon) => {
   };
 };
 
-const getType = (color, size, IconRight, IconLeft) => {
+const getType = (color, size, IconRight, IconLeft, children) => {
   const isIcon = IconRight || IconLeft;
   if (size === 'small' || color === 'tertiary') {
-    return types(isIcon)['tertiary']['small'];
+    return types(isIcon, children)['tertiary']['small'];
   }
   if (color === 'primary') {
-    return types(isIcon)[color][size];
-  } else if (color === 'secondary') return types(isIcon)[color][size];
+    return types(isIcon, children)[color][size];
+  } else if (color === 'secondary') return types(isIcon, children)[color][size];
 };
 
 export const Button = ({
@@ -58,7 +58,7 @@ export const Button = ({
   disabled = false,
 }) => {
   const { button, btnText, iconColor } = useMemo(
-    () => getType(color, size, IconRight, IconLeft),
+    () => getType(color, size, IconRight, IconLeft, children),
     [color, size, IconRight, IconLeft],
   );
 

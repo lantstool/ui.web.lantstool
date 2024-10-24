@@ -1,11 +1,11 @@
 import cn from './SideMenu.module.scss';
 import { useState } from 'react';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { VerticalMoreIcon } from '../../../../../../../_general/icons/VerticalMoreIcon.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cnm from 'classnames';
-import { Popup } from '../../../../Accounts/Account/TopBar/SideMenu/Popup/Popup.jsx';
+import { Popup } from './Popup/Popup.jsx';
 
 export const SideMenu = () => {
   const { spaceId, networkId, publicKey } = useParams();
