@@ -39,16 +39,12 @@ export const useMethods = (methodNames) => {
     return () => window.removeEventListener('resize', calculateVisibleMethods);
   }, [methodNames]);
 
-  const handleShowMore = () => {
-    setShowAll(true);
-  };
 
   return {
     maxMethods: showAll ? methodNames.length : maxMethods,
     showAll,
     setShowAll,
     ref,
-    handleShowMore,
   };
 };
 

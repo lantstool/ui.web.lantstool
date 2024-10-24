@@ -12,11 +12,12 @@ export const AccountKeys = () => {
     accountId,
   ]);
 
-  if (isLoading || !keys) return null;
+  if (isLoading || !keys) return <p>Loading...</p>;
 
   const { fullAccess, functionCall } = keys;
 
   if (fullAccess.length === 0 && functionCall.length === 0)
+
     return (
       <div className={cn.empty}>
         <KeySquareBold style={cn.icon} />

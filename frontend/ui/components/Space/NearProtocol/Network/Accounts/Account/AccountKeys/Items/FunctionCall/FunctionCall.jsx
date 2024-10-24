@@ -10,7 +10,7 @@ import { CloseSquareOutline } from '../../../../../../../../_general/icons/Close
 const getAmount = (amount) =>
   amount ? `${utils.format.formatNearAmount(amount)} NEAR` : 'Unlimited';
 
-const getMethods = (methodNames, maxMethods, onShowMore, setShowAll, showAll) => {
+const getMethods = (methodNames, maxMethods, setShowAll, showAll) => {
   if (methodNames.length > 0) {
     const visibleMethods = methodNames.slice(0, maxMethods);
     const hiddenMethodsCount = methodNames.length - visibleMethods.length;
@@ -40,8 +40,8 @@ const getMethods = (methodNames, maxMethods, onShowMore, setShowAll, showAll) =>
 
 export const FunctionCall = ({ functionKey }) => {
   const { allowance, methodNames, receiverId } = functionKey.accessKey.permission.functionCall;
-  const { maxMethods, ref, handleShowMore, setShowAll, showAll } = useMethods(methodNames);
-  const methods = getMethods(methodNames, maxMethods, handleShowMore, setShowAll, showAll);
+  const { maxMethods, ref, setShowAll, showAll } = useMethods(methodNames);
+  const methods = getMethods(methodNames, maxMethods, setShowAll, showAll);
 
   return (
     <div className={cn.container}>

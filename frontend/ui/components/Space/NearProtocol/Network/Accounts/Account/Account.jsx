@@ -10,13 +10,12 @@ export const Account = () => {
   useManageRouting();
 
   return (
-    <div className={cn.container}>
-      <Link className={cn.backBtn} to="..">
-        <Button size="small" IconLeft={ArrowLeftOutline}>
-          Back
-        </Button>
-      </Link>
-      <div className={cn.wrapper}>
+      <>
+        <Link className={cn.backBtn} to="..">
+          <Button size="small" IconLeft={ArrowLeftOutline}>
+            Back
+          </Button>
+        </Link>
         <div className={cn.account}>
           <HeadCard />
           <div className={cn.toggle}>
@@ -25,7 +24,7 @@ export const Account = () => {
           </div>
           <Outlet />
         </div>
-      </div>
-    </div>
+      </>
+
   );
 };
