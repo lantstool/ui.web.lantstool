@@ -10,17 +10,17 @@ const types = {
 };
 
 const getType = (type) => {
-  return type? types[type]: type['default'];
+  return type ? types[type] : type['default'];
 };
 
-export const CopyButton = ({ copy, disabled = false, type = 'default' }) => {
+export const CopyButton = ({ value, disabled = false, type = 'default' }) => {
   const [copied, setCopied] = useState(false);
   const buttonType = getType(type);
 
   const copyTextToClipboard = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    navigator.clipboard.writeText(copy);
+    navigator.clipboard.writeText(value);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -28,7 +28,12 @@ export const CopyButton = ({ copy, disabled = false, type = 'default' }) => {
   };
 
   return (
-    <button disabled={disabled} type="button" onClick={copyTextToClipboard} className={buttonType}>
+    <button
+      disabled={disabled}
+      type="button"
+      onMouseDown={copyTextToClipboard}
+      className={buttonType}
+    >
       {copied ? <CheckCircleOutline style={cn.icon} /> : <CopyOutline style={cn.icon} />}
     </button>
   );

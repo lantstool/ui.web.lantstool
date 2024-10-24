@@ -14,6 +14,7 @@ export const Input = ({
   type = 'text',
   disabled = false,
   onBlur = () => ({}),
+  copy = true,
 }) => {
   const ref = useRef(null);
   const {
@@ -57,7 +58,7 @@ export const Input = ({
           >
             <BackspaceOutline style={cn.icon} />
           </button>
-          <CopyButton disabled={disabled} copy={value} />
+          {copy && <CopyButton disabled={disabled} value={value} />}
         </div>
       )}
       {error && <p className={cn.error}>{error}</p>}

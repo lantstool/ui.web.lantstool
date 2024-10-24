@@ -5,26 +5,31 @@ import { BillCheckOutline } from '../../../../../../../../_general/icons/BillChe
 import { CodeCircleOutline } from '../../../../../../../../_general/icons/CodeCircleOutline.jsx';
 import { useMethods } from './useMethods.jsx';
 import { Label } from '../../../../../../../../_general/Label/Label.jsx';
+import { CloseSquareOutline } from '../../../../../../../../_general/icons/CloseSquareOutline.jsx';
 
-const getAmount = (amount) => (amount ? utils.format.formatNearAmount(amount) : 'Unlimited');
-const getMethods = (methodNames, maxMethods, onShowMore, setShowAll) => {
-  if (methodNames && methodNames.length > 0) {
+const getAmount = (amount) =>
+  amount ? `${utils.format.formatNearAmount(amount)} NEAR` : 'Unlimited';
+
+const getMethods = (methodNames, maxMethods, onShowMore, setShowAll, showAll) => {
+  if (methodNames.length > 0) {
     const visibleMethods = methodNames.slice(0, maxMethods);
     const hiddenMethodsCount = methodNames.length - visibleMethods.length;
+
     return (
       <>
-        {visibleMethods.map((method) => (
-          <Label color="grey" key={method}>
+        {visibleMethods.map((method, index) => (
+          <Label color="grey" key={index}>
             {method}
           </Label>
         ))}
-        {hiddenMethodsCount > 0 ? (
-          <button className={cn.showBtn} onClick={()=>setShowAll(true)}>
+        {hiddenMethodsCount > 0 && (
+          <button className={cn.showBtn} onClick={() => setShowAll(true)}>
             +{hiddenMethodsCount}
           </button>
-        ) : (
-          <button  onClick={()=>setShowAll(false)}>
-            show less
+        )}
+        {showAll && (
+          <button className={cn.hideBtn} onClick={() => setShowAll(false)}>
+            <CloseSquareOutline style={cn.iconClose} />
           </button>
         )}
       </>
@@ -32,10 +37,11 @@ const getMethods = (methodNames, maxMethods, onShowMore, setShowAll) => {
   }
   return <p className={cn.subtitle}>All</p>;
 };
+
 export const FunctionCall = ({ functionKey }) => {
   const { allowance, methodNames, receiverId } = functionKey.accessKey.permission.functionCall;
-
-  const { maxMethods, ref, handleShowMore, setShowAll } = useMethods(methodNames);
+  const { maxMethods, ref, handleShowMore, setShowAll, showAll } = useMethods(methodNames);
+  const methods = getMethods(methodNames, maxMethods, handleShowMore, setShowAll, showAll);
 
   return (
     <div className={cn.container}>
@@ -55,7 +61,7 @@ export const FunctionCall = ({ functionKey }) => {
           <p className={cn.title}>Allowed methods</p>
         </div>
         <div className={cn.methods} ref={ref}>
-          {getMethods(methodNames, maxMethods, handleShowMore, setShowAll)}
+          {methods}
         </div>
       </div>
     </div>

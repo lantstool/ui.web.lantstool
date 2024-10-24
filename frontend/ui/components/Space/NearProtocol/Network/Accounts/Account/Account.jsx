@@ -16,13 +16,15 @@ export const Account = () => {
           Back
         </Button>
       </Link>
-      <div className={cn.account}>
-        <HeadCard />
-        <div className={cn.toggle}>
-          <AccountLink to="details" text="Details" />
-          <AccountLink to="keys" text="Associated keys" />
+      <div className={cn.wrapper}>
+        <div className={cn.account}>
+          <HeadCard />
+          <div className={cn.toggle}>
+            <AccountLink to="details" text="Details" />
+            <AccountLink to="keys" text="Associated keys" />
+          </div>
+          <Outlet />
         </div>
-        <Outlet />
       </div>
     </div>
   );

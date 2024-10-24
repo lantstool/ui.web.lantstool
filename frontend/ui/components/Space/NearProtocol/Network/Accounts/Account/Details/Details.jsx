@@ -3,16 +3,12 @@ import { useLoader } from '@hooks/useLoader.js';
 import { useParams } from 'react-router-dom';
 import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { Item } from './Item/Item.jsx';
-import { Input } from '../../../../../../_general/Input/Input.jsx';
-import { useForm } from 'react-hook-form';
 import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
-import { schema } from './schema.js';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Note } from './Note/Note.jsx';
 import cn from './Details.module.scss';
 
 export const Details = () => {
   const { spaceId, networkId, accountId } = useParams();
-  const updateOneNote = useStoreEffect((store) => store.nearProtocol.accounts.updateOneNote);
   const getAccountDetails = useStoreEffect(
     (store) => store.nearProtocol.accounts.getAccountDetails,
   );
@@ -20,31 +16,14 @@ export const Details = () => {
     (store) => store.nearProtocol.accounts.resetAccountDetails,
   );
   const details = useStoreState((store) => store.nearProtocol.accounts.account.details);
-  const form = useForm({
-    defaultValues: { note: '' },
-    resolver: yupResolver(schema),
-  });
-  const {
-    control,
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = form;
-
-  const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId, setValue });
-
+  const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId });
   // We have to reset data because we will display the wrong data (of prev account)
   // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);
 
-  const editName = handleSubmit((formValues) => {
-    updateOneNote({ formValues, accountId });
-  });
-
   if (isLoading) return <p>Loading...</p>;
 
-  const { balance, lockedForStorage, available, storageUsage, hasDeployedContract } = details;
+  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract } = details;
 
   if (!balance)
     return (
@@ -64,14 +43,7 @@ export const Details = () => {
         <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
       </div>
       <hr className={cn.border} />
-      <Input
-        onBlur={editName}
-        name="note"
-        error={errors?.note?.message}
-        control={control}
-        register={register}
-        label="Leave a short note about this account"
-      />
+      <Note accountId={accountId} note={note} />
     </div>
   );
 };

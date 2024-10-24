@@ -15,7 +15,7 @@ export const Items = ({ keys, type, name }) => {
             <p className={cn.subtitle}>{key.publicKey}</p>
             <div className={cn.buttonWrapper}>
               {key.isLocalExists && <CheckCircleBold style={cn.icon} />}
-              <CopyButton type="small" copy={key.publicKey} />
+              <CopyButton type="small" value={key.publicKey} />
             </div>
           </div>
           {type === 'functionCall' && <FunctionCall functionKey={key}/>}

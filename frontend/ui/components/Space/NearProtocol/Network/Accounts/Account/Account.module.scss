@@ -3,22 +3,28 @@
 
 
 .container {
+  padding: 40px 0;
   position: relative;
-  height: 100%;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-areas: 'a b';
+}
+
+.wrapper{
   max-width: 680px;
   min-width: 610px;
-  padding: 40px 0;
   width: 100%;
   background-color: white;
 }
 
 .backBtn{
-  position: absolute;
-  top: 40px;
-  left: -100px;
+  position: fixed;
+  top: 80px;
+  margin-left: -110px;
 }
 
 .account{
+  grid-area: b;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

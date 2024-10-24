@@ -2,8 +2,8 @@ import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
 import { Items } from './Items/Items.jsx';
 import { useLoader } from '@hooks/useLoader.js';
-import cn from './AccountKeys.module.scss';
 import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
+import cn from './AccountKeys.module.scss';
 
 export const AccountKeys = () => {
   const { spaceId, networkId, accountId } = useParams();
@@ -11,7 +11,7 @@ export const AccountKeys = () => {
   const [isLoading, keys] = useLoader(getAccountKeys, { spaceId, networkId, accountId }, [
     accountId,
   ]);
-  console.log(keys);
+
   if (isLoading || !keys) return null;
 
   const { fullAccess, functionCall } = keys;

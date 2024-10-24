@@ -1,6 +1,11 @@
 .topbar {
-  grid-area: a;
+  grid-area: topbar;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
   display: grid;
+
   grid-template-columns: 190px 190px 190px auto;
   grid-template-rows: auto;
   grid-template-areas: 'a b c .';

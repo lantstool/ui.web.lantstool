@@ -20,7 +20,6 @@ export const accounts = {
   records: {},
   account: {
     details: {},
-    keys: [],
   },
   // actions
   setAccount,
