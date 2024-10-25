@@ -9,7 +9,9 @@
   color: $text-color !important;
   line-height: 16px !important;
   font-weight: 500 !important;
-  padding: 8px 12px !important;
+  padding: 4px 5px !important;
+  width: max-content !important;
+  margin: 0 !important;
   box-shadow: $box-shadow !important;
   max-width: 320px !important;
   ::before {

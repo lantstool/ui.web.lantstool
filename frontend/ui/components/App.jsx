@@ -18,7 +18,9 @@ export const App = () => {
   return (
     <div className={cn.app}>
       <Topbar />
-      <Outlet />
+      <div className={cn.content}>
+        <Outlet />
+      </div>
       <ToastMessage />
     </div>
   );
