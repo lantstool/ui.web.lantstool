@@ -1,20 +1,41 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: 1500px;
+  max-width: 680px;
+  min-width: 610px;
   height: 100%;
-  background-color: white;
-  border-radius: var(--Border-Radius-3);
-  box-shadow: var(--Box-Shadow-025);
+  padding: 40px 16px;
+  gap: 24px;
+  overflow-y: auto;
 }
 
 .topbar {
-  height: 72px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
-  background-color: var(--Color-Green-300);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  margin: 0;
+  padding: 0;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  margin: 0;
+  padding: 0;
 }

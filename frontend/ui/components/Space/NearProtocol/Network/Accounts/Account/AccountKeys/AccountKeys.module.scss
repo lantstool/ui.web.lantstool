@@ -1,3 +1,6 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .keys {
   display: grid;
   gap: 20px;
@@ -10,12 +13,25 @@
   gap: 32px;
 }
 
+.empty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 314px);
+}
+
+.icon{
+  fill: $accent-200;
+  width: 80px;
+  height: 80px;
+}
+
 .title {
-  margin: 0;
-  color: var(--Text-Dark);
-  font-size: 15px;
-  font-style: normal;
+  @include text-mg-medium;
+  color: $neutral-500;
+  width: 340px;
   text-align: center;
-  font-weight: 600;
-  line-height: normal;
+  padding: 0;
+  margin: 24px 0 0 0;
 }

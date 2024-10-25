@@ -11,7 +11,7 @@
   --Color-Green-1500: #3e986f;
   --Color-Green-2000: #20503a;
   --Color-Olive-300: #87b19e;
-  --Color-Olive-400: #5A8B75;
+  --Color-Olive-400: #5a8b75;
   --Color-Grey-100: #d3d3d3;
   --Color-Grey-200: #ababab;
   --Color-Red-500: #ef2929;
@@ -42,8 +42,10 @@ body {
   font-size: 16px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
+  -webkit-user-drag: none;
 }

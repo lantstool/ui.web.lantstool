@@ -1,6 +1,14 @@
 .network {
-  width: 100%;
   display: grid;
-  grid-template-columns: max-content auto;
-  grid-template-rows: auto;
+}
+
+.content {
+  transition: 300ms;
+  height: 100%;
+  margin-left: 201px;
+}
+
+.minimized {
+  margin-left: 57px;
+  transition: 300ms;
 }

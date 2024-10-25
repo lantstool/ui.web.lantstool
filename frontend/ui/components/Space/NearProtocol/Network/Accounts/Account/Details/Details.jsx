@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
-import { useLoader } from '../../../../../../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
 import { useParams } from 'react-router-dom';
-import {
-  useStoreAction,
-  useStoreEffect,
-  useStoreEntity,
-  useStoreState,
-} from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { Item } from './Item/Item.jsx';
+import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
+import { Note } from './Note/Note.jsx';
 import cn from './Details.module.scss';
 
 export const Details = () => {
@@ -19,32 +16,34 @@ export const Details = () => {
     (store) => store.nearProtocol.accounts.resetAccountDetails,
   );
   const details = useStoreState((store) => store.nearProtocol.accounts.account.details);
-  // const history = useStoreEntity((store) => store.history);
   const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId });
-
   // We have to reset data because we will display the wrong data (of prev account)
   // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);
 
-  // useEffect(() => {
-  //   history.update(['', 'space', spaceId, 'near-protocol', networkId, 'accounts', accountId]);
-  // }, []);
-
   if (isLoading) return <p>Loading...</p>;
 
-  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract } =
-    details;
+  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract } = details;
+
+  if (!balance)
+    return (
+      <div className={cn.empty}>
+        <KeySquareBold style={cn.icon} />
+        <h1 className={cn.title}>This account is not yet on-chain.</h1>
+      </div>
+    );
 
   return (
-    <div className={cn.details}>
-      <h2 className={cn.title}>Account Details</h2>
-      <Item title="Account Id" data={accountId} copy={accountId} />
-      {note && <Item title="Name" data={note} />}
-      {balance && <Item title="Account Balance" data={`${balance} NEAR`} />}
-      {lockedForStorage && <Item title="Locked for Storage" data={`${lockedForStorage} NEAR`} />}
-      {available && <Item title="Available for Use" data={`${available} NEAR`} />}
-      {storageUsage && <Item title="Storage Used" data={`${storageUsage / 1000} KB`} />}
-      <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
+    <div>
+      <div className={cn.details}>
+        {balance && <Item title="Account Balance" data={`${balance} NEAR`} />}
+        {available && <Item title="Available for Use" data={`${available} NEAR`} />}
+        {lockedForStorage && <Item title="Locked for Storage" data={`${lockedForStorage} NEAR`} />}
+        {storageUsage && <Item title="Storage Used" data={`${storageUsage / 1000} KB`} />}
+        <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
+      </div>
+      <hr className={cn.border} />
+      <Note note={note} />
     </div>
   );
 };

@@ -1,42 +1,37 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .container {
-  display: grid;
-  grid-template-rows: 32px 34px 24px 145px 85px 80px 70px 15px 40px;
-  grid-template-areas:
-    '.'
-    'a'
-    '.'
-    'b'
-    'c'
-    'd'
-    'e'
-    '.'
-    'f';
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   height: 100%;
+  width: 512px;
+  gap: 24px;
+}
+
+.head{
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
-  grid-area: a;
-  color: var(--Text-Dark);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  @include text-lg-medium;
+  color: $neutral-800;
+  height: 24px;
+  margin: 0;
 }
 
-.accountId {
-  grid-area: b;
-}
-
-.name {
-  grid-area: c;
-}
-
-.message {
-  grid-area: e;
-}
 
 .button {
-  grid-area: f;
   display: flex;
-  justify-content: center;
+  justify-content: end;
+}
+
+.error {
+  @include text-xs-regular;
+  padding: 0;
+  opacity: 0;
+  margin: 0;
+  color: $error-600;
 }
