@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../schema.js';
 import { useStoreEffect } from '@react-vault';
+import { useParams } from 'react-router-dom';
 
-export const Note = ({ accountId, note }) => {
+export const Note = ({ note }) => {
   const updateOneNote = useStoreEffect((store) => store.nearProtocol.accounts.updateOneNote);
+  const { spaceId, networkId, accountId } = useParams();
 
   const form = useForm({
     defaultValues: { note },
@@ -22,7 +24,7 @@ export const Note = ({ accountId, note }) => {
 
   const editName = handleSubmit((formValues) => {
     if (!isDirty) return;
-    updateOneNote({ formValues, accountId, reset });
+    updateOneNote({ spaceId, networkId, accountId, formValues, reset });
   });
 
   return (

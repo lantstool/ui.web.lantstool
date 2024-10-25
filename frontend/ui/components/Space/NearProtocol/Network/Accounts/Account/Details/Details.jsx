@@ -43,7 +43,7 @@ export const Details = () => {
         <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
       </div>
       <hr className={cn.border} />
-      <Note accountId={accountId} note={note} />
+      <Note note={note} />
     </div>
   );
 };
