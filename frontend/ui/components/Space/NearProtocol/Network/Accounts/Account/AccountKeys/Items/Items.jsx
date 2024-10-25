@@ -16,11 +16,11 @@ export const Items = ({ keys, type, name }) => {
             <p className={cn.subtitle}>{key.publicKey}</p>
             <div className={cn.buttonWrapper}>
               {key.isLocalExists && (
-                <Tooltip placement='top' color="black" content="Imported to Lantstool">
+                <Tooltip placement="top" color="black" content="Imported to Lantstool">
                   <CheckCircleBold style={cn.icon} />
                 </Tooltip>
               )}
-              <CopyButton type="small" value={key.publicKey} />
+              <CopyButton event="onClick" type="small" value={key.publicKey} />
             </div>
           </div>
           {type === 'functionCall' && <FunctionCall functionKey={key} />}

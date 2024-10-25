@@ -87,8 +87,8 @@
 
 @mixin secondary {
   @include button;
-  background: none;
   border: 1px solid $neutral-200;
+  background-color: $neutral-00;
   &:hover {
     background-color: $neutral-50;
   }

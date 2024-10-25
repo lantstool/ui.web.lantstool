@@ -23,7 +23,7 @@ export const HeadCard = () => {
         <span className={cn.date}>{`Imported ${date}, ${hourMinute}`}</span>
       </div>
       <div className={cn.btnWrapper}>
-        <CopyButton type="bordered" value={accountId} />
+        <CopyButton event="onClick" type="bordered" value={accountId} />
         <Button IconLeft={TrashBinOutline} size="medium" color="secondary" onClick={openModal} />
       </div>
       <DeleteModal isOpen={isOpen} setOpen={setOpen} />

@@ -13,7 +13,12 @@ const getType = (type) => {
   return type ? types[type] : type['default'];
 };
 
-export const CopyButton = ({ value, disabled = false, type = 'default' }) => {
+export const CopyButton = ({
+  value,
+  disabled = false,
+  type = 'default',
+  event = 'onMouseDown',
+}) => {
   const [copied, setCopied] = useState(false);
   const buttonType = getType(type);
 
@@ -26,14 +31,13 @@ export const CopyButton = ({ value, disabled = false, type = 'default' }) => {
       setCopied(false);
     }, 400);
   };
+  const eventHandler =
+    event === 'onMouseDown'
+      ? { onMouseDown: copyTextToClipboard }
+      : { onClick: copyTextToClipboard };
 
   return (
-    <button
-      disabled={disabled}
-      type="button"
-      onMouseDown={copyTextToClipboard}
-      className={buttonType}
-    >
+    <button disabled={disabled} type="button" {...eventHandler} className={buttonType}>
       {copied ? <CheckCircleOutline style={cn.icon} /> : <CopyOutline style={cn.icon} />}
     </button>
   );

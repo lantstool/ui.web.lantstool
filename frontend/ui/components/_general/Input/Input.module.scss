@@ -76,6 +76,11 @@
   &:disabled {
     cursor: default;
   }
+  :hover{
+    .icon{
+      fill: $neutral-800;
+    }
+  }
 }
 
 .icon {

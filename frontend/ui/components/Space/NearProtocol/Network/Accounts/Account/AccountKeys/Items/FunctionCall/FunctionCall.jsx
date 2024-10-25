@@ -1,11 +1,10 @@
-import cn from './FunctionCall.module.scss';
 import { utils } from 'near-api-js';
 import { AccountCircleOutline } from '../../../../../../../../_general/icons/AccountCircleOutline.jsx';
 import { BillCheckOutline } from '../../../../../../../../_general/icons/BillCheckOutline.jsx';
 import { CodeCircleOutline } from '../../../../../../../../_general/icons/CodeCircleOutline.jsx';
 import { useMethods } from './useMethods.jsx';
 import { Label } from '../../../../../../../../_general/Label/Label.jsx';
-import { CloseSquareOutline } from '../../../../../../../../_general/icons/CloseSquareOutline.jsx';
+import cn from './FunctionCall.module.scss';
 
 const getAmount = (amount) =>
   amount ? `${utils.format.formatNearAmount(amount)} NEAR` : 'Unlimited';
@@ -29,7 +28,7 @@ const getMethods = (methodNames, maxMethods, setShowAll, showAll) => {
         )}
         {showAll && (
           <button className={cn.hideBtn} onClick={() => setShowAll(false)}>
-            <CloseSquareOutline style={cn.iconClose} />
+            Show less
           </button>
         )}
       </>
