@@ -32,7 +32,7 @@
   .icon {
     fill: $neutral-700;
   }
-  &:focus{
+  &:focus {
     box-shadow: $shadow-secondary;
   }
   &:hover {
@@ -43,23 +43,18 @@
   }
 }
 
-.buttonSmall{
+.buttonSmall {
   @include button(4px);
   display: flex;
   outline: none;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
   .icon {
-    fill: $neutral-700;
-  }
-  &:focus {
-    background-color: $neutral-100;
+    fill: $neutral-600;
   }
   &:hover {
-    background-color: $neutral-50;
     .icon {
-      fill: $neutral-700;
+      fill: $neutral-800;
     }
   }
 }

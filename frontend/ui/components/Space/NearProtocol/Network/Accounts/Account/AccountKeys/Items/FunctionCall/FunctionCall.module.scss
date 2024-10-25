@@ -33,7 +33,7 @@
   margin-right: 4px;
 }
 
-.iconClose{
+.iconClose {
   fill: $neutral-700;
 }
 
@@ -45,50 +45,4 @@
 .methodsWrapper {
   display: flex;
   align-items: start;
-}
-
-.methods {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 4px;
-  max-width: 440px;
-  height: auto;
-  text-overflow: ellipsis;
-  word-break: break-all;
-}
-
-
-.showBtn {
-  @include text-sm-medium;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 8px;
-  gap: 4px;
-  margin: 0;
-  border-radius: 12px;
-  max-width: max-content;
-  background-color: $neutral-100;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  color: $neutral-700;
-}
-
-.hideBtn {
-  @include text-sm-medium;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  color: $neutral-700;
-  background-color: $neutral-00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  border-radius: 8px;
-  &:hover {
-    background-color: $neutral-100;
-  }
 }

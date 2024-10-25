@@ -54,7 +54,17 @@
   gap: 8px;
 }
 
+.tooltip{
+  display: flex;
+  justify-content: center;
+}
+
 .icon {
   fill: $green-700;
 }
 
+.copy {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}
