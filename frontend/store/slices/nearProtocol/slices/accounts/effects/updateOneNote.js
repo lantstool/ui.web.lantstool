@@ -16,7 +16,7 @@ export const updateOneNote = effect(async ({ payload, slice, store }) => {
     });
     editNote({ note, accountId });
     reset({ note });
-    setNotification({ isOpen: true, message: 'Changes saved', color: 'success', daley: 1500 });
+    setNotification({ isOpen: true, message: 'Changes saved', variant: 'success' });
   } catch (e) {
     console.log(e);
   }
