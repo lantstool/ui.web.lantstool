@@ -23,7 +23,15 @@ export const Details = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract, codeHash } = details;
+  const {
+    note,
+    balance,
+    lockedForStorage,
+    available,
+    storageUsage,
+    hasDeployedContract,
+    codeHash,
+  } = details;
 
   if (!balance)
     return (
