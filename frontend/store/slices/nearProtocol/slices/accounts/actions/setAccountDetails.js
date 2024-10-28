@@ -15,6 +15,8 @@ export const setAccountDetails = action(({ slice, payload }) => {
   slice.account.details.storageUsage = details.storageUsage;
   slice.account.details.hasDeployedContract =
     details.codeHash !== '11111111111111111111111111111111';
+  slice.account.details.codeHash =
+    details.codeHash !== '11111111111111111111111111111111' ? details.codeHash : null;
 
   slice.account.details.balance = formatNumber(details.amount);
   slice.account.details.lockedForStorage = formatNumber(balance.stateStaked);

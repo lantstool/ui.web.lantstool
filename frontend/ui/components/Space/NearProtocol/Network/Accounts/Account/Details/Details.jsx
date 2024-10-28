@@ -23,7 +23,7 @@ export const Details = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract } = details;
+  const { note, balance, lockedForStorage, available, storageUsage, hasDeployedContract, codeHash } = details;
 
   if (!balance)
     return (
@@ -41,6 +41,7 @@ export const Details = () => {
         {lockedForStorage && <Item title="Locked for Storage" data={`${lockedForStorage} NEAR`} />}
         {storageUsage && <Item title="Storage Used" data={`${storageUsage / 1000} KB`} />}
         <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
+        {codeHash && <Item title="Contract WASM Hash" data={codeHash} />}
       </div>
       <hr className={cn.border} />
       <Note note={note} />
