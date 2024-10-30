@@ -4,7 +4,7 @@ import { Button } from '../../../../_general/Button/Button.jsx';
 import { ModalGroup } from './ModalGroup/ModalGroup.jsx';
 import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useEffect } from 'react';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { schema } from './schema.js';
 
@@ -39,8 +39,8 @@ export const CreateModal = ({ styles, closeModal }) => {
   });
 
   return (
-    <form onSubmit={onSubmit}>
-      <ModalGroup isOpen={true} closeModal={closeModal} styles={styles} text="Create Call">
+    <ModalGroup isOpen={true} closeModal={closeModal} styles={styles} text="Create Call">
+      <form onSubmit={onSubmit}>
         <TextareaGroup
           register={register}
           name="name"
@@ -49,7 +49,7 @@ export const CreateModal = ({ styles, closeModal }) => {
           errors={errors.name?.message}
         />
         <Button disabled={errors.callName} text="Create Call" style="secondary" type="submit" />
-      </ModalGroup>
-    </form>
+      </form>
+    </ModalGroup>
   );
 };

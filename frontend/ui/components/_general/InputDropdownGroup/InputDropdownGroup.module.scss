@@ -18,49 +18,49 @@
   border-radius: 8px;
 }
 
-.wrapperDefault{
+.wrapperDefault {
   @include wrapper($neutral-200);
   &:hover {
     border-color: $neutral-400;
-    .borderDefault{
+    .borderDefault {
       background-color: $neutral-400;
     }
   }
 }
 
-.wrapperError{
-  @include wrapper($error-800);
+.wrapperError {
+  @include wrapper($red-600);
 }
 
-.wrapperFocused{
+.wrapperFocused {
   @include wrapper($neutral-500);
-  .borderDefault{
+  .borderDefault {
     background-color: $neutral-500;
   }
 }
 
-.wrapperDisabled{
+.wrapperDisabled {
   @include wrapper($neutral-200);
   color: $neutral-400;
-  .borderDefault{
+  .borderDefault {
     background-color: $neutral-300;
   }
-  .input{
+  .input {
     color: $neutral-600;
     background-color: $neutral-200;
-    &::placeholder{
+    &::placeholder {
       color: $neutral-400;
     }
   }
 }
 
-@mixin border($color){
+@mixin border($color) {
   border: none;
   height: 100%;
   width: 1px;
   min-width: 1px;
   background-color: $color;
-  margin:  0;
+  margin: 0;
   padding: 0;
 }
 
@@ -69,9 +69,8 @@
 }
 
 .borderError {
-  @include border($error-800);
+  @include border($red-600);
 }
-
 
 .label {
   @include text-sm-regular;
@@ -101,7 +100,7 @@
   border: none;
   outline: none;
   padding: 8px 60px 8px 12px;
-  &::placeholder{
+  &::placeholder {
     color: $neutral-400;
   }
 }

@@ -1,0 +1,39 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.deleteModal {
+  display: flex;
+  flex-direction: column;
+  height: 272px;
+  width: 512px;
+  padding: 24px;
+  border-radius: 16px;
+  gap: 24px;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
+}

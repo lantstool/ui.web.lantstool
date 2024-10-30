@@ -52,7 +52,7 @@
 }
 
 .error {
-  @include container($error-600);
+  @include container($red-600);
 }
 
 .warning {
@@ -69,5 +69,3 @@
 .icon {
   fill: $neutral-00;
 }
-
-
