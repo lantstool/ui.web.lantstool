@@ -10,7 +10,7 @@ export const CallContractViewMethod = ({ form }) => {
     methodName: '',
     args: '',
     blockTarget: 'latest',
-    finality: 'final',
+    finality: { value: 'final', label: 'Final' },
     blockId: '',
   });
 

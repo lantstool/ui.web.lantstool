@@ -7,8 +7,8 @@ export const options = [
         label: 'Get Account Data',
       },
       {
-        value: 'getAccountsChanges',
-        label: 'Get Accounts Changes',
+        value: 'getAccountChanges',
+        label: 'Get Account Changes',
       },
     ],
   },

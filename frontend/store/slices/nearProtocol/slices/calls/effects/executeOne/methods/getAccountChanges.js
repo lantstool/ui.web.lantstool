@@ -1,7 +1,7 @@
 import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
 
-export const getAccountData = (rpc, params) =>
-  rpc.account.viewAccount(
+export const getAccountChanges = (rpc, params) =>
+  rpc.account.accountChanges(
     getBlockTargetParams({
       accountId: params.accountId.value,
       blockTarget: params.blockTarget,

@@ -21,7 +21,7 @@ export const useDropdownOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const createRpc = useStoreEffect((store) => store.nearProtocol.createRpc);
-  const contractId = useWatch({ control, name: 'params.contractId' });
+  const contractId = useWatch({ control, name: 'params.contractId.value' });
 
   useEffect(() => {
     if (!contractId) return;

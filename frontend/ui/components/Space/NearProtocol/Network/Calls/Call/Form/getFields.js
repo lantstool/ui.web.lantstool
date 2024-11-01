@@ -1,11 +1,11 @@
 import { GetAccountData } from './methods/GetAccountData/GetAccountData.jsx';
-import { GetAccountsChanges } from './methods/GetAccountsChanges/GetAccountsChanges.jsx';
+import { GetAccountChanges } from './methods/GetAccountChanges/GetAccountChanges.jsx';
 import { CallContractViewMethod } from './methods/CallContractViewMethod/CallContractViewMethod.jsx';
 
 const fields = {
   getAccountData: GetAccountData,
-  getAccountsChanges: GetAccountsChanges,
+  getAccountChanges: GetAccountChanges,
   callContractViewMethod: CallContractViewMethod,
 };
 
-export const getFields = (method) => (!fields[method] ? null : fields[method]);
+export const getFields = (method) => (!fields[method?.value] ? null : fields[method?.value]);

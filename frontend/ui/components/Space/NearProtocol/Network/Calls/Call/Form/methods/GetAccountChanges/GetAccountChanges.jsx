@@ -3,14 +3,14 @@ import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOpt
 import { useFieldsDefaultValues } from '../../_general/hooks/useFieldsDefaultValues.js';
 import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
 
-export const GetAccountsChanges = ({ form }) => {
+export const GetAccountChanges = ({ form }) => {
   const { control } = form;
   const options = useAccountsOptions();
 
   useFieldsDefaultValues(form, {
     accountId: '',
     blockTarget: 'specific',
-    finality: 'final',
+    finality: { value: 'final', label: 'Final' },
     blockId: '',
   });
 

@@ -1,4 +1,4 @@
-export const getParams = ({ finality, blockId, blockTarget, ...rest }) =>
+export const getBlockTargetParams = ({ finality, blockId, blockTarget, ...rest }) =>
   blockTarget === 'latest'
     ? {
         ...rest,

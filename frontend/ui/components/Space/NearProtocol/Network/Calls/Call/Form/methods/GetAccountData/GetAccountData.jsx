@@ -10,7 +10,7 @@ export const GetAccountData = ({ form }) => {
   useFieldsDefaultValues(form, {
     accountId: '',
     blockTarget: 'latest',
-    finality: 'final',
+    finality: { value: 'final', label: 'Final' },
     blockId: '',
   });
 

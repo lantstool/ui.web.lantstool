@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useLoader } from '@hooks/useLoader.js';
 import cn from './Key.module.scss';
 import { PrivateItem } from './PrivateItem/PrivateItem.jsx';

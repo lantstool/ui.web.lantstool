@@ -6,7 +6,7 @@ export const SelectMethod = ({ form }) => {
   // the form state change and don't update isDirty param properly
   const onChange = (field) => (event) => {
     form.setValue('params', null);
-    field.onChange(event ? event.value : '');
+    field.onChange(event);
   };
 
   return (
