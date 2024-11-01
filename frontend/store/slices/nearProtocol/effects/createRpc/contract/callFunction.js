@@ -9,7 +9,7 @@ export const callFunction =
       account_id: contractId,
       method_name: methodName,
       args_base64: Buffer.from(args).toString('base64'),
-      ...getBlockTarget(finality, blockId),
+      ...getBlockTarget({ finality, blockId }),
     });
     return toCamelCase(response);
   };

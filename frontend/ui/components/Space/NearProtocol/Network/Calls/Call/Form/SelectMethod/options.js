@@ -6,6 +6,10 @@ export const options = [
         value: 'getAccountData',
         label: 'Get Account Data',
       },
+      {
+        value: 'getAccountsChanges',
+        label: 'Get Accounts Changes',
+      },
     ],
   },
   {

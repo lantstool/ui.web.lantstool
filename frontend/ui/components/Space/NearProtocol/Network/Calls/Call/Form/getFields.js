@@ -1,8 +1,10 @@
 import { GetAccountData } from './methods/GetAccountData/GetAccountData.jsx';
+import { GetAccountsChanges } from './methods/GetAccountsChanges/GetAccountsChanges.jsx';
 import { CallContractViewMethod } from './methods/CallContractViewMethod/CallContractViewMethod.jsx';
 
 const fields = {
   getAccountData: GetAccountData,
+  getAccountsChanges: GetAccountsChanges,
   callContractViewMethod: CallContractViewMethod,
 };
 
