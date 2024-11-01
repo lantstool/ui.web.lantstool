@@ -18,12 +18,10 @@ export const Input = ({
   copy = true,
 }) => {
   const ref = useRef(null);
+
   const {
     field: { value = '', onChange },
-  } = useController({
-    name,
-    control,
-  });
+  } = useController({ name, control });
 
   const handleClear = () => {
     ref.current.focus();
@@ -39,7 +37,7 @@ export const Input = ({
       <label className={cn.label}>{label}</label>
       <div
         className={cnm({
-          [cn.wrapper]: !error && ! disabled,
+          [cn.wrapper]: !error && !disabled,
           [cn.wrapperDisabled]: disabled,
           [cn.wrapperError]: error,
         })}

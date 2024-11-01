@@ -36,7 +36,7 @@ export const BlockTarget = ({ form }) => {
         />
       )}
       {blockTarget === 'specific' && (
-        <Input name="params.blockId" register={register} control={control} label="Block Id" />
+        <Input name="params.blockId" control={control} label="Block Id" />
       )}
     </>
   );
