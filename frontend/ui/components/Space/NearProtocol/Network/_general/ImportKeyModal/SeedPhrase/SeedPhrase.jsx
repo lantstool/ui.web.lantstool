@@ -18,7 +18,8 @@ export const SeedPhrase = ({ closeModal }) => {
   const schema = createSchema(spaceId, networkId);
 
   const form = useForm({
-    resolver: yupResolver(schema),
+    mode: 'all',
+    // resolver: yupResolver(schema),
     defaultValues: {
       publicKey: '',
       seedPhrase: '',
@@ -29,12 +30,11 @@ export const SeedPhrase = ({ closeModal }) => {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors },
   } = form;
 
   const onSubmit = (formValues) => {
-    importFromSeedPhrase({ formValues, spaceId, networkId, reset, closeModal });
+    importFromSeedPhrase({ formValues, spaceId, networkId, closeModal });
   };
 
   return (
@@ -62,6 +62,7 @@ export const SeedPhrase = ({ closeModal }) => {
         copy={false}
         name="derivationPath"
         placeholder="m/44'/397'/0"
+        error={errors?.derivationPath?.message}
       />
       <div className={cn.buttonWrapper}>
         <Button size="medium" type="submit">

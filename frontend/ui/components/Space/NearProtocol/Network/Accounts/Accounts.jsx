@@ -1,7 +1,7 @@
-import { useStoreEffect, useStoreState } from '../../../../../../../react-vault/index.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { Outlet, useParams } from 'react-router-dom';
 import { Empty } from './Empty/Empty.jsx';
-import { useLoader } from '../../../../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
 import { useManageRouting } from './useManageRouting.js';
 import cn from './Accounts.module.scss';
 

@@ -10,7 +10,7 @@ export const Item = ({
   label = false,
   disabled = false,
 }) => {
-  const changeType = () => setFormType(type);
+  const changeType = () => !disabled && setFormType(type);
   const isActive = formType === type;
 
   return (

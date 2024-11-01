@@ -9,7 +9,7 @@ export const Empty = () => {
   const openModal = () => {
     setOpen(true);
   };
-
+  console.log("Empty");
   return (
     <div className={cn.empty}>
       <div className={cn.wrapper}>
@@ -18,7 +18,7 @@ export const Empty = () => {
           Looks empty. Import your first key to begin, or add one directly through a transaction.
         </h2>
       </div>
-      <Button onClick={openModal}>Import account</Button>
+      <Button onClick={openModal}>Import key</Button>
       <ImportKeyModal isOpen={isOpen} setOpen={setOpen} />
     </div>
   );

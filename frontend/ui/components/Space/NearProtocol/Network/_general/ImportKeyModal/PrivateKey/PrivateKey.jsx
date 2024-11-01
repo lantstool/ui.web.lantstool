@@ -16,23 +16,22 @@ export const PrivateKey = ({ closeModal }) => {
   const schema = createSchema(spaceId, networkId);
 
   const form = useForm({
-    resolver: yupResolver(schema),
+    mode: 'all',
+    // resolver: yupResolver(schema),
     defaultValues: {
       publicKey: '',
       privateKey: '',
-      seedPhrase: '',
     },
   });
 
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors },
   } = form;
 
   const onSubmit = (formValues) => {
-    importFromPrivateKey({ formValues, spaceId, networkId, reset, closeModal });
+    importFromPrivateKey({ formValues, spaceId, networkId, closeModal });
   };
 
   return (
