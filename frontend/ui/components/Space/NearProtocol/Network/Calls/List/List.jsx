@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import cn from './List.module.scss';
 import { CreateCall } from '../_general/CreateCall/CreateCall.jsx';

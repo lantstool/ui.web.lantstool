@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { KeyPair } from 'near-api-js';
 
 export const importFromPrivateKey = effect(async ({ store, slice, payload }) => {

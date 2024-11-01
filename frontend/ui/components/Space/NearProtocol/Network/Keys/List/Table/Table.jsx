@@ -1,4 +1,4 @@
-import { useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import cn from './Table.module.scss';
 

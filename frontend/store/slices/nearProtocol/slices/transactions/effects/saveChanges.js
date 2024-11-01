@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const saveChanges = effect(async ({ store, slice, payload }) => {
   const { form, transactionId } = payload;

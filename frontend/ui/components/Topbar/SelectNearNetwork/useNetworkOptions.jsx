@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useStoreState } from '../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 
 const getOptions = (ids) =>
   ids.map((networkId) => ({

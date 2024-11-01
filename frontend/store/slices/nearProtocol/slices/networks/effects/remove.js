@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const remove = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, navigate } = payload;

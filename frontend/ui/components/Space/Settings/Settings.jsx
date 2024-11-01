@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../react-vault/index.js';
-import { useSaveToHistory } from '../../../hooks/useSaveToHistory.js';
+import { useStoreEffect } from '@react-vault';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import cn from './Settings.module.scss';
 
 export const Settings = () => {

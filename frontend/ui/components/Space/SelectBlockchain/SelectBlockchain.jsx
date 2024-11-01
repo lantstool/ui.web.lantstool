@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSaveToHistory } from '../../../hooks/useSaveToHistory.js';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import cn from './SelectBlockchain.module.scss';
 
 export const SelectBlockchain = () => {

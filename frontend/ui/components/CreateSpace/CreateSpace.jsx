@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useStoreEffect } from '../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import cn from './CreateSpace.module.scss';
 
 export const CreateSpace = () => {

@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const duplicateOne = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, transactionId, closeMenu } = payload;

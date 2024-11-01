@@ -3,7 +3,7 @@ import { ModalGroup } from '../../../../../../../_general/ModalGroup/ModalGroup.
 import cn from './PrivateKey.module.scss';
 import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useForm, useWatch } from 'react-hook-form';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import addIcon from '../../../../../../../../assets/addIcon.svg';
 import { MessageGroup } from '../_general/MessageGroup/MessageGroup.jsx';

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../hooks/useLoader.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
 import { Empty } from '../Empty/Empty.jsx';
 import { useState } from 'react';
 import { ImportModals } from '../_general/ImportKey/ImportModals.jsx';

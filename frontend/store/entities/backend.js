@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { entity } from '../../../react-vault/index.js';
+import { entity } from '@react-vault';
 // import BackendWorker from '../../../backend/index?worker';
 
 /* Message Types

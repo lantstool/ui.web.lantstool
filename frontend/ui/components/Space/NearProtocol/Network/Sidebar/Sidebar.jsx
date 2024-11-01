@@ -1,7 +1,7 @@
 import { Navigation } from './Navigation/Navigation.jsx';
 import cn from './Sidebar.module.scss';
 import { SidebarOutline } from '../../../../_general/icons/SidebarOutline.jsx';
-import { useStoreState, useStoreAction } from '../../../../../../../react-vault/index.js';
+import { useStoreState, useStoreAction } from '@react-vault';
 
 export const Sidebar = () => {
   const setMinimize = useStoreAction((store) => store.nearProtocol.setMinimize);

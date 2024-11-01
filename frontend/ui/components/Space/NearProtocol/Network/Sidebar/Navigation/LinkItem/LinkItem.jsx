@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 import cn from './LinkItem.module.scss';
 
 export const LinkItem = ({ name, Icon, to }) => {

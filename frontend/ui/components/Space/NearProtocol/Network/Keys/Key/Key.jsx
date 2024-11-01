@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { useLoader } from '../../../../../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
 import cn from './Key.module.scss';
 import { PrivateItem } from './PrivateItem/PrivateItem.jsx';
 import { PublicItem } from './PublicItem/PublicItem.jsx';
 import { useParams } from 'react-router-dom';
-import {
-  useStoreEffect,
-  useStoreState,
-} from '../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { TopBar } from './TopBar/TopBar.jsx';
 
 export const Key = () => {

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../react-vault/index.js';
-import { useSaveToHistory } from '../../hooks/useSaveToHistory.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { Empty } from './Empty/Empty.jsx';
 import { List } from './List/List.jsx';
-import { useLoader } from '../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
 import cn from './Spaces.module.scss';
 
 export const Spaces = () => {

@@ -1,7 +1,7 @@
 import { utils } from 'near-api-js';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 
 const truncateNumber = (number) => number.toString().replace(/(\.\d{2})\d*$/, '$1');
 

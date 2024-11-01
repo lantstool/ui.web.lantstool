@@ -1,4 +1,4 @@
-import { useStoreState } from '../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 import { useMemo } from 'react';
 
 const getOptions = (ids, records) =>

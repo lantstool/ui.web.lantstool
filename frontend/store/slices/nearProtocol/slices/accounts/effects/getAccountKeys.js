@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 const getKeys = (onChainAccountKeys, allLocalKeys) => {
   const localKeysSet = new Set(allLocalKeys);

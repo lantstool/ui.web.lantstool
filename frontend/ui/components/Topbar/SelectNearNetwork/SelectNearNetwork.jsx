@@ -1,6 +1,6 @@
 import { useMatch, useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../react-vault/index.js';
-import { useLoader } from '../../../hooks/useLoader.js';
+import { useStoreEffect } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
 import { Selector } from '../_general/Selector/Selector.jsx';
 import { useNetworkOptions } from './useNetworkOptions.jsx';
 import cn from './SelectNearNetwork.module.scss';

@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import { useStoreEffect } from '../../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useEffect, useState } from 'react';
 import { Option } from './Option/Option.jsx';
 import { getOptions } from './getOptions.js';

@@ -4,7 +4,7 @@ import { Button } from '../../../../_general/Button/Button.jsx';
 import { ModalGroup } from './ModalGroup/ModalGroup.jsx';
 import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { useEffect } from 'react';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { schema } from './schema.js';
 

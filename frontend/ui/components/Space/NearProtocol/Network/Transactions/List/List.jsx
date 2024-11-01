@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { Transaction } from './Transaction/Transaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { AddSquareOutline } from '../../../../../_general/icons/AddSquareOutline.jsx';

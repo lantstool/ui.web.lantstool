@@ -6,7 +6,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import cn from './SeedPhrase.module.scss';
 import addIcon from '../../../../../../../../assets/addIcon.svg';
 import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 // import { yupResolver } from '@hookform/resolvers/yup';
 import { TextareaGroup } from '../../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
 import { MessageGroup } from '../_general/MessageGroup/MessageGroup.jsx';

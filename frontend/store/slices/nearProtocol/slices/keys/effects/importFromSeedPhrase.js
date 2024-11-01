@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { parseSeedPhrase, KEY_DERIVATION_PATH } from 'near-seed-phrase';
 
 export const importFromSeedPhrase = effect(async ({ store, slice, payload }) => {
