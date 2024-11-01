@@ -2,7 +2,7 @@ import cn from './RadioButton.module.scss';
 import { useState } from 'react';
 import cnm from 'classnames';
 
-export const RadioButton = ({ register, label, value, id, disabled }) => {
+export const RadioButton = ({ register, label, value, name, disabled }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -16,8 +16,7 @@ export const RadioButton = ({ register, label, value, id, disabled }) => {
   return (
     <label className={cn.radioContainer}>
       <input
-        {...register(id)}
-        id={id}
+        {...register(name)}
         onFocus={handleFocus}
         onBlur={handleBlur}
         type="radio"

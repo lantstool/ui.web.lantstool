@@ -1,4 +1,5 @@
 import { decompress } from 'fzstd';
+import { getParams } from './helpers/getParams.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
@@ -12,6 +13,6 @@ const getResult = (result, methodName) => {
 };
 
 export const callContractViewMethod = async (rpc, params) => {
-  const result = await rpc.contract.callFunction(params);
+  const result = await rpc.contract.callFunction(getParams(params));
   return getResult(result.result, params.methodName);
 };
