@@ -1,9 +1,9 @@
 import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
 
-export const getContractState = (rpc, params) =>
-  rpc.contract.viewState(
+export const getContractStateChanges = (rpc, params) =>
+  rpc.contract.getStateChanges(
     getBlockTargetParams({
-      contractId: params.contractId.value,
+      contractIds: [params.contractId.value],
       keyPrefix: params.keyPrefix,
       blockTarget: params.blockTarget,
       finality: params.finality.value,

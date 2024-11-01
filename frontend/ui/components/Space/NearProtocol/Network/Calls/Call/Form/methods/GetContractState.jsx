@@ -1,8 +1,8 @@
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
-import { Input } from '../../../../../../../../_general/Input/Input.jsx';
-import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
-import { useFieldsDefaultValues } from '../../_general/hooks/useFieldsDefaultValues.js';
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
+import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { Input } from '../../../../../../../_general/Input/Input.jsx';
+import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
+import { useFieldsDefaultValues } from '../_general/hooks/useFieldsDefaultValues.js';
+import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
 
 export const GetContractState = ({ form }) => {
   const { control } = form;
@@ -10,7 +10,7 @@ export const GetContractState = ({ form }) => {
 
   useFieldsDefaultValues(form, {
     contractId: '',
-    prefix: '',
+    keyPrefix: '',
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
@@ -27,7 +27,7 @@ export const GetContractState = ({ form }) => {
         isClearable
         creatableSelect
       />
-      <Input name="params.prefix" control={control} label="State Prefix" />
+      <Input name="params.keyPrefix" control={control} label="State Prefix" />
       <BlockTarget form={form} />
     </>
   );

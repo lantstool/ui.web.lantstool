@@ -1,14 +1,18 @@
-import { GetAccountData } from './methods/GetAccountData/GetAccountData.jsx';
-import { GetAccountChanges } from './methods/GetAccountChanges/GetAccountChanges.jsx';
-import { GetContractWasm } from './methods/GetContractWasm/GetContractWasm.jsx';
-import { GetContractState } from './methods/GetContractState/GetContractState.jsx';
+import { GetAccount } from './methods/GetAccount.jsx';
+import { GetAccountChanges } from './methods/GetAccountChanges.jsx';
+import { GetContractWasm } from './methods/GetContractWasm.jsx';
+import { GetContractState } from './methods/GetContractState.jsx';
+import { GetContractWasmChanges } from './methods/GetContractWasmChanges.jsx';
+import { GetContractStateChanges } from './methods/GetContractStateChanges.jsx';
 import { CallContractViewMethod } from './methods/CallContractViewMethod/CallContractViewMethod.jsx';
 
 const fields = {
-  getAccountData: GetAccountData,
+  getAccount: GetAccount,
   getAccountChanges: GetAccountChanges,
   getContractWasm: GetContractWasm,
   getContractState: GetContractState,
+  getContractWasmChanges: GetContractWasmChanges,
+  getContractStateChanges: GetContractStateChanges,
   callContractViewMethod: CallContractViewMethod,
 };
 

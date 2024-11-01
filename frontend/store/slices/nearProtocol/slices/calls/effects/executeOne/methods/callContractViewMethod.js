@@ -20,7 +20,7 @@ export const callContractViewMethod = async (rpc, params) => {
       args: params.args,
       blockTarget: params.blockTarget,
       finality: params.finality.value,
-      blockId: params.finality.blockId,
+      blockId: params.blockId,
     }),
   );
   return getResult(result.result, params.methodName.value);

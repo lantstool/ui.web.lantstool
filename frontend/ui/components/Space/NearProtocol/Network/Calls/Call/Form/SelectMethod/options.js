@@ -3,8 +3,8 @@ export const options = [
     label: 'Account',
     options: [
       {
-        value: 'getAccountData',
-        label: 'Get Account Data',
+        value: 'getAccount',
+        label: 'Get Account',
       },
       {
         value: 'getAccountChanges',
@@ -20,8 +20,16 @@ export const options = [
         label: 'Get Contract WASM',
       },
       {
+        value: 'getContractWasmChanges',
+        label: 'Get Contract WASM Changes',
+      },
+      {
         value: 'getContractState',
         label: 'Get Contract State',
+      },
+      {
+        value: 'getContractStateChanges',
+        label: 'Get Contract State Changes',
       },
       {
         value: 'callContractViewMethod',

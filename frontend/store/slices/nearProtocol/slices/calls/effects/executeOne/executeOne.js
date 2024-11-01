@@ -10,6 +10,7 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
     setResult({ callId, isOpen: true, isLoading: true });
     const rpc = await createRpc({ spaceId, networkId });
 
+    console.log(formValues);
     const result = await methods[formValues.method.value](rpc, formValues.params);
     setResult({ callId, result, isLoading: false });
   } catch (e) {

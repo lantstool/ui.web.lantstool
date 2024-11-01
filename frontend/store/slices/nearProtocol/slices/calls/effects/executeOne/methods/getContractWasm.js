@@ -6,6 +6,6 @@ export const getContractWasm = (rpc, params) =>
       contractId: params.contractId.value,
       blockTarget: params.blockTarget,
       finality: params.finality.value,
-      blockId: params.finality.blockId,
+      blockId: params.blockId,
     }),
   );
