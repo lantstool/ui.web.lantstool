@@ -1,5 +1,5 @@
-import { GetAccount } from './methods/GetAccount.jsx';
-import { GetAccountChanges } from './methods/GetAccountChanges.jsx';
+import { GetAccount } from './methods/GetAccount/GetAccount.jsx';
+import { GetAccountChanges } from './methods/GetAccountChanges/GetAccountChanges.jsx';
 import { GetContractWasm } from './methods/GetContractWasm.jsx';
 import { GetContractState } from './methods/GetContractState.jsx';
 import { GetContractWasmChanges } from './methods/GetContractWasmChanges.jsx';

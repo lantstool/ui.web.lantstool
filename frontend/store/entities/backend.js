@@ -36,7 +36,7 @@ class Backend {
     });
     // Handle all incoming messages from worker. We have 2 different types of them
     this.worker.addEventListener('message', (messageEvent) => {
-      console.log('Main thead receive the message:', messageEvent.data);
+      // console.log('Main thead receive the message:', messageEvent.data);
       const { event, response } = messageEvent.data;
 
       try {

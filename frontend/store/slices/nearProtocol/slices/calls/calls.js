@@ -4,7 +4,6 @@ import { effects } from './effects/index.js';
 export const calls = {
   // state
   list: [],
-  call: null,
   drafts: {},
   results: {},
   // actions

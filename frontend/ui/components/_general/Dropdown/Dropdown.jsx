@@ -17,7 +17,6 @@ export const Dropdown = ({
   creatableSelect = false,
   isSearchable = false,
   isClearable = false,
-  isMulti = false,
   label,
   placeholder = 'Select...',
 }) => {
@@ -41,7 +40,6 @@ export const Dropdown = ({
               isDisabled={isDisabled}
               isClearable={isClearable}
               isSearchable={isSearchable}
-              isMulti={isMulti}
               components={{ DropdownIndicator, ClearIndicator, IndicatorsContainer }}
               styles={style}
             />

@@ -18,7 +18,7 @@ await initDB(sqlite, db);
 
 // TODO: Add a logger and embed the ability to send it to devs for users
 self.addEventListener('message', async (messageEvent) => {
-  console.log('Worker receive the message:', messageEvent.data);
+  // console.log('Worker receive the message:', messageEvent.data);
   try {
     const { request } = messageEvent.data;
 

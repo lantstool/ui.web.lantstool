@@ -4,6 +4,7 @@ import { setDraft } from './setDraft.js';
 import { setOne } from './setOne.js';
 import { editOneName } from './editOneName.js';
 import { setResult } from './setResult.js';
+import { setupDraft } from './setupDraft.js';
 
 export const actions = {
   setList,
@@ -12,4 +13,5 @@ export const actions = {
   setOne,
   editOneName,
   setResult,
+  setupDraft,
 };
