@@ -10,10 +10,10 @@
   line-height: 16px !important;
   font-weight: 500 !important;
   padding: 4px 5px !important;
-  width: max-content !important;
+  text-align: center !important;
+  width: auto !important;
   margin: 0 !important;
   box-shadow: $box-shadow !important;
-  max-width: 320px !important;
   ::before {
     color: $background-color !important;
     box-shadow: $box-shadow !important;

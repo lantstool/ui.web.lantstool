@@ -1,8 +1,8 @@
-import cn from './Empty.module.css';
 import { useState } from 'react';
-import { ImportModals } from '../_general/ImportKey/ImportModals.jsx';
-import { Button } from '../../_general/Button/Button.jsx';
-import addIcon from '../../../../../../assets/addIcon.svg';
+import { ImportKeyModal } from '../../_general/ImportKeyModal/ImportKeyModal.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
+import { KeySquareBold } from '../../../../../_general/icons/KeySquareBold.jsx';
+import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const [isOpen, setOpen] = useState(false);
@@ -12,9 +12,15 @@ export const Empty = () => {
   };
 
   return (
-    <div className={cn.container}>
-      <ImportModals isOpen={isOpen} setOpen={setOpen} />
-      <Button text="Import key" onClick={openModal} src={addIcon} style="secondary" />
+    <div className={cn.empty}>
+      <div className={cn.wrapper}>
+        <KeySquareBold style={cn.icon} />
+        <h2 className={cn.title}>
+          Looks empty. Import your first key to begin, or add one directly through a transaction.
+        </h2>
+      </div>
+      <Button onClick={openModal}>Import key</Button>
+      <ImportKeyModal isOpen={isOpen} setOpen={setOpen} />
     </div>
   );
 };

@@ -7,10 +7,11 @@
   flex-direction: column;
   height: 100%;
   width: 512px;
+  padding: 24px;
   gap: 24px;
 }
 
-.head{
+.head {
   display: flex;
   justify-content: space-between;
 }
@@ -22,7 +23,6 @@
   margin: 0;
 }
 
-
 .button {
   display: flex;
   justify-content: end;
@@ -33,5 +33,5 @@
   padding: 0;
   opacity: 0;
   margin: 0;
-  color: $error-600;
+  color: $red-600;
 }

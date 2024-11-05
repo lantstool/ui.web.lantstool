@@ -1,0 +1,51 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.keyList {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  background: $neutral-00;
+  &:hover {
+    background: $neutral-50;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-800;
+  margin: 0;
+  padding: 0;
+}
+
+.subtitle {
+  @include text-sm-medium;
+  color: $neutral-700;
+  margin: 0;
+  padding: 2px 8px;
+  background-color: $neutral-100;
+  border-radius: 12px;
+  width: max-content;
+}
+
+.copy {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}

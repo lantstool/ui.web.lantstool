@@ -1,0 +1,36 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $neutral-50;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.subtitle {
+  @include text-xs-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.publicKey {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.date {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+}

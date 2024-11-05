@@ -55,7 +55,7 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
         <Input
           control={control}
           name="note"
-          error={errors?.note}
+          error={errors?.note?.message}
           placeholder="Work account"
           label="Leave a short note about this account (optionally)."
         />

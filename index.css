@@ -35,6 +35,10 @@
   --Spacing-10: 32px;
 }
 
+:root:has(#modal) {
+  overflow: hidden;
+}
+
 body {
   width: 100vw;
   margin: 0;

@@ -16,6 +16,7 @@ export const Input = ({
   disabled = false,
   onBlur = () => ({}),
   copy = true,
+  tooltip = null,
 }) => {
   const ref = useRef(null);
   const {
@@ -36,10 +37,14 @@ export const Input = ({
 
   return (
     <div className={cn.container}>
-      <label className={cn.label}>{label}</label>
+      <div className={cn.labelWrapper}>
+        <label className={cn.label}>{label}</label>
+        {tooltip}
+      </div>
+
       <div
         className={cnm({
-          [cn.wrapper]: !error && ! disabled,
+          [cn.wrapper]: !error && !disabled,
           [cn.wrapperDisabled]: disabled,
           [cn.wrapperError]: error,
         })}
@@ -70,7 +75,7 @@ export const Input = ({
           </div>
         )}
       </div>
-      {error && <p className={cn.error}>{error}</p>}
+      <div className={cn.errorWrapper}>{error && <p className={cn.error}>{error}</p>}</div>
     </div>
   );
 };

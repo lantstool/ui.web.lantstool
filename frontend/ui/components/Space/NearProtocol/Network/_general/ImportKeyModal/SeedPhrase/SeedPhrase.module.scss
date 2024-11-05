@@ -1,0 +1,41 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.seedPhrase {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+}
