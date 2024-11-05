@@ -39,8 +39,8 @@ export const CreateModal = ({ styles, closeModal }) => {
   });
 
   return (
-    <form onSubmit={onSubmit}>
-      <ModalGroup isOpen={true} closeModal={closeModal} styles={styles} text="Create Call">
+    <ModalGroup isOpen={true} closeModal={closeModal} styles={styles} text="Create Call">
+      <form onSubmit={onSubmit}>
         <TextareaGroup
           register={register}
           name="name"
@@ -49,7 +49,7 @@ export const CreateModal = ({ styles, closeModal }) => {
           errors={errors.name?.message}
         />
         <Button disabled={errors.callName} text="Create Call" style="secondary" type="submit" />
-      </ModalGroup>
-    </form>
+      </form>
+    </ModalGroup>
   );
 };

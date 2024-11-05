@@ -1,10 +1,16 @@
 import { useLoader } from '@hooks/useLoader.js';
-import cn from './Key.module.scss';
-import { PrivateItem } from './PrivateItem/PrivateItem.jsx';
-import { PublicItem } from './PublicItem/PublicItem.jsx';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
-import { TopBar } from './TopBar/TopBar.jsx';
+import { HeadCard } from './HeadCard/HeadCard.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
+import { ArrowLeftOutline } from '../../../../../_general/icons/ArrowLeftOutline.jsx';
+import { Item } from './Item/Item.jsx';
+import { KeyOutline } from '../../../../../_general/icons/KeyOutline.jsx';
+import { PasswordSeedPhraseInputOutline } from '../../../../../_general/icons/PasswordSeedPhraseInputOutline.jsx';
+import { LockKeyholeOutline } from '../../../../../_general/icons/LockKeyholeOutline.jsx';
+import { RoutingDerivationPathOutline } from '../../../../../_general/icons/RoutingDerivationPathOutline.jsx';
+import { DangerZone } from './DangerZone/DangerZone.jsx';
+import cn from './Key.module.scss';
 
 export const Key = () => {
   const { spaceId, networkId, publicKey } = useParams();
@@ -13,21 +19,38 @@ export const Key = () => {
 
   if (isLoading) return null;
 
+  const { privateKey, seedPhrase, derivationPath } = key;
+
   return (
-    <div className={cn.container}>
-      <div className={cn.wrapper}>
-        <TopBar publicKey={publicKey} />
-        <div className={cn.body}>
-          <h2 className={cn.title}>Key Data</h2>
-          <PublicItem text={key.publicKey} label="Public Key" />
-          <PrivateItem text={key.privateKey} label="Private Key" />
-          {key.seedPhrase && <PrivateItem text={key.seedPhrase} label="Seed Phrase" />}
-          {key.derivationPath && <PublicItem text={key.derivationPath} label="Derivation Path" />}
-          <div className={cn.walletWrapper}>
-            <h4 className={cn.subtitle}>Wallet</h4>
-          </div>
-        </div>
+    <>
+      <Link className={cn.backBtn} to="..">
+        <Button size="small" IconLeft={ArrowLeftOutline}>
+          Back
+        </Button>
+      </Link>
+      <div className={cn.key}>
+        <HeadCard keyData={key} />
+        <Item Icon={KeyOutline} value={publicKey} label="Public key" isVisible={false} />
+        <Item Icon={LockKeyholeOutline} value={privateKey} label="Private key" isVisible={true} />
+        {seedPhrase && (
+          <Item
+            Icon={PasswordSeedPhraseInputOutline}
+            value={seedPhrase}
+            label="Seed hrase"
+            isVisible={true}
+          />
+        )}
+        {derivationPath && (
+          <Item
+            Icon={RoutingDerivationPathOutline}
+            value={derivationPath}
+            label="Derivation path"
+            isVisible={false}
+            isCopy={false}
+          />
+        )}
+        <DangerZone />
       </div>
-    </div>
+    </>
   );
 };

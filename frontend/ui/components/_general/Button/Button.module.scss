@@ -85,6 +85,42 @@
   @include mg-btn-icon;
 }
 
+@mixin danger {
+  @include button;
+  background-color: $red-600;
+  &:hover {
+    background-color: $red-700;
+  }
+  &:focus {
+    box-shadow: $shadow-red;
+    background-color: $red-600;
+  }
+  &:disabled {
+    background-color: $red-100;
+    cursor: auto;
+  }
+}
+
+.dangerLg {
+  @include danger;
+  @include lg-btn;
+}
+
+.dangerLgIcon {
+  @include danger;
+  @include lg-btn-icon;
+}
+
+.dangerMg {
+  @include danger;
+  @include mg-btn;
+}
+
+.dangerMgIcon {
+  @include danger;
+  @include mg-btn-icon;
+}
+
 @mixin secondary {
   @include button;
   border: 1px solid $neutral-200;

@@ -53,7 +53,7 @@
 }
 
 .error {
-  @include colorScheme($error-50, $error-800, $error-800);
+  @include colorScheme($red-50, $red-600, $red-600);
 }
 
 .cyan {
