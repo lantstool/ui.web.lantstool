@@ -34,7 +34,7 @@ export const DeleteModal = ({ isOpen, setOpen }) => {
   };
 
   const onSubmit = () => {
-    removeKey({ spaceId, networkId, publicKey, navigate, closeModal });
+    removeKey({ spaceId, networkId, publicKey, navigate });
   };
 
   return (

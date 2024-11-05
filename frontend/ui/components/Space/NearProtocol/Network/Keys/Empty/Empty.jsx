@@ -6,6 +6,7 @@ import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const [isOpen, setOpen] = useState(false);
+
   const openModal = () => {
     setOpen(true);
   };

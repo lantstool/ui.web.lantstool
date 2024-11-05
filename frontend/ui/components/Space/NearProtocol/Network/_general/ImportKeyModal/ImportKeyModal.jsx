@@ -10,6 +10,7 @@ import cn from './ImportKeyModal.module.scss';
 
 export const ImportKeyModal = ({ isOpen, setOpen }) => {
   const [formType, setFormType] = useState('privateKey');
+
   const closeModal = () => {
     setOpen(false);
     setFormType('privateKey');

@@ -6,6 +6,6 @@ export const getPublicKey = effect(async ({ store, payload }) => {
   try {
     return await backend.sendRequest('nearProtocol.keys.getPublicKey', payload);
   } catch (e) {
-    return false;
+    return null;
   }
 });
