@@ -6,7 +6,7 @@ import cn from './List.module.scss';
 
 export const List = () => {
   const [isOpen, setOpen] = useState(false);
-  console.log('Must be rendered');
+
   const openModal = () => {
     setOpen(true);
   };

@@ -17,9 +17,8 @@ export const PrivateKey = ({ closeModal }) => {
 
   const form = useForm({
     mode: 'all',
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
     defaultValues: {
-      publicKey: '',
       privateKey: '',
     },
   });

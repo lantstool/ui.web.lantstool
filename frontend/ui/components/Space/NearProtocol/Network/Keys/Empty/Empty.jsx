@@ -9,7 +9,7 @@ export const Empty = () => {
   const openModal = () => {
     setOpen(true);
   };
-  console.log("Empty");
+
   return (
     <div className={cn.empty}>
       <div className={cn.wrapper}>

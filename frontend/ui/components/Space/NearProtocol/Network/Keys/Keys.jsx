@@ -14,10 +14,7 @@ export const Keys = () => {
   useManageRouting();
 
   if (isLoading) return null;
-  console.log(ids.length);
   if (ids.length === 0) return <Empty />;
-  console.log('Not empty');
-  console.log(ids.length);
 
   return (
     <div className={cn.container}>

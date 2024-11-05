@@ -8,6 +8,9 @@ import { CloseCircleOutline } from '../../../../../../_general/icons/CloseCircle
 import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
+import { InfoCircleLinear } from '../../../../../../_general/icons/InfoCircleLinear.jsx';
 import cn from './SeedPhrase.module.scss';
 
 export const SeedPhrase = ({ closeModal }) => {
@@ -19,9 +22,9 @@ export const SeedPhrase = ({ closeModal }) => {
 
   const form = useForm({
     mode: 'all',
-    // resolver: yupResolver(schema),
+    criteriaMode: 'all',
+    resolver: yupResolver(schema),
     defaultValues: {
-      publicKey: '',
       seedPhrase: '',
       derivationPath: KEY_DERIVATION_PATH,
     },
@@ -30,8 +33,18 @@ export const SeedPhrase = ({ closeModal }) => {
   const {
     control,
     handleSubmit,
+    clearErrors,
+    watch,
     formState: { errors },
   } = form;
+
+  const derivationPath = watch('derivationPath');
+
+  useEffect(() => {
+    if (errors?.derivationPath) {
+      clearErrors('seedPhrase');
+    }
+  }, [derivationPath]);
 
   const onSubmit = (formValues) => {
     importFromSeedPhrase({ formValues, spaceId, networkId, closeModal });
@@ -63,6 +76,14 @@ export const SeedPhrase = ({ closeModal }) => {
         name="derivationPath"
         placeholder="m/44'/397'/0"
         error={errors?.derivationPath?.message}
+        tooltip={
+          <Tooltip
+            content="A deterministic way to derive foreign addresses from one NEAR account."
+            placement="top"
+          >
+            <InfoCircleLinear />
+          </Tooltip>
+        }
       />
       <div className={cn.buttonWrapper}>
         <Button size="medium" type="submit">

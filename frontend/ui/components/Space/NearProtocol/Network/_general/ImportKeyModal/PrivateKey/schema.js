@@ -4,26 +4,28 @@ import { useStoreEffect } from '@react-vault';
 
 const isValidPublicKey = (value) => {
   try {
-    return KeyPair.fromString(value).getPublicKey().toString();
+    if (KeyPair.fromString(value).getPublicKey().toString()) return true;
   } catch {
     return false;
   }
 };
 
 export const createSchema = (spaceId, networkId) => {
-  const getKey = useStoreEffect((store) => store.nearProtocol.keys.getKey);
-
+  const getPublicKey = useStoreEffect((store) => store.nearProtocol.keys.getPublicKey);
   return yup.object({
     privateKey: yup
       .string()
       .required('Empty field')
-      .test('matches', "Can't generate Key Pair from provided private key", (value) => {
-        return isValidPublicKey(value);
-      })
+      .length(96,'Private key length must be 96 characters.')
+      .test('matches', "Can't generate Key Pair from provided private key", isValidPublicKey)
       .test('matches', 'This key already exists', async (value) => {
-        const publicKey = isValidPublicKey(value);
-        const key = await getKey({ spaceId, networkId, publicKey });
-        return !key;
+        try {
+          const publicKey = KeyPair.fromString(value).getPublicKey().toString();
+          const isPublicKeyExist = await getPublicKey({ spaceId, networkId, publicKey });
+          return !isPublicKeyExist;
+        } catch (e) {
+          return false;
+        }
       }),
   });
 };
