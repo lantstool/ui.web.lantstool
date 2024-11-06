@@ -1,9 +1,11 @@
-import cn from './Navigation.module.scss';
 import { LinkItem } from './LinkItem/LinkItem.jsx';
 import { TransactionFileBold } from '../../../../../_general/icons/TransactionFileBold.jsx';
 import { CallsOutline } from '../../../../../_general/icons/CallsOutline.jsx';
 import { AccountSquareOutline } from '../../../../../_general/icons/AccountSquareOutline.jsx';
 import { KeySquareOutline } from '../../../../../_general/icons/KeySquareOutline.jsx';
+import { ToolsLinear } from '../../../../../_general/icons/ToolsLinear.jsx';
+import { NetworkOutline } from '../../../../../_general/icons/NetworkOutline.jsx';
+import cn from './Navigation.module.scss';
 
 export const Navigation = () => (
   <div className={cn.navigation}>
@@ -11,7 +13,8 @@ export const Navigation = () => (
     <LinkItem name="Calls" Icon={CallsOutline} to="calls" />
     <LinkItem name="Accounts" Icon={AccountSquareOutline} to="accounts" />
     <LinkItem name="Keys" Icon={KeySquareOutline} to="keys" />
-    <LinkItem name="Tools" Icon={AccountSquareOutline} to="tools" />
-    <LinkItem name="Settings" Icon={CallsOutline} to="settings" />
+    <LinkItem name="Tools" Icon={ToolsLinear} to="tools" />
+    <hr className={cn.border} />
+    <LinkItem name="Network settings" Icon={NetworkOutline} to="settings" />
   </div>
 );

@@ -1,18 +1,41 @@
+@use '@styles/variables' as *;
+
 .topbar {
   grid-area: topbar;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  grid-template-columns: 190px 190px 190px auto;
-  grid-template-rows: auto;
-  grid-template-areas: 'a b c .';
-
+  height: 48px;
   padding: 0 16px;
   align-items: center;
   gap: 8px;
   border-bottom: 1px solid var(--Colors-Neutral-Gray-200, #e9ecef);
   background: var(--Colors-Neutral-Gray-00, #fff);
+}
+
+@mixin wrapper {
+  display: flex;
+  border-radius: 8px;
+  height: 32px;
+  align-items: center;
+  gap: 4px;
+}
+
+.wrapper {
+  @include wrapper;
+}
+
+.borderedWrapper {
+  @include wrapper;
+
+  border: 1px solid $neutral-200;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 8px;
 }
