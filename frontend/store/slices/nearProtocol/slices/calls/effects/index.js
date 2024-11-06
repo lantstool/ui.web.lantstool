@@ -1,7 +1,6 @@
 import { createOne } from './createOne.js';
 import { getCount } from './getCount.js';
 import { getList } from './getList.js';
-import { getOne } from './getOne.js';
 import { onMountCall } from './onMountCall.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
@@ -16,7 +15,6 @@ export const effects = {
   reorder,
   getCount,
   createOne,
-  getOne,
   onMountCall,
   updateOneName,
   duplicateOne,

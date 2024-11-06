@@ -5,8 +5,8 @@ export const useLoader = (fn, args = undefined, deps = []) => {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     (async () => {
-      setLoading(true);
       const res = await fn(args);
       setResult(res);
       setLoading(false);

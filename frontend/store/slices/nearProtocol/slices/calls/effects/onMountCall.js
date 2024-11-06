@@ -6,12 +6,12 @@ export const onMountCall = effect(async ({ store, slice, payload: callId }) => {
   const draft = slice.getState((slice) => slice.drafts[callId]);
 
   // We don't need to prepare and setup base draft from DB data
-  // if user already was on this call page
+  // if user already was on this call page - he may have unsaved changes
   if (draft) return;
 
   try {
     const call = await backend.sendRequest('nearProtocol.calls.getOne', callId);
-    setupDraft({ call });
+    setupDraft(call);
   } catch (e) {
     console.log(e);
   }

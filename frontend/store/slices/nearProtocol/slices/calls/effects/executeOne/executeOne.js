@@ -15,13 +15,12 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const setResult = slice.getActions((slice) => slice.setResult);
 
   console.log(formValues);
-  return;
 
   try {
     setResult({ callId, isOpen: true, isLoading: true });
     const rpc = await createRpc({ spaceId, networkId });
 
-    const result = await methods[formValues.method.value](rpc, formValues.params);
+    const result = await methods[formValues.method.value](rpc, formValues);
     setResult({ callId, result, isLoading: false });
   } catch (e) {
     console.log(e);

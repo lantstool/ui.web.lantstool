@@ -2,23 +2,28 @@ import { action } from '@react-vault';
 
 const getDefaultValues = () => ({
   getAccount: {
+    method: { value: 'getAccount', label: 'Get Account'},
     accountId: '',
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
   getAccountChanges: {
-    accountIds: [{ accountId: '' }],
+    method: { value: 'getAccountChanges', label: 'Get Account Changes'},
+    // accountIds: [{ accountId: '' }],
     blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
 });
 
-export const setupDraft = action(({ slice, payload }) => {
-  const { call } = payload;
-  slice.drafts[call.callId] = {
+export const setupDraft = action(({ slice, payload: call }) => {
+  const { callId, body } = call;
+
+  slice.drafts[callId] = {
     origin: call,
-    currentMethod: call.method,
+    currentMethod: body.method.value,
+    ...getDefaultValues(),
+    [body.method.value]: body,
   };
 });
