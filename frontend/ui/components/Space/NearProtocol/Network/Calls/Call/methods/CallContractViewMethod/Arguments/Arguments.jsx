@@ -17,7 +17,7 @@ export const Arguments = ({ form }) => {
       </div>
       <div className={cn.editorWrapper}>
         <Controller
-          name="params.args"
+          name="args"
           control={control}
           render={({ field }) => {
             const value = field.value ? field.value : '';

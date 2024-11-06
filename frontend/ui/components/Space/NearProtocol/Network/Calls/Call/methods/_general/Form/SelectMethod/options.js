@@ -12,29 +12,29 @@ export const options = [
       },
     ],
   },
-  // {
-  //   label: 'Contract',
-  //   options: [
-  //     {
-  //       value: 'getContractWasm',
-  //       label: 'Get Contract WASM',
-  //     },
-  //     {
-  //       value: 'getContractWasmChanges',
-  //       label: 'Get Contract WASM Changes',
-  //     },
-  //     {
-  //       value: 'getContractState',
-  //       label: 'Get Contract State',
-  //     },
-  //     {
-  //       value: 'getContractStateChanges',
-  //       label: 'Get Contract State Changes',
-  //     },
-  //     {
-  //       value: 'callContractViewMethod',
-  //       label: 'Call Contract View Method',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Contract',
+    options: [
+      {
+        value: 'getContractWasm',
+        label: 'Get Contract WASM',
+      },
+      {
+        value: 'getContractWasmChanges',
+        label: 'Get Contract WASM Changes',
+      },
+      {
+        value: 'getContractState',
+        label: 'Get Contract State',
+      },
+      {
+        value: 'getContractStateChanges',
+        label: 'Get Contract State Changes',
+      },
+      {
+        value: 'callContractViewMethod',
+        label: 'Call Contract View Method',
+      },
+    ],
+  },
 ];

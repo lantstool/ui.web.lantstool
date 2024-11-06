@@ -2,16 +2,25 @@ import { action } from '@react-vault';
 
 const getDefaultValues = () => ({
   getAccount: {
-    method: { value: 'getAccount', label: 'Get Account'},
+    method: { value: 'getAccount', label: 'Get Account' },
     accountId: null,
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
   getAccountChanges: {
-    method: { value: 'getAccountChanges', label: 'Get Account Changes'},
+    method: { value: 'getAccountChanges', label: 'Get Account Changes' },
     accountIds: [{ accountId: null }],
     blockTarget: 'specific',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  callContractViewMethod: {
+    method: { value: 'callContractViewMethod', label: 'Call Contract View Method' },
+    contractId: null,
+    methodName: null,
+    args: '',
+    blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
