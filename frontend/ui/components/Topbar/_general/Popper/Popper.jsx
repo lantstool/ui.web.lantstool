@@ -1,12 +1,29 @@
+import { useRef, useEffect } from 'react';
 import cn from './Popper.module.scss';
 
-export const Popper = ({ children, closeMenu, isOpen }) => {
+export const Popper = ({ children, closeMenu, isOpen, position = 'left' }) => {
+  const popperRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (popperRef.current && !popperRef.current.contains(event.target)) {
+      closeMenu();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
     <>
-      <div className={cn.popper}>{children}</div>
-      <div className={cn.background} onClick={closeMenu} />
+      <div ref={popperRef} className={position === 'left' ? cn.popper : cn.popperRight}>
+        {children}
+      </div>
     </>
   );
 };

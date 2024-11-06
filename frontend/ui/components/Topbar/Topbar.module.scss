@@ -8,7 +8,7 @@
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% - 32px);
   height: 48px;
   padding: 0 16px;
   align-items: center;
@@ -30,11 +30,19 @@
 
 .borderedWrapper {
   @include wrapper;
-background-color: $neutral-50;
+  background-color: $neutral-50;
   border: 1px solid $neutral-200;
+  * {
+    cursor: pointer;
+  }
 }
 
-.buttonWrapper {
+.menu {
   display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+.sideMenu {
+  position: relative;
 }
