@@ -1,34 +1,23 @@
 import { Dropdown } from '../../../../../../_general/Dropdown/Dropdown.jsx';
 import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { useAccountsOptions } from '../../../_general/hooks/useAccountsOptions.js';
-import { useFieldsDefaultValues } from './_general/hooks/useFieldsDefaultValues.js';
+import { Form } from './_general/Form/Form.jsx';
 import { BlockTarget } from './_general/BlockTarget/BlockTarget.jsx';
 
-export const GetContractState = ({ form }) => {
-  const { control } = form;
+export const GetContractState = ({ call, draft }) => {
   const options = useAccountsOptions();
-
-  useFieldsDefaultValues(form, {
-    contractId: '',
-    keyPrefix: '',
-    blockTarget: 'latest',
-    finality: { value: 'final', label: 'Final' },
-    blockId: '',
-  });
-
   return (
-    <>
+    <Form call={call} draft={draft}>
       <Dropdown
-        name="params.contractId"
+        name="contractId"
         label="Contract Id"
-        control={control}
         options={options}
         isSearchable
         isClearable
         creatableSelect
       />
-      <Input name="params.keyPrefix" control={control} label="State Prefix" />
-      <BlockTarget form={form} />
-    </>
+      <Input name="keyPrefix"  label="State Prefix" />
+      <BlockTarget />
+    </Form>
   );
 };

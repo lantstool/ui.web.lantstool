@@ -1,31 +1,21 @@
 import { Dropdown } from '../../../../../../_general/Dropdown/Dropdown.jsx';
 import { useAccountsOptions } from '../../../_general/hooks/useAccountsOptions.js';
-import { useFieldsDefaultValues } from './_general/hooks/useFieldsDefaultValues.js';
+import { Form } from './_general/Form/Form.jsx';
 import { BlockTarget } from './_general/BlockTarget/BlockTarget.jsx';
 
-export const GetContractWasm = ({ form }) => {
-  const { control } = form;
+export const GetContractWasm = ({ call, draft }) => {
   const options = useAccountsOptions();
-
-  useFieldsDefaultValues(form, {
-    contractId: '',
-    blockTarget: 'latest',
-    finality: { value: 'final', label: 'Final' },
-    blockId: '',
-  });
-
   return (
-    <>
+    <Form call={call} draft={draft}>
       <Dropdown
-        name="params.contractId"
+        name="contractId"
         label="Contract Id"
-        control={control}
         options={options}
         isSearchable
         isClearable
         creatableSelect
       />
-      <BlockTarget form={form} />
-    </>
+      <BlockTarget />
+    </Form>
   );
 };

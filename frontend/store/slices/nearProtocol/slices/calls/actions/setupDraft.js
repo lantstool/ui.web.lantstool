@@ -15,6 +15,21 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  getContractWasm: {
+    method: { value: 'getContractWasm', label: 'Get Contract WASM', },
+    contractId: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getContractState: {
+    method: { value: 'getContractState', label: 'Get Contract State' },
+    contractId: null,
+    keyPrefix: '',
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
   callContractViewMethod: {
     method: { value: 'callContractViewMethod', label: 'Call Contract View Method' },
     contractId: null,

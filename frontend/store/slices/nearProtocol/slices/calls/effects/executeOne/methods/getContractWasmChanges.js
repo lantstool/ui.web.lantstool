@@ -1,11 +1,14 @@
 import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
 
-export const getContractWasmChanges = (rpc, params) =>
-  rpc.contract.getCodeChanges(
+export const getContractWasmChanges = (rpc, params) => {
+  const contractIds = params.contractIds.map(({ contractId }) => contractId.value);
+
+  return rpc.contract.getCodeChanges(
     getBlockTargetParams({
-      contractIds: [params.contractId.value],
+      contractIds,
       blockTarget: params.blockTarget,
       finality: params.finality.value,
       blockId: params.blockId,
     }),
   );
+};
