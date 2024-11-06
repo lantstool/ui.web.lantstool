@@ -5,6 +5,7 @@ import { BlockTarget } from './_general/BlockTarget/BlockTarget.jsx';
 
 export const GetContractWasm = ({ call, draft }) => {
   const options = useAccountsOptions();
+  // TODO add custom validation for the form
   return (
     <Form call={call} draft={draft}>
       <Dropdown

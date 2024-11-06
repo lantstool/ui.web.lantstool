@@ -5,6 +5,7 @@ import { Form } from '../_general/Form/Form.jsx';
 
 export const GetAccount = ({ call, draft }) => {
   const options = useAccountsOptions();
+  // TODO add custom validation for the form
   return (
     <Form call={call} draft={draft}>
       <Dropdown

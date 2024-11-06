@@ -6,6 +6,7 @@ import { BlockTarget } from './_general/BlockTarget/BlockTarget.jsx';
 
 export const GetContractState = ({ call, draft }) => {
   const options = useAccountsOptions();
+  // TODO add custom validation for the form
   return (
     <Form call={call} draft={draft}>
       <Dropdown
@@ -16,7 +17,7 @@ export const GetContractState = ({ call, draft }) => {
         isClearable
         creatableSelect
       />
-      <Input name="keyPrefix"  label="State Prefix" />
+      <Input name="keyPrefix" label="State Prefix" />
       <BlockTarget />
     </Form>
   );

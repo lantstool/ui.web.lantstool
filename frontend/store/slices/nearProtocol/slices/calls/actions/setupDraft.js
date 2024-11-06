@@ -1,6 +1,7 @@
 import { action } from '@react-vault';
 
 const getDefaultValues = () => ({
+  // Account
   getAccount: {
     method: { value: 'getAccount', label: 'Get Account' },
     accountId: null,
@@ -15,10 +16,18 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  // Contract
   getContractWasm: {
-    method: { value: 'getContractWasm', label: 'Get Contract WASM', },
+    method: { value: 'getContractWasm', label: 'Get Contract WASM' },
     contractId: null,
     blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getContractWasmChanges: {
+    method: { value: 'getContractWasmChanges', label: 'Get Contract WASM Changes' },
+    contractIds: [{ contractId: null }],
+    blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
@@ -27,6 +36,14 @@ const getDefaultValues = () => ({
     contractId: null,
     keyPrefix: '',
     blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getContractStateChanges: {
+    method: { value: 'getContractStateChanges', label: 'Get Contract State Changes' },
+    contractIds: [{ contractId: null }],
+    keyPrefix: '',
+    blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
