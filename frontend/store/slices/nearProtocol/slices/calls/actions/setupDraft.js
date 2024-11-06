@@ -3,14 +3,14 @@ import { action } from '@react-vault';
 const getDefaultValues = () => ({
   getAccount: {
     method: { value: 'getAccount', label: 'Get Account'},
-    accountId: '',
+    accountId: null,
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
   getAccountChanges: {
     method: { value: 'getAccountChanges', label: 'Get Account Changes'},
-    // accountIds: [{ accountId: '' }],
+    accountIds: [{ accountId: null }],
     blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',

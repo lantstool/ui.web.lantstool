@@ -18,7 +18,7 @@ export const createOne = async ({ execute, request }) => {
 
   const body = JSON.stringify({
     method: { value: 'getAccount', label: 'Get Account'},
-    accountId: '',
+    accountId: null,
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',

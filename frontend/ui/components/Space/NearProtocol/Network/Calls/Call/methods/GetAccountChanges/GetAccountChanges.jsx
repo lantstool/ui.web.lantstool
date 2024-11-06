@@ -1,20 +1,13 @@
 import { Form } from '../_general/Form/Form.jsx';
 import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
-import { AccountIds } from './AccountIds.jsx';
-
-const Fields = ({ form }) => {
-  return (
-    <>
-      <BlockTarget form={form} />
-    </>
-  );
-};
+import { AccountIds } from './AccountIds/AccountIds.jsx';
 
 export const GetAccountChanges = ({ call, draft }) => {
   // TODO add custom validation for the form
   return (
     <Form call={call} draft={draft}>
-      <Fields />
+      <AccountIds accountIds={draft.accountIds} />
+      <BlockTarget />
     </Form>
   );
 };
