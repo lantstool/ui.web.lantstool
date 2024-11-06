@@ -12,9 +12,9 @@
   height: 48px;
   padding: 0 16px;
   align-items: center;
-  gap: 8px;
   border-bottom: 1px solid var(--Colors-Neutral-Gray-200, #e9ecef);
   background: var(--Colors-Neutral-Gray-00, #fff);
+  user-select: none;
 }
 
 @mixin wrapper {
@@ -22,7 +22,6 @@
   border-radius: 8px;
   height: 32px;
   align-items: center;
-  gap: 4px;
 }
 
 .wrapper {
@@ -31,7 +30,7 @@
 
 .borderedWrapper {
   @include wrapper;
-
+background-color: $neutral-50;
   border: 1px solid $neutral-200;
 }
 

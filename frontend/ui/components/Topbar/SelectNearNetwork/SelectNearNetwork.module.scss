@@ -1,4 +1,11 @@
+@use '@styles/variables' as *;
+
 .selectNearNetwork {
+  display: flex;
+  align-items: center;
+  height: 32px;
   position: relative;
-  margin-right: 4px;
+  padding-right: 4px;
+  border-radius: 0 8px 8px 0;
+  background-color: $neutral-00;
 }
