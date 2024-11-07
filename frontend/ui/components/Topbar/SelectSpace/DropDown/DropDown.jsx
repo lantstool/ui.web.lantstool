@@ -28,11 +28,11 @@ export const DropDown = ({ setOpen, isOpen, spaceId }) => {
         </div>
         <hr className={cn.border} />
         <div className={cn.settings}>
-          <Link to={`/spaces/create`} onClick={closeMenu} className={cn.settingItem}>
+          <Link to={"/spaces/create"} onClick={closeMenu} className={cn.settingItem}>
             <AddSquareOutline />
             Create new space
           </Link>
-          <Link to={`/spaces`} onClick={closeMenu} className={cn.settingItem}>
+          <Link to={"/spaces"} onClick={closeMenu} className={cn.settingItem}>
             <SettingsOutline />
             Manage space
           </Link>
