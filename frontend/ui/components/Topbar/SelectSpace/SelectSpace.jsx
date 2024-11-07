@@ -1,28 +1,29 @@
-import { useMatch, useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '@react-vault';
+import { useMatch, useParams } from 'react-router-dom';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
-import { Selector } from '../_general/Selector/Selector.jsx';
-import { useSpaceOptions } from './useSpaceOptions.jsx';
+import { useState } from 'react';
+import { DropDown } from './DropDown/DropDown.jsx';
+import { DropDownSelector } from '../_general/DropDownSelector/DropDownSelector.jsx';
 import cn from './SelectSpace.module.scss';
 
 export const SelectSpace = () => {
   const { spaceId } = useParams();
   const getAll = useStoreEffect((store) => store.spaces.getAll);
-  const navigate = useNavigate();
+  const records = useStoreState((store) => store.spaces.records);
   const [isLoading] = useLoader(getAll);
-  const { options, defaultValue } = useSpaceOptions(spaceId);
+  const [isOpen, setOpen] = useState(false);
   const match = useMatch('/space/:spaceId/*');
 
   if (isLoading || !match) return null;
 
-  const onChange = (option) => {
-    if (option.value === 'manageSpaces') return navigate(`/spaces`);
-    navigate(`/space/${option.value}`);
-  };
+  const openMenu = () => setOpen(true);
 
   return (
     <div className={cn.selectSpace}>
-      <Selector onChange={onChange} defaultValue={defaultValue} options={options} />
+      <DropDownSelector title={records[spaceId].name} openMenu={openMenu} isOpen={isOpen}>
+        <div className={cn.badge} />
+      </DropDownSelector>
+      <DropDown isOpen={isOpen} setOpen={setOpen} spaceId={spaceId} />
     </div>
   );
 };

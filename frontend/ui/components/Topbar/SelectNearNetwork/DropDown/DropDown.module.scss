@@ -1,0 +1,100 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.dropdown {
+  display: flex;
+  min-width: 232px;
+  width: max-content;
+  max-width: 350px;
+  flex-direction: column;
+  background-color: $neutral-00;
+  box-shadow: 0 5px 20px 0 rgba(33, 37, 41, 0.17);
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  user-select: none;
+}
+
+.container {
+  margin: 4px;
+  max-height: 600px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-400;
+  }
+}
+
+@mixin item {
+  display: flex;
+  align-items: center;
+  outline: none;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  border-radius: 4px;
+  &:hover {
+    background-color: $neutral-100;
+  }
+}
+
+.item {
+  @include item;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.border {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background: $neutral-200;
+  margin: 0;
+}
+
+.settings {
+  padding: 4px;
+}
+
+.settingItem {
+  @include item;
+  gap: 8px;
+  @include text-sm-medium;
+  color: $neutral-700;
+}
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-700;
+  max-width: 276px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  width: max-content;
+  padding: 0;
+}
+
+.icon {
+  fill: $neutral-700;
+}
+
+.hidden {
+  visibility: hidden;
+}

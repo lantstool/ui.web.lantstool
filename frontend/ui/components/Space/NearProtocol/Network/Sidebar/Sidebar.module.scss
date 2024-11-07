@@ -2,7 +2,7 @@
 
 @mixin sideBar($width) {
   position: fixed;
-  top: 40px;
+  top: 48px;
   left: 0;
   z-index: 10;
   height: calc(100vh - 56px);
@@ -20,10 +20,9 @@
   @include sideBar(184px);
 }
 
-.minimizedSideBar{
+.minimizedSideBar {
   @include sideBar(40px);
 }
-
 
 .button {
   width: max-content;
