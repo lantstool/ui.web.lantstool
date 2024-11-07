@@ -1,3 +1,115 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .selectBlockchain {
-  grid-area: b;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background-color: $neutral-00;
+  padding: 0 4px;
+  border-radius: 0 8px 8px 0;
+}
+
+.border {
+  height: 100%;
+  width: 1px;
+  background-color: $neutral-200;
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  fill: $neutral-700;
+}
+
+.dropdown {
+  display: flex;
+  width: max-content;
+  max-width: 350px;
+  flex-direction: column;
+  background-color: $neutral-00;
+  box-shadow: 0 5px 20px 0 rgba(33, 37, 41, 0.17);
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+}
+
+.container {
+  padding: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  outline: none;
+  padding: 8px;
+  justify-content: space-between;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  border-radius: 4px;
+  width: 100%;
+  &:hover {
+    background-color: $neutral-100;
+  }
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-700;
+  max-width: 276px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings {
+  padding: 4px;
+}
+
+.settingsBorder {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 1px;
+  background-color: $neutral-200;
+  margin: 0;
+}
+
+.comingSoon {
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+  border: 1px dashed $neutral-200;
+  border-radius: 4px;
+}
+
+.clockIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  padding: 8px;
+  background: rgba(73, 117, 97, 0.07);
+  width: 16px;
+  height: 16px;
+}
+
+.message {
+  @include text-xs-medium;
+  width: 168px;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
 }

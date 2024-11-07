@@ -1,18 +1,48 @@
+@use '@styles/variables' as *;
+
 .topbar {
   grid-area: topbar;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
-  display: grid;
-  width: 100%;
-  grid-template-columns: 190px 190px 190px auto;
-  grid-template-rows: auto;
-  grid-template-areas: 'a b c .';
-
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 32px);
+  height: 48px;
   padding: 0 16px;
   align-items: center;
-  gap: 8px;
   border-bottom: 1px solid var(--Colors-Neutral-Gray-200, #e9ecef);
   background: var(--Colors-Neutral-Gray-00, #fff);
+  user-select: none;
+}
+
+@mixin wrapper {
+  display: flex;
+  border-radius: 8px;
+  height: 32px;
+  align-items: center;
+}
+
+.wrapper {
+  @include wrapper;
+}
+
+.borderedWrapper {
+  @include wrapper;
+  background-color: $neutral-50;
+  border: 1px solid $neutral-200;
+  * {
+    cursor: pointer;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sideMenu {
+  position: relative;
 }

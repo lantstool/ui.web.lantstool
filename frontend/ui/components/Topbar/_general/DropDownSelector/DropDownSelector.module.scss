@@ -1,0 +1,46 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+@mixin select {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: auto;
+  background: none;
+  border-radius: 4px;
+  padding: 0 8px;
+  gap: 4px;
+}
+
+.select {
+  @include select;
+}
+
+.selectActive {
+  @include select;
+  background-color: $neutral-100;
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+  max-width: 286px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  width: max-content;
+  padding: 0;
+}
+
+.icon {
+  fill: $neutral-700;
+}

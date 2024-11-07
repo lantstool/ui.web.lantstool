@@ -34,9 +34,10 @@
   @include text-sm-regular;
   margin: 0;
   padding: 0;
-  width: 0;
+  width: max-content;
   grid-area: b;
 }
+
 .icon {
   width: 16px;
   height: 16px;
