@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useStoreState } from '../../../../../../../react-vault/index.js';
+import { useStoreState } from '@react-vault';
 import cn from './List.module.scss';
 
 export const List = ({ ids }) => {

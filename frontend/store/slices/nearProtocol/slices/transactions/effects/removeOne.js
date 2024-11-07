@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 // TODO: handle the case when we delete the last tx in the list - we also need
 // to clear navigation state for transactions and we shouldn't navigate to last

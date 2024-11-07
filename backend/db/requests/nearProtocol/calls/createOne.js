@@ -17,8 +17,11 @@ export const createOne = async ({ execute, request }) => {
   const order = await getNewCallOrder(execute, spaceId, networkId);
 
   const body = JSON.stringify({
-    method: '',
-    params: null,
+    method: { value: 'getAccount', label: 'Get Account'},
+    accountId: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
   });
 
   const query = `

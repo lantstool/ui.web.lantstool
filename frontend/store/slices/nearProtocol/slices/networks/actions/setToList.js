@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const setToList = action(({ slice, payload: networks }) => {
   slice.ids = [];

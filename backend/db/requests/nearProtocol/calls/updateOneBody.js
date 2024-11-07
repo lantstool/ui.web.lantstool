@@ -5,7 +5,10 @@ export const updateOneBody = async ({ execute, request }) => {
     UPDATE near_protocol_calls
     SET body = '${JSON.stringify(body)}'
     WHERE callId = '${callId}'
+    RETURNING *;
   `;
 
-  await execute(query);
+  const [call] = await execute(query);
+  call.body = JSON.parse(call.body);
+  return call;
 };

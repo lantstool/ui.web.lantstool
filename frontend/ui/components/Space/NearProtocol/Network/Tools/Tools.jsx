@@ -1,4 +1,4 @@
-import { useSaveToHistory } from '../../../../../hooks/useSaveToHistory.js';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 
 export const Tools = () => {
   useSaveToHistory();

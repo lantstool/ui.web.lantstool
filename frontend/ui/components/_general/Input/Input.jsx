@@ -19,12 +19,13 @@ export const Input = ({
   tooltip = null,
 }) => {
   const ref = useRef(null);
+
   const {
-    field: { value = '', onChange },
-  } = useController({
-    name,
-    control,
-  });
+    field: { value, onChange },
+  } = useController({ name, control });
+
+  // We want to avoid React error when value is null
+  const val = typeof value !== 'string' ? '' : value;
 
   const handleClear = () => {
     ref.current.focus();
@@ -53,14 +54,14 @@ export const Input = ({
           ref={ref}
           id={id || name}
           placeholder={placeholder}
-          value={value}
+          value={val}
           onChange={onChange}
           onBlur={onBlur}
           className={error ? cn.errorInput : cn.input}
           type={type}
           disabled={disabled}
         />
-        {!disabled && value && (
+        {!disabled && val && (
           <div className={cn.buttonWrapper}>
             <button
               onMouseDown={handleMouseDown}
@@ -71,7 +72,7 @@ export const Input = ({
             >
               <BackspaceOutline style={cn.icon} />
             </button>
-            {copy && <CopyButton disabled={disabled} value={value} />}
+            {copy && <CopyButton disabled={disabled} value={val} />}
           </div>
         )}
       </div>
