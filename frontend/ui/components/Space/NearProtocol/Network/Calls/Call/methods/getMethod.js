@@ -5,7 +5,8 @@ import { GetContractState } from './contract/GetContractState.jsx';
 import { GetContractWasmChanges } from './contract/GetContractWasmChanges.jsx';
 import { GetContractStateChanges } from './contract/GetContractStateChanges.jsx';
 import { CallContractViewMethod } from './contract/CallContractViewMethod/CallContractViewMethod.jsx';
-import { GetKey } from './keys/GetKey.jsx';
+import { GetKey } from './keys/GetKey/GetKey.jsx';
+import { GetKeys } from './keys/GetKeys.jsx';
 
 const methods = {
   // Account
@@ -19,6 +20,7 @@ const methods = {
   callContractViewMethod: CallContractViewMethod,
   // Keys
   getKey: GetKey,
+  getKeys: GetKeys,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

@@ -81,10 +81,6 @@ const getDefaultValues = () => ({
         label: 'Get Key Changes',
       },
       {
-        value: 'getKeys',
-        label: 'Get Keys',
-      },
-      {
         value: 'getAllKeyChanges',
         label: 'Get All Key Changes',
       },

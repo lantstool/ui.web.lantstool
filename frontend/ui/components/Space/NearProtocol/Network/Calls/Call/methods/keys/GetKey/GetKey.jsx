@@ -1,7 +1,7 @@
-import { Form } from '../_general/Form/Form.jsx';
+import { Form } from '../../_general/Form/Form.jsx';
 import { AccountId } from './AccountId.jsx';
 import { PublicKey } from './PublicKey/PublicKey.jsx';
-import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
+import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
 
 export const GetKey = ({ call, draft }) => {
   return (
