@@ -22,7 +22,7 @@ export const getAccountKeys = effect(async ({ store, payload }) => {
 
   try {
     const rpc = await createRpc({ spaceId, networkId });
-    const { keys: onChainAccountKeys } = await rpc.keys.getKeyList(accountId);
+    const { keys: onChainAccountKeys } = await rpc.keys.viewAccessKeyList({ accountId });
 
     const allLocalKeys = await backend.sendRequest('nearProtocol.keys.getIds', {
       spaceId,

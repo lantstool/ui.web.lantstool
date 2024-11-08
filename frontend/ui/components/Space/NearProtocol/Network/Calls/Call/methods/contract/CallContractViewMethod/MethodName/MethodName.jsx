@@ -1,4 +1,4 @@
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
 import { useDropdownOptions } from './useDropdownOptions.js';
 
 export const MethodName = ({ control }) => {

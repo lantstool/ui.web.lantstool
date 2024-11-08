@@ -1,9 +1,9 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
-import { Button } from '../../../../../../../../_general/Button/Button.jsx';
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
-import { TrashBinOutline } from '../../../../../../../../_general/icons/TrashBinOutline.jsx';
-import { AddSquareOutline } from '../../../../../../../../_general/icons/AddSquareOutline.jsx';
-import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
+import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
+import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { TrashBinOutline } from '../../../../../../../../../_general/icons/TrashBinOutline.jsx';
+import { AddSquareOutline } from '../../../../../../../../../_general/icons/AddSquareOutline.jsx';
+import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import cn from './AccountIds.module.scss';
 
 const getPlaceholderData = (accountIds) =>

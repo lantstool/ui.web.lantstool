@@ -1,8 +1,8 @@
-import { Dropdown } from '../../../../../../_general/Dropdown/Dropdown.jsx';
-import { Input } from '../../../../../../_general/Input/Input.jsx';
-import { useAccountsOptions } from '../../../_general/hooks/useAccountsOptions.js';
-import { Form } from './_general/Form/Form.jsx';
-import { BlockTarget } from './_general/BlockTarget/BlockTarget.jsx';
+import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { Input } from '../../../../../../../_general/Input/Input.jsx';
+import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
+import { Form } from '../_general/Form/Form.jsx';
+import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
 
 export const GetContractState = ({ call, draft }) => {
   const options = useAccountsOptions();

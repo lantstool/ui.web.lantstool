@@ -1,7 +1,7 @@
-import { getKeyList } from './getKeyList.js';
-import { getKey } from './getKey.js';
+import { viewAccessKeyList } from './viewAccessKeyList.js';
+import { viewAccessKey } from './viewAccessKey.js';
 
 export const keys = {
-  getKeyList,
-  getKey,
+  viewAccessKeyList,
+  viewAccessKey,
 };

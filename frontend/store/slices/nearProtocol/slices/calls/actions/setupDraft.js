@@ -56,7 +56,39 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  // Keys
+  getKey: {
+    method: { value: 'getKey', label: 'Get Key' },
+    accountId: null,
+    publicKey: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getKeys: {
+    method: { value: 'getKeys', label: 'Get Keys' },
+    accountId: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
 });
+
+/*
+
+      {
+        value: 'getKeyChanges',
+        label: 'Get Key Changes',
+      },
+      {
+        value: 'getKeys',
+        label: 'Get Keys',
+      },
+      {
+        value: 'getAllKeyChanges',
+        label: 'Get All Key Changes',
+      },
+ */
 
 export const setupDraft = action(({ slice, payload: call }) => {
   const { callId, body } = call;

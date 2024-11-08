@@ -5,6 +5,7 @@ import { getContractWasmChanges } from './getContractWasmChanges.js';
 import { getContractState } from './getContractState.js';
 import { getContractStateChanges } from './getContractStateChanges.js';
 import { callContractViewMethod } from './callContractViewMethod.js';
+import { keys } from './keys/index.js';
 
 export const methods = {
   getAccount,
@@ -14,4 +15,5 @@ export const methods = {
   getContractState,
   getContractStateChanges,
   callContractViewMethod,
+  ...keys,
 };
