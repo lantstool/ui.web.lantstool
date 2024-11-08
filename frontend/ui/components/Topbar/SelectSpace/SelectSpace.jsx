@@ -4,6 +4,7 @@ import { useLoader } from '@hooks/useLoader.js';
 import { useState } from 'react';
 import { DropDown } from './DropDown/DropDown.jsx';
 import { DropDownSelector } from '../_general/DropDownSelector/DropDownSelector.jsx';
+import { Badge } from '../../_general/Badge/Badge.jsx';
 import cn from './SelectSpace.module.scss';
 
 export const SelectSpace = () => {
@@ -21,7 +22,7 @@ export const SelectSpace = () => {
   return (
     <div className={cn.selectSpace}>
       <DropDownSelector title={records[spaceId].name} openMenu={openMenu} isOpen={isOpen}>
-        <div className={cn.badge} />
+        <Badge badge={records[spaceId].badge} />
       </DropDownSelector>
       <DropDown isOpen={isOpen} setOpen={setOpen} spaceId={spaceId} />
     </div>

@@ -1,0 +1,80 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+@mixin badgeDropdown {
+  position: absolute;
+  z-index: 1200;
+  display: flex;
+  width: 230px;
+  max-height: 30vh;
+  overflow-x: auto;
+  flex-direction: column;
+  background-color: $neutral-00;
+  box-shadow: 0 5px 20px 0 rgba(33, 37, 41, 0.17);
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  user-select: none;
+  padding: 4px;
+}
+
+.badgeDropdown {
+  @include badgeDropdown;
+  top: 46px;
+  left: 0;
+}
+
+@media (max-height: 1080px) {
+  .badgeDropdown {
+    //top: -164px;
+    //left: 72px;
+    max-height: 250px;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $neutral-400;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  outline: none;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  border-radius: 4px;
+  width: 100%;
+  &:hover {
+    background-color: $neutral-100;
+  }
+}
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  @include text-sm-medium;
+  text-transform: capitalize;
+  color: $neutral-700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  fill: $neutral-700;
+}
+
+.hidden {
+  visibility: hidden;
+}

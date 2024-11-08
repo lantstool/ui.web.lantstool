@@ -26,14 +26,13 @@
 }
 
 @mixin lg-btn-icon {
-  // padding 11 not 12 because 1px border taken
-  padding: 11px;
+  padding: 12px;
   border-radius: 8px;
   gap: 8px;
 }
 
 @mixin mg-btn-icon {
-  padding: 7px;
+  padding: 8px;
   border-radius: 8px;
   gap: 8px;
 }
