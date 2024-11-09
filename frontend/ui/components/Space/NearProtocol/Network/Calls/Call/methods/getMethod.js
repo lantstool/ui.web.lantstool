@@ -12,6 +12,8 @@ import { GetAccountKey } from './keys/GetAccountKey/GetAccountKey.jsx';
 import { GetChangesForAccountKey } from './keys/GetChangesForAccountKey/GetChangesForAccountKey.jsx';
 import { GetAccountKeys } from './keys/GetAccountKeys.jsx';
 import { GetChangesForAccountKeys } from './keys/GetChangesForAccountKeys.jsx';
+// Block
+import { GetBlock } from './block/GetBlock.jsx';
 
 const methods = {
   // Account
@@ -28,6 +30,8 @@ const methods = {
   getChangesForAccountKey: GetChangesForAccountKey,
   getAccountKeys: GetAccountKeys,
   getChangesForAccountKeys: GetChangesForAccountKeys,
+  // Block
+  getBlock: GetBlock,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

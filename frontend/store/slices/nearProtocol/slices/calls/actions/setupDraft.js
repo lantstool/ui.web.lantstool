@@ -86,6 +86,13 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  // Block
+  getBlock: {
+    method:  { value: 'getBlock', label: 'Get Block' },
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {

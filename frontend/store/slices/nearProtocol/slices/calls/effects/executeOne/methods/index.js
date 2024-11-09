@@ -6,6 +6,7 @@ import { getContractState } from './contract/getContractState.js';
 import { getContractStateChanges } from './contract/getContractStateChanges.js';
 import { callContractViewMethod } from './contract/callContractViewMethod.js';
 import { keys } from './keys/index.js';
+import { block } from './block/index.js';
 
 export const methods = {
   getAccount,
@@ -16,4 +17,5 @@ export const methods = {
   getContractStateChanges,
   callContractViewMethod,
   ...keys,
+  ...block,
 };
