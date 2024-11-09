@@ -66,14 +66,14 @@ const getDefaultValues = () => ({
     blockId: '',
   },
   getChangesForAccountKey: {
-    method:  { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
+    method: { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
     accountKeyPairs: [{ accountId: null, publicKey: null }],
     blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
   getAccountKeys: {
-    method:  { value: 'getAccountKeys', label: 'Get Account Keys' },
+    method: { value: 'getAccountKeys', label: 'Get Account Keys' },
     accountId: null,
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
@@ -88,8 +88,14 @@ const getDefaultValues = () => ({
   },
   // Block
   getBlock: {
-    method:  { value: 'getBlock', label: 'Get Block' },
+    method: { value: 'getBlock', label: 'Get Block' },
     blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getBlockChanges: {
+    method: { value: 'getBlockChanges', label: 'Get Block Changes' },
+    blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },

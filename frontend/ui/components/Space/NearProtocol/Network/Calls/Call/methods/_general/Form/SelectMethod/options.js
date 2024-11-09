@@ -29,7 +29,7 @@ export const options = [
     label: 'Block',
     options: [
       { value: 'getBlock', label: 'Get Block' },
-      // { value: 'getBlockChanges', label: 'Get Block Changes' },
+      { value: 'getBlockChanges', label: 'Get Block Changes' },
       // { value: 'getChunk', label: 'Get Chunk' },
     ],
   },
