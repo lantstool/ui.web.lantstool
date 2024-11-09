@@ -3,7 +3,7 @@ import { AccountId } from './AccountId.jsx';
 import { PublicKey } from './PublicKey/PublicKey.jsx';
 import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
 
-export const GetKey = ({ call, draft }) => {
+export const GetAccountKey = ({ call, draft }) => {
   return (
     <Form call={call} draft={draft}>
       <AccountId />

@@ -1,9 +1,9 @@
-import { viewAccessKey } from './viewAccessKey.js';
-import { viewAccessKeyList } from './viewAccessKeyList.js';
-import { getAllKeyChanges } from './getAllKeyChanges.js';
+import { getAccountKey } from './getAccountKey.js';
+import { getAccountKeys } from './getAccountKeys.js';
+import { getChangesForAccountKeys } from './getChangesForAccountKeys.js';
 
 export const keys = {
-  viewAccessKey,
-  viewAccessKeyList,
-  getAllKeyChanges,
+  getAccountKey,
+  getAccountKeys,
+  getChangesForAccountKeys,
 };

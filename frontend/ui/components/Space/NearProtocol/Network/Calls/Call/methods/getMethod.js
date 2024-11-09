@@ -8,9 +8,10 @@ import { GetContractWasmChanges } from './contract/GetContractWasmChanges.jsx';
 import { GetContractStateChanges } from './contract/GetContractStateChanges.jsx';
 import { CallContractViewMethod } from './contract/CallContractViewMethod/CallContractViewMethod.jsx';
 // Keys
-import { GetKey } from './keys/GetKey/GetKey.jsx';
-import { GetKeys } from './keys/GetKeys.jsx';
-import { GetAllKeyChanges } from './keys/GetAllKeyChanges.jsx';
+import { GetAccountKey } from './keys/GetAccountKey/GetAccountKey.jsx';
+import { GetChangesForAccountKey } from './keys/GetChangesForAccountKey/GetChangesForAccountKey.jsx';
+import { GetAccountKeys } from './keys/GetAccountKeys.jsx';
+import { GetChangesForAccountKeys } from './keys/GetChangesForAccountKeys.jsx';
 
 const methods = {
   // Account
@@ -23,9 +24,10 @@ const methods = {
   getContractStateChanges: GetContractStateChanges,
   callContractViewMethod: CallContractViewMethod,
   // Keys
-  getKey: GetKey,
-  getKeys: GetKeys,
-  getAllKeyChanges: GetAllKeyChanges,
+  getAccountKey: GetAccountKey,
+  getChangesForAccountKey: GetChangesForAccountKey,
+  getAccountKeys: GetAccountKeys,
+  getChangesForAccountKeys: GetChangesForAccountKeys,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

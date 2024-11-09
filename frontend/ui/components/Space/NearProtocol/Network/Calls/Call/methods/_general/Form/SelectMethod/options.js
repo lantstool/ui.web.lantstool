@@ -2,14 +2,8 @@ export const options = [
   {
     label: 'Account',
     options: [
-      {
-        value: 'getAccount',
-        label: 'Get Account',
-      },
-      {
-        value: 'getAccountChanges',
-        label: 'Get Account Changes',
-      },
+      { value: 'getAccount', label: 'Get Account' },
+      { value: 'getAccountChanges', label: 'Get Account Changes' },
     ],
   },
   // {
@@ -38,24 +32,12 @@ export const options = [
   //   ],
   // },
   {
-    label: 'Access Key',
+    label: 'Account Keys',
     options: [
-      {
-        value: 'getKey',
-        label: 'Get Key',
-      },
-      {
-        value: 'getKeyChanges',
-        label: 'Get Key Changes',
-      },
-      {
-        value: 'getKeys',
-        label: 'Get Keys',
-      },
-      {
-        value: 'getAllKeyChanges',
-        label: 'Get All Key Changes',
-      },
+      { value: 'getAccountKey', label: 'Get Account Key' },
+      { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
+      { value: 'getAccountKeys', label: 'Get Account Keys' },
+      { value: 'getChangesForAccountKeys', label: 'Get Changes for Account Keys' },
     ],
   },
   // {

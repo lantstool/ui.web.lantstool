@@ -1,7 +1,7 @@
 import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
-export const getKey = (rpc, params) =>
-  rpc.keys.viewAccessKey(
+export const getAccountKey = (rpc, params) =>
+  rpc.getAccountKey(
     getBlockTargetParams({
       accountId: params.accountId.value,
       publicKey: params.publicKey.value,

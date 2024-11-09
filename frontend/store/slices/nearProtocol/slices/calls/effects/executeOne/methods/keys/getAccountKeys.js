@@ -1,14 +1,11 @@
 import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
-export const getAllKeyChanges = (rpc, params) => {
-  const accountIds = params.accountIds.map(({ accountId }) => accountId.value);
-
-  return rpc.keys.getAllKeyChanges(
+export const getAccountKeys = (rpc, params) =>
+  rpc.getAccountKeys(
     getBlockTargetParams({
-      accountIds,
+      accountId: params.accountId.value,
       blockTarget: params.blockTarget,
       finality: params.finality.value,
       blockId: params.blockId,
     }),
   );
-};

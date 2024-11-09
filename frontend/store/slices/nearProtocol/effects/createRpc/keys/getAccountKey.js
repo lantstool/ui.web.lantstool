@@ -1,7 +1,7 @@
 import { toCamelCase } from '../../../../../helpers/toCamelCase.js';
 import { getBlockTarget } from '../helpers/getBlockTarget.js';
 
-export const viewAccessKey =
+export const getAccountKey =
   (provider) =>
   async ({ accountId, publicKey, finality, blockId }) => {
     const response = await provider.query({

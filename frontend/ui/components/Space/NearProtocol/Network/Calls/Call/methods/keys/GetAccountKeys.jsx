@@ -3,7 +3,7 @@ import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOption
 import { Form } from '../_general/Form/Form.jsx';
 import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
 
-export const GetKeys = ({ call, draft }) => {
+export const GetAccountKeys = ({ call, draft }) => {
   const options = useAccountsOptions();
   return (
     <Form call={call} draft={draft}>

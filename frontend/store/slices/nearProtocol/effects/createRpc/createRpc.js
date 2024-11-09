@@ -25,7 +25,7 @@ export const createRpc = effect(async ({ store, payload }) => {
   return withProvider(provider, {
     account,
     contract,
-    keys,
+    ...keys,
     protocol,
     transactions,
   });
