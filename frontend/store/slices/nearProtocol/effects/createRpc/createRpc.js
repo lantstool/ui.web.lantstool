@@ -29,6 +29,6 @@ export const createRpc = effect(async ({ store, payload }) => {
     ...keys,
     ...block,
     protocol,
-    transactions,
+    ...transactions,
   });
 });

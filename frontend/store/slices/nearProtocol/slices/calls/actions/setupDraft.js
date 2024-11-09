@@ -106,6 +106,13 @@ const getDefaultValues = () => ({
     blockId: '',
     shardId: '',
   },
+  // Transaction
+  getTransaction: {
+    method: { value: 'getTransaction', label: 'Get Transaction' },
+    transactionHash: '',
+    signerId: null,
+    waitUntil: { value: 'EXECUTED_OPTIMISTIC', label: 'Executed Optimistic' },
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {

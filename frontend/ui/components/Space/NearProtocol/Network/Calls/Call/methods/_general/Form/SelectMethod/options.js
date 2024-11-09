@@ -33,23 +33,14 @@ export const options = [
       { value: 'getChunk', label: 'Get Chunk' },
     ],
   },
-  // {
-  //   label: 'Transaction',
-  //   options: [
-  //     {
-  //       value: 'getTransaction',
-  //       label: 'Get Transaction',
-  //     },
-  //     {
-  //       value: 'getDetailedTransaction',
-  //       label: 'Get Detailed Transaction',
-  //     },
-  //     {
-  //       value: 'getReceipt',
-  //       label: 'Get Receipt',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Transaction',
+    options: [
+      { value: 'getTransaction', label: 'Get Transaction' },
+      // { value: 'getDetailedTransaction', label: 'Get Detailed Transaction' },
+      // { value: 'getReceipt', label: 'Get Receipt' },
+    ],
+  },
   // {
   //   label: 'Protocol',
   //   options: [

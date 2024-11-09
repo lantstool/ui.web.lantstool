@@ -6,8 +6,8 @@
  */
 
 export const parseBlockId = (blockId) => {
-  const parsedBlockId = parseInt(blockId);
-  return Number.isNaN(parsedBlockId) ? blockId.trim() : parsedBlockId;
+  const isInteger = /^[0-9]+$/.test(blockId);
+  return isInteger ? Number(blockId) : blockId.trim();
 };
 
 export const getBlockTarget = ({ finality = 'final', blockId, format = 'snake_case' }) => {
