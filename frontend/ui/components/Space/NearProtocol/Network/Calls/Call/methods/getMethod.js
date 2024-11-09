@@ -18,6 +18,7 @@ import { GetBlockChanges } from './block/GetBlockChanges.jsx';
 import { GetChunk } from './block/GetChunk/GetChunk.jsx';
 // Transactions
 import { GetTransaction } from './transactions/GetTransaction.jsx';
+import { GetDetailedTransaction } from './transactions/GetDetailedTransaction.jsx';
 
 const methods = {
   // Account
@@ -40,6 +41,7 @@ const methods = {
   getChunk: GetChunk,
   // Transactions
   getTransaction: GetTransaction,
+  getDetailedTransaction: GetDetailedTransaction,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

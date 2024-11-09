@@ -111,7 +111,13 @@ const getDefaultValues = () => ({
     method: { value: 'getTransaction', label: 'Get Transaction' },
     transactionHash: '',
     signerId: null,
-    waitUntil: { value: 'EXECUTED_OPTIMISTIC', label: 'Executed Optimistic' },
+    waitUntil: { value: 'FINAL', label: 'Final' },
+  },
+  getDetailedTransaction: {
+    method: { value: 'getDetailedTransaction', label: 'Get Detailed Transaction' },
+    transactionHash: '',
+    signerId: null,
+    waitUntil: { value: 'FINAL', label: 'Final' },
   },
 });
 
