@@ -99,6 +99,13 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  getChunk: {
+    method: { value: 'getChunk', label: 'Get Chunk' },
+    searchType: 'byChunkId',
+    chunkId: '',
+    blockId: '',
+    shardId: '',
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {

@@ -15,6 +15,7 @@ import { GetChangesForAccountKeys } from './keys/GetChangesForAccountKeys.jsx';
 // Block
 import { GetBlock } from './block/GetBlock.jsx';
 import { GetBlockChanges } from './block/GetBlockChanges.jsx';
+import { GetChunk } from './block/GetChunk/GetChunk.jsx';
 
 const methods = {
   // Account
@@ -34,6 +35,7 @@ const methods = {
   // Block
   getBlock: GetBlock,
   getBlockChanges: GetBlockChanges,
+  getChunk: GetChunk,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);
