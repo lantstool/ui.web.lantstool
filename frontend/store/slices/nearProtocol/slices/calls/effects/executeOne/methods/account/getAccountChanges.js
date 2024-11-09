@@ -1,4 +1,4 @@
-import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
 export const getAccountChanges = (rpc, params) => {
   const accountIds = params.accountIds.map(({ accountId }) => accountId.value);

@@ -1,6 +1,6 @@
-import { Form } from '../../_general/Form/Form.jsx';
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
-import { AccountIds } from './AccountIds/AccountIds.jsx';
+import { Form } from '../_general/Form/Form.jsx';
+import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
+import { AccountIds } from '../_general/AccountIds/AccountIds.jsx';
 
 export const GetAccountChanges = ({ call, draft }) => {
   // TODO add custom validation for the form

@@ -1,4 +1,4 @@
-import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
 export const getContractWasm = (rpc, params) =>
   rpc.contract.viewCode(

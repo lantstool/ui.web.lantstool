@@ -72,6 +72,13 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  getAllKeyChanges: {
+    method: { value: 'getAllKeyChanges', label: 'Get All Key Changes' },
+    accountIds: [{ accountId: null }],
+    blockTarget: 'specific',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
 });
 
 /*
@@ -79,10 +86,6 @@ const getDefaultValues = () => ({
       {
         value: 'getKeyChanges',
         label: 'Get Key Changes',
-      },
-      {
-        value: 'getAllKeyChanges',
-        label: 'Get All Key Changes',
       },
  */
 

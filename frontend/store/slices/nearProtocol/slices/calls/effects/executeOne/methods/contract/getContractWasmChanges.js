@@ -1,4 +1,4 @@
-import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
 export const getContractWasmChanges = (rpc, params) => {
   const contractIds = params.contractIds.map(({ contractId }) => contractId.value);

@@ -1,5 +1,5 @@
 import { decompress } from 'fzstd';
-import { getBlockTargetParams } from './helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
