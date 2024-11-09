@@ -6,31 +6,16 @@ export const options = [
       { value: 'getAccountChanges', label: 'Get Account Changes' },
     ],
   },
-  // {
-  //   label: 'Contract',
-  //   options: [
-  //     {
-  //       value: 'getContractWasm',
-  //       label: 'Get Contract WASM',
-  //     },
-  //     {
-  //       value: 'getContractWasmChanges',
-  //       label: 'Get Contract WASM Changes',
-  //     },
-  //     {
-  //       value: 'getContractState',
-  //       label: 'Get Contract State',
-  //     },
-  //     {
-  //       value: 'getContractStateChanges',
-  //       label: 'Get Contract State Changes',
-  //     },
-  //     {
-  //       value: 'callContractViewMethod',
-  //       label: 'Call Contract View Method',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Contract',
+    options: [
+      { value: 'getContractWasm', label: 'Get Contract WASM' },
+      { value: 'getContractWasmChanges', label: 'Get Contract WASM Changes' },
+      { value: 'getContractState', label: 'Get Contract State' },
+      { value: 'getContractStateChanges', label: 'Get Contract State Changes' },
+      { value: 'callContractViewMethod', label: 'Call Contract View Method' },
+    ],
+  },
   {
     label: 'Account Keys',
     options: [
@@ -40,23 +25,14 @@ export const options = [
       { value: 'getChangesForAccountKeys', label: 'Get Changes for Account Keys' },
     ],
   },
-  // {
-  //   label: 'Block',
-  //   options: [
-  //     {
-  //       value: 'getBlock',
-  //       label: 'Get Block',
-  //     },
-  //     {
-  //       value: 'getBlockChanges',
-  //       label: 'Get Block Changes',
-  //     },
-  //     {
-  //       value: 'getChunk',
-  //       label: 'Get Chunk',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Block',
+    options: [
+      // { value: 'getBlock', label: 'Get Block' },
+      // { value: 'getBlockChanges', label: 'Get Block Changes' },
+      // { value: 'getChunk', label: 'Get Chunk' },
+    ],
+  },
   // {
   //   label: 'Transaction',
   //   options: [

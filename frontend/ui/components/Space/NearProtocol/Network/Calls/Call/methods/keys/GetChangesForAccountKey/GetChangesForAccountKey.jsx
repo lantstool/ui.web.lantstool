@@ -1,13 +1,11 @@
 import { Form } from '../../_general/Form/Form.jsx';
-import { AccountId } from './AccountKeyPairs/AccountId.jsx';
-import { PublicKey } from './AccountKeyPairs/PublicKey/PublicKey.jsx';
+import { AccountKeyPairs } from './AccountKeyPairs/AccountKeyPairs.jsx';
 import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
 
 export const GetChangesForAccountKey = ({ call, draft }) => {
   return (
     <Form call={call} draft={draft}>
-      {/*<AccountId />*/}
-      {/*<PublicKey />*/}
+      <AccountKeyPairs accountKeyPairs={draft.accountKeyPairs} />
       <BlockTarget />
     </Form>
   );

@@ -67,7 +67,7 @@ const getDefaultValues = () => ({
   },
   getChangesForAccountKey: {
     method:  { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
-    keys: [{ accountId: null, publicKey: null }],
+    accountKeyPairs: [{ accountId: null, publicKey: null }],
     blockTarget: 'specific',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
