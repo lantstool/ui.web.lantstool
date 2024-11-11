@@ -38,7 +38,7 @@ export const options = [
     options: [
       { value: 'getTransaction', label: 'Get Transaction' },
       { value: 'getDetailedTransaction', label: 'Get Detailed Transaction' },
-      // { value: 'getReceipt', label: 'Get Receipt' },
+      { value: 'getReceipt', label: 'Get Receipt' },
     ],
   },
   // {

@@ -20,6 +20,7 @@ import { getChangesForAccountKeys } from './methods/keys/getChangesForAccountKey
 import { sendTransaction } from './methods/transactions/sendTransaction.js';
 import { getTransaction } from './methods/transactions/getTransaction.js';
 import { getDetailedTransaction } from './methods/transactions/getDetailedTransaction.js';
+import { getReceipt } from './methods/transactions/getReceipt.js';
 // Block
 import { getBlock } from './methods/block/getBlock.js';
 import { getBlockChanges } from './methods/block/getBlockChanges.js';
@@ -87,6 +88,7 @@ class RpcProvider {
   sendTransaction = sendTransaction;
   getTransaction = getTransaction;
   getDetailedTransaction = getDetailedTransaction;
+  getReceipt = getReceipt;
   // Protocol
   getProtocolConfig = getProtocolConfig;
 }

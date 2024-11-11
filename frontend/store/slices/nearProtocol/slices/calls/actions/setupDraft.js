@@ -119,6 +119,10 @@ const getDefaultValues = () => ({
     signerId: null,
     waitUntil: { value: 'FINAL', label: 'Final' },
   },
+  getReceipt: {
+    method: { value: 'getReceipt', label: 'Get Receipt' },
+    receiptId: '',
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {
