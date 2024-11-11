@@ -30,7 +30,7 @@ export const SelectBlockchain = () => {
           <div className={cn.near}>
             <NearToken style={cn.icon} />
             <p className={cn.text}>NEAR Protocol</p>
-            <RadioButton register={register} id="near" />
+            <RadioButton register={register} name="near" />
           </div>
           <div className={cn.comingSoon}>
             <ClockCircleOutline style={cn.clock} />
