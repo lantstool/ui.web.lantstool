@@ -3,6 +3,7 @@ import { effect } from '@react-vault';
 import { account } from './account/index.js';
 import { contract } from './contract/index.js';
 import { keys } from './keys/index.js';
+import { block } from './block/index.js';
 import { protocol } from './protocol/index.js';
 import { transactions } from './transactions/index.js';
 
@@ -25,8 +26,9 @@ export const createRpc = effect(async ({ store, payload }) => {
   return withProvider(provider, {
     account,
     contract,
-    keys,
+    ...keys,
+    ...block,
     protocol,
-    transactions,
+    ...transactions,
   });
 });

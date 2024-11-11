@@ -56,6 +56,69 @@ const getDefaultValues = () => ({
     finality: { value: 'final', label: 'Final' },
     blockId: '',
   },
+  // Keys
+  getAccountKey: {
+    method: { value: 'getAccountKey', label: 'Get Account Key' },
+    accountId: null,
+    publicKey: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getChangesForAccountKey: {
+    method: { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
+    accountKeyPairs: [{ accountId: null, publicKey: null }],
+    blockTarget: 'specific',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getAccountKeys: {
+    method: { value: 'getAccountKeys', label: 'Get Account Keys' },
+    accountId: null,
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getChangesForAccountKeys: {
+    method: { value: 'getChangesForAccountKeys', label: 'Get Changes for Account Keys' },
+    accountIds: [{ accountId: null }],
+    blockTarget: 'specific',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  // Block
+  getBlock: {
+    method: { value: 'getBlock', label: 'Get Block' },
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getBlockChanges: {
+    method: { value: 'getBlockChanges', label: 'Get Block Changes' },
+    blockTarget: 'specific',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
+  getChunk: {
+    method: { value: 'getChunk', label: 'Get Chunk' },
+    searchType: 'byChunkId',
+    chunkId: '',
+    blockId: '',
+    shardId: '',
+  },
+  // Transaction
+  getTransaction: {
+    method: { value: 'getTransaction', label: 'Get Transaction' },
+    transactionHash: '',
+    signerId: null,
+    waitUntil: { value: 'FINAL', label: 'Final' },
+  },
+  getDetailedTransaction: {
+    method: { value: 'getDetailedTransaction', label: 'Get Detailed Transaction' },
+    transactionHash: '',
+    signerId: null,
+    waitUntil: { value: 'FINAL', label: 'Final' },
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {

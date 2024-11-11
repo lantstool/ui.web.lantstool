@@ -19,13 +19,13 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
       publicKey: formValues.signerKey,
     });
 
-    const signedTx = await signTx({
+    const signedTransaction = await signTx({
       transaction,
       networkId,
       privateKey,
     });
 
-    const result = await rpc.transactions.sendTx(signedTx);
+    const result = await rpc.sendTransaction({ signedTransaction });
     setResult({ transactionId, result, isLoading: false });
   } catch (e) {
     console.log(e);

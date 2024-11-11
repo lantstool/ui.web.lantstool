@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dropdowns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
