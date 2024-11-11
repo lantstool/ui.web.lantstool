@@ -24,7 +24,7 @@ export const CreateSpace = () => {
   return (
     <div className={cn.createSpace}>
       <div className={cn.head}>
-        <Link className={cn.backBtn} to="..">
+        <Link className={cn.backBtn} to="/spaces">
           <Button size="small" IconLeft={ArrowLeftOutline}>
             Back
           </Button>

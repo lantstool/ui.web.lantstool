@@ -1,6 +1,8 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../react-vault/index.js';
-import { useSaveToHistory } from '../../../hooks/useSaveToHistory.js';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useStoreEffect } from '@react-vault';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
+import { Button } from '../../_general/Button/Button.jsx';
+import { ArrowLeftOutline } from '../../_general/icons/ArrowLeftOutline.jsx';
 import cn from './Settings.module.scss';
 
 export const Settings = () => {
@@ -14,6 +16,11 @@ export const Settings = () => {
 
   return (
     <div className={cn.container}>
+      <Link className={cn.backBtn} to="/spaces">
+        <Button size="small" IconLeft={ArrowLeftOutline}>
+          Back
+        </Button>
+      </Link>
       <h1>Settings</h1>
       <button onClick={removeSpace}>Delete Space</button>
     </div>

@@ -1,8 +1,38 @@
-.container {
-  min-height: 100vh;
-  width: 100%;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.spaces {
+  width: calc(100% - 32px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
+  padding: 40px 16px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 680px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.subtitle {
+  @include text-sm-medium;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
 }
