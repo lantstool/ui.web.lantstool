@@ -20,6 +20,9 @@ import { GetChunk } from './block/GetChunk/GetChunk.jsx';
 import { GetTransaction } from './transactions/GetTransaction.jsx';
 import { GetDetailedTransaction } from './transactions/GetDetailedTransaction.jsx';
 import { GetReceipt } from './transactions/GetReceipt.jsx';
+// Protocol
+import { GetGenesisConfig } from './protocol/GetGenesisConfig.jsx';
+import { GetProtocolConfig } from './protocol/GetProtocolConfig.jsx';
 
 const methods = {
   // Account
@@ -44,6 +47,9 @@ const methods = {
   getTransaction: GetTransaction,
   getDetailedTransaction: GetDetailedTransaction,
   getReceipt: GetReceipt,
+  // Protocol
+  getGenesisConfig: GetGenesisConfig,
+  getProtocolConfig: GetProtocolConfig,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

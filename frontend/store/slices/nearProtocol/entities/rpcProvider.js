@@ -26,6 +26,7 @@ import { getBlock } from './methods/block/getBlock.js';
 import { getBlockChanges } from './methods/block/getBlockChanges.js';
 import { getChunk } from './methods/block/getChunk.js';
 // Protocol
+import { getGenesisConfig } from './methods/protocol/geGenesisConfig.js';
 import { getProtocolConfig } from './methods/protocol/getProtocolConfig.js';
 // Network
 // Validation
@@ -90,6 +91,7 @@ class RpcProvider {
   getDetailedTransaction = getDetailedTransaction;
   getReceipt = getReceipt;
   // Protocol
+  getGenesisConfig = getGenesisConfig;
   getProtocolConfig = getProtocolConfig;
 }
 

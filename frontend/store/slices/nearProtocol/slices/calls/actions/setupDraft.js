@@ -123,6 +123,15 @@ const getDefaultValues = () => ({
     method: { value: 'getReceipt', label: 'Get Receipt' },
     receiptId: '',
   },
+  getGenesisConfig: {
+    method: { value: 'getGenesisConfig', label: 'Get Genesis Config' },
+  },
+  getProtocolConfig: {
+    method: { value: 'getProtocolConfig', label: 'Get Protocol Config' },
+    blockTarget: 'latest',
+    finality: { value: 'final', label: 'Final' },
+    blockId: '',
+  },
 });
 
 export const setupDraft = action(({ slice, payload: call }) => {

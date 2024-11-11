@@ -41,36 +41,21 @@ export const options = [
       { value: 'getReceipt', label: 'Get Receipt' },
     ],
   },
-  // {
-  //   label: 'Protocol',
-  //   options: [
-  //     {
-  //       value: 'getProtocolConfig',
-  //       label: 'Get Protocol Config',
-  //     },
-  //     {
-  //       value: 'getGenesisConfig',
-  //       label: 'Get Genesis Config',
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: 'Network',
-  //   options: [
-  //     {
-  //       value: 'getNetwork',
-  //       label: 'Get Network',
-  //     },
-  //     {
-  //       value: 'getGasPrice',
-  //       label: 'Get Gas Price',
-  //     },
-  //     {
-  //       value: 'getNodeStatus',
-  //       label: 'Get Node Status',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Protocol',
+    options: [
+      { value: 'getGenesisConfig', label: 'Get Genesis Config' },
+      { value: 'getProtocolConfig', label: 'Get Protocol Config' },
+    ],
+  },
+  {
+    label: 'Network',
+    options: [
+      { value: 'getNetwork', label: 'Get Network' },
+      { value: 'getGasPrice', label: 'Get Gas Price' },
+      { value: 'getNodeStatus', label: 'Get Node Status' },
+    ],
+  },
   // {
   //   label: 'Validators',
   //   options: [
