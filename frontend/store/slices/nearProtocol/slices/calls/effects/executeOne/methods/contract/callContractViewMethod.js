@@ -1,5 +1,5 @@
 import { decompress } from 'fzstd';
-import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../utils.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
@@ -13,7 +13,7 @@ const getResult = (result, methodName) => {
 };
 
 export const callContractViewMethod = async (rpc, params) => {
-  const result = await rpc.contract.callFunction(
+  const result = await rpc.callContractViewMethod(
     getBlockTargetParams({
       contractId: params.contractId.value,
       methodName: params.methodName.value,
@@ -21,6 +21,7 @@ export const callContractViewMethod = async (rpc, params) => {
       blockTarget: params.blockTarget,
       finality: params.finality.value,
       blockId: params.blockId,
+      responseNameConvention: 'snake_case',
     }),
   );
   return getResult(result.result, params.methodName.value);
