@@ -2,24 +2,30 @@ import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
+import { getMethod } from './methods/getMethod.js';
 import { Result } from './Result/Result.jsx';
-import { Form } from './Form/Form.jsx';
 import cn from './Call.module.scss';
 
 export const Call = () => {
   const { callId } = useParams();
-  const call = useStoreState((store) => store.nearProtocol.calls.call);
   const callResult = useStoreState((store) => store.nearProtocol.calls.results[callId]);
-  const getOne = useStoreEffect((store) => store.nearProtocol.calls.getOne);
+  const onMountCall = useStoreEffect((store) => store.nearProtocol.calls.onMountCall);
+  const callDraft = useStoreState((store) => store.nearProtocol.calls.drafts[callId]);
 
-  useLoader(getOne, callId, [callId]);
   useSaveToHistory();
-  // We use it instead of 'isLoading' to avoid a screen blinking
-  if (!call) return null;
+  useLoader(onMountCall, callId, [callId]);
+
+  if (!callDraft) return null;
+
+  const Method = getMethod(callDraft.currentMethod);
 
   return (
     <div className={cn.call}>
-      {callResult?.isOpen ? <Result callResult={callResult} /> : <Form call={call} />}
+      {callResult?.isOpen ? (
+        <Result callResult={callResult} />
+      ) : (
+        <Method call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
+      )}
     </div>
   );
 };

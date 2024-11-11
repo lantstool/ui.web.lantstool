@@ -1,4 +1,4 @@
-import { useStoreEffect } from '../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';

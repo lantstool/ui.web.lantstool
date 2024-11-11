@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 const getReorderedList = (txList, txMap, source, destination) => {
   const list = txList.map((id) => txMap[id]);

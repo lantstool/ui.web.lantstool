@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const getTx = effect(async ({ store, slice, payload: transactionId }) => {
   const [backend] = store.getEntities((store) => store.backend);

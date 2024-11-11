@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { matchPath, useLocation, useNavigate } from 'react-router-dom';
-import { useStoreEntity } from '../../../../react-vault/index.js';
+import { useStoreEntity } from '@react-vault';
 
 export const useManageRouting = () => {
   const location = useLocation();

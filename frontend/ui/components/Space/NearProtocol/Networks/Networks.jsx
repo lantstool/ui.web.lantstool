@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../hooks/useLoader.js';
-import { useSaveToHistory } from '../../../../hooks/useSaveToHistory.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { Empty } from './Empty/Empty.jsx';
 import { List } from './List/List.jsx';
 import cn from './Networks.module.scss';

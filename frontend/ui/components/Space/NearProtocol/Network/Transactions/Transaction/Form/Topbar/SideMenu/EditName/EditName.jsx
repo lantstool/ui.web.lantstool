@@ -1,4 +1,4 @@
-import { useStoreEffect } from '../../../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';

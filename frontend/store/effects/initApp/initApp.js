@@ -1,4 +1,4 @@
-import { effect } from '../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 import { validateUrlParams } from './validateUrlParams.js';
 
 export const initApp = effect(async ({ store, payload }) => {

@@ -2,6 +2,7 @@ import { useStoreAction } from '@react-vault';
 import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { jsonLanguage } from '@codemirror/lang-json';
+import { EditorView } from '@codemirror/view';
 import { Button } from '../../../_general/Button/Button.jsx';
 import cn from './Result.module.scss';
 
@@ -29,17 +30,11 @@ export const Result = ({ callResult }) => {
         ) : (
           <>
             <h3 className={cn.title}>Result</h3>
-            {!result?.error ? (
-              <>
-                <CodeMirror
-                  readOnly={true}
-                  value={getFormattedJSON(result)}
-                  extensions={[jsonLanguage]}
-                />
-              </>
-            ) : (
-              <p className={cn.error}>{getFormattedJSON(result)}</p>
-            )}
+            <CodeMirror
+              readOnly={true}
+              value={getFormattedJSON(result)}
+              extensions={[jsonLanguage, EditorView.lineWrapping]}
+            />
           </>
         )}
       </div>

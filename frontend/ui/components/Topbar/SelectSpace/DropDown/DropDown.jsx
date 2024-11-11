@@ -35,7 +35,7 @@ export const DropDown = ({ setOpen, isOpen, spaceId }) => {
           </Link>
           <Link to={'/spaces'} onClick={closeMenu} className={cn.settingItem}>
             <SettingsOutline />
-            Manage space
+            Manage spaces
           </Link>
         </div>
       </div>

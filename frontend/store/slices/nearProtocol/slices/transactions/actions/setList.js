@@ -1,4 +1,4 @@
-import { action } from '../../../../../../../react-vault/index.js';
+import { action } from '@react-vault';
 
 export const setList = action(({ slice, payload }) => {
   slice.txList = [];

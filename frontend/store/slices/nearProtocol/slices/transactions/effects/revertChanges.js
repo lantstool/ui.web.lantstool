@@ -1,4 +1,4 @@
-import { effect } from '../../../../../../../react-vault/index.js';
+import { effect } from '@react-vault';
 
 export const revertChanges = effect(({ payload, slice }) => {
   const { transactionId, form } = payload;
