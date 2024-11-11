@@ -1,4 +1,4 @@
-import { getBlockTargetParams } from '../helpers/getBlockTargetParams.js';
+import { getBlockTargetParams } from '../utils.js';
 
 export const getAccountKeys = (rpc, params) =>
   rpc.getAccountKeys(
@@ -7,5 +7,6 @@ export const getAccountKeys = (rpc, params) =>
       blockTarget: params.blockTarget,
       finality: params.finality.value,
       blockId: params.blockId,
+      responseNameConvention: 'snake_case',
     }),
   );

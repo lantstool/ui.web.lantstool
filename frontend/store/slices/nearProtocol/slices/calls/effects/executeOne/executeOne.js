@@ -11,16 +11,17 @@ const getErrorMessage = (error) => {
 
 export const executeOne = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, callId, formValues } = payload;
-  const createRpc = store.getEffects((store) => store.nearProtocol.createRpc);
+  const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const setResult = slice.getActions((slice) => slice.setResult);
 
   console.log(formValues);
 
   try {
     setResult({ callId, isOpen: true, isLoading: true });
-    const rpc = await createRpc({ spaceId, networkId });
 
+    await rpc.configure({ spaceId, networkId });
     const result = await methods[formValues.method.value](rpc, formValues);
+
     setResult({ callId, result, isLoading: false });
   } catch (e) {
     console.log(e);
