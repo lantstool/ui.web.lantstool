@@ -20,13 +20,18 @@ import { getChangesForAccountKeys } from './methods/keys/getChangesForAccountKey
 import { sendTransaction } from './methods/transactions/sendTransaction.js';
 import { getTransaction } from './methods/transactions/getTransaction.js';
 import { getDetailedTransaction } from './methods/transactions/getDetailedTransaction.js';
+import { getReceipt } from './methods/transactions/getReceipt.js';
 // Block
 import { getBlock } from './methods/block/getBlock.js';
 import { getBlockChanges } from './methods/block/getBlockChanges.js';
 import { getChunk } from './methods/block/getChunk.js';
 // Protocol
+import { getGenesisConfig } from './methods/protocol/geGenesisConfig.js';
 import { getProtocolConfig } from './methods/protocol/getProtocolConfig.js';
 // Network
+import { getNodeStatus } from './methods/network/getNodeStatus.js';
+import { getNetworkInfo } from './methods/network/getNetworkInfo.js';
+
 // Validation
 
 class RpcProvider {
@@ -87,8 +92,14 @@ class RpcProvider {
   sendTransaction = sendTransaction;
   getTransaction = getTransaction;
   getDetailedTransaction = getDetailedTransaction;
+  getReceipt = getReceipt;
   // Protocol
+  getGenesisConfig = getGenesisConfig;
   getProtocolConfig = getProtocolConfig;
+  // Network
+  getNodeStatus = getNodeStatus;
+  getNetworkInfo = getNetworkInfo;
+  // Validators
 }
 
 export const rpcProvider = entity(({ store }) => new RpcProvider(store));

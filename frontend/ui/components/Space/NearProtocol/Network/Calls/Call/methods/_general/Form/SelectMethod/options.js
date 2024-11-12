@@ -38,50 +38,29 @@ export const options = [
     options: [
       { value: 'getTransaction', label: 'Get Transaction' },
       { value: 'getDetailedTransaction', label: 'Get Detailed Transaction' },
-      // { value: 'getReceipt', label: 'Get Receipt' },
+      { value: 'getReceipt', label: 'Get Receipt' },
     ],
   },
-  // {
-  //   label: 'Protocol',
-  //   options: [
-  //     {
-  //       value: 'getProtocolConfig',
-  //       label: 'Get Protocol Config',
-  //     },
-  //     {
-  //       value: 'getGenesisConfig',
-  //       label: 'Get Genesis Config',
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: 'Network',
-  //   options: [
-  //     {
-  //       value: 'getNetwork',
-  //       label: 'Get Network',
-  //     },
-  //     {
-  //       value: 'getGasPrice',
-  //       label: 'Get Gas Price',
-  //     },
-  //     {
-  //       value: 'getNodeStatus',
-  //       label: 'Get Node Status',
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: 'Validators',
-  //   options: [
-  //     {
-  //       value: 'getValidators',
-  //       label: 'Get Validators',
-  //     },
-  //     {
-  //       value: 'getMaintenanceWindows',
-  //       label: 'Get Maintenance Windows',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Protocol',
+    options: [
+      { value: 'getGenesisConfig', label: 'Get Genesis Config' },
+      { value: 'getProtocolConfig', label: 'Get Protocol Config' },
+    ],
+  },
+  {
+    label: 'Network',
+    options: [
+      { value: 'getNodeStatus', label: 'Get Node Status' },
+      { value: 'getNetworkInfo', label: 'Get Network Info' },
+      { value: 'getGasPrice', label: 'Get Gas Price' },
+    ],
+  },
+  {
+    label: 'Validators',
+    options: [
+      { value: 'getValidators', label: 'Get Validators' },
+      { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
+    ],
+  },
 ];
