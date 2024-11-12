@@ -19,6 +19,14 @@ import { GetChunk } from './block/GetChunk/GetChunk.jsx';
 // Transactions
 import { GetTransaction } from './transactions/GetTransaction.jsx';
 import { GetDetailedTransaction } from './transactions/GetDetailedTransaction.jsx';
+import { GetReceipt } from './transactions/GetReceipt.jsx';
+// Protocol
+import { GetGenesisConfig } from './protocol/GetGenesisConfig.jsx';
+import { GetProtocolConfig } from './protocol/GetProtocolConfig.jsx';
+// Network
+import { GetNodeStatus } from './network/GetNodeStatus.jsx';
+import { GetNetworkInfo } from './network/GetNetworkInfo.jsx';
+// Validators
 
 const methods = {
   // Account
@@ -42,6 +50,14 @@ const methods = {
   // Transactions
   getTransaction: GetTransaction,
   getDetailedTransaction: GetDetailedTransaction,
+  getReceipt: GetReceipt,
+  // Protocol
+  getGenesisConfig: GetGenesisConfig,
+  getProtocolConfig: GetProtocolConfig,
+  // Network
+  getNodeStatus: GetNodeStatus,
+  getNetworkInfo: GetNetworkInfo,
+  // Validators
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

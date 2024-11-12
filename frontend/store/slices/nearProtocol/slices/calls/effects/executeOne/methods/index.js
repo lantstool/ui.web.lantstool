@@ -3,6 +3,8 @@ import { contract } from './contract/index.js';
 import { keys } from './keys/index.js';
 import { block } from './block/index.js';
 import { transactions } from './transactions/index.js';
+import { protocol } from './protocol/index.js';
+import { network } from './network/index.js';
 
 export const methods = {
   ...account,
@@ -10,4 +12,6 @@ export const methods = {
   ...keys,
   ...block,
   ...transactions,
+  ...protocol,
+  ...network,
 };
