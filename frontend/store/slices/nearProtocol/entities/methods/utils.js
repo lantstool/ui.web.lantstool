@@ -7,7 +7,7 @@
 
 export const parseBlockId = (blockId) => {
   const isInteger = /^[0-9]+$/.test(blockId);
-  return isInteger ? Number(blockId) : blockId.trim();
+  return isInteger ? Number(blockId) : blockId;
 };
 
 export const getBlockTarget = ({ finality = 'final', blockId }) =>

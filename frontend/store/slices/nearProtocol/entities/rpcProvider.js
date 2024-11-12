@@ -31,7 +31,7 @@ import { getProtocolConfig } from './methods/protocol/getProtocolConfig.js';
 // Network
 import { getNodeStatus } from './methods/network/getNodeStatus.js';
 import { getNetworkInfo } from './methods/network/getNetworkInfo.js';
-
+import { getGasPrice } from './methods/network/getGasPrice.js';
 // Validation
 
 class RpcProvider {
@@ -99,6 +99,7 @@ class RpcProvider {
   // Network
   getNodeStatus = getNodeStatus;
   getNetworkInfo = getNetworkInfo;
+  getGasPrice = getGasPrice;
   // Validators
 }
 
