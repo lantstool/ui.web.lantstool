@@ -3,19 +3,21 @@ import { effect } from '@react-vault';
 export const getAccountDetails = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, accountId } = payload;
   const setAccountDetails = slice.getActions((slice) => slice.setAccountDetails);
-  const createRpc = store.getEffects((store) => store.nearProtocol.createRpc);
+  const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const [backend] = store.getEntities((store) => store.backend);
 
   try {
-    const rpc = await createRpc({ spaceId, networkId });
+    await rpc.configure({ spaceId, networkId });
+
     const account = await backend.sendRequest('nearProtocol.accounts.getOne', {
       spaceId,
       networkId,
       accountId,
     });
+
     const [details, balance] = await Promise.all([
-      rpc.account.viewAccount({ accountId }),
-      rpc.account.getBalance({ accountId }),
+      rpc.getAccount({ accountId }),
+      rpc.getAccountBalance({ accountId }),
     ]);
 
     setAccountDetails({ details, balance, account });

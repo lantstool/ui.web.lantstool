@@ -4,7 +4,12 @@ import { createTransaction } from 'near-api-js/lib/transaction';
 import { getActions } from './getActions/getActions.js';
 
 export const createTx = async ({ rpc, formValues }) => {
-  const { signerId, signerKey, receiverId, actions: rawActions } = formValues;
+  const {
+    signerId: { value: signerId },
+    signerKey: { value: signerKey },
+    receiverId: { value: receiverId },
+    actions: rawActions,
+  } = formValues;
 
   const accessKey = await rpc.getAccountKey({ accountId: signerId, publicKey: signerKey });
   const nonce = accessKey.nonce + 1;

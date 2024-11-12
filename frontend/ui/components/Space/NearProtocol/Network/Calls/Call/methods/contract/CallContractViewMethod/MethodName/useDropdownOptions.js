@@ -1,4 +1,4 @@
-import { useStoreEffect } from '@react-vault';
+import { useStoreEntity } from '@react-vault';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
@@ -20,15 +20,15 @@ const getExportedWasmFunctions = async (arrayBuffer) => {
 export const useDropdownOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
-  const createRpc = useStoreEffect((store) => store.nearProtocol.createRpc);
+  const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
   const contractId = useWatch({ control, name: 'contractId.value' });
 
   useEffect(() => {
     if (!contractId) return;
     (async () => {
       try {
-        const rpc = await createRpc({ spaceId, networkId });
-        const { codeBase64 } = await rpc.contract.viewCode({ contractId });
+        await rpc.configure({ spaceId, networkId });
+        const { codeBase64 } = await rpc.getContractWasm({ contractId });
 
         const arrayBuffer = base64ToArrayBuffer(codeBase64);
         const exportedFunctions = await getExportedWasmFunctions(arrayBuffer);
