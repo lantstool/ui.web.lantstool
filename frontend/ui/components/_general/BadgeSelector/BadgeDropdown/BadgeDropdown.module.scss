@@ -6,15 +6,13 @@
   z-index: 1200;
   display: flex;
   width: 230px;
-  max-height: 30vh;
-  overflow-x: auto;
   flex-direction: column;
   background-color: $neutral-00;
   box-shadow: 0 5px 20px 0 rgba(33, 37, 41, 0.17);
   border-radius: 8px;
   border: 1px solid $neutral-200;
   user-select: none;
-  padding: 4px;
+  padding: 4px 2px 4px 4px;
 }
 
 .badgeDropdown {
@@ -23,17 +21,57 @@
   left: 0;
 }
 
+
+.badgeDropdownResized {
+  @include badgeDropdown;
+  top: 46px;
+  left: 0;
+}
+
 @media (max-height: 1080px) {
-  .badgeDropdown {
-    //top: -164px;
-    //left: 72px;
-    max-height: 250px;
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: $neutral-400;
-    }
+  .badgeDropdownResized {
+    max-height: 320px;
+  }
+}
+
+@media (max-height: 1030px) {
+  .badgeDropdownResized {
+    max-height: 280px;
+  }
+}
+
+@media (max-height: 950px) {
+  .badgeDropdownResized {
+    max-height: 240px;
+  }
+}
+
+@media (max-height: 880px) {
+  .badgeDropdownResized {
+    max-height: 200px;
+  }
+}
+
+@media (max-height: 800px) {
+  .badgeDropdownResized {
+    max-height: 180px;
+  }
+}
+
+@media (max-height: 730px) {
+  .badgeDropdownResized {
+    max-height: 160px;
+  }
+}
+
+.scrollBar{
+  overflow-x: auto;
+  padding-right: 2px;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-400;
   }
 }
 

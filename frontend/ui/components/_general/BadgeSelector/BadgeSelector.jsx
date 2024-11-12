@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Badge } from '../Badge/Badge.jsx';
 import cn from './BadgeSelector.module.scss';
 
-export const BadgeSelector = ({ form }) => {
+export const BadgeSelector = ({ form, size = 'large', type = 'button', spaceId = null }) => {
   const [isOpen, setOpen] = useState(false);
   const badge = form.watch('badge');
 
@@ -16,13 +16,21 @@ export const BadgeSelector = ({ form }) => {
   return (
     <div className={cn.badge}>
       <Button
+        size={size}
         onClick={openMenu}
         color="secondary"
         IconRight={isOpen ? ArrowUpOutline : ArrowDownOutline}
       >
         <Badge badge={badge} />
       </Button>
-      <BadgeDropdown isOpen={isOpen} closeMenu={closeMenu} form={form} badge={badge} />
+      <BadgeDropdown
+        spaceId={spaceId}
+        isOpen={isOpen}
+        closeMenu={closeMenu}
+        form={form}
+        badge={badge}
+        type={type}
+      />
     </div>
   );
 };

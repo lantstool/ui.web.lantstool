@@ -2,10 +2,13 @@ import { useEffect, useRef } from 'react';
 import { Badge } from '../../Badge/Badge.jsx';
 import { CheckMarkOutline } from '../../icons/CheckmarkOutline.jsx';
 import { badgeList } from '../../../../../store/helpers/getRandomBadge.js';
+import { useStoreEffect } from '@react-vault';
 import cn from './BadgeDropdown.module.scss';
 
-export const BadgeDropdown = ({ closeMenu, isOpen, badge, form }) => {
+export const BadgeDropdown = ({ closeMenu, isOpen, badge, form, type, spaceId }) => {
+  const updateOne = useStoreEffect((store) => store.spaces.updateOne);
   const ref = useRef(null);
+  const { setValue } = form;
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
@@ -23,14 +26,17 @@ export const BadgeDropdown = ({ closeMenu, isOpen, badge, form }) => {
   if (!isOpen) return null;
 
   const handleClick = (item) => {
-    form.setValue('badge', item);
+    setValue('badge', item);
+    if (type === 'submit' && badge !== item) {
+      updateOne({ spaceId, badge: item });
+    }
     closeMenu();
   };
 
   return (
     <>
-      <div ref={ref} className={cn.badgeDropdown}>
-        <div className={cn.container}>
+      <div ref={ref} className={spaceId ? cn.badgeDropdown : cn.badgeDropdownResized}>
+        <div className={cn.scrollBar}>
           {badgeList.map((item) => (
             <button className={cn.item} type="button" key={item} onClick={() => handleClick(item)}>
               <div className={cn.itemWrapper}>

@@ -7,15 +7,25 @@ import { ArrowLeftOutline } from '../_general/icons/ArrowLeftOutline.jsx';
 import { Input } from '../_general/Input/Input.jsx';
 import { BadgeSelector } from '../_general/BadgeSelector/BadgeSelector.jsx';
 import { getRandomBadge } from '../../../store/helpers/getRandomBadge.js';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema.js';
 import cn from './CreateSpace.module.scss';
 
 export const CreateSpace = () => {
   const navigate = useNavigate();
   const create = useStoreEffect((store) => store.spaces.create);
   const randomBadge = getRandomBadge();
-  const form = useForm({ defaultValues: { name: '', badge: randomBadge } });
+  const form = useForm({
+    mode: 'all',
+    resolver: yupResolver(schema),
+    defaultValues: { name: '', badge: randomBadge },
+  });
 
-  const { control, handleSubmit } = form;
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = form;
 
   const onSubmit = (formValues) => {
     create({ formValues, navigate });
@@ -39,7 +49,13 @@ export const CreateSpace = () => {
             <br /> Name it whatever you prefer
           </h1>
           <div className={cn.wrapper}>
-            <Input control={control} name="name" placeholder="My workspace" copy={false} />
+            <Input
+              control={control}
+              name="name"
+              placeholder="My workspace"
+              copy={false}
+              error={errors?.name?.message}
+            />
             <BadgeSelector form={form} />
           </div>
         </div>
