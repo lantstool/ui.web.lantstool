@@ -29,6 +29,9 @@ import { getChunk } from './methods/block/getChunk.js';
 import { getGenesisConfig } from './methods/protocol/geGenesisConfig.js';
 import { getProtocolConfig } from './methods/protocol/getProtocolConfig.js';
 // Network
+import { getNodeStatus } from './methods/network/getNodeStatus.js';
+import { getNetworkInfo } from './methods/network/getNetworkInfo.js';
+
 // Validation
 
 class RpcProvider {
@@ -93,6 +96,10 @@ class RpcProvider {
   // Protocol
   getGenesisConfig = getGenesisConfig;
   getProtocolConfig = getProtocolConfig;
+  // Network
+  getNodeStatus = getNodeStatus;
+  getNetworkInfo = getNetworkInfo;
+  // Validators
 }
 
 export const rpcProvider = entity(({ store }) => new RpcProvider(store));

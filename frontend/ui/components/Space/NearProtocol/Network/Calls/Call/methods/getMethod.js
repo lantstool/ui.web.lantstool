@@ -23,6 +23,10 @@ import { GetReceipt } from './transactions/GetReceipt.jsx';
 // Protocol
 import { GetGenesisConfig } from './protocol/GetGenesisConfig.jsx';
 import { GetProtocolConfig } from './protocol/GetProtocolConfig.jsx';
+// Network
+import { GetNodeStatus } from './network/GetNodeStatus.jsx';
+import { GetNetworkInfo } from './network/GetNetworkInfo.jsx';
+// Validators
 
 const methods = {
   // Account
@@ -50,6 +54,10 @@ const methods = {
   // Protocol
   getGenesisConfig: GetGenesisConfig,
   getProtocolConfig: GetProtocolConfig,
+  // Network
+  getNodeStatus: GetNodeStatus,
+  getNetworkInfo: GetNetworkInfo,
+  // Validators
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);

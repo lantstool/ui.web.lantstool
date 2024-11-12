@@ -123,6 +123,7 @@ const getDefaultValues = () => ({
     method: { value: 'getReceipt', label: 'Get Receipt' },
     receiptId: '',
   },
+  // Protocol
   getGenesisConfig: {
     method: { value: 'getGenesisConfig', label: 'Get Genesis Config' },
   },
@@ -131,6 +132,32 @@ const getDefaultValues = () => ({
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
     blockId: '',
+  },
+  // Network
+  getNodeStatus: {
+    method: { value: 'getNodeStatus', label: 'Get Node Status' },
+  },
+  getNetworkInfo: {
+    method: { value: 'getNetworkInfo', label: 'Get Network Info' },
+  },
+  getGasPrice: {
+    method: { value: 'getGasPrice', label: 'Get Gas Price' },
+    // blockTarget: 'latest',
+    // finality: { value: 'final', label: 'Final' },
+    // blockId: '',
+  },
+  // Validators
+  getValidators: {
+    method:  { value: 'getValidators', label: 'Get Validators' },
+    // blockTarget: 'latest',
+    // finality: { value: 'final', label: 'Final' },
+    // blockId: '',
+  },
+  getMaintenanceWindows: {
+    method:   { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
+    // blockTarget: 'latest',
+    // finality: { value: 'final', label: 'Final' },
+    // blockId: '',
   },
 });
 

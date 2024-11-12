@@ -51,22 +51,16 @@ export const options = [
   {
     label: 'Network',
     options: [
-      { value: 'getNetwork', label: 'Get Network' },
-      { value: 'getGasPrice', label: 'Get Gas Price' },
       { value: 'getNodeStatus', label: 'Get Node Status' },
+      { value: 'getNetworkInfo', label: 'Get Network Info' },
+      { value: 'getGasPrice', label: 'Get Gas Price' },
     ],
   },
-  // {
-  //   label: 'Validators',
-  //   options: [
-  //     {
-  //       value: 'getValidators',
-  //       label: 'Get Validators',
-  //     },
-  //     {
-  //       value: 'getMaintenanceWindows',
-  //       label: 'Get Maintenance Windows',
-  //     },
-  //   ],
-  // },
+  {
+    label: 'Validators',
+    options: [
+      { value: 'getValidators', label: 'Get Validators' },
+      { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
+    ],
+  },
 ];
