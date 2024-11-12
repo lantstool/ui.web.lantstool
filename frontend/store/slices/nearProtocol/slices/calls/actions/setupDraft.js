@@ -148,15 +148,11 @@ const getDefaultValues = () => ({
   // Validators
   getValidators: {
     method: { value: 'getValidators', label: 'Get Validators' },
-    // blockTarget: 'latest',
-    // finality: { value: 'final', label: 'Final' },
-    // blockId: '',
+    // accountId: null,
   },
   getMaintenanceWindows: {
     method: { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
-    // blockTarget: 'latest',
-    // finality: { value: 'final', label: 'Final' },
-    // blockId: '',
+    validatorId: null,
   },
 });
 

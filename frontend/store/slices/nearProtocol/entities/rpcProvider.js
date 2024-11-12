@@ -33,6 +33,7 @@ import { getNodeStatus } from './methods/network/getNodeStatus.js';
 import { getNetworkInfo } from './methods/network/getNetworkInfo.js';
 import { getGasPrice } from './methods/network/getGasPrice.js';
 // Validation
+import { getMaintenanceWindows } from './methods/validators/getMaintenanceWindows.js';
 
 class RpcProvider {
   constructor(store) {
@@ -101,6 +102,7 @@ class RpcProvider {
   getNetworkInfo = getNetworkInfo;
   getGasPrice = getGasPrice;
   // Validators
+  getMaintenanceWindows = getMaintenanceWindows;
 }
 
 export const rpcProvider = entity(({ store }) => new RpcProvider(store));

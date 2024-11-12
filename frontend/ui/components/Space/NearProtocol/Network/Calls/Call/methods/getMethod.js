@@ -28,6 +28,7 @@ import { GetNodeStatus } from './network/GetNodeStatus.jsx';
 import { GetNetworkInfo } from './network/GetNetworkInfo.jsx';
 import { GetGasPrice } from './network/GetGasPrice/GetGasPrice.jsx';
 // Validators
+import { GetMaintenanceWindows } from './validators/GetMaintenanceWindows.jsx';
 
 const methods = {
   // Account
@@ -60,6 +61,7 @@ const methods = {
   getNetworkInfo: GetNetworkInfo,
   getGasPrice: GetGasPrice,
   // Validators
+  getMaintenanceWindows: GetMaintenanceWindows,
 };
 
 export const getMethod = (method) => (!methods[method] ? null : methods[method]);
