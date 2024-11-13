@@ -3,7 +3,7 @@
 
 .container {
   position: relative;
-  height: 96px;
+  max-height: 96px;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -1,5 +1,4 @@
-@use "variables" as *;
-
+@use 'variables' as *;
 
 @mixin base-typography($font-size, $line-height, $font-weight) {
   font-family: 'Inter', sans-serif;
@@ -7,6 +6,22 @@
   line-height: $line-height;
   text-align: left;
   font-weight: $font-weight;
+}
+
+@mixin text-xlg-regular {
+  @include base-typography($font-size-xlg, $line-height-xlg, 400);
+}
+
+@mixin text-xlg-medium {
+  @include base-typography($font-size-xlg, $line-height-xlg, 500);
+}
+
+@mixin text-xlg-semibold {
+  @include base-typography($font-size-xlg, $line-height-xlg, 600);
+}
+
+@mixin text-xlg-bold {
+  @include base-typography($font-size-xlg, $line-height-xlg, 700);
 }
 
 @mixin text-lg-regular {

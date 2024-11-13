@@ -1,26 +1,66 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
+import logoLantstool from '@assets/logoLantstool.svg';
+import { Button } from '../_general/Button/Button.jsx';
+import { ArrowLeftOutline } from '../_general/icons/ArrowLeftOutline.jsx';
+import { Input } from '../_general/Input/Input.jsx';
+import { BadgeSelector } from '../_general/BadgeSelector/BadgeSelector.jsx';
+import { getRandomBadge } from '../../../store/helpers/getRandomBadge.js';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema.js';
 import cn from './CreateSpace.module.scss';
 
 export const CreateSpace = () => {
   const navigate = useNavigate();
   const create = useStoreEffect((store) => store.spaces.create);
-  const { register, handleSubmit } = useForm();
+  const randomBadge = getRandomBadge();
+  const form = useForm({
+    mode: 'all',
+    resolver: yupResolver(schema),
+    defaultValues: { name: '', badge: randomBadge },
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = form;
 
   const onSubmit = (formValues) => {
     create({ formValues, navigate });
   };
 
   return (
-    <div className={cn.container}>
-      <h1>Create Space</h1>
+    <div className={cn.createSpace}>
+      <div className={cn.head}>
+        <Link className={cn.backBtn} to="/spaces">
+          <Button size="small" IconLeft={ArrowLeftOutline}>
+            Back
+          </Button>
+        </Link>
+        <img src={logoLantstool} alt="#" />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>
-        <input {...register('name')} placeholder="Space Name" />
-        <span>Type: local</span>
-        <button type="submit">Create Space</button>
+        <div className={cn.container}>
+          <h1 className={cn.liteTitle}>Welcome</h1>
+          <h1 className={cn.title}>
+            Let’s create your space.
+            <br /> Name it whatever you prefer
+          </h1>
+          <div className={cn.wrapper}>
+            <Input
+              control={control}
+              name="name"
+              placeholder="My workspace"
+              copy={false}
+              error={errors?.name?.message}
+            />
+            <BadgeSelector form={form} />
+          </div>
+        </div>
+        <Button type="submit">Create</Button>
       </form>
-      <Link to="/spaces">Back to Spaces</Link>
     </div>
   );
 };

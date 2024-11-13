@@ -1,26 +1,20 @@
-@use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/variables' as *;
 
-.spaces {
-  width: calc(100% - 32px);
+.deleteModal {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 272px;
+  width: 512px;
+  padding: 24px;
+  border-radius: 16px;
   gap: 24px;
-  padding: 40px 16px;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 680px;
-}
-
-.container {
+.textWrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .title {
@@ -31,8 +25,15 @@
 }
 
 .subtitle {
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
   padding: 0;
   margin: 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
 }

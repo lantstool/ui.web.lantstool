@@ -38,10 +38,12 @@ export const Input = ({
 
   return (
     <div className={cn.container}>
-      <div className={cn.labelWrapper}>
-        <label className={cn.label}>{label}</label>
-        {tooltip}
-      </div>
+      {label && (
+        <div className={cn.labelWrapper}>
+          <label className={cn.label}>{label}</label>
+          {tooltip}
+        </div>
+      )}
 
       <div
         className={cnm({

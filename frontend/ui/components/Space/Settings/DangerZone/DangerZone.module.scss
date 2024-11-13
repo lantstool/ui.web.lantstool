@@ -1,36 +1,43 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.spaces {
-  width: calc(100% - 32px);
+.dangerZone {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 40px 16px;
-}
-
-.head {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 680px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 16px;
 }
 
 .title {
-  @include text-lg-medium;
+  @include text-mg-medium;
   color: $neutral-800;
   padding: 0;
   margin: 0;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  background-color: $neutral-00;
+  align-items: center;
+}
+
+.warningWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .subtitle {
+  @include text-sm-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.warningText {
   @include text-sm-medium;
   color: $neutral-700;
   padding: 0;

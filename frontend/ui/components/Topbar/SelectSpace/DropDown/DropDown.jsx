@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
 import { AddSquareOutline } from '../../../_general/icons/AddSquareOutline.jsx';
 import { SettingsOutline } from '../../../_general/icons/SettingsOutline.jsx';
+import { Badge } from '../../../_general/Badge/Badge.jsx';
 import cn from './DropDown.module.scss';
 
 export const DropDown = ({ setOpen, isOpen, spaceId }) => {
@@ -19,7 +20,7 @@ export const DropDown = ({ setOpen, isOpen, spaceId }) => {
           {ids.map((item) => (
             <Link to={`/space/${item}`} onClick={closeMenu} className={cn.item} key={item}>
               <div className={cn.itemWrapper}>
-                <div className={cn.badge} />
+                <Badge badge={records[item].badge} />
                 <p className={cn.title}>{records[item].name}</p>
               </div>
               <CheckMarkOutline style={records[item].spaceId === spaceId ? cn.icon : cn.hidden} />
@@ -28,11 +29,11 @@ export const DropDown = ({ setOpen, isOpen, spaceId }) => {
         </div>
         <hr className={cn.border} />
         <div className={cn.settings}>
-          <Link to={"/spaces/create"} onClick={closeMenu} className={cn.settingItem}>
+          <Link to={'/spaces/create'} onClick={closeMenu} className={cn.settingItem}>
             <AddSquareOutline />
             Create new space
           </Link>
-          <Link to={"/spaces"} onClick={closeMenu} className={cn.settingItem}>
+          <Link to={'/spaces'} onClick={closeMenu} className={cn.settingItem}>
             <SettingsOutline />
             Manage spaces
           </Link>
