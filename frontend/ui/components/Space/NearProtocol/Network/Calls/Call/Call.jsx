@@ -8,9 +8,9 @@ import cn from './Call.module.scss';
 
 export const Call = () => {
   const { callId } = useParams();
-  const callResult = useStoreState((store) => store.nearProtocol.calls.results[callId]);
+  const callResult = useStoreState((store) => store.nearProtocol.calls.results[callId], [callId]);
   const onMountCall = useStoreEffect((store) => store.nearProtocol.calls.onMountCall);
-  const callDraft = useStoreState((store) => store.nearProtocol.calls.drafts[callId]);
+  const callDraft = useStoreState((store) => store.nearProtocol.calls.drafts[callId], [callId]);
 
   useSaveToHistory();
   useLoader(onMountCall, callId, [callId]);

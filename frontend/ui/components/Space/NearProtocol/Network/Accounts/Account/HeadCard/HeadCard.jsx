@@ -10,7 +10,10 @@ import cn from './HeadCard.module.scss';
 
 export const HeadCard = () => {
   const { accountId } = useParams();
-  const { createdAt } = useStoreState((store) => store.nearProtocol.accounts.records[accountId]);
+  const { createdAt } = useStoreState(
+    (store) => store.nearProtocol.accounts.records[accountId],
+    [accountId],
+  );
   const { date, hourMinute } = formatDate(createdAt);
   const [isOpen, setOpen] = useState(false);
   const openModal = () => setOpen(true);

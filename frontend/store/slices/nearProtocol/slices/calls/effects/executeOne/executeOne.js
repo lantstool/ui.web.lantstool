@@ -14,8 +14,6 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const setResult = slice.getActions((slice) => slice.setResult);
 
-  console.log(formValues);
-
   try {
     setResult({ callId, isOpen: true, isLoading: true });
 

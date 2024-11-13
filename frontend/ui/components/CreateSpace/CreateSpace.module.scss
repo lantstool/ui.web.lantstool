@@ -45,11 +45,11 @@
 
 .liteTitle {
   @include text($neutral-500);
+  margin-bottom: 32px;
 }
 
 .title {
   @include text($neutral-800);
-  margin-bottom: 32px;
 }
 
 .wrapper{

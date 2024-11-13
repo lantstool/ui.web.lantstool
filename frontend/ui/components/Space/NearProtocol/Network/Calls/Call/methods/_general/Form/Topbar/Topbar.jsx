@@ -14,7 +14,7 @@ export const Topbar = ({ form, call }) => {
   const saveChanges = useStoreEffect((store) => store.nearProtocol.calls.saveChanges);
   const revertChanges = useStoreEffect((store) => store.nearProtocol.calls.revertChanges);
   const executeOne = useStoreEffect((store) => store.nearProtocol.calls.executeOne);
-  const result = useStoreState((store) => store.nearProtocol.calls.results[callId]);
+  const result = useStoreState((store) => store.nearProtocol.calls.results[callId], [callId]);
 
   const hasChanges = useIsFormHasChanges(form, call);
 

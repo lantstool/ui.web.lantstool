@@ -43,10 +43,9 @@ export const CreateSpace = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>
         <div className={cn.container}>
-          <h1 className={cn.liteTitle}>Welcome</h1>
-          <h1 className={cn.title}>
-            Let’s create your space.
-            <br /> Name it whatever you prefer
+          <h1 className={cn.title}>Let’s create your space</h1>
+          <h1 className={cn.liteTitle}>
+            Name it whatever you prefer
           </h1>
           <div className={cn.wrapper}>
             <Input
@@ -59,7 +58,7 @@ export const CreateSpace = () => {
             <BadgeSelector form={form} />
           </div>
         </div>
-        <Button type="submit">Create</Button>
+        <Button type="submit">Create Space</Button>
       </form>
     </div>
   );
