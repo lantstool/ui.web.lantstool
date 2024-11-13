@@ -148,7 +148,8 @@ const getDefaultValues = () => ({
   // Validators
   getValidators: {
     method: { value: 'getValidators', label: 'Get Validators' },
-    // accountId: null,
+    epochTarget: 'latest',
+    epochId: '',
   },
   getMaintenanceWindows: {
     method: { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },

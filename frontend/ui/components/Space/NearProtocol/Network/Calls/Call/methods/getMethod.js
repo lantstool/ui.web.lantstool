@@ -28,6 +28,7 @@ import { GetNodeStatus } from './network/GetNodeStatus.jsx';
 import { GetNetworkInfo } from './network/GetNetworkInfo.jsx';
 import { GetGasPrice } from './network/GetGasPrice/GetGasPrice.jsx';
 // Validators
+import { GetValidators } from './validators/GetValidators/GetValidators.jsx';
 import { GetMaintenanceWindows } from './validators/GetMaintenanceWindows.jsx';
 
 const methods = {
@@ -61,6 +62,7 @@ const methods = {
   getNetworkInfo: GetNetworkInfo,
   getGasPrice: GetGasPrice,
   // Validators
+  getValidators: GetValidators,
   getMaintenanceWindows: GetMaintenanceWindows,
 };
 
