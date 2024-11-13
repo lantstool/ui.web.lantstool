@@ -5,8 +5,8 @@ export const updateOneBadge = effect(async ({ store, slice, payload }) => {
   const editOne = slice.getActions((slice) => slice.editOne);
 
   try {
-    await backend.sendRequest('spaces.updateOneBadge', payload);
     editOne(payload);
+    backend.sendRequest('spaces.updateOneBadge', payload);
   } catch (e) {
     console.log(e);
   }

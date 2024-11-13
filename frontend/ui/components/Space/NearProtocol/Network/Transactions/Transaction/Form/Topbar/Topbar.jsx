@@ -4,11 +4,7 @@ import { HistoryOutline } from '../../../../../../../_general/icons/HistoryOutli
 import { SaveOutline } from '../../../../../../../_general/icons/SaveOutline.jsx';
 import { EditName } from './SideMenu/EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
-import {
-  useStoreAction,
-  useStoreEffect,
-  useStoreState,
-} from '@react-vault';
+import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { useFormState } from 'react-hook-form';
 import cn from './Topbar.module.scss';
 
@@ -18,7 +14,10 @@ export const Topbar = ({ form, transaction }) => {
   const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
   const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
   const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
-  const txResult = useStoreState((store) => store.nearProtocol.transactions.results[transactionId]);
+  const txResult = useStoreState(
+    (store) => store.nearProtocol.transactions.results[transactionId],
+    [transactionId],
+  );
   const { isDirty } = useFormState({ control: form.control });
 
   const onSubmit = form.handleSubmit((formValues) => {

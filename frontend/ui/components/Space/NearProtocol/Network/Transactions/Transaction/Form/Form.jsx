@@ -11,7 +11,10 @@ import cn from './Form.module.scss';
 
 export const Form = ({ transaction }) => {
   const { transactionId, body } = transaction;
-  const draft = useStoreState((store) => store.nearProtocol.transactions.drafts[transactionId]);
+  const draft = useStoreState(
+    (store) => store.nearProtocol.transactions.drafts[transactionId],
+    [transactionId],
+  );
   const setDraft = useStoreAction((store) => store.nearProtocol.transactions.setDraft);
 
   const form = useForm({ defaultValues: body });

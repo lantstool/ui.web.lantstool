@@ -9,7 +9,10 @@ import cn from './Transaction.module.scss';
 export const Transaction = () => {
   const { transactionId } = useParams();
   const transaction = useStoreState((store) => store.nearProtocol.transactions.transaction);
-  const txResult = useStoreState((store) => store.nearProtocol.transactions.results[transactionId]);
+  const txResult = useStoreState(
+    (store) => store.nearProtocol.transactions.results[transactionId],
+    [transactionId],
+  );
   const getTx = useStoreEffect((store) => store.nearProtocol.transactions.getTx);
 
   useLoader(getTx, transactionId, [transactionId]);
@@ -19,11 +22,7 @@ export const Transaction = () => {
 
   return (
     <div className={cn.transaction}>
-      {txResult?.isOpen ? (
-        <Result txResult={txResult} />
-      ) : (
-        <Form transaction={transaction} />
-      )}
+      {txResult?.isOpen ? <Result txResult={txResult} /> : <Form transaction={transaction} />}
     </div>
   );
 };

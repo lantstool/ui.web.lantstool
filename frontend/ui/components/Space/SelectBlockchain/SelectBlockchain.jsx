@@ -41,7 +41,7 @@ export const SelectBlockchain = () => {
           </div>
         </div>
       </div>
-      <Button onClick={handleClick}>Select</Button>
+      <Button onClick={handleClick}>Select Blockchain</Button>
     </div>
   );
 };
