@@ -31,8 +31,10 @@ import { getProtocolConfig } from './methods/protocol/getProtocolConfig.js';
 // Network
 import { getNodeStatus } from './methods/network/getNodeStatus.js';
 import { getNetworkInfo } from './methods/network/getNetworkInfo.js';
-
+import { getGasPrice } from './methods/network/getGasPrice.js';
 // Validation
+import { getValidators } from './methods/validators/getValidators.js';
+import { getMaintenanceWindows } from './methods/validators/getMaintenanceWindows.js';
 
 class RpcProvider {
   constructor(store) {
@@ -99,7 +101,10 @@ class RpcProvider {
   // Network
   getNodeStatus = getNodeStatus;
   getNetworkInfo = getNetworkInfo;
+  getGasPrice = getGasPrice;
   // Validators
+  getValidators = getValidators;
+  getMaintenanceWindows = getMaintenanceWindows;
 }
 
 export const rpcProvider = entity(({ store }) => new RpcProvider(store));

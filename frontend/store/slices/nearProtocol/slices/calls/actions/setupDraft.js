@@ -142,22 +142,18 @@ const getDefaultValues = () => ({
   },
   getGasPrice: {
     method: { value: 'getGasPrice', label: 'Get Gas Price' },
-    // blockTarget: 'latest',
-    // finality: { value: 'final', label: 'Final' },
-    // blockId: '',
+    blockTarget: 'latest',
+    blockId: '',
   },
   // Validators
   getValidators: {
-    method:  { value: 'getValidators', label: 'Get Validators' },
-    // blockTarget: 'latest',
-    // finality: { value: 'final', label: 'Final' },
-    // blockId: '',
+    method: { value: 'getValidators', label: 'Get Validators' },
+    epochTarget: 'latest',
+    epochId: '',
   },
   getMaintenanceWindows: {
-    method:   { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
-    // blockTarget: 'latest',
-    // finality: { value: 'final', label: 'Final' },
-    // blockId: '',
+    method: { value: 'getMaintenanceWindows', label: 'Get Maintenance Windows' },
+    validatorId: null,
   },
 });
 
