@@ -5,6 +5,14 @@ import { SettingsOutline } from '../../_general/icons/SettingsOutline.jsx';
 import { Label } from '../../_general/Label/Label.jsx';
 import cn from './List.module.scss';
 
+const types = {
+  local: 'Local',
+};
+
+const getType = (type) => {
+  return types[type] ? types[type] : 'Local';
+};
+
 export const List = ({ ids }) => {
   const records = useStoreState((store) => store.spaces.records);
   const navigate = useNavigate();
@@ -18,6 +26,7 @@ export const List = ({ ids }) => {
     <div className={cn.list}>
       {ids.map((spaceId) => {
         const { name, badge, type } = records[spaceId];
+        const convertedType = getType(type);
         return (
           <div onClick={(e) => navigateTo(e, `/space/${spaceId}`)} key={spaceId} className={cn.row}>
             <div className={cn.container}>
@@ -25,7 +34,7 @@ export const List = ({ ids }) => {
               <p className={cn.title}>{name}</p>
             </div>
             <div className={cn.container}>
-              <Label color="grey">{type}</Label>
+              <Label color="grey">{convertedType}</Label>
               <div
                 onClick={(e) => navigateTo(e, `/space/${spaceId}/settings`)}
                 className={cn.settings}
@@ -39,4 +48,3 @@ export const List = ({ ids }) => {
     </div>
   );
 };
-

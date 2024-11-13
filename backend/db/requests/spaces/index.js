@@ -4,7 +4,8 @@ import { create } from './create.js';
 import { remove } from './remove.js';
 import { validateSpaceId } from './validateSpaceId.js';
 import { getOne } from './getOne.js';
-import { updateOne } from './updateOne.js';
+import { updateOneName } from './updateOneName.js';
+import { updateOneBadge } from './updateOneBadge.js';
 
 export const spaces = {
   getAll,
@@ -13,5 +14,6 @@ export const spaces = {
   remove,
   validateSpaceId,
   getOne,
-  updateOne,
+  updateOneName,
+  updateOneBadge,
 };

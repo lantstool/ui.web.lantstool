@@ -6,7 +6,7 @@ import { useStoreEffect } from '@react-vault';
 import cn from './BadgeDropdown.module.scss';
 
 export const BadgeDropdown = ({ closeMenu, isOpen, badge, form, type, spaceId }) => {
-  const updateOne = useStoreEffect((store) => store.spaces.updateOne);
+  const updateOneBadge = useStoreEffect((store) => store.spaces.updateOneBadge);
   const ref = useRef(null);
   const { setValue } = form;
 
@@ -28,7 +28,7 @@ export const BadgeDropdown = ({ closeMenu, isOpen, badge, form, type, spaceId })
   const handleClick = (item) => {
     setValue('badge', item);
     if (type === 'submit' && badge !== item) {
-      updateOne({ spaceId, badge: item });
+      updateOneBadge({ spaceId, badge: item });
     }
     closeMenu();
   };

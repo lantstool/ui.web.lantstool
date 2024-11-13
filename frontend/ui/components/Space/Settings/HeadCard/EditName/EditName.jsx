@@ -4,7 +4,7 @@ import { useStoreEffect } from '@react-vault';
 import cn from './EditName.module.scss';
 
 export const EditName = ({ name, form, spaceId }) => {
-  const updateOne = useStoreEffect((store) => store.spaces.updateOne);
+  const updateOneName = useStoreEffect((store) => store.spaces.updateOneName);
   const [isEditing, setIsEditing] = useState(false);
 
   const {
@@ -21,7 +21,7 @@ export const EditName = ({ name, form, spaceId }) => {
 
   const handleBlur = () => {
     if (isValid) {
-      updateOne({ spaceId, name: value });
+      updateOneName({ spaceId, name: value });
     }
     setIsEditing(false);
   };
