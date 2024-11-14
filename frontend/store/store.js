@@ -1,11 +1,14 @@
 import { createStore } from '@react-vault';
+// actions
 import { setNotification } from './actions/setNotification.js';
 import { resetState } from './actions/resetState.js';
-import { initApp } from './effects/initApp/initApp.js';
-import { resetApp } from './effects/resetApp.js';
-import { resetHistory } from './effects/resetHistory.js';
+// effects
+import { effects } from './effects/index.js';
+// entities
 import { backend } from './entities/backend.js';
 import { history } from './entities/history.js';
+import { tabMessenger } from './entities/tabMessenger.js';
+// slices
 import { spaces } from './slices/spaces/spaces.js';
 import { nearProtocol } from './slices/nearProtocol/nearProtocol.js';
 
@@ -15,13 +18,12 @@ export const store = createStore({
   // actions
   setNotification,
   resetState,
+  // effects
+  ...effects,
   // entities
   backend,
   history,
-  // effects
-  initApp,
-  resetApp,
-  resetHistory,
+  tabMessenger,
   // slices
   spaces,
   nearProtocol,

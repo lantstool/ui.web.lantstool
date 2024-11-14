@@ -7,9 +7,9 @@ import { SelectBlockchain } from '../components/Space/SelectBlockchain/SelectBlo
 import { Settings as SpaceSetting } from '../components/Space/Settings/Settings.jsx';
 import { Spaces } from '../components/Spaces/Spaces.jsx';
 import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
-import { AppSettings } from '../components/AppSettings/AppSettings.jsx';
+import { Settings as AppSettings } from '../components/Settings/Settings.jsx';
 import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
-import { nearProtocol } from './nearProtocol/nearProtocol.jsx';
+import { nearProtocol } from './nearProtocol.jsx';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

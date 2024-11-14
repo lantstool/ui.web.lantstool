@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import logoLantstool from '@assets/logoLantstool.svg';
 import { Button } from '../_general/Button/Button.jsx';
@@ -15,6 +15,7 @@ export const CreateSpace = () => {
   const navigate = useNavigate();
   const create = useStoreEffect((store) => store.spaces.create);
   const randomBadge = getRandomBadge();
+
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
@@ -34,19 +35,17 @@ export const CreateSpace = () => {
   return (
     <div className={cn.createSpace}>
       <div className={cn.head}>
-        <Link className={cn.backBtn} to="/spaces">
-          <Button size="small" IconLeft={ArrowLeftOutline}>
+        <div className={cn.backBtn}>
+          <Button size="small" IconLeft={ArrowLeftOutline} onClick={() => navigate(-1)}>
             Back
           </Button>
-        </Link>
-        <img src={logoLantstool} alt="#" />
+        </div>
+        <img src={logoLantstool} alt="Lantstool Logo - 3 circles with the app name" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>
         <div className={cn.container}>
           <h1 className={cn.title}>Let’s create your space</h1>
-          <h1 className={cn.liteTitle}>
-            Name it whatever you prefer
-          </h1>
+          <h1 className={cn.liteTitle}>Name it whatever you prefer</h1>
           <div className={cn.wrapper}>
             <Input
               control={control}
