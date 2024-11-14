@@ -3,6 +3,7 @@ import { setNotification } from './actions/setNotification.js';
 import { resetState } from './actions/resetState.js';
 import { initApp } from './effects/initApp/initApp.js';
 import { resetApp } from './effects/resetApp.js';
+import { resetHistory } from './effects/resetHistory.js';
 import { backend } from './entities/backend.js';
 import { history } from './entities/history.js';
 import { spaces } from './slices/spaces/spaces.js';
@@ -20,6 +21,7 @@ export const store = createStore({
   // effects
   initApp,
   resetApp,
+  resetHistory,
   // slices
   spaces,
   nearProtocol,
