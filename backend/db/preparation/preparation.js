@@ -1,7 +1,7 @@
 import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite.mjs';
 import { OPFSCoopSyncVFS } from 'wa-sqlite/src/examples/OPFSCoopSyncVFS';
 import { Factory } from 'wa-sqlite/src/sqlite-api';
-import initDb from './preparation.sql';
+import setupDatabaseSQL from './setupDatabase.sql';
 
 export const preparation = async () => {
   const SQLiteEMSModule = await SQLiteESMFactory();
@@ -13,6 +13,6 @@ export const preparation = async () => {
   return sqlite;
 };
 
-export const createDBConnection = (sqlite) => sqlite.open_v2('lantstool');
+export const createDBConnection = (sqlite) => sqlite.open_v2('lantstool.sqlite');
 
-export const initDB = (sqlite, db) => sqlite.exec(db, initDb);
+export const initDB = (sqlite, db) => sqlite.exec(db, setupDatabaseSQL);

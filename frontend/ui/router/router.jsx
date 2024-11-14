@@ -4,9 +4,10 @@ import { GetStarted } from '../components/GetStarted/GetStarted.jsx';
 import { Space } from '../components/Space/Space.jsx';
 import { SpaceId } from '../components/Space/SpaceId/SpaceId.jsx';
 import { SelectBlockchain } from '../components/Space/SelectBlockchain/SelectBlockchain.jsx';
-import { Settings } from '../components/Space/Settings/Settings.jsx';
+import { Settings as SpaceSetting } from '../components/Space/Settings/Settings.jsx';
 import { Spaces } from '../components/Spaces/Spaces.jsx';
 import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
+import { AppSettings } from '../components/AppSettings/AppSettings.jsx';
 import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
 import { nearProtocol } from './nearProtocol/nearProtocol.jsx';
 
@@ -18,7 +19,7 @@ export const router = createBrowserRouter(
         <Route path="space" element={<Space />}>
           <Route path=":spaceId" element={<SpaceId />}>
             <Route path="select-blockchain" element={<SelectBlockchain />} />
-            <Route path="settings" element={<Settings />} />
+            <Route path="settings" element={<SpaceSetting />} />
             {nearProtocol}
           </Route>
         </Route>
@@ -26,6 +27,7 @@ export const router = createBrowserRouter(
           <Route index element={<Spaces />} />
           <Route path="create" element={<CreateSpace />} />
         </Route>
+        <Route path="settings" element={<AppSettings />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </>,

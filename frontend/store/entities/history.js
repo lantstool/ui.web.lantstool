@@ -42,30 +42,24 @@ import { entity } from '@react-vault';
 
 class History {
   constructor(name, version) {
-    this.load = this.load.bind(this);
-    this.save = this.save.bind(this);
-    this.getDestination = this.getDestination.bind(this);
-    this.update = this.update.bind(this);
-
     this.localStoragesName = `${name}.history.${version}`;
     this.history = this.load();
 
     window.addEventListener('beforeunload', this.save);
   }
 
-  load() {
+  load = () => {
     const savedHistory = localStorage.getItem(this.localStoragesName);
     return savedHistory ? JSON.parse(savedHistory) : {};
-  }
+  };
 
-  save() {
+  save = () => {
     localStorage.setItem(this.localStoragesName, JSON.stringify(this.history));
-  }
+  };
 
-  splitPathOnSegments(path) {
+  splitPathOnSegments = (path) => {
     // When we pass a root URL '/' a split method will return ['', ''] so we want to avoid it.
     if (path === '/') return [''];
-
     // We use this check because sometimes user may forget to remove a closing / from URL.
     // Example: user is on /space/1/near-protocol/testnet/accounts and remove a
     // few segments from URL - let's say he has /space/1/near-protocol/ now.
@@ -74,11 +68,10 @@ class History {
     if (path[path.length - 1] === '/') {
       return path.slice(0, path.length - 1).split('/');
     }
-
     return path.split('/');
-  }
+  };
 
-  getDestination(path) {
+  getDestination = (path) => {
     const segments = this.splitPathOnSegments(path);
 
     const extractDestination = (segments) => {
@@ -86,15 +79,14 @@ class History {
       return nextRoute ? extractDestination([...segments, nextRoute]) : segments;
     };
     const destination = extractDestination(segments).join('/');
-
     // We may have a situation when destination will be equal to the current URL - for example
     // if user enter space/1, and we don't have a record about 'next' segment, then the
     // result will be the same. In this case we want to return 'null' and the hook will know
     // that it has to redirect user to the default route
     return destination === path ? null : destination;
-  }
+  };
 
-  update(path) {
+  update = (path) => {
     const segments = this.splitPathOnSegments(path);
 
     segments.forEach((segment, index) => {
@@ -103,9 +95,14 @@ class History {
       // slice method doesn't include the 2 argument, this is why we use index + 1
       set(this.history, [...segments.slice(0, index + 1), 'next'], segments[index + 1]);
     });
-  }
+  };
   // TODO: Implement
-  remove(path) {}
+  remove = (path) => {};
+
+  reset = () => {
+    this.history = {};
+    this.save();
+  };
 }
 
 export const history = entity(() => {

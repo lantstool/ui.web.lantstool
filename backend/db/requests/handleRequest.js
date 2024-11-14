@@ -1,8 +1,10 @@
 import { spaces } from './spaces/index.js';
 import { nearProtocol } from './nearProtocol/nearProtocol.js';
+import { resetDatabase } from './resetDatabase.js';
 import get from 'lodash/get';
 
 const handlers = {
+  resetDatabase,
   spaces,
   nearProtocol,
 };

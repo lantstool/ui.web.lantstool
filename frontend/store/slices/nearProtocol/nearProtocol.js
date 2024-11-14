@@ -1,4 +1,6 @@
+// actions
 import { setMinimize } from './actions/setMinimize.js';
+import { resetState } from './actions/resetState.js';
 // entities
 import { rpcProvider } from './entities/rpcProvider.js';
 // slices
@@ -9,9 +11,12 @@ import { accounts } from './slices/accounts/accounts.js';
 import { keys } from './slices/keys/keys.js';
 
 export const nearProtocol = {
+  // state
   isMinimize: false,
   // actions
   setMinimize,
+  resetState,
+  // entities
   rpcProvider,
   // slices
   networks,

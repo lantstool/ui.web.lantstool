@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback } from 'react';
 import { useStoreContext } from '../provider/StoreProvider.jsx';
 
