@@ -1,20 +1,31 @@
+import { format } from 'date-fns';
 import { effect } from '@react-vault';
 
-export const createBackup = effect(async ({ store }) => {
-  const [backend] = store.getEntities((store) => store.backend);
-  const [tabMessenger] = store.getEntities((store) => store.tabMessenger);
+const fetchFileFromOPFS = async (name) => {
+  const dirHandle = await navigator.storage.getDirectory();
+  const fileHandle = await dirHandle.getFileHandle(name);
+  return await fileHandle.getFile();
+};
 
+const downloadFile = async (file) => {
+  const fileData = await file.arrayBuffer();
+  const blob = new Blob([fileData], { type: 'application/octet-stream' });
+
+  const a = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+
+  a.href = url;
+  a.download = `lantstool-backup-${format(new Date(), 'yyyy-MM-dd_HH-mm-ss')}.sqlite`;
+
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+};
+
+export const createBackup = effect(async () => {
   try {
-    tabMessenger.stopBackend();
-
-    // TODO: Temporary solution! Need to rewrite!
-    // We have to send request to all tabs, wait while they will close all DB connections
-    // and only after that start to create a backup
-    setTimeout(async () => {
-      const res = await backend.sendRequest('db.createBackup');
-      console.log(res);
-      tabMessenger.startBackend();
-    }, 25);
+    const res = await fetchFileFromOPFS('lantstool.sqlite');
+    await downloadFile(res);
   } catch (e) {
     console.log(e);
   }
