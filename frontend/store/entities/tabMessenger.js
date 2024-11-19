@@ -29,6 +29,21 @@ const afterResetApp = async (store, navigate) => {
   }
 };
 
+const afterRestoreFromBackup = async (store, navigate) => {
+  const [backend] = store.getEntities((store) => store.backend);
+  const [history] = store.getEntities((store) => store.history);
+  const resetAppState = store.getEffects((store) => store.resetAppState);
+
+  try {
+    await backend.start();
+    history.reset();
+    resetAppState();
+    navigate('/');
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const createTabMessenger = (store, navigate) => {
   const channel = new BroadcastChannel('tabMessenger');
 
@@ -37,6 +52,8 @@ const createTabMessenger = (store, navigate) => {
     if (event.data.event === 'startBackend') startBackend(store);
     if (event.data.event === 'beforeResetApp') beforeResetApp(store);
     if (event.data.event === 'afterResetApp') afterResetApp(store, navigate);
+    if (event.data.event === 'beforeRestoreFromBackup') stopBackend(store);
+    if (event.data.event === 'afterRestoreFromBackup') afterRestoreFromBackup(store, navigate);
   };
 
   window.addEventListener('beforeunload', () => {
@@ -48,6 +65,8 @@ const createTabMessenger = (store, navigate) => {
     startBackend: () => channel.postMessage({ event: 'startBackend' }),
     beforeResetApp: () => channel.postMessage({ event: 'beforeResetApp' }),
     afterResetApp: () => channel.postMessage({ event: 'afterResetApp' }),
+    beforeRestoreFromBackup: () => channel.postMessage({ event: 'beforeRestoreFromBackup' }),
+    afterRestoreFromBackup: () => channel.postMessage({ event: 'afterRestoreFromBackup' }),
   };
 };
 

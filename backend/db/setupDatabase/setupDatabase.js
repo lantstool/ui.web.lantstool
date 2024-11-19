@@ -18,21 +18,21 @@ const createExecuteFn = (sqlite, connection) => async (query) => {
   return result;
 };
 
-const getSqlite = async () => {
+const getSqlite = async (dnName) => {
   const SQLiteEMSModule = await SQLiteESMFactory();
   const sqlite = Factory(SQLiteEMSModule);
-  const vfs = await OPFSCoopSyncVFS.create('lantstool-vfs', SQLiteEMSModule);
+  const vfs = await OPFSCoopSyncVFS.create(`${dnName}-vfs`, SQLiteEMSModule);
 
   sqlite.vfs_register(vfs, true);
 
   return sqlite;
 };
 
-export const setupDatabase = async (db) => {
+export const setupDatabase = async ({ db, name = 'lantstool.sqlite' }) => {
   // Create the SQLite package
-  const sqlite = await getSqlite();
+  const sqlite = await getSqlite(name);
   // Open connection
-  const connection = await sqlite.open_v2('lantstool.sqlite');
+  const connection = await sqlite.open_v2(name);
   // Configure db & setup tables if needed
   await sqlite.exec(connection, setupDatabaseSQL);
   // Set fields to the global object

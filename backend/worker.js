@@ -7,7 +7,7 @@ const db = {
   execute: async () => {},
 };
 
-await setupDatabase(db);
+await setupDatabase({ db });
 
 // TODO: Add a logger and embed the ability to send it to devs for users
 self.addEventListener('message', async (messageEvent) => {
