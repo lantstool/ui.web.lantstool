@@ -6,5 +6,9 @@ export const getAll = async ({ execute, request }) => {
 
   const networks = await execute(query);
 
-  return networks.map((network) => ({ ...network, rpcList: JSON.parse(network.rpcList) }));
+  return networks.map((network) => ({
+    ...network,
+    activeRpc: JSON.parse(network.activeRpc),
+    rpcList: JSON.parse(network.rpcList),
+  }));
 };

@@ -10,9 +10,9 @@ import { schema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cn from './Manually.module.scss';
 
-export const Manually = ({ creationType }) => {
+export const Manually = () => {
   const { spaceId } = useParams();
-  const createNetwork = useStoreEffect((store) => store.nearProtocol.networks.create);
+  const createManually = useStoreEffect((store) => store.nearProtocol.networks.createManually);
   const navigate = useNavigate();
 
   const form = useForm({
@@ -32,7 +32,7 @@ export const Manually = ({ creationType }) => {
   const header = useWatch({ control, name: 'header' });
 
   const onSubmit = (formValues) => {
-    createNetwork({ formValues, spaceId, navigate, setError, creationType });
+    createManually({ formValues, spaceId, navigate, setError });
   };
 
   const handleCheckboxChange = (e) => {
@@ -51,14 +51,14 @@ export const Manually = ({ creationType }) => {
           name="rpcName"
           label="RPC Name"
           placeholder="My rpc"
-          error={errors?.name?.message}
+          error={errors?.rpcName?.message}
         />
         <Input
           control={control}
           name="url"
           label="Enter RPC endpoint URL"
           placeholder="https://rpc.network.com"
-          error={errors?.rpc?.message}
+          error={errors?.url?.message}
           tooltip={
             <Tooltip
               content="The RPC API allows you to communicate directly with the NEAR network."

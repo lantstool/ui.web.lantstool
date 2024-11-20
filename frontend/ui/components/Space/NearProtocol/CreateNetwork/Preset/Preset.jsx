@@ -7,7 +7,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { Button } from '../../../../_general/Button/Button.jsx';
 import cn from './Preset.module.scss';
 
-export const Preset = ({ creationType }) => {
+export const Preset = () => {
   const { spaceId } = useParams();
   const navigate = useNavigate();
   const createPreset = useStoreEffect((store) => store.nearProtocol.networks.createPreset);
@@ -18,7 +18,7 @@ export const Preset = ({ creationType }) => {
   const networkId = useWatch({ control, name: 'networkId' });
 
   const onSubmit = (formValues) => {
-    createPreset({ formValues, spaceId, navigate, setError, creationType });
+    createPreset({ formValues, spaceId, navigate, setError });
   };
 
   const handleClick = (networkId) => setValue('networkId', networkId);

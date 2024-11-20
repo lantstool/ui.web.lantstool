@@ -45,5 +45,9 @@ export const createPreset = async ({ execute, request }) => {
   `;
 
   const [network] = await execute(query);
-  return { ...network, rpcList: JSON.parse(network.rpcList) };
+  return {
+    ...network,
+    activeRpc: JSON.parse(network.activeRpc),
+    rpcList: JSON.parse(network.rpcList),
+  };
 };

@@ -5,7 +5,6 @@ import { Preset } from './Preset/Preset.jsx';
 import { Manually } from './Manually/Manually.jsx';
 import cn from './CreateNetwork.module.scss';
 
-
 export const CreateNetwork = () => {
   const [creationType, setCreationType] = useState('preset');
 
@@ -14,15 +13,17 @@ export const CreateNetwork = () => {
       <img className={cn.logo} src={logoLantstool} alt="#" />
       <div className={cn.form}>
         <h1 className={cn.title}>Add Network</h1>
-        <p className={cn.subtitle}>Select from standard options or add your own. You can manage them later in settings.</p>
+        <p className={cn.subtitle}>
+          Select from standard options or add your own. You can manage them later in settings.
+        </p>
         <div className={cn.tab}>
           <TabButtons toggle={creationType} changeToggle={setCreationType}>
             <button value="preset">Select preset</button>
             <button value="manually">Add manually</button>
           </TabButtons>
         </div>
-        {creationType === 'preset' && <Preset creationType={creationType} />}
-        {creationType === 'manually' && <Manually creationType={creationType} />}
+        {creationType === 'preset' && <Preset />}
+        {creationType === 'manually' && <Manually />}
       </div>
     </div>
   );

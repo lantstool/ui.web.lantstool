@@ -1,4 +1,4 @@
-import { create } from './effects/create.js';
+import { createManually } from './effects/createManually.js';
 import { setToList } from './actions/setToList.js';
 import { getAll } from './effects/getAll.js';
 import { remove } from './effects/remove.js';
@@ -18,9 +18,9 @@ export const networks = {
   removeOneFromList,
   resetState,
   // effects
-  create,
+  createManually,
+  createPreset,
   getAll,
   getActiveRpc,
   remove,
-  createPreset,
 };

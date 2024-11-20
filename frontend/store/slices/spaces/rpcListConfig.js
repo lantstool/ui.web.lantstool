@@ -18,123 +18,116 @@
 //
 
 export const rpcListConfig = {
-  mainnet: [
-    //Regular RPC
-    {
-      url: 'https://rpc.mainnet.near.org',
-      name: 'NEAR',
-      logo: 'near.svg',
-      type: 'regular',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/nearprotocol' },
-        { type: 'website', url: 'https://near.org/' },
-      ],
-    },
-    //Archival RPC
-    {
-      url: 'https://archival-rpc.mainnet.near.org',
-      name: 'NEAR Archival',
-      logo: 'near.svg',
-      type: 'archival',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/nearprotocol' },
-        { type: 'website', url: 'https://near.org/' },
-      ],
-    },
-    {
-      url: 'https://1rpc.io/near',
-      name: '1RPC Archival',
-      logo: '1rpc.svg',
-      type: 'archival',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/automata-network/1rpc-lite' },
-        { type: 'x', url: 'https://x.com/1rpc_' },
-        { type: 'website', url: 'https://docs.1rpc.io/' },
-      ],
-    },
-    {
-      url: 'https://rpc.mainnet.pagoda.co',
-      name: 'Pagoda',
-      logo: 'pagoda.svg',
-      type: 'regular',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/PagodaPlatform' },
-        { type: 'website', url: 'https://www.pagoda.co/console' },
-      ],
-    },
-  ],
-  testnet: [
-    //Regular RPC
-    {
-      url: 'https://rpc.testnet.near.org',
-      name: 'NEAR',
-      logo: 'near.svg',
-      type: 'regular',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/nearprotocol' },
-        { type: 'website', url: 'https://near.org/' },
-      ],
-    },
-    {
-      url: 'https://rpc.testnet.pagoda.co',
-      name: 'Pagoda',
-      logo: 'pagoda.svg',
-      type: 'regular',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/PagodaPlatform' },
-        { type: 'website', url: 'https://www.pagoda.co/console' },
-      ],
-    },
-    {
-      url: 'https://test.rpc.fastnear.com',
-      name: 'FASTNEAR',
-      logo: 'fastNear.svg',
-      type: 'regular',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/fastnear/' },
-        { type: 'x', url: 'https://x.com/fast_near' },
-        { type: 'website', url: 'https://fastnear.com/' },
-      ],
-    },
-    //Archival RPC
-    {
-      url: 'https://archival-rpc.testnet.near.org',
-      name: 'NEAR Archival',
-      logo: 'near.svg',
-      type: 'archival',
-      header: null,
-      isPreset: true,
-      links: [
-        { type: 'github', url: 'https://github.com/near' },
-        { type: 'x', url: 'https://x.com/nearprotocol' },
-        { type: 'website', url: 'https://near.org/' },
-      ],
-    },
-  ],
+  mainnet: {
+    regular: [
+      {
+        url: 'https://rpc.mainnet.near.org',
+        name: 'NEAR',
+        logo: 'near.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/nearprotocol' },
+          { type: 'website', url: 'https://near.org/' },
+        ],
+      },
+    ],
+    archival: [
+      {
+        url: 'https://archival-rpc.mainnet.near.org',
+        name: 'NEAR Archival',
+        logo: 'near.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/nearprotocol' },
+          { type: 'website', url: 'https://near.org/' },
+        ],
+      },
+      {
+        url: 'https://1rpc.io/near',
+        name: '1RPC Archival',
+        logo: '1rpc.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/automata-network/1rpc-lite' },
+          { type: 'x', url: 'https://x.com/1rpc_' },
+          { type: 'website', url: 'https://docs.1rpc.io/' },
+        ],
+      },
+      {
+        url: 'https://rpc.mainnet.pagoda.co',
+        name: 'Pagoda',
+        logo: 'pagoda.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/PagodaPlatform' },
+          { type: 'website', url: 'https://www.pagoda.co/console' },
+        ],
+      },
+    ],
+  },
+
+  testnet: {
+    regular: [
+      {
+        url: 'https://rpc.testnet.near.org',
+        name: 'NEAR',
+        logo: 'near.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/nearprotocol' },
+          { type: 'website', url: 'https://near.org/' },
+        ],
+      },
+      {
+        url: 'https://rpc.testnet.pagoda.co',
+        name: 'Pagoda',
+        logo: 'pagoda.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/PagodaPlatform' },
+          { type: 'website', url: 'https://www.pagoda.co/console' },
+        ],
+      },
+      {
+        url: 'https://test.rpc.fastnear.com',
+        name: 'FASTNEAR',
+        logo: 'fastNear.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/fastnear/' },
+          { type: 'x', url: 'https://x.com/fast_near' },
+          { type: 'website', url: 'https://fastnear.com/' },
+        ],
+      },
+    ],
+    archival: [
+      {
+        url: 'https://archival-rpc.testnet.near.org',
+        name: 'NEAR Archival',
+        logo: 'near.svg',
+        header: null,
+        isPreset: true,
+        links: [
+          { type: 'github', url: 'https://github.com/near' },
+          { type: 'x', url: 'https://x.com/nearprotocol' },
+          { type: 'website', url: 'https://near.org/' },
+        ],
+      },
+    ],
+  },
 };
-
-
-
-
 
 // const activeRpc = {
 //   autoSwitch: null, // 'regular' or 'archive'
@@ -151,36 +144,3 @@ export const rpcListConfig = {
 //   links: null,
 //   isPreset: false,
 // };
-
-// const rpcList = [
-//   {
-//     url: 'https://archive-12312321',
-//     name: 'Pagoda',
-//     logo: 'Near.svg',
-//     type: 'archive',
-//     header: null,
-//     isPreset: true,
-//     // header:{
-//     //   name: 'adasd',  'Content-Type'
-//     //   value: 'asddsa','application/json;charset=utf-8'
-//     // },
-//     links: [
-//       { type: 'github', url: 'https://gitHub/archival-rpc.com' },
-//       { type: 'twitter', url: 'https://twitter/archival-rpc.com' },
-//       { type: 'website', url: 'https://otherLink/archival-rpc.com' },
-//     ],
-//   },
-//   {
-//     url: 'https://12312321',
-//     name: 'FastRPC',
-//     type: 'regular', //'archive'
-//     logo: 'Near.svg',
-//     header: null,
-//     isPreset: false,
-//     // header:{
-//     //   name: 'adasd',  'Content-Type'
-//     //   value: 'asddsa','application/json;charset=utf-8'
-//     // },
-//     links: null,
-//   },
-// ];
