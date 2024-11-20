@@ -1,3 +1,5 @@
+import { errorWithCode } from '../../../../utils/utils.js';
+
 export const deleteDbFiles = async (name) => {
   try {
     const dir = await navigator.storage.getDirectory();
@@ -9,6 +11,7 @@ export const deleteDbFiles = async (name) => {
       dir.removeEntry(`${name}-journal`),
     ]);
   } catch (e) {
-    return new Error(`Error during a DB files deletion: ${e}`);
+    console.log(e);
+    errorWithCode(400, `Cannot remove db files`);
   }
 };
