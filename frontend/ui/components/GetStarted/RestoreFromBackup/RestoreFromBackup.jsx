@@ -25,13 +25,14 @@ export const RestoreFromBackup = ({ closeModal }) => {
         </div>
         <p className={cn.subtitle}>
           Use this to restore the entire app data with multiple spaces and settings - upload a
-          lantstool-backup-[date].zip file. If you want to import just a single space, use the Import
-          Space option.
+          lantstool-backup-[date].zip file. If you want to import just a single space, use the
+          Import Space option.
         </p>
         <FileUploader
           file={file}
           setFile={setFile}
           callToActionText="Select a .zip file or drag&drop it here"
+          allowedFileTypes={{ 'application/zip': ['.zip'] }}
         />
         <div className={cn.button}>
           <Button size="medium" type="submit" onClick={restore} disabled={!file}>

@@ -6,8 +6,8 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
   const [history] = store.getEntities((store) => store.history);
   const [tabMessenger] = store.getEntities((store) => store.tabMessenger);
   const resetAppState = store.getEffects((store) => store.resetAppState);
-   // start loading
-  // set error
+  const setNotification = store.getActions((store) => store.setNotification);
+
   try {
     tabMessenger.beforeRestoreFromBackup();
     await backend.sendRequest('db.restoreFromBackup', { backup: file });
@@ -18,8 +18,15 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
       resetAppState();
       navigate('/');
       tabMessenger.afterRestoreFromBackup();
+      setNotification({ isOpen: true, message: 'Backup Restored', variant: 'success' });
     }, 25);
   } catch (e) {
     console.log(e);
+    setNotification({
+      isOpen: true,
+      message: e.code === 400 ? e.message : 'Backup Restoration Failed',
+      variant: 'error',
+      delay: 5000,
+    });
   }
 });
