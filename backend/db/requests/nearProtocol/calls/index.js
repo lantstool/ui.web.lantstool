@@ -4,6 +4,7 @@ import { getList } from './getList.js';
 import { getOne } from './getOne.js';
 import { updateOneBody } from './updateOneBody.js';
 import { updateOneName } from './updateOneName.js';
+import { updateOneRpcType } from './updateOneRpcType.js';
 import { duplicateOne } from './duplicateOne.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
@@ -17,6 +18,7 @@ export const calls = {
   getOne,
   updateOneBody,
   updateOneName,
+  updateOneRpcType,
   duplicateOne,
   removeOne,
   validateCallId,

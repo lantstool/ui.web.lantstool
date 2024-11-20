@@ -2,7 +2,7 @@ export const getOne = async ({ execute, request }) => {
   const callId = request.body;
 
   const query = `
-    SELECT callId, name, createdAt, body 
+    SELECT * 
     FROM near_protocol_calls
     WHERE callId = '${callId}';
   `;

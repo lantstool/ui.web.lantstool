@@ -5,6 +5,7 @@ import { SaveOutline } from '../../../../../../../../../_general/icons/SaveOutli
 import { EditName } from './SideMenu/EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
+import { RpcType } from './RpcType/RpcType.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
 import cn from './Topbar.module.scss';
 
@@ -32,6 +33,7 @@ export const Topbar = ({ form, call }) => {
         <EditName call={call} />
       </div>
       <div className={cn.sideMenu}>
+        <RpcType call={call} />
         <SideMenu call={call} />
         {hasChanges && (
           <>

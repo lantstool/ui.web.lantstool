@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_transactions (
   name TEXT NOT NULL,
   "order" INTEGER NOT NULL,
   createdAt INTEGER NOT NULL,
+  editedAt INTEGER,
   body TEXT NOT NULL,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
@@ -44,6 +45,8 @@ CREATE TABLE IF NOT EXISTS near_protocol_calls (
   name TEXT NOT NULL,
   "order" INTEGER NOT NULL,
   createdAt INTEGER NOT NULL,
+  editedAt INTEGER,
+  rpcType TEXT NOT NULL,
   body TEXT NOT NULL,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
