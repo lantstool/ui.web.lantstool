@@ -1,8 +1,10 @@
+import { db } from './db/db.js';
 import { spaces } from './spaces/index.js';
 import { nearProtocol } from './nearProtocol/nearProtocol.js';
 import get from 'lodash/get';
 
 const handlers = {
+  db,
   spaces,
   nearProtocol,
 };
@@ -24,7 +26,7 @@ export const handleRequest = async (requestType, context) => {
         id,
         type,
         status: 'err',
-        error: { code: e.code, message: e.message },
+        error: { code: e.code || 500, message: e.message },
       },
     });
   }

@@ -17,6 +17,8 @@
     "bn.js": "^5.2.1",
     "buffer": "^6.0.3",
     "classnames": "^2.5.1",
+    "date-fns": "^4.1.0",
+    "fflate": "^0.8.2",
     "fzstd": "^0.1.1",
     "immer": "^10.1.1",
     "lodash": "^4.17.21",
@@ -24,12 +26,13 @@
     "near-seed-phrase": "^0.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.5",
     "react-hook-form": "^7.53.0",
     "react-page-visibility": "^7.0.0",
     "react-router-dom": "^6.26.1",
     "react-select": "^5.8.0",
     "uuid": "^10.0.0",
-    "wa-sqlite": "github:rhashimoto/wa-sqlite#v1.0.2",
+    "wa-sqlite": "github:rhashimoto/wa-sqlite#v1.0.4",
     "yup": "^1.4.0"
   },
   "devDependencies": {

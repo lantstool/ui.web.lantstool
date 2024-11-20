@@ -1,6 +1,5 @@
 import { v4 as uuid } from 'uuid';
 import { entity } from '@react-vault';
-// import BackendWorker from '../../../backend/index?worker';
 
 /* Message Types
   REQUEST
@@ -30,8 +29,8 @@ class Backend {
     this.requests = {};
   }
 
-  init() {
-    this.worker = new Worker(new URL('../../../backend/index.js', import.meta.url), {
+  start = () => {
+    this.worker = new Worker(new URL('../../../backend/worker.js', import.meta.url), {
       type: 'module',
     });
     // Handle all incoming messages from worker. We have 2 different types of them
@@ -54,11 +53,11 @@ class Backend {
         resolve();
       };
     });
-  }
+  };
 
   // We simulate async (HTTP like) request and provide an ability to caller
   // to wait before the response on the request will be sent by worker
-  sendRequest(type, body) {
+  sendRequest = (type, body) => {
     const id = uuid();
     this.worker.postMessage({ request: { id, type, body } });
 
@@ -68,15 +67,25 @@ class Backend {
         delete this.requests[response.id];
       };
     });
-  }
+  };
 
   // TODO: implement
-  subscribe() {}
-  unsubscribe() {}
+  subscribe = () => {};
+  unsubscribe = () => {};
+
+  stop = async () => {
+    await this.sendRequest('db.closeConnection');
+    this.worker.terminate();
+    this.worker = null;
+    // TODO: think if we can have a case that we terminate the worker during
+    //  it has an uncompleted requests - if so - we should handle it
+    this.subscribers = {};
+    this.requests = {};
+  };
 }
 
 export const backend = entity(async () => {
   const backendWorker = new Backend();
-  await backendWorker.init();
+  await backendWorker.start();
   return backendWorker;
 });

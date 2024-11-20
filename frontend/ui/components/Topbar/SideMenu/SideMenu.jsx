@@ -1,7 +1,7 @@
 import { SettingsOutline } from '../../_general/icons/SettingsOutline.jsx';
 import { FeedbackOutline } from '../../_general/icons/FeedbackOutline.jsx';
 import { Popper } from '../_general/Popper/Popper.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Github } from '../../_general/icons/Github.jsx';
 import { X } from '../../_general/icons/X.jsx';
 import { Telegram } from '../../_general/icons/Telegram.jsx';
@@ -11,10 +11,16 @@ import { useState } from 'react';
 import cn from './SideMenu.module.scss';
 
 export const SideMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
 
   const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
+
+  const goToSettings = () => {
+    navigate('/settings');
+    closeMenu();
+  };
 
   return (
     <div className={cn.sideMenu}>
@@ -22,7 +28,7 @@ export const SideMenu = () => {
       <Popper isOpen={isOpen} closeMenu={closeMenu} position={'right'}>
         <div className={cn.container}>
           <div className={cn.wrapper}>
-            <button className={cn.button}>
+            <button className={cn.button} onClick={goToSettings}>
               <SettingsOutline />
               Settings
             </button>

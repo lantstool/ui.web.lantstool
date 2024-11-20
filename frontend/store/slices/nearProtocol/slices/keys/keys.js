@@ -7,6 +7,7 @@ import { getKeyList } from './effects/getKeyList.js';
 import { getKey } from './effects/getKey.js';
 import { removeKey } from './effects/removeKey.js';
 import { getPublicKey } from './effects/getPublicKey.js';
+import { resetState } from './actions/resetState.js';
 
 export const keys = {
   //state
@@ -16,6 +17,7 @@ export const keys = {
   setKeyList,
   addKeyToList,
   deleteKey,
+  resetState,
   //effects
   importFromPrivateKey,
   importFromSeedPhrase,
