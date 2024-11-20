@@ -39,24 +39,45 @@ import { getMaintenanceWindows } from './methods/validators/getMaintenanceWindow
 class RpcProvider {
   constructor(store) {
     this.store = store;
-    this.url = null;
+    this.activeRpc = null;
+    this.rpc = null;
+    this.rpcList = [];
+    this.autoSwitch = null;
+    this.header = { 'Content-Type': 'application/json;charset=utf-8' };
   }
 
   configure = async ({ spaceId, networkId }) => {
     const [backend] = this.store.getEntities((store) => store.backend);
 
     try {
-      this.url = await backend.sendRequest('nearProtocol.networks.getActiveRpc', {
+      this.activeRpc = await backend.sendRequest('nearProtocol.networks.getActiveRpc', {
         spaceId,
         networkId,
       });
+
+      this.autoSwitch = this.activeRpc?.autoSwitch;
+
+      this.rpcList = await backend.sendRequest('nearProtocol.networks.getRpcList', {
+        spaceId,
+        networkId,
+      });
+
+      if (this.autoSwitch) {
+        const getRandomRpc = (rpcList) => {
+          const filteredList = rpcList.filter((rpc) => rpc.type === this.autoSwitch);
+          const randomIndex = Math.floor(Math.random() * filteredList.length);
+          return rpcList[randomIndex];
+        };
+        this.rpc = getRandomRpc(this.rpcList);
+      }
+      console.log(this.rpc);
     } catch (e) {
       console.log(e);
     }
   };
 
   sendRequest = async ({ body, responseNameConvention }) => {
-    const { result, error } = await fetchJson(this.url, {
+    const { result, error } = await fetchJson(this.rpc.url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({

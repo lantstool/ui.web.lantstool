@@ -4,6 +4,8 @@ import { getOne } from './getOne.js';
 import { getActiveRpc } from './getActiveRpc.js';
 import { remove } from './remove.js';
 import { validateNetworkId } from './validateNetworkId.js';
+import { createPreset } from './createPreset.js';
+import { getRpcList } from './getRpcList.js';
 
 export const networks = {
   create,
@@ -12,4 +14,6 @@ export const networks = {
   getActiveRpc,
   remove,
   validateNetworkId,
+  createPreset,
+  getRpcList,
 };

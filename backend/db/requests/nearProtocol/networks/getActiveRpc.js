@@ -6,5 +6,5 @@ export const getActiveRpc = async ({ execute, request }) => {
   `;
 
   const [{ activeRpc }] = await execute(query);
-  return activeRpc;
+  return JSON.parse(activeRpc);
 };

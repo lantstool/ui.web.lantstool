@@ -6,6 +6,7 @@ import { removeOneFromList } from './actions/removeOneFromList.js';
 import { getActiveRpc } from './effects/getActiveRpc.js';
 import { putOneToList } from './actions/putOneToList.js';
 import { resetState } from './actions/resetState.js';
+import { createPreset } from './effects/createPreset.js';
 
 export const networks = {
   ids: [],
@@ -21,4 +22,5 @@ export const networks = {
   getAll,
   getActiveRpc,
   remove,
+  createPreset,
 };

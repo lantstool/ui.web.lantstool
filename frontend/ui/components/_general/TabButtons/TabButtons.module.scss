@@ -1,0 +1,35 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.toggle {
+  border-radius: 8px;
+  display: flex;
+  padding: 4px;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+  background-color: $neutral-50;
+  width: max-content;
+}
+
+.button {
+  @include text-sm-medium;
+  display: flex;
+  height: 24px;
+  padding: 2px 16px;
+  justify-content: center;
+  align-items: center;
+  color: $neutral-700;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.activeButton {
+  @extend .button;
+  border-radius: 4px;
+  background: $neutral-00;
+  color: $neutral-800;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.07);
+}

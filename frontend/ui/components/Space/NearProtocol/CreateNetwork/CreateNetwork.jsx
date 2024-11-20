@@ -1,39 +1,29 @@
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '@react-vault';
+import logoLantstool from '@assets/logoLantstool.svg';
+import { TabButtons } from '../../../_general/TabButtons/TabButtons.jsx';
+import { useState } from 'react';
+import { Preset } from './Preset/Preset.jsx';
+import { Manually } from './Manually/Manually.jsx';
 import cn from './CreateNetwork.module.scss';
 
+
 export const CreateNetwork = () => {
-  const { spaceId } = useParams();
-  const createNetwork = useStoreEffect((store) => store.nearProtocol.networks.create);
-  const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-  } = useForm();
-
-  const onSubmit = (formValues) => {
-    createNetwork({ formValues, spaceId, navigate, setError });
-  };
+  const [creationType, setCreationType] = useState('preset');
 
   return (
     <div className={cn.container}>
-      <h1>Create Network</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>
-        <input
-          {...register('rpc')}
-          placeholder="RPC URL"
-          defaultValue="https://rpc.testnet.near.org"
-        />
-        <button type="submit">Create Network</button>
-        {errors.rpc && <span>{errors.rpc.message}</span>}
-      </form>
-      <Link to=".." relative="path">
-        Back to Networks
-      </Link>
+      <img className={cn.logo} src={logoLantstool} alt="#" />
+      <div className={cn.form}>
+        <h1 className={cn.title}>Add Network</h1>
+        <p className={cn.subtitle}>Select from standard options or add your own. You can manage them later in settings.</p>
+        <div className={cn.tab}>
+          <TabButtons toggle={creationType} changeToggle={setCreationType}>
+            <button value="preset">Select preset</button>
+            <button value="manually">Add manually</button>
+          </TabButtons>
+        </div>
+        {creationType === 'preset' && <Preset creationType={creationType} />}
+        {creationType === 'manually' && <Manually creationType={creationType} />}
+      </div>
     </div>
   );
 };
