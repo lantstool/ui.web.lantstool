@@ -24,7 +24,7 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
     console.log(e);
     setNotification({
       isOpen: true,
-      message: e.code === 400 ? e.message : 'Backup Restoration Failed',
+      message: e.code === 500 ? 'Backup Restoration Failed' : e.message,
       variant: 'error',
       delay: 5000,
     });

@@ -19,18 +19,33 @@ const unzipBackup = async (file) => {
   }
 };
 
+// TODO check DB version, do migration if needed
+const validateDb = async (backupDb, backupName) => {
+  try {
+    await getCount({ execute: backupDb.execute });
+  } catch (e) {
+    await closeConnection({ db: backupDb });
+    await deleteDbFiles(backupName);
+    errorWithCode(420, 'Incompatible SQLite database');
+  }
+};
+
 const validateBackup = async (backupName) => {
   const backupDb = {};
   try {
-    await setupDatabase({ db: backupDb, backupName });
-    // TODO check DB version, do migration if needed
-    await getCount({ execute: backupDb.execute });
-
+    await setupDatabase({ db: backupDb, name: backupName, deleteFilesOnError: true });
+    // Perform DB checks
+    await validateDb(backupDb, backupName);
+    // If all good and DB valid, delete all other DB files and close connection
     await closeConnection({ db: backupDb });
+    await deleteFile(`${backupName}-wal`);
+    await deleteFile(`${backupName}-journal`);
   } catch (e) {
     console.log(e);
-    await deleteFile(backupName);
-    errorWithCode(400, 'Invalid backup');
+    // If DB is a real SQLite DB but is an incompatible - just end up with error
+    if (e.code === 420) throw e;
+    // In other cases just throw the default error
+    errorWithCode(400, 'Incompatible backup file');
   }
 };
 
