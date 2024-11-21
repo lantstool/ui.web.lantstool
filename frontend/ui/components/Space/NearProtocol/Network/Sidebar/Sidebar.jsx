@@ -1,11 +1,11 @@
 import { Navigation } from './Navigation/Navigation.jsx';
 import cn from './Sidebar.module.scss';
 import { SidebarOutline } from '../../../../_general/icons/SidebarOutline.jsx';
-import { useStoreState, useStoreAction } from '@react-vault';
+import { useStoreAction } from '@react-vault';
 
-export const Sidebar = () => {
+export const Sidebar = ({ isMinimized }) => {
   const setMinimize = useStoreAction((store) => store.nearProtocol.setMinimize);
-  const isMinimized = useStoreState((state) => state.nearProtocol.isMinimize);
+
   const handleClick = () => setMinimize(!isMinimized);
 
   return (

@@ -19,8 +19,8 @@ export const createState = ({ initState }) => {
 
   const setState = ({ nextState, payload, path, key }) => {
     state = nextState;
-    subscribers.forEach((callback) => callback(state));
-    if (devTools) devTools.send({ type: [...path, key].join('.'), payload }, state);
+    subscribers.forEach((callback) => callback(nextState));
+    if (devTools) devTools.send({ type: [...path, key].join('.'), payload }, nextState);
   };
 
   const subscribe = (callback) => {

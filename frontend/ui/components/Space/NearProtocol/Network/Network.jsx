@@ -10,7 +10,7 @@ export const Network = () => {
   useManageRouting();
   return (
     <div className={cn.network}>
-      <Sidebar />
+      <Sidebar isMinimized={isMinimized} />
       <div className={isMinimized ? cn.minimized : cn.content}>
         <Outlet />
       </div>
