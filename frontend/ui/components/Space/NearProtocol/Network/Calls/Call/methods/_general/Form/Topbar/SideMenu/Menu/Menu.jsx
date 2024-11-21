@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { CopyOutline } from '../../../../../../../../../../../_general/icons/CopyOutline.jsx';
 import { TrashBinOutline } from '../../../../../../../../../../../_general/icons/TrashBinOutline.jsx';
+import { ExportLinear } from '../../../../../../../../../../../_general/icons/ExportLinear.jsx';
 import cn from './Menu.module.scss';
 
 const popupPosition = {
@@ -31,6 +32,10 @@ export const Menu = ({ closeMenu, position }) => {
           <button className={cn.button} onClick={duplicate}>
             <CopyOutline style={cn.icon} />
             Duplicate
+          </button>
+          <button className={cn.button} onClick={duplicate}>
+            <ExportLinear style={cn.icon} />
+            Export as JSON File
           </button>
           <button className={cn.button} onClick={remove}>
             <TrashBinOutline style={cn.icon} />
