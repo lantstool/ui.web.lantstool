@@ -44,7 +44,7 @@ const duplicate = async (execute, targetId) => {
 
   const query = `
     INSERT INTO near_protocol_calls
-      (callId, networkId, spaceId, name, 'order', createdAt, body)
+      (callId, networkId, spaceId, name, 'order', createdAt, rpcType, body)
     VALUES(
       '${callId}', 
       '${target.networkId}', 
@@ -52,6 +52,7 @@ const duplicate = async (execute, targetId) => {
       '${name}', 
        ${target.order + 1}, 
        ${createdAt}, 
+      '${target.rpcType}', 
       '${target.body}'
     )
   `;

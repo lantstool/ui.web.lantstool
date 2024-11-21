@@ -15,9 +15,10 @@ export const createOne = async ({ execute, request }) => {
   const callId = uuid();
   const createdAt = Date.now();
   const order = await getNewCallOrder(execute, spaceId, networkId);
+  const rpcType = 'regular';
 
   const body = JSON.stringify({
-    method: { value: 'getAccount', label: 'Get Account'},
+    method: { value: 'getAccount', label: 'Get Account' },
     accountId: null,
     blockTarget: 'latest',
     finality: { value: 'final', label: 'Final' },
@@ -28,7 +29,7 @@ export const createOne = async ({ execute, request }) => {
     BEGIN TRANSACTION;
     
     INSERT INTO near_protocol_calls
-      (callId, networkId, spaceId, name, 'order', createdAt, body)
+      (callId, networkId, spaceId, name, 'order', createdAt, rpcType, body)
     VALUES(
       '${callId}', 
       '${networkId}', 
@@ -36,6 +37,7 @@ export const createOne = async ({ execute, request }) => {
       '${name}', 
        ${order}, 
        ${createdAt}, 
+      '${rpcType}', 
       '${body}'
     )
     RETURNING *;
