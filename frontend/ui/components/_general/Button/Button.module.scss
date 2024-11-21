@@ -146,11 +146,13 @@
 .secondaryLg {
   @include secondary;
   @include lg-btn;
+  padding: 11px 15px;
 }
 
 .secondaryLgIcon {
   @include secondary;
   @include lg-btn-icon;
+  padding: 11px;
 }
 
 .secondaryMg {
@@ -162,6 +164,41 @@
 .secondaryMgIcon {
   @include secondary;
   @include mg-btn-icon;
+  padding: 7px;
+}
+
+@mixin dangerSecondary {
+  @include secondary;
+  &:disabled .dangerSecondaryText {
+    color: $neutral-500;
+  }
+  &:disabled .iconDangerSecondary {
+    fill: $neutral-500;
+  }
+}
+
+.dangerSecondaryLg {
+  @include dangerSecondary;
+  @include lg-btn;
+  padding: 11px 15px;
+}
+
+.dangerSecondaryLgIcon {
+  @include dangerSecondary;
+  @include lg-btn-icon;
+  padding: 11px;
+}
+
+.dangerSecondaryMg {
+  @include dangerSecondary;
+  @include mg-btn;
+  padding: 7px 16px;
+}
+
+.dangerSecondaryMgIcon {
+  @include dangerSecondary;
+  @include mg-btn-icon;
+  padding: 7px;
 }
 
 @mixin tertiary {
@@ -214,6 +251,11 @@
   color: $neutral-700;
 }
 
+.dangerSecondaryText {
+  @include text;
+  color: $red-600;
+}
+
 .tertiaryText {
   @include text;
   color: $neutral-700;
@@ -225,6 +267,10 @@
 
 .iconSecondary {
   fill: $neutral-700;
+}
+
+.iconDangerSecondary {
+  fill: $red-600;
 }
 
 .iconTertiary {

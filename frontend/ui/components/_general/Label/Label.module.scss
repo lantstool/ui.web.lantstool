@@ -10,6 +10,7 @@
   margin: 0;
   border-radius: 12px;
   max-width: max-content;
+  max-height: max-content;
 }
 
 @mixin span {
@@ -73,5 +74,5 @@
 }
 
 .green {
-  @include colorScheme($green-50, $green-800, $green-800);
+  @include colorScheme($accent-50, $accent-600, $accent-600);
 }
