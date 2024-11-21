@@ -32,7 +32,7 @@ export const DeleteModal = ({ isOpen, setOpen }) => {
           <Button color="secondary" size="medium" onClick={closeModal}>
             Cancel
           </Button>
-          <Button size="medium" onClick={remove}>
+          <Button color="danger" size="medium" onClick={remove}>
             Remove
           </Button>
         </div>

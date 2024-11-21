@@ -39,6 +39,18 @@ const types = (isIcon, children) => {
         iconColor: cn.iconPrimary,
       },
     },
+    dangerSecondary: {
+      large: {
+        button: isIcon ? cn.dangerSecondaryLgIcon : cn.dangerSecondaryLg,
+        btnText: cn.dangerSecondaryText,
+        iconColor: cn.iconDangerSecondary,
+      },
+      medium: {
+        button: isIcon ? cn.dangerSecondaryMgIcon : cn.dangerSecondaryMg,
+        btnText: cn.dangerSecondaryText,
+        iconColor: cn.iconDangerSecondary,
+      },
+    },
     tertiary: {
       small: {
         button: isIcon && !children ? cn.tertiaryIcon : cn.tertiary,
@@ -58,6 +70,9 @@ const getType = (color, size, IconRight, IconLeft, children) => {
     return types(isIcon, children)[color][size];
   }
   if (color === 'danger') {
+    return types(isIcon, children)[color][size];
+  }
+  if (color === 'dangerSecondary') {
     return types(isIcon, children)[color][size];
   } else if (color === 'secondary') return types(isIcon, children)[color][size];
 };

@@ -1,19 +1,20 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.backBtn {
-  position: absolute;
-  top: 88px;
-  left: 40px;
-}
-
 .settings {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 40px;
+}
+
+.backBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .title {
@@ -27,6 +28,12 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.dangerZone {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .container {
