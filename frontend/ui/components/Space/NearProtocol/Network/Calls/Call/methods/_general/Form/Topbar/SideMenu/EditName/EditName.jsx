@@ -19,20 +19,20 @@ export const EditName = ({ call }) => {
 
   useEffect(() => {
     form.reset({ name });
-  }, [name]);
+  }, [name, callId]);
 
   const editName = handleSubmit((formValues) => {
+    console.log(formValues);
     updateOneName({ formValues, callId });
   });
 
   return (
-    <div className={cn.container}>
+    <form className={cn.container} onBlur={editName} key={callId}>
       <input
         {...register('name')}
-        onBlur={editName}
         placeholder="Untitled Call"
         className={cn.input}
       />
-    </div>
+    </form>
   );
 };
