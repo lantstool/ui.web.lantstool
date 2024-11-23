@@ -1,23 +1,17 @@
 import { effect } from '@react-vault';
-import { rpcListConfig } from '../../../../spaces/rpcListConfig.js';
+import { presets } from '../presets.js';
 
-export const createPreset = effect(async ({ store, slice, payload }) => {
+export const createFromPreset = effect(async ({ store, slice, payload }) => {
   const { spaceId, formValues, navigate, setError } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const putOneToList = slice.getActions((slice) => slice.putOneToList);
 
   try {
-    const rpcActive = {
-      regular: { autoSwitch: true },
-      archive: { autoSwitch: false },
-    };
-    const listRpc = rpcListConfig[formValues.networkId];
+    const preset = presets[formValues.presetId];
 
-    const network = await backend.sendRequest('nearProtocol.networks.createPreset', {
+    const network = await backend.sendRequest('nearProtocol.networks.createFromPreset', {
       spaceId,
-      rpcActive,
-      listRpc,
-      formValues,
+      preset,
     });
 
     putOneToList(network);

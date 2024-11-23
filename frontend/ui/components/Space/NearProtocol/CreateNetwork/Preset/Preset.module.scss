@@ -18,18 +18,7 @@
   gap: 8px;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 16px;
-  border-radius: 8px;
-  border: 1px solid $neutral-200;
-  background: $neutral-00;
-  cursor: pointer;
-  * {
-    cursor: inherit;
-  }
-}
+
 
 .buttonWrapper{
   min-height: 88px;

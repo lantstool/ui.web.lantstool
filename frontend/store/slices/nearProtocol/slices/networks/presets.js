@@ -17,12 +17,18 @@
 //   'https://endpoints.omniatech.io/v1/near/mainnet/public',
 //
 
-export const rpcListConfig = {
-  mainnet: {
+const mainnet = {
+  networkId: 'mainnet',
+  activeRpc: {
+    regular: { autoSwitch: true, rpc: null },
+    archive: { autoSwitch: true, rpc: null },
+  },
+  rpcList: {
     regular: [
       {
-        url: 'https://rpc.mainnet.near.org',
+        id: 'rpc.mainnet.near.org',
         name: 'NEAR',
+        url: 'https://rpc.mainnet.near.org',
         logo: 'near.svg',
         header: null,
         isPreset: true,
@@ -35,6 +41,7 @@ export const rpcListConfig = {
     ],
     archival: [
       {
+        id: 'archival-rpc.mainnet.near.org',
         url: 'https://archival-rpc.mainnet.near.org',
         name: 'NEAR Archival',
         logo: 'near.svg',
@@ -47,6 +54,7 @@ export const rpcListConfig = {
         ],
       },
       {
+        id: '1rpc.io/near',
         url: 'https://1rpc.io/near',
         name: '1RPC Archival',
         logo: '1rpc.svg',
@@ -59,6 +67,7 @@ export const rpcListConfig = {
         ],
       },
       {
+        id: 'rpc.mainnet.pagoda.co',
         url: 'https://rpc.mainnet.pagoda.co',
         name: 'Pagoda',
         logo: 'pagoda.svg',
@@ -72,10 +81,18 @@ export const rpcListConfig = {
       },
     ],
   },
+};
 
-  testnet: {
+const testnet = {
+  networkId: 'testnet',
+  activeRpc: {
+    regular: { autoSwitch: true, rpc: null },
+    archive: { autoSwitch: true, rpc: null },
+  },
+  rpcList: {
     regular: [
       {
+        id: 'rpc.testnet.near.org',
         url: 'https://rpc.testnet.near.org',
         name: 'NEAR',
         logo: 'near.svg',
@@ -88,6 +105,7 @@ export const rpcListConfig = {
         ],
       },
       {
+        id: 'rpc.testnet.pagoda.co',
         url: 'https://rpc.testnet.pagoda.co',
         name: 'Pagoda',
         logo: 'pagoda.svg',
@@ -100,6 +118,7 @@ export const rpcListConfig = {
         ],
       },
       {
+        id: 'test.rpc.fastnear.com',
         url: 'https://test.rpc.fastnear.com',
         name: 'FASTNEAR',
         logo: 'fastNear.svg',
@@ -114,6 +133,7 @@ export const rpcListConfig = {
     ],
     archival: [
       {
+        id: 'archival-rpc.testnet.near.org',
         url: 'https://archival-rpc.testnet.near.org',
         name: 'NEAR Archival',
         logo: 'near.svg',
@@ -127,6 +147,11 @@ export const rpcListConfig = {
       },
     ],
   },
+};
+
+export const presets = {
+  mainnet,
+  testnet,
 };
 
 // const activeRpc = {

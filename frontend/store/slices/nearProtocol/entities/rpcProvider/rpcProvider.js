@@ -1,6 +1,6 @@
 import { entity } from '@react-vault';
-import { fetchJson } from '../../../helpers/fetchJson.js';
-import { toCamelCase } from '../../../helpers/toCamelCase.js';
+import { sendRequest } from './sendRequest.js';
+import { configure } from './configure.js';
 // Account
 import { getAccount } from './methods/account/getAccount.js';
 import { getAccountBalance } from './methods/account/getAccountBalance.js';
@@ -39,57 +39,11 @@ import { getMaintenanceWindows } from './methods/validators/getMaintenanceWindow
 class RpcProvider {
   constructor(store) {
     this.store = store;
-    this.activeRpc = null;
-    this.rpc = null;
-    this.rpcList = [];
-    this.autoSwitch = null;
-    this.headers = { 'Content-Type': 'application/json;charset=utf-8' };
+    this.rpcs = [];
   }
 
-  configure = async ({ spaceId, networkId, rpcType = 'regular' }) => {
-    const [backend] = this.store.getEntities((store) => store.backend);
-
-    try {
-      const [activeRpc, rpcList] = await Promise.all([
-        backend.sendRequest('nearProtocol.networks.getActiveRpc', { spaceId, networkId }),
-        backend.sendRequest('nearProtocol.networks.getRpcList', { spaceId, networkId }),
-      ]);
-
-      this.autoSwitch = activeRpc[rpcType]?.autoSwitch;
-      this.rpcList = rpcList[rpcType];
-
-      if (this.autoSwitch) {
-        const getRandomRpc = (rpcList) => {
-          const randomIndex = Math.floor(Math.random() * rpcList.length);
-          return rpcList[randomIndex];
-        };
-        this.rpc = getRandomRpc(this.rpcList);
-      }
-
-      if (this.rpc.header) {
-        const { name, value } = this.rpc.header;
-        this.headers = { ...this.headers, [name]: value };
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  sendRequest = async ({ body, responseNameConvention }) => {
-    const { result, error } = await fetchJson(this.rpc.url, {
-      method: 'POST',
-      headers: this.headers,
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: 0,
-        ...body,
-      }),
-    });
-    console.log(responseNameConvention);
-    if (error) throw new Error(JSON.stringify(error));
-    if (responseNameConvention === 'snake_case') return result;
-    if (responseNameConvention === 'camelCase') return toCamelCase(result);
-  };
+  configure = configure;
+  sendRequest = sendRequest;
 
   // Account
   getAccount = getAccount;
