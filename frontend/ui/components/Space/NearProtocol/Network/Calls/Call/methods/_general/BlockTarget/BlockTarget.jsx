@@ -2,9 +2,9 @@ import { useWatch } from 'react-hook-form';
 import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
 import { RadioButton } from '../../../../../../../../_general/RadioButton/RadioButton.jsx';
 import { Input } from '../../../../../../../../_general/Input/Input.jsx';
-import cn from './BlockTarget.module.scss';
 import { InfoCircleLinear } from '../../../../../../../../_general/icons/InfoCircleLinear.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import cn from './BlockTarget.module.scss';
 
 const finalityOptions = [
   { label: 'Final', value: 'final' },
