@@ -9,8 +9,8 @@ export const useStoreState = (selector, dependencies = []) => {
     setSelectedState(store.state.useSelector(selector));
 
     const unsubscribe = store.state.subscribe((state) => {
-      if (Object.is(selectedState, selector(state))) return;
-      setSelectedState(selector(state));
+      const sliceState = selector(state);
+      setSelectedState((prevState) => (Object.is(prevState, sliceState) ? prevState : sliceState));
     });
 
     return () => unsubscribe();

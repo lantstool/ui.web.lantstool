@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { RpcType } from './RpcType/RpcType.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
+import { dateFormatter } from '../../../../../../../../../../../store/helpers/formatDate.js';
 import cn from './Topbar.module.scss';
 
 export const Topbar = ({ form, call }) => {
@@ -27,10 +28,13 @@ export const Topbar = ({ form, call }) => {
     executeOne({ spaceId, networkId, callId, formValues });
   });
 
+  const { createdAt } = call;
+
   return (
     <div className={cn.topbar}>
       <div>
         <EditName call={call} />
+        <p className={cn.date}>Created {dateFormatter(createdAt)}</p>
       </div>
       <div className={cn.sideMenu}>
         <RpcType call={call} />

@@ -18,14 +18,22 @@ export const Dropdown = ({
   isSearchable = false,
   isClearable = false,
   label,
+  tooltip = null,
+  copy = true,
   placeholder = 'Select...',
 }) => {
   const style = selectStyles(error);
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
+  const components = { DropdownIndicator, ClearIndicator, ...(copy && { IndicatorsContainer }) };
 
   return (
     <div className={cn.container}>
-      <label className={cn.label}>{label}</label>
+      {label && (
+        <div className={cn.labelWrapper}>
+          <label className={cn.label}>{label}</label>
+          {tooltip}
+        </div>
+      )}
       <Controller
         name={name}
         control={control}
@@ -40,7 +48,7 @@ export const Dropdown = ({
               isDisabled={isDisabled}
               isClearable={isClearable}
               isSearchable={isSearchable}
-              components={{ DropdownIndicator, ClearIndicator, IndicatorsContainer }}
+              components={{ ...components }}
               styles={style}
             />
           );

@@ -1,3 +1,5 @@
+import { format, isThisYear, isToday, isYesterday } from 'date-fns';
+
 export const formatDate = (time) => {
   const dateTime = new Date(time);
   const currentDate = new Date();
@@ -20,4 +22,20 @@ export const formatDate = (time) => {
   });
 
   return { date, hourMinute };
+};
+
+export const dateFormatter = (dateTime) => {
+  if (isToday(dateTime)) {
+    return `Today, at ${format(dateTime, 'HH:mm')}`;
+  }
+  if (isYesterday(dateTime)) {
+    return `Yesterday, at ${format(dateTime, 'HH:mm')}`;
+  }
+
+  const formattedDate = format(dateTime, 'MMM d');
+  const formattedTime = format(dateTime, 'HH:mm');
+
+  return isThisYear(dateTime)
+    ? `${formattedDate} at ${formattedTime}`
+    : `${formattedDate}, ${format(dateTime, 'yyyy')} at ${formattedTime}`;
 };

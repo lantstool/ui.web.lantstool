@@ -5,4 +5,6 @@ export const editOneName = action(({ slice, payload }) => {
 
   const call = slice.list.find((c) => c.callId === callId);
   call.name = name;
+
+  slice.drafts[callId].origin.name = name;
 });

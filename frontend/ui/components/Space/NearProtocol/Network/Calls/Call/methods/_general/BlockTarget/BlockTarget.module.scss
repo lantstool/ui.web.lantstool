@@ -1,3 +1,40 @@
-.radioButtons {
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.blockTarget {
   display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 100%;
+  max-width: 566px;
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tooltipText {
+  @include text-mg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 16px;
+  padding: 4px 2px;
+  margin-bottom: 16px;
 }

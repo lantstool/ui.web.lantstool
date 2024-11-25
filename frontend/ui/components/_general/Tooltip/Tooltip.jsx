@@ -8,6 +8,7 @@ import cn from './Tooltip.module.scss';
 export const Tooltip = ({
   color = 'black',
   content,
+  arrow = true,
   placement = 'bottom-start',
   children,
   style,
@@ -15,6 +16,7 @@ export const Tooltip = ({
   return (
     <>
       <Tippy
+        arrow={arrow}
         className={color === 'black' ? cn.tooltipBlack : cn.tooltipWhite}
         content={content}
         placement={placement}

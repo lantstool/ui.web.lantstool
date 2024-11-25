@@ -10,7 +10,7 @@ export const Calls = () => {
   const list = useStoreState((store) => store.nearProtocol.calls.list);
   const getList = useStoreEffect((store) => store.nearProtocol.calls.getList);
   const { spaceId, networkId } = useParams();
-  const [isLoading] = useLoader(getList, { spaceId, networkId });
+  const [isLoading] = useLoader(getList, { spaceId, networkId }, [spaceId, networkId]);
 
   useManageRouting();
 
