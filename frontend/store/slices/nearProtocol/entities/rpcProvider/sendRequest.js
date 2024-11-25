@@ -2,13 +2,20 @@ import { sample } from 'lodash';
 import { fetchJson } from '../../../../helpers/fetchJson.js';
 import { toCamelCase } from '../../../../helpers/toCamelCase.js';
 
-const getRpcParams = (rpcs, rpcUrl) => {
+const rpcError = (error) => {
+  const e = new Error();
+  e.message = JSON.stringify(error);
+  e.rpc = error;
+  return e;
+};
+
+const getRpcParams = (rpcs) => {
+  const rpc = sample(rpcs); // Select a random rpc from the list
   const headers = { 'Content-Type': 'application/json;charset=utf-8' };
 
-  if (rpcUrl) return { url: rpcUrl, headers };
-  // Select a random rpc from the list
-  const rpc = sample(rpcs);
-  if (rpc.header) headers[rpc.header.name] = rpc.header.value;
+  rpc.headers.forEach((header) => {
+    headers[header.name] = header.value;
+  });
 
   return { url: rpc.url, headers };
 };
@@ -19,8 +26,8 @@ const getRpcParams = (rpcs, rpcUrl) => {
 // We pass rpcUrl in case we want to send request directly to the RPC and
 // skip the configure stage. For example - we want to get Genesis Config
 // when we set up a network - we don't have any RPC in the list yet
-export async function sendRequest({ body, responseNameConvention, rpcUrl }) {
-  const { url, headers } = getRpcParams(this.rpcs, rpcUrl);
+export async function sendRequest({ body, responseNameConvention }) {
+  const { url, headers } = getRpcParams(this.rpcs);
 
   const { result, error } = await fetchJson(url, {
     method: 'POST',
@@ -32,7 +39,7 @@ export async function sendRequest({ body, responseNameConvention, rpcUrl }) {
     }),
   });
 
-  if (error) throw new Error(JSON.stringify(error));
+  if (error) throw rpcError(error);
   if (responseNameConvention === 'snake_case') return result;
   if (responseNameConvention === 'camelCase') return toCamelCase(result);
 }

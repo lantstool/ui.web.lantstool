@@ -1,38 +1,30 @@
-const validateNetworkId = async (execute, spaceId, networkId) => {
-  // We don't really expect that someone would create a network with id 'networks',
-  // but if it happens it will break the app.
-  if (networkId === 'networks')
-    throw new Error(`
-      You can't import network with ID 'networks' - 'networks' is an inner keyword
-    `);
+import { v4 as uuid } from 'uuid';
 
-  const query = `
-    SELECT networkId FROM near_protocol_networks 
-      WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
-  `;
-  const [network] = await execute(query);
+const getRpcData = (rpc, type) => {
+  const rpcList = { regular: [], archival: [] };
+  rpcList[type].push({ ...rpc, id: uuid() });
 
-  if (network)
-    throw new Error(`
-      The network ‘${network.networkId}’ is already exists in this space. 
-      Please make sure you entered the correct URL of RPC provider
-    `);
+  const activeRpc = { regular: null, archival: null };
+  activeRpc[type] = { autoSwitch: true, rpc: null };
+
+  return {
+    rpcList: JSON.stringify(rpcList),
+    activeRpc: JSON.stringify(activeRpc),
+  };
 };
 
 export const createManually = async ({ execute, request }) => {
-  const { spaceId, networkId } = request.body;
-  const { url, rpc } = request.body.formValues;
-  const rpcList = JSON.stringify([url]);
-  const createdAt = Date.now();
+  const { spaceId, networkId, rpc, rpcType } = request.body;
 
-  await validateNetworkId(execute, spaceId, networkId);
+  const { rpcList, activeRpc } = getRpcData(rpc, rpcType);
+  const createdAt = Date.now();
 
   const query = `
     BEGIN TRANSACTION;
 
     INSERT INTO near_protocol_networks
       (networkId, spaceId, createdAt, activeRpc, rpcList)
-    VALUES('${networkId}', '${spaceId}', ${createdAt}, '${rpc}', '${rpcList}')
+    VALUES('${networkId}', '${spaceId}', ${createdAt}, '${activeRpc}', '${rpcList}')
     RETURNING *;
 
     INSERT INTO near_protocol_counters
@@ -43,5 +35,9 @@ export const createManually = async ({ execute, request }) => {
   `;
 
   const [network] = await execute(query);
+
+  network.activeRpc = JSON.parse(network.activeRpc);
+  network.rpcList = JSON.parse(network.rpcList);
+
   return network;
 };

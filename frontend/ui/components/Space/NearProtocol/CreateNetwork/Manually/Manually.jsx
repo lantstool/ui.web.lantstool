@@ -17,23 +17,23 @@ export const Manually = () => {
 
   const form = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { rpcName: '', url: '', checkbox: false, header: null },
+    defaultValues: {
+      rpcName: 'NEAR',
+      url: 'https://archival-rpc.mainnet.near.org',
+      withHeader: false,
+      header: null,
+    },
   });
 
   const {
     control,
     register,
     formState: { errors },
-    setError,
     setValue,
     handleSubmit,
   } = form;
 
   const header = useWatch({ control, name: 'header' });
-
-  const onSubmit = (formValues) => {
-    createManually({ formValues, spaceId, navigate, setError });
-  };
 
   const handleCheckboxChange = (e) => {
     if (e.target.checked) {
@@ -43,14 +43,18 @@ export const Manually = () => {
     }
   };
 
+  const onSubmit = handleSubmit((formValues) => {
+    createManually({ formValues, spaceId, navigate });
+  });
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn.manually}>
+    <form onSubmit={onSubmit} className={cn.manually}>
       <div className={cn.wrapper}>
         <Input
           control={control}
           name="rpcName"
           label="RPC Name"
-          placeholder="My rpc"
+          placeholder="My RPC"
           error={errors?.rpcName?.message}
         />
         <Input
@@ -69,7 +73,7 @@ export const Manually = () => {
           }
         />
         <div className={cn.checkboxContainer}>
-          <Checkbox register={register} name="ckeckbox" onChange={handleCheckboxChange} />
+          <Checkbox register={register} name="withHeader" onChange={handleCheckboxChange} />
           <p className={cn.label}>Add header parameters </p>
         </div>
         {header && (

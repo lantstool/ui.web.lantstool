@@ -41,6 +41,10 @@ class RpcProvider {
     this.store = store;
     this.rpcs = [];
   }
+  // rpc should be an object, similar to RPC from database and has { url, headers }
+  specify = (rpc) => {
+    this.rpcs = [rpc];
+  };
 
   configure = configure;
   sendRequest = sendRequest;

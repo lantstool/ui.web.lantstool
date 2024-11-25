@@ -1,22 +1,3 @@
-// Not available genesis config - 'https://near.drpc.org'
-//
-//  rpc with error
-//   'https://rpc.near.gateway.fm/',
-//   'thttps://getblock.io/nodes/near/',
-//   'https://near.lava.build',
-//   'https://near.lavenderfive.com/',
-//   'https://nodereal.io/api-marketplace/near-rpc',
-//   'https://near.nownodes.io/',
-//   'https://api.seracle.com/saas/baas/rpc/near/mainnet/public/',
-//
-//  archival rpc
-//   'https://rpc.mainnet.pagoda.co',
-//   'https://1rpc.io/near',
-//   'fast-near web4',
-//   'https://free.rpc.fastnear.com',
-//   'https://endpoints.omniatech.io/v1/near/mainnet/public',
-//
-
 const mainnet = {
   networkId: 'mainnet',
   activeRpc: {
@@ -29,9 +10,9 @@ const mainnet = {
         id: 'rpc.mainnet.near.org',
         name: 'NEAR',
         url: 'https://rpc.mainnet.near.org',
-        logo: 'near.svg',
-        header: null,
-        isPreset: true,
+        logo: 'near-protocol',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
@@ -44,9 +25,9 @@ const mainnet = {
         id: 'archival-rpc.mainnet.near.org',
         url: 'https://archival-rpc.mainnet.near.org',
         name: 'NEAR Archival',
-        logo: 'near.svg',
-        header: null,
-        isPreset: true,
+        logo: 'near-protocol',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
@@ -57,9 +38,9 @@ const mainnet = {
         id: '1rpc.io/near',
         url: 'https://1rpc.io/near',
         name: '1RPC Archival',
-        logo: '1rpc.svg',
-        header: null,
-        isPreset: true,
+        logo: '1rpc',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/automata-network/1rpc-lite' },
           { type: 'x', url: 'https://x.com/1rpc_' },
@@ -70,9 +51,9 @@ const mainnet = {
         id: 'rpc.mainnet.pagoda.co',
         url: 'https://rpc.mainnet.pagoda.co',
         name: 'Pagoda',
-        logo: 'pagoda.svg',
-        header: null,
-        isPreset: true,
+        logo: 'pagoda',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/PagodaPlatform' },
@@ -95,9 +76,9 @@ const testnet = {
         id: 'rpc.testnet.near.org',
         url: 'https://rpc.testnet.near.org',
         name: 'NEAR',
-        logo: 'near.svg',
-        header: null,
-        isPreset: true,
+        logo: 'near-protocol',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
@@ -108,9 +89,9 @@ const testnet = {
         id: 'rpc.testnet.pagoda.co',
         url: 'https://rpc.testnet.pagoda.co',
         name: 'Pagoda',
-        logo: 'pagoda.svg',
-        header: null,
-        isPreset: true,
+        logo: 'pagoda',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/PagodaPlatform' },
@@ -121,9 +102,9 @@ const testnet = {
         id: 'test.rpc.fastnear.com',
         url: 'https://test.rpc.fastnear.com',
         name: 'FASTNEAR',
-        logo: 'fastNear.svg',
-        header: null,
-        isPreset: true,
+        logo: 'fastNear',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/fastnear/' },
           { type: 'x', url: 'https://x.com/fast_near' },
@@ -136,9 +117,9 @@ const testnet = {
         id: 'archival-rpc.testnet.near.org',
         url: 'https://archival-rpc.testnet.near.org',
         name: 'NEAR Archival',
-        logo: 'near.svg',
-        header: null,
-        isPreset: true,
+        logo: 'near-protocol',
+        headers: [],
+        isPredefined: true,
         links: [
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
@@ -153,19 +134,3 @@ export const presets = {
   mainnet,
   testnet,
 };
-
-// const activeRpc = {
-//   autoSwitch: null, // 'regular' or 'archive'
-//   //or
-//   url: 'https://rpc.testnet.near.org',
-//   name: 'archival-rpc.testnet',
-//   type: 'regular', //'archive'
-//   logo: 'Near.svg', // DefaultRpcIcon
-//   header: null,
-//   // header:{
-//   //   name: 'adasd',  'Content-Type'
-//   //   value: 'asddsa','application/json;charset=utf-8'
-//   // },
-//   links: null,
-//   isPreset: false,
-// };
