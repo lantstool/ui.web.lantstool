@@ -18,8 +18,8 @@ export const Manually = () => {
   const form = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      rpcName: 'NEAR',
-      url: 'https://archival-rpc.mainnet.near.org',
+      rpcName: '',
+      url: '',
       withHeader: false,
       header: null,
     },

@@ -9,7 +9,7 @@ export const Sidebar = ({ isMinimized }) => {
   const handleClick = () => setMinimize(!isMinimized);
 
   return (
-    <div className={isMinimized ? cn.minimizedSideBar : cn.sidebar}>
+    <div className={cn.sidebar}>
       <Navigation />
       <button onClick={handleClick} className={cn.button}>
         <SidebarOutline style={cn.icon} />

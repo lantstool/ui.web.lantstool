@@ -1,8 +1,28 @@
+.settings {
+  min-width: 900px;
+  display: grid;
+  grid-template-columns: 190px auto 190px;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b .';
+}
+
+.backBtn {
+  grid-area: a;
+  margin-top: 40px;
+  margin-left: 40px;
+  height: fit-content;
+  width: fit-content;
+}
+
 .container {
-  min-height: 50vh;
-  width: 100%;
+  grid-area: b;
+  justify-self: center;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  justify-content: center;
+  width: 100%;
+  min-width: 610px;
+  max-width: 680px;
+  gap: 24px;
 }

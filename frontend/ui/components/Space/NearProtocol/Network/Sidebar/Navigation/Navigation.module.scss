@@ -2,16 +2,19 @@
 
 .navigation {
   grid-area: c;
-  justify-self: center;
   display: flex;
+  justify-self: center;
   flex-direction: column;
   justify-content: center;
   text-align: start;
+  gap: 2px;
 }
 
-.border {
+.divider {
   width: 100%;
   outline: none;
-  border: 1px solid $neutral-200;
   margin: 10px 0;
+  height: 1px;
+  background: $neutral-200;
+  border: none;
 }

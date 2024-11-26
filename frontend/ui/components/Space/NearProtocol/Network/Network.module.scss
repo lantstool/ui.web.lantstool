@@ -1,14 +1,30 @@
 .network {
+  height: 100%;
   display: grid;
+  grid-template-columns: 199px auto;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b';
+  transition: grid-template-columns 250ms ease;
+}
+
+.networkMinimized {
+  grid-template-columns: 57px auto;
+}
+
+.contentWrapper {
+  grid-area: b;
+  overflow-y: auto;
+  overflow-x: auto;
+  @media screen and (min-width: 1100px) {
+    overflow-x: hidden;
+  }
 }
 
 .content {
-  transition: 300ms;
-  height: 100%;
-  margin-left: 201px;
+  width: calc(100vw - 199px);
+  transition: width 250ms ease;
 }
 
-.minimized {
-  margin-left: 57px;
-  transition: 300ms;
+.contentMinimized {
+  width: calc(100vw - 57px);
 }
