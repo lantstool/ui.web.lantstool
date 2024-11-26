@@ -1,5 +1,5 @@
 import { useWatch } from 'react-hook-form';
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { RadioButton } from '../../../../../../../../_general/RadioButton/RadioButton.jsx';
 import { Input } from '../../../../../../../../_general/Input/Input.jsx';
 import { InfoCircleLinear } from '../../../../../../../../_general/icons/InfoCircleLinear.jsx';
@@ -31,7 +31,7 @@ export const BlockTarget = ({ form }) => {
           <RadioButton register={register} label="Specific" name="blockTarget" value="specific" />
         </div>
         {blockTarget === 'latest' && (
-          <Dropdown
+          <FormDropdown
             copy={false}
             name="finality"
             label="Finality"

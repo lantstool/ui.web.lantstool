@@ -1,6 +1,6 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { Button } from '../../../../../../../../_general/Button/Button.jsx';
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { TrashBinOutline } from '../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { AddSquareOutline } from '../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
@@ -38,7 +38,7 @@ export const AccountIds = ({ form, accountIds }) => {
       <p>Select accounts your want to check</p>
       {list.map((field, index) => (
         <div className={cn.row} key={field.id}>
-          <Dropdown
+          <FormDropdown
             name={`accountIds.${index}.accountId`}
             label="Account Id"
             control={control}

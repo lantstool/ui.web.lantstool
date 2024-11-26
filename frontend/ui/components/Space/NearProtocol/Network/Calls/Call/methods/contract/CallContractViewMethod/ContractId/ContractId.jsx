@@ -1,10 +1,10 @@
-import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 
 export const ContractId = ({ control }) => {
   const options = useAccountsOptions();
   return (
-    <Dropdown
+    <FormDropdown
       name="contractId"
       label="Contract Id"
       control={control}
