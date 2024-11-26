@@ -1,15 +1,41 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .container {
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+}
+
+.logo{
+  margin: 40px 0 24px 0;
 }
 
 .form {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  width: 480px;
 }
+
+.title{
+  @include text-xlg-bold;
+  color: $neutral-800;
+  margin: 8px 0;
+  padding: 0;
+  text-align: center;
+}
+
+.subtitle{
+  @include text-mg-regular;
+  color: $neutral-700;
+  margin: 0 0 32px 0;
+  padding: 0;
+  text-align: center;
+}
+
+.tab{
+  display: flex;
+  justify-content: center;
+}
+

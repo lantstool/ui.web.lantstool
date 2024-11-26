@@ -12,7 +12,7 @@ export const List = () => {
   };
 
   return (
-    <div className={cn.container}>
+    <div className={cn.accountList}>
       <div className={cn.topbar}>
         <div className={cn.wrapper}>
           <h1 className={cn.title}>Accounts</h1>

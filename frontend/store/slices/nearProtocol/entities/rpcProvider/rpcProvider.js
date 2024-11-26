@@ -1,6 +1,6 @@
 import { entity } from '@react-vault';
-import { fetchJson } from '../../../helpers/fetchJson.js';
-import { toCamelCase } from '../../../helpers/toCamelCase.js';
+import { sendRequest } from './sendRequest.js';
+import { configure } from './configure.js';
 // Account
 import { getAccount } from './methods/account/getAccount.js';
 import { getAccountBalance } from './methods/account/getAccountBalance.js';
@@ -39,37 +39,15 @@ import { getMaintenanceWindows } from './methods/validators/getMaintenanceWindow
 class RpcProvider {
   constructor(store) {
     this.store = store;
-    this.url = null;
+    this.rpcs = [];
   }
-
-  configure = async ({ spaceId, networkId }) => {
-    const [backend] = this.store.getEntities((store) => store.backend);
-
-    try {
-      this.url = await backend.sendRequest('nearProtocol.networks.getActiveRpc', {
-        spaceId,
-        networkId,
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  // rpc should be an object, similar to RPC from database and has { url, headers }
+  specify = (rpc) => {
+    this.rpcs = [rpc];
   };
 
-  sendRequest = async ({ body, responseNameConvention }) => {
-    const { result, error } = await fetchJson(this.url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: 0,
-        ...body,
-      }),
-    });
-
-    if (error) throw new Error(JSON.stringify(error));
-    if (responseNameConvention === 'snake_case') return result;
-    if (responseNameConvention === 'camelCase') return toCamelCase(result);
-  };
+  configure = configure;
+  sendRequest = sendRequest;
 
   // Account
   getAccount = getAccount;

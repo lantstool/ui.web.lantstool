@@ -1,0 +1,16 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  background: $neutral-00;
+  cursor: pointer;
+  * {
+    cursor: inherit;
+  }
+}

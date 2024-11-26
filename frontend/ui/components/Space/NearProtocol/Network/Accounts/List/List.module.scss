@@ -1,7 +1,9 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.container {
+.accountList {
+  grid-area: b;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

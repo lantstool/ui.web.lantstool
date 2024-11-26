@@ -1,11 +1,12 @@
 @use '@styles/variables' as *;
 
 @mixin sideBar($width) {
-  position: fixed;
-  top: 48px;
-  left: 0;
-  z-index: 10;
-  height: calc(100vh - 56px);
+  grid-area: a;
+  //position: fixed;
+  //top: 48px;
+  //left: 0;
+  //z-index: 10;
+  height: 100%;
   padding: 8px;
   display: flex;
   width: $width;
@@ -13,11 +14,17 @@
   justify-content: space-between;
   background-color: $neutral-00;
   border-right: 1px solid $neutral-200;
-  transition: 0.3s;
+  //transition: 0.3s;
 }
 
 .sidebar {
-  @include sideBar(184px);
+  grid-area: a;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $neutral-00;
+  border-right: 1px solid $neutral-200;
 }
 
 .minimizedSideBar {

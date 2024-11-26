@@ -14,7 +14,7 @@ export const List = ({ ids }) => {
             <Link to={`../${networkId}`} relative="path">
               {networkId}
             </Link>
-            <span>{network.activeRpc}</span>
+            {/*<span>{network.activeRpc}</span>*/}
             <span>{new Date(network.createdAt).toLocaleString()}</span>
             <Link to={`../${networkId}/settings`} relative="path">
               Settings

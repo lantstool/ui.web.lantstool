@@ -21,7 +21,7 @@ export const EditName = ({ call }) => {
 
   useEffect(() => {
     form.reset({ name });
-  }, [name]);
+  }, [name, callId]);
 
   const editName = handleSubmit((formValues) => {
     updateOneName({ formValues, callId });

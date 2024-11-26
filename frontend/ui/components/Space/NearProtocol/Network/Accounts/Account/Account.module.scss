@@ -1,14 +1,17 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-
-.backBtn{
-  position: fixed;
-  top: 80px;
-  margin-right: 820px;
+.backBtn {
+  grid-area: a;
+  margin-top: 40px;
+  margin-left: 40px;
+  height: fit-content;
+  width: fit-content;
 }
 
-.account{
+.account {
+  grid-area: b;
+  justify-self: center;
   padding: 40px 0;
   display: flex;
   flex-direction: column;
@@ -29,4 +32,3 @@
   background-color: $neutral-50;
   width: max-content;
 }
-

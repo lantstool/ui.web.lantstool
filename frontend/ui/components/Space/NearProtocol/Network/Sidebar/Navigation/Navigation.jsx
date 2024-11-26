@@ -14,7 +14,7 @@ export const Navigation = () => (
     <LinkItem name="Accounts" Icon={AccountSquareOutline} to="accounts" />
     <LinkItem name="Keys" Icon={KeySquareOutline} to="keys" />
     <LinkItem name="Tools" Icon={ToolsLinear} to="tools" />
-    <hr className={cn.border} />
+    <hr className={cn.divider} />
     <LinkItem name="Network settings" Icon={NetworkOutline} to="settings" />
   </div>
 );
