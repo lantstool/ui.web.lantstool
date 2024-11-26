@@ -1,4 +1,4 @@
-import { toBase64 } from '../../../../../helpers/toBase64.js';
+import { toBase64 } from '../../../../../../helpers/toBase64.js';
 import { getBlockTarget } from '../utils.js';
 
 // https://docs.near.org/api/rpc/contracts#view-contract-state

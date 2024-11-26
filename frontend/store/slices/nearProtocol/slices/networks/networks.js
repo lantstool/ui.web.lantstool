@@ -1,11 +1,11 @@
-import { create } from './effects/create.js';
+import { createManually } from './effects/createManually.js';
 import { setToList } from './actions/setToList.js';
 import { getAll } from './effects/getAll.js';
 import { remove } from './effects/remove.js';
 import { removeOneFromList } from './actions/removeOneFromList.js';
-import { getActiveRpc } from './effects/getActiveRpc.js';
 import { putOneToList } from './actions/putOneToList.js';
 import { resetState } from './actions/resetState.js';
+import { createFromPreset } from './effects/createFromPreset.js';
 
 export const networks = {
   ids: [],
@@ -17,8 +17,8 @@ export const networks = {
   removeOneFromList,
   resetState,
   // effects
-  create,
+  createManually,
+  createFromPreset,
   getAll,
-  getActiveRpc,
   remove,
 };

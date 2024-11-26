@@ -1,14 +1,17 @@
 import { effect } from '@react-vault';
+import { presets } from '../presets.js';
 
-export const create = effect(async ({ store, slice, payload }) => {
+export const createFromPreset = effect(async ({ store, slice, payload }) => {
   const { spaceId, formValues, navigate, setError } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const putOneToList = slice.getActions((slice) => slice.putOneToList);
 
   try {
-    const network = await backend.sendRequest('nearProtocol.networks.create', {
+    const preset = presets[formValues.presetId];
+
+    const network = await backend.sendRequest('nearProtocol.networks.createFromPreset', {
       spaceId,
-      formValues,
+      preset,
     });
 
     putOneToList(network);

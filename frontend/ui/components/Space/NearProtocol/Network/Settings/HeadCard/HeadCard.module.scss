@@ -1,0 +1,44 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.headCard {
+  display: grid;
+  grid-template-columns: auto 186px;
+  gap: 4px;
+  align-items: center;
+  background-color: $neutral-50;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.type {
+  @include text-xs-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.date {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 16px 0 0 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 8px;
+}

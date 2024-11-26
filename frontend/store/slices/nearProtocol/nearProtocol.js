@@ -2,7 +2,7 @@
 import { setMinimize } from './actions/setMinimize.js';
 import { resetState } from './actions/resetState.js';
 // entities
-import { rpcProvider } from './entities/rpcProvider.js';
+import { rpcProvider } from './entities/rpcProvider/rpcProvider.js';
 // slices
 import { networks } from './slices/networks/networks.js';
 import { transactions } from './slices/transactions/transactions.js';
