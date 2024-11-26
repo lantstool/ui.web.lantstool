@@ -6,7 +6,9 @@
   gap: 40px;
   width: calc(100% - 32px);
   height: calc(100vh - 128px);
-  margin: 40px 16px;
+  padding: 40px 16px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .fieldsContainer {

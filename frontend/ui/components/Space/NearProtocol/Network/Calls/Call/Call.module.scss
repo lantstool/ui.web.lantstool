@@ -4,11 +4,4 @@
 .call {
   grid-area: b;
   width: 100%;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 60px auto 60px;
-  grid-template-areas:
-    'a'
-    'b'
-    'c';
 }
