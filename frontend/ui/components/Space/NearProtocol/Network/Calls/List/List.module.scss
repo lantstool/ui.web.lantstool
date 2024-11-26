@@ -2,7 +2,8 @@
 @use '@styles/mixins' as *;
 
 .list {
-  min-width: 240px;
+  grid-area: a;
+  min-width: 239px;
   padding: 8px 0;
   display: flex;
   gap: 8px;
@@ -38,7 +39,7 @@
   }
 }
 
-.tooltip{
+.tooltip {
   border-radius: 8px;
 }
 

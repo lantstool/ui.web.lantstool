@@ -42,8 +42,8 @@ export const Form = ({ call, draft, children }) => {
   return (
     <div className={cn.form}>
       <Topbar call={call} />
+      <SelectMethod callId={callId} method={draft.method} />
       <div className={cn.fieldsContainer}>
-        <SelectMethod callId={callId} method={draft.method} />
         {childrenWithProps}
       </div>
       <BottomBar form={form} call={call} />
