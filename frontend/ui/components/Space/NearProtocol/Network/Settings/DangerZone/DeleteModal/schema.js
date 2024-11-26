@@ -1,11 +1,11 @@
 import * as yup from 'yup';
 
-export const createSchema = (name) => {
+export const createSchema = (networkId) => {
   return yup.object({
-    name: yup
+    networkId: yup
       .string()
-      .test('matches', 'The entered name does not match the space name', (value) => {
-        return value === name;
+      .test('matches', 'The entered name does not match the network ID', (value) => {
+        return value === networkId;
       }),
   });
 };

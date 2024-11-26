@@ -1,13 +1,22 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.container {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  @media screen and (min-width: 750px) {
+    overflow-x: hidden;
+  }
+}
+
 .spaces {
-  width: calc(100% - 32px);
+  min-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 40px 16px;
+  margin: 40px;
 }
 
 .head {
@@ -17,7 +26,7 @@
   max-width: 680px;
 }
 
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 4px;

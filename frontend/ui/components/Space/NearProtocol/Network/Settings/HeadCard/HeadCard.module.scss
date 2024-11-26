@@ -2,29 +2,28 @@
 @use '@styles/mixins' as *;
 
 .headCard {
-  display: grid;
-  grid-template-columns: auto 186px;
-  gap: 4px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: $neutral-50;
   border-radius: 16px;
   padding: 16px;
+  margin-top: 40px;
 }
 
-.container {
+.leftSide {
   display: flex;
   flex-direction: column;
 }
 
-
-.type {
+.pageName {
   @include text-xs-regular;
   color: $neutral-700;
   padding: 0;
   margin: 0;
 }
 
-.title {
+.networkId {
   @include text-lg-medium;
   color: $neutral-800;
   padding: 0;
@@ -38,7 +37,6 @@
   margin: 16px 0 0 0;
 }
 
-.buttonWrapper {
+.rightSide {
   display: flex;
-  gap: 8px;
 }
