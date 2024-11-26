@@ -3,5 +3,14 @@
 
 .call {
   grid-area: b;
-  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 168px);
+  padding: 40px 16px 80px 0;
+}
+
+@media (max-width: 900px) {
+  .call {
+    overflow-x: auto;
+  }
 }
