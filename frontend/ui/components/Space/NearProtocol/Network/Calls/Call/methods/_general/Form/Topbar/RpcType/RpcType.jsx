@@ -1,21 +1,35 @@
 import { useStoreEffect } from '@react-vault';
-import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
 import { useState } from 'react';
-import { CodeCircleOutline } from '../../../../../../../../../../_general/icons/CodeCircleOutline.jsx';
-import { TabButtons } from '../../../../../../../../../../_general/TabButtons/TabButtons.jsx';
+import { ServerSquareOutline } from '../../../../../../../../../../_general/icons/ServerSquareOutline.jsx';
+import { ArchiveOutline } from '../../../../../../../../../../_general/icons/ArchiveOutline.jsx';
+import cn from './RpcType.module.scss';
 
 export const RpcType = ({ call }) => {
-  console.log(call.rpcType);
-  const updateOneRpcType = useStoreEffect((store) => store.nearProtocol.calls.updateOneRpcType);
-  const onClick = () => updateOneRpcType(call);
   const [toggle, setToggle] = useState(call.rpcType);
+  const updateOneRpcType = useStoreEffect((store) => store.nearProtocol.calls.updateOneRpcType);
 
-  const changeToggle = () => setToggle(call.rpcType);
+  const isActive = (type) => toggle === type;
+  const onClick = (rpcType) => {
+    if (rpcType !== toggle) updateOneRpcType({ rpcType, callId: call.callId });
+    setToggle(rpcType);
+  };
+
   return (
-    <TabButtons toggle={toggle} changeToggle={changeToggle}>
-      {/*<button value='archival'>Archival</button>*/}
-      {/*<button value='regular'>Regular</button*/}
-    </TabButtons>
-
+    <div className={cn.tab}>
+      <button
+        onClick={() => onClick('regular')}
+        className={isActive('regular') ? cn.activeButton : cn.button}
+      >
+        <ServerSquareOutline style={cn.icon} />
+        Regular
+      </button>
+      <button
+        onClick={() => onClick('archival')}
+        className={isActive('archival') ? cn.activeButton : cn.button}
+      >
+        <ArchiveOutline style={cn.icon} />
+        Archival
+      </button>
+    </div>
   );
 };

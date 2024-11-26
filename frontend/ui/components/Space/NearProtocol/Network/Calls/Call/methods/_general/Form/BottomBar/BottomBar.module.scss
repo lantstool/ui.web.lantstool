@@ -1,0 +1,36 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.bottomBar {
+  position: absolute;
+  bottom: -30px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  border: 1px solid $neutral-200;
+  background: $neutral-00;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.border {
+  width: 1px;
+  height: 16px;
+  margin: 0;
+  background-color: $neutral-200;
+  border: none;
+}
+
+.secondBorder {
+  width: 1px;
+  height: 48px;
+  margin: 0;
+  background-color: $neutral-200;
+  border: none;
+}

@@ -3,24 +3,64 @@
 
 .topbar {
   width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $neutral-50;
+  border-radius: 16px;
+}
+
+.container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
+  padding: 16px;
 }
 
-.title{
-  @include text-lg-medium;
-  color: $neutral-600;
-  padding: 0;
-  margin: 0;
-}
-
-.date{
+.date {
   @include text-sm-regular;
   color: $neutral-600;
   padding: 0;
   margin: 4px 0 0 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.border {
+  height: 1px;
+  width: 100%;
+  border: none;
+  background-color: $neutral-200;
+  margin: 0;
+}
+
+.rpcContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .name {
@@ -36,7 +76,6 @@
   align-items: center;
   gap: 8px;
 }
-
 
 //.topbar {
 //  height: 60px;

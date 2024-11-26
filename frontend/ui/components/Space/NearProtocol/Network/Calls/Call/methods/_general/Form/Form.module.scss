@@ -1,9 +1,11 @@
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   width: calc(100% - 32px);
+  height: calc(100vh - 128px);
   margin: 40px 16px;
 }
 

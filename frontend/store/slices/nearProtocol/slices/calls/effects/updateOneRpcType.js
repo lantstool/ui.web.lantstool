@@ -6,13 +6,11 @@ export const updateOneRpcType = effect(async ({ store, slice, payload }) => {
   const editOneRpcType = slice.getActions((slice) => slice.editOneRpcType);
 
   try {
-    const type = rpcType === 'regular' ? 'archival' : 'regular';
-
     await backend.sendRequest('nearProtocol.calls.updateOneRpcType', {
-      rpcType: type,
+      rpcType,
       callId,
     });
-    editOneRpcType({ rpcType: type, callId });
+    editOneRpcType({ rpcType, callId });
   } catch (e) {
     console.log(e);
   }
