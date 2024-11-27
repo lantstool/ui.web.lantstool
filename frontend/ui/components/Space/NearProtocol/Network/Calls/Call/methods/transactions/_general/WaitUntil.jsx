@@ -1,4 +1,4 @@
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 
 const options = [
   { value: 'NONE', label: 'None' },
@@ -10,7 +10,7 @@ const options = [
 ];
 
 export const WaitUntil = ({ control }) => (
-  <Dropdown
+  <FormDropdown
     name="waitUntil"
     label="Wait Until"
     options={options}

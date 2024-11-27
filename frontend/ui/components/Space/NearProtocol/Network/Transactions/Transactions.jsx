@@ -10,7 +10,7 @@ export const Transactions = () => {
   const txList = useStoreState((store) => store.nearProtocol.transactions.txList);
   const getList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
   const { spaceId, networkId } = useParams();
-  const [isLoading] = useLoader(getList, { spaceId, networkId });
+  const [isLoading] = useLoader(getList, { spaceId, networkId }, [spaceId, networkId]);
 
   useManageRouting();
 

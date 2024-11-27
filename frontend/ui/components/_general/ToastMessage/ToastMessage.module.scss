@@ -1,8 +1,7 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-@mixin container($bg-color) {
-  background-color: $bg-color;
+@mixin container {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -17,20 +16,22 @@
   right: 16px;
   z-index: 1000;
   opacity: 0;
-  animation: fadeInOut ease forwards;
 }
 
-@keyframes fadeInOut {
+@keyframes fadeIn {
   0% {
     transform: translateY(16px);
     opacity: 0;
   }
-  15% {
-    transform: translateY(0px);
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
-  85% {
-    transform: translateY(0px);
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0);
     opacity: 1;
   }
   100% {
@@ -39,24 +40,30 @@
   }
 }
 
-.empty {
-  opacity: 0;
+.start {
+  @include container;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.end {
+  @include container;
+  animation: fadeOut 0.5s ease forwards;
 }
 
 .black {
-  @include container($neutral-800);
+  background-color: $neutral-800;
 }
 
 .success {
-  @include container($green-700);
+  background-color: $green-700;
 }
 
 .error {
-  @include container($red-600);
+  background-color: $red-600;
 }
 
 .warning {
-  @include container($warning-700);
+  background-color: $warning-700;
 }
 
 .title {
@@ -67,5 +74,7 @@
 }
 
 .icon {
+  min-width: max-content;
+  height: 16px;
   fill: $neutral-00;
 }

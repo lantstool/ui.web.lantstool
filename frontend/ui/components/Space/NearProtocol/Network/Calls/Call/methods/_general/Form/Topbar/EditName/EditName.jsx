@@ -2,12 +2,14 @@ import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { EditRenameOutline } from '../../../../../../../../../../_general/icons/EditRenameOutline.jsx';
 import cn from './EditName.module.scss';
 
 export const EditName = ({ call }) => {
   const { name, callId } = call;
   const updateOneName = useStoreEffect((store) => store.nearProtocol.calls.updateOneName);
+  const [isEditing, setIsEditing] = useState(false);
 
   const form = useForm({
     mode: 'all',
@@ -22,17 +24,28 @@ export const EditName = ({ call }) => {
   }, [name, callId]);
 
   const editName = handleSubmit((formValues) => {
-    console.log(formValues);
     updateOneName({ formValues, callId });
+    setIsEditing(false);
   });
 
-  return (
-    <form className={cn.container} onBlur={editName} key={callId}>
+  const changeMode = () => {
+    setIsEditing(!isEditing);
+  };
+
+  return isEditing ? (
+    <div>
       <input
         {...register('name')}
-        placeholder="Untitled Call"
         className={cn.input}
+        autoFocus
+        maxLength={100}
+        onBlur={editName}
       />
-    </form>
+    </div>
+  ) : (
+    <div className={cn.editName} onClick={changeMode}>
+      <h2 className={cn.title}>{name}</h2>
+      <EditRenameOutline style={cn.icon} />
+    </div>
   );
 };

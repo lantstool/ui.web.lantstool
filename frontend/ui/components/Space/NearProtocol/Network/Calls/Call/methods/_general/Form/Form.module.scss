@@ -1,15 +1,15 @@
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  min-width: 450px;
-  max-width: 700px;
+  gap: 40px;
 }
 
 .fieldsContainer {
-  width: 90%;
+  max-width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }

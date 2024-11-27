@@ -1,7 +1,7 @@
 import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
 import { TrashBinOutline } from '../../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
-import { Dropdown } from '../../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
 import cn from './AccountKeyPair.module.scss';
 
@@ -19,7 +19,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
   return (
     <div className={cn.row}>
       <div className={cn.dropdowns}>
-        <Dropdown
+        <FormDropdown
           name={getName('accountId')}
           label="Account Id"
           control={control}
@@ -29,7 +29,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
           isClearable
           creatableSelect
         />
-        <Dropdown
+        <FormDropdown
           name={getName('publicKey')}
           label="Public key"
           control={control}

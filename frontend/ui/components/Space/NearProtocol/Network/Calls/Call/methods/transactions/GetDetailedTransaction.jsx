@@ -1,4 +1,4 @@
-import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import { Form } from '../_general/Form/Form.jsx';
 import { Input } from '../../../../../../../_general/Input/Input.jsx';
@@ -9,7 +9,7 @@ export const GetDetailedTransaction = ({ call, draft }) => {
   return (
     <Form call={call} draft={draft}>
       <Input name="transactionHash" label="Transaction Hash" />
-      <Dropdown
+      <FormDropdown
         name="signerId"
         label="Signer Id"
         options={options}

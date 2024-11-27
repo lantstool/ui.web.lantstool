@@ -1,5 +1,5 @@
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
-import { Dropdown } from '../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import cn from './Receiver.module.scss';
 
 export const ReceiverId = ({ form }) => {
@@ -9,7 +9,7 @@ export const ReceiverId = ({ form }) => {
   return (
     <div className={cn.receiver}>
       <h3 className={cn.title}>Receiver</h3>
-      <Dropdown
+      <FormDropdown
         name="receiverId"
         control={control}
         isSearchable={true}

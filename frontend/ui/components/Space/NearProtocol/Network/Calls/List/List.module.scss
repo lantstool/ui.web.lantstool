@@ -1,73 +1,95 @@
-.container {
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.list {
   grid-area: a;
-  width: 100%;
-  min-width: 250px;
-  max-width: 320px;
+  min-width: 239px;
+  padding: 8px 0;
   display: flex;
+  gap: 8px;
   flex-direction: column;
-  align-items: center;
-  background-color: var(--Card-Body);
-  box-shadow: var(--Box-Shadow-020);
-  border-radius: var(--Border-Radius-3);
+  background-color: $neutral-50;
 }
 
 .topBar {
+  display: flex;
+  margin: 0 8px;
+  gap: 2px;
+}
+
+.createBtn {
   width: 100%;
-  height: 60px;
+  border: none;
+  gap: 8px;
+  padding: 8px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  background: none;
   align-items: center;
-  background: var(--Color-Green-200);
-  border-radius: var(--Border-Radius-3) var(--Border-Radius-3) 0 0;
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+    .icon {
+      fill: $neutral-800;
+    }
+  }
 }
 
-.title {
-  padding: 0;
-  margin: 0;
-  color: var(--Text-Dark);
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.modalContainer {
-  height: auto;
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 25px;
-  background: #ffffff;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.26);
-  position: fixed;
-  top: 50%;
-  left: calc(50% + 350px);
-  transform: translate(-50%, -50%);
+.tooltip {
   border-radius: 8px;
 }
 
+.exportBtn {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  .icon {
+    fill: $neutral-600;
+  }
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .icon {
+      fill: $neutral-800;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  color: $neutral-600;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.scrollBar {
+  padding-right: 2px;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-400;
+  }
+}
+
 .wrapper {
-  width: 100%;
-  height: calc(100vh - 120px);
-  overflow: auto;
-}
-
-.addTransactionButton {
-  height: 30px;
-  width: calc(100% - 10px);
-  margin-top: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.bottomBar {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  height: 60px;
-  background: var(--Color-Green-200);
-  border-radius: 0 0 var(--Border-Radius-3) var(--Border-Radius-3);
-}
-
-.addTransactionButton:hover {
-  transform: scale(1.01);
+  flex-direction: column;
+  gap: 2px;
+  //width: calc(100% - 6px);
+  //margin-right: -4px;
+  //height: calc(100vh - 108px);
+  //overflow-y: auto;
+  //overflow-x: hidden;
 }

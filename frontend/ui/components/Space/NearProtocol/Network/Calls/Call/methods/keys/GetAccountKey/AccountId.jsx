@@ -1,5 +1,5 @@
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
-import { Dropdown } from '../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 
 export const AccountId = ({ form, control }) => {
   const options = useAccountsOptions();
@@ -10,7 +10,7 @@ export const AccountId = ({ form, control }) => {
   };
 
   return (
-    <Dropdown
+    <FormDropdown
       name="accountId"
       label="Account Id"
       control={control}

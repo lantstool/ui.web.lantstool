@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { InfoCircleLinear } from '../icons/InfoCircleLinear.jsx';
 import { CheckCircleBold } from '../icons/CheckCircleBold.jsx';
 import { ErrorCircleBold } from '../icons/ErrorCircleBold.jsx';
 import { DangerWarningTriangleOutline } from '../icons/DangerWarningTriangleOutline.jsx';
 import { useStoreAction, useStoreState } from '@react-vault';
+import cnm from 'classnames';
 import cn from './ToastMessage.module.scss';
 
 const type = {
@@ -22,21 +23,33 @@ export const ToastMessage = () => {
   const setNotification = useStoreAction((store) => store.setNotification);
   const { isOpen, message, variant, delay } = notification;
   const { container, icon } = useMemo(() => getType(variant), [variant]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    let timeout;
+    let displayTimeout; // animation open time 500 like at css
+    let closeTimeout;
+    const closeTime = 500 + delay;// 500 it is animation close time and delay it is message duration
+
     if (isOpen) {
-      timeout = setTimeout(() => {
-        setNotification({ isOpen: false });
-      }, delay);
+      setIsAnimating(true);
+      displayTimeout = setTimeout(() => {
+        setIsAnimating(false);
+
+        closeTimeout = setTimeout(() => {
+          setNotification({ isOpen: false });
+        }, 500);
+      }, closeTime);
     }
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(displayTimeout);
+      clearTimeout(closeTimeout);
+    };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen && !isAnimating) return null;
 
   return (
-    <div className={container} style={{ animationDuration: `${delay}ms` }}>
+    <div className={cnm(container, isAnimating ? cn.start : cn.end)}>
       {icon}
       <h2 className={cn.title}>{message}</h2>
     </div>

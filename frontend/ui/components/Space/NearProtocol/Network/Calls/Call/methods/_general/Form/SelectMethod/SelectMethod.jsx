@@ -1,7 +1,8 @@
 import { useStoreAction } from '@react-vault';
-import Select from 'react-select';
 import { options } from './options.js';
 import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import {CodeCircleOutline} from '../../../../../../../../../_general/icons/CodeCircleOutline.jsx';
+import cn from './SelectMethod.module.scss'
 
 export const SelectMethod = ({ callId, method }) => {
   const setDraftCurrentMethod = useStoreAction(
@@ -13,22 +14,18 @@ export const SelectMethod = ({ callId, method }) => {
   };
 
   return (
-    <Select
-      value={method}
-      onChange={onChange}
-      options={options}
-      placeholder="Select RPC method you want to use"
-      isSearchable
-    />
-    // <Dropdown
-    //   name="method"
-    //   label="RPC Method"
-    //   control={form.control}
-    //   onChange={onChange}
-    //   options={options}
-    //   placeholder="Select RPC method you want to use"
-    //   isClearable
-    //   isSearchable
-    // />
+    <div className={cn.selectMethods}>
+      <div className={cn.container}>
+        <CodeCircleOutline/>
+        <h1 className={cn.title}>Select method</h1>
+      </div>
+      <Dropdown
+        value={method}
+        onChange={onChange}
+        options={options}
+        placeholder="Select RPC method you want to use"
+        isSearchable
+      />
+    </div>
   );
 };

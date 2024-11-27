@@ -1,56 +1,49 @@
-import { SideMenu } from './SideMenu/SideMenu.jsx';
 import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
-import { HistoryOutline } from '../../../../../../../../../_general/icons/HistoryOutline.jsx';
-import { SaveOutline } from '../../../../../../../../../_general/icons/SaveOutline.jsx';
-import { EditName } from './SideMenu/EditName/EditName.jsx';
+import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
-import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
+import { useStoreEffect } from '@react-vault';
 import { RpcType } from './RpcType/RpcType.jsx';
-import { useIsFormHasChanges } from './useIsFormHasChanges.js';
+import { dateFormatter } from '../../../../../../../../../../../store/helpers/formatDate.js';
+import { TrashBinOutline } from '../../../../../../../../../_general/icons/TrashBinOutline.jsx';
+import { DuplicateOutline } from '../../../../../../../../../_general/icons/DuplicateOutline.jsx';
+import { ExportLinear } from '../../../../../../../../../_general/icons/ExportLinear.jsx';
+import { InfoCircleLinear } from '../../../../../../../../../_general/icons/InfoCircleLinear.jsx';
+import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
+import { useState } from 'react';
 import cn from './Topbar.module.scss';
 
-export const Topbar = ({ form, call }) => {
+export const Topbar = ({ call }) => {
+  const duplicateOne = useStoreEffect((store) => store.nearProtocol.calls.duplicateOne);
+  const [isOpen, setOpen] = useState(false);
   const { spaceId, networkId, callId } = useParams();
-  const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
-  const saveChanges = useStoreEffect((store) => store.nearProtocol.calls.saveChanges);
-  const revertChanges = useStoreEffect((store) => store.nearProtocol.calls.revertChanges);
-  const executeOne = useStoreEffect((store) => store.nearProtocol.calls.executeOne);
-  const result = useStoreState((store) => store.nearProtocol.calls.results[callId], [callId]);
 
-  const hasChanges = useIsFormHasChanges(form, call);
-
-  const revert = () => revertChanges({ form, callId });
-  const save = () => saveChanges({ form, callId });
-  const openResult = () => setResult({ callId, isOpen: true });
-
-  const onSubmit = form.handleSubmit((formValues) => {
-    executeOne({ spaceId, networkId, callId, formValues });
-  });
+  const duplicate = () => duplicateOne({ spaceId, networkId, callId });
+  const openModal = () => setOpen(true);
 
   return (
     <div className={cn.topbar}>
-      <div>
-        <EditName call={call} />
+      <div className={cn.container}>
+        <div>
+          <EditName call={call} />
+          <p className={cn.date}>Created {dateFormatter(call.createdAt)}</p>
+        </div>
+        <div className={cn.buttonWrapper}>
+          <Button onClick={duplicate} size="medium" color="secondary" IconLeft={DuplicateOutline} />
+          <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+          <Button onClick={openModal} size="medium" color="secondary" IconLeft={TrashBinOutline} />
+        </div>
       </div>
-      <div className={cn.sideMenu}>
+      <hr className={cn.border} />
+      <div className={cn.rpcContainer}>
+        <div className={cn.wrapper}>
+          <p className={cn.title}>RPC server</p>
+          <Tooltip style={cn.tooltip} placement="top" content={'Rpc server'}>
+            <InfoCircleLinear />
+          </Tooltip>
+        </div>
         <RpcType call={call} />
-        <SideMenu call={call} />
-        {hasChanges && (
-          <>
-            <Button size="medium" onClick={revert} color="secondary" IconLeft={HistoryOutline} />
-            <Button size="medium" onClick={save} color="secondary" IconLeft={SaveOutline}>
-              Save
-            </Button>
-          </>
-        )}
-        {Boolean(result) && (
-          <Button size="medium" color="secondary" onClick={openResult}>
-            View result
-          </Button>
-        )}
-        <Button size="medium" onClick={onSubmit}>
-          Send
-        </Button>
+        <DeleteModal call={call} isOpen={isOpen} setOpen={setOpen} />
       </div>
     </div>
   );

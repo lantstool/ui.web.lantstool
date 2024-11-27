@@ -1,10 +1,10 @@
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
-import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 
 export const PublicKey = ({ control }) => {
   const options = usePublicKeyOptions(control);
   return (
-    <Dropdown
+    <FormDropdown
       name="publicKey"
       label="Public key"
       control={control}
