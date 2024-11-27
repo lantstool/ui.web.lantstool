@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { createSchema } from './schema.js';
 import cn from './DeleteModal.module.scss';
 
-export const DeleteModal = ({ isOpen, setOpen, space }) => {
-  const { spaceId, name } = space;
-  const remove = useStoreEffect((store) => store.spaces.remove);
+export const DeleteModal = ({ isOpen, setOpen, network }) => {
+  const { networkId, spaceId } = network;
+  const remove = useStoreEffect((store) => store.nearProtocol.networks.remove);
   const navigate = useNavigate();
-  const schema = createSchema(name);
+  const schema = createSchema(networkId);
 
   const form = useForm({
-    defaultValues: { name: '' },
+    defaultValues: { networkId: '' },
     resolver: yupResolver(schema),
     mode: 'all',
   });
@@ -32,25 +32,25 @@ export const DeleteModal = ({ isOpen, setOpen, space }) => {
     reset();
   };
 
-  const onSubmit = () => {
-    remove({ spaceId, navigate });
-  };
+  const onSubmit = handleSubmit(() => {
+    remove({ spaceId, networkId, navigate });
+  });
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
-      <form className={cn.deleteModal} onSubmit={handleSubmit(onSubmit)}>
+      <form className={cn.deleteModal} onSubmit={onSubmit}>
         <div className={cn.textWrapper}>
-          <h2 className={cn.title}>Delete {name}?</h2>
+          <h2 className={cn.title}>Delete {networkId}?</h2>
           <p className={cn.subtitle}>
-            Deleting this space is permanent and cannot be undone. This will remove all data within
-            the space, including accounts, keys, transactions, calls, and networks.
+            Deleting this network is permanent and cannot be undone. This will remove all data
+            within the space, including accounts, keys, transactions, calls, etc.
           </p>
         </div>
         <Input
-          name="name"
+          name="networkId"
           error={errors?.name?.message}
           control={control}
-          label="Enter the space name to confirm"
+          label="Enter the network ID to confirm"
           copy={false}
         />
         <div className={cn.buttonWrapper}>

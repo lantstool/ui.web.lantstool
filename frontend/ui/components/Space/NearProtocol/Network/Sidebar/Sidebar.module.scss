@@ -1,22 +1,5 @@
 @use '@styles/variables' as *;
 
-@mixin sideBar($width) {
-  grid-area: a;
-  //position: fixed;
-  //top: 48px;
-  //left: 0;
-  //z-index: 10;
-  height: 100%;
-  padding: 8px;
-  display: flex;
-  width: $width;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: $neutral-00;
-  border-right: 1px solid $neutral-200;
-  //transition: 0.3s;
-}
-
 .sidebar {
   grid-area: a;
   padding: 8px;
@@ -25,10 +8,6 @@
   justify-content: space-between;
   background-color: $neutral-00;
   border-right: 1px solid $neutral-200;
-}
-
-.minimizedSideBar {
-  @include sideBar(40px);
 }
 
 .button {

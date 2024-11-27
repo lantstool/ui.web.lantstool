@@ -21,15 +21,17 @@ export const Spaces = () => {
   const handleClick = () => navigate('create');
 
   return (
-    <div className={cn.spaces}>
-      <div className={cn.head}>
-        <div className={cn.container}>
-          <h1 className={cn.title}>Spaces</h1>
-          <p className={cn.subtitle}>Here you can manage all your spaces.</p>
+    <div className={cn.container}>
+      <div className={cn.spaces}>
+        <div className={cn.head}>
+          <div className={cn.wrapper}>
+            <h1 className={cn.title}>Spaces</h1>
+            <p className={cn.subtitle}>Here you can manage all your spaces.</p>
+          </div>
+          <Button onClick={handleClick}>Create space</Button>
         </div>
-        <Button onClick={handleClick}>Create space</Button>
+        <List ids={ids} />
       </div>
-      <List ids={ids} />
     </div>
   );
 };

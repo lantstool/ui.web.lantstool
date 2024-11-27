@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 70%;
 }
 
 .subtitle {
@@ -38,7 +39,7 @@
 }
 
 .warningText {
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
   padding: 0;
   margin: 0;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import cn from './DangerZone.module.scss';
 
-export const DangerZone = ({space}) => {
+export const DangerZone = ({ network }) => {
   const [isOpen, setOpen] = useState(false);
 
   const openModal = () => {
@@ -19,7 +19,8 @@ export const DangerZone = ({space}) => {
           <div className={cn.warningWrapper}>
             <h2 className={cn.subtitle}>Delete this network</h2>
             <p className={cn.warningText}>
-              Deleting a network is permanent and cannot be undone, be careful.
+              This will permanently erase all local data for this network,
+              including keys, transactions, calls and other. This action cannot be undone.
             </p>
           </div>
           <Button onClick={openModal} color="danger" IconLeft={TrashBinOutline} size="medium">
@@ -27,7 +28,7 @@ export const DangerZone = ({space}) => {
           </Button>
         </div>
       </div>
-      <DeleteModal isOpen={isOpen} setOpen={setOpen} space={space}/>
+      <DeleteModal isOpen={isOpen} setOpen={setOpen} network={network} />
     </>
   );
 };
