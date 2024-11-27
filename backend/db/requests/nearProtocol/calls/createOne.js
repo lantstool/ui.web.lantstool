@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { getCount } from './getCount.js';
 
 const getNewCallOrder = async (execute, spaceId, networkId) => {
   const query = `
@@ -11,10 +12,12 @@ const getNewCallOrder = async (execute, spaceId, networkId) => {
 };
 
 export const createOne = async ({ execute, request }) => {
-  const { spaceId, networkId, name } = request.body;
+  const { spaceId, networkId } = request.body;
   const callId = uuid();
   const createdAt = Date.now();
   const order = await getNewCallOrder(execute, spaceId, networkId);
+  const count = await getCount({ execute, request });
+  const name = `Call#${count + 1}`;
   const rpcType = 'regular';
 
   const body = JSON.stringify({

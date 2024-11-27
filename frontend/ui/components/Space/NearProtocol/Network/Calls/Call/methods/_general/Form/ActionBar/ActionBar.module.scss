@@ -1,7 +1,7 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.bottomBar {
+.actionBar {
   position: fixed;
   bottom: 16px;
   display: flex;

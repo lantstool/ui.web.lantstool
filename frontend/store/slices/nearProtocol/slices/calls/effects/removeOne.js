@@ -15,7 +15,7 @@ const getDestination = (calls, targetId) => {
 };
 
 export const removeOne = effect(async ({ payload, slice, store }) => {
-  const { spaceId, networkId, callId, navigate } = payload;
+  const { spaceId, networkId, callId, navigate, closeModal } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const list = slice.getState((slice) => slice.list);
   const setList = slice.getActions((slice) => slice.setList);
@@ -30,6 +30,7 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
     });
 
     setList(updatedList);
+    closeModal();
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);

@@ -23,28 +23,6 @@
   gap: 8px;
 }
 
-.title {
-  @include text-lg-medium;
-  color: $neutral-800;
-  padding: 0;
-  margin: 0;
-}
-
-.accountId {
-  @include text-lg-semibold;
-  color: $neutral-800;
-  padding: 0;
-  margin: 0;
-  word-break: break-all;
-}
-
-.subtitle {
-  @include text-sm-regular;
-  color: $neutral-700;
-  padding: 0;
-  margin: 0;
-}
-
 .btnWrapper {
   display: flex;
   justify-content: end;

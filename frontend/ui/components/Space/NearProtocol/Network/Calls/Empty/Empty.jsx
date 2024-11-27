@@ -1,7 +1,7 @@
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../../../../_general/Button/Button.jsx';
-import { ExportLinear } from '../../../../../_general/icons/ExportLinear.jsx';
+import { ImportOutline } from '../../../../../_general/icons/ImportOutline.jsx';
 import callsBold from '@assets/callsBold.svg';
 import cn from './Empty.module.scss';
 
@@ -21,8 +21,8 @@ export const Empty = () => {
       </h2>
 
       <div className={cn.btnWrapper}>
-        <Button color="secondary" type="button" IconLeft={ExportLinear}>
-          Create call
+        <Button color="secondary" type="button" IconLeft={ImportOutline}>
+          Import
         </Button>
         <Button onClick={create} type="button">
           Create call

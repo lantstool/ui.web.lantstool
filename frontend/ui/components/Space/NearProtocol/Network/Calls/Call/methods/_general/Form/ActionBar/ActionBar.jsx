@@ -5,9 +5,9 @@ import { HistoryOutline } from '../../../../../../../../../_general/icons/Histor
 import { SaveOutline } from '../../../../../../../../../_general/icons/SaveOutline.jsx';
 import { useParams } from 'react-router-dom';
 import { ArrowRightOutline } from '../../../../../../../../../_general/icons/ArrowRightOutline.jsx';
-import cn from './BottomBar.module.scss';
+import cn from './ActionBar.module.scss';
 
-export const BottomBar = ({ form, call }) => {
+export const ActionBar = ({ form, call }) => {
   const { spaceId, networkId, callId } = useParams();
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
   const saveChanges = useStoreEffect((store) => store.nearProtocol.calls.saveChanges);
@@ -25,7 +25,7 @@ export const BottomBar = ({ form, call }) => {
   });
 
   return (
-    <div className={cn.bottomBar}>
+    <div className={cn.actionBar}>
       <div className={cn.container}>
         {hasChanges && (
           <>

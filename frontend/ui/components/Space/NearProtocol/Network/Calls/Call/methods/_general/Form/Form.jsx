@@ -3,7 +3,7 @@ import { useEffect, Children, cloneElement, isValidElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { SelectMethod } from './SelectMethod/SelectMethod.jsx';
 import { Topbar } from './Topbar/Topbar.jsx';
-import { BottomBar } from './BottomBar/BottomBar.jsx';
+import { ActionBar } from './ActionBar/ActionBar.jsx';
 import cn from './Form.module.scss';
 
 /*
@@ -46,7 +46,7 @@ export const Form = ({ call, draft, children }) => {
       <div className={cn.fieldsContainer}>
         {childrenWithProps}
       </div>
-      <BottomBar form={form} call={call} />
+      <ActionBar form={form} call={call} />
     </div>
   );
 };

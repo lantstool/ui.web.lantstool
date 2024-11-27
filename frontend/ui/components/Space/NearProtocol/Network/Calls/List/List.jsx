@@ -3,7 +3,7 @@ import { useStoreEffect } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { AddSquareOutline } from '../../../../../_general/icons/AddSquareOutline.jsx';
-import { ExportLinear } from '../../../../../_general/icons/ExportLinear.jsx';
+import { ImportOutline } from '../../../../../_general/icons/ImportOutline.jsx';
 import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './List.module.scss';
 
@@ -34,7 +34,7 @@ export const List = ({ list }) => {
         </button>
         <Tooltip style={cn.tooltip} arrow={false} content="Import call" placement="bottom">
           <button className={cn.exportBtn}>
-            <ExportLinear style={cn.icon} />
+            <ImportOutline style={cn.icon} />
           </button>
         </Tooltip>
       </div>
