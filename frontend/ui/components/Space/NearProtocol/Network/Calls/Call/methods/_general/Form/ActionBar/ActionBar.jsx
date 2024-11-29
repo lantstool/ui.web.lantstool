@@ -5,6 +5,7 @@ import { HistoryOutline } from '../../../../../../../../../_general/icons/Histor
 import { SaveOutline } from '../../../../../../../../../_general/icons/SaveOutline.jsx';
 import { useParams } from 'react-router-dom';
 import { ArrowRightOutline } from '../../../../../../../../../_general/icons/ArrowRightOutline.jsx';
+import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './ActionBar.module.scss';
 
 export const ActionBar = ({ form, call }) => {
@@ -29,8 +30,12 @@ export const ActionBar = ({ form, call }) => {
       <div className={cn.container}>
         {hasChanges && (
           <>
-            <Button size="small" onClick={revert} color="secondary" IconLeft={HistoryOutline} />
-            <Button size="small" onClick={save} color="secondary" IconLeft={SaveOutline} />
+            <Tooltip arrow={false} content="Revert changes" placement="top">
+              <Button size="medium" onClick={revert} color="tertiary" IconLeft={HistoryOutline} />
+            </Tooltip>
+            <Tooltip arrow={false} content="Save changes" placement="top">
+              <Button size="medium" onClick={save} color="tertiary" IconLeft={SaveOutline} />
+            </Tooltip>
             <hr className={cn.border} />
           </>
         )}
@@ -45,8 +50,8 @@ export const ActionBar = ({ form, call }) => {
           <hr className={cn.secondBorder} />
           <div className={cn.container}>
             <Button
-              size="small"
-              color="secondary"
+              size="medium"
+              color="tertiary"
               onClick={openResult}
               IconRight={ArrowRightOutline}
             >

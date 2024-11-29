@@ -43,7 +43,12 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
       <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
         <div className={cn.head}>
           <h3 className={cn.title}>Import account</h3>
-          <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
+          <Button
+            color="tertiary"
+            size="small"
+            IconLeft={CloseCircleOutline}
+            onClick={closeModal}
+          />
         </div>
         <Input
           control={control}

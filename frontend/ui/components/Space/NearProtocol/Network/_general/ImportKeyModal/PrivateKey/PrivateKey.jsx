@@ -37,7 +37,7 @@ export const PrivateKey = ({ closeModal }) => {
     <form onSubmit={handleSubmit(onSubmit)} className={cn.privateKey}>
       <div className={cn.container}>
         <h1 className={cn.title}>Import from Private key</h1>
-        <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
+        <Button color="tertiary" size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
       </div>
       <div className={cn.wrapper}>
         <p className={cn.subtitle}>

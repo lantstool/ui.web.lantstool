@@ -22,7 +22,7 @@ export const Settings = () => {
     <>
       <div className={cn.settings}>
         <div className={cn.backBtn}>
-          <Button size="small" IconLeft={ArrowLeftOutline} onClick={goBack}>
+          <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline} onClick={goBack}>
             Back
           </Button>
         </div>

@@ -15,7 +15,7 @@ export const Settings = () => {
   return (
     <div className={cn.settings}>
       <Link className={cn.backBtn} to="/spaces">
-        <Button size="small" IconLeft={ArrowLeftOutline}>
+        <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline}>
           Back
         </Button>
       </Link>

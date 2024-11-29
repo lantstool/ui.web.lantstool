@@ -52,8 +52,18 @@ const types = (isIcon, children) => {
       },
     },
     tertiary: {
+      large: {
+        button: isIcon && !children ? cn.tertiaryLgIcon : cn.tertiaryLg,
+        btnText: cn.tertiaryText,
+        iconColor: cn.iconTertiary,
+      },
+      medium: {
+        button: isIcon && !children ? cn.tertiaryMgIcon : cn.tertiaryMg,
+        btnText: cn.tertiaryText,
+        iconColor: cn.iconTertiary,
+      },
       small: {
-        button: isIcon && !children ? cn.tertiaryIcon : cn.tertiary,
+        button: isIcon && !children ? cn.tertiarySmIcon : cn.tertiarySm,
         btnText: cn.tertiaryText,
         iconColor: cn.iconTertiary,
       },
@@ -63,18 +73,7 @@ const types = (isIcon, children) => {
 
 const getType = (color, size, IconRight, IconLeft, children) => {
   const isIcon = IconRight || IconLeft;
-  if (size === 'small' || color === 'tertiary') {
-    return types(isIcon, children)['tertiary']['small'];
-  }
-  if (color === 'primary') {
-    return types(isIcon, children)[color][size];
-  }
-  if (color === 'danger') {
-    return types(isIcon, children)[color][size];
-  }
-  if (color === 'dangerSecondary') {
-    return types(isIcon, children)[color][size];
-  } else if (color === 'secondary') return types(isIcon, children)[color][size];
+  return types(isIcon, children)[color][size];
 };
 
 export const Button = ({

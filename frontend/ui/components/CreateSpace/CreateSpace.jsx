@@ -36,7 +36,12 @@ export const CreateSpace = () => {
     <div className={cn.createSpace}>
       <div className={cn.head}>
         <div className={cn.backBtn}>
-          <Button size="small" IconLeft={ArrowLeftOutline} onClick={() => navigate(-1)}>
+          <Button
+            color="tertiary"
+            size="small"
+            IconLeft={ArrowLeftOutline}
+            onClick={() => navigate(-1)}
+          >
             Back
           </Button>
         </div>

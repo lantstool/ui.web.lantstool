@@ -24,7 +24,7 @@ export const Key = () => {
   return (
     <>
       <Link className={cn.backBtn} to="..">
-        <Button size="small" IconLeft={ArrowLeftOutline}>
+        <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline}>
           Back
         </Button>
       </Link>
