@@ -53,10 +53,10 @@ export async function configure({ spaceId, networkId, rpcType = 'any' }) {
 
     const type = getType(rpcType, rpcList);
     // On this stage activeRpc will be always valid
-    const isAutoSwitch = activeRpc[type].autoSwitch;
-    // To avoid an unnecessary logic we return an array of 1 element when isAutoSwitch is false -
+    const isAutoBalance = activeRpc[type].autoBalance;
+    // To avoid an unnecessary logic we return an array of 1 element when isAutoBalance is false -
     // and get random rpc function will always return this particular rpc.
-    this.rpcs = isAutoSwitch ? rpcList[type] : [activeRpc[type].rpc];
+    this.rpcs = isAutoBalance ? rpcList[type] : [activeRpc[type].rpc];
   } catch (e) {
     console.log(e);
     setNotification({ isOpen: true, message: e.message, variant: 'error', delay: 2500 });

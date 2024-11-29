@@ -1,0 +1,10 @@
+@use '@styles/mixins' as *;
+
+.balancerWrapper {
+  display: flex;
+  margin: 16px 0;
+}
+
+.tooltipText {
+  @include text-xs-regular;
+}

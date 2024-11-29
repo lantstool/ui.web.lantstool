@@ -5,7 +5,7 @@ const getRpcData = (rpc, type) => {
   rpcList[type].push({ ...rpc, id: uuid() });
 
   const activeRpc = { regular: null, archival: null };
-  activeRpc[type] = { autoSwitch: true, rpc: null };
+  activeRpc[type] = { autoBalance: true, rpc: null };
 
   return {
     rpcList: JSON.stringify(rpcList),

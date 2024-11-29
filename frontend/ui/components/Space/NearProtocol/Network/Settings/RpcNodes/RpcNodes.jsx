@@ -1,7 +1,8 @@
 import { Button } from '../../../../../_general/Button/Button.jsx';
+import { Group } from './Group/Group.jsx';
 import cn from './RpcNodes.module.scss';
 
-export const RpcNodes = () => {
+export const RpcNodes = ({ network }) => {
   return (
     <div className={cn.rpcNodes}>
       <div className={cn.topbar}>
@@ -11,7 +12,12 @@ export const RpcNodes = () => {
         </Button>
       </div>
       <div className={cn.card}>
-        dd
+        <Group
+          rpcType="regular"
+          rpcList={network.rpcList.regular}
+          activeRpc={network.activeRpc.regular}
+          description="Access the latest blockchain state for fast, current data requests"
+        />
       </div>
     </div>
   );

@@ -1,18 +1,21 @@
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { useParams } from 'react-router-dom';
-import { useStoreState } from '@react-vault';
 import { HeadCard } from './HeadCard/HeadCard.jsx';
 import { RpcNodes } from './RpcNodes/RpcNodes.jsx';
 import { DangerZone } from './DangerZone/DangerZone.jsx';
+import { useLoader } from '@hooks/useLoader.js';
 import cn from './Settings.module.scss';
 
 export const Settings = () => {
-  const { networkId } = useParams();
-  const network = useStoreState(
-    (store) => store.nearProtocol.networks.records[networkId],
-    [networkId],
-  );
+  const { spaceId, networkId } = useParams();
+  const network = useStoreState((store) => store.nearProtocol.networks.network);
+  const getOne = useStoreEffect((store) => store.nearProtocol.networks.getOne);
 
-  if (!network) return null;
+  useSaveToHistory();
+
+  const [isLoading] = useLoader(getOne, { spaceId, networkId }, [spaceId, networkId]);
+  if (isLoading) return null;
 
   return (
     <div className={cn.settings}>

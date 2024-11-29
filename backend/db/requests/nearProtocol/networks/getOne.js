@@ -6,6 +6,8 @@ export const getOne = async ({ execute, request }) => {
   `;
 
   const [network] = await execute(query);
+
+  network.activeRpc = JSON.parse(network.activeRpc);
   network.rpcList = JSON.parse(network.rpcList);
 
   return network;
