@@ -3,6 +3,7 @@ import { Group } from './Group/Group.jsx';
 import cn from './RpcNodes.module.scss';
 
 export const RpcNodes = ({ network }) => {
+  console.log(network);
   return (
     <div className={cn.rpcNodes}>
       <div className={cn.topbar}>
@@ -14,9 +15,17 @@ export const RpcNodes = ({ network }) => {
       <div className={cn.card}>
         <Group
           rpcType="regular"
-          rpcList={network.rpcList.regular}
-          activeRpc={network.activeRpc.regular}
+          groupRpcList={network.rpcList.regular}
+          groupActiveRpc={network.activeRpc.regular}
+          title="Regular"
           description="Access the latest blockchain state for fast, current data requests"
+        />
+        <Group
+          rpcType="archival"
+          groupRpcList={network.rpcList.archival}
+          groupActiveRpc={network.activeRpc.archival}
+          title="Archival"
+          description="Access complete blockchain history for detailed past data and analytics"
         />
       </div>
     </div>

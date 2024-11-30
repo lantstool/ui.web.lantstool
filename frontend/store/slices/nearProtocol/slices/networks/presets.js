@@ -2,7 +2,7 @@ const mainnet = {
   networkId: 'mainnet',
   activeRpc: {
     regular: { autoBalance: true, rpc: null },
-    archive: { autoBalance: true, rpc: null },
+    archival: { autoBalance: true, rpc: null },
   },
   rpcList: {
     regular: [
@@ -68,7 +68,7 @@ const testnet = {
   networkId: 'testnet',
   activeRpc: {
     regular: { autoBalance: true, rpc: null },
-    archive: { autoBalance: true, rpc: null },
+    archival: { autoBalance: true, rpc: null },
   },
   rpcList: {
     regular: [

@@ -1,14 +1,16 @@
 import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
-import { Toggle } from '../../../../../../../_general/Toggle/Toggle.jsx';
+import { Toggle } from '../../../../../../../../_general/Toggle/Toggle.jsx';
 import cn from './Balancer.module.scss';
 
 export const Balancer = ({ rpcType, autoBalance }) => {
   const { spaceId, networkId } = useParams();
   const updateActiveRpc = useStoreEffect((store) => store.nearProtocol.networks.updateActiveRpc);
 
-  const onChange = () =>
-    updateActiveRpc({ spaceId, networkId, rpcType, autoBalance: !autoBalance, rpc: null });
+  const onChange = () => {
+    if (autoBalance) return;
+    updateActiveRpc({ spaceId, networkId, rpcType, autoBalance: true, rpc: null });
+  };
 
   return (
     <div className={cn.balancerWrapper}>

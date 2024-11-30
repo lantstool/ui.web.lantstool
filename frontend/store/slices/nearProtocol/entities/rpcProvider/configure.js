@@ -8,7 +8,7 @@
   We can't have a situation when there are no regular and archival RPCs at all -
   we will always have at least 1 rpc.
 
-  if rpcType is 'regular' or 'archive' then we return the corresponding list. If there are no
+  if rpcType is 'regular' or 'archival' then we return the corresponding list. If there are no
   rpc in the list then we throw the error.
 */
 
@@ -28,9 +28,9 @@ const getArchival = (archival) => {
   );
 };
 
-const getAny = (regular, archive) => {
+const getAny = (regular, archival) => {
   if (regular.length > 0) return 'regular';
-  if (archive.length > 0) return 'archival';
+  if (archival.length > 0) return 'archival';
   throw new Error(`Unable to send request - no RPCs found. Please add one and try again.`);
 };
 
