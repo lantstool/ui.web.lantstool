@@ -80,9 +80,9 @@ const testnet = {
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://near.org/' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
-          { type: 'website', url: 'https://near.org/' },
         ],
       },
       {
@@ -93,9 +93,9 @@ const testnet = {
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://www.pagoda.co/console' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/PagodaPlatform' },
-          { type: 'website', url: 'https://www.pagoda.co/console' },
         ],
       },
       {
@@ -121,9 +121,9 @@ const testnet = {
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://near.org/' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
-          { type: 'website', url: 'https://near.org/' },
         ],
       },
     ],
