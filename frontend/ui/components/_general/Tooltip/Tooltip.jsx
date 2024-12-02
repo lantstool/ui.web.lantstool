@@ -13,6 +13,7 @@ export const Tooltip = ({
   children,
   style,
   duration = 20,
+  disabled = false,
 }) => {
   return (
     <>
