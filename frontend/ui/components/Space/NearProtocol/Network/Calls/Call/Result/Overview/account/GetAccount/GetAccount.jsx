@@ -13,12 +13,12 @@ const formatResult = (result) => {
   return { storageUsage, hasDeployedContract, balance };
 };
 
-export const GetAccount = ({ result, draft }) => {
+export const GetAccount = ({ result, formValues }) => {
   const { storageUsage, hasDeployedContract, balance } = formatResult(result);
 
   return (
     <div className={cn.getAccount}>
-      <Item title="Account ID" data={draft.accountId.value} icon={accountCircleOutline} />
+      <Item title="Account ID" data={formValues.accountId.value} icon={accountCircleOutline} />
       <Item title="Account balance" data={balance} icon={walletOutline} />
       <Item title="Storage used" data={storageUsage} icon={storageSquareOutline} />
       <Item

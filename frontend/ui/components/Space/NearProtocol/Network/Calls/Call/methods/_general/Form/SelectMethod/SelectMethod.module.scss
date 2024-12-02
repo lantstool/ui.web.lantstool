@@ -16,6 +16,11 @@
   gap: 8px;
 }
 
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
 .title {
   @include text-mg-medium;
   color: $neutral-800;

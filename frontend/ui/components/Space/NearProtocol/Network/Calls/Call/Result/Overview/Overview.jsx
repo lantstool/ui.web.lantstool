@@ -4,15 +4,19 @@ import { GetAccountKey } from './keys/GetAccountKey/GetAccountKey.jsx';
 import { toCamelCase } from '../../../../../../../../../store/helpers/toCamelCase.js';
 import cn from './Overview.module.scss';
 
-export const Overview = ({ result, draft }) => {
-  const method = draft.method.value;
+export const Overview = ({ result, formValues }) => {
+  const method = formValues.method.value;
   const camelCaseResult = toCamelCase(result);
 
   return (
     <div className={cn.overview}>
-      {method === 'getAccount' && <GetAccount result={camelCaseResult} draft={draft} />}
-      {method === 'getAccountKeys' && <GetAccountKeys result={camelCaseResult} draft={draft} />}
-      {method === 'getAccountKey' && <GetAccountKey result={camelCaseResult} draft={draft} />}
+      {method === 'getAccount' && <GetAccount result={camelCaseResult} formValues={formValues} />}
+      {method === 'getAccountKeys' && (
+        <GetAccountKeys result={camelCaseResult} formValues={formValues} />
+      )}
+      {method === 'getAccountKey' && (
+        <GetAccountKey result={camelCaseResult} formValues={formValues} />
+      )}
     </div>
   );
 };

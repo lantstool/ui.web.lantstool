@@ -11,15 +11,15 @@ import { ErrorCircleBold } from '../../../../../../_general/icons/ErrorCircleBol
 import { CheckCircleBold } from '../../../../../../_general/icons/CheckCircleBold.jsx';
 import cn from './Result.module.scss';
 
-const getMode = (draft) => {
+const getMode = (formValues) => {
   const overviewMethods = ['getAccount', 'getAccountKey', 'getAccountKeys'];
-  return overviewMethods.includes(draft.method.value) ? 'overview' : 'raw';
+  return overviewMethods.includes(formValues.method.value) ? 'overview' : 'raw';
 };
 
-export const Result = ({ callResult, call, draft }) => {
+export const Result = ({ callResult, call }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
-  const { result, isLoading, callId, error } = callResult;
-  const mode = getMode(draft);
+  const { result, isLoading, callId, error, formValues } = callResult;
+  const mode = getMode(formValues);
   const [viewMode, setViewMode] = useState(mode);
 
   const closeResult = () => {
@@ -37,7 +37,7 @@ export const Result = ({ callResult, call, draft }) => {
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
             <p className={cn.call}>
-              {call.name} ⋅ {draft.method.label}
+              {call.name} ⋅ {formValues.method.label}
             </p>
           </div>
           {!isLoading && (
@@ -66,7 +66,7 @@ export const Result = ({ callResult, call, draft }) => {
           {isLoading ? (
             <p className={cn.loader}>Loading...</p>
           ) : viewMode === 'overview' && result && !error ? (
-            <Overview result={result} draft={draft} />
+            <Overview result={result} formValues={formValues} />
           ) : (
             <Raw result={result} error={error} />
           )}
