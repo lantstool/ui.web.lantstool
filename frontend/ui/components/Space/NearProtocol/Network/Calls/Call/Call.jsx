@@ -25,7 +25,6 @@ export const Call = () => {
         <Result
           callResult={callResult}
           call={callDraft.origin}
-          draft={callDraft[callDraft.currentMethod]}
         />
       ) : (
         <Method call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
