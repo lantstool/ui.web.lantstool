@@ -1,42 +1,42 @@
-import { Modal } from '../../../../../../../_general/Modal/Modal.jsx';
+import { useState } from 'react';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
+import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
+import { DeleteModal as GeneralDeleteModal } from '../../../../../../../_general/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import cn from './DeleteModal.module.scss';
 
-export const DeleteModal = ({ isOpen, setOpen }) => {
+export const DeleteModal = () => {
+  const [isOpen, setOpen] = useState(false);
   const { spaceId, networkId, accountId } = useParams();
   const removeAccount = useStoreEffect((store) => store.nearProtocol.accounts.remove);
   const navigate = useNavigate();
 
-  const closeModal = () => {
-    setOpen(false);
-  };
+  const open = () => setOpen(true);
+  const close = () => setOpen(false);
 
   const remove = () => {
     removeAccount({ spaceId, networkId, accountId, navigate, setOpen });
   };
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
-      <div className={cn.container}>
-        <div className={cn.wrapper}>
-          <h1 className={cn.title}>
-            Remove <span className={cn.accountId}>{accountId}?</span>
-          </h1>
-          <p className={cn.subtitle}>
-            No worries, this action will not delete this account from blockchain.
-          </p>
-        </div>
-        <div className={cn.btnWrapper}>
-          <Button color="secondary" size="medium" onClick={closeModal}>
-            Cancel
-          </Button>
-          <Button color="danger" size="medium" onClick={remove}>
-            Remove
-          </Button>
-        </div>
-      </div>
-    </Modal>
+    <>
+      <Button IconLeft={TrashBinOutline} size="medium" color="secondary" onClick={open} />
+      {isOpen && (
+        <GeneralDeleteModal
+          close={close}
+          submit={remove}
+          text={{
+            title: (
+              <>
+                Remove <span className={cn.accountId}>{accountId}?</span>
+              </>
+            ),
+            description: `No worries, this action will not delete this account from blockchain.`,
+            submitButtonText: 'Remove',
+          }}
+        />
+      )}
+    </>
   );
 };

@@ -1,5 +1,5 @@
 import cn from './Result.module.scss';
-import { Button } from '../../../_general/Button/Button.jsx';
+import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
 import { useStoreAction } from '@react-vault';
@@ -64,7 +64,7 @@ export const Result = ({ txResult }) => {
       </div>
       <div className={cn.footer}>
         <div className={cn.closeBtn}>
-          <Button onClick={closeResult} text="Close" style="outlined" />
+          <Button onClick={closeResult}>Close</Button>
         </div>
       </div>
     </div>

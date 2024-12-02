@@ -47,7 +47,7 @@ export const Settings = () => {
                 <p className={cn.subtitle}>Reset history</p>
                 <p className={cn.subtitleLight}>
                   Reset the app navigation history if the app redirects you incorrectly. Don’t
-                  worry, this won’t delete any important data
+                  worry, this won’t delete any important data.
                 </p>
               </div>
               <Button color="dangerSecondary" size="medium" onClick={openResetHistory}>
@@ -69,10 +69,8 @@ export const Settings = () => {
           </div>
         </div>
       </div>
-      {isResetApp && <ResetAppModal isResetApp={isResetApp} setResetApp={setResetApp} />}
-      {isResetHistory && (
-        <ResetHistoryModal isResetHistory={isResetHistory} setResetHistory={setResetHistory} />
-      )}
+      {isResetApp && <ResetAppModal setResetApp={setResetApp} />}
+      {isResetHistory && <ResetHistoryModal setResetHistory={setResetHistory} />}
     </>
   );
 };

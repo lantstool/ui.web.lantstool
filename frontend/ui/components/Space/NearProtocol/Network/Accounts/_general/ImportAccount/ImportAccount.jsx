@@ -1,15 +1,14 @@
 import { useParams } from 'react-router-dom';
-import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
+import { BaseModal } from '../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { useStoreEffect, useStoreState } from '@react-vault';
+import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { CloseCircleOutline } from '../../../../../../_general/icons/CloseCircleOutline.jsx';
-import cn from './ImportModal.module.scss';
 
-export const ImportAccount = ({ isOpen, setOpen }) => {
+export const ImportAccount = ({ setOpen }) => {
   const { spaceId, networkId } = useParams();
   const records = useStoreState((store) => store.nearProtocol.accounts.records);
   const create = useStoreEffect((store) => store.nearProtocol.accounts.create);
@@ -18,6 +17,7 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
   const form = useForm({
     defaultValues: { accountId: '', note: '' },
     resolver: yupResolver(schema),
+    mode: 'onTouched',
   });
 
   const {
@@ -25,7 +25,7 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
     handleSubmit,
     resetField,
     clearErrors,
-    formState: { errors },
+    formState: { errors, isValid },
   } = form;
 
   const closeModal = () => {
@@ -33,43 +33,35 @@ export const ImportAccount = ({ isOpen, setOpen }) => {
     setOpen(false);
   };
 
-  const onSubmit = (formValues) => {
+  const onSubmit = handleSubmit((formValues) => {
     create({ formValues, resetField, spaceId, networkId });
     closeModal();
-  };
+  });
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
-      <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
-        <div className={cn.head}>
-          <h3 className={cn.title}>Import account</h3>
-          <Button
-            color="tertiary"
-            size="small"
-            IconLeft={CloseCircleOutline}
-            onClick={closeModal}
-          />
-        </div>
-        <Input
-          control={control}
-          name="accountId"
-          error={errors?.accountId?.message}
-          placeholder="name.near"
-          label="Enter an Account ID. You can also add accounts that are not yet on-chain."
-        />
-        <Input
-          control={control}
-          name="note"
-          error={errors?.note?.message}
-          placeholder="Work account"
-          label="Leave a short note about this account (optionally)."
-        />
-        <div className={cn.button}>
-          <Button size="medium" type="submit">
-            Import
-          </Button>
-        </div>
-      </form>
-    </Modal>
+    <BaseModal close={closeModal}>
+      <ModalHeader title="Import account" close={closeModal} />
+      <Input
+        control={control}
+        name="accountId"
+        error={errors?.accountId?.message}
+        placeholder="name.near"
+        label="Enter an Account ID. You can also add accounts that are not yet on-chain."
+      />
+      <Input
+        control={control}
+        name="note"
+        error={errors?.note?.message}
+        placeholder="Work account"
+        label="Leave a short note about this account (optionally)."
+      />
+      <ModalFooter
+        action={{
+          label: 'Import',
+          onClick: onSubmit,
+          disabled: !isValid,
+        }}
+      />
+    </BaseModal>
   );
 };
