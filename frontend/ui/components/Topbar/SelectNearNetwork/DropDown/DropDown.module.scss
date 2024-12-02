@@ -63,6 +63,7 @@
   gap: 8px;
   @include text-sm-medium;
   color: $neutral-700;
+  padding: 8px;
 }
 
 .itemWrapper {
@@ -78,8 +79,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
 }
 
 .arrow {

@@ -1,0 +1,32 @@
+import { InfoCircleLinear } from '../icons/InfoCircleLinear.jsx';
+import { Tooltip } from '../Tooltip/Tooltip.jsx';
+import cn from './Toggle.module.scss';
+import cnm from 'classnames';
+
+export const Toggle = ({ value , onChange, labelText, tooltip }) => {
+  const toggle = () => {
+    onChange(!value);
+  };
+
+  return (
+    <div className={cn.toggle}>
+      <button
+        className={cnm(cn.button, value && cn.buttonActive)}
+        onClick={toggle}
+        type="button"
+      >
+        <div className={cnm(cn.circle, value && cn.circleActive)} />
+      </button>
+      {labelText && <span className={cn.label}>{labelText}</span>}
+      {tooltip && (
+        <Tooltip
+          content={tooltip.content}
+          placement={tooltip.placement || 'top'}
+          style={cn.tooltipIcon}
+        >
+          <InfoCircleLinear />
+        </Tooltip>
+      )}
+    </div>
+  );
+};

@@ -60,23 +60,16 @@
 
 .settingItem {
   @include item;
-  gap: 8px;
   @include text-sm-medium;
   color: $neutral-700;
+  padding: 8px;
+  gap: 8px;
 }
 
 .itemWrapper {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.badge {
-  background-color: #f6337a;
-  border-radius: 2px;
-  margin: 2px;
-  width: 12px;
-  height: 12px;
 }
 
 .title {
@@ -86,8 +79,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
 }
 
 .arrow {

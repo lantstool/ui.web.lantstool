@@ -1,0 +1,14 @@
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
+
+.github {
+  @include icon('@assets/socialMedia/social-media-github.svg');
+}
+
+.x {
+  @include icon('@assets/socialMedia/social-media-x.svg');
+}
+
+.website {
+  @include icon('@assets/link-minimalistic-outline.svg');
+}

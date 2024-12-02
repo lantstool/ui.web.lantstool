@@ -1,8 +1,8 @@
 const mainnet = {
   networkId: 'mainnet',
   activeRpc: {
-    regular: { autoSwitch: true, rpc: null },
-    archive: { autoSwitch: true, rpc: null },
+    regular: { autoBalance: true, rpc: null },
+    archival: { autoBalance: true, rpc: null },
   },
   rpcList: {
     regular: [
@@ -10,7 +10,7 @@ const mainnet = {
         id: 'rpc.mainnet.near.org',
         name: 'NEAR',
         url: 'https://rpc.mainnet.near.org',
-        logo: 'near-protocol',
+        logo: 'near-protocol-green-circle.png',
         headers: [],
         isPredefined: true,
         links: [
@@ -25,7 +25,7 @@ const mainnet = {
         id: 'archival-rpc.mainnet.near.org',
         url: 'https://archival-rpc.mainnet.near.org',
         name: 'NEAR Archival',
-        logo: 'near-protocol',
+        logo: 'near-protocol-green-circle.png',
         headers: [],
         isPredefined: true,
         links: [
@@ -51,7 +51,7 @@ const mainnet = {
         id: 'rpc.mainnet.pagoda.co',
         url: 'https://rpc.mainnet.pagoda.co',
         name: 'Pagoda',
-        logo: 'pagoda',
+        logo: 'pagoda-black-circle.png',
         headers: [],
         isPredefined: true,
         links: [
@@ -67,8 +67,8 @@ const mainnet = {
 const testnet = {
   networkId: 'testnet',
   activeRpc: {
-    regular: { autoSwitch: true, rpc: null },
-    archive: { autoSwitch: true, rpc: null },
+    regular: { autoBalance: true, rpc: null },
+    archival: { autoBalance: true, rpc: null },
   },
   rpcList: {
     regular: [
@@ -76,33 +76,33 @@ const testnet = {
         id: 'rpc.testnet.near.org',
         url: 'https://rpc.testnet.near.org',
         name: 'NEAR',
-        logo: 'near-protocol',
+        logo: 'near-protocol-green-circle.png',
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://near.org/' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
-          { type: 'website', url: 'https://near.org/' },
         ],
       },
       {
         id: 'rpc.testnet.pagoda.co',
         url: 'https://rpc.testnet.pagoda.co',
         name: 'Pagoda',
-        logo: 'pagoda',
+        logo: 'pagoda-black-circle.png',
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://www.pagoda.co/console' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/PagodaPlatform' },
-          { type: 'website', url: 'https://www.pagoda.co/console' },
         ],
       },
       {
         id: 'test.rpc.fastnear.com',
         url: 'https://test.rpc.fastnear.com',
         name: 'FASTNEAR',
-        logo: 'fastNear',
+        logo: 'fastnear-grey-circle.png',
         headers: [],
         isPredefined: true,
         links: [
@@ -117,13 +117,13 @@ const testnet = {
         id: 'archival-rpc.testnet.near.org',
         url: 'https://archival-rpc.testnet.near.org',
         name: 'NEAR Archival',
-        logo: 'near-protocol',
+        logo: 'near-protocol-green-circle.png',
         headers: [],
         isPredefined: true,
         links: [
+          { type: 'website', url: 'https://near.org/' },
           { type: 'github', url: 'https://github.com/near' },
           { type: 'x', url: 'https://x.com/nearprotocol' },
-          { type: 'website', url: 'https://near.org/' },
         ],
       },
     ],

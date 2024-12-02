@@ -1,0 +1,52 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.root {
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $neutral-00;
+  border-radius: 50%;
+  border: 1px solid $neutral-200;
+  outline: none;
+  cursor: pointer;
+  & > div {
+    height: 8px;
+    width: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: $neutral-00;
+  }
+
+  &:hover {
+    border: 1px solid $accent-600;
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(73, 117, 97, 0.18);
+  }
+  &:disabled {
+    border-color: $neutral-300;
+    background: $neutral-50;
+    & > div {
+      background: $neutral-50;
+    }
+  }
+}
+
+.selectedRoot {
+  border: none;
+  background-color: $accent-600;
+  &:hover {
+    background-color: $accent-700;
+  }
+  &:disabled {
+    border: none;
+    background: $accent-100;
+    cursor: inherit;
+    & > div {
+      background: $neutral-50;
+    }
+  }
+}

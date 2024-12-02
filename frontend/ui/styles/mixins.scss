@@ -6,6 +6,8 @@
   line-height: $line-height;
   text-align: left;
   font-weight: $font-weight;
+  padding: 0;
+  margin: 0;
 }
 
 @mixin text-xlg-regular {

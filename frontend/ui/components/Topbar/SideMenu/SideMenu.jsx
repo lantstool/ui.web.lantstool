@@ -25,7 +25,7 @@ export const SideMenu = () => {
   return (
     <div className={cn.sideMenu}>
       <Button size="small" IconLeft={MenuDotsOutline} onClick={openMenu} />
-      <Popper isOpen={isOpen} closeMenu={closeMenu} position={'right'}>
+      <Popper isOpen={isOpen} closeMenu={closeMenu} position="right">
         <div className={cn.container}>
           <div className={cn.wrapper}>
             <button className={cn.button} onClick={goToSettings}>
