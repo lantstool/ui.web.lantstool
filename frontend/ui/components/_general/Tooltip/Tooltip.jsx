@@ -12,10 +12,12 @@ export const Tooltip = ({
   placement = 'bottom-start',
   children,
   style,
+  disabled,
 }) => {
   return (
     <>
       <Tippy
+        disabled={disabled}
         arrow={arrow}
         className={color === 'black' ? cn.tooltipBlack : cn.tooltipWhite}
         content={content}

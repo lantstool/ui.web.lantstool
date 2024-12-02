@@ -28,23 +28,29 @@ export const ActionBar = ({ form, call }) => {
   return (
     <div className={cn.actionBar}>
       <div className={cn.container}>
-        {hasChanges && (
-          <>
-            <Tooltip arrow={false} content="Revert changes" placement="top">
-              <Button size="medium" onClick={revert} color="tertiary" IconLeft={HistoryOutline} />
-            </Tooltip>
-            <Tooltip arrow={false} content="Save changes" placement="top">
-              <Button size="medium" onClick={save} color="tertiary" IconLeft={SaveOutline} />
-            </Tooltip>
-            <hr className={cn.border} />
-          </>
-        )}
-
+        <Tooltip disabled={!hasChanges} arrow={false} content="Revert changes" placement="top">
+          <Button
+            disabled={!hasChanges}
+            size="medium"
+            onClick={revert}
+            color="tertiary"
+            IconLeft={HistoryOutline}
+          />
+        </Tooltip>
+        <Tooltip disabled={!hasChanges} arrow={false} content="Save changes" placement="top">
+          <Button
+            disabled={!hasChanges}
+            size="medium"
+            onClick={save}
+            color="tertiary"
+            IconLeft={SaveOutline}
+          />
+        </Tooltip>
+        <hr className={cn.border} />
         <Button size="medium" onClick={onSubmit}>
           Send
         </Button>
       </div>
-
       {Boolean(result) && (
         <>
           <hr className={cn.secondBorder} />

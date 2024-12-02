@@ -4,13 +4,13 @@
 .call {
   grid-area: b;
   overflow-y: auto;
-  height: calc(100vh - 168px);
-  padding: 40px 16px 80px 0;
+  height: 100%;
   overflow-x: auto;
 }
 
 @media (min-width: 1000px) {
   .call {
     overflow-x: hidden;
+    scrollbar-gutter: stable
   }
 }

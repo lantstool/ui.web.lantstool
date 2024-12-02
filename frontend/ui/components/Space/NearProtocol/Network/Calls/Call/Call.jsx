@@ -22,7 +22,11 @@ export const Call = () => {
   return (
     <div className={cn.call}>
       {callResult?.isOpen ? (
-        <Result callResult={callResult} />
+        <Result
+          callResult={callResult}
+          call={callDraft.origin}
+          draft={callDraft[callDraft.currentMethod]}
+        />
       ) : (
         <Method call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
       )}

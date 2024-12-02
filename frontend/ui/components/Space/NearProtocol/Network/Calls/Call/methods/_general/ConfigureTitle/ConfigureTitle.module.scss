@@ -1,16 +1,7 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.selectMethods {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.container {
+.configureTitle {
   display: flex;
   align-items: center;
   gap: 8px;

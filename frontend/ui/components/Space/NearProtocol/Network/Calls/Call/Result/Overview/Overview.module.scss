@@ -1,0 +1,13 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.overview{
+  width: 100%;
+}
+
+.container{
+  padding: 16px;
+  background: $neutral-00;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+}

@@ -4,10 +4,12 @@
 .item {
   display: flex;
   justify-content: start;
+  gap: 8px;
 }
 
 .label {
   width: 218px;
+  min-width: 218px;
   display: flex;
   gap: 8px;
   align-items: start;
@@ -25,7 +27,6 @@
 }
 
 .wrapper {
-  width: max-content;
 }
 
 .data {
@@ -34,4 +35,15 @@
   word-break: break-all;
   padding: 0;
   margin: 0;
+}
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 4px;
+  max-width: 100%;
+  height: auto;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }

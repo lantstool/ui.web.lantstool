@@ -1,0 +1,10 @@
+@use '@styles/variables' as *;
+
+.getAccount {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+}

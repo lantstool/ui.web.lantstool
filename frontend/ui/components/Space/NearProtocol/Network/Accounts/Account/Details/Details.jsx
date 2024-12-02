@@ -5,6 +5,11 @@ import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
 import { Note } from './Note/Note.jsx';
+import accountCircleOutline from '@assets/accountCircleOutline.svg';
+import lockKeyholeOutline from '@assets/lockKeyholeOutline.svg';
+import walletOutline from '@assets/walletOutline.svg';
+import storageSquareOutline from '@assets/storageSquareOutline.svg';
+import deployContractLinear from '@assets/deployContractLinear.svg';
 import cn from './Details.module.scss';
 
 export const Details = () => {
@@ -44,12 +49,32 @@ export const Details = () => {
   return (
     <div>
       <div className={cn.details}>
-        {balance && <Item title="Account Balance" data={`${balance} NEAR`} />}
-        {available && <Item title="Available for Use" data={`${available} NEAR`} />}
-        {lockedForStorage && <Item title="Locked for Storage" data={`${lockedForStorage} NEAR`} />}
-        {storageUsage && <Item title="Storage Used" data={`${storageUsage / 1000} KB`} />}
-        <Item title="Has Deployed Contract" data={hasDeployedContract ? 'Yes' : 'No'} />
-        {codeHash && <Item title="Contract WASM Hash" data={codeHash} />}
+        {balance && <Item title="Account Balance" data={`${balance} NEAR`} icon={walletOutline} />}
+        {available && (
+          <Item title="Available for Use" data={`${available} NEAR`} icon={walletOutline} />
+        )}
+        {lockedForStorage && (
+          <Item
+            title="Locked for Storage"
+            data={`${lockedForStorage} NEAR`}
+            icon={lockKeyholeOutline}
+          />
+        )}
+        {storageUsage && (
+          <Item
+            title="Storage Used"
+            data={`${storageUsage / 1000} KB`}
+            icon={storageSquareOutline}
+          />
+        )}
+        <Item
+          title="Has Deployed Contract"
+          data={hasDeployedContract ? 'Yes' : 'No'}
+          icon={deployContractLinear}
+        />
+        {codeHash && (
+          <Item title="Contract WASM Hash" data={codeHash} icon={accountCircleOutline} />
+        )}
       </div>
       <hr className={cn.border} />
       <Note note={note} />

@@ -20,12 +20,13 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
     await rpc.configure({ spaceId, networkId });
     const result = await methods[formValues.method.value](rpc, formValues);
 
-    setResult({ callId, result, isLoading: false });
+    setResult({ callId, result, isLoading: false, error: null });
   } catch (e) {
     console.log(e);
     setResult({
       callId,
-      result: getErrorMessage(e),
+      error: e?.rpc ? e.rpc : getErrorMessage(e),
+      result: null,
       isLoading: false,
     });
   }
