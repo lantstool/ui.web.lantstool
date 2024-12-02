@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Modal } from '../../../../../../_general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../_general/modals/Modal/Modal.jsx';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { useStoreEffect, useStoreState } from '@react-vault';

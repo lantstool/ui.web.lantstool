@@ -1,4 +1,4 @@
-import { Modal } from '../../_general/Modal/Modal.jsx';
+import { Modal } from '../../_general/modals/Modal/Modal.jsx';
 import { Input } from '../../_general/Input/Input.jsx';
 import { Button } from '../../_general/Button/Button.jsx';
 import { useForm } from 'react-hook-form';

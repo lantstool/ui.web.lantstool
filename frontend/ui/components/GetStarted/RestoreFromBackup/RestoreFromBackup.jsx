@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../_general/Button/Button.jsx';
 import { CloseCircleOutline } from '../../_general/icons/CloseCircleOutline.jsx';
-import { Modal } from '../../_general/Modal/Modal.jsx';
+import { Modal } from '../../_general/modals/Modal/Modal.jsx';
 import { FileUploader } from '../../_general/FileUploader/FileUploader.jsx';
 import cn from './RestoreFromBackup.module.scss';
 

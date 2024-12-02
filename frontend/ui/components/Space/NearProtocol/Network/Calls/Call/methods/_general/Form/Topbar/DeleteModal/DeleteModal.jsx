@@ -1,4 +1,4 @@
-import { DeleteModal as Modal } from '../../../../../../../../../../_general/Modals/DeleteModal/DeleteModal.jsx';
+import { DeleteModal as Modal } from '../../../../../../../../../../_general/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import cn from './DeleteModal.module.scss';

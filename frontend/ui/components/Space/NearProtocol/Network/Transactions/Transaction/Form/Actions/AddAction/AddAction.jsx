@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../../../_general/modals/Modal/Modal.jsx';
 import { appendAction } from './appendAction.js';
 import cn from './AddAction.module.css';
 import { Button } from '../../../../../_general/Button/Button.jsx';

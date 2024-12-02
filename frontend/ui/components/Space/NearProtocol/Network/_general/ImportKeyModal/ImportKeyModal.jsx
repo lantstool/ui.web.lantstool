@@ -5,7 +5,7 @@ import { Ledger } from '../../../../../_general/icons/Ledger.jsx';
 import { Item } from './Item/Item.jsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.jsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.jsx';
-import { Modal } from '../../../../../_general/Modal/Modal.jsx';
+import { Modal } from '../../../../../_general/modals/Modal/Modal.jsx';
 import cn from './ImportKeyModal.module.scss';
 
 export const ImportKeyModal = ({ isOpen, setOpen }) => {

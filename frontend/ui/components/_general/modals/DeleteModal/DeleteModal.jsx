@@ -1,5 +1,5 @@
 import { Button } from '../../Button/Button.jsx';
-import { Modal } from '../../Modal/Modal.jsx';
+import { Modal } from '../Modal/Modal.jsx';
 import cn from './DeleteModal.module.scss';
 
 export const DeleteModal = ({ isOpen, children, closeModal, remove, deleteBtnText = 'Delete' }) => (

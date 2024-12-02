@@ -1,4 +1,4 @@
-import { Modal } from '../../../../../../../_general/Modal/Modal.jsx';
+import { Modal } from '../../../../../../../_general/modals/Modal/Modal.jsx';
 import { Input } from '../../../../../../../_general/Input/Input.jsx';
 import { formatPublicKey } from '../../../../../../../../../store/helpers/formatPublicKey.js';
 import { useForm } from 'react-hook-form';
