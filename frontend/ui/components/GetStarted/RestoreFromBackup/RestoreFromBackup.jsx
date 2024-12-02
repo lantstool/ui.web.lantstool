@@ -21,7 +21,12 @@ export const RestoreFromBackup = ({ closeModal }) => {
       <div className={cn.container}>
         <div className={cn.head}>
           <h1 className={cn.title}>Restore from backup</h1>
-          <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
+          <Button
+            color="tertiary"
+            size="small"
+            IconLeft={CloseCircleOutline}
+            onClick={closeModal}
+          />
         </div>
         <p className={cn.subtitle}>
           Use this to restore the entire app data with multiple spaces and settings - upload a

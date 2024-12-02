@@ -43,7 +43,7 @@
   gap: 4px;
 }
 
-@mixin sm-icon {
+@mixin sm-btn-icon {
   padding: 4px;
   border-radius: 4px;
 }
@@ -222,18 +222,37 @@
   }
 }
 
-.tertiary {
+.tertiaryLg {
+  @include tertiary;
+  @include lg-btn;
+}
+
+.tertiaryLgIcon {
+  @include tertiary;
+  @include lg-btn-icon;
+}
+
+.tertiaryMg {
+  @include tertiary;
+  @include mg-btn;
+}
+
+.tertiaryMgIcon {
+  @include tertiary;
+  @include mg-btn-icon;
+}
+
+.tertiarySm {
   @include tertiary;
   @include sm-btn;
 }
 
-.tertiaryIcon {
+.tertiarySmIcon {
   @include tertiary;
-  @include sm-icon;
+  @include sm-btn-icon;
 }
 
 @mixin text {
-  //@include text-sm-medium;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

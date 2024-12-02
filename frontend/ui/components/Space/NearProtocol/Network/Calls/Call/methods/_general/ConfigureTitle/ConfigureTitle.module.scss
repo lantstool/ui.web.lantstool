@@ -1,0 +1,15 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.configureTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}

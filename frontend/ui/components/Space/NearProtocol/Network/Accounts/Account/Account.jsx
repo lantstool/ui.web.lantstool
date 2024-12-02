@@ -10,21 +10,20 @@ export const Account = () => {
   useManageRouting();
 
   return (
-      <>
-        <Link className={cn.backBtn} to="..">
-          <Button size="small" IconLeft={ArrowLeftOutline}>
-            Back
-          </Button>
-        </Link>
-        <div className={cn.account}>
-          <HeadCard />
-          <div className={cn.toggle}>
-            <AccountLink to="details" text="Details" />
-            <AccountLink to="keys" text="Associated keys" />
-          </div>
-          <Outlet />
+    <>
+      <Link className={cn.backBtn} to="..">
+        <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline}>
+          Back
+        </Button>
+      </Link>
+      <div className={cn.account}>
+        <HeadCard />
+        <div className={cn.toggle}>
+          <AccountLink to="details" text="Details" />
+          <AccountLink to="keys" text="Associated keys" />
         </div>
-      </>
-
+        <Outlet />
+      </div>
+    </>
   );
 };

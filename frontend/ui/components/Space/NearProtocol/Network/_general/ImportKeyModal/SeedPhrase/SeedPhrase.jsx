@@ -54,7 +54,7 @@ export const SeedPhrase = ({ closeModal }) => {
     <form className={cn.seedPhrase} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn.container}>
         <h1 className={cn.title}>Import from Seed phrase</h1>
-        <Button size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
+        <Button color="tertiary" size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
       </div>
       <div className={cn.wrapper}>
         <p className={cn.subtitle}>

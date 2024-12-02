@@ -2,11 +2,7 @@ import { effect } from '@react-vault';
 import { methods } from './methods/index.js';
 
 const getErrorMessage = (error) => {
-  try {
-    return JSON.parse(error.message);
-  } catch (e) {
-    return { internalError: error.message };
-  }
+  return error?.rpc ? error.rpc : { internalError: error.message };
 };
 
 export const executeOne = effect(async ({ store, slice, payload }) => {
@@ -15,17 +11,18 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const setResult = slice.getActions((slice) => slice.setResult);
 
   try {
-    setResult({ callId, isOpen: true, isLoading: true });
+    setResult({ callId, isOpen: true, isLoading: true, formValues });
 
     await rpc.configure({ spaceId, networkId });
     const result = await methods[formValues.method.value](rpc, formValues);
 
-    setResult({ callId, result, isLoading: false });
+    setResult({ callId, result, isLoading: false, error: null });
   } catch (e) {
     console.log(e);
     setResult({
       callId,
-      result: getErrorMessage(e),
+      error: getErrorMessage(e),
+      result: null,
       isLoading: false,
     });
   }

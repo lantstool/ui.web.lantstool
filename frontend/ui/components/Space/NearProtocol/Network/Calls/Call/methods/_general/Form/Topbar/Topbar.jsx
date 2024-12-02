@@ -29,9 +29,25 @@ export const Topbar = ({ call }) => {
           <p className={cn.date}>Created {dateFormatter(call.createdAt)}</p>
         </div>
         <div className={cn.buttonWrapper}>
-          <Button onClick={duplicate} size="medium" color="secondary" IconLeft={DuplicateOutline} />
-          <Button size="medium" color="secondary" IconLeft={ExportLinear} />
-          <Button onClick={openModal} size="medium" color="secondary" IconLeft={TrashBinOutline} />
+          <Tooltip arrow={false} content="Duplicate" placement="top">
+            <Button
+              onClick={duplicate}
+              size="medium"
+              color="secondary"
+              IconLeft={DuplicateOutline}
+            />
+          </Tooltip>
+          <Tooltip arrow={false} content="Export call" placement="top">
+            <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+          </Tooltip>
+          <Tooltip arrow={false} content="Delete" placement="top">
+            <Button
+              onClick={openModal}
+              size="medium"
+              color="secondary"
+              IconLeft={TrashBinOutline}
+            />
+          </Tooltip>
         </div>
       </div>
       <hr className={cn.border} />

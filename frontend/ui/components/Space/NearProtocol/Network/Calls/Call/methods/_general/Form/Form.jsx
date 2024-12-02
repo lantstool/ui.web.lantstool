@@ -23,7 +23,7 @@ const addPropsToChildren = (children = [], props = {}) =>
       : child,
   );
 
-export const Form = ({ call, draft, children }) => {
+export const Form = ({ call, draft, children, methodDescription }) => {
   const { callId } = call;
   const setDraft = useStoreAction((store) => store.nearProtocol.calls.setDraft);
   const form = useForm();
@@ -43,9 +43,8 @@ export const Form = ({ call, draft, children }) => {
     <div className={cn.form}>
       <Topbar call={call} />
       <SelectMethod callId={callId} method={draft.method} />
-      <div className={cn.fieldsContainer}>
-        {childrenWithProps}
-      </div>
+      {methodDescription}
+      <div className={cn.fieldsContainer}>{childrenWithProps}</div>
       <ActionBar form={form} call={call} />
     </div>
   );

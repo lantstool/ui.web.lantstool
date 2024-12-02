@@ -1,0 +1,61 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.keyCard {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+}
+
+.keyWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.key {
+  @include text-sm-medium;
+  color: $neutral-800;
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  @include text-sm-regular;
+  color: $neutral-700;
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wrapper {
+  width: 218px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.data {
+  @include text-sm-regular;
+  color: $neutral-700;
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+}

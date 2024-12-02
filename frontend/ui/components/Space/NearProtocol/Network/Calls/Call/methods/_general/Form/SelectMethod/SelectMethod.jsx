@@ -1,8 +1,8 @@
 import { useStoreAction } from '@react-vault';
 import { options } from './options.js';
 import { Dropdown } from '../../../../../../../../../_general/Dropdown/Dropdown.jsx';
-import {CodeCircleOutline} from '../../../../../../../../../_general/icons/CodeCircleOutline.jsx';
-import cn from './SelectMethod.module.scss'
+import { CodeCircleOutline } from '../../../../../../../../../_general/icons/CodeCircleOutline.jsx';
+import cn from './SelectMethod.module.scss';
 
 export const SelectMethod = ({ callId, method }) => {
   const setDraftCurrentMethod = useStoreAction(
@@ -16,7 +16,7 @@ export const SelectMethod = ({ callId, method }) => {
   return (
     <div className={cn.selectMethods}>
       <div className={cn.container}>
-        <CodeCircleOutline/>
+        <CodeCircleOutline style={cn.icon} />
         <h1 className={cn.title}>Select method</h1>
       </div>
       <Dropdown

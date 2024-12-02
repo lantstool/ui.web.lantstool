@@ -8,6 +8,13 @@
 
 .label {
   width: 218px;
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.icon {
+  padding: 2px 0;
 }
 
 .title {
@@ -24,6 +31,7 @@
 .data {
   @include text-sm-regular;
   color: $neutral-700;
+  word-break: break-all;
   padding: 0;
   margin: 0;
 }

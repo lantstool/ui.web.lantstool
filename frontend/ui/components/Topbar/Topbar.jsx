@@ -23,7 +23,7 @@ export const Topbar = () => {
           rel="noopener noreferrer"
           to="https://github.com/lantstool/ui.web.lantstool"
         >
-          <Button size="small" IconLeft={Github} />
+          <Button color="tertiary" size="small" IconLeft={Github} />
         </Link>
         <SideMenu />
       </div>

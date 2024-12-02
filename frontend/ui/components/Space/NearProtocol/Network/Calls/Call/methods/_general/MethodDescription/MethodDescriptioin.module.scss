@@ -1,0 +1,14 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.description {
+  max-width: 600px;
+  @include text-sm-regular;
+  color: $neutral-800;
+  margin: 0 0 40px 0;
+  padding: 0;
+}
+
+.link {
+  color: $green-600;
+}
