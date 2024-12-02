@@ -37,7 +37,7 @@ export const Topbar = ({ call }) => {
               IconLeft={DuplicateOutline}
             />
           </Tooltip>
-          <Tooltip arrow={false} content="Export call" placement="top">
+          <Tooltip arrow={false} content="Export" placement="top">
             <Button size="medium" color="secondary" IconLeft={ExportLinear} />
           </Tooltip>
           <Tooltip arrow={false} content="Delete" placement="top">
@@ -59,7 +59,7 @@ export const Topbar = ({ call }) => {
           </Tooltip>
         </div>
         <RpcType call={call} />
-        <DeleteModal call={call} isOpen={isOpen} setOpen={setOpen} />
+        {isOpen && <DeleteModal call={call} setOpen={setOpen} />}
       </div>
     </div>
   );

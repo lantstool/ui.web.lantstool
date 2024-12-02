@@ -1,10 +1,8 @@
-import { Modal } from '../../_general/modals/Modal/Modal.jsx';
-import { Button } from '../../_general/Button/Button.jsx';
+import { DeleteModal } from '../../_general/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate } from 'react-router-dom';
-import cn from './ResetHistoryModal.module.scss';
 
-export const ResetHistoryModal = ({ setResetHistory, isResetHistory }) => {
+export const ResetHistoryModal = ({ setResetHistory }) => {
   const resetHistory = useStoreEffect((store) => store.resetHistory);
   const navigate = useNavigate();
 
@@ -12,7 +10,22 @@ export const ResetHistoryModal = ({ setResetHistory, isResetHistory }) => {
   const clearHistory = () => resetHistory({ navigate });
 
   return (
-    <Modal isOpen={isResetHistory} closeModal={closeModal}>
+    <DeleteModal
+      close={closeModal}
+      submit={clearHistory}
+      text={{
+        title: 'Reset history?',
+        description: `
+        Reset the app navigation history if the app redirects you incorrectly. 
+        Don’t worry, this won’t delete any important data.
+        `,
+        submitButtonText: 'Reset',
+      }}
+    />
+  );
+};
+/*
+<BaseModal isOpen={isResetHistory} closeModal={closeModal}>
       <div className={cn.resetHistoryModal}>
         <div className={cn.wrapper}>
           <h1 className={cn.title}>Reset history?</h1>
@@ -30,6 +43,5 @@ export const ResetHistoryModal = ({ setResetHistory, isResetHistory }) => {
           </Button>
         </div>
       </div>
-    </Modal>
-  );
-};
+    </BaseModal>
+ */

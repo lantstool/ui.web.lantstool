@@ -16,7 +16,7 @@ export const PrivateKey = ({ closeModal }) => {
   const schema = createSchema(spaceId, networkId);
 
   const form = useForm({
-    mode: 'all',
+    mode: 'onTouched',
     resolver: yupResolver(schema),
     defaultValues: {
       privateKey: '',
@@ -26,7 +26,7 @@ export const PrivateKey = ({ closeModal }) => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = form;
 
   const onSubmit = (formValues) => {
@@ -53,7 +53,7 @@ export const PrivateKey = ({ closeModal }) => {
         />
       </div>
       <div className={cn.buttonWrapper}>
-        <Button size="medium" type="submit">
+        <Button size="medium" type="submit" disabled={!isValid}>
           Import
         </Button>
       </div>

@@ -1,29 +1,23 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 560px;
-  height: max-content;
-  background: $neutral-00;
-  border-radius: 16px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 24px;
-  gap: 24px;
-}
-
-.wrapper {
+.textWrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.btnWrapper {
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-700;
+}
+
+.buttonWrapper {
   display: flex;
   justify-content: end;
   align-items: center;

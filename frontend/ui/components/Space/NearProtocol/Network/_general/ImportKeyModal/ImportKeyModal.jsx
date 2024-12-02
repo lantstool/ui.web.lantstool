@@ -5,7 +5,7 @@ import { Ledger } from '../../../../../_general/icons/Ledger.jsx';
 import { Item } from './Item/Item.jsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.jsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.jsx';
-import { Modal } from '../../../../../_general/modals/Modal/Modal.jsx';
+import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import cn from './ImportKeyModal.module.scss';
 
 export const ImportKeyModal = ({ isOpen, setOpen }) => {
@@ -19,7 +19,7 @@ export const ImportKeyModal = ({ isOpen, setOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
+    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
       <div className={cn.importKeyModal}>
         <div className={cn.list}>
           <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
@@ -42,6 +42,6 @@ export const ImportKeyModal = ({ isOpen, setOpen }) => {
           {formType === 'seedPhrase' && <SeedPhrase closeModal={closeModal} />}
         </div>
       </div>
-    </Modal>
+    </BaseModal>
   );
 };

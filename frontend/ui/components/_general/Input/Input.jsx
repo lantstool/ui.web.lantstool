@@ -21,7 +21,7 @@ export const Input = ({
   const ref = useRef(null);
 
   const {
-    field: { value, onChange },
+    field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur },
   } = useController({ name, control });
 
   // We want to avoid React error when value is null
@@ -29,11 +29,16 @@ export const Input = ({
 
   const handleClear = () => {
     ref.current.focus();
-    onChange('');
+    fieldOnChange('');
   };
 
   const handleMouseDown = (e) => {
     e.preventDefault();
+  };
+
+  const handleBlur = () => {
+    fieldOnBlur();
+    onBlur();
   };
 
   return (
@@ -57,8 +62,8 @@ export const Input = ({
           id={id || name}
           placeholder={placeholder}
           value={val}
-          onChange={onChange}
-          onBlur={onBlur}
+          onChange={fieldOnChange}
+          onBlur={handleBlur}
           className={error ? cn.errorInput : cn.input}
           type={type}
           disabled={disabled}

@@ -6,6 +6,7 @@ import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const [isOpen, setOpen] = useState(false);
+
   const openModal = () => {
     setOpen(true);
   };
@@ -19,7 +20,7 @@ export const Empty = () => {
         </h2>
       </div>
       <Button onClick={openModal}>Import account</Button>
-      <ImportAccount isOpen={isOpen} setOpen={setOpen} />
+      {isOpen && <ImportAccount setOpen={setOpen} />}
     </div>
   );
 };

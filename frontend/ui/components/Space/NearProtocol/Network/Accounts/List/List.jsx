@@ -23,7 +23,7 @@ export const List = () => {
         </Button>
       </div>
       <AccountsList />
-      {isOpen && <ImportAccount isOpen={isOpen} setOpen={setOpen} />}
+      {isOpen && <ImportAccount setOpen={setOpen} />}
     </div>
   );
 };
