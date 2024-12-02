@@ -1,0 +1,45 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  width: 40px;
+  height: 20px;
+  border-radius: 24px;
+  border: none;
+  background-color: $neutral-400;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.buttonActive {
+  background-color: $accent-600;
+}
+
+.circle {
+  height: 16px;
+  width: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.circleActive {
+  transform: translateX(20px);
+}
+
+.label {
+  @include text-sm-medium;
+  color: $neutral-700;
+}
+
+.tooltipIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -12,7 +12,7 @@ export const Tooltip = ({
   placement = 'bottom-start',
   children,
   style,
-  disabled,
+  duration = 20,
 }) => {
   return (
     <>
@@ -22,7 +22,7 @@ export const Tooltip = ({
         className={color === 'black' ? cn.tooltipBlack : cn.tooltipWhite}
         content={content}
         placement={placement}
-        duration={20}
+        duration={duration}
       >
         <div className={style}>{children}</div>
       </Tippy>

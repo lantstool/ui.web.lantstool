@@ -28,7 +28,7 @@ const validateNetworkId = async (backend, spaceId, networkId) => {
 
   TODO we may have a situation when user will try to add the RPC of a newly
     created local network. In this case we can't detect if RPC runs in regular
-    or archive mode - this algorithm will assume that it's an archived RPC.
+    or archival mode - this algorithm will assume that it's an archived RPC.
     For such case we need to add a UI with ability to select of RPC type.
  */
 const getRpcType = async (rpc, epochLength) => {

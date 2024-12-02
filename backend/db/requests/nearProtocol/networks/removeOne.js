@@ -1,4 +1,4 @@
-export const remove = async ({ execute, request }) => {
+export const removeOne = async ({ execute, request }) => {
   const { spaceId, networkId} = request.body;
 
   const query = `

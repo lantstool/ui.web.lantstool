@@ -16,6 +16,7 @@
 @mixin span {
   @include label;
   @include text-sm-medium;
+  padding: 0 8px;
 }
 
 @mixin textStyle($textColor) {

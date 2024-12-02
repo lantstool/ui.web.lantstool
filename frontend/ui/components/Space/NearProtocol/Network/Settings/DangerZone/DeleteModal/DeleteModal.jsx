@@ -10,7 +10,7 @@ import cn from './DeleteModal.module.scss';
 
 export const DeleteModal = ({ isOpen, setOpen, network }) => {
   const { networkId, spaceId } = network;
-  const remove = useStoreEffect((store) => store.nearProtocol.networks.remove);
+  const removeOne = useStoreEffect((store) => store.nearProtocol.networks.removeOne);
   const navigate = useNavigate();
   const schema = createSchema(networkId);
 
@@ -33,7 +33,7 @@ export const DeleteModal = ({ isOpen, setOpen, network }) => {
   };
 
   const onSubmit = handleSubmit(() => {
-    remove({ spaceId, networkId, navigate });
+    removeOne({ spaceId, networkId, navigate });
   });
 
   return (
@@ -43,7 +43,7 @@ export const DeleteModal = ({ isOpen, setOpen, network }) => {
           <h2 className={cn.title}>Delete {networkId}?</h2>
           <p className={cn.subtitle}>
             Deleting this network is permanent and cannot be undone. This will remove all data
-            within the space, including accounts, keys, transactions, calls, etc.
+            within the network including accounts, <b>keys</b>, transactions, etc.
           </p>
         </div>
         <Input

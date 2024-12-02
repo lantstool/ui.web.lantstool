@@ -1,0 +1,13 @@
+@use 'variables' as *;
+
+@mixin mask($url) {
+  mask: url($url) no-repeat center / contain;
+}
+
+@mixin icon($url) {
+  @include mask($url);
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: $neutral-700;
+}
