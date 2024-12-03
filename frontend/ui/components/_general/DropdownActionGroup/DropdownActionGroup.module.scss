@@ -1,0 +1,45 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.dropdownActionGroup {
+  position: relative;
+  height: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px 0;
+}
+
+.label {
+  @include text-sm-regular;
+  align-content: center;
+  color: $neutral-700;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.dropdownWrapper{
+  width: 100%
+
+}
+
+.children {
+  width: max-content;
+
+}
+
+.error {
+  @include text-xs-regular;
+  padding: 0;
+  margin: 0;
+  color: $red-600;
+}

@@ -4,6 +4,7 @@ import { FormDropdown } from '../../../../../../../../_general/FormDropdown/Form
 import { TrashBinOutline } from '../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { AddSquareOutline } from '../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
+import {DropdownActionGroup} from '../../../../../../../../_general/DropdownActionGroup/DropdownActionGroup.jsx';
 import cn from './AccountIds.module.scss';
 
 const getPlaceholderData = (accountIds) =>
@@ -38,22 +39,25 @@ export const AccountIds = ({ form, accountIds }) => {
       <p>Select accounts your want to check</p>
       {list.map((field, index) => (
         <div className={cn.row} key={field.id}>
-          <FormDropdown
+          <DropdownActionGroup
             name={`accountIds.${index}.accountId`}
             label="Account Id"
             control={control}
             options={options}
+            error={true}
             isSearchable
             isClearable
             creatableSelect
-          />
-          <Button
-            IconLeft={TrashBinOutline}
-            size="large"
-            color="secondary"
-            onClick={() => remove(index)}
-            disabled={list.length < 2}
-          />
+          >
+            <Button
+              IconLeft={TrashBinOutline}
+              size="large"
+              color="secondary"
+              onClick={() => remove(index)}
+              disabled={list.length < 2}
+            />
+          </DropdownActionGroup>
+
         </div>
       ))}
       <Button IconLeft={AddSquareOutline} size="medium" color="secondary" onClick={add}>
