@@ -18,14 +18,6 @@
   margin: 0;
 }
 
-.addIcon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-color: $neutral-700;
-  mask: url('@assets/add-square-outline.svg') no-repeat center / contain;
-}
-
 .card {
   display: flex;
   flex-direction: column;

@@ -4,10 +4,8 @@
 
 .rpc {
   display: grid;
-  // grid-template-columns: 24px 8px 32px 8px auto 8px auto 8px auto;
   grid-template-columns: 24px 32px auto max-content 24px;
   grid-template-rows: auto;
-  // grid-template-areas: 'a . b . c . d . e';
   grid-template-areas: 'a b c d e';
   align-items: center;
   padding: 16px;
