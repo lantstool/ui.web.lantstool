@@ -1,44 +1,13 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.container {
+.bodyWrapper {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  height: 100%;
-  width: 512px;
-  padding: 24px;
-  gap: 24px;
+  gap: 8px;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-}
-
-.title {
-  @include text-lg-medium;
-  color: $neutral-800;
-  height: 24px;
-  margin: 0;
-}
-
-.subtitle {
+.description {
   @include text-sm-regular;
   color: $neutral-700;
-  padding: 0;
-  margin: 0 0 8px;
-}
-
-.button {
-  display: flex;
-  justify-content: end;
-}
-
-.error {
-  @include text-xs-regular;
-  padding: 0;
-  opacity: 0;
-  margin: 0;
-  color: $red-600;
 }

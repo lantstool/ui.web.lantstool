@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Modal } from '../../../../../../../../_general/Modal/Modal.jsx';
+import { BaseModal } from '../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { appendAction } from './appendAction.js';
 import cn from './AddAction.module.css';
-import { Button } from '../../../../../_general/Button/Button.jsx';
-import addIcon from '../../../../../../../../../assets/addIcon.svg';
+import { Button } from '../../../../../../../../_general/Button/Button.jsx';
 import { Item } from './Item/Item.jsx';
 import { Title } from '../../../../../_general/Title/Title.jsx';
 import { CloseButton } from '../../../../../_general/CloseButton/CloseButton.jsx';
@@ -53,10 +52,10 @@ export const AddAction = ({ append, fields }) => {
   return (
     <>
       <div className={cn.btnContainer}>
-        <Button text="Add Action" onClick={openModal} src={addIcon} />
+        <Button onClick={openModal}>Add Action</Button>
       </div>
-      <Modal isOpen={isOpen} close={closeModal}>
-        <div className={cn.modal}>
+      {isOpen && (
+        <BaseModal close={closeModal}>
           <div className={cn.header}>
             <div className={cn.title}>
               <Title text="Choose Action" />
@@ -72,8 +71,8 @@ export const AddAction = ({ append, fields }) => {
           <Item onClick={deployContract} text="Deploy Contract" />
           <Item onClick={deleteKey} text="Delete Key" />
           <Item onClick={deleteAccount} text="Delete Account" />
-        </div>
-      </Modal>
+        </BaseModal>
+      )}
     </>
   );
 };

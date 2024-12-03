@@ -39,10 +39,12 @@ export const PredefinedRpc = ({
         <span className={cn.url}>{rpc.url}</span>
       </div>
       <div className={cn.links}>
-        {rpc.links.map((link) => <OuterLink key={link.url} link={link} />)}
+        {rpc.links.map((link) => (
+          <OuterLink key={link.url} link={link} />
+        ))}
       </div>
       <div className={cn.menuButtonWrapper}>
-        <Button size="small" color="tertiary" IconLeft={() => <span className={cn.menuIcon} />}/>
+        <Button size="small" color="tertiary" IconLeft={() => <span className={cn.menuIcon} />} />
       </div>
     </div>
   );

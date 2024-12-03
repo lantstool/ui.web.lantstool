@@ -35,7 +35,7 @@ export const SeedPhrase = ({ closeModal }) => {
     handleSubmit,
     clearErrors,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = form;
 
   const derivationPath = watch('derivationPath');
@@ -86,7 +86,7 @@ export const SeedPhrase = ({ closeModal }) => {
         }
       />
       <div className={cn.buttonWrapper}>
-        <Button size="medium" type="submit">
+        <Button size="medium" type="submit" disabled={!isValid}>
           Import
         </Button>
       </div>

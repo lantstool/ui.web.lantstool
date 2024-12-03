@@ -1,11 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { formatDate } from '../../../../../../../../store/helpers/formatDate.js';
 import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { TrashBinOutline } from '../../../../../../_general/icons/TrashBinOutline.jsx';
 import { useStoreState } from '@react-vault';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
-import { useState } from 'react';
 import cn from './HeadCard.module.scss';
 
 export const HeadCard = () => {
@@ -15,8 +12,6 @@ export const HeadCard = () => {
     [accountId],
   );
   const { date, hourMinute } = formatDate(createdAt);
-  const [isOpen, setOpen] = useState(false);
-  const openModal = () => setOpen(true);
 
   return (
     <div className={cn.container}>
@@ -27,9 +22,8 @@ export const HeadCard = () => {
       </div>
       <div className={cn.btnWrapper}>
         <CopyButton event="onClick" type="bordered" value={accountId} />
-        <Button IconLeft={TrashBinOutline} size="medium" color="secondary" onClick={openModal} />
+        <DeleteModal />
       </div>
-      <DeleteModal isOpen={isOpen} setOpen={setOpen} />
     </div>
   );
 };

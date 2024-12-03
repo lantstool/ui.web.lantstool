@@ -18,7 +18,7 @@ export const Textarea = ({
 }) => {
   const ref = useRef(null);
   const {
-    field: { value = '', onChange },
+    field: { value = '', onChange, onBlur },
   } = useController({
     name,
     control,
@@ -49,6 +49,7 @@ export const Textarea = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
           disabled={disabled}
           cols={cols}
           rows={rows}
