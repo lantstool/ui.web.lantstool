@@ -1,0 +1,61 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.rpc {
+  display: grid;
+  grid-template-columns: 24px 32px auto max-content 24px;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b c d e';
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  background: $neutral-00;
+  gap: 8px;
+}
+
+.selectButtonWrapper {
+  grid-area: a;
+  justify-self: center;
+  margin: 0 2px;
+}
+
+.logo {
+  grid-area: b;
+  height: 32px;
+  width: 32px;
+  user-select: none;
+}
+
+.nameUrl {
+  grid-area: c;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  @include text-sm-medium;
+  color: $neutral-800;
+}
+
+.url {
+  @include text-sm-regular;
+  color: $neutral-600;
+}
+
+.links {
+  grid-area: d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menuButtonWrapper {
+  grid-area: e;
+}
+
+.menuIcon {
+  @include icon('@assets/menu-dots-outline.svg');
+}

@@ -20,27 +20,25 @@ export const ImportKeyModal = ({ isOpen, setOpen }) => {
 
   return (
     <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
-      <div className={cn.importKeyModal}>
-        <div className={cn.list}>
-          <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
-            Private key
-          </Item>
-          <Item
-            formType={formType}
-            setFormType={setFormType}
-            type="seedPhrase"
-            Icon={PasswordSeedPhraseInputOutline}
-          >
-            Seed phrase
-          </Item>
-          <Item Icon={Ledger} label="Soon" disabled={true}>
-            Ledger
-          </Item>
-        </div>
-        <div className={cn.content}>
-          {formType === 'privateKey' && <PrivateKey closeModal={closeModal} />}
-          {formType === 'seedPhrase' && <SeedPhrase closeModal={closeModal} />}
-        </div>
+      <div className={cn.list}>
+        <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
+          Private key
+        </Item>
+        <Item
+          formType={formType}
+          setFormType={setFormType}
+          type="seedPhrase"
+          Icon={PasswordSeedPhraseInputOutline}
+        >
+          Seed phrase
+        </Item>
+        <Item Icon={Ledger} label="Soon" disabled={true}>
+          Ledger
+        </Item>
+      </div>
+      <div className={cn.content}>
+        {formType === 'privateKey' && <PrivateKey closeModal={closeModal} />}
+        {formType === 'seedPhrase' && <SeedPhrase closeModal={closeModal} />}
       </div>
     </BaseModal>
   );

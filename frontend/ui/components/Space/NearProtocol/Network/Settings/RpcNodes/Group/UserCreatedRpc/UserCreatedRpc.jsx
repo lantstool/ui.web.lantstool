@@ -1,5 +1,5 @@
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { SelectButton } from '../_general/SelectButton/SelectButton.jsx';
+import { SelectButton } from '../../_general/SelectButton/SelectButton.jsx';
 import defaultRpcLogo from '@assets/logos/default-rpc-logo.png';
 import cn from './UserCreatedRpc.module.scss';
 

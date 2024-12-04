@@ -15,6 +15,7 @@ export const Textarea = ({
   disabled = false,
   error = false,
   copy = false,
+  classes = {},
 }) => {
   const ref = useRef(null);
   const {
@@ -34,7 +35,7 @@ export const Textarea = ({
   };
 
   return (
-    <div className={cn.container}>
+    <div className={cnm(cn.container, classes?.container && classes.container)}>
       <div
         className={cnm({
           [cn.wrapper]: !error && !disabled,
@@ -69,7 +70,7 @@ export const Textarea = ({
           </div>
         )}
       </div>
-      <div className={cn.errorWrapper}>{error && <p className={cn.error}>{error}</p>}</div>
+      <p className={cnm(cn.error, error && cn.activeError)}>{error}</p>
     </div>
   );
 };

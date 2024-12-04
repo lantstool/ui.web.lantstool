@@ -1,11 +1,3 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
-
-.addIcon {
-  @include icon('@assets/add-square-outline.svg');
-}
-
-.container {
-
-}

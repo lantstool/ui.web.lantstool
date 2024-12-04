@@ -1,6 +1,6 @@
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { SelectButton } from '../../_general/SelectButton/SelectButton.jsx';
-import {OuterLink } from '../../_general/OuterLink/OuterLink.jsx';
+
+import { SelectButton } from '../../../../_general/SelectButton/SelectButton.jsx';
+import { OuterLink } from '../../../../_general/OuterLink/OuterLink.jsx';
 import cn from './PredefinedRpc.module.scss';
 
 // import all logos inside logos directory and create a logo map
@@ -42,9 +42,6 @@ export const PredefinedRpc = ({
         {rpc.links.map((link) => (
           <OuterLink key={link.url} link={link} />
         ))}
-      </div>
-      <div className={cn.menuButtonWrapper}>
-        <Button size="small" color="tertiary" IconLeft={() => <span className={cn.menuIcon} />} />
       </div>
     </div>
   );
