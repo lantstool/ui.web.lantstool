@@ -1,3 +1,4 @@
+import cnm from 'classnames';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
@@ -10,6 +11,7 @@ export const Dropdown = ({
   onChange = () => ({}),
   options,
   error,
+  dynamicErrorSpace = false,
   isDisabled,
   value = null,
   creatableSelect = false,
@@ -45,7 +47,15 @@ export const Dropdown = ({
         components={{ ...components }}
         styles={style}
       />
-      {error && <p className={cn.error}>{error}</p>}
+      <p
+        className={cnm(
+          cn.error,
+          dynamicErrorSpace && cn.dynamicErrorSpace,
+          error && cn.activeError,
+        )}
+      >
+        {error}
+      </p>
     </div>
   );
 };

@@ -122,6 +122,12 @@
   margin-top: 4px;
 }
 
+.dynamicErrorSpace {
+  min-height: inherit;
+  margin-top: 0;
+}
+
 .activeError {
   opacity: 1;
+  margin-top: 4px;
 }

@@ -25,6 +25,8 @@ export const SelectMethod = ({ callId, method }) => {
         options={options}
         placeholder="Select RPC method you want to use"
         isSearchable
+        copy={false}
+        dynamicErrorSpace
       />
     </div>
   );

@@ -11,17 +11,18 @@ export const Input = ({
   name,
   placeholder,
   label,
-  error = false,
   type = 'text',
   disabled = false,
   onBlur = () => ({}),
   copy = true,
   tooltip = null,
+  dynamicErrorSpace = false,
 }) => {
   const ref = useRef(null);
 
   const {
     field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur },
+    fieldState: { error },
   } = useController({ name, control });
 
   // We want to avoid React error when value is null
@@ -83,7 +84,15 @@ export const Input = ({
           </div>
         )}
       </div>
-      <p className={cnm(cn.error, error && cn.activeError)}>{error}</p>
+      <p
+        className={cnm(
+          cn.error,
+          dynamicErrorSpace && cn.dynamicErrorSpace,
+          error?.message && cn.activeError,
+        )}
+      >
+        {error?.message}
+      </p>
     </div>
   );
 };
