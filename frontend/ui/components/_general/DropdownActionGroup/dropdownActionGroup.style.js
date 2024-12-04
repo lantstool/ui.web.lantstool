@@ -8,6 +8,7 @@ export const selectStyles = (error) => {
     control: (baseStyles, state) => ({
       ...styles.control(baseStyles, state),
       border: 'none',
+      height: '40px',
       width: '100%',
       borderRadius: '8px 0 0 8px',
       ':hover': {

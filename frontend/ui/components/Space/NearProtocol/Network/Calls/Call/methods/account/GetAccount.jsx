@@ -4,7 +4,6 @@ import { BlockTarget } from '../_general/BlockTarget/BlockTarget.jsx';
 import { Form } from '../_general/Form/Form.jsx';
 import { MethodDescription } from '../_general/MethodDescription/MethodDescription.jsx';
 import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { InfoCircleLinear } from '../../../../../../../_general/icons/InfoCircleLinear.jsx';
 import { ConfigureTitle } from '../_general/ConfigureTitle/ConfiguresTitle.jsx';
 
 export const GetAccount = ({ call, draft }) => {
@@ -29,11 +28,7 @@ export const GetAccount = ({ call, draft }) => {
         isSearchable
         isClearable
         creatableSelect
-        tooltip={
-          <Tooltip content="Account id" placement="top">
-            <InfoCircleLinear />
-          </Tooltip>
-        }
+        tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
       />
       <BlockTarget />
     </Form>

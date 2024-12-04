@@ -4,6 +4,7 @@ import { FormDropdown } from '../../../../../../../../_general/FormDropdown/Form
 import { TrashBinOutline } from '../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { AddSquareOutline } from '../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
+import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './ContractIds.module.scss';
 
 const getPlaceholderData = (contractIds) =>
@@ -46,6 +47,7 @@ export const ContractIds = ({ form, contractIds }) => {
             isSearchable
             isClearable
             creatableSelect
+            tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
           />
           <Button
             IconLeft={TrashBinOutline}

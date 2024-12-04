@@ -26,7 +26,6 @@ export const AccountKeyPairs = ({ form, accountKeyPairs }) => {
 
   return (
     <>
-      <p>Select accounts-key pairs your want to check</p>
       <div className={cn.list}>
         {list.map((field, index) => (
           <AccountKeyPair

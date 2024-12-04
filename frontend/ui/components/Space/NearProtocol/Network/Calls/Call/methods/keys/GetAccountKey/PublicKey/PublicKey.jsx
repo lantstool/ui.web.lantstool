@@ -1,7 +1,6 @@
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { InfoCircleLinear } from '../../../../../../../../../_general/icons/InfoCircleLinear.jsx';
 
 export const PublicKey = ({ control }) => {
   const options = usePublicKeyOptions(control);
@@ -12,11 +11,7 @@ export const PublicKey = ({ control }) => {
       control={control}
       options={options}
       isSearchable
-      tooltip={
-        <Tooltip content="Publick key" placement="top">
-          <InfoCircleLinear />
-        </Tooltip>
-      }
+      tooltip={<Tooltip content="Publick key" placement="top" defaultContent />}
     />
   );
 };

@@ -11,7 +11,7 @@ import cn from './InputDropdownGroup.module.scss';
 
 export const InputDropdownGroup = ({
   register = () => ({}),
-  control,
+  control = () => ({}),
   options,
   name,
   id,

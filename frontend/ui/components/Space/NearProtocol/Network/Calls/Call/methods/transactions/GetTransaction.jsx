@@ -3,12 +3,29 @@ import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOption
 import { Form } from '../_general/Form/Form.jsx';
 import { Input } from '../../../../../../../_general/Input/Input.jsx';
 import { WaitUntil } from './_general/WaitUntil.jsx';
+import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { MethodDescription } from '../_general/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../_general/ConfigureTitle/ConfiguresTitle.jsx';
 
 export const GetTransaction = ({ call, draft }) => {
   const options = useAccountsOptions();
   return (
-    <Form call={call} draft={draft}>
-      <Input name="transactionHash" label="Transaction Hash" />
+    <Form
+      call={call}
+      draft={draft}
+      methodDescription={
+        <MethodDescription
+          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          link="https://docs.near.org/api/rpc/transactions#transaction-status"
+        />
+      }
+    >
+      <ConfigureTitle />
+      <Input
+        name="transactionHash"
+        label="Transaction Hash"
+        tooltip={<Tooltip content="Transaction hash" placement="top" defaultContent />}
+      />
       <FormDropdown
         name="signerId"
         label="Signer Id"
@@ -16,6 +33,7 @@ export const GetTransaction = ({ call, draft }) => {
         isSearchable
         isClearable
         creatableSelect
+        tooltip={<Tooltip content="Signer Id" placement="top" defaultContent />}
       />
       <WaitUntil />
     </Form>
