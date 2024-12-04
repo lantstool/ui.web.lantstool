@@ -6,7 +6,6 @@ export const FormDropdown = ({
   onChange,
   options,
   name,
-  error,
   isDisabled,
   creatableSelect,
   isSearchable,
@@ -15,16 +14,16 @@ export const FormDropdown = ({
   tooltip,
   copy,
   placeholder,
+  dynamicErrorSpace,
 }) => (
   <Controller
     name={name}
     control={control}
-    render={({ field }) => {
+    render={({ field, fieldState: { error } }) => {
       const innerOnChange = onChange ? onChange(field) : field.onChange;
       return (
         <Dropdown
           field={field}
-          error={error}
           onChange={innerOnChange}
           options={options}
           placeholder={placeholder}
@@ -35,6 +34,8 @@ export const FormDropdown = ({
           copy={copy}
           label={label}
           tooltip={tooltip}
+          error={error?.message}
+          dynamicErrorSpace={dynamicErrorSpace}
         />
       );
     }}

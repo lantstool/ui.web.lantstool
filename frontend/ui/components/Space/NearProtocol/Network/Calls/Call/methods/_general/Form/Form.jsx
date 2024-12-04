@@ -1,3 +1,4 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useStoreAction } from '@react-vault';
 import { useEffect, Children, cloneElement, isValidElement } from 'react';
 import { useForm } from 'react-hook-form';
@@ -23,10 +24,15 @@ const addPropsToChildren = (children = [], props = {}) =>
       : child,
   );
 
-export const Form = ({ call, draft, children, methodDescription }) => {
+export const Form = ({ call, draft, children, methodDescription, schema }) => {
   const { callId } = call;
   const setDraft = useStoreAction((store) => store.nearProtocol.calls.setDraft);
-  const form = useForm();
+
+  // We don't need to validate some methods - we won't pass a schema for them
+  const form = useForm({
+    mode: 'onTouched',
+    resolver: schema ? yupResolver(schema) : undefined,
+  });
 
   useEffect(() => {
     form.reset(draft);
