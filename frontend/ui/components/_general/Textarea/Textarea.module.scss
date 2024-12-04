@@ -111,18 +111,3 @@
 .icon {
   fill: $neutral-600;
 }
-
-.error {
-  @include text-xs-regular;
-  min-height: 10px;
-  font-size: 10px;
-  line-height: 10px;
-  color: $red-600;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  margin-top: 4px;
-}
-
-.activeError {
-  opacity: 1;
-}

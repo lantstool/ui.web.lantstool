@@ -1,3 +1,4 @@
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
@@ -84,15 +85,7 @@ export const Input = ({
           </div>
         )}
       </div>
-      <p
-        className={cnm(
-          cn.error,
-          dynamicErrorSpace && cn.dynamicErrorSpace,
-          error?.message && cn.activeError,
-        )}
-      >
-        {error?.message}
-      </p>
+      <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

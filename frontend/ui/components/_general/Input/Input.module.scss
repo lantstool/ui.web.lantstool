@@ -110,24 +110,3 @@
 .icon {
   fill: $neutral-600;
 }
-
-.error {
-  @include text-xs-regular;
-  min-height: 10px;
-  font-size: 10px;
-  line-height: 10px;
-  color: $red-600;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  margin-top: 4px;
-}
-
-.dynamicErrorSpace {
-  min-height: inherit;
-  margin-top: 0;
-}
-
-.activeError {
-  opacity: 1;
-  margin-top: 4px;
-}

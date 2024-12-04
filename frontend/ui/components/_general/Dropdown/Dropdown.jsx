@@ -1,9 +1,9 @@
-import cnm from 'classnames';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
 import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { selectStyles } from './dropdown.style.js';
 import cn from './Dropdown.module.scss';
 
@@ -47,15 +47,7 @@ export const Dropdown = ({
         components={{ ...components }}
         styles={style}
       />
-      <p
-        className={cnm(
-          cn.error,
-          dynamicErrorSpace && cn.dynamicErrorSpace,
-          error && cn.activeError,
-        )}
-      >
-        {error}
-      </p>
+      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

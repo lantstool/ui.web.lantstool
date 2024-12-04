@@ -1,4 +1,5 @@
 import cnm from 'classnames';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useRef } from 'react';
@@ -14,6 +15,7 @@ export const Textarea = ({
   rows,
   disabled = false,
   error = false,
+  dynamicErrorSpace = false,
   copy = false,
   classes = {},
 }) => {
@@ -70,7 +72,7 @@ export const Textarea = ({
           </div>
         )}
       </div>
-      <p className={cnm(cn.error, error && cn.activeError)}>{error}</p>
+      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };
