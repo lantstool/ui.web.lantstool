@@ -35,6 +35,9 @@ const getRpcType = async (rpc, epochLength) => {
   try {
     const latestBlock = await rpc.getBlock({});
     const archivedBlockHeight = latestBlock.header.height - epochLength * 6;
+    // if user run a new local node with a lifetime less than 6 epochs - assume that's a regular node
+    if (archivedBlockHeight <= 0) return 'regular';
+
     await rpc.getBlock({ blockId: archivedBlockHeight });
     return 'archival';
   } catch (e) {

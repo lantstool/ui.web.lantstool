@@ -3,11 +3,10 @@
 
 @mixin item {
   display: flex;
-  width: 208px;
   justify-content: start;
   align-items: center;
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px 8px;
   background: none;
   outline: none;
   border: none;
@@ -46,16 +45,7 @@
 
 .title {
   @include text-sm-regular;
-  //font-size: 14px;
-  //font-style: normal;
-  //font-weight: 400;
-  //line-height: 16px;
   color: $neutral-800;
-  padding: 0;
-  margin: 0;
-}
-
-.icon {
 }
 
 .container {

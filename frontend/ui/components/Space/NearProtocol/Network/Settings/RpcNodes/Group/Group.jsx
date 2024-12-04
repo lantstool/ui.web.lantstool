@@ -9,6 +9,8 @@ export const Group = ({ rpcType, groupRpcList, groupActiveRpc, title, descriptio
   const { spaceId, networkId } = useParams();
   const updateActiveRpc = useStoreEffect((store) => store.nearProtocol.networks.updateActiveRpc);
 
+  if (groupRpcList.length === 0) return null;
+
   return (
     <div>
       <h2 className={cn.title}>{title}</h2>

@@ -112,14 +112,17 @@
   fill: $neutral-600;
 }
 
-.errorWrapper {
-  margin: 8px 0 0 0;
-  height: 20px;
-}
-
 .error {
   @include text-xs-regular;
-  padding: 0;
-  margin: 0;
+  min-height: 10px;
+  font-size: 10px;
+  line-height: 10px;
   color: $red-600;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  margin-top: 4px;
+}
+
+.activeError {
+  opacity: 1;
 }

@@ -1,12 +1,12 @@
 import { Group } from './Group/Group.jsx';
-import { AddRpcModal } from './AddRpcModal/AddRpcModal.jsx';
+import { AddRpc } from './AddRpc/AddRpc.jsx';
 import cn from './RpcNodes.module.scss';
 
 export const RpcNodes = ({ network }) => (
   <div className={cn.rpcNodes}>
     <div className={cn.topbar}>
       <h1 className={cn.title}>RPC Nodes</h1>
-      <AddRpcModal />
+      <AddRpc />
     </div>
     <div className={cn.card}>
       <Group

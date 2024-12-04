@@ -1,6 +1,6 @@
+import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { Textarea } from '../../../../../../_general/Textarea/Textarea.jsx';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { CloseCircleOutline } from '../../../../../../_general/icons/CloseCircleOutline.jsx';
 import { useForm } from 'react-hook-form';
 import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
@@ -29,18 +29,15 @@ export const PrivateKey = ({ closeModal }) => {
     formState: { errors, isValid },
   } = form;
 
-  const onSubmit = (formValues) => {
+  const onSubmit = handleSubmit((formValues) => {
     importFromPrivateKey({ formValues, spaceId, networkId, closeModal });
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn.privateKey}>
-      <div className={cn.container}>
-        <h1 className={cn.title}>Import from Private key</h1>
-        <Button color="tertiary" size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
-      </div>
-      <div className={cn.wrapper}>
-        <p className={cn.subtitle}>
+    <form className={cn.privateKeyContainer}>
+      <div className={cn.topWrapper}>
+        <ModalHeader title="Import from Private key" close={closeModal} />
+        <p className={cn.description}>
           Import your private access key locally for transaction signing. It can be any valid
           ed25519 key, even if it is not currently associated with an account.
         </p>
@@ -52,11 +49,13 @@ export const PrivateKey = ({ closeModal }) => {
           placeholder="ed25519:5sAGQFD878c7MRoy9ACfgtTzejubjm76FPxUQpBPqUG26H9XMayZn36244vwkTuxrYFcFBE4YMXNcna1jXC6RxqU"
         />
       </div>
-      <div className={cn.buttonWrapper}>
-        <Button size="medium" type="submit" disabled={!isValid}>
-          Import
-        </Button>
-      </div>
+      <ModalFooter
+        action={{
+          label: 'Import',
+          onClick: onSubmit,
+          disabled: !isValid,
+        }}
+      />
     </form>
   );
 };

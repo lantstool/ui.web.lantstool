@@ -1,40 +1,25 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.privateKey {
+.privateKeyContainer {
+  height: 100%;
   display: flex;
-  gap: 24px;
   flex-direction: column;
-}
-
-.container {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.title {
-  @include text-lg-medium;
-  color: $neutral-800;
-  padding: 0;
-  margin: 0;
-}
-
-.wrapper {
+.topWrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.subtitle {
+.description {
   @include text-sm-regular;
   color: $neutral-700;
-  padding: 0;
-  margin: 0;
+  margin: 24px 0 16px 0
 }
 
 .buttonWrapper {
-  height: 108px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

@@ -83,7 +83,7 @@ export const Input = ({
           </div>
         )}
       </div>
-      <div className={cn.errorWrapper}>{error && <p className={cn.error}>{error}</p>}</div>
+      <p className={cnm(cn.error, error && cn.activeError)}>{error}</p>
     </div>
   );
 };

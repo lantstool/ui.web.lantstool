@@ -17,9 +17,10 @@ export const Manually = () => {
 
   const form = useForm({
     resolver: yupResolver(schema),
+    mode: 'onTouched',
     defaultValues: {
-      rpcName: '',
-      url: '',
+      rpcName: 'Local',
+      url: 'http://localhost:3030',
       withHeader: false,
       header: null,
     },
@@ -56,11 +57,12 @@ export const Manually = () => {
           label="RPC Name"
           placeholder="My RPC"
           error={errors?.rpcName?.message}
+          copy={false}
         />
         <Input
           control={control}
           name="url"
-          label="Enter RPC endpoint URL"
+          label="RPC URL"
           placeholder="https://rpc.network.com"
           error={errors?.url?.message}
           tooltip={
@@ -71,6 +73,7 @@ export const Manually = () => {
               <InfoCircleLinear />
             </Tooltip>
           }
+          copy={false}
         />
         <div className={cn.checkboxContainer}>
           <Checkbox register={register} name="withHeader" onChange={handleCheckboxChange} />

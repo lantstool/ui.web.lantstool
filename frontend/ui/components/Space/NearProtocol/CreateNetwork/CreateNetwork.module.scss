@@ -10,7 +10,7 @@
   gap: 16px;
 }
 
-.logo{
+.logo {
   margin: 40px 0 24px 0;
 }
 
@@ -18,7 +18,7 @@
   width: 480px;
 }
 
-.title{
+.title {
   @include text-xlg-bold;
   color: $neutral-800;
   margin: 8px 0;
@@ -26,7 +26,7 @@
   text-align: center;
 }
 
-.subtitle{
+.subtitle {
   @include text-mg-regular;
   color: $neutral-700;
   margin: 0 0 32px 0;
@@ -34,8 +34,7 @@
   text-align: center;
 }
 
-.tab{
+.tab {
   display: flex;
   justify-content: center;
 }
-

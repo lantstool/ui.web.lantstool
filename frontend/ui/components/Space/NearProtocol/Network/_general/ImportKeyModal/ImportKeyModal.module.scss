@@ -3,16 +3,17 @@
 
 .modal {
   width: 680px;
+  min-height: 400px;
   padding: 0;
-}
-
-.importKeyModal {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
+  gap: 0;
+  display: grid;
+  grid-template-columns: 240px 440px;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b'
 }
 
 .list {
+  grid-area: a;
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -22,33 +23,6 @@
 }
 
 .content {
-  width: 392px;
-  height: 372px;
+  grid-area: b;
   padding: 24px;
-}
-
-.backstage {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.2;
-}
-
-.modal {
-  min-width: max-content;
-  min-height: max-content;
-  position: fixed;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 16px;
 }
