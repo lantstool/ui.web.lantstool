@@ -1,3 +1,4 @@
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
@@ -11,17 +12,18 @@ export const Input = ({
   name,
   placeholder,
   label,
-  error = false,
   type = 'text',
   disabled = false,
   onBlur = () => ({}),
   copy = true,
   tooltip = null,
+  dynamicErrorSpace = false,
 }) => {
   const ref = useRef(null);
 
   const {
     field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur },
+    fieldState: { error },
   } = useController({ name, control });
 
   // We want to avoid React error when value is null
@@ -83,7 +85,7 @@ export const Input = ({
           </div>
         )}
       </div>
-      <div className={cn.errorWrapper}>{error && <p className={cn.error}>{error}</p>}</div>
+      <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

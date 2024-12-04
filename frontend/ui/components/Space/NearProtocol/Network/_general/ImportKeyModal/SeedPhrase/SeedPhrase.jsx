@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
 import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
+import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { Textarea } from '../../../../../../_general/Textarea/Textarea.jsx';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { CloseCircleOutline } from '../../../../../../_general/icons/CloseCircleOutline.jsx';
 import { Input } from '../../../../../../_general/Input/Input.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -46,18 +46,15 @@ export const SeedPhrase = ({ closeModal }) => {
     }
   }, [derivationPath]);
 
-  const onSubmit = (formValues) => {
+  const onSubmit = handleSubmit((formValues) => {
     importFromSeedPhrase({ formValues, spaceId, networkId, closeModal });
-  };
+  });
 
   return (
-    <form className={cn.seedPhrase} onSubmit={handleSubmit(onSubmit)}>
-      <div className={cn.container}>
-        <h1 className={cn.title}>Import from Seed phrase</h1>
-        <Button color="tertiary" size="small" IconLeft={CloseCircleOutline} onClick={closeModal} />
-      </div>
-      <div className={cn.wrapper}>
-        <p className={cn.subtitle}>
+    <div className={cn.seedPhraseContainer}>
+      <div className={cn.topWrapper}>
+        <ModalHeader title="Import from Seed phrase" close={closeModal} />
+        <p className={cn.description}>
           Enter the 12-words seed phrase without extra spaces or symbols.
         </p>
         <Textarea
@@ -67,29 +64,33 @@ export const SeedPhrase = ({ closeModal }) => {
           error={errors?.seedPhrase?.message}
           placeholder="word word word word word word word word word word word word "
         />
+        <div className={cn.textareaWrapper}>
+          <Input
+            control={control}
+            label="Derivation path"
+            rows={1}
+            copy={false}
+            name="derivationPath"
+            placeholder="m/44'/397'/0"
+            error={errors?.derivationPath?.message}
+            tooltip={
+              <Tooltip
+                content="A deterministic way to derive foreign addresses from one NEAR account."
+                placement="top"
+              >
+                <InfoCircleLinear />
+              </Tooltip>
+            }
+          />
+        </div>
       </div>
-      <Input
-        control={control}
-        label="Derivation path"
-        rows={1}
-        copy={false}
-        name="derivationPath"
-        placeholder="m/44'/397'/0"
-        error={errors?.derivationPath?.message}
-        tooltip={
-          <Tooltip
-            content="A deterministic way to derive foreign addresses from one NEAR account."
-            placement="top"
-          >
-            <InfoCircleLinear />
-          </Tooltip>
-        }
+      <ModalFooter
+        action={{
+          label: 'Import',
+          onClick: onSubmit,
+          disabled: !isValid,
+        }}
       />
-      <div className={cn.buttonWrapper}>
-        <Button size="medium" type="submit" disabled={!isValid}>
-          Import
-        </Button>
-      </div>
-    </form>
+    </div>
   );
 };

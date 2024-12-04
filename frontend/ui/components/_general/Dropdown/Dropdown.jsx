@@ -3,6 +3,7 @@ import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
 import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { selectStyles } from './dropdown.style.js';
 import cn from './Dropdown.module.scss';
 
@@ -10,6 +11,7 @@ export const Dropdown = ({
   onChange = () => ({}),
   options,
   error,
+  dynamicErrorSpace = false,
   isDisabled,
   value = null,
   creatableSelect = false,
@@ -45,7 +47,7 @@ export const Dropdown = ({
         components={{ ...components }}
         styles={style}
       />
-      {error && <p className={cn.error}>{error}</p>}
+      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

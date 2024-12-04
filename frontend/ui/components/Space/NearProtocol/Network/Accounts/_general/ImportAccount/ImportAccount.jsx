@@ -7,6 +7,7 @@ import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/Modal
 import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
+import cn from './ImportAccount.module.scss';
 
 export const ImportAccount = ({ setOpen }) => {
   const { spaceId, networkId } = useParams();
@@ -39,22 +40,24 @@ export const ImportAccount = ({ setOpen }) => {
   });
 
   return (
-    <BaseModal close={closeModal}>
+    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
       <ModalHeader title="Import account" close={closeModal} />
-      <Input
-        control={control}
-        name="accountId"
-        error={errors?.accountId?.message}
-        placeholder="name.near"
-        label="Enter an Account ID. You can also add accounts that are not yet on-chain."
-      />
-      <Input
-        control={control}
-        name="note"
-        error={errors?.note?.message}
-        placeholder="Work account"
-        label="Leave a short note about this account (optionally)."
-      />
+      <div className={cn.inputs}>
+        <Input
+          control={control}
+          name="accountId"
+          error={errors?.accountId?.message}
+          placeholder="name.near"
+          label="Enter an Account ID. You can also add accounts that are not yet on-chain."
+        />
+        <Input
+          control={control}
+          name="note"
+          error={errors?.note?.message}
+          placeholder="Work account"
+          label="Leave a short note about this account (optionally)."
+        />
+      </div>
       <ModalFooter
         action={{
           label: 'Import',

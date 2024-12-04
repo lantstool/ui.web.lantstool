@@ -12,7 +12,7 @@
 .labelWrapper {
   display: flex;
   justify-content: space-between;
-  margin: 0 0 10px 0;
+  margin-bottom: 8px;
 }
 
 .label {
@@ -110,16 +110,4 @@
 
 .icon {
   fill: $neutral-600;
-}
-
-.errorWrapper {
-  margin: 8px 0 0 0;
-  height: 20px;
-}
-
-.error {
-  @include text-xs-regular;
-  padding: 0;
-  margin: 0;
-  color: $red-600;
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button } from '../../../../../../../../_general/Button/Button.jsx';
+import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import cn from './OuterLink.module.scss';
 
 export const OuterLink = ({ link: { type, url } }) => (

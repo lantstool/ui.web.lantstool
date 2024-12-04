@@ -1,5 +1,5 @@
 // Account
-import { GetAccount } from './account/GetAccount.jsx';
+import { GetAccount } from './account/GetAccount/GetAccount.jsx';
 import { GetAccountChanges } from './account/GetAccountChanges.jsx';
 // Contract
 import { GetContractWasm } from './contract/GetContractWasm.jsx';

@@ -12,7 +12,11 @@ const finalityOptions = [
 ];
 
 export const BlockTarget = ({ form }) => {
-  const { control, register } = form;
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = form;
 
   const blockTarget = useWatch({ control, name: 'blockTarget' });
 
@@ -35,6 +39,7 @@ export const BlockTarget = ({ form }) => {
             control={control}
             options={finalityOptions}
             tooltip={<Tooltip content="Last block" placement="top" defaultContent />}
+            dynamicErrorSpace
           />
         )}
         {blockTarget === 'specific' && (
@@ -43,6 +48,8 @@ export const BlockTarget = ({ form }) => {
             control={control}
             label="Block Id"
             tooltip={<Tooltip content="Block id" placement="top" defaultContent />}
+            error={errors?.blockId?.message}
+            dynamicErrorSpace
           />
         )}
       </div>
