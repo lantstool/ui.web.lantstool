@@ -25,9 +25,9 @@ export const Arguments = ({ form }) => {
       <div className={cn.controlPanel}>
         <p className={cn.subtitle}>json</p>
         <div className={cn.btnWrapper}>
-          <Tooltip content="Format" placement="top" arrow={false}>
-            <button className={cn.format} />
-          </Tooltip>
+          {/*<Tooltip content="Format" placement="top" arrow={false}>*/}
+          {/*  <button className={cn.format} />*/}
+          {/*</Tooltip>*/}
           <Tooltip content="Copy" placement="top" arrow={false}>
             <CopyButton value={args} />
           </Tooltip>
