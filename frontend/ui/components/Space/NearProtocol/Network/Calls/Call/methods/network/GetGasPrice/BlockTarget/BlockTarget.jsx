@@ -26,6 +26,7 @@ export const BlockTarget = ({ form }) => {
               name="blockId"
               control={control}
               label="Block Id"
+              dynamicErrorSpace
               tooltip={<Tooltip content="Block id" placement="top" defaultContent />}
             />
           </div>

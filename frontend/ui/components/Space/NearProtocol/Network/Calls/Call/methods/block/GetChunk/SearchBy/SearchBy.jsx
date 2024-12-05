@@ -24,6 +24,7 @@ export const SearchType = ({ form }) => {
           name="chunkId"
           control={control}
           label="Chunk Id"
+          dynamicErrorSpace
           tooltip={<Tooltip content="Chunk Id" placement="top" defaultContent />}
         />
       )}
@@ -39,6 +40,7 @@ export const SearchType = ({ form }) => {
             name="shardId"
             control={control}
             label="Shard Id"
+            dynamicErrorSpace
             tooltip={<Tooltip content="Shard Id" placement="top" defaultContent />}
           />
         </>

@@ -25,6 +25,7 @@ export const EpochTarget = ({ form }) => {
               name="epochId"
               control={control}
               label="Epoch Id"
+              dynamicErrorSpace
               tooltip={<Tooltip content="Epoch id" placement="top" defaultContent />}
             />
           </div>

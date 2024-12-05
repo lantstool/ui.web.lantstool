@@ -1,6 +1,6 @@
 // Account
 import { GetAccount } from './account/GetAccount/GetAccount.jsx';
-import { GetAccountChanges } from './account/GetAccountChanges.jsx';
+import { GetAccountChanges } from './account/GetAccountChanges/GetAccountChanges.jsx';
 // Contract
 import { GetContractWasm } from './contract/GetContractWasm.jsx';
 import { GetContractState } from './contract/GetContractState.jsx';

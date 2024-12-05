@@ -17,8 +17,7 @@ export const WaitUntil = ({ control }) => (
     options={options}
     control={control}
     isSearchable
-    isClearable
-    creatableSelect
+    copy={false}
     tooltip={<Tooltip content="Wait until" placement="top" defaultContent />}
   />
 );

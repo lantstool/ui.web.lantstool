@@ -25,7 +25,7 @@ export const AccountKeyPairs = ({ form, accountKeyPairs }) => {
   const add = () => append({ accountId: null, publicKey: null });
 
   return (
-    <>
+    <div className={cn.accountKeyPairs}>
       <div className={cn.list}>
         {list.map((field, index) => (
           <AccountKeyPair
@@ -41,6 +41,6 @@ export const AccountKeyPairs = ({ form, accountKeyPairs }) => {
       <Button IconLeft={AddSquareOutline} size="medium" color="secondary" onClick={add}>
         Add Pair
       </Button>
-    </>
+    </div>
   );
 };

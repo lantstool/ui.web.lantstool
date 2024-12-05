@@ -1,7 +1,7 @@
 import { useStoreEffect } from '@react-vault';
 import { useState } from 'react';
-import { ServerSquareOutline } from '../../../../../../../../../../_general/icons/ServerSquareOutline.jsx';
-import { ArchiveOutline } from '../../../../../../../../../../_general/icons/ArchiveOutline.jsx';
+import { TabContainer } from '../../../../../../../../../../_general/tab/TabContainer/TabContainer.jsx';
+import { TabButton } from '../../../../../../../../../../_general/tab/TabButton/TabButton.jsx';
 import cn from './RpcType.module.scss';
 
 export const RpcType = ({ call }) => {
@@ -15,21 +15,21 @@ export const RpcType = ({ call }) => {
   };
 
   return (
-    <div className={cn.tab}>
-      <button
+    <TabContainer>
+      <TabButton
+        isActive={isActive('regular')}
         onClick={() => onClick('regular')}
-        className={isActive('regular') ? cn.activeButton : cn.button}
+        Icon={<span className={isActive('regular') ? cn.regularIconBold : cn.regularIcon} />}
       >
-        <ServerSquareOutline style={cn.icon} />
         Regular
-      </button>
-      <button
+      </TabButton>
+      <TabButton
+        isActive={isActive('archival')}
         onClick={() => onClick('archival')}
-        className={isActive('archival') ? cn.activeButton : cn.button}
+        Icon={<span className={isActive('archival') ? cn.archivalIconBold : cn.archivalIcon} />}
       >
-        <ArchiveOutline style={cn.icon} />
         Archival
-      </button>
-    </div>
+      </TabButton>
+    </TabContainer>
   );
 };
