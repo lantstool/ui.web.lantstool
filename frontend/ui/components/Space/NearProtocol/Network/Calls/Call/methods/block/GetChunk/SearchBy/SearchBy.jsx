@@ -4,7 +4,7 @@ import { Input } from '../../../../../../../../../_general/Input/Input.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './SearchBy.module.scss';
 
-export const SearchType = ({ form }) => {
+export const SearchBy = ({ form }) => {
   const { control, register } = form;
 
   const searchType = useWatch({ control, name: 'searchType' });
@@ -29,7 +29,7 @@ export const SearchType = ({ form }) => {
         />
       )}
       {searchType === 'inBlock' && (
-        <>
+        <div className={cn.blockWrapper}>
           <Input
             name="blockId"
             control={control}
@@ -43,7 +43,7 @@ export const SearchType = ({ form }) => {
             dynamicErrorSpace
             tooltip={<Tooltip content="Shard Id" placement="top" defaultContent />}
           />
-        </>
+        </div>
       )}
     </div>
   );

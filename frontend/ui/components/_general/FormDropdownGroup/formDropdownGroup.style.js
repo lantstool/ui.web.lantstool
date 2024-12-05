@@ -7,6 +7,7 @@ export const selectStyles = (error) => {
     ...styles,
     control: (baseStyles, state) => ({
       ...styles.control(baseStyles, state),
+      cursor: 'pointer',
       border: 'none',
       height: '40px',
       width: '100%',

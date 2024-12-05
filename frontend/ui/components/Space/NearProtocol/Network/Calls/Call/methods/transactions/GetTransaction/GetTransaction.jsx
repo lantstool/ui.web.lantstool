@@ -1,11 +1,12 @@
-import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDropdown.jsx';
-import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
-import { Form } from '../_general/Form/Form.jsx';
-import { Input } from '../../../../../../../_general/Input/Input.jsx';
-import { WaitUntil } from './_general/WaitUntil.jsx';
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { MethodDescription } from '../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
+import { Form } from '../../_general/Form/Form.jsx';
+import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { WaitUntil } from '.././_general/WaitUntil.jsx';
+import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { schema } from './schema.js';
 
 export const GetTransaction = ({ call, draft }) => {
   const options = useAccountsOptions();
@@ -13,6 +14,7 @@ export const GetTransaction = ({ call, draft }) => {
     <Form
       call={call}
       draft={draft}
+      schema={schema}
       methodDescription={
         <MethodDescription
           description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."

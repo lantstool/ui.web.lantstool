@@ -1,14 +1,16 @@
-import { Form } from '../_general/Form/Form.jsx';
-import { Input } from '../../../../../../../_general/Input/Input.jsx';
-import { MethodDescription } from '../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../_general/ConfigureTitle/ConfiguresTitle.jsx';
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Form } from '../../_general/Form/Form.jsx';
+import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { schema } from './schema.js';
 
 export const GetReceipt = ({ call, draft }) => {
   return (
     <Form
       call={call}
       draft={draft}
+      schema={schema}
       methodDescription={
         <MethodDescription
           description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."

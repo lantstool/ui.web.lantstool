@@ -33,9 +33,6 @@
   @include wrapper($neutral-200);
   &:hover {
     border-color: $neutral-400;
-    * {
-      cursor: pointer;
-    }
     .borderDefault {
       background-color: $neutral-400;
     }

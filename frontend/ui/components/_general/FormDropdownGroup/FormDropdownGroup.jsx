@@ -15,7 +15,6 @@ export const FormDropdownGroup = ({
   control,
   name,
   options,
-  error,
   disabled,
   creatableSelect = false,
   isSearchable = false,
@@ -25,45 +24,44 @@ export const FormDropdownGroup = ({
   label = null,
   tooltip = null,
   onClick,
-  actionDisabled=false,
+  actionDisabled = false,
   dynamicErrorSpace,
   iconStyles,
   actionText = null,
 }) => {
-
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
   const components = { DropdownIndicator, ClearIndicator, ...(copy && { IndicatorsContainer }) };
-  const style = selectStyles(error);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
   return (
-    <div className={cn.formDropdownGroup}>
-      {label && (
-        <div className={cn.labelWrapper}>
-          <label className={cn.label}>{label}</label>
-          {tooltip}
-        </div>
-      )}
-      <div
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        className={cnm({
-          [cn.wrapperError]: error,
-          [cn.wrapperDisabled]: disabled,
-          [cn.wrapperFocused]: isFocused && !error && !disabled,
-          [cn.wrapperDefault]: !error && !disabled && !isFocused,
-        })}
-      >
-        <div className={cn.dropdownWrapper}>
-          <Controller
-            name={name}
-            control={control}
-            render={({ field }) => {
-              const innerOnChange = onChange ? onChange(field) : field.onChange;
-              return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState: { error } }) => {
+        const style = selectStyles(error);
+        const innerOnChange = onChange ? onChange(field) : field.onChange;
+        return (
+          <div className={cn.formDropdownGroup}>
+            {label && (
+              <div className={cn.labelWrapper}>
+                <label className={cn.label}>{label}</label>
+                {tooltip}
+              </div>
+            )}
+            <div
+              onBlur={handleBlur}
+              onFocus={handleFocus}
+              className={cnm({
+                [cn.wrapperError]: error,
+                [cn.wrapperDisabled]: disabled,
+                [cn.wrapperFocused]: isFocused && !error && !disabled,
+                [cn.wrapperDefault]: !error && !disabled && !isFocused,
+              })}
+            >
+              <div className={cn.dropdownWrapper}>
                 <SelectComponent
                   {...field}
                   onChange={innerOnChange}
@@ -75,19 +73,19 @@ export const FormDropdownGroup = ({
                   components={{ ...components }}
                   styles={style}
                 />
-              );
-            }}
-          />
-        </div>
-        <hr className={error ? cn.borderError : cn.borderDefault} />
-        {iconStyles && (
-          <button disabled={actionDisabled} onClick={onClick} className={cn.actionBtn}>
-            <span className={cnm(cn.icon, iconStyles)} />
-          </button>
-        )}
-        {actionText && <p className={cn.text}>{actionText}</p>}
-      </div>
-      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
-    </div>
+              </div>
+              <hr className={error ? cn.borderError : cn.borderDefault} />
+              {iconStyles && (
+                <button disabled={actionDisabled} onClick={onClick} className={cn.actionBtn}>
+                  <span className={cnm(cn.icon, iconStyles)} />
+                </button>
+              )}
+              {actionText && <p className={cn.text}>{actionText}</p>}
+            </div>
+            <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
+          </div>
+        );
+      }}
+    />
   );
 };

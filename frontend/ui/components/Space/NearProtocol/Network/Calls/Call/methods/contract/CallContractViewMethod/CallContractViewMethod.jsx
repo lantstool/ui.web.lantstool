@@ -5,6 +5,7 @@ import { Arguments } from './Arguments/Arguments.jsx';
 import { Form } from '../../_general/Form/Form.jsx';
 import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { schema } from './schema.js';
 
 export const CallContractViewMethod = ({ call, draft }) => {
   // TODO add custom validation for the form
@@ -12,6 +13,7 @@ export const CallContractViewMethod = ({ call, draft }) => {
     <Form
       call={call}
       draft={draft}
+      schema={schema}
       methodDescription={
         <MethodDescription
           description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
