@@ -114,12 +114,3 @@
 .icon {
   background-color: $neutral-600;
 }
-
-.text {
-  @include text-sm-regular;
-  display: flex;
-  align-items: center;
-  min-width: max-content;
-  max-width: 300px;
-  padding: 8px 12px;
-}

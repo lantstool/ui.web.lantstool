@@ -27,7 +27,6 @@ export const FormDropdownGroup = ({
   actionDisabled = false,
   dynamicErrorSpace,
   iconStyles,
-  actionText = null,
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
   const components = { DropdownIndicator, ClearIndicator, ...(copy && { IndicatorsContainer }) };
@@ -75,12 +74,9 @@ export const FormDropdownGroup = ({
                 />
               </div>
               <hr className={error ? cn.borderError : cn.borderDefault} />
-              {iconStyles && (
-                <button disabled={actionDisabled} onClick={onClick} className={cn.actionBtn}>
-                  <span className={cnm(cn.icon, iconStyles)} />
-                </button>
-              )}
-              {actionText && <p className={cn.text}>{actionText}</p>}
+              <button disabled={actionDisabled} onClick={onClick} className={cn.actionBtn}>
+                <span className={cnm(cn.icon, iconStyles)} />
+              </button>
             </div>
             <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
           </div>
