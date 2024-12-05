@@ -1,16 +1,29 @@
-// import cn from './Modal.module.scss';
-
 import { ModalFooter } from '../../../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { RpcForm } from '../../../../../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
+import { useRpcForm } from '../../../../../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
+import cn from './AddManually.module.scss';
 
 export const AddManually = () => {
+  const form = useRpcForm({
+    rpcName: 'Fast 2',
+    url: 'https://test.rpc.fastnear.com',
+    withHeader: false,
+    header: null,
+  });
+
+  const onSubmit = form.handleSubmit((formValues) => {
+    console.log(formValues);
+  });
+
   return (
     <>
-      <div>AddManually</div>
+      <RpcForm form={form} classes={{ container: cn.rpcForm }}/>
       <ModalFooter
         action={{
           label: 'Add',
-          onClick: () => {},
+          onClick: onSubmit,
         }}
+        classes={{ container: cn.modalFooter}}
       />
     </>
   );

@@ -7,25 +7,29 @@ import { SelectPredefined } from './SelectPredefined/SelectPredefined.jsx';
 import { AddManually } from './AddManually/AddManually.jsx';
 import cn from './Modal.module.scss';
 
-export const Modal = ({ close }) => {
-  const [viewMode, setViewMode] = useState('selectPredefined');
+export const Modal = ({ network, close }) => {
+  const hasAvailablePredefinedRpcs = false;
+  const initTab = hasAvailablePredefinedRpcs ? 'selectPredefined' : 'addManually';
+  const [tab, setTab] = useState(initTab);
 
   return (
-    <BaseModal close={close}>
-      <ModalHeader title="Add RPC" close={close} />
-      <TabContainer>
-        <TabButton
-          onClick={() => setViewMode('selectPredefined')}
-          isActive={viewMode === 'selectPredefined'}
-        >
-          Select predefined
-        </TabButton>
-        <TabButton onClick={() => setViewMode('addManually')} isActive={viewMode === 'addManually'}>
-          Add manually
-        </TabButton>
-      </TabContainer>
-      {viewMode === 'selectPredefined' && <SelectPredefined />}
-      {viewMode === 'addManually' && <AddManually />}
+    <BaseModal close={close} classes={{ modal: cn.modal }}>
+      <ModalHeader title="Add RPC" close={close} classes={{ container: cn.headerContainer }} />
+      {hasAvailablePredefinedRpcs && (
+        <TabContainer>
+          <TabButton
+            onClick={() => setTab('selectPredefined')}
+            isActive={tab === 'selectPredefined'}
+          >
+            Select predefined
+          </TabButton>
+          <TabButton onClick={() => setTab('addManually')} isActive={tab === 'addManually'}>
+            Add manually
+          </TabButton>
+        </TabContainer>
+      )}
+      {tab === 'selectPredefined' && <SelectPredefined />}
+      {tab === 'addManually' && <AddManually />}
     </BaseModal>
   );
 };

@@ -11,32 +11,6 @@
   gap: 16px;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 8px;
-}
-
-.checkboxContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.label {
-  @include text-mg-regular;
-  color: $neutral-700;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 164px auto;
-  gap: 16px;
-}
-
 .buttonWrapper {
   min-height: 88px;
 }

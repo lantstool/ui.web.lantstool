@@ -6,7 +6,7 @@ export const RpcNodes = ({ network }) => (
   <div className={cn.rpcNodes}>
     <div className={cn.topbar}>
       <h1 className={cn.title}>RPC Nodes</h1>
-      <AddRpc />
+      <AddRpc network={network} />
     </div>
     <div className={cn.card}>
       <Group

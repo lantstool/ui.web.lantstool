@@ -3,7 +3,7 @@ import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { Modal } from './Modal/Modal.jsx';
 import cn from './AddRpc.module.scss';
 
-export const AddRpc = () => {
+export const AddRpc = ({ network }) => {
   const [isOpen, setOpen] = useState(true);
 
   const open = () => setOpen(true);
@@ -19,7 +19,7 @@ export const AddRpc = () => {
       >
         Add RPC
       </Button>
-      {isOpen && <Modal close={close} />}
+      {isOpen && <Modal close={close} network={network} />}
     </>
   );
 };
