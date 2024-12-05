@@ -42,7 +42,6 @@ export const Arguments = ({ form }) => {
           control={control}
           render={({ field }) => {
             const value = field.value ? field.value : '';
-            console.log(value);
             return (
               <CodeMirror
                 {...field}
