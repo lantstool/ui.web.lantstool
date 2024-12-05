@@ -3,6 +3,8 @@ import { TrashBinOutline } from '../../../../../../../../../../_general/icons/Tr
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '../../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
+import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Label } from '../../../../../../../../../../_general/Label/Label.jsx';
 import cn from './AccountKeyPair.module.scss';
 
 export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => {
@@ -17,32 +19,35 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
   };
 
   return (
-    <div className={cn.row}>
-      <div className={cn.dropdowns}>
-        <FormDropdown
-          name={getName('accountId')}
-          label="Account Id"
-          control={control}
-          options={accountOptions}
-          onChange={onAccountChange}
-          isSearchable
-          isClearable
-          creatableSelect
-        />
-        <FormDropdown
-          name={getName('publicKey')}
-          label="Public key"
-          control={control}
-          options={keyOptions}
-          isSearchable
+    <div className={cn.accountKeyPair}>
+      <div className={cn.container}>
+        <Label color="grey">Pair</Label>
+        <Button
+          IconLeft={TrashBinOutline}
+          size="small"
+          color="tertiary"
+          onClick={() => remove(index)}
+          disabled={isDisabled}
         />
       </div>
-      <Button
-        IconLeft={TrashBinOutline}
-        size="large"
-        color="secondary"
-        onClick={() => remove(index)}
-        disabled={isDisabled}
+      <FormDropdown
+        name={getName('accountId')}
+        label="Account Id"
+        control={control}
+        options={accountOptions}
+        onChange={onAccountChange}
+        isSearchable
+        isClearable
+        creatableSelect
+        tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
+      />
+      <FormDropdown
+        name={getName('publicKey')}
+        label="Public key"
+        control={control}
+        options={keyOptions}
+        isSearchable
+        tooltip={<Tooltip content="Publick Key" placement="top" defaultContent />}
       />
     </div>
   );

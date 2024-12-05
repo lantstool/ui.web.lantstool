@@ -1,43 +1,23 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
-.tab {
-  border-radius: 8px;
-  display: flex;
-  padding: 4px;
-  justify-content: start;
-  align-items: center;
-  gap: 2px;
-  background-color: $neutral-100;
-  width: max-content;
+.regularIcon {
+  @include icon('@assets/icons/server-square-outline.svg');
+  background-color: $neutral-600;
 }
 
-.button {
-  @include text-sm-medium;
-  display: flex;
-  gap: 4px;
-  height: 24px;
-  padding: 2px 16px;
-  justify-content: center;
-  align-items: center;
-  color: $neutral-700;
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
+.regularIconBold {
+  @include icon('@assets/icons/server-square-bold.svg');
+  background-color: $neutral-800;
 }
 
-.activeButton {
-  @extend .button;
-  border-radius: 4px;
-  background: $neutral-00;
-  color: $neutral-800;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.07);
-  .icon {
-    fill: $neutral-800;
-  }
+.archivalIcon {
+  @include icon('@assets/icons/archive-outline.svg');
+  background-color: $neutral-600;
 }
 
-.icon {
-  fill: $neutral-700;
+.archivalIconBold {
+  @include icon('@assets/icons/archive-bold.svg');
+  background-color: $neutral-800;
 }

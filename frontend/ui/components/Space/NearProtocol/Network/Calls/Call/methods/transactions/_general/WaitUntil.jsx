@@ -1,4 +1,5 @@
 import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
 const options = [
   { value: 'NONE', label: 'None' },
@@ -16,7 +17,7 @@ export const WaitUntil = ({ control }) => (
     options={options}
     control={control}
     isSearchable
-    isClearable
-    creatableSelect
+    copy={false}
+    tooltip={<Tooltip content="Wait until" placement="top" defaultContent />}
   />
 );

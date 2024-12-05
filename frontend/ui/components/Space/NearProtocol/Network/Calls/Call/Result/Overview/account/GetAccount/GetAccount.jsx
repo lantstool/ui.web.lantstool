@@ -19,8 +19,8 @@ export const GetAccount = ({ result, formValues }) => {
   return (
     <div className={cn.getAccount}>
       <Item title="Account ID" data={formValues.accountId.value} icon={accountCircleOutline} />
-      <Item title="Account balance" data={balance} icon={walletOutline} />
-      <Item title="Storage used" data={storageUsage} icon={storageSquareOutline} />
+      <Item title="Account balance" data={`${balance} NEAR`} icon={walletOutline} />
+      <Item title="Storage used" data={`${storageUsage} KB`} icon={storageSquareOutline} />
       <Item
         title="Has deployed contract"
         data={hasDeployedContract ? 'Yes' : 'No'}

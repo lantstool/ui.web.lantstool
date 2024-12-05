@@ -14,6 +14,7 @@ export const Tooltip = ({
   style,
   duration = 20,
   disabled = false,
+  defaultContent = false,
 }) => {
   return (
     <>
@@ -25,7 +26,10 @@ export const Tooltip = ({
         placement={placement}
         duration={duration}
       >
-        <div className={style}>{children}</div>
+        <div className={style ? style : cn.defaultStyle}>
+          {defaultContent && <span className={cn.defaultIcon} />}
+          {children}
+        </div>
       </Tippy>
     </>
   );

@@ -1,5 +1,6 @@
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { useDropdownOptions } from './useDropdownOptions.js';
+import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
 export const MethodName = ({ control }) => {
   const options = useDropdownOptions(control);
@@ -12,6 +13,8 @@ export const MethodName = ({ control }) => {
       isSearchable
       isClearable
       creatableSelect
+      tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
+
     />
   );
 };

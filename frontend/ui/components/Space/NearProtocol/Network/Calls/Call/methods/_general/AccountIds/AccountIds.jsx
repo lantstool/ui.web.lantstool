@@ -1,9 +1,9 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { Button } from '../../../../../../../../_general/Button/Button.jsx';
-import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
-import { TrashBinOutline } from '../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { AddSquareOutline } from '../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
+import { FormDropdownGroup } from '../../../../../../../../_general/FormDropdownGroup/FormDropdownGroup.jsx';
+import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './AccountIds.module.scss';
 
 const getPlaceholderData = (accountIds) =>
@@ -34,31 +34,26 @@ export const AccountIds = ({ form, accountIds }) => {
   const add = () => append({ accountId: null });
 
   return (
-    <>
-      <p>Select accounts your want to check</p>
+    <div className={cn.accountIds}>
       {list.map((field, index) => (
-        <div className={cn.row} key={field.id}>
-          <FormDropdown
-            name={`accountIds.${index}.accountId`}
-            label="Account Id"
-            control={control}
-            options={options}
-            isSearchable
-            isClearable
-            creatableSelect
-          />
-          <Button
-            IconLeft={TrashBinOutline}
-            size="large"
-            color="secondary"
-            onClick={() => remove(index)}
-            disabled={list.length < 2}
-          />
-        </div>
+        <FormDropdownGroup
+          key={field.id}
+          name={`accountIds.${index}.accountId`}
+          label="Account Id"
+          control={control}
+          options={options}
+          isSearchable
+          isClearable
+          creatableSelect
+          onClick={() => remove(index)}
+          actionDisabled={list.length < 2}
+          tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
+          iconStyles={cn.deleteIcon}
+        />
       ))}
       <Button IconLeft={AddSquareOutline} size="medium" color="secondary" onClick={add}>
         Add Account
       </Button>
-    </>
+    </div>
   );
 };

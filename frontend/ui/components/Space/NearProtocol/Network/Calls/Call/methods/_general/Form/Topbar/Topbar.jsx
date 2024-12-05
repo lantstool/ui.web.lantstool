@@ -7,7 +7,6 @@ import { dateFormatter } from '../../../../../../../../../../../store/helpers/fo
 import { TrashBinOutline } from '../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { DuplicateOutline } from '../../../../../../../../../_general/icons/DuplicateOutline.jsx';
 import { ExportLinear } from '../../../../../../../../../_general/icons/ExportLinear.jsx';
-import { InfoCircleLinear } from '../../../../../../../../../_general/icons/InfoCircleLinear.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { useState } from 'react';
@@ -53,10 +52,8 @@ export const Topbar = ({ call }) => {
       <hr className={cn.border} />
       <div className={cn.rpcContainer}>
         <div className={cn.wrapper}>
+          <Tooltip style={cn.tooltip} content="Rpc server" placement="top" defaultContent />
           <p className={cn.title}>RPC server</p>
-          <Tooltip style={cn.tooltip} placement="top" content={'Rpc server'}>
-            <InfoCircleLinear />
-          </Tooltip>
         </div>
         <RpcType call={call} />
         {isOpen && <DeleteModal call={call} setOpen={setOpen} />}

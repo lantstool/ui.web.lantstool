@@ -1,35 +1,35 @@
 // Account
 import { GetAccount } from './account/GetAccount/GetAccount.jsx';
-import { GetAccountChanges } from './account/GetAccountChanges.jsx';
+import { GetAccountChanges } from './account/GetAccountChanges/GetAccountChanges.jsx';
 // Contract
-import { GetContractWasm } from './contract/GetContractWasm.jsx';
-import { GetContractState } from './contract/GetContractState.jsx';
-import { GetContractWasmChanges } from './contract/GetContractWasmChanges.jsx';
-import { GetContractStateChanges } from './contract/GetContractStateChanges.jsx';
+import { GetContractWasm } from './contract/GetContractWasm/GetContractWasm.jsx';
+import { GetContractState } from './contract/GetContractState/GetContractState.jsx';
+import { GetContractWasmChanges } from './contract/GetContractWasmChanges/GetContractWasmChanges.jsx';
+import { GetContractStateChanges } from './contract/GetContractStateChanges/GetContractStateChanges.jsx';
 import { CallContractViewMethod } from './contract/CallContractViewMethod/CallContractViewMethod.jsx';
 // Keys
 import { GetAccountKey } from './keys/GetAccountKey/GetAccountKey.jsx';
 import { GetChangesForAccountKey } from './keys/GetChangesForAccountKey/GetChangesForAccountKey.jsx';
-import { GetAccountKeys } from './keys/GetAccountKeys.jsx';
-import { GetChangesForAccountKeys } from './keys/GetChangesForAccountKeys.jsx';
+import { GetAccountKeys } from './keys/GetAccountKeys/GetAccountKeys.jsx';
+import { GetChangesForAccountKeys } from './keys/GetChangesForAccountKeys/GetChangesForAccountKeys.jsx';
 // Block
-import { GetBlock } from './block/GetBlock.jsx';
-import { GetBlockChanges } from './block/GetBlockChanges.jsx';
+import { GetBlock } from './block/GetBlock/GetBlock.jsx';
+import { GetBlockChanges } from './block/GetBlockChanges/GetBlockChanges.jsx';
 import { GetChunk } from './block/GetChunk/GetChunk.jsx';
 // Transactions
-import { GetTransaction } from './transactions/GetTransaction.jsx';
-import { GetDetailedTransaction } from './transactions/GetDetailedTransaction.jsx';
-import { GetReceipt } from './transactions/GetReceipt.jsx';
+import { GetTransaction } from './transactions/GetTransaction/GetTransaction.jsx';
+import { GetDetailedTransaction } from './transactions/GetDetailedTransaction/GetDetailedTransaction.jsx';
+import { GetReceipt } from './transactions/GetReceipt/GetReceipt.jsx';
 // Protocol
 import { GetGenesisConfig } from './protocol/GetGenesisConfig.jsx';
-import { GetProtocolConfig } from './protocol/GetProtocolConfig.jsx';
+import { GetProtocolConfig } from './protocol/GetProtocolConfig/GetProtocolConfig.jsx';
 // Network
 import { GetNodeStatus } from './network/GetNodeStatus.jsx';
 import { GetNetworkInfo } from './network/GetNetworkInfo.jsx';
 import { GetGasPrice } from './network/GetGasPrice/GetGasPrice.jsx';
 // Validators
 import { GetValidators } from './validators/GetValidators/GetValidators.jsx';
-import { GetMaintenanceWindows } from './validators/GetMaintenanceWindows.jsx';
+import { GetMaintenanceWindows } from './validators/GetMaintenanceWindows/GetMaintenanceWindows.jsx';
 
 const methods = {
   // Account

@@ -31,6 +31,7 @@
 
 @mixin input {
   @include text-mg-regular;
+  color: $neutral-800;
   display: flex;
   justify-content: center;
   flex-direction: column;

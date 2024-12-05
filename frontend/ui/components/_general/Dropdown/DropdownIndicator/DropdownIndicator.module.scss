@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+@mixin icon($color) {
+  padding: 0;
+  fill: $color;
+  width: 16px;
+  height: 16px;
+}
+
 .button {
   width: 16px;
   height: 16px;
@@ -12,14 +19,14 @@
   border: none;
   background: none;
   cursor: pointer;
+  &:hover{
+    .iconEnabled{
+      @include icon($neutral-800);
+    }
+  }
 }
 
-@mixin icon($color) {
-  padding: 0;
-  fill: $color;
-  width: 16px;
-  height: 16px;
-}
+
 
 .iconEnabled {
   @include icon($neutral-600);

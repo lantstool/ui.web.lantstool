@@ -1,5 +1,6 @@
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
+import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
 export const ContractId = ({ control }) => {
   const options = useAccountsOptions();
@@ -12,6 +13,7 @@ export const ContractId = ({ control }) => {
       isSearchable
       isClearable
       creatableSelect
+      tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
     />
   );
 };
