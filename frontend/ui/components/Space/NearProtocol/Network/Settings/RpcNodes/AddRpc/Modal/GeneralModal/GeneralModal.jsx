@@ -33,7 +33,7 @@ export const GeneralModal = ({ network, availablePredefinedRpcs, close }) => {
           close={close}
         />
       )}
-      {tab === 'addManually' && <AddManually network={network} />}
+      {tab === 'addManually' && <AddManually network={network} close={close} />}
     </BaseModal>
   );
 };

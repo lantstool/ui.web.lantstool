@@ -11,7 +11,7 @@ export const addPredefinedRpc = effect(async ({ store, slice, payload }) => {
   const addRpc = slice.getActions((slice) => slice.addRpc);
 
   try {
-    await backend.sendRequest('nearProtocol.networks.addPredefinedRpc', {
+    await backend.sendRequest('nearProtocol.networks.addRpc', {
       spaceId: network.spaceId,
       networkId: network.networkId,
       rpcType,

@@ -1,6 +1,6 @@
 import { getOne } from './getOne.js';
 
-export const addPredefinedRpc = async ({ execute, request }) => {
+export const addRpc = async ({ execute, request }) => {
   try {
     const { spaceId, networkId, rpcType, rpc } = request.body;
 

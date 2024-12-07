@@ -10,6 +10,7 @@ export const UserCreatedRpc = ({
   spaceId,
   networkId,
   updateActiveRpc,
+  isLastRpcInList,
 }) => {
   const isSelected = groupActiveRpc.rpc?.id === rpc.id;
 
@@ -28,7 +29,7 @@ export const UserCreatedRpc = ({
         <h3 className={cn.name}>{rpc.name}</h3>
         <span className={cn.url}>{rpc.url}</span>
       </div>
-      <Menu />
+      <Menu isLastRpcInList={isLastRpcInList} />
     </div>
   );
 };

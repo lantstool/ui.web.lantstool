@@ -1,3 +1,4 @@
+import { useStoreEffect } from '@react-vault';
 import { BaseModal } from '../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { ModalFooter } from '../../../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
@@ -6,10 +7,13 @@ import { useRpcForm } from '../../../../../../../../_general/nearProtocol/RpcFor
 import cn from './ManualModal.module.scss';
 
 export const ManualModal = ({ network, close }) => {
+  const addUserDefinedRpc = useStoreEffect(
+    (store) => store.nearProtocol.networks.addUserDefinedRpc,
+  );
   const form = useRpcForm();
 
   const onSubmit = form.handleSubmit((formValues) => {
-    console.log(network.networkId, formValues);
+    addUserDefinedRpc({ network, formValues, close });
   });
 
   return (
