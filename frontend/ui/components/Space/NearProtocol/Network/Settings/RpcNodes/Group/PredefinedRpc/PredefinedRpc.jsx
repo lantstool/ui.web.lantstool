@@ -1,6 +1,6 @@
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import { SelectButton } from '../../_general/SelectButton/SelectButton.jsx';
-import {OuterLink } from '../../_general/OuterLink/OuterLink.jsx';
+import { OuterLink } from '../../_general/OuterLink/OuterLink.jsx';
 import cn from './PredefinedRpc.module.scss';
 
 // import all logos inside logos directory and create a logo map

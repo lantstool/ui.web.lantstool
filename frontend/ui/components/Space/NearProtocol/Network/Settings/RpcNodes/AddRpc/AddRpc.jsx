@@ -4,7 +4,7 @@ import { Modal } from './Modal/Modal.jsx';
 import cn from './AddRpc.module.scss';
 
 export const AddRpc = ({ network }) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
   const open = () => setOpen(true);
   const close = () => setOpen(false);

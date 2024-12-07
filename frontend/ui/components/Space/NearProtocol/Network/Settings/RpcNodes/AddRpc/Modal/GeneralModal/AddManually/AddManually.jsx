@@ -1,12 +1,12 @@
-import { ModalFooter } from '../../../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
-import { RpcForm } from '../../../../../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
-import { useRpcForm } from '../../../../../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
+import { ModalFooter } from '../../../../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { RpcForm } from '../../../../../../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
+import { useRpcForm } from '../../../../../../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
 import cn from './AddManually.module.scss';
 
 export const AddManually = () => {
   const form = useRpcForm({
-    rpcName: 'Fast 2',
-    url: 'https://test.rpc.fastnear.com',
+    rpcName: '',
+    url: '',
     withHeader: false,
     header: null,
   });
