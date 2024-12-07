@@ -1,0 +1,33 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.menuItem {
+  width: 100%;
+  min-width: 100px;
+  height: 32px;
+  background: $neutral-00;
+  margin: 0;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  &:hover {
+    background: $neutral-100;
+  }
+}
+
+.edit-rename-outline {
+  @include icon('@assets/icons/edit-rename-outline.svg');
+}
+
+.trash-bin-outline {
+  @include icon('@assets/icons/trash-bin-outline.svg');
+}
+
+.label {
+  @include text-sm-regular;
+  color: $neutral-700;
+}

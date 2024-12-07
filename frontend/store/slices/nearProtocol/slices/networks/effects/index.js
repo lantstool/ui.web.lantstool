@@ -6,6 +6,7 @@ import { updateActiveRpc } from './updateActiveRpc.js';
 import { removeOne } from './removeOne.js';
 import { addPredefinedRpc } from './addPredefinedRpc.js';
 import { addUserDefinedRpc } from './addUserDefinedRpc.js';
+import { removeRpc } from './removeRpc.js';
 
 export const effects = {
   createFromPreset,
@@ -16,4 +17,5 @@ export const effects = {
   removeOne,
   addPredefinedRpc,
   addUserDefinedRpc,
+  removeRpc,
 };

@@ -1,12 +1,13 @@
 import logoLantstool from '@assets/logoLantstool.svg';
-import { TabButtons } from '../../../_general/TabButtons/TabButtons.jsx';
+import { TabButton } from '../../../_general/tab/TabButton/TabButton.jsx';
+import { TabContainer } from '../../../_general/tab/TabContainer/TabContainer.jsx';
 import { useState } from 'react';
 import { Preset } from './Preset/Preset.jsx';
 import { Manually } from './Manually/Manually.jsx';
 import cn from './CreateNetwork.module.scss';
 
 export const CreateNetwork = () => {
-  const [creationType, setCreationType] = useState('preset');
+  const [tab, setTab] = useState('selectPredefined');
 
   return (
     <div className={cn.container}>
@@ -17,13 +18,20 @@ export const CreateNetwork = () => {
           Select from standard options or add your own. You can manage them later in settings.
         </p>
         <div className={cn.tab}>
-          <TabButtons toggle={creationType} changeToggle={setCreationType}>
-            <button value="preset">Select preset</button>
-            <button value="manually">Add manually</button>
-          </TabButtons>
+          <TabContainer>
+            <TabButton
+              onClick={() => setTab('selectPredefined')}
+              isActive={tab === 'selectPredefined'}
+            >
+              Select preset
+            </TabButton>
+            <TabButton onClick={() => setTab('addManually')} isActive={tab === 'addManually'}>
+              Add manually
+            </TabButton>
+          </TabContainer>
         </div>
-        {creationType === 'preset' && <Preset />}
-        {creationType === 'manually' && <Manually />}
+        {tab === 'selectPredefined' && <Preset />}
+        {tab === 'addManually' && <Manually />}
       </div>
     </div>
   );

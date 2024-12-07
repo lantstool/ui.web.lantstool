@@ -1,6 +1,7 @@
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import { SelectButton } from '../../_general/SelectButton/SelectButton.jsx';
 import { OuterLink } from '../../_general/OuterLink/OuterLink.jsx';
+import { Menu } from './Menu/Menu.jsx';
+import cnm from 'classnames';
 import cn from './PredefinedRpc.module.scss';
 
 // import all logos inside logos directory and create a logo map
@@ -19,6 +20,7 @@ export const PredefinedRpc = ({
   spaceId,
   networkId,
   updateActiveRpc,
+  isLastRpcInList,
 }) => {
   const logoUrl = logos[rpc.logo];
   const isSelected = groupActiveRpc.rpc?.id === rpc.id;
@@ -29,7 +31,7 @@ export const PredefinedRpc = ({
   };
 
   return (
-    <div className={cn.rpc}>
+    <div className={cnm(cn.rpc, isLastRpcInList && cn.rpcWithoutMenu)}>
       <div className={cn.selectButtonWrapper}>
         <SelectButton isSelected={isSelected} select={select} />
       </div>
@@ -43,9 +45,9 @@ export const PredefinedRpc = ({
           <OuterLink key={link.url} link={link} />
         ))}
       </div>
-      <div className={cn.menuButtonWrapper}>
-        <Button size="small" color="tertiary" IconLeft={() => <span className={cn.menuIcon} />} />
-      </div>
+      {!isLastRpcInList && (
+        <Menu rpc={rpc} rpcType={rpcType} spaceId={spaceId} networkId={networkId} />
+      )}
     </div>
   );
 };

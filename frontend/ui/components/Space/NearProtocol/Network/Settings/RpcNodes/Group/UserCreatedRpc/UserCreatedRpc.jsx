@@ -1,4 +1,4 @@
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
+import { Menu } from './Menu/Menu.jsx';
 import { SelectButton } from '../../_general/SelectButton/SelectButton.jsx';
 import defaultRpcLogo from '@assets/logos/default-rpc-logo.png';
 import cn from './UserCreatedRpc.module.scss';
@@ -28,9 +28,7 @@ export const UserCreatedRpc = ({
         <h3 className={cn.name}>{rpc.name}</h3>
         <span className={cn.url}>{rpc.url}</span>
       </div>
-      <div className={cn.menuButtonWrapper}>
-        <Button size="small" color="tertiary" IconLeft={() => <span className={cn.menuIcon} />} />
-      </div>
+      <Menu />
     </div>
   );
 };
