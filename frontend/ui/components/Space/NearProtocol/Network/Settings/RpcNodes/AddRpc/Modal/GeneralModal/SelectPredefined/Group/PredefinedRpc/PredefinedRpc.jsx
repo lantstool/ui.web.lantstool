@@ -11,12 +11,12 @@ for (const path in logoFiles) {
   logos[fileName] = logoFiles[path];
 }
 
-export const PredefinedRpc = ({ rpc, selectedRpcId, selectRpc }) => {
+export const PredefinedRpc = ({ rpc, rpcType, selectedRpc, selectRpc }) => {
   const logoUrl = logos[rpc.logo];
-  const isSelected = selectedRpcId === rpc.id;
+  const isSelected = selectedRpc?.id === rpc.id;
 
   const select = () => {
-    if (!isSelected) selectRpc(rpc.id);
+    if (!isSelected) selectRpc(rpc, rpcType);
   };
 
   return (

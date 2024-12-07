@@ -4,12 +4,7 @@ import { useRpcForm } from '../../../../../../../../../_general/nearProtocol/Rpc
 import cn from './AddManually.module.scss';
 
 export const AddManually = () => {
-  const form = useRpcForm({
-    rpcName: '',
-    url: '',
-    withHeader: false,
-    header: null,
-  });
+  const form = useRpcForm();
 
   const onSubmit = form.handleSubmit((formValues) => {
     console.log(formValues);

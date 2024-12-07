@@ -8,7 +8,6 @@ export const Balancer = ({ rpcType, autoBalance }) => {
   const updateActiveRpc = useStoreEffect((store) => store.nearProtocol.networks.updateActiveRpc);
 
   const onChange = () => {
-    if (autoBalance) return;
     updateActiveRpc({ spaceId, networkId, rpcType, autoBalance: true, rpc: null });
   };
 
@@ -28,6 +27,7 @@ export const Balancer = ({ rpcType, autoBalance }) => {
           ),
           placement: 'top',
         }}
+        disabled={autoBalance}
       />
     </div>
   );

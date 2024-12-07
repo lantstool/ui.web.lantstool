@@ -4,6 +4,7 @@ import { removeOneFromList } from './removeOneFromList.js';
 import { resetState } from './resetState.js';
 import { setToList } from './setToList.js';
 import { setActiveRpc } from './setActiveRpc.js';
+import { addRpc } from './addRpc.js';
 
 export const actions = {
   setOne,
@@ -12,4 +13,5 @@ export const actions = {
   removeOneFromList,
   resetState,
   setActiveRpc,
+  addRpc,
 };

@@ -1,17 +1,22 @@
+import { useStoreEffect } from '@react-vault';
 import { useForm, useWatch } from 'react-hook-form';
 import { ModalFooter } from '../../../../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { Group } from './Group/Group.jsx';
 import cn from './SelectPredefined.module.scss';
 
-export const SelectPredefined = ({ network, availablePredefinedRpcs }) => {
+export const SelectPredefined = ({ network, availablePredefinedRpcs, close }) => {
+  const addPredefinedRpc = useStoreEffect((store) => store.nearProtocol.networks.addPredefinedRpc);
   const { control, setValue, handleSubmit } = useForm();
 
-  const selectedRpcId = useWatch({ control, name: 'selectedRpcId' });
-  const selectRpc = (rpcId) => setValue('selectedRpcId', rpcId);
+  const selectedRpc = useWatch({ control, name: 'selectedRpc' });
+
+  const selectRpc = (rpc, rpcType) => {
+    setValue('selectedRpc', rpc);
+    setValue('rpcType', rpcType);
+  };
 
   const onSubmit = handleSubmit((formValues) => {
-    console.log(network);
-    console.log(formValues);
+    addPredefinedRpc({ network, formValues, close });
   });
 
   return (
@@ -21,14 +26,16 @@ export const SelectPredefined = ({ network, availablePredefinedRpcs }) => {
           <Group
             list={availablePredefinedRpcs.regular}
             title="Regular"
-            selectedRpcId={selectedRpcId}
+            selectedRpc={selectedRpc}
             selectRpc={selectRpc}
+            rpcType="regular"
           />
           <Group
             list={availablePredefinedRpcs.archival}
             title="Archival"
-            selectedRpcId={selectedRpcId}
+            selectedRpc={selectedRpc}
             selectRpc={selectRpc}
+            rpcType="archival"
           />
         </div>
       </div>
@@ -36,7 +43,7 @@ export const SelectPredefined = ({ network, availablePredefinedRpcs }) => {
         action={{
           label: 'Add',
           onClick: onSubmit,
-          disabled: !selectedRpcId,
+          disabled: !selectedRpc,
         }}
         classes={{ container: cn.modalFooter }}
       />

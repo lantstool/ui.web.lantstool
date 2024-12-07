@@ -27,7 +27,11 @@ export const GeneralModal = ({ network, availablePredefinedRpcs, close }) => {
         </TabContainer>
       </div>
       {tab === 'selectPredefined' && (
-        <SelectPredefined network={network} availablePredefinedRpcs={availablePredefinedRpcs} />
+        <SelectPredefined
+          network={network}
+          availablePredefinedRpcs={availablePredefinedRpcs}
+          close={close}
+        />
       )}
       {tab === 'addManually' && <AddManually network={network} />}
     </BaseModal>

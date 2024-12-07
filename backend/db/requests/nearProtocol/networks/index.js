@@ -7,6 +7,7 @@ import { updateActiveRpc } from './updateActiveRpc.js';
 import { removeOne } from './removeOne.js';
 import { validateNetworkId } from './validateNetworkId.js';
 import { createFromPreset } from './createFromPreset.js';
+import { addPredefinedRpc } from './addPredefinedRpc.js';
 
 export const networks = {
   createManually,
@@ -18,4 +19,5 @@ export const networks = {
   updateActiveRpc,
   removeOne,
   validateNetworkId,
+  addPredefinedRpc,
 };
