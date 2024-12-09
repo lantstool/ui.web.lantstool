@@ -130,7 +130,9 @@ const testnet = {
   },
 };
 
+// The presets order will determinate what preset will be active
+// on the Create Network page - it will be a first key
 export const presets = {
-  mainnet,
   testnet,
+  mainnet,
 };

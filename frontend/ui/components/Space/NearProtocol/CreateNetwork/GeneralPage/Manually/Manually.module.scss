@@ -1,0 +1,14 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.rpcFormContainer {
+  grid-area: e;
+  margin-top: 24px;
+  min-height: 314px;
+}
+
+.buttonWrapper {
+  grid-area: f;
+  justify-self: center;
+  margin-bottom: 40px;
+}
