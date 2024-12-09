@@ -3,7 +3,7 @@ import { Tooltip } from '../Tooltip/Tooltip.jsx';
 import cn from './Toggle.module.scss';
 import cnm from 'classnames';
 
-export const Toggle = ({ value , onChange, labelText, tooltip }) => {
+export const Toggle = ({ value , onChange, labelText, tooltip, disabled }) => {
   const toggle = () => {
     onChange(!value);
   };
@@ -14,6 +14,7 @@ export const Toggle = ({ value , onChange, labelText, tooltip }) => {
         className={cnm(cn.button, value && cn.buttonActive)}
         onClick={toggle}
         type="button"
+        disabled={disabled}
       >
         <div className={cnm(cn.circle, value && cn.circleActive)} />
       </button>

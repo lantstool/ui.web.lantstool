@@ -1,28 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useStoreAction } from '@react-vault';
-import { useEffect, Children, cloneElement, isValidElement } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { SelectMethod } from './SelectMethod/SelectMethod.jsx';
 import { Topbar } from './Topbar/Topbar.jsx';
 import { ActionBar } from './ActionBar/ActionBar.jsx';
+import { addPropsToChildren } from '../../../../../../../../../utils.js';
 import cn from './Form.module.scss';
-
-/*
- We want to pass some props from the form into child components to be able to use
- components, which depend on the 'form', 'control' etc. This func is recursive and add props
- on any depth and only to components - it doesn't touch plain html elements
- */
-const addPropsToChildren = (children = [], props = {}) =>
-  Children.map(children, (child) =>
-    isValidElement(child)
-      ? cloneElement(child, {
-          ...(typeof child.type === 'string' ? {} : props), // Add props only to components and skip plain html
-          children: child.props.children
-            ? addPropsToChildren(child.props.children, props)
-            : child.props.children,
-        })
-      : child,
-  );
 
 export const Form = ({ call, draft, children, methodDescription, schema }) => {
   const { callId } = call;
@@ -39,6 +23,11 @@ export const Form = ({ call, draft, children, methodDescription, schema }) => {
     return () => setDraft({ callId, draft: form.getValues() });
   }, [callId]);
 
+  /*
+   We want to pass some props from the form into child components to be able to use
+   components, which depend on the 'form', 'control' etc. This func is recursive and add props
+   on any depth and only to components - it doesn't touch plain html elements
+  */
   const childrenWithProps = addPropsToChildren(children, {
     form,
     callId,

@@ -15,6 +15,11 @@
   gap: 8px;
 }
 
+.rpcWithoutMenu {
+  grid-template-columns: 24px 32px auto max-content;
+  grid-template-areas: 'a b c d';
+}
+
 .selectButtonWrapper {
   grid-area: a;
   justify-self: center;

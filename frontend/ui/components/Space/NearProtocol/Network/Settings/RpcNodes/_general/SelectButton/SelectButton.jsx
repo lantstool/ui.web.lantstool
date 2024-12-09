@@ -1,11 +1,11 @@
 import cn from './SelectButton.module.scss';
 import cnm from 'classnames';
 
-export const SelectButton = ({ isSelected, select, isDisabled }) => (
+export const SelectButton = ({ isSelected, select, disabled }) => (
   <button
     className={cnm(cn.root, isSelected && cn.selectedRoot)}
     onClick={select}
-    disabled={isDisabled}
+    disabled={disabled}
   >
     <div />
   </button>

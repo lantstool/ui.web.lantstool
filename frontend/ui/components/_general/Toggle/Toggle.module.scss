@@ -15,6 +15,9 @@
   background-color: $neutral-400;
   padding: 2px;
   cursor: pointer;
+  &:disabled {
+    cursor: default;
+  }
 }
 
 .buttonActive {

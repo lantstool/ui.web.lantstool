@@ -1,6 +1,5 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
-@use '@styles/icons' as *;
 
 .rpc {
   display: grid;
@@ -45,11 +44,4 @@
   color: $neutral-600;
 }
 
-.menuButtonWrapper {
-  grid-area: e;
-}
-
-.menuIcon {
-  @include icon('@assets/menu-dots-outline.svg');
-}
 
