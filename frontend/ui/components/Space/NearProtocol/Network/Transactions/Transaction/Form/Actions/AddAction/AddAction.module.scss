@@ -1,0 +1,42 @@
+@use '@styles/icons' as *;
+
+.addAction {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  width: 184px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iconCreateAccount {
+  @include icon('@assets/icons/add-circle-linear.svg');
+}
+
+.iconAddKey {
+  @include icon('@assets/icons/key-outline.svg');
+}
+
+.iconTransfer {
+  @include icon('@assets/icons/transfer-outline.svg');
+}
+
+.iconDeployContract {
+  @include icon('@assets/icons/deploy-contract-linear.svg');
+}
+
+.iconFunctionCall {
+  @include icon('@assets/icons/function-call-outline.svg');
+}
+
+.iconDeleteKey {
+  @include icon('@assets/icons/key-outline.svg');
+}
+
+.iconDeleteAccount {
+  @include icon('@assets/icons/minus-circle-linear.svg');
+}

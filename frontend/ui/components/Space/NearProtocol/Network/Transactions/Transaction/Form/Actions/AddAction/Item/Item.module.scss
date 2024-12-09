@@ -1,0 +1,48 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+@mixin item($iconHoverColor) {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  color: $neutral-600;
+  &:hover {
+    color: $neutral-800;
+    .icon {
+      background-color: $iconHoverColor !important;
+    }
+  }
+  &:disabled {
+    color: $neutral-400;
+    .icon {
+      background-color: $neutral-400 !important;
+    }
+  }
+}
+
+.icon {
+  background-color: $neutral-600 !important;
+}
+
+$colors: (
+  'green': #307555,
+  'blue': #0097b8,
+  'purple': #5400dc,
+  'deepBlue': #0263bd,
+  'red': #ca2c2c,
+);
+
+@each $name, $color in $colors {
+  .#{$name} {
+    @include item($color);
+  }
+}

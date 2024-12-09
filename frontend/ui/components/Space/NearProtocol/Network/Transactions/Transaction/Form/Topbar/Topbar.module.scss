@@ -5,8 +5,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
+  padding: 16px;
   height: 48px;
+  width: calc(100% - 32px);
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+  background-color: $neutral-50;
+  margin-bottom: 40px;
+}
+
+.date {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 4px 0 0 0;
 }
 
 .name {
@@ -16,9 +28,15 @@
   outline: none;
 }
 
-.sideMenu {
+.buttonWrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
+
+//.sideMenu {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  gap: 8px;
+//}

@@ -5,9 +5,9 @@ import { DeployContract } from './DeployContract/DeployContract.jsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
 import { DeleteKey } from './DeleteKey/DeleteKey.jsx';
 import { DeleteAccount } from './DeleteAccount/DeleteAccount.jsx';
-import cn from './Action.module.css';
 import { DeleteIcon } from '../../../../../../../../_general/icons/DeleteIcon.jsx';
 import { useWatch } from 'react-hook-form';
+import cn from './Action.module.scss';
 
 export const Action = ({ form, action, index, remove }) => {
   const { type, name } = action;

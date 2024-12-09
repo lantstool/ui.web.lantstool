@@ -2,12 +2,13 @@ import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import cn from './EditName.module.scss';
 
 export const EditName = ({ transaction }) => {
   const { name, transactionId } = transaction;
   const updateOneName = useStoreEffect((store) => store.nearProtocol.transactions.updateOneName);
+  const [isEditing, setIsEditing] = useState(false);
 
   const form = useForm({
     mode: 'all',
@@ -15,25 +16,35 @@ export const EditName = ({ transaction }) => {
     defaultValues: { name },
   });
 
-  const { register, setValue, reset, handleSubmit } = form;
+  const { register, reset, handleSubmit } = form;
 
   useEffect(() => {
-    setValue('name', name);
-  }, [name]);
+    reset({ name });
+  }, [name, transactionId]);
 
   const editName = handleSubmit((formValues) => {
     updateOneName({ formValues, transactionId });
-    reset();
+    setIsEditing(false);
   });
 
-  return (
-    <div className={cn.container}>
+  const changeMode = () => {
+    setIsEditing(!isEditing);
+  };
+
+  return isEditing ? (
+    <div>
       <input
         {...register('name')}
-        onBlur={editName}
-        placeholder="Untitled transaction"
         className={cn.input}
+        autoFocus
+        maxLength={100}
+        onBlur={editName}
       />
+    </div>
+  ) : (
+    <div className={cn.editName} onClick={changeMode}>
+      <h2 className={cn.title}>{name}</h2>
+      <span className={cn.icon} />
     </div>
   );
 };

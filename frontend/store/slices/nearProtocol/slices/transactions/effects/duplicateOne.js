@@ -1,7 +1,7 @@
 import { effect } from '@react-vault';
 
 export const duplicateOne = effect(async ({ store, slice, payload }) => {
-  const { spaceId, networkId, transactionId, closeMenu } = payload;
+  const { spaceId, networkId, transactionId } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const setList = slice.getActions((slice) => slice.setList);
 
@@ -13,7 +13,6 @@ export const duplicateOne = effect(async ({ store, slice, payload }) => {
     });
 
     setList(updatedList);
-    closeMenu();
   } catch (e) {
     console.log(e);
   }

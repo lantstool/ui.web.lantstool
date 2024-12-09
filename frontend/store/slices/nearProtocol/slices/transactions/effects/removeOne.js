@@ -15,10 +15,11 @@ const getDestination = (transactions, activeTxId) => {
 };
 
 export const removeOne = effect(async ({ payload, slice, store }) => {
-  const { spaceId, networkId, transactionId, navigate, closeMenu } = payload;
+  const { spaceId, networkId, transactionId, navigate, closeModal } = payload;
   const [backend] = store.getEntities((store) => store.backend);
   const txList = slice.getState((slice) => slice.txList);
   const setList = slice.getActions((slice) => slice.setList);
+  const setNotification = store.getActions((store) => store.setNotification);
 
   try {
     const destination = getDestination(txList, transactionId);
@@ -30,7 +31,8 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
     });
 
     setList(updatedList);
-    closeMenu();
+    closeModal();
+    setNotification({ isOpen: true, message: 'Transaction deleted', variant: 'black' });
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);

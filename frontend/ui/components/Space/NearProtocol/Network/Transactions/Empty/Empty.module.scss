@@ -1,32 +1,26 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .empty {
-  height: 100%;
-  width: 100%;
+  height: calc(100vh - 48px);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 16px;
 }
 
 .icon {
+  @include icon('@assets/icons/transaction-file-bold.svg');
+  background-color: $accent-200;
   width: 80px;
   height: 80px;
 }
 
 .text {
   @include text-mg-medium;
-  color: $neutral-500;
   text-align: center;
-  margin: 0;
+  color: $neutral-500;
   padding: 0;
+  margin: 24px 0 16px 0;
 }

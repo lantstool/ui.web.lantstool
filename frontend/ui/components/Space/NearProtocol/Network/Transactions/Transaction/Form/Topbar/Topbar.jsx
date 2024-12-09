@@ -1,57 +1,42 @@
-import { SideMenu } from './SideMenu/SideMenu.jsx';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { HistoryOutline } from '../../../../../../../_general/icons/HistoryOutline.jsx';
-import { SaveOutline } from '../../../../../../../_general/icons/SaveOutline.jsx';
-import { EditName } from './SideMenu/EditName/EditName.jsx';
+import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
-import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
-import { useFormState } from 'react-hook-form';
+import { useStoreEffect } from '@react-vault';
+import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { DuplicateOutline } from '../../../../../../../_general/icons/DuplicateOutline.jsx';
+import { ExportLinear } from '../../../../../../../_general/icons/ExportLinear.jsx';
+import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
+import { dateFormatter } from '../../../../../../../../../store/helpers/formatDate.js';
+import { useState } from 'react';
+import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cn from './Topbar.module.scss';
 
-export const Topbar = ({ form, transaction }) => {
+export const Topbar = ({ transaction }) => {
   const { spaceId, networkId, transactionId } = useParams();
-  const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
-  const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
-  const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
-  const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
-  const txResult = useStoreState(
-    (store) => store.nearProtocol.transactions.results[transactionId],
-    [transactionId],
-  );
-  const { isDirty } = useFormState({ control: form.control });
+  const duplicateOne = useStoreEffect((store) => store.nearProtocol.transactions.duplicateOne);
+  const [isOpen, setOpen] = useState(false);
 
-  const onSubmit = form.handleSubmit((formValues) => {
-    sendOne({ formValues, spaceId, networkId, transactionId });
-  });
-
-  const revert = () => revertChanges({ form, transactionId });
-  const save = () => saveChanges({ form, transactionId });
-  const openResult = () => setResult({ transactionId, isOpen: true });
+  const duplicate = () => duplicateOne({ spaceId, networkId, transactionId });
+  const openModal = () => setOpen(true);
 
   return (
     <div className={cn.topbar}>
       <div>
         <EditName transaction={transaction} />
+        <p className={cn.date}>Created {dateFormatter(transaction.createdAt)}</p>
       </div>
-      <div className={cn.sideMenu}>
-        <SideMenu transaction={transaction} />
-        {isDirty && (
-          <>
-            <Button size="medium" onClick={revert} color="secondary" IconLeft={HistoryOutline} />
-            <Button size="medium" onClick={save} color="secondary" IconLeft={SaveOutline}>
-              Save
-            </Button>
-          </>
-        )}
-        {Boolean(txResult) && (
-          <Button size="medium" color="secondary" onClick={openResult}>
-            View result
-          </Button>
-        )}
-        <Button size="medium" onClick={onSubmit}>
-          Send transaction
-        </Button>
+      <div className={cn.buttonWrapper}>
+        <Tooltip arrow={false} content="Duplicate" placement="top">
+          <Button onClick={duplicate} size="medium" color="secondary" IconLeft={DuplicateOutline} />
+        </Tooltip>
+        <Tooltip arrow={false} content="Export JSON" placement="top">
+          <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+        </Tooltip>
+        <Tooltip arrow={false} content="Delete" placement="top">
+          <Button onClick={openModal} size="medium" color="secondary" IconLeft={TrashBinOutline} />
+        </Tooltip>
       </div>
+      {isOpen && <DeleteModal transaction={transaction} setOpen={setOpen} />}
     </div>
   );
 };
