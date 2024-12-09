@@ -20,6 +20,7 @@ export const getRpcType = async (rpcProvider, epochLength) => {
     await rpcProvider.getBlock({ blockId: archivedBlockHeight });
     return 'archival';
   } catch (e) {
+    // It's the default rpc error when the rpc can't find a block
     if (e?.rpc?.cause?.name === 'UNKNOWN_BLOCK') return 'regular';
     throw e;
   }

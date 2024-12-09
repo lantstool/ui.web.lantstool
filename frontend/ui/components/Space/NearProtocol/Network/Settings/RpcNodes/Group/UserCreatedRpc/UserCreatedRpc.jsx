@@ -29,7 +29,13 @@ export const UserCreatedRpc = ({
         <h3 className={cn.name}>{rpc.name}</h3>
         <span className={cn.url}>{rpc.url}</span>
       </div>
-      <Menu isLastRpcInList={isLastRpcInList} />
+      <Menu
+        rpc={rpc}
+        rpcType={rpcType}
+        spaceId={spaceId}
+        networkId={networkId}
+        isLastRpcInList={isLastRpcInList}
+      />
     </div>
   );
 };

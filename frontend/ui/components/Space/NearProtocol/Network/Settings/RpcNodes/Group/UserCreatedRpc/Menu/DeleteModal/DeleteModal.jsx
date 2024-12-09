@@ -1,12 +1,12 @@
 import { DeleteModal as Modal } from '../../../../../../../../../_general/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
-import cn from './RemoveModal.module.scss';
+import cn from './DeleteModal.module.scss';
 
-export const RemoveModal = ({ rpc, rpcType, spaceId, networkId, close }) => {
-  // const removeRpc = useStoreEffect((store) => store.nearProtocol.networks.removeRpc);
+export const DeleteModal = ({ rpc, rpcType, spaceId, networkId, close }) => {
+  const removeRpc = useStoreEffect((store) => store.nearProtocol.networks.removeRpc);
 
   const remove = () => {
-    // removeRpc({ rpc, rpcType, spaceId, networkId, close });
+    removeRpc({ rpcId: rpc.id, rpcType, spaceId, networkId, close });
   };
 
   return (
@@ -16,7 +16,7 @@ export const RemoveModal = ({ rpc, rpcType, spaceId, networkId, close }) => {
       text={{
         title: (
           <>
-            Remove <span className={cn.deleteText}>{rpc.name} RPC?</span>
+            Delete <span className={cn.deleteText}>{rpc.name} RPC?</span>
           </>
         ),
         description: `
