@@ -4,15 +4,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
-.backBtn{
-  position: absolute;
-  top: 89px;
-  left: 50px;
-}
-
-.container{
+.container {
   padding: 40px 0;
   display: flex;
   flex-direction: column;

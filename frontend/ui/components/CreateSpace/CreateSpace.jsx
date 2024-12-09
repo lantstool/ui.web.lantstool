@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import logoLantstool from '@assets/logoLantstool.svg';
 import { Button } from '../_general/Button/Button.jsx';
-import { ArrowLeftOutline } from '../_general/icons/ArrowLeftOutline.jsx';
 import { Input } from '../_general/Input/Input.jsx';
 import { BadgeSelector } from '../_general/BadgeSelector/BadgeSelector.jsx';
 import { getRandomBadge } from '../../../store/helpers/getRandomBadge.js';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { BackButton } from '../_general/BackButton/BackButton.jsx';
 import { schema } from './schema.js';
 import cn from './CreateSpace.module.scss';
 
@@ -34,17 +34,8 @@ export const CreateSpace = () => {
 
   return (
     <div className={cn.createSpace}>
+      <BackButton />
       <div className={cn.head}>
-        <div className={cn.backBtn}>
-          <Button
-            color="tertiary"
-            size="small"
-            IconLeft={ArrowLeftOutline}
-            onClick={() => navigate(-1)}
-          >
-            Back
-          </Button>
-        </div>
         <img src={logoLantstool} alt="Lantstool Logo - 3 circles with the app name" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={cn.form}>

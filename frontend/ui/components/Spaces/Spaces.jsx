@@ -1,5 +1,6 @@
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
+import { BackButton } from '../_general/BackButton/BackButton.jsx';
 import { Empty } from './Empty/Empty.jsx';
 import { List } from './List/List.jsx';
 import { useLoader } from '@hooks/useLoader.js';
@@ -22,13 +23,14 @@ export const Spaces = () => {
 
   return (
     <div className={cn.container}>
+      <BackButton />
       <div className={cn.spaces}>
         <div className={cn.head}>
           <div className={cn.wrapper}>
             <h1 className={cn.title}>Spaces</h1>
             <p className={cn.subtitle}>Here you can manage all your spaces.</p>
           </div>
-          <Button onClick={handleClick}>Create space</Button>
+          <Button size="medium" onClick={handleClick}>Create space</Button>
         </div>
         <List ids={ids} />
       </div>

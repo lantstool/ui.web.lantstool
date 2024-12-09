@@ -26,7 +26,9 @@
 
 .backButtonContainer {
   grid-area: 1 / 1 / 2 / 2;
-  transform: translateX(32px) translateY(36px);
+  transform: translateX(40px) translateY(40px);
+  top: initial;
+  left: initial;
 }
 
 .logo {
