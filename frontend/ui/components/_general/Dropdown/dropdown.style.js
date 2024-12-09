@@ -62,26 +62,17 @@ export const selectStyles = (error) => ({
   menuList: (styles) => ({
     ...styles,
     borderRadius: '8px',
-    padding: '4px',
-    overflowY: 'auto',
-    scrollbarWidth: 'none',
-
-    //Scroll bar
-    // padding: '0 2px 0 0',
-    // margin: '4px 2px 4px 4px',
-    // wordBreak: 'break-all',
-    // '::-webkit-scrollbar': {
-    //   width: '6px',
-    //   height: '0px',
-    // },
-    // '::-webkit-scrollbar-track': {
-    //   background: '#E9ECEF',
-    //   borderRadius: '16px',
-    // },
-    // '::-webkit-scrollbar-thumb': {
-    //   background: '#868E96',
-    //   borderRadius: '16px',
-    // },
+    padding: '0 2px 0 0',
+    margin: '4px 2px 4px 4px',
+    wordBreak: 'break-all',
+    '::-webkit-scrollbar': {
+      width: '6px',
+      height: '0px',
+    },
+    '::-webkit-scrollbar-thumb': {
+      background: '#CED4DA',
+      borderRadius: '16px',
+    },
   }),
   option: (styles, { isSelected, isDisabled, isFocused }) => ({
     ...styles,
