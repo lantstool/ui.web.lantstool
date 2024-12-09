@@ -5,6 +5,7 @@ import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { selectStyles } from './dropdown.style.js';
+import { Option } from './Option/Option.jsx';
 import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
@@ -24,7 +25,12 @@ export const Dropdown = ({
   tooltip = null,
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
-  const components = { DropdownIndicator, ClearIndicator, ...(copy && { IndicatorsContainer }) };
+  const components = {
+    DropdownIndicator,
+    ClearIndicator,
+    Option,
+    ...(copy && { IndicatorsContainer }),
+  };
   const style = selectStyles(error);
 
   return (

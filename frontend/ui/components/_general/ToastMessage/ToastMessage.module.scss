@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 @mixin container {
   display: flex;
@@ -73,8 +74,22 @@
   margin: 0;
 }
 
-.icon {
-  min-width: max-content;
-  height: 16px;
-  fill: $neutral-00;
+.infoIcon {
+  @include icon('@assets/icons/info-circle-linear.svg');
+  background-color: $neutral-00;
+}
+
+.successIcon {
+  @include icon('@assets/icons/check-circle-bold.svg');
+  background-color: $neutral-00;
+}
+
+.errorIcon {
+  @include icon('@assets/icons/error-circle-bold.svg');
+  background-color: $neutral-00;
+}
+
+.warningIcon {
+  @include icon('@assets/icons/danger-warning-triangle-bold.svg');
+  background-color: $neutral-00;
 }

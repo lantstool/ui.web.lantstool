@@ -36,7 +36,7 @@ export const Topbar = ({ call }) => {
               IconLeft={DuplicateOutline}
             />
           </Tooltip>
-          <Tooltip arrow={false} content="Export" placement="top">
+          <Tooltip arrow={false} content="Export JSON" placement="top">
             <Button size="medium" color="secondary" IconLeft={ExportLinear} />
           </Tooltip>
           <Tooltip arrow={false} content="Delete" placement="top">
