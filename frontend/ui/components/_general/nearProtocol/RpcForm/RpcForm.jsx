@@ -9,6 +9,7 @@ import cn from './RpcForm.module.scss';
 export const RpcForm = ({ form, classes }) => {
   const { control, register, setValue, clearErrors } = form;
 
+  // TODO: Refactor header to FieldArray
   const header = useWatch({ control, name: 'header' });
 
   const handleCheckboxChange = (e) => {
@@ -24,7 +25,7 @@ export const RpcForm = ({ form, classes }) => {
     <div className={cnm(cn.rpcForm, classes?.container && classes.container)}>
       <Input
         control={control}
-        name="rpcName"
+        name="name"
         label="RPC Name"
         placeholder="My Awesome RPC"
         copy={false}

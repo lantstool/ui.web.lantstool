@@ -1,9 +1,15 @@
-import * as yup from 'yup';
+import { string, object } from 'yup';
 
-export const schema = yup.object({
-  rpcName: yup.string().required('Mandatory field').max(50, 'Max characters 50'),
-  url: yup.string().required('Mandatory field'),
-  header: yup.lazy((value) =>
+export const schema = object({
+  name: string().required('Mandatory field').max(50, 'Max characters 50'),
+  url: string().required('Mandatory field'),
+  header: object({
+    name: string().required('Mandatory field').max(250),
+    value: string().required('Mandatory field').max(250),
+  }).nullable(),
+});
+/*
+header: yup.lazy((value) =>
     value === null
       ? yup.mixed().nullable()
       : yup.object({
@@ -11,4 +17,4 @@ export const schema = yup.object({
           value: yup.string().required('Mandatory field').max(250),
         }),
   ),
-});
+ */

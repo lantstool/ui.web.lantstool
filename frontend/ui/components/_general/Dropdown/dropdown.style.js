@@ -100,6 +100,10 @@ export const selectStyles = (error) => ({
     ...styles,
     margin: 0,
     padding: ' 16px 8px 8px 8px',
+    textTransform: 'none',
+    fontWeight: 400,
+    color: '#868E96',
+    fontSize: 12,
   }),
   dropdownIndicator: () => ({
     padding: 0,

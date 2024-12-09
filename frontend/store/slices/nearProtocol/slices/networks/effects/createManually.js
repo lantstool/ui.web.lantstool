@@ -29,7 +29,7 @@ const validateNetworkId = async (backend, spaceId, networkId) => {
 */
 export const createManually = effect(async ({ store, slice, payload }) => {
   const { spaceId, formValues, navigate } = payload;
-  const { rpcName, url, header } = formValues;
+  const { name, url, header } = formValues;
   const [backend] = store.getEntities((store) => store.backend);
   const putOneToList = slice.getActions((slice) => slice.putOneToList);
   const [rpcProvider] = store.getEntities((store) => store.nearProtocol.rpcProvider);
@@ -46,7 +46,7 @@ export const createManually = effect(async ({ store, slice, payload }) => {
     const rpcType = await getRpcType(rpcProvider, epochLength);
 
     const rpc = {
-      name: rpcName,
+      name,
       url,
       logo: 'default-rpc',
       headers: header ? [header] : [],

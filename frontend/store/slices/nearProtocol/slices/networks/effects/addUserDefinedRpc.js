@@ -4,7 +4,7 @@ import { getRpcType } from './helpers/getRpcType.js';
 
 export const addUserDefinedRpc = effect(async ({ store, slice, payload }) => {
   const { network, formValues, close } = payload;
-  const { rpcName, url, header } = formValues;
+  const { name, url, header } = formValues;
   const { networkId, spaceId } = network;
 
   const [backend] = store.getEntities((store) => store.backend);
@@ -18,12 +18,24 @@ export const addUserDefinedRpc = effect(async ({ store, slice, payload }) => {
       headers: header ? [header] : [],
     });
 
-    const { epochLength } = await rpcProvider.getGenesisConfig({});
+    const { chainId, epochLength } = await rpcProvider.getGenesisConfig({});
+
+    if (chainId !== networkId) {
+      setNotification({
+        isOpen: true,
+        message: `This RPC cannot be added to the ‘${networkId}’ network - it's 
+        a ‘${chainId}’ network RPC`,
+        variant: 'error',
+        delay: 5000,
+      });
+      return;
+    }
+
     const rpcType = await getRpcType(rpcProvider, epochLength);
 
     const rpc = {
       id: uuid(),
-      name: rpcName,
+      name,
       url,
       logo: 'default-rpc',
       headers: header ? [header] : [],
