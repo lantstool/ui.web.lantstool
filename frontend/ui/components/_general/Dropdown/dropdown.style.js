@@ -62,25 +62,44 @@ export const selectStyles = (error) => ({
   menuList: (styles) => ({
     ...styles,
     borderRadius: '8px',
-    padding: '4px',
+    padding: '0 2px 0 0',
+    margin: '4px 2px 4px 4px',
     wordBreak: 'break-all',
+    '::-webkit-scrollbar': {
+      width: '6px',
+      height: '0px',
+    },
+    '::-webkit-scrollbar-thumb': {
+      background: '#CED4DA',
+      borderRadius: '16px',
+    },
   }),
   option: (styles, { isSelected, isDisabled, isFocused }) => ({
     ...styles,
     fontSize: 14,
     borderRadius: '4px',
+    padding: '8px',
     backgroundColor: isDisabled
       ? undefined
       : isSelected
-        ? '#0075FF'
+        ? 'none'
         : isFocused
           ? '#F1F3F5'
           : undefined,
-    color: isDisabled ? '#CED4DA' : isSelected ? '#ffffff' : '#212529',
+    color: isDisabled ? '#CED4DA' : '#212529',
     ':hover': {
       cursor: isDisabled ? 'default' : 'pointer',
-      backgroundColor: !isDisabled && !isSelected ? '#F1F3F5' : 'none',
+      backgroundColor: !isDisabled ? '#F1F3F5' : 'none',
     },
+  }),
+  group: (styles) => ({
+    ...styles,
+    padding: 0,
+  }),
+  groupHeading: (styles) => ({
+    ...styles,
+    margin: 0,
+    padding: ' 16px 8px 8px 8px',
   }),
   dropdownIndicator: () => ({
     padding: 0,

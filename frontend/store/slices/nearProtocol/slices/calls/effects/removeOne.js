@@ -19,6 +19,7 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
   const [backend] = store.getEntities((store) => store.backend);
   const list = slice.getState((slice) => slice.list);
   const setList = slice.getActions((slice) => slice.setList);
+  const setNotification = store.getActions((store) => store.setNotification);
 
   try {
     const destination = getDestination(list, callId);
@@ -31,6 +32,7 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
 
     setList(updatedList);
     closeModal();
+    setNotification({ isOpen: true, message: 'Call deleted', variant: 'black' });
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
     console.log(e);

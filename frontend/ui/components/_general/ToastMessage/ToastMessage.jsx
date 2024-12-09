@@ -1,17 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import { InfoCircleLinear } from '../icons/InfoCircleLinear.jsx';
-import { CheckCircleBold } from '../icons/CheckCircleBold.jsx';
-import { ErrorCircleBold } from '../icons/ErrorCircleBold.jsx';
-import { DangerWarningTriangleOutline } from '../icons/DangerWarningTriangleOutline.jsx';
 import { useStoreAction, useStoreState } from '@react-vault';
 import cnm from 'classnames';
 import cn from './ToastMessage.module.scss';
 
 const type = {
-  black: { container: cn.black, icon: <InfoCircleLinear style={cn.icon} /> },
-  success: { container: cn.success, icon: <CheckCircleBold style={cn.icon} /> },
-  error: { container: cn.error, icon: <ErrorCircleBold style={cn.icon} /> },
-  warning: { container: cn.warning, icon: <DangerWarningTriangleOutline style={cn.icon} /> },
+  black: { container: cn.black, icon: cn.infoIcon},
+  success: { container: cn.success, icon: cn.successIcon},
+  error: { container: cn.error, icon: cn.errorIcon},
+  warning: { container: cn.warning, icon: cn.warningIcon },
 };
 
 const getType = (variant) => {
@@ -50,7 +46,7 @@ export const ToastMessage = () => {
 
   return (
     <div className={cnm(container, isAnimating ? cn.start : cn.end)}>
-      {icon}
+      <span className={icon}/>
       <h2 className={cn.title}>{message}</h2>
     </div>
   );

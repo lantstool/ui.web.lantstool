@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { ClearIndicator } from '../Dropdown/ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from '../Dropdown/IndicatorsContainer/IndicatorsContainer.jsx';
+import { Option } from '../Dropdown/Option/Option.jsx';
 import { selectStyles } from './formDropdownGroup.style.js';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { useState } from 'react';
@@ -29,7 +30,12 @@ export const FormDropdownGroup = ({
   iconStyles,
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
-  const components = { DropdownIndicator, ClearIndicator, ...(copy && { IndicatorsContainer }) };
+  const components = {
+    DropdownIndicator,
+    ClearIndicator,
+    Option,
+    ...(copy && { IndicatorsContainer }),
+  };
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);

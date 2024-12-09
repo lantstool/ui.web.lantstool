@@ -31,14 +31,5 @@ export const DeleteModal = ({ setOpen, call }) => {
         submitButtonText: 'Delete',
       }}
     />
-    // <Modal closeModal={closeModal} remove={remove} isOpen={isOpen}>
-    //   <h1 className={cn.title}>
-    //     Delete <span className={cn.deleteText}>{call.name}?</span>
-    //   </h1>
-    //   <p className={cn.subtitle}>
-    //     Deleting this call is permanent and cannot be undone. Be sure to export it if you don’t want
-    //     to lose any important data.
-    //   </p>
-    // </Modal>
   );
 };
