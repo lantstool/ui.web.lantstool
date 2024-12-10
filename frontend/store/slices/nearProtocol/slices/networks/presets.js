@@ -92,8 +92,8 @@ const mainnet = {
         headers: [],
         isPredefined: true,
         links: [
-          { type: 'x', url: 'https://x.com/RealBlockPI' },
           { type: 'medium', url: 'https://medium.com/blockpi' },
+          { type: 'x', url: 'https://x.com/RealBlockPI' },
           { type: 'website', url: 'https://docs.1rpc.io/' },
         ],
       },
@@ -105,8 +105,8 @@ const mainnet = {
         headers: [],
         isPredefined: true,
         links: [
-          { type: 'x', url: 'https://x.com/lavanetxyz' },
           { type: 'discord', url: 'https://discord.com/invite/Tbk5NxTCdA' },
+          { type: 'x', url: 'https://x.com/lavanetxyz' },
           { type: 'website', url: 'https://www.lavanet.xyz/' },
         ],
       },
