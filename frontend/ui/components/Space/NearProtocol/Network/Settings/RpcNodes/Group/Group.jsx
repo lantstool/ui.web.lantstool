@@ -5,7 +5,14 @@ import { PredefinedRpc } from './PredefinedRpc/PredefinedRpc.jsx';
 import { UserCreatedRpc } from './UserCreatedRpc/UserCreatedRpc.jsx';
 import cn from './Group.module.scss';
 
-export const Group = ({ rpcType, groupRpcList, groupActiveRpc, title, description }) => {
+export const Group = ({
+  rpcType,
+  groupRpcList,
+  groupActiveRpc,
+  title,
+  description,
+  isLastRpcInList,
+}) => {
   const { spaceId, networkId } = useParams();
   const updateActiveRpc = useStoreEffect((store) => store.nearProtocol.networks.updateActiveRpc);
 
@@ -17,9 +24,10 @@ export const Group = ({ rpcType, groupRpcList, groupActiveRpc, title, descriptio
       <p className={cn.description}>{description}</p>
       <Balancer rpcType={rpcType} autoBalance={groupActiveRpc.autoBalance} />
       <div className={cn.rpcList}>
-        {groupRpcList.map((rpc) =>
-          rpc.isPredefined ? (
-            <PredefinedRpc
+        {groupRpcList.map((rpc) => {
+          const Rpc = rpc.isPredefined ? PredefinedRpc : UserCreatedRpc;
+          return (
+            <Rpc
               key={rpc.id}
               rpc={rpc}
               groupActiveRpc={groupActiveRpc}
@@ -27,19 +35,10 @@ export const Group = ({ rpcType, groupRpcList, groupActiveRpc, title, descriptio
               spaceId={spaceId}
               networkId={networkId}
               updateActiveRpc={updateActiveRpc}
+              isLastRpcInList={isLastRpcInList}
             />
-          ) : (
-            <UserCreatedRpc
-              key={rpc.id}
-              rpc={rpc}
-              groupActiveRpc={groupActiveRpc}
-              rpcType={rpcType}
-              spaceId={spaceId}
-              networkId={networkId}
-              updateActiveRpc={updateActiveRpc}
-            />
-          ),
-        )}
+          );
+        })}
       </div>
     </div>
   );

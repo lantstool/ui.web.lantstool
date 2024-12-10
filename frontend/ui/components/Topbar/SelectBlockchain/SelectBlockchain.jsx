@@ -19,6 +19,7 @@ export const SelectBlockchain = () => {
 
   const closeMenu = () => setOpen(false);
   const openMenu = () => setOpen(true);
+
   const selectNearProtocol = () => {
     navigate(`space/${spaceId}/near-protocol`);
     closeMenu();

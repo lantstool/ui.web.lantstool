@@ -1,4 +1,5 @@
 import { effect } from '@react-vault';
+import { getRpcType } from './helpers/getRpcType.js';
 
 const validateNetworkId = async (backend, spaceId, networkId) => {
   // We don't really expect that someone would create a network with id 'networks',
@@ -21,32 +22,6 @@ const validateNetworkId = async (backend, spaceId, networkId) => {
 };
 
 /*
-  1. Get current block height
-  2. Get epoch_length.
-  3. Calculate the block issued 6 epoch away - the regular rpc keep only the 5 last epoches
-  4. Try to fetch it - if ok - it's an archival rpc
-
-  TODO we may have a situation when user will try to add the RPC of a newly
-    created local network. In this case we can't detect if RPC runs in regular
-    or archival mode - this algorithm will assume that it's an archived RPC.
-    For such case we need to add a UI with ability to select of RPC type.
- */
-const getRpcType = async (rpc, epochLength) => {
-  try {
-    const latestBlock = await rpc.getBlock({});
-    const archivedBlockHeight = latestBlock.header.height - epochLength * 6;
-    // if user run a new local node with a lifetime less than 6 epochs - assume that's a regular node
-    if (archivedBlockHeight <= 0) return 'regular';
-
-    await rpc.getBlock({ blockId: archivedBlockHeight });
-    return 'archival';
-  } catch (e) {
-    if (e?.rpc?.cause?.name === 'UNKNOWN_BLOCK') return 'regular';
-    throw e;
-  }
-};
-
-/*
   1. Get network id.
   2. Check if network not exits.
   3. TODO: Check if RPC works correctly - skip for now
@@ -54,7 +29,7 @@ const getRpcType = async (rpc, epochLength) => {
 */
 export const createManually = effect(async ({ store, slice, payload }) => {
   const { spaceId, formValues, navigate } = payload;
-  const { rpcName, url, header } = formValues;
+  const { name, url, header } = formValues;
   const [backend] = store.getEntities((store) => store.backend);
   const putOneToList = slice.getActions((slice) => slice.putOneToList);
   const [rpcProvider] = store.getEntities((store) => store.nearProtocol.rpcProvider);
@@ -71,7 +46,7 @@ export const createManually = effect(async ({ store, slice, payload }) => {
     const rpcType = await getRpcType(rpcProvider, epochLength);
 
     const rpc = {
-      name: rpcName,
+      name,
       url,
       logo: 'default-rpc',
       headers: header ? [header] : [],

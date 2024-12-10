@@ -4,11 +4,11 @@
 
 .rpc {
   display: grid;
-  grid-template-columns: 24px 32px auto max-content 24px;
+  grid-template-columns: 24px 32px auto max-content;
   grid-template-rows: auto;
-  grid-template-areas: 'a b c d e';
+  grid-template-areas: 'a b c d';
   align-items: center;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid $neutral-200;
   background: $neutral-00;

@@ -1,6 +1,5 @@
-
-import { SelectButton } from '../../../../_general/SelectButton/SelectButton.jsx';
-import { OuterLink } from '../../../../_general/OuterLink/OuterLink.jsx';
+import { SelectButton } from '../../../../../../_general/SelectButton/SelectButton.jsx';
+import { OuterLink } from '../../../../../../_general/OuterLink/OuterLink.jsx';
 import cn from './PredefinedRpc.module.scss';
 
 // import all logos inside logos directory and create a logo map
@@ -12,20 +11,12 @@ for (const path in logoFiles) {
   logos[fileName] = logoFiles[path];
 }
 
-export const PredefinedRpc = ({
-  rpc,
-  groupActiveRpc,
-  rpcType,
-  spaceId,
-  networkId,
-  updateActiveRpc,
-}) => {
+export const PredefinedRpc = ({ rpc, rpcType, selectedRpc, selectRpc }) => {
   const logoUrl = logos[rpc.logo];
-  const isSelected = groupActiveRpc.rpc?.id === rpc.id;
+  const isSelected = selectedRpc?.id === rpc.id;
 
   const select = () => {
-    if (isSelected) return;
-    updateActiveRpc({ spaceId, networkId, rpcType, autoBalance: false, rpc });
+    if (!isSelected) selectRpc(rpc, rpcType);
   };
 
   return (

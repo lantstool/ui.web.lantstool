@@ -17,7 +17,7 @@ export const options = [
     ],
   },
   {
-    label: 'Account Keys',
+    label: 'Keys',
     options: [
       { value: 'getAccountKey', label: 'Get Account Key' },
       { value: 'getChangesForAccountKey', label: 'Get Changes for Account Key' },
@@ -51,8 +51,8 @@ export const options = [
   {
     label: 'Network',
     options: [
-      { value: 'getNodeStatus', label: 'Get Node Status' },
       { value: 'getNetworkInfo', label: 'Get Network Info' },
+      { value: 'getNodeStatus', label: 'Get Node Status' },
       { value: 'getGasPrice', label: 'Get Gas Price' },
     ],
   },
