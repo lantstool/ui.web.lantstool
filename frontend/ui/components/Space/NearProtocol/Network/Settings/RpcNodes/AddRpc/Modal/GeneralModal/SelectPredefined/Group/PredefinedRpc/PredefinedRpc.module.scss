@@ -44,6 +44,9 @@
 .url {
   @include text-sm-regular;
   color: $neutral-600;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .links {

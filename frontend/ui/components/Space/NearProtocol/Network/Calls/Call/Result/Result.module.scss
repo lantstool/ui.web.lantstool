@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-.head{
+.head {
   padding: 16px;
   background-color: $neutral-50;
   display: flex;
@@ -24,20 +24,19 @@
   margin-bottom: 24px;
 }
 
-.headWrapper{
+.headWrapper {
   display: flex;
   flex-direction: column;
 }
 
-.title{
+.title {
   @include text-lg-medium;
   color: $neutral-800;
   margin: 0 0 4px 0;
   padding: 0;
 }
 
-
-.call{
+.call {
   @include text-sm-regular;
   color: $neutral-600;
   margin: 0;
@@ -49,7 +48,7 @@
   margin: 30px;
 }
 
-.content{
+.content {
   display: flex;
   width: 100%;
   margin-top: 24px;

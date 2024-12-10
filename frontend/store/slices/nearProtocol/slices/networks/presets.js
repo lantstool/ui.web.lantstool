@@ -56,6 +56,19 @@ const mainnet = {
           { type: 'website', url: 'https://omniatech.io/' },
         ],
       },
+      {
+        id: 'near.blockpi.network/v1/rpc/public',
+        url: 'https://near.blockpi.network/v1/rpc/public',
+        name: 'BlockPI',
+        logo: 'rpc_blockpi.svg',
+        headers: [],
+        isPredefined: true,
+        links: [
+          { type: 'medium', url: 'https://medium.com/blockpi' },
+          { type: 'x', url: 'https://x.com/RealBlockPI' },
+          { type: 'website', url: 'https://docs.1rpc.io/' },
+        ],
+      },
     ],
     archival: [
       {
@@ -81,19 +94,6 @@ const mainnet = {
         links: [
           { type: 'github', url: 'https://github.com/automata-network/1rpc-lite' },
           { type: 'x', url: 'https://x.com/1rpc_' },
-          { type: 'website', url: 'https://docs.1rpc.io/' },
-        ],
-      },
-      {
-        id: 'near.blockpi.network/v1/rpc/public',
-        url: 'https://near.blockpi.network/v1/rpc/public',
-        name: 'BlockPI',
-        logo: 'rpc_blockpi.svg',
-        headers: [],
-        isPredefined: true,
-        links: [
-          { type: 'medium', url: 'https://medium.com/blockpi' },
-          { type: 'x', url: 'https://x.com/RealBlockPI' },
           { type: 'website', url: 'https://docs.1rpc.io/' },
         ],
       },
