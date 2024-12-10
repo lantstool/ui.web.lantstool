@@ -1,8 +1,7 @@
 import { useStoreEffect } from '@react-vault';
-import { useNavigate } from 'react-router-dom';
+import { BackButton } from '../_general/BackButton/BackButton.jsx';
 import { Button } from '../_general/Button/Button.jsx';
 import { ExportLinear } from '../_general/icons/ExportLinear.jsx';
-import { ArrowLeftOutline } from '../_general/icons/ArrowLeftOutline.jsx';
 import { ResetAppModal } from './ResetAppModal/ResetAppModal.jsx';
 import { ResetHistoryModal } from './ResetHistoryModal/ResetHistoryModal.jsx';
 import { useState } from 'react';
@@ -10,22 +9,16 @@ import cn from './Settings.module.scss';
 
 export const Settings = () => {
   const createBackup = useStoreEffect((store) => store.createBackup);
-  const navigate = useNavigate();
   const [isResetApp, setResetApp] = useState(false);
   const [isResetHistory, setResetHistory] = useState(false);
 
-  const goBack = () => navigate(-1);
   const openResetApp = () => setResetApp(true);
   const openResetHistory = () => setResetHistory(true);
 
   return (
     <>
       <div className={cn.settings}>
-        <div className={cn.backBtn}>
-          <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline} onClick={goBack}>
-            Back
-          </Button>
-        </div>
+        <BackButton />
         <div className={cn.content}>
           <h1 className={cn.title}>Setting</h1>
           <div className={cn.container}>

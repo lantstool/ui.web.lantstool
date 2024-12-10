@@ -31,6 +31,7 @@
   height: 32px;
   width: 32px;
   user-select: none;
+  border-radius: 50%;
 }
 
 .nameUrl {
@@ -48,6 +49,9 @@
 .url {
   @include text-sm-regular;
   color: $neutral-600;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .links {

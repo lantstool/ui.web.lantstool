@@ -2,15 +2,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
 import { Item } from './Item/Item.jsx';
-import { Button } from '../../../../_general/Button/Button.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
 import cn from './Preset.module.scss';
 
-export const Preset = () => {
+export const Preset = ({ availablePresets }) => {
   const { spaceId } = useParams();
   const navigate = useNavigate();
   const createFromPreset = useStoreEffect((store) => store.nearProtocol.networks.createFromPreset);
 
-  const form = useForm({ defaultValues: { presetId: 'testnet' } });
+  const form = useForm({ defaultValues: { presetId: availablePresets[0] } });
   const { handleSubmit, setError } = form;
 
   const onSubmit = handleSubmit((formValues) => {
@@ -18,14 +18,15 @@ export const Preset = () => {
   });
 
   return (
-    <form className={cn.preset}>
+    <>
       <div className={cn.presetWrapper}>
-        <Item presetId="testnet" form={form} />
-        <Item presetId="mainnet" form={form} />
+        {availablePresets.map((presetId) => (
+          <Item key={presetId} presetId={presetId} form={form} />
+        ))}
       </div>
       <div className={cn.buttonWrapper}>
-        <Button onClick={onSubmit}>Create Network</Button>
+        <Button onClick={onSubmit}>Add Network</Button>
       </div>
-    </form>
+    </>
   );
 };

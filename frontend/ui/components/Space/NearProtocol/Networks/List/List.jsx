@@ -1,24 +1,31 @@
-import { Link } from 'react-router-dom';
-import { useStoreState } from '@react-vault';
+import { useNavigate } from 'react-router-dom';
+import { SettingsOutline } from '../../../../_general/icons/SettingsOutline.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ ids }) => {
-  const records = useStoreState((store) => store.nearProtocol.networks.records);
+  const navigate = useNavigate();
+
+  const navigateTo = (e, link) => {
+    e.stopPropagation();
+    navigate(link);
+  };
+
   return (
-    <div className={cn.container}>
+    <div className={cn.list}>
       {ids.map((networkId) => {
-        // TODO move to separate component
-        const network = records[networkId];
         return (
-          <div key={network.networkId} className={cn.row}>
-            <Link to={`../${networkId}`} relative="path">
-              {networkId}
-            </Link>
-            {/*<span>{network.activeRpc}</span>*/}
-            <span>{new Date(network.createdAt).toLocaleString()}</span>
-            <Link to={`../${networkId}/settings`} relative="path">
-              Settings
-            </Link>
+          <div onClick={(e) => navigateTo(e, `../${networkId}`)} key={networkId} className={cn.row}>
+            <div className={cn.container}>
+              <p className={cn.title}>{networkId}</p>
+            </div>
+            <div className={cn.container}>
+              <div
+                onClick={(e) => navigateTo(e, `../${networkId}/settings`)}
+                className={cn.settings}
+              >
+                <SettingsOutline style={cn.icon} />
+              </div>
+            </div>
           </div>
         );
       })}

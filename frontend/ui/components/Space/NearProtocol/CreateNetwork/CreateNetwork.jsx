@@ -1,38 +1,28 @@
-import logoLantstool from '@assets/logoLantstool.svg';
-import { TabButton } from '../../../_general/tab/TabButton/TabButton.jsx';
-import { TabContainer } from '../../../_general/tab/TabContainer/TabContainer.jsx';
-import { useState } from 'react';
-import { Preset } from './Preset/Preset.jsx';
-import { Manually } from './Manually/Manually.jsx';
-import cn from './CreateNetwork.module.scss';
+import { useLoader } from '@hooks/useLoader.js';
+import { useParams } from 'react-router-dom';
+import { GeneralPage } from './GeneralPage/GeneralPage.jsx';
+import { CreateManually } from './CreateManually/CreateManually.jsx';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { presets } from '../../../../../store/slices/nearProtocol/slices/networks/presets.js';
+
+const getAvailablePresets = (ids) => {
+  const set = new Set(ids);
+  return Object.keys(presets).filter((key) => !set.has(key));
+};
 
 export const CreateNetwork = () => {
-  const [tab, setTab] = useState('selectPredefined');
+  const { spaceId } = useParams();
+  const getAll = useStoreEffect((store) => store.nearProtocol.networks.getAll);
+  const ids = useStoreState((store) => store.nearProtocol.networks.ids);
 
-  return (
-    <div className={cn.container}>
-      <img className={cn.logo} src={logoLantstool} alt="#" />
-      <div className={cn.form}>
-        <h1 className={cn.title}>Add Network</h1>
-        <p className={cn.subtitle}>
-          Select from standard options or add your own. You can manage them later in settings.
-        </p>
-        <div className={cn.tab}>
-          <TabContainer>
-            <TabButton
-              onClick={() => setTab('selectPredefined')}
-              isActive={tab === 'selectPredefined'}
-            >
-              Select preset
-            </TabButton>
-            <TabButton onClick={() => setTab('addManually')} isActive={tab === 'addManually'}>
-              Add manually
-            </TabButton>
-          </TabContainer>
-        </div>
-        {tab === 'selectPredefined' && <Preset />}
-        {tab === 'addManually' && <Manually />}
-      </div>
-    </div>
+  const [isLoading] = useLoader(getAll, { spaceId });
+  if (isLoading) return null;
+
+  const availablePresets = getAvailablePresets(ids);
+
+  return availablePresets.length > 0 ? (
+    <GeneralPage availablePresets={availablePresets} />
+  ) : (
+    <CreateManually />
   );
 };

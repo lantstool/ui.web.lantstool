@@ -8,20 +8,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 40px;
-}
-
-.backBtn {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .title {
   @include text-lg-medium;
   color: $neutral-800;
-  padding: 0;
-  margin: 0;
+  margin-top: 40px;
 }
 
 .content {

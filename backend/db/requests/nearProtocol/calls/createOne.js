@@ -18,7 +18,6 @@ export const createOne = async ({ execute, request }) => {
   const order = await getNewCallOrder(execute, spaceId, networkId);
   const count = await getCount({ execute, request });
   const name = `Call#${count + 1}`;
-  const rpcType = 'regular';
 
   const body = JSON.stringify({
     method: { value: 'getAccount', label: 'Get Account' },
@@ -32,7 +31,7 @@ export const createOne = async ({ execute, request }) => {
     BEGIN TRANSACTION;
     
     INSERT INTO near_protocol_calls
-      (callId, networkId, spaceId, name, 'order', createdAt, rpcType, body)
+      (callId, networkId, spaceId, name, 'order', createdAt, body)
     VALUES(
       '${callId}', 
       '${networkId}', 
@@ -40,7 +39,6 @@ export const createOne = async ({ execute, request }) => {
       '${name}', 
        ${order}, 
        ${createdAt}, 
-      '${rpcType}', 
       '${body}'
     )
     RETURNING *;

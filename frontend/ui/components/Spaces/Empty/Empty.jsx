@@ -7,7 +7,7 @@ export const Empty = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/spaces/create");
+    navigate('/spaces/create');
   };
 
   return (
