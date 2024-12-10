@@ -3,14 +3,14 @@ import { v4 } from 'uuid';
 const createAccount = (append) =>
   append({
     actionId: v4(),
-    name: 'Create Account',
+    name: 'Create account',
     type: 'CreateAccount',
   });
 
 const transfer = (append) =>
   append({
     actionId: v4(),
-    name: 'Transfer',
+    name: 'Transfer funds',
     type: 'Transfer',
     amount: '',
     amountType: { value: 'NEAR', label: 'NEAR' },
@@ -19,7 +19,7 @@ const transfer = (append) =>
 const addKey = (append) =>
   append({
     actionId: v4(),
-    name: 'Add Access Key',
+    name: 'Add key',
     type: 'AddKey',
     publicKey: '',
     permission: {
@@ -38,7 +38,7 @@ const addKey = (append) =>
 const functionCall = (append) =>
   append({
     actionId: v4(),
-    name: 'Function Call',
+    name: 'Function call',
     type: 'FunctionCall',
     methodName: '',
     arguments: '{}',
@@ -50,14 +50,14 @@ const deployContract = (append) =>
   append({
     type: 'DeployContract',
     actionId: v4(),
-    name: 'Deploy Contract',
+    name: 'Deploy contract',
     file: '',
   });
 
 const deleteKey = (append) =>
   append({
     actionId: v4(),
-    name: 'Delete Key',
+    name: 'Delete key',
     type: 'DeleteKey',
     accessKey: '',
   });
@@ -65,7 +65,7 @@ const deleteKey = (append) =>
 const deleteAccount = (append) =>
   append({
     actionId: v4(),
-    name: 'Delete Account',
+    name: 'Delete account',
     type: 'DeleteAccount',
     beneficiaryId: '',
   });

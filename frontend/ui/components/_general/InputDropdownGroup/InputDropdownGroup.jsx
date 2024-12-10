@@ -1,36 +1,42 @@
-import { Controller } from 'react-hook-form';
+import { Controller, useController } from 'react-hook-form';
 import Select from 'react-select';
 import { selectStyles } from './InputDropdownGroup.style.js';
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { Option } from '../Dropdown/Option/Option.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
-import { useState } from 'react';
-import { useWatch } from 'react-hook-form';
+import { useRef, useState } from 'react';
 import cnm from 'classnames';
 import cn from './InputDropdownGroup.module.scss';
 
 export const InputDropdownGroup = ({
-  register = () => ({}),
   control = () => ({}),
   options,
   name,
-  id,
   dropDownName,
   label,
   placeholder = null,
   disabled = false,
-  error = false,
-  clear = false,
-  copy = false, // copy={getValues('name')}
+  copy,
   type = 'text',
 }) => {
+  const ref = useRef(null);
+  const {
+    field: { value, onChange: fieldOnChange },
+    fieldState: { error },
+  } = useController({ name, control });
+
+  // We want to avoid React error when value is null
+  const val = typeof value !== 'string' ? '' : value;
+
   const styles = selectStyles(error);
   const [isFocused, setIsFocused] = useState(false);
-  const value = useWatch({
-    control,
-    name,
-  });
+
+  const handleClear = () => {
+    fieldOnChange('');
+    ref.current.focus();
+  };
+
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
@@ -49,8 +55,10 @@ export const InputDropdownGroup = ({
       >
         <div className={cn.inputWrapper}>
           <input
-            {...register(name)}
-            id={id || name}
+            ref={ref}
+            id={name}
+            onChange={fieldOnChange}
+            value={val}
             placeholder={placeholder}
             className={cn.input}
             type={type}
@@ -58,7 +66,7 @@ export const InputDropdownGroup = ({
           />
           {!disabled && value && (
             <div className={cn.buttonWrapper}>
-              <button disabled={disabled} type="button" onClick={clear} className={cn.button}>
+              <button disabled={disabled} type="button" onClick={handleClear} className={cn.button}>
                 <BackspaceOutline style={cn.icon} />
               </button>
               {copy && <CopyButton disabled={disabled} value={value} />}

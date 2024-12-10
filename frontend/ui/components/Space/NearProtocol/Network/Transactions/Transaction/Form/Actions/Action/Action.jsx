@@ -16,15 +16,66 @@ export const Action = ({ form, action, index, remove }) => {
 
   return (
     <div className={cn.action}>
-      {type === 'CreateAccount' && <CreateAccount removeAction={removeAction} form={form} />}
-      {type === 'Transfer' && <Transfer form={form} order={order} name={name} getName={getName} removeAction={removeAction}/>}
-      {type === 'AddKey' && <AddKey getName={getName} action={action} form={form} />}
-      {type === 'DeployContract' && (
-        <DeployContract getName={getName} action={action} form={form} />
+      {type === 'CreateAccount' && (
+        <CreateAccount order={order} name={name} removeAction={removeAction} form={form} />
       )}
-      {type === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
-      {type === 'DeleteKey' && <DeleteKey action={action} form={form} getName={getName} />}
-      {type === 'DeleteAccount' && <DeleteAccount form={form} getName={getName} />}
+      {type === 'Transfer' && (
+        <Transfer
+          form={form}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+          getName={getName}
+        />
+      )}
+      {type === 'AddKey' && (
+        <AddKey
+          getName={getName}
+          action={action}
+          form={form}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+        />
+      )}
+      {type === 'DeployContract' && (
+        <DeployContract
+          getName={getName}
+          action={action}
+          form={form}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+        />
+      )}
+      {type === 'FunctionCall' && (
+        <FunctionCall
+          form={form}
+          getName={getName}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+        />
+      )}
+      {type === 'DeleteKey' && (
+        <DeleteKey
+          action={action}
+          form={form}
+          getName={getName}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+        />
+      )}
+      {type === 'DeleteAccount' && (
+        <DeleteAccount
+          form={form}
+          getName={getName}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+        />
+      )}
     </div>
   );
 };
