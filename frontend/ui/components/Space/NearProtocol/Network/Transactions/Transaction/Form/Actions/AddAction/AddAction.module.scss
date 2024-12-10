@@ -1,7 +1,16 @@
 @use '@styles/icons' as *;
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  margin-bottom: 16px;
+}
 
 .addAction {
   display: flex;
+  flex-direction: row;
   gap: 24px;
   width: 100%;
 }

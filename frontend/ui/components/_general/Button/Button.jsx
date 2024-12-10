@@ -83,8 +83,8 @@ const types = (isIcon, children) => {
   };
 };
 
-const getType = (color, size, IconRight, IconLeft, children) => {
-  const isIcon = IconRight || IconLeft;
+const getType = (color, size, IconRight, IconLeft, children, iconLeftStyles, iconRightStyles) => {
+  const isIcon = IconRight || IconLeft || iconLeftStyles || iconRightStyles;
   return types(isIcon, children)[color][size];
 };
 
@@ -101,7 +101,7 @@ export const Button = ({
   iconRightStyles = null,
 }) => {
   const { button, btnText, iconColor, iconStyle } = useMemo(
-    () => getType(color, size, IconRight, IconLeft, children),
+    () => getType(color, size, IconRight, IconLeft, children, iconLeftStyles, iconRightStyles),
     [color, size, IconRight, IconLeft],
   );
 

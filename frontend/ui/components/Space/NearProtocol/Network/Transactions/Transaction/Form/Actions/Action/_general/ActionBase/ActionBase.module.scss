@@ -1,0 +1,38 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.actionBase {
+  width: calc(100% - 32px);
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order {
+  @include text-xs-regular;
+  color: $neutral-500;
+}
+
+.deleteIcon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
+}
+
+.action{
+  width: 100%;
+}

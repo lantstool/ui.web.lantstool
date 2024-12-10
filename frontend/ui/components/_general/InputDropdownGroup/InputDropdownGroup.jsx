@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { selectStyles } from './InputDropdownGroup.style.js';
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
+import { Option } from '../Dropdown/Option/Option.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useState } from 'react';
 import { useWatch } from 'react-hook-form';
@@ -60,7 +61,7 @@ export const InputDropdownGroup = ({
               <button disabled={disabled} type="button" onClick={clear} className={cn.button}>
                 <BackspaceOutline style={cn.icon} />
               </button>
-              <CopyButton disabled={disabled} value={copy} />
+              {copy && <CopyButton disabled={disabled} value={value} />}
             </div>
           )}
         </div>
@@ -75,7 +76,7 @@ export const InputDropdownGroup = ({
               isDisabled={disabled}
               options={options}
               styles={styles}
-              components={{ DropdownIndicator }}
+              components={{ DropdownIndicator, Option }}
             />
           )}
         />

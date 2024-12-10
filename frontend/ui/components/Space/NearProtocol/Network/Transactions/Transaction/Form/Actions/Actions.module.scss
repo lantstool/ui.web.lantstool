@@ -1,22 +1,16 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
 @use '@styles/icons' as *;
-
-.receiver {
-  width: 100%;
-  margin: 40px 0;
-}
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
 
 .label {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%;
   margin-bottom: 24px;
 }
 
 .icon {
-  @include icon('@assets/icons/user-circle-outline.svg');
+  @include icon('@assets/icons/code-circle-outline.svg');
   width: 24px;
   height: 24px;
   background-color: $neutral-400;

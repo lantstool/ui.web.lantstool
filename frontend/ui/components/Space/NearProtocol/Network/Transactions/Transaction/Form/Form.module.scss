@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .formContainer {
   position: relative;
@@ -28,26 +29,22 @@
   margin-right: 40px;
 }
 
-.details {
-  width: 100%;
+.label {
   display: flex;
-  height: 24px;
-  justify-content: start;
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .icon {
-  height: 21.5px;
-  width: 21.5px;
-  fill: $neutral-400;
+  @include icon('@assets/icons/account-circle-outline.svg');
+  width: 24px;
+  height: 24px;
+  background-color: $neutral-400;
 }
 
 .title {
-  margin: 0;
-  text-align: center;
+  @include text-lg-medium;
   color: $neutral-800;
-  font-size: 16px;
-  font-weight: 600;
 }
