@@ -12,7 +12,10 @@ export const GetBlock = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={<>
+            Provides a general information about the block, including chunks headers date and block approvals.
+            Doesn't include chunk transactions and receipts.
+          </>}
           link="https://docs.near.org/api/rpc/block-chunk#block-details"
         />
       }

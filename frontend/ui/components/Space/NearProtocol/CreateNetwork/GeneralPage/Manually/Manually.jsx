@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
-import { Button } from '../../../../_general/Button/Button.jsx';
-import { RpcForm } from '../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
-import { useRpcForm } from '../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
+import { Button } from '../../../../../_general/Button/Button.jsx';
+import { RpcForm } from '../../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
+import { useRpcForm } from '../../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
 import cn from './Manually.module.scss';
 
 export const Manually = () => {
@@ -17,11 +17,11 @@ export const Manually = () => {
   });
 
   return (
-    <form onSubmit={onSubmit} className={cn.manually}>
-      <RpcForm form={form} />
+    <>
+      <RpcForm form={form} classes={{ container: cn.rpcFormContainer }} />
       <div className={cn.buttonWrapper}>
-        <Button type="submit">Create Network</Button>
+        <Button onClick={onSubmit}>Add Network</Button>
       </div>
-    </form>
+    </>
   );
 };

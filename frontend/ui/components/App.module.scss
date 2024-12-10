@@ -10,6 +10,11 @@
   overflow: hidden;
 }
 
+.appWithoutTopbar {
+  grid-template-rows: 100vh;
+  grid-template-areas: 'b';
+}
+
 .content {
   grid-area: b;
 }

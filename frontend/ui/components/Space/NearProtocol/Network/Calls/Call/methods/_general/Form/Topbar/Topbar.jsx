@@ -2,7 +2,6 @@ import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
 import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
-import { RpcType } from './RpcType/RpcType.jsx';
 import { dateFormatter } from '../../../../../../../../../../../store/helpers/formatDate.js';
 import { TrashBinOutline } from '../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { DuplicateOutline } from '../../../../../../../../../_general/icons/DuplicateOutline.jsx';
@@ -21,43 +20,37 @@ export const Topbar = ({ call }) => {
   const openModal = () => setOpen(true);
 
   return (
-    <div className={cn.topbar}>
-      <div className={cn.container}>
-        <div>
-          <EditName call={call} />
-          <p className={cn.date}>Created {dateFormatter(call.createdAt)}</p>
-        </div>
-        <div className={cn.buttonWrapper}>
-          <Tooltip arrow={false} content="Duplicate" placement="top">
-            <Button
-              onClick={duplicate}
-              size="medium"
-              color="secondary"
-              IconLeft={DuplicateOutline}
-            />
-          </Tooltip>
-          <Tooltip arrow={false} content="Export JSON" placement="top">
-            <Button size="medium" color="secondary" IconLeft={ExportLinear} />
-          </Tooltip>
-          <Tooltip arrow={false} content="Delete" placement="top">
-            <Button
-              onClick={openModal}
-              size="medium"
-              color="secondary"
-              IconLeft={TrashBinOutline}
-            />
-          </Tooltip>
+    <>
+      <div className={cn.topbar}>
+        <div className={cn.container}>
+          <div>
+            <EditName call={call} />
+            <p className={cn.date}>Created {dateFormatter(call.createdAt)}</p>
+          </div>
+          <div className={cn.buttonWrapper}>
+            <Tooltip arrow={false} content="Duplicate" placement="top">
+              <Button
+                onClick={duplicate}
+                size="medium"
+                color="secondary"
+                IconLeft={DuplicateOutline}
+              />
+            </Tooltip>
+            <Tooltip arrow={false} content="Export JSON" placement="top">
+              <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+            </Tooltip>
+            <Tooltip arrow={false} content="Delete" placement="top">
+              <Button
+                onClick={openModal}
+                size="medium"
+                color="secondary"
+                IconLeft={TrashBinOutline}
+              />
+            </Tooltip>
+          </div>
         </div>
       </div>
-      <hr className={cn.border} />
-      <div className={cn.rpcContainer}>
-        <div className={cn.wrapper}>
-          <Tooltip style={cn.tooltip} content="Rpc server" placement="top" defaultContent />
-          <p className={cn.title}>RPC server</p>
-        </div>
-        <RpcType call={call} />
-        {isOpen && <DeleteModal call={call} setOpen={setOpen} />}
-      </div>
-    </div>
+      {isOpen && <DeleteModal call={call} setOpen={setOpen} />}
+    </>
   );
 };

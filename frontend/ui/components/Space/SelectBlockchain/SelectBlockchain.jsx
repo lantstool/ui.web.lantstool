@@ -1,5 +1,6 @@
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import logoLantstool from '@assets/logoLantstool.svg';
+import { BackButton } from '../../_general/BackButton/BackButton.jsx';
 import { NearToken } from '../../_general/icons/NearToken.jsx';
 import { RadioButton } from '../../_general/RadioButton/RadioButton.jsx';
 import { useForm } from 'react-hook-form';
@@ -20,6 +21,7 @@ export const SelectBlockchain = () => {
 
   return (
     <div className={cn.selectBlockchain}>
+      <BackButton />
       <img className={cn.logo} src={logoLantstool} alt="#" />
       <div>
         <h1 className={cn.title}>Select a blockchain to work with</h1>
