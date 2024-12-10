@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import cnm from 'classnames';
 import cn from './Button.module.scss';
 
 const types = (isIcon, children) => {
@@ -85,6 +86,7 @@ export const Button = ({
   IconLeft = null,
   IconRight = null,
   disabled = false,
+  classes,
 }) => {
   const { button, btnText, iconColor } = useMemo(
     () => getType(color, size, IconRight, IconLeft, children),
@@ -92,7 +94,12 @@ export const Button = ({
   );
 
   return (
-    <button type={type} disabled={disabled} className={button} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={cnm(button, classes?.button)}
+      onClick={onClick}
+    >
       {IconLeft && <IconLeft style={iconColor} />}
       {children && <span className={btnText}>{children}</span>}
       {IconRight && <IconRight style={iconColor} />}

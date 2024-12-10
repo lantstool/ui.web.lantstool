@@ -8,11 +8,11 @@ import { Github } from '../_general/icons/Github.jsx';
 import cn from './Topbar.module.scss';
 
 export const Topbar = () => {
-  const match = useMatch('/space/:spaceId/*');
+  const spaceMatch = useMatch('/space/:spaceId/*');
 
   return (
     <div className={cn.topbar}>
-      <div className={match ? cn.borderedWrapper : cn.wrapper}>
+      <div className={spaceMatch ? cn.borderedWrapper : cn.wrapper}>
         <SelectSpace />
         <SelectBlockchain />
         <SelectNearNetwork />
