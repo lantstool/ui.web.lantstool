@@ -17,11 +17,11 @@ const getExportedWasmFunctions = async (arrayBuffer) => {
   return exports.filter((exp) => exp.kind === 'function');
 };
 
-export const useDropdownOptions = (control) => {
+export const useDropdownOptions = (control, name) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
-  const contractId = useWatch({ control, name: 'contractId.value' });
+  const contractId = useWatch({ control, name});
 
   useEffect(() => {
     if (!contractId) return;

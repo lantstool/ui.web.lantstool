@@ -8,6 +8,7 @@ export const selectStyles = (error) => {
     control: (baseStyles, state) => ({
       ...styles.control(baseStyles, state),
       cursor: 'pointer',
+      color: '#495057',
       backgroundColor: 'fff',
       border: 'none',
       height: '40px',
@@ -27,10 +28,12 @@ export const selectStyles = (error) => {
       width: 'max-content',
       padding: 0,
       right: 0,
+      color: '#495057',
     }),
     option: (baseStyles, state) => ({
       ...styles.option(baseStyles, state),
       display: 'flex',
+      color: '#495057',
       justifyContent: 'center',
       flexDirection: 'column',
       fontSize: 14,
@@ -41,6 +44,13 @@ export const selectStyles = (error) => {
       width: '100%',
       padding: '8px',
       whiteSpace: 'nowrap',
+    }),
+    singleValue: (styles) => ({
+      ...styles,
+      fontSize: '14px',
+      fontWeight: '400',
+      lineHeight: '20px',
+      color: '#495057',
     }),
     dropdownIndicator: () => ({
       paddingLeft: '8px',

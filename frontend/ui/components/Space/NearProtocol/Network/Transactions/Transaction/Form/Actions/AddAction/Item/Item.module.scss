@@ -8,7 +8,6 @@
   line-height: 16px;
   border: none;
   background: none;
-  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +15,9 @@
   padding: 4px 0;
   color: $neutral-600;
   &:hover {
+    &:not(:disabled) {
+      cursor: pointer;
+    }
     color: $neutral-800;
     .icon {
       background-color: $iconHoverColor !important;

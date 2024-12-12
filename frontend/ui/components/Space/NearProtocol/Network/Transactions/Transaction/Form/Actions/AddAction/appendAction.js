@@ -27,6 +27,7 @@ const addKey = (append) =>
       restrictions: {
         allowedAllowance: 'Unlimited', // Limited
         allowance: '',
+        allowanceType: { value: 'NEAR', label: 'NEAR' },
         receiverId: '',
         allowedMethods: 'All', // Certain
         methodNames: [{ name: '' }],
@@ -44,6 +45,9 @@ const functionCall = (append) =>
     arguments: '{}',
     gas: '50',
     deposit: '0',
+    gasType: { value: 'tGas', label: 'TGas' },
+    depositType: { value: 'NEAR', label: 'NEAR' },
+    contractId: '',
   });
 
 const deployContract = (append) =>

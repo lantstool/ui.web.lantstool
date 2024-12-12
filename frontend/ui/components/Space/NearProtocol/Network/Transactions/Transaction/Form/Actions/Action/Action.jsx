@@ -17,7 +17,13 @@ export const Action = ({ form, action, index, remove }) => {
   return (
     <div className={cn.action}>
       {type === 'CreateAccount' && (
-        <CreateAccount order={order} name={name} removeAction={removeAction} form={form} />
+        <CreateAccount
+          iconStyle={cn.createAccount}
+          order={order}
+          name={name}
+          removeAction={removeAction}
+          form={form}
+        />
       )}
       {type === 'Transfer' && (
         <Transfer
@@ -26,26 +32,27 @@ export const Action = ({ form, action, index, remove }) => {
           name={name}
           removeAction={removeAction}
           getName={getName}
+          iconStyle={cn.transfer}
         />
       )}
       {type === 'AddKey' && (
         <AddKey
           getName={getName}
-          action={action}
           form={form}
           order={order}
           name={name}
           removeAction={removeAction}
+          iconStyle={cn.key}
         />
       )}
       {type === 'DeployContract' && (
         <DeployContract
           getName={getName}
-          action={action}
           form={form}
           order={order}
           name={name}
           removeAction={removeAction}
+          iconStyle={cn.deployContract}
         />
       )}
       {type === 'FunctionCall' && (
@@ -55,16 +62,17 @@ export const Action = ({ form, action, index, remove }) => {
           order={order}
           name={name}
           removeAction={removeAction}
+          iconStyle={cn.functionCall}
         />
       )}
       {type === 'DeleteKey' && (
         <DeleteKey
-          action={action}
           form={form}
           getName={getName}
           order={order}
           name={name}
           removeAction={removeAction}
+          iconStyle={cn.key}
         />
       )}
       {type === 'DeleteAccount' && (
@@ -74,6 +82,7 @@ export const Action = ({ form, action, index, remove }) => {
           order={order}
           name={name}
           removeAction={removeAction}
+          iconStyle={cn.deleteAccount}
         />
       )}
     </div>

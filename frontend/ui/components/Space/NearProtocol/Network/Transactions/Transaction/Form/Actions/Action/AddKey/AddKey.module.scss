@@ -1,0 +1,20 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.permission{
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  margin-bottom: 8px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

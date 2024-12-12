@@ -80,7 +80,12 @@ export const FormDropdownGroup = ({
                 />
               </div>
               <hr className={error ? cn.borderError : cn.borderDefault} />
-              <button disabled={actionDisabled} onClick={onClick} className={cn.actionBtn}>
+              <button
+                type="button"
+                disabled={actionDisabled}
+                onClick={onClick}
+                className={cn.actionBtn}
+              >
                 <span className={cnm(cn.icon, iconStyles)} />
               </button>
             </div>

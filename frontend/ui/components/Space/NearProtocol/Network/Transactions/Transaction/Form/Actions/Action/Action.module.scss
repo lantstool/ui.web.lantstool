@@ -1,5 +1,34 @@
+@use '@styles/icons' as *;
+
 .action{
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 600px;
 }
+
+.createAccount {
+  @include icon('@assets/icons/add-circle-linear.svg');
+}
+
+.transfer {
+  @include icon('@assets/icons/transfer-outline.svg');
+}
+
+.key {
+  @include icon('@assets/icons/key-outline.svg');
+}
+
+.deployContract{
+  @include icon('@assets/icons/deploy-contract-linear.svg');
+}
+
+.functionCall {
+  @include icon('@assets/icons/function-call-outline.svg');
+}
+
+.deleteAccount{
+  @include icon('@assets/icons/minus-circle-linear.svg');
+
+}
+

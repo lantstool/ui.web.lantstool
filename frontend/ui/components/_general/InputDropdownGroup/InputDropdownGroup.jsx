@@ -6,19 +6,24 @@ import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { Option } from '../Dropdown/Option/Option.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useRef, useState } from 'react';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
 import cn from './InputDropdownGroup.module.scss';
 
 export const InputDropdownGroup = ({
   control = () => ({}),
-  options,
+  options = [],
   name,
-  dropDownName,
+  dropDownName = null,
   label,
   placeholder = null,
   disabled = false,
   copy,
   type = 'text',
+  inputGroup = 'dropdown',
+  singleValue = null,
+  dynamicErrorSpace = false,
+  tooltip,
 }) => {
   const ref = useRef(null);
   const {
@@ -42,7 +47,10 @@ export const InputDropdownGroup = ({
 
   return (
     <div className={cn.container}>
-      <label className={cn.label}>{label}</label>
+      <div className={cn.head}>
+        <label className={cn.label}>{label}</label>
+        {tooltip}
+      </div>
       <div
         onBlur={handleBlur}
         onFocus={handleFocus}
@@ -60,7 +68,7 @@ export const InputDropdownGroup = ({
             onChange={fieldOnChange}
             value={val}
             placeholder={placeholder}
-            className={cn.input}
+            className={cnm(cn.input, inputGroup === 'text' && !singleValue && cn.inputBorder)}
             type={type}
             disabled={disabled}
           />
@@ -73,22 +81,28 @@ export const InputDropdownGroup = ({
             </div>
           )}
         </div>
-        <hr className={error ? cn.borderError : cn.borderDefault} />
-        <Controller
-          name={dropDownName}
-          control={control}
-          render={({ field }) => (
-            <Select
-              {...field}
-              isSearchable={false}
-              isDisabled={disabled}
-              options={options}
-              styles={styles}
-              components={{ DropdownIndicator, Option }}
-            />
-          )}
-        />
+        {(inputGroup === 'dropdown' || singleValue) && (
+          <hr className={error ? cn.borderError : cn.borderDefault} />
+        )}
+        {inputGroup === 'dropdown' && (
+          <Controller
+            name={dropDownName}
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                isSearchable={false}
+                isDisabled={disabled}
+                options={options}
+                styles={styles}
+                components={{ DropdownIndicator, Option }}
+              />
+            )}
+          />
+        )}
+        {inputGroup === 'text' && singleValue && <h2 className={cn.singleValue}>{singleValue}</h2>}
       </div>
+      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };
