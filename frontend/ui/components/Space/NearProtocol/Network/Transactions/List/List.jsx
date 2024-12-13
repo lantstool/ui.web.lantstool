@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '@react-vault';
+import { useStoreEffect } from '@react-vault';
 import { Transaction } from './Transaction/Transaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { AddSquareOutline } from '../../../../../_general/icons/AddSquareOutline.jsx';
@@ -8,8 +8,8 @@ import { ImportOutline } from '../../../../../_general/icons/ImportOutline.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ txList }) => {
-  const { spaceId, networkId, transactionId } = useParams();
-  const txMap = useStoreState((store) => store.nearProtocol.transactions.txMap);
+  const params = useParams();
+  const { spaceId, networkId } = useParams();
   const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
   const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
   const navigate = useNavigate();
@@ -44,12 +44,12 @@ export const List = ({ txList }) => {
           {(provided) => (
             <div className={cn.scrollBar}>
               <div {...provided.droppableProps} ref={provided.innerRef} className={cn.wrapper}>
-                {txList.map((txId, index) => (
+                {txList.map((tx, index) => (
                   <Transaction
                     index={index}
-                    key={txId}
-                    transaction={txMap[txId]}
-                    isActive={txId === transactionId}
+                    key={tx.transactionId}
+                    transaction={tx}
+                    isActive={tx.transactionId === params?.transactionId}
                   />
                 ))}
                 {provided.placeholder}

@@ -4,8 +4,6 @@ import { effects } from './effects/index.js';
 export const transactions = {
   // state
   txList: [],
-  txMap: {},
-  transaction: null,
   drafts: {},
   results: {},
   // actions

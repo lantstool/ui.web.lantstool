@@ -7,11 +7,11 @@ import { effect } from '@react-vault';
 const getDestination = (transactions, activeTxId) => {
   // If we have only 1 tx and delete it - redirect to '/transactions'
   if (transactions.length === 1) return `..`;
-  const index = transactions.findIndex((id) => id === activeTxId);
-  // If we want to delete the second or further tx - return the upper one
-  if (index > 0) return `../${transactions[index - 1]}`;
-  // If we want to delete is first tx in the list - return the lower one
-  if (index === 0) return `../${transactions[index + 1]}`;
+  const index = transactions.findIndex(({ transactionId }) => transactionId === activeTxId);
+  // // If we want to delete the second or further tx - return the upper one
+  if (index > 0) return `../${transactions[index - 1].transactionId}`;
+  // // If we want to delete is first tx in the list - return the lower one
+  if (index === 0) return `../${transactions[index + 1].transactionId}`;
 };
 
 export const removeOne = effect(async ({ payload, slice, store }) => {

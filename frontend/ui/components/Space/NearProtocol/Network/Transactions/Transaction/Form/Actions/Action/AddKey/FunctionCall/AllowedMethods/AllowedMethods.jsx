@@ -3,14 +3,17 @@ import { RadioButton } from '../../../../../../../../../../../_general/RadioButt
 import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
 import { FormDropdownGroup } from '../../../../../../../../../../../_general/FormDropdownGroup/FormDropdownGroup.jsx';
 import { Tooltip } from '../../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { useDropdownOptions } from '../../../../../../../../_general/hooks/useDropdownOptions.js';
+import { useContractMethodsOptions } from '../../../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './AllowedMethods.module.scss';
 
 export const AllowedMethods = ({ form, getName }) => {
   const allowedMethodsName = getName('permission.restrictions.allowedMethods');
   const methodNamesName = getName('permission.restrictions.methodNames');
   const { control, register } = form;
-  const options = useDropdownOptions(control, getName('permission.restrictions.receiverId.value'));
+  const options = useContractMethodsOptions(
+    control,
+    getName('permission.restrictions.receiverId.value'),
+  );
 
   const allowedMethods = useWatch({
     control,

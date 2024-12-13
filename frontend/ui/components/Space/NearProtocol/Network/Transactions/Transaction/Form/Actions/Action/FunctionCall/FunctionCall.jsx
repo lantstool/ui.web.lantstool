@@ -4,7 +4,7 @@ import { InputActionGroup } from '../../../../../../../../../_general/InputActio
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
-import {useDropdownOptions} from '../../../../../../_general/hooks/useDropdownOptions.js';
+import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './FunctionCall.module.scss';
 
 const gasOptions = [
@@ -20,7 +20,7 @@ const depositOptions = [
 export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, name }) => {
   const { control } = form;
   const ContractOptions = useAccountsOptions();
-  const methodNameOptions = useDropdownOptions(control, getName('contractId.value'));
+  const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
 
   //TODO lock receiver when we select contract id
   return (
@@ -65,7 +65,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             dropDownName={getName('gasType')}
             dynamicErrorSpace
             tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
-
           />
           <InputActionGroup
             control={control}

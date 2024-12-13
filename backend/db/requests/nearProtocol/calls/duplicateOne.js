@@ -29,7 +29,7 @@ const getDuplicateName = async (execute, name) => {
     SELECT COUNT(*) as count
     FROM near_protocol_calls
     WHERE name LIKE '%${originName}%';
-  `
+  `;
   const [{ count }] = await execute(query);
 
   if (count === 1) return `${originName} - copy`;
@@ -44,7 +44,7 @@ const duplicate = async (execute, targetId) => {
 
   const query = `
     INSERT INTO near_protocol_calls
-      (callId, networkId, spaceId, name, 'order', createdAt, rpcType, body)
+      (callId, networkId, spaceId, name, 'order', createdAt, body)
     VALUES(
       '${callId}', 
       '${target.networkId}', 
@@ -52,7 +52,6 @@ const duplicate = async (execute, targetId) => {
       '${name}', 
        ${target.order + 1}, 
        ${createdAt}, 
-      '${target.rpcType}', 
       '${target.body}'
     )
   `;
