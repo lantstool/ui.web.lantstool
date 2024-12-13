@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { RadioButton } from '../../../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { InputDropdownGroup } from '../../../../../../../../../../../_general/InputDropdownGroup/InputDropdownGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
 import cn from './Allowance.module.scss';
 
 const options = [
@@ -40,7 +40,7 @@ export const Allowance = ({ form, getName }) => {
       </div>
       {isLimitedAllowance && (
         <div className={cn.limitedAllowance}>
-          <InputDropdownGroup
+          <InputActionGroup
             control={form.control}
             name={allowanceName}
             options={options}

@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputDropdownGroup } from '../../../../../../../../../_general/InputDropdownGroup/InputDropdownGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
 
 export const CreateAccount = ({iconStyle, form, removeAction, name, order }) => {
   const accountId = useWatch({
@@ -18,7 +18,7 @@ export const CreateAccount = ({iconStyle, form, removeAction, name, order }) => 
       removeAction={removeAction}
       tooltipContent="Create account"
     >
-      <InputDropdownGroup
+      <InputActionGroup
         control={form.control}
         inputGroup="text"
         name='accountId'

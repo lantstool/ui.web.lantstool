@@ -1,6 +1,6 @@
 import { Controller, useController } from 'react-hook-form';
 import Select from 'react-select';
-import { selectStyles } from './InputDropdownGroup.style.js';
+import { selectStyles } from './InputActionGroup.style.js';
 import { DropdownIndicator } from '../Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { Option } from '../Dropdown/Option/Option.jsx';
@@ -8,9 +8,9 @@ import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useRef, useState } from 'react';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
-import cn from './InputDropdownGroup.module.scss';
+import cn from './InputActionGroup.module.scss';
 
-export const InputDropdownGroup = ({
+export const InputActionGroup = ({
   control = () => ({}),
   options = [],
   name,

@@ -1,6 +1,6 @@
 import { Arguments } from './Arguments/Arguments.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputDropdownGroup } from '../../../../../../../../../_general/InputDropdownGroup/InputDropdownGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
@@ -57,7 +57,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
 
         <Arguments form={form} name={getName('arguments')} />
         <div className={cn.wrapper}>
-          <InputDropdownGroup
+          <InputActionGroup
             control={control}
             name={getName('gas')}
             label="Gas coverage"
@@ -67,7 +67,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
 
           />
-          <InputDropdownGroup
+          <InputActionGroup
             control={control}
             name={getName('deposit')}
             label="Deposit"
