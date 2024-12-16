@@ -5,6 +5,7 @@ const createAccount = (append) =>
     actionId: v4(),
     name: 'Create account',
     type: 'CreateAccount',
+    accountId:'',
   });
 
 const transfer = (append) =>
@@ -41,13 +42,13 @@ const functionCall = (append) =>
     actionId: v4(),
     name: 'Function call',
     type: 'FunctionCall',
+    contractId: '',
     methodName: '',
     arguments: '{}',
     gas: '50',
     deposit: '0',
     gasType: { value: 'tGas', label: 'TGas' },
     depositType: { value: 'NEAR', label: 'NEAR' },
-    contractId: '',
   });
 
 const deployContract = (append) =>

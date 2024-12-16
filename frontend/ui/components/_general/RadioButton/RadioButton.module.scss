@@ -65,6 +65,7 @@
 .enabledText {
   @include text-mg-regular;
   color: $neutral-700;
+  cursor: pointer;
 }
 
 .disabledText {

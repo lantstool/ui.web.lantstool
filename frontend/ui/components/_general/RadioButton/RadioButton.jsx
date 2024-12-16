@@ -18,6 +18,7 @@ export const RadioButton = ({ register, label, value, name, disabled = false }) 
       <label className={cn.radioContainer}>
         <input
           {...register(name)}
+          id={value}
           onFocus={handleFocus}
           onBlur={handleBlur}
           type="radio"
@@ -31,7 +32,9 @@ export const RadioButton = ({ register, label, value, name, disabled = false }) 
           })}
         />
       </label>
-      <h2 className={disabled ? cn.disabledText : cn.enabledText}>{label}</h2>
+      <label htmlFor={value} className={disabled ? cn.disabledText : cn.enabledText}>
+        {label}
+      </label>
     </div>
   );
 };

@@ -10,7 +10,7 @@ export const Actions = ({ form }) => {
   });
 
   return (
-    <div>
+    <div className={cn.actions}>
       <div className={cn.label}>
         <span className={cn.icon} />
         <h2 className={cn.title}>Actions</h2>

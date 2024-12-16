@@ -100,7 +100,11 @@ export const InputActionGroup = ({
             )}
           />
         )}
-        {inputGroup === 'text' && singleValue && <h2 className={cn.singleValue}>{singleValue}</h2>}
+        {inputGroup === 'text' && singleValue && (
+          <div className={cn.wrapper}>
+            <h2 className={cn.singleValue}>{singleValue}</h2>
+          </div>
+        )}
       </div>
       <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>

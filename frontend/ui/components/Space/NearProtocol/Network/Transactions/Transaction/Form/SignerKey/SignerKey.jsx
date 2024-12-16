@@ -1,4 +1,3 @@
-import { Option } from '../_general/Option/Option.jsx';
 import { useDropdownOptions } from './useDropdownOptions.js';
 import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import cn from './SignerKey.module.scss';
@@ -14,7 +13,6 @@ export const SignerKey = ({ form }) => {
         control={control}
         options={options}
         isClearable={true}
-        components={{ Option }}
         label="Access key"
       />
     </div>

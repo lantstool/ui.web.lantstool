@@ -21,6 +21,7 @@ export const Action = ({ form, action, index, remove }) => {
           iconStyle={cn.createAccount}
           order={order}
           name={name}
+          getName={getName}
           removeAction={removeAction}
           form={form}
         />

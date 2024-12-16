@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-.head{
+.head {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
@@ -85,7 +85,8 @@
 }
 
 .inputWrapper {
-  position: relative;
+  border-radius: 8px 0 0 8px;
+  background-color: $neutral-50;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -99,12 +100,12 @@
   justify-content: center;
   flex-direction: column;
   height: 24px;
-  width: calc(100% - 72px);
+  width: 100%;
   border-radius: 7px 0 0 7px;
   background: $neutral-50;
   border: none;
   outline: none;
-  padding: 8px 60px 8px 12px;
+  padding: 8px 12px;
   &::placeholder {
     color: $neutral-400;
   }
@@ -115,12 +116,11 @@
 }
 
 .buttonWrapper {
-  position: absolute;
-  width: 48px;
+  width: max-content;
   display: flex;
+  padding: 8px 12px 8px 0;
   justify-content: right;
-  right: 12px;
-  top: 12px;
+  align-items: center;
   gap: 8px;
 }
 
@@ -134,17 +134,23 @@
   &:disabled {
     cursor: default;
   }
+  :hover {
+    .icon {
+      fill: $neutral-800;
+    }
+  }
 }
 
 .icon {
   fill: $neutral-600;
 }
 
+.wrapper {
+  max-width: 200px;
+}
+
 .singleValue {
   @include text-sm-regular;
-  width: max-content;
-  max-width: 200px;
-  min-width: 100px;
   padding: 8px 12px;
   color: $neutral-700;
   white-space: nowrap;
