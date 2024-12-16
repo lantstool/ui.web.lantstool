@@ -22,7 +22,7 @@ export const ReceiverId = ({ form }) => {
   const { isRestricted, hasCreateAccount } = getActionsState(actions);
 
   useEffect(() => {
-    if (!isRestricted) {
+    if (!isRestricted && actions.length === 0) {
       setValue('receiverId', { value: '', label: '' });
     } else if (!hasCreateAccount && receiverId !== signerId.value) {
       setValue('receiverId', signerId);
