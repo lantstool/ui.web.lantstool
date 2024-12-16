@@ -1,10 +1,13 @@
 import { effect } from '@react-vault';
-import { methods } from './methods/index.js';
+import { methods } from '../methods/index.js';
 
 const getErrorMessage = (error) => {
   return error?.rpc ? error.rpc : { internalError: error.message };
 };
 
+// We want to send some RPC methods to the archival RPC;
+// For example: if user want to get the tx data - there is a good chance that
+// he will be looking for some old tx what issued more than 5 epoches ago.
 const getRpcPriority = (formValues) => {
   if (
     formValues.blockTarget === 'specific' ||
@@ -28,7 +31,7 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
     setResult({ callId, isOpen: true, isLoading: true, formValues });
 
     await rpc.configure({ spaceId, networkId, priority: getRpcPriority(formValues) });
-    const result = await methods[formValues.method.value](rpc, formValues);
+    const result = await methods[formValues.method.value].rpcCaller(rpc, formValues);
 
     setResult({ callId, result, isLoading: false, error: null });
   } catch (e) {

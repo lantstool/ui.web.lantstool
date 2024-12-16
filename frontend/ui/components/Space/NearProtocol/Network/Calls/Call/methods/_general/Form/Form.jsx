@@ -36,7 +36,7 @@ export const Form = ({ call, draft, children, methodDescription, schema }) => {
 
   return (
     <div className={cn.form}>
-      <Topbar call={call} />
+      <Topbar call={call} form={form} />
       <SelectMethod callId={callId} method={draft.method} />
       {methodDescription}
       <div className={cn.fieldsContainer}>{childrenWithProps}</div>

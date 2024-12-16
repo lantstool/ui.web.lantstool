@@ -8,16 +8,17 @@ import { DuplicateOutline } from '../../../../../../../../../_general/icons/Dupl
 import { ExportLinear } from '../../../../../../../../../_general/icons/ExportLinear.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
-import { useState } from 'react';
+import { ExportModal } from './ExportModal/ExportModal.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './Topbar.module.scss';
 
-export const Topbar = ({ call }) => {
+export const Topbar = ({ call, form }) => {
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.calls.duplicateOne);
-  const [isOpen, setOpen] = useState(false);
+  const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
+  const [isExportOpen, openExport, closeExport] = useToggler(false);
   const { spaceId, networkId, callId } = useParams();
 
   const duplicate = () => duplicateOne({ spaceId, networkId, callId });
-  const openModal = () => setOpen(true);
 
   return (
     <>
@@ -36,12 +37,17 @@ export const Topbar = ({ call }) => {
                 IconLeft={DuplicateOutline}
               />
             </Tooltip>
-            <Tooltip arrow={false} content="Export JSON" placement="top">
-              <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+            <Tooltip arrow={false} content="Export" placement="top">
+              <Button
+                onClick={openExport}
+                size="medium"
+                color="secondary"
+                IconLeft={ExportLinear}
+              />
             </Tooltip>
             <Tooltip arrow={false} content="Delete" placement="top">
               <Button
-                onClick={openModal}
+                onClick={openDelete}
                 size="medium"
                 color="secondary"
                 IconLeft={TrashBinOutline}
@@ -50,7 +56,8 @@ export const Topbar = ({ call }) => {
           </div>
         </div>
       </div>
-      {isOpen && <DeleteModal call={call} setOpen={setOpen} />}
+      {isExportOpen && <ExportModal call={call} form={form} closeModal={closeExport} />}
+      {isDeleteOpen && <DeleteModal call={call} closeModal={closeDelete} />}
     </>
   );
 };

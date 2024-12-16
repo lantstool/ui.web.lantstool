@@ -1,14 +1,9 @@
 import { action } from '@react-vault';
+import { methods } from '../methods/index.js';
 
 const getDefaultValues = () => ({
   // Account
-  getAccount: {
-    method: { value: 'getAccount', label: 'Get Account' },
-    accountId: null,
-    blockTarget: 'latest',
-    finality: { value: 'final', label: 'Final' },
-    blockId: '',
-  },
+  getAccount: methods.getAccount.defaultFormValues,
   getAccountChanges: {
     method: { value: 'getAccountChanges', label: 'Get Account Changes' },
     accountIds: [{ accountId: null }],

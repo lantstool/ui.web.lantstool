@@ -1,8 +1,10 @@
+import { methods } from '../../../../../../../../../../../store/slices/nearProtocol/slices/calls/methods/index.js';
+
 export const options = [
   {
     label: 'Account',
     options: [
-      { value: 'getAccount', label: 'Get Account' },
+      methods.getAccount.defaultFormValues.method,
       { value: 'getAccountChanges', label: 'Get Account Changes' },
     ],
   },

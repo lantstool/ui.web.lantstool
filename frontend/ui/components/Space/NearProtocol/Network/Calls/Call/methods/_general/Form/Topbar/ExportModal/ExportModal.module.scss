@@ -1,0 +1,12 @@
+.modal {
+  width: auto;
+  min-width: 800px;
+  max-width: 90vw;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
