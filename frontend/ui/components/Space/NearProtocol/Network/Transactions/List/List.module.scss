@@ -74,6 +74,7 @@
 
 .scrollBar {
   @include scrollbar;
+  overflow-x: hidden;
 }
 
 .wrapper {
