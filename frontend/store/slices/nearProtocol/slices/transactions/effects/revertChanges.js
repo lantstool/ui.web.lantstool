@@ -1,10 +1,15 @@
 import { effect } from '@react-vault';
 
-export const revertChanges = effect(({ payload, slice }) => {
+export const revertChanges = effect(async ({ store, payload, slice }) => {
   const { transactionId, form } = payload;
-  const transaction = slice.getState((slice) => slice.transaction);
-  const setDraft = slice.getActions((slice) => slice.setDraft);
+  const [backend] = store.getEntities((store) => store.backend);
+  const setupDraft = slice.getActions((slice) => slice.setupDraft);
 
-  setDraft({ transactionId, draft: null });
-  form.reset(transaction.body);
+  try {
+    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', transactionId);
+    setupDraft(transaction);
+    form.reset(transaction.body);
+  } catch (e) {
+    console.log(e);
+  }
 });

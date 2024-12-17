@@ -1,0 +1,28 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.allowance {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.allowanceBigMargin{
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  margin-bottom: 8px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.limitedAllowance{
+  margin-top: 8px;
+}

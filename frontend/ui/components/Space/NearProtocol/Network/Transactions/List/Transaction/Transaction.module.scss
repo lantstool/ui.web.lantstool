@@ -4,11 +4,8 @@
 .container {
   width: 224px;
   gap: 8px;
-  padding: 0 8px;
+  padding: 0 6px 0 8px;
   display: flex;
-  justify-content: start;
-  align-items: center;
-
 }
 
 .wrapper {
@@ -17,15 +14,14 @@
   width: 100%;
   padding: 8px;
   border-radius: 8px;
-  &:hover{
+  &:hover {
     background-color: $neutral-200;
     cursor: pointer;
   }
 }
 
-
 .title {
-  max-width: 450px;
+  width: 208px;
   margin: 0;
   font-size: 14px;
   overflow: hidden;

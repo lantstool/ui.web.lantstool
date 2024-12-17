@@ -1,5 +1,8 @@
 .transactions {
-  height: calc(100vh - 40px);
-  display: flex;
+  grid-template-columns: 240px auto;
+  grid-template-rows: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+  grid-template-areas: 'a b';
+  display: grid;
   width: 100%;
 }

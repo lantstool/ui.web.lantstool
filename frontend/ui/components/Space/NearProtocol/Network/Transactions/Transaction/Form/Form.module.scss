@@ -1,22 +1,23 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
-.formScrollWrapper {
+.formContainer {
+  position: relative;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 6px 82px 16px;
   width: 100%;
-  overflow: auto;
-  height: calc(100vh - 128px);
-  padding: 40px 8px 0 8px;
+  max-width: 600px;
 }
 
 .form {
-  padding: 0 40px;
-  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .resultBtn {
   padding: 8px 16px;
@@ -28,25 +29,22 @@
   margin-right: 40px;
 }
 
-.details{
+.label {
   display: flex;
-  height: 24px;
-  justify-content: start;
   align-items: center;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
-.icon{
-  height: 21.5px;
-  width: 21.5px;
-  fill: $neutral-400;
+.icon {
+  @include icon('@assets/icons/account-circle-outline.svg');
+  width: 24px;
+  height: 24px;
+  background-color: $neutral-400;
 }
 
 .title {
-  margin: 0;
-  text-align: center;
+  @include text-lg-medium;
   color: $neutral-800;
-  font-size: 16px;
-  font-weight: 600;
 }

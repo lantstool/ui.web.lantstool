@@ -89,3 +89,13 @@
 @mixin text-xs-bold {
   @include base-typography($font-size-xs, $line-height-xs, 700);
 }
+
+@mixin scrollbar {
+  padding-right: 2px;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-400;
+  }
+}

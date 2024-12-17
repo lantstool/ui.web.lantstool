@@ -2,7 +2,6 @@ import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
-import { useRef } from 'react';
 import cnm from 'classnames';
 import cn from './Input.module.scss';
 
@@ -19,10 +18,8 @@ export const Input = ({
   tooltip = null,
   dynamicErrorSpace = false,
 }) => {
-  const ref = useRef(null);
-
   const {
-    field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur },
+    field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur, ref },
     fieldState: { error },
   } = useController({ name, control });
 
@@ -30,7 +27,6 @@ export const Input = ({
   const val = typeof value !== 'string' ? '' : value;
 
   const handleClear = () => {
-    ref.current.focus();
     fieldOnChange('');
   };
 

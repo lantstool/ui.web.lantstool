@@ -26,7 +26,7 @@ export const useDropdownOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const getAccountKeys = useStoreEffect((store) => store.nearProtocol.accounts.getAccountKeys);
-  const accountId = useWatch({ control, name: 'signerId' });
+  const accountId = useWatch({ control, name: 'signerId.value' });
 
   useEffect(() => {
     (async () => {

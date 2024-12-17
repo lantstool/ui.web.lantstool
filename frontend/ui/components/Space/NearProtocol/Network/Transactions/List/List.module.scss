@@ -1,20 +1,24 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-.transactionList {
-  width: max-content;
-  min-width: 240px;
+.list {
+  grid-area: a;
+  min-width: 239px;
   padding: 8px 0;
   display: flex;
   gap: 8px;
   flex-direction: column;
-  align-items: center;
   background-color: $neutral-50;
 }
 
 .topBar {
-  width: 224px;
-  outline: none;
+  display: flex;
+  margin: 0 8px;
+  gap: 2px;
+}
+
+.createBtn {
+  width: 100%;
   border: none;
   gap: 8px;
   padding: 8px;
@@ -35,6 +39,29 @@
   }
 }
 
+.tooltip {
+  border-radius: 8px;
+}
+
+.exportBtn {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  .icon {
+    fill: $neutral-600;
+  }
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .icon {
+      fill: $neutral-800;
+    }
+  }
+}
+
 .title {
   margin: 0;
   padding: 0;
@@ -45,24 +72,13 @@
   line-height: 16px;
 }
 
-.modalContainer {
-  padding: 28px 32px 32px 32px;
-  width: 486px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
-  box-shadow: var(--Box-Shadow-025);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: var(--Border-Radius-3);
+.scrollBar {
+  @include scrollbar;
+  overflow-x: hidden;
 }
 
 .wrapper {
-  width: 100%;
-  height: calc(100vh - 88px);
-  overflow-y: auto;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }

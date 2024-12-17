@@ -8,21 +8,31 @@ import cn from './Transaction.module.scss';
 
 export const Transaction = () => {
   const { transactionId } = useParams();
-  const transaction = useStoreState((store) => store.nearProtocol.transactions.transaction);
+  const onMountTransaction = useStoreEffect(
+    (store) => store.nearProtocol.transactions.onMountTransaction,
+  );
+  const transactionDraft = useStoreState(
+    (store) => store.nearProtocol.transactions.drafts[transactionId],
+    [transactionId],
+  );
   const txResult = useStoreState(
     (store) => store.nearProtocol.transactions.results[transactionId],
     [transactionId],
   );
-  const getTx = useStoreEffect((store) => store.nearProtocol.transactions.getTx);
 
-  useLoader(getTx, transactionId, [transactionId]);
   useSaveToHistory();
+  useLoader(onMountTransaction, transactionId, [transactionId]);
+
   // We use it instead of 'isLoading' to avoid a screen blinking
-  if (!transaction) return null;
+  if (!transactionDraft) return null;
 
   return (
     <div className={cn.transaction}>
-      {txResult?.isOpen ? <Result txResult={txResult} /> : <Form transaction={transaction} />}
+      {txResult?.isOpen ? (
+        <Result txResult={txResult} />
+      ) : (
+        <Form transaction={transactionDraft.origin} draft={transactionDraft.body} />
+      )}
     </div>
   );
 };

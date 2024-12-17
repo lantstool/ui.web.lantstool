@@ -141,6 +141,9 @@
   &:disabled .iconSecondary {
     fill: $neutral-500;
   }
+  &:disabled .iconSecondaryStyle {
+    background-color: $neutral-500 !important;
+  }
 }
 
 .secondaryLg {
@@ -174,6 +177,9 @@
   }
   &:disabled .iconDangerSecondary {
     fill: $neutral-500;
+  }
+  &:disabled .iconDangerSecondaryStyle {
+    background-color: $neutral-500 !important;
   }
 }
 
@@ -219,6 +225,9 @@
   }
   &:disabled .iconTertiary {
     fill: $neutral-400;
+  }
+  &:disabled .iconTertiaryStyle {
+    background-color: $neutral-400 !important;
   }
 }
 
@@ -284,14 +293,30 @@
   fill: $neutral-00;
 }
 
+.iconPrimaryStyle {
+  background-color: $neutral-00 !important;
+}
+
 .iconSecondary {
   fill: $neutral-700;
+}
+
+.iconSecondaryStyle {
+  background-color: $neutral-700 !important;
 }
 
 .iconDangerSecondary {
   fill: $red-600;
 }
 
+.iconDangerSecondaryStyle {
+  background-color: $red-600 !important;
+}
+
 .iconTertiary {
   fill: $neutral-700;
+}
+
+.iconTertiaryStyle {
+  background-color: $neutral-700 !important;
 }

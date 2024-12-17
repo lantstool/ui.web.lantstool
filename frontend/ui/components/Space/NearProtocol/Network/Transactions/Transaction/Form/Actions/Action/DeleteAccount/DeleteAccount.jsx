@@ -1,6 +1,33 @@
-import { InputGroup } from '../../../../../../../../../_general/InputGroup/InputGroup.jsx';
+import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 
-export const DeleteAccount = ({ form, getName }) => {
-  const { register } = form;
-  return <InputGroup register={register} name={getName('beneficiaryId')} label="Beneficiary Id" />;
+export const DeleteAccount = ({ form, getName, name, order, iconStyle, removeAction }) => {
+  const { control } = form;
+  const options = useAccountsOptions();
+
+  return (
+    <ActionBase
+      iconStyle={iconStyle}
+      color="error"
+      removeAction={removeAction}
+      label={name}
+      order={order}
+      tooltipContent="Delete account"
+    >
+      <FormDropdown
+        name={getName('beneficiaryId')}
+        control={control}
+        options={options}
+        creatableSelect
+        isSearchable
+        isClearable
+        label="Beneficiary Id"
+        placeholder="Select or enter..."
+        tooltip={<Tooltip defaultContent placement="top" content="Beneficiar ID" />}
+        dynamicErrorSpace
+      />
+    </ActionBase>
+  );
 };

@@ -4,12 +4,20 @@ import { FileSmileBold } from '../icons/FileSmileBold.jsx';
 import { FileOutline } from '../icons/FileOutline.jsx';
 import cn from './FileUploader.module.scss';
 
-export const FileUploader = ({ file, setFile, callToActionText, allowedFileTypes }) => {
+export const FileUploader = ({
+  setValue = () => ({}),
+  name = null,
+  file,
+  setFile,
+  callToActionText,
+  allowedFileTypes,
+}) => {
   const { getRootProps, getInputProps, open } = useDropzone({
     noClick: true,
     noKeyboard: true,
     onDrop: (acceptedFiles) => {
       setFile(acceptedFiles[0]);
+      name && setValue(name, acceptedFiles);
     },
     multiple: false,
     accept: allowedFileTypes,

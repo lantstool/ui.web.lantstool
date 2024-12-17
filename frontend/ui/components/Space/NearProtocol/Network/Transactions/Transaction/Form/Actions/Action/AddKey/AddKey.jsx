@@ -1,42 +1,49 @@
 import { useWatch } from 'react-hook-form';
-import { InputGroup } from '../../../../../../../../../_general/InputGroup/InputGroup.jsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
+import { Input } from '../../../../../../../../../_general/Input/Input.jsx';
+import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
+import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
+import cn from './AddKey.module.scss';
 
-export const AddKey = ({ form, getName }) => {
+export const AddKey = ({ iconStyle, form, getName, removeAction, name, order }) => {
   const { control, register } = form;
   const permissionName = getName('permission.type');
-
   const permissionType = useWatch({
     control,
     name: permissionName,
   });
 
   return (
-    <>
-      <InputGroup register={register} name={getName('publicKey')} label="New Public Key" />
-      <InputGroup register={register} name={getName('nonce')} label="Nonce" />
-
-      <fieldset style={{ borderRadius: 8 }}>
-        <legend>Permission</legend>
-
-        <input
-          {...register(permissionName)}
-          type="radio"
-          id={`${permissionName}.fullAccess`}
-          value="FullAccess"
-        />
-        <label htmlFor={`${permissionName}.fullAccess`}>Full Access</label>
-
-        <input
-          {...register(permissionName)}
-          type="radio"
-          id={`${permissionName}.functionCall`}
-          value="FunctionCall"
-        />
-        <label htmlFor={`${permissionName}.functionCall`}>Function Call</label>
-      </fieldset>
-
-      {permissionType === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
-    </>
+    <ActionBase
+      iconStyle={iconStyle}
+      label={name}
+      order={order}
+      color="green"
+      tooltipContent="Add key"
+      removeAction={removeAction}
+    >
+      <div>
+        <Input control={control} name={getName('publicKey')} label="New Public Key" copy={false} />
+        <Input control={control} name={getName('nonce')} label="Nonce" copy={false} />
+        <div className={cn.permission}>
+          <h2 className={cn.title}>Permission</h2>
+          <div className={cn.container}>
+            <RadioButton
+              label="Full Access"
+              name={permissionName}
+              register={register}
+              value="FullAccess"
+            />
+            <RadioButton
+              label="Function Call"
+              name={permissionName}
+              register={register}
+              value="FunctionCall"
+            />
+          </div>
+          {permissionType === 'FunctionCall' && <FunctionCall form={form} getName={getName} />}
+        </div>
+      </div>
+    </ActionBase>
   );
 };

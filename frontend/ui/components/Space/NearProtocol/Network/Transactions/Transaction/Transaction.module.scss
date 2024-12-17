@@ -1,4 +1,16 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .transaction {
-  min-width: 450px;
-  width: 100%;
+  grid-area: b;
+  overflow-y: auto;
+  height: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+@media (min-width: 1000px) {
+  .transaction {
+    overflow-x: hidden;
+  }
 }

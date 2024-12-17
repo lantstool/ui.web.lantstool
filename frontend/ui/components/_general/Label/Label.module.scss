@@ -33,6 +33,10 @@
   @include iconStyle($neutral-700);
 }
 
+.iconBase{
+  background-color: $neutral-700;
+}
+
 @mixin colorScheme($bgColor, $textColor, $iconColor) {
   @include span;
   background-color: $bgColor;
@@ -41,6 +45,9 @@
   }
   .icon {
     @include iconStyle($iconColor);
+  }
+  .iconBase{
+    background-color: $iconColor;
   }
 }
 
