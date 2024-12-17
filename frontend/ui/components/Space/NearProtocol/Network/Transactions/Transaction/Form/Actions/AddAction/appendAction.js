@@ -29,9 +29,9 @@ const addKey = (append) =>
         allowedAllowance: 'Unlimited', // Limited
         allowance: '',
         allowanceType: { value: 'NEAR', label: 'NEAR' },
-        receiverId: '',
+        receiverId: { value: '', label: '' },
         allowedMethods: 'All', // Certain
-        methodNames: [{ name: '' }],
+        methodNames: [{ name: { value: '', label: '' } }],
       },
     },
     nonce: '0',
@@ -64,7 +64,7 @@ const deleteKey = (append) =>
     actionId: v4(),
     name: 'Delete key',
     type: 'DeleteKey',
-    accessKey: '',
+    accessKey: { value: '', label: '' },
   });
 
 const deleteAccount = (append) =>
@@ -72,7 +72,7 @@ const deleteAccount = (append) =>
     actionId: v4(),
     name: 'Delete account',
     type: 'DeleteAccount',
-    beneficiaryId: '',
+    beneficiaryId: { value: '', label: '' },
   });
 
 export const appendAction = {

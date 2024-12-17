@@ -25,7 +25,7 @@ export const AllowedMethods = ({ form, getName }) => {
     name: methodNamesName,
   });
 
-  const addMethod = () => append({ name: '' });
+  const addMethod = () => append({ name: { value: '', label: '' } });
   const removeMethod = (index) => remove(index);
 
   return (

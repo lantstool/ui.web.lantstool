@@ -2,28 +2,30 @@ import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
 import { useEffect } from 'react';
 
+const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
+  const newValue =
+    accountId && signerId
+      ? { value: `${accountId}${singleValue}`, label: `${accountId}${singleValue}` }
+      : { value: '', label: '' };
+
+  setValue('receiverId', newValue);
+};
+
 export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, order }) => {
-  const signerId = form.watch('signerId');
-  const accountId = form.watch(getName('accountId'));
+  const { control, setValue, watch } = form;
+  const signerId = watch('signerId');
+  const accountId = watch(getName('accountId'));
   const singleValue = signerId ? `.${signerId.value}` : '';
 
   useEffect(() => {
-    if (accountId && signerId) {
-      form.setValue('receiverId', {
-        value: `${accountId}${singleValue}`,
-        label: `${accountId}${singleValue}`,
-      });
-    }
-    if (!accountId || !signerId) {
-      form.setValue('receiverId', {
-        value: '',
-        label: '',
-      });
-    }
-  }, [accountId, signerId]);
+    updateReceiverId(accountId, signerId, singleValue, setValue);
+  }, [accountId, signerId, singleValue]);
 
   const remove = () => {
-    form.setValue('receiverId', signerId);
+    setValue('receiverId', {
+      value: '',
+      label: '',
+    });
     removeAction();
   };
 
@@ -37,7 +39,7 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, or
       tooltipContent="Create account"
     >
       <InputActionGroup
-        control={form.control}
+        control={control}
         inputGroup="text"
         name={getName('accountId')}
         label="Account id"

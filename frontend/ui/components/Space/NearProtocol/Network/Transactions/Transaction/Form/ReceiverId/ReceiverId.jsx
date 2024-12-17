@@ -3,7 +3,7 @@ import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDro
 import { useEffect } from 'react';
 import cn from './Receiver.module.scss';
 
-const restrictedTypes = ['AddKey', 'DeployContract', 'DeleteKey', 'DeleteAccount', 'CreateAccount'];
+const restrictedTypes = ['AddKey', 'DeployContract', 'DeleteKey', 'DeleteAccount'];
 
 const getActionsState = (actions) => {
   const isRestricted = actions.some((action) => restrictedTypes.includes(action.type));
@@ -22,12 +22,10 @@ export const ReceiverId = ({ form }) => {
   const { isRestricted, hasCreateAccount } = getActionsState(actions);
 
   useEffect(() => {
-    if (!isRestricted && actions.length === 0) {
-      setValue('receiverId', { value: '', label: '' });
-    } else if (!hasCreateAccount && receiverId !== signerId.value) {
+    if (isRestricted && !hasCreateAccount) {
       setValue('receiverId', signerId);
     }
-  }, [isRestricted, hasCreateAccount, receiverId, signerId, setValue]);
+  }, [isRestricted, hasCreateAccount, receiverId, signerId]);
 
   return (
     <div className={cn.receiver}>
@@ -40,7 +38,7 @@ export const ReceiverId = ({ form }) => {
         control={control}
         isSearchable
         isClearable
-        isDisabled={isRestricted}
+        isDisabled={isRestricted || hasCreateAccount}
         options={options}
         creatableSelect
         label="Account Id"
