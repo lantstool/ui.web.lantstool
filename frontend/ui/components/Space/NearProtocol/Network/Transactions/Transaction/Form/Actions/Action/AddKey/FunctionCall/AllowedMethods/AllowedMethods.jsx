@@ -52,6 +52,8 @@ export const AllowedMethods = ({ form, getName }) => {
               onClick={() => removeMethod(index)}
               actionDisabled={fields.length === 1}
               iconStyles={cn.icon}
+              creatableSelect
+              isSearchable
               tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
             />
           ))}
