@@ -16,7 +16,7 @@ export const Actions = ({ form }) => {
         <h2 className={cn.title}>Actions</h2>
       </div>
       {fields.map((action, index) => (
-        <Action key={action.actionId} index={index} action={action} form={form} remove={remove} />
+        <Action key={action.id} index={index} action={action} form={form} remove={remove} />
       ))}
       <AddAction append={append} fields={fields} />
     </div>

@@ -1,22 +1,18 @@
-import { CodeEditor } from '../../../../../../../../../../_general/CodeEditor/CodeEditor.jsx';
+import { FormJsonEditor } from '../../../../../../../../../../_general/FormJsonEditor/FormJsonEditor.jsx';
 
 export const Arguments = ({ form, name }) => {
-  const {
-    control,
-    formState: { errors },
-    watch,
-  } = form;
+  const { control, watch } = form;
 
   const args = watch(name);
   const clear = () => form.setValue(name, '');
 
   return (
-    <CodeEditor
+    <FormJsonEditor
+      label="Arguments"
       control={control}
       copyValue={args}
       name={name}
       clear={clear}
-      error={errors[name]?.message}
     />
   );
 };

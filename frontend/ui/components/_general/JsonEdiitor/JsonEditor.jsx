@@ -1,15 +1,15 @@
-import cn from './CodeEditor.module.scss';
 import { Tooltip } from '../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import CodeMirror from '@uiw/react-codemirror';
 import { theme } from './theme.js';
 import { jsonLanguage } from '@codemirror/lang-json';
-import { Controller } from 'react-hook-form';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
+import cn from './JsonEditor.module.scss';
 
-export const CodeEditor = ({ control, copyValue, clear, error = null, name }) => (
+export const JsonEditor = ({ error = null, label, copyValue, clear, field = null }) => (
   <div>
     <div className={cn.label}>
-      <p className={cn.title}>Arguments</p>
+      <p className={cn.title}>{label}</p>
       <Tooltip content="Arguments" placement="top" defaultContent />
     </div>
     <div className={error ? cn.errorPanel : cn.controlPanel}>
@@ -27,21 +27,16 @@ export const CodeEditor = ({ control, copyValue, clear, error = null, name }) =>
       </div>
     </div>
     <div className={cn.editorWrapper}>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <CodeMirror
-            {...field}
-            className={cn.editor}
-            theme={theme(error)}
-            extensions={[jsonLanguage]}
-            basicSetup={{
-              tabSize: 2,
-            }}
-          />
-        )}
+      <CodeMirror
+        {...field}
+        className={cn.editor}
+        theme={theme(error)}
+        extensions={[jsonLanguage]}
+        basicSetup={{
+          tabSize: 2,
+        }}
       />
     </div>
+    <FieldErrorLabel error={error?.message} />
   </div>
 );

@@ -3,14 +3,10 @@ import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import cn from './DeleteModal.module.scss';
 
-export const DeleteModal = ({ setOpen, transaction }) => {
+export const DeleteModal = ({ closeModal, transaction }) => {
   const navigate = useNavigate();
   const { spaceId, networkId, transactionId } = useParams();
   const removeOne = useStoreEffect((store) => store.nearProtocol.transactions.removeOne);
-
-  const closeModal = () => {
-    setOpen(false);
-  };
 
   const remove = () => removeOne({ spaceId, networkId, transactionId, navigate, closeModal });
 

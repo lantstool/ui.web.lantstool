@@ -7,17 +7,16 @@ import { DuplicateOutline } from '../../../../../../../_general/icons/DuplicateO
 import { ExportLinear } from '../../../../../../../_general/icons/ExportLinear.jsx';
 import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { dateFormatter } from '../../../../../../../../../store/helpers/formatDate.js';
-import { useState } from 'react';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './Topbar.module.scss';
 
 export const Topbar = ({ transaction }) => {
   const { spaceId, networkId, transactionId } = useParams();
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.transactions.duplicateOne);
-  const [isOpen, setOpen] = useState(false);
+  const [isModalOpen, openModal, closeModal] = useToggler();
 
   const duplicate = () => duplicateOne({ spaceId, networkId, transactionId });
-  const openModal = () => setOpen(true);
 
   return (
     <div className={cn.topbar}>
@@ -36,7 +35,7 @@ export const Topbar = ({ transaction }) => {
           <Button onClick={openModal} size="medium" color="secondary" IconLeft={TrashBinOutline} />
         </Tooltip>
       </div>
-      {isOpen && <DeleteModal transaction={transaction} setOpen={setOpen} />}
+      {isModalOpen && <DeleteModal transaction={transaction} closeModal={closeModal} />}
     </div>
   );
 };
