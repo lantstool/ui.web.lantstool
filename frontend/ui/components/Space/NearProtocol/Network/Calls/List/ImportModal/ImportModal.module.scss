@@ -8,7 +8,9 @@
     24px
     24px
     24px
-    calc(90vh - 24px - 24px - 24px - 24px - 32px - 24px)
+    32px
+    24px
+    calc(90vh - 24px - 24px - 24px - 32px - 24px - 32px - 24px - 24px)
     24px
     32px
     24px;
@@ -19,6 +21,8 @@
     '. b .'
     '. . .'
     '. c .'
+    '. e .'
+    '. d .'
     '. . .';
   padding: 0;
   gap: 0;
@@ -28,16 +32,8 @@
   grid-area: a;
 }
 
-.editor {
+.tabContainer {
   grid-area: b;
-  height: 100%;
-  width: 100%;
 }
 
-.modalFooter {
-  grid-area: c;
-  display: flex;
-  gap: 8px;
-  flex-direction: row;
-  justify-content: flex-end;
-}
+
