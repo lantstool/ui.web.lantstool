@@ -18,6 +18,7 @@ export const Transfer = ({ iconStyle, form, name, getName, removeAction, order }
     <InputActionGroup
       control={form.control}
       name={getName('amount')}
+      placeholder={0}
       options={options}
       label="Amount"
       dropDownName={getName('amountType')}

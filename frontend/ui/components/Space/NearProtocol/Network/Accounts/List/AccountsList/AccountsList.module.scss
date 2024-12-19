@@ -24,7 +24,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
 }
 
 .title {
@@ -32,6 +31,9 @@
   color: $neutral-800;
   margin: 0;
   padding: 0;
+  max-width: 570px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .subtitle {

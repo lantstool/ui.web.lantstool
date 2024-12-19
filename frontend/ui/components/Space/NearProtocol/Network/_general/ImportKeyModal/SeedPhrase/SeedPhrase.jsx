@@ -13,7 +13,7 @@ import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import { InfoCircleLinear } from '../../../../../../_general/icons/InfoCircleLinear.jsx';
 import cn from './SeedPhrase.module.scss';
 
-export const SeedPhrase = ({ closeModal }) => {
+export const SeedPhrase = ({ closeModal, setKey }) => {
   const { spaceId, networkId } = useParams();
   const importFromSeedPhrase = useStoreEffect(
     (store) => store.nearProtocol.keys.importFromSeedPhrase,
@@ -47,7 +47,7 @@ export const SeedPhrase = ({ closeModal }) => {
   }, [derivationPath]);
 
   const onSubmit = handleSubmit((formValues) => {
-    importFromSeedPhrase({ formValues, spaceId, networkId, closeModal });
+    importFromSeedPhrase({ formValues, spaceId, networkId, closeModal, setKey });
   });
 
   return (

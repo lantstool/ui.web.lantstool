@@ -8,18 +8,16 @@ import { SeedPhrase } from './SeedPhrase/SeedPhrase.jsx';
 import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import cn from './ImportKeyModal.module.scss';
 
-export const ImportKeyModal = ({ isOpen, setOpen }) => {
+export const ImportKeyModal = ({ closeModal, setKey = () => ({}) }) => {
   const [formType, setFormType] = useState('privateKey');
 
-  const closeModal = () => {
-    setOpen(false);
+  const close = () => {
+    closeModal();
     setFormType('privateKey');
   };
 
-  if (!isOpen) return null;
-
   return (
-    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
+    <BaseModal close={close} classes={{ modal: cn.modal }}>
       <div className={cn.list}>
         <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
           Private key
@@ -37,8 +35,8 @@ export const ImportKeyModal = ({ isOpen, setOpen }) => {
         </Item>
       </div>
       <div className={cn.content}>
-        {formType === 'privateKey' && <PrivateKey closeModal={closeModal} />}
-        {formType === 'seedPhrase' && <SeedPhrase closeModal={closeModal} />}
+        {formType === 'privateKey' && <PrivateKey closeModal={close} setKey={setKey} />}
+        {formType === 'seedPhrase' && <SeedPhrase closeModal={close} setKey={setKey} />}
       </div>
     </BaseModal>
   );

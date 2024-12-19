@@ -6,14 +6,24 @@ import { Tooltip } from '../../../../../../../../../../../_general/Tooltip/Toolt
 import { useContractMethodsOptions } from '../../../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './AllowedMethods.module.scss';
 
+const toSet = (selectedMethods = []) => new Set(selectedMethods.map((obj) => obj.name?.value));
+
+// We want to help user to avoid seeing accounts, which is already selected
+const useGetOptions = (control, getName, methodNamesName) => {
+  const allMethods = useContractMethodsOptions(
+    control,
+    getName('permission.restrictions.receiverId.value'),
+  );
+  const selectedMethods = useWatch({ control, name: methodNamesName });
+  const set = toSet(selectedMethods);
+  return allMethods.filter(({ value }) => !set.has(value));
+};
+
 export const AllowedMethods = ({ form, getName }) => {
   const allowedMethodsName = getName('permission.restrictions.allowedMethods');
   const methodNamesName = getName('permission.restrictions.methodNames');
   const { control, register } = form;
-  const options = useContractMethodsOptions(
-    control,
-    getName('permission.restrictions.receiverId.value'),
-  );
+  const options = useGetOptions(control, getName, methodNamesName);
 
   const allowedMethods = useWatch({
     control,
@@ -25,7 +35,7 @@ export const AllowedMethods = ({ form, getName }) => {
     name: methodNamesName,
   });
 
-  const addMethod = () => append({ name: { value: '', label: '' } });
+  const addMethod = () => append({ name: null });
   const removeMethod = (index) => remove(index);
 
   return (
@@ -53,7 +63,9 @@ export const AllowedMethods = ({ form, getName }) => {
               actionDisabled={fields.length === 1}
               iconStyles={cn.icon}
               creatableSelect
+              copy={false}
               isSearchable
+              isClearable
               tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
             />
           ))}

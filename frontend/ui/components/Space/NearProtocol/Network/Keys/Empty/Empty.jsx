@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import { ImportKeyModal } from '../../_general/ImportKeyModal/ImportKeyModal.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import { KeySquareBold } from '../../../../../_general/icons/KeySquareBold.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './Empty.module.scss';
 
 export const Empty = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const openModal = () => {
-    setOpen(true);
-  };
+  const [isModalOpen, openModal, closeModal] = useToggler();
 
   return (
     <div className={cn.empty}>
@@ -20,7 +16,7 @@ export const Empty = () => {
         </h2>
       </div>
       <Button onClick={openModal}>Import key</Button>
-      <ImportKeyModal isOpen={isOpen} setOpen={setOpen} />
+      {isModalOpen && <ImportKeyModal closeModal={closeModal} />}
     </div>
   );
 };

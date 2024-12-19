@@ -1,15 +1,11 @@
-import cn from './List.module.scss';
-import { useState } from 'react';
-import { ImportAccount } from '../_general/ImportAccount/ImportAccount.jsx';
+import { ImportAccount } from '../../_general/ImportAccount/ImportAccount.jsx';
 import { AccountsList } from './AccountsList/AccountsList.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
+import { useToggler } from '@hooks/useToggler.js';
+import cn from './List.module.scss';
 
 export const List = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const openModal = () => {
-    setOpen(true);
-  };
+  const [isModalOpen, openModal, closeModal] = useToggler();
 
   return (
     <div className={cn.accountList}>
@@ -23,7 +19,7 @@ export const List = () => {
         </Button>
       </div>
       <AccountsList />
-      {isOpen && <ImportAccount setOpen={setOpen} />}
+      {isModalOpen && <ImportAccount closeModal={closeModal} />}
     </div>
   );
 };

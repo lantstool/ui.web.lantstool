@@ -9,7 +9,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
   const setResult = slice.getActions((slice) => slice.setResult);
 
   try {
-    setResult({ transactionId, isOpen: true, isLoading: true });
+    setResult({ transactionId, isOpen: true, error: null, isLoading: true });
 
     await rpc.configure({ spaceId, networkId });
     const transaction = await createTx({ rpc, formValues });
@@ -30,6 +30,6 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     setResult({ transactionId, result, isLoading: false });
   } catch (e) {
     console.log(e);
-    setResult({ transactionId, result: `Error: ${e.message}`, isLoading: false });
+    setResult({ transactionId, result: null, error: e.message, isLoading: false });
   }
 });

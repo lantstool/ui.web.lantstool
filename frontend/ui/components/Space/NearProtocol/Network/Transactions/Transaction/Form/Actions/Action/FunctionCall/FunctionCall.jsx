@@ -64,6 +64,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             options={gasOptions}
             dropDownName={getName('gasType')}
             dynamicErrorSpace
+            placeholder={0}
             tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
           />
           <InputActionGroup
@@ -73,6 +74,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             options={depositOptions}
             dropDownName={getName('depositType')}
             dynamicErrorSpace
+            placeholder={0}
             tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
           />
         </div>
