@@ -1,7 +1,7 @@
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
-import { Form } from '../../_general/Form/Form.jsx';
-import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
+import { Form } from '../../_general/components/Form/Form.jsx';
+import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { schema } from './schema.js';
 
 export const GetProtocolConfig = ({ call, draft }) => {

@@ -1,4 +1,5 @@
 @use '@styles/variables' as *;
+@use '@styles/icons' as *;
 
 @mixin button($padding) {
   border: none;
@@ -71,4 +72,14 @@
   fill: $neutral-700;
   width: 16px;
   height: 16px;
+}
+
+.checkCircleOutline {
+  @include icon('@assets/icons/check-circle-outline.svg');
+  background-color: $neutral-00;
+}
+
+.copyOutline {
+  @include icon('@assets/icons/copy-outline.svg');
+  background-color: $neutral-00;
 }

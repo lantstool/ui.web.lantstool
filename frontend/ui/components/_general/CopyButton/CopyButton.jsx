@@ -1,4 +1,5 @@
 import { CopyOutline } from '../icons/CopyOutline.jsx';
+import { Button } from '../Button/Button.jsx';
 import { CheckCircleOutline } from '../icons/CheckCircleOutline.jsx';
 import { useState } from 'react';
 import cn from './CopyButton.module.scss';
@@ -9,23 +10,23 @@ const types = {
   small: cn.buttonSmall,
 };
 
-const getType = (type) => {
-  return type ? types[type] : type['default'];
-};
+const getType = (type) => (type ? types[type] : type['default']);
 
 export const CopyButton = ({
   value,
   disabled = false,
   type = 'default',
   event = 'onMouseDown',
+  variant = 'icon',
+  button,
 }) => {
   const [copied, setCopied] = useState(false);
   const buttonType = getType(type);
 
-  const copyTextToClipboard = (e) => {
+  const copyTextToClipboard = async (e) => {
     e.stopPropagation();
     e.preventDefault();
-    navigator.clipboard.writeText(value);
+    await navigator.clipboard.writeText(value);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -35,6 +36,18 @@ export const CopyButton = ({
     event === 'onMouseDown'
       ? { onMouseDown: copyTextToClipboard }
       : { onClick: copyTextToClipboard };
+
+  if (variant === 'button')
+    return (
+      <Button
+        onClick={copyTextToClipboard}
+        disabled={disabled}
+        size={button?.size}
+        IconLeft={() => <span className={copied ? cn.checkCircleOutline : cn.copyOutline} />}
+      >
+        {button?.label}
+      </Button>
+    );
 
   return (
     <button disabled={disabled} type="button" {...eventHandler} className={buttonType}>

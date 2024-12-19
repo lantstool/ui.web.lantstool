@@ -1,0 +1,28 @@
+.editorWrapper {
+  grid-area: c;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 0;
+}
+
+.editor {
+  width: 100%;
+}
+
+.errorContainer {
+  grid-area: e;
+  overflow: hidden;
+  & > p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.modalFooter {
+  grid-area: d;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
+}

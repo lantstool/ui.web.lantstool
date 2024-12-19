@@ -1,13 +1,16 @@
 import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { config } from '../../_general/config.js';
+
+const { waitUntil } = config;
 
 const options = [
-  { value: 'NONE', label: 'None' },
-  { value: 'INCLUDED', label: 'Included' },
-  { value: 'EXECUTED_OPTIMISTIC', label: 'Executed Optimistic' },
-  { value: 'INCLUDED_FINAL', label: 'Included Final' },
-  { value: 'EXECUTED', label: 'Executed' },
-  { value: 'FINAL', label: 'Final' },
+  waitUntil.NONE,
+  waitUntil.INCLUDED,
+  waitUntil.EXECUTED_OPTIMISTIC,
+  waitUntil.INCLUDED_FINAL,
+  waitUntil.EXECUTED,
+  waitUntil.FINAL,
 ];
 
 export const WaitUntil = ({ control }) => (

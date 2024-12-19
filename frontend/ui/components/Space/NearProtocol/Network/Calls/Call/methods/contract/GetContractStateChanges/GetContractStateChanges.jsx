@@ -1,9 +1,9 @@
 import { Input } from '../../../../../../../../_general/Input/Input.jsx';
-import { ContractIds } from '../../_general/ContractIds/ContractIds.jsx';
-import { Form } from '../../_general/Form/Form.jsx';
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
-import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { ContractIds } from '../../_general/components/ContractIds/ContractIds.jsx';
+import { Form } from '../../_general/components/Form/Form.jsx';
+import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
+import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { schema } from './schema.js';
 
