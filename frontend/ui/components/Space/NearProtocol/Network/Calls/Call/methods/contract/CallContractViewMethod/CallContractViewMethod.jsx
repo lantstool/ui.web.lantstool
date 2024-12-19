@@ -1,10 +1,10 @@
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
+import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { ContractId } from './ContractId/ContractId.jsx';
 import { MethodName } from './MethodName/MethodName.jsx';
 import { Arguments } from './Arguments/Arguments.jsx';
-import { Form } from '../../_general/Form/Form.jsx';
-import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { Form } from '../../_general/components/Form/Form.jsx';
+import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { schema } from './schema.js';
 
 export const CallContractViewMethod = ({ call, draft }) => {

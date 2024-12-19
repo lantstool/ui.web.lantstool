@@ -1,10 +1,10 @@
 import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
-import { Form } from '../../_general/Form/Form.jsx';
-import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
+import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
+import { Form } from '../../_general/components/Form/Form.jsx';
+import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { schema } from './schema.js';
 import cn from './GetAccount.module.scss';
 

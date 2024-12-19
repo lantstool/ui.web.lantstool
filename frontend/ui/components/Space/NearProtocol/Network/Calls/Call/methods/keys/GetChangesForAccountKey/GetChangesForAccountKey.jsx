@@ -1,8 +1,8 @@
-import { Form } from '../../_general/Form/Form.jsx';
+import { Form } from '../../_general/components/Form/Form.jsx';
 import { AccountKeyPairs } from './AccountKeyPairs/AccountKeyPairs.jsx';
-import { BlockTarget } from '../../_general/BlockTarget/BlockTarget.jsx';
-import { MethodDescription } from '../../_general/MethodDescription/MethodDescription.jsx';
-import { ConfigureTitle } from '../../_general/ConfigureTitle/ConfiguresTitle.jsx';
+import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
+import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
+import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { schema } from './schema.js';
 
 export const GetChangesForAccountKey = ({ call, draft }) => {

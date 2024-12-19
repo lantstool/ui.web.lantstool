@@ -2,8 +2,8 @@ import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
-import { getMethod } from './methods/getMethod.js';
 import { Result } from './Result/Result.jsx';
+import { methods } from './methods/methods.js';
 import cn from './Call.module.scss';
 
 export const Call = () => {
@@ -17,7 +17,7 @@ export const Call = () => {
 
   if (!callDraft) return null;
 
-  const Method = getMethod(callDraft.currentMethod);
+  const Method = methods[callDraft.currentMethod].component;
 
   return (
     <div className={cn.call}>
