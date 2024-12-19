@@ -9,6 +9,7 @@ import { updateOneName } from './updateOneName.js';
 import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { executeOne } from './executeOne.js';
+import { importOneFromJson } from './importOneFromJson.js';
 
 export const effects = {
   getList,
@@ -22,4 +23,5 @@ export const effects = {
   saveChanges,
   removeOne,
   executeOne,
+  importOneFromJson,
 };

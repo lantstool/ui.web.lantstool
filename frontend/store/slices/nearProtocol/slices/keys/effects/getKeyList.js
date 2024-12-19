@@ -7,6 +7,7 @@ export const getKeyList = effect(async ({ store, slice, payload }) => {
   try {
     const keys = await backend.sendRequest('nearProtocol.keys.getKeyList', payload);
     setKeyList(keys);
+    return keys;
   } catch (e) {
     console.log(e);
   }

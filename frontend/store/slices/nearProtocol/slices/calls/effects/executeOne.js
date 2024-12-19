@@ -1,5 +1,5 @@
 import { effect } from '@react-vault';
-import { methods } from '../methods/index.js';
+import { methods } from '../helpers/methods/index.js';
 
 const getErrorMessage = (error) => {
   return error?.rpc ? error.rpc : { internalError: error.message };
