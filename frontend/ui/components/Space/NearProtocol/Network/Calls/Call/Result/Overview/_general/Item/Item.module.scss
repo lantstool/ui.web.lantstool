@@ -1,0 +1,49 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.item {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+}
+
+.label {
+  width: 218px;
+  min-width: 218px;
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.icon {
+  padding: 2px 0;
+}
+
+.title {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+}
+
+.data {
+  @include text-sm-regular;
+  color: $neutral-700;
+  word-break: break-all;
+  padding: 0;
+  margin: 0;
+}
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 4px;
+  max-width: 100%;
+  height: auto;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}

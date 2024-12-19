@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { matchPath, useLocation, useNavigate } from 'react-router-dom';
-import { useStoreEffect, useStoreEntity } from '../../../react-vault/index.js';
+import { useStoreEffect, useStoreEntity } from '@react-vault';
 
 /*
  We start this handler only if user navigate to '/' path - this is a technical route,

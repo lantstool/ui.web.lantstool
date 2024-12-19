@@ -1,18 +1,20 @@
-@use '../../../styles/variables.module.scss' as *;
-@use '../../../styles/mixins.module.scss' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 @mixin button {
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   width: max-content;
+  height: max-content;
   margin: 0;
   border: none;
   cursor: pointer;
 }
 
 @mixin lg-btn {
-  padding: 10px 16px;
+  padding: 12px 16px;
   border-radius: 8px;
   gap: 8px;
 }
@@ -23,10 +25,27 @@
   gap: 8px;
 }
 
+@mixin lg-btn-icon {
+  padding: 12px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+@mixin mg-btn-icon {
+  padding: 8px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
 @mixin sm-btn {
   padding: 4px 8px;
   border-radius: 4px;
   gap: 4px;
+}
+
+@mixin sm-btn-icon {
+  padding: 4px;
+  border-radius: 4px;
 }
 
 @mixin primary {
@@ -36,7 +55,7 @@
     background-color: $accent-700;
   }
   &:focus {
-    box-shadow: 0 0 0 4px #0085ff26;
+    box-shadow: $shadow-primary;
     background-color: $accent-600;
   }
   &:disabled {
@@ -50,21 +69,66 @@
   @include lg-btn;
 }
 
+.primaryLgIcon {
+  @include primary;
+  @include lg-btn-icon;
+}
+
 .primaryMg {
   @include primary;
   @include mg-btn;
 }
 
+.primaryMgIcon {
+  @include primary;
+  @include mg-btn-icon;
+}
+
+@mixin danger {
+  @include button;
+  background-color: $red-600;
+  &:hover {
+    background-color: $red-700;
+  }
+  &:focus {
+    box-shadow: $shadow-red;
+    background-color: $red-600;
+  }
+  &:disabled {
+    background-color: $red-100;
+    cursor: auto;
+  }
+}
+
+.dangerLg {
+  @include danger;
+  @include lg-btn;
+}
+
+.dangerLgIcon {
+  @include danger;
+  @include lg-btn-icon;
+}
+
+.dangerMg {
+  @include danger;
+  @include mg-btn;
+}
+
+.dangerMgIcon {
+  @include danger;
+  @include mg-btn-icon;
+}
+
 @mixin secondary {
   @include button;
-  background: none;
   border: 1px solid $neutral-200;
-  box-shadow: 0 2px 4px 0 #0000000d;
+  background-color: $neutral-00;
   &:hover {
     background-color: $neutral-50;
   }
   &:focus {
-    box-shadow: 0 0 0 4px #b3bcc426;
+    box-shadow: $shadow-secondary;
     background-color: $neutral-00;
   }
   &:disabled {
@@ -77,21 +141,74 @@
   &:disabled .iconSecondary {
     fill: $neutral-500;
   }
+  &:disabled .iconSecondaryStyle {
+    background-color: $neutral-500 !important;
+  }
 }
 
 .secondaryLg {
   @include secondary;
   @include lg-btn;
+  padding: 11px 15px;
+}
+
+.secondaryLgIcon {
+  @include secondary;
+  @include lg-btn-icon;
+  padding: 11px;
 }
 
 .secondaryMg {
   @include secondary;
   @include mg-btn;
+  padding: 7px 16px;
 }
 
-.tertiary {
+.secondaryMgIcon {
+  @include secondary;
+  @include mg-btn-icon;
+  padding: 7px;
+}
+
+@mixin dangerSecondary {
+  @include secondary;
+  &:disabled .dangerSecondaryText {
+    color: $neutral-500;
+  }
+  &:disabled .iconDangerSecondary {
+    fill: $neutral-500;
+  }
+  &:disabled .iconDangerSecondaryStyle {
+    background-color: $neutral-500 !important;
+  }
+}
+
+.dangerSecondaryLg {
+  @include dangerSecondary;
+  @include lg-btn;
+  padding: 11px 15px;
+}
+
+.dangerSecondaryLgIcon {
+  @include dangerSecondary;
+  @include lg-btn-icon;
+  padding: 11px;
+}
+
+.dangerSecondaryMg {
+  @include dangerSecondary;
+  @include mg-btn;
+  padding: 7px 16px;
+}
+
+.dangerSecondaryMgIcon {
+  @include dangerSecondary;
+  @include mg-btn-icon;
+  padding: 7px;
+}
+
+@mixin tertiary {
   @include button;
-  @include sm-btn;
   background: none;
   &:hover {
     background-color: $neutral-50;
@@ -109,10 +226,46 @@
   &:disabled .iconTertiary {
     fill: $neutral-400;
   }
+  &:disabled .iconTertiaryStyle {
+    background-color: $neutral-400 !important;
+  }
+}
+
+.tertiaryLg {
+  @include tertiary;
+  @include lg-btn;
+}
+
+.tertiaryLgIcon {
+  @include tertiary;
+  @include lg-btn-icon;
+}
+
+.tertiaryMg {
+  @include tertiary;
+  @include mg-btn;
+}
+
+.tertiaryMgIcon {
+  @include tertiary;
+  @include mg-btn-icon;
+}
+
+.tertiarySm {
+  @include tertiary;
+  @include sm-btn;
+}
+
+.tertiarySmIcon {
+  @include tertiary;
+  @include sm-btn-icon;
 }
 
 @mixin text {
-  @include text-sm-medium;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
   margin: 0;
 }
 
@@ -126,6 +279,11 @@
   color: $neutral-700;
 }
 
+.dangerSecondaryText {
+  @include text;
+  color: $red-600;
+}
+
 .tertiaryText {
   @include text;
   color: $neutral-700;
@@ -135,10 +293,30 @@
   fill: $neutral-00;
 }
 
+.iconPrimaryStyle {
+  background-color: $neutral-00 !important;
+}
+
 .iconSecondary {
   fill: $neutral-700;
 }
 
+.iconSecondaryStyle {
+  background-color: $neutral-700 !important;
+}
+
+.iconDangerSecondary {
+  fill: $red-600;
+}
+
+.iconDangerSecondaryStyle {
+  background-color: $red-600 !important;
+}
+
 .iconTertiary {
   fill: $neutral-700;
+}
+
+.iconTertiaryStyle {
+  background-color: $neutral-700 !important;
 }

@@ -1,0 +1,22 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.error {
+  @include text-xs-regular;
+  min-height: 12px;
+  font-size: 11px;
+  line-height: 12px;
+  color: $red-600;
+  opacity: 0;
+  margin-top: 4px;
+}
+
+.dynamicErrorSpace {
+  min-height: inherit;
+  margin-top: 0;
+}
+
+.activeError {
+  opacity: 1;
+  margin-top: 4px;
+}

@@ -1,0 +1,42 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.headCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $neutral-50;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 40px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageName {
+  @include text-xs-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}
+
+.networkId {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.date {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 16px 0 0 0;
+}
+
+.rightSide {
+  display: flex;
+}

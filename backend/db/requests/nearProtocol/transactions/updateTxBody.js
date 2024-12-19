@@ -5,7 +5,10 @@ export const updateTxBody = async ({ execute, request }) => {
     UPDATE near_protocol_transactions
     SET body = '${JSON.stringify(body)}'
     WHERE transactionId = '${transactionId}'
+    RETURNING *;
   `;
 
-  await execute(query);
+  const [transaction] = await execute(query);
+  transaction.body = JSON.parse(transaction.body);
+  return transaction;
 };

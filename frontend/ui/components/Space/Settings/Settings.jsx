@@ -1,21 +1,23 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../react-vault/index.js';
-import { useSaveToHistory } from '../../../hooks/useSaveToHistory.js';
+import { useParams } from 'react-router-dom';
+import { useStoreState } from '@react-vault';
+import { BackButton } from '../../_general/BackButton/BackButton.jsx';
+import { HeadCard } from './HeadCard/HeadCard.jsx';
+import { DangerZone } from './DangerZone/DangerZone.jsx';
 import cn from './Settings.module.scss';
 
 export const Settings = () => {
   const { spaceId } = useParams();
-  const remove = useStoreEffect((store) => store.spaces.remove);
-  const navigate = useNavigate();
+  const space = useStoreState((store) => store.spaces.records[spaceId], [spaceId]);
 
-  useSaveToHistory();
-
-  const removeSpace = () => remove({ spaceId, navigate });
+  if (!space) return null;
 
   return (
-    <div className={cn.container}>
-      <h1>Settings</h1>
-      <button onClick={removeSpace}>Delete Space</button>
+    <div className={cn.settings}>
+      <BackButton />
+      <div className={cn.container}>
+        <HeadCard space={space} />
+        <DangerZone space={space} />
+      </div>
     </div>
   );
 };

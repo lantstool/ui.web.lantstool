@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { getCount } from './getCount.js';
 
 const getNewTransactionOrder = async (execute, spaceId, networkId) => {
   const query = `
@@ -11,10 +12,12 @@ const getNewTransactionOrder = async (execute, spaceId, networkId) => {
 };
 
 export const create = async ({ execute, request }) => {
-  const { spaceId, networkId, name } = request.body;
+  const { spaceId, networkId } = request.body;
   const transactionId = uuid();
   const createdAt = Date.now();
   const order = await getNewTransactionOrder(execute, spaceId, networkId);
+  const count = await getCount({ execute, request });
+  const name = `Transaction#${count + 1}`;
 
   const body = JSON.stringify({
     signerId: null,

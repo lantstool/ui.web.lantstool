@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
+import { useStoreEffect } from '@react-vault';
 
 const getOptions = (arr) =>
   arr

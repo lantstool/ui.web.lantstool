@@ -1,7 +1,49 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .container {
   grid-area: b;
-  justify-self: center;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: relative;
+  @media screen and (min-width: 750px) {
+    overflow-x: hidden;
+  }
+}
+
+.networks {
+  min-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
+  margin: 40px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 680px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.subtitle {
+  @include text-sm-medium;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
 }

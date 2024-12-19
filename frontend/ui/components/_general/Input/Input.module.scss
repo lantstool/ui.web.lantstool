@@ -1,24 +1,37 @@
-@use 'frontend/ui/styles/variables.module' as *;
-@use 'frontend/ui/styles/mixins.module' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 .container {
   position: relative;
-  height: 72px;
+  max-height: 96px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .label {
   @include text-sm-regular;
   align-content: center;
   color: $neutral-700;
-  padding: 2px 0;
 }
 
-@mixin input($border-color) {
+@mixin wrapper($border-color) {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background-color: $neutral-50;
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin input {
   @include text-mg-regular;
+  color: $neutral-800;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,44 +39,55 @@
   height: 100%;
   max-height: 24px;
   min-height: 24px;
-  width: calc(100% - 74px);
-  border-radius: 8px;
+  width:100%;
+  border-radius: 9px;
   background: $neutral-50;
-  border: 1px solid $border-color;
+  border: none;
   outline: none;
-  padding: 8px 60px 8px 12px;
+  padding: 8px 12px 8px 12px;
 }
 
-.input {
-  @include input($neutral-200);
-  &::placeholder {
-    color: $neutral-400;
-  }
+.wrapper {
+  @include wrapper($neutral-200);
   &:hover {
     border-color: $neutral-400;
   }
-  &:focus {
+  &:focus-within {
     border-color: $neutral-500;
   }
+}
+
+.wrapperDisabled {
+  @include wrapper($neutral-300);
+  background: $neutral-200;
+}
+
+.input {
+  @include input;
+  &::placeholder {
+    color: $neutral-400;
+  }
   &:disabled {
-    border: 1px solid $neutral-300;
     background: $neutral-200;
     color: $neutral-600;
   }
 }
 
+.wrapperError {
+  @include wrapper($red-600);
+}
+
 .errorInput {
-  @include input($red-800);
+  @include input;
   background: $neutral-50;
 }
 
 .buttonWrapper {
-  position: absolute;
-  width: 48px;
+  width: max-content;
   display: flex;
+  padding: 8px 12px 8px 0;
   justify-content: right;
-  right: 12px;
-  top: 43px;
+  align-items: center;
   gap: 8px;
 }
 
@@ -76,6 +100,11 @@
   padding: 0;
   &:disabled {
     cursor: default;
+  }
+  :hover {
+    .icon {
+      fill: $neutral-800;
+    }
   }
 }
 

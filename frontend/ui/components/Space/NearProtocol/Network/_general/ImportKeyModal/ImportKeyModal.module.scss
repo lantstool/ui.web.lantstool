@@ -1,0 +1,28 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.modal {
+  width: 680px;
+  min-height: 400px;
+  padding: 0;
+  gap: 0;
+  display: grid;
+  grid-template-columns: 240px 440px;
+  grid-template-rows: auto;
+  grid-template-areas: 'a b'
+}
+
+.list {
+  grid-area: a;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 16px 0 0 16px;
+  gap: 2px;
+  background-color: $neutral-50;
+}
+
+.content {
+  grid-area: b;
+  padding: 24px;
+}

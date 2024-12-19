@@ -12,6 +12,7 @@
 
 const getRequestType = (params) => {
   if (params.transactionId) return 'nearProtocol.transactions.validateTransactionId';
+  if (params.callId) return 'nearProtocol.calls.validateCallId';
   if (params.accountId) return 'nearProtocol.accounts.validateAccountId';
   if (params.publicKey) return 'nearProtocol.keys.validatePublicKey';
   if (params.networkId) return 'nearProtocol.networkIs.validateNetworkId';
@@ -21,6 +22,7 @@ const getRequestType = (params) => {
 export const validateUrlParams = async (backend, navigate, params) => {
   try {
     const requestType = getRequestType(params);
+    // We want to validate only when URL has params
     if (requestType) await backend.sendRequest(requestType, params);
   } catch (e) {
     if (e.code === 404)

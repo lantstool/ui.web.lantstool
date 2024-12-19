@@ -1,14 +1,62 @@
-@use 'frontend/ui/styles/variables.module' as *;
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
 
-.button {
-  width: 16px;
-  height: 16px;
+@mixin button($padding) {
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0;
+  padding: $padding;
   &:disabled {
     cursor: default;
+  }
+  &:hover {
+    .icon {
+      fill: $neutral-800;
+    }
+  }
+}
+
+.button {
+  @include button(0);
+  width: 16px;
+  height: 16px;
+}
+
+.buttonBordered {
+  @include button(7px);
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $neutral-00;
+  .icon {
+    fill: $neutral-700;
+  }
+  &:focus {
+    box-shadow: $shadow-secondary;
+  }
+  &:hover {
+    background: $neutral-50;
+    .icon {
+      fill: $neutral-700;
+    }
+  }
+}
+
+.buttonSmall {
+  @include button(4px);
+  display: flex;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    fill: $neutral-600;
+  }
+  &:hover {
+    .icon {
+      fill: $neutral-800;
+    }
   }
 }
 
@@ -17,4 +65,21 @@
   fill: $neutral-600;
   width: 16px;
   height: 16px;
+}
+
+.iconSecondary {
+  padding: 0;
+  fill: $neutral-700;
+  width: 16px;
+  height: 16px;
+}
+
+.checkCircleOutline {
+  @include icon('@assets/icons/check-circle-outline.svg');
+  background-color: $neutral-00;
+}
+
+.copyOutline {
+  @include icon('@assets/icons/copy-outline.svg');
+  background-color: $neutral-00;
 }

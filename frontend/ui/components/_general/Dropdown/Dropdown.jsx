@@ -1,47 +1,59 @@
 import Select from 'react-select';
-import { Controller } from 'react-hook-form';
-import { selectStyles } from './dropdown.style.js';
 import CreatableSelect from 'react-select/creatable';
 import { DropdownIndicator } from './DropdownIndicator/DropdownIndicator.jsx';
 import { ClearIndicator } from './ClearIndicator/ClearIndicator.jsx';
 import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.jsx';
+import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
+import { selectStyles } from './dropdown.style.js';
+import { Option } from './Option/Option.jsx';
 import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
-  control,
-  onChange = false,
+  onChange = () => ({}),
   options,
-  name,
+  error,
+  dynamicErrorSpace = false,
+  isDisabled,
+  value = null,
+  creatableSelect = false,
   isSearchable = false,
   isClearable = false,
-  error,
-  isDisabled,
-  creatableSelect = false,
-  label,
+  copy = true,
+  placeholder = 'Select...',
+  field = null,
+  label = null,
+  tooltip = null,
 }) => {
-  const style = selectStyles(error);
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
+  const components = {
+    DropdownIndicator,
+    ClearIndicator,
+    Option,
+    ...(copy && { IndicatorsContainer }),
+  };
+  const style = selectStyles(error);
 
   return (
     <div className={cn.container}>
-      <label className={cn.label}>{label}</label>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <SelectComponent
-            {...field}
-            placeholder="Input text"
-            isDisabled={isDisabled}
-            onChange={onChange ? onChange(field) : field.onChange}
-            isClearable={isClearable}
-            isSearchable={isSearchable}
-            components={{ DropdownIndicator, ClearIndicator, IndicatorsContainer }}
-            options={options}
-            styles={style}
-          />
-        )}
+      {label && (
+        <div className={cn.labelWrapper}>
+          <label className={cn.label}>{label}</label>
+          {tooltip}
+        </div>
+      )}
+      <SelectComponent
+        {...field}
+        {...(value && { value })}
+        onChange={onChange}
+        options={options}
+        placeholder={placeholder}
+        isDisabled={isDisabled}
+        isClearable={isClearable}
+        isSearchable={isSearchable}
+        components={{ ...components }}
+        styles={style}
       />
+      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

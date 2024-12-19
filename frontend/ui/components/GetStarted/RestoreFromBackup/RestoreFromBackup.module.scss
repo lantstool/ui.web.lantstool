@@ -1,0 +1,13 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.bodyWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-700;
+}

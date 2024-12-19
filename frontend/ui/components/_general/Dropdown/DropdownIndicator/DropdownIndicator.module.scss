@@ -1,8 +1,16 @@
-@use 'frontend/ui/styles/variables.module' as *;
+@use '@styles/variables' as *;
 
 .container {
   display: flex;
   align-items: center;
+  margin-left: 8px;
+}
+
+@mixin icon($color) {
+  padding: 0;
+  fill: $color;
+  width: 16px;
+  height: 16px;
 }
 
 .button {
@@ -12,14 +20,14 @@
   border: none;
   background: none;
   cursor: pointer;
+  &:hover{
+    .iconEnabled{
+      @include icon($neutral-800);
+    }
+  }
 }
 
-@mixin icon($color) {
-  padding: 0;
-  fill: $color;
-  width: 16px;
-  height: 16px;
-}
+
 
 .iconEnabled {
   @include icon($neutral-600);

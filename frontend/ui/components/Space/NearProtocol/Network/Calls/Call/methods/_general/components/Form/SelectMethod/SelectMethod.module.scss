@@ -1,0 +1,30 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.selectMethods {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: $neutral-400;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}

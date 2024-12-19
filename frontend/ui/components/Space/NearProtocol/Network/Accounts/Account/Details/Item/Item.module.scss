@@ -1,27 +1,37 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
 .item {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1.8fr;
-  grid-template-areas: 'a . b';
+  display: flex;
+  justify-content: start;
+}
+
+.label {
+  width: 218px;
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.icon {
+  padding: 2px 0;
 }
 
 .title {
-  grid-area: a;
-  color: var(--Text-Dark);
-  font-size: 16px;
-  font-weight: 400;
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
 }
 
 .wrapper {
-  grid-area: b;
-  display: flex;
-  justify-content: end;
-  gap: 12px;
+  width: max-content;
 }
 
 .data {
+  @include text-sm-regular;
+  color: $neutral-700;
   word-break: break-all;
-  color: var(--Text-Dark);
-  font-size: 16px;
-  font-weight: 500;
+  padding: 0;
+  margin: 0;
 }

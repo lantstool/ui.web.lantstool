@@ -1,28 +1,30 @@
 import { useMemo } from 'react';
+import cnm from 'classnames';
 import cn from './Label.module.scss';
 
 const types = {
-  success: { label: cn.success, text: cn.text, iconColor: cn.icon },
-  grey: { label: cn.grey, text: cn.text, iconColor: cn.icon },
-  error: { label: cn.error, text: cn.text, iconColor: cn.icon },
-  cyan: { label: cn.cyan, text: cn.text, iconColor: cn.icon },
-  blue: { label: cn.blue, text: cn.text, iconColor: cn.icon },
-  purple: { label: cn.purple, text: cn.text, iconColor: cn.icon },
-  red: { label: cn.red, text: cn.text, iconColor: cn.icon },
-  green: { label: cn.green, text: cn.text, iconColor: cn.icon },
+  success: { label: cn.success },
+  grey: { label: cn.grey },
+  error: { label: cn.error },
+  cyan: { label: cn.cyan },
+  blue: { label: cn.blue },
+  purple: { label: cn.purple },
+  red: { label: cn.red },
+  green: { label: cn.green },
 };
 
 const getType = (color) => {
   return types[color];
 };
 
-export const Label = ({ color, children, Icon }) => {
-  const { label, text, iconColor } = useMemo(() => getType(color), [color]);
+export const Label = ({ color, children, Icon, iconStyles = null }) => {
+  const { label } = useMemo(() => getType(color), [color]);
 
   return (
     <label className={label}>
-      {Icon && <Icon style={iconColor} />}
-      <span className={text}>{children}</span>
+      {Icon && <Icon style={cn.icon} />}
+      {iconStyles && <span className={cnm(iconStyles, cn.iconBase)} />}
+      <span className={cn.text}>{children}</span>
     </label>
   );
 };

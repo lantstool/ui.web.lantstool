@@ -1,8 +1,8 @@
-import cn from './Result.module.css';
-import { Button } from '../../../_general/Button/Button.jsx';
+import cn from './Result.module.scss';
+import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { jsonLanguage } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
-import { useStoreAction } from '../../../../../../../../../react-vault/index.js';
+import { useStoreAction } from '@react-vault';
 import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
 
 // TODO Move to utils
@@ -64,7 +64,7 @@ export const Result = ({ txResult }) => {
       </div>
       <div className={cn.footer}>
         <div className={cn.closeBtn}>
-          <Button onClick={closeResult} text="Close" style="outlined" />
+          <Button onClick={closeResult}>Close</Button>
         </div>
       </div>
     </div>

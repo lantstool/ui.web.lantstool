@@ -1,37 +1,22 @@
-.formScrollWrapper {
-  grid-area: b;
-  overflow: hidden;
-  overflow-y: auto;
-  height: 100%;
-  padding: 0;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.formContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 6px 82px 16px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .form {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 0 40px;
-  margin: 66px 0 66px 0;
-}
-
-.formWithoutNav {
-  margin: 16px 0 0 0;
-}
-
-.topNav {
-  display: flex;
   align-items: center;
-  justify-content: end;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background-color: white;
-}
-
-.topNavActive {
-  border-bottom: 1px solid var(--Color-Green-300);
-  height: 50px;
 }
 
 .resultBtn {
@@ -44,10 +29,22 @@
   margin-right: 40px;
 }
 
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.icon {
+  @include icon('@assets/icons/account-circle-outline.svg');
+  width: 24px;
+  height: 24px;
+  background-color: $neutral-400;
+}
+
 .title {
-  margin: 0 0 20px 0;
-  text-align: center;
-  color: var(--Color-Green-2000);
-  font-size: 16px;
-  font-weight: 600;
+  @include text-lg-medium;
+  color: $neutral-800;
 }

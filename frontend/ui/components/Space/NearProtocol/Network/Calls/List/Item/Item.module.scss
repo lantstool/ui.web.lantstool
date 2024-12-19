@@ -1,0 +1,36 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  width: 224px;
+  gap: 8px;
+  padding: 0 6px 0 8px;
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  &:hover{
+    background-color: $neutral-200;
+    cursor: pointer;
+  }
+}
+
+
+.title {
+  width: 208px;
+  margin: 0;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $neutral-800;
+}
+
+.active {
+  background-color: $neutral-200;
+}

@@ -1,9 +1,9 @@
-@use 'frontend/ui/styles/variables.module' as *;
+@use '@styles/variables' as *;
 
 .container {
   display: flex;
   align-items: center;
-  :hover{
+  :hover {
     cursor: pointer;
   }
 }
@@ -14,6 +14,11 @@
   height: 16px;
   border: none;
   background: none;
+  &:hover {
+    .icon {
+      fill: $neutral-800;
+    }
+  }
 }
 
 .icon {

@@ -1,0 +1,34 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.empty {
+  display: flex;
+  height: calc(100vh - 48px);
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 340px;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  fill: $accent-200;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-500;
+  text-align: center;
+  margin: 0 0 16px 0;
+  padding: 0;
+}

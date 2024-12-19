@@ -1,0 +1,70 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.card {
+  width: 224px;
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  border: 1px solid $neutral-200;
+  background: $neutral-00;
+}
+
+.iconContainer {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.handShakeContainer {
+  @extend .iconContainer;
+  background-color: $accent-50;
+}
+
+.historyContainer {
+  @extend .iconContainer;
+  background-color: $blue-50;
+}
+
+@mixin iconSpan {
+  height: 24px;
+  width: 24px;
+}
+
+.handShake {
+  @include icon('@assets/icons/solar_hand-shake-outline.svg');
+  @include iconSpan;
+  background-color: $accent-600;
+}
+
+.history {
+  @include icon('@assets/icons/history-outline.svg');
+  @include iconSpan;
+  background-color: $blue-800;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-800;
+  text-align: center;
+}

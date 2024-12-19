@@ -1,8 +1,15 @@
-.container {
-  min-height: 50vh;
+.settings {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+}
+
+.wrapper {
+  min-width: 610px;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 64px;
 }

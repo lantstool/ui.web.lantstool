@@ -1,8 +1,20 @@
+@use '@styles/variables' as *;
+
 .navigation {
   grid-area: c;
-  justify-self: center;
   display: flex;
+  justify-self: center;
   flex-direction: column;
   justify-content: center;
   text-align: start;
+  gap: 2px;
+}
+
+.divider {
+  width: 100%;
+  outline: none;
+  margin: 10px 0;
+  height: 1px;
+  background: $neutral-200;
+  border: none;
 }

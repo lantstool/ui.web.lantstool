@@ -1,0 +1,15 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-800;
+  margin-top: 8px;
+}

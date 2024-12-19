@@ -1,0 +1,21 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.accountKeyPair {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 32px);
+  gap: 8px;
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}

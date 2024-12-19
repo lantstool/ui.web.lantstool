@@ -1,7 +1,28 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.receiver {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.icon {
+  @include icon('@assets/icons/user-circle-outline.svg');
+  width: 24px;
+  height: 24px;
+  background-color: $neutral-400;
+}
+
 .title {
-  margin: 40px 0 20px 0;
-  color: var(--Color-Green-2000);
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
+  @include text-lg-medium;
+  color: $neutral-800;
 }

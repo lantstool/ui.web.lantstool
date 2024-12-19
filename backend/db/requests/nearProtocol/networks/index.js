@@ -1,15 +1,27 @@
-import { create } from './create.js';
+import { createManually } from './createManually.js';
 import { getAll } from './getAll.js';
 import { getOne } from './getOne.js';
-import { getActiveRpc } from './getActiveRpc.js';
-import { remove } from './remove.js';
+import { isOne } from './isOne.js';
+import { getRpcData } from './getRpcData.js';
+import { updateActiveRpc } from './updateActiveRpc.js';
+import { removeOne } from './removeOne.js';
 import { validateNetworkId } from './validateNetworkId.js';
+import { createFromPreset } from './createFromPreset.js';
+import { addRpc } from './addRpc.js';
+import { removeRpc } from './removeRpc.js';
+import { updateRpc } from './updateRpc.js';
 
 export const networks = {
-  create,
+  createManually,
+  createFromPreset,
   getAll,
   getOne,
-  getActiveRpc,
-  remove,
+  isOne,
+  getRpcData,
+  updateActiveRpc,
+  removeOne,
   validateNetworkId,
+  addRpc,
+  removeRpc,
+  updateRpc,
 };

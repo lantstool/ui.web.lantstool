@@ -1,0 +1,46 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.dangerZone {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  background-color: $neutral-00;
+  align-items: center;
+}
+
+.warningWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 70%;
+}
+
+.subtitle {
+  @include text-sm-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.warningText {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}

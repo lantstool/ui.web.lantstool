@@ -1,8 +1,7 @@
 import { useWatch } from 'react-hook-form';
 import cn from './Receiver.module.scss';
 import { useEffect, useState } from 'react';
-import { useStoreEffect } from '../../../../../../../../../../react-vault/index.js';
-import { FormSelectGroup } from '../../../../../../../_general/FormSelectGroup/FormSelectGroup.jsx';
+import { useStoreEffect } from '@react-vault';
 import { InputGroup } from '../../../../../../../_general/InputGroup/InputGroup.jsx';
 
 const getOptions = async (getAccountsIds, setOptions) => {
@@ -74,20 +73,20 @@ export const Receiver = ({ form }) => {
       {receiverType === 'FunctionCall' && (
         <InputGroup disabled={true} register={register} name="receiver" label="Account Id" />
       )}
-      {(receiverType === 'Enabled' || receiverType === 'Disabled') && (
-        <FormSelectGroup
-          isDisabled={receiverType === 'Disabled'}
-          name="receiver"
-          control={control}
-          onChange={onChange}
-          isSearchable={true}
-          isClearable={true}
-          options={options}
-          creatableSelect={true}
-          accountId={accountId}
-          label="Account Id"
-        />
-      )}
+      {/*{(receiverType === 'Enabled' || receiverType === 'Disabled') && (*/}
+      {/*  <FormSelectGroup*/}
+      {/*    isDisabled={receiverType === 'Disabled'}*/}
+      {/*    name="receiver"*/}
+      {/*    control={control}*/}
+      {/*    onChange={onChange}*/}
+      {/*    isSearchable={true}*/}
+      {/*    isClearable={true}*/}
+      {/*    options={options}*/}
+      {/*    creatableSelect={true}*/}
+      {/*    accountId={accountId}*/}
+      {/*    label="Account Id"*/}
+      {/*  />*/}
+      {/*)}*/}
     </>
   );
 };

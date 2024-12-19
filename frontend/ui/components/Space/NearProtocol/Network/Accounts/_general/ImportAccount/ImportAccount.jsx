@@ -1,75 +1,70 @@
 import { useParams } from 'react-router-dom';
-import { ModalGroup } from '../../../../../../_general/ModalGroup/ModalGroup.jsx';
+import { BaseModal } from '../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { useForm } from 'react-hook-form';
-import { TextareaGroup } from '../../../../../../_general/TextareaGroup/TextareaGroup.jsx';
-import { Button } from '../../../_general/Button/Button.jsx';
-import cn from './ImportModal.module.scss';
-import addIcon from '../../../../../../../assets/addIcon.svg';
-import { MessageGroup } from './MessageGroup/MessageGroup.jsx';
-import { useStoreEffect, useStoreState } from '../../../../../../../../../react-vault/index.js';
+import { Input } from '../../../../../../_general/Input/Input.jsx';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
+import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import cn from './ImportAccount.module.scss';
 
-export const ImportAccount = ({ isOpen, setOpen }) => {
+export const ImportAccount = ({ setOpen }) => {
   const { spaceId, networkId } = useParams();
   const records = useStoreState((store) => store.nearProtocol.accounts.records);
   const create = useStoreEffect((store) => store.nearProtocol.accounts.create);
-  const [accId, setAccId] = useState(null);
   const schema = createSchema(records);
 
-  const form = useForm({ resolver: yupResolver(schema) });
+  const form = useForm({
+    defaultValues: { accountId: '', note: '' },
+    resolver: yupResolver(schema),
+    mode: 'onTouched',
+  });
 
   const {
-    register,
+    control,
     handleSubmit,
     resetField,
-    formState: { errors, dirtyFields },
+    clearErrors,
+    formState: { errors, isValid },
   } = form;
 
   const closeModal = () => {
+    clearErrors();
     setOpen(false);
   };
 
-  const onSubmit = (formValues) => {
-    create({ formValues, setAccId, resetField, spaceId, networkId });
-  };
+  const onSubmit = handleSubmit((formValues) => {
+    create({ formValues, resetField, spaceId, networkId });
+    closeModal();
+  });
 
   return (
-    <ModalGroup isOpen={isOpen} closeModal={closeModal} text="Import Account">
-      <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className={cn.title}>
-          Enter an account ID to track. You can add accounts that are currently not on-chain.
-        </h3>
-        <div className={cn.accountId}>
-          <TextareaGroup
-            register={register}
-            name="accountId"
-            rows={3}
-            errors={errors?.accountId?.message}
-            label="Account Id"
-          />
-        </div>
-        <div className={cn.name}>
-          <TextareaGroup
-            register={register}
-            name="accountName"
-            rows={3}
-            errors={errors?.accountName?.message}
-            label="Name (optional)"
-          />
-        </div>
-        <div className={cn.message}>
-          <MessageGroup
-            errors={errors?.accountId}
-            accountId={accId}
-            dirtyFields={dirtyFields.accountId}
-          />
-        </div>
-        <div className={cn.button}>
-          <Button text="Import Account" type="submit" src={addIcon} style="secondary" />
-        </div>
-      </form>
-    </ModalGroup>
+    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
+      <ModalHeader title="Import account" close={closeModal} />
+      <div className={cn.inputs}>
+        <Input
+          control={control}
+          name="accountId"
+          error={errors?.accountId?.message}
+          placeholder="name.near"
+          label="Enter an Account ID. You can also add accounts that are not yet on-chain."
+        />
+        <Input
+          control={control}
+          name="note"
+          error={errors?.note?.message}
+          placeholder="Work account"
+          label="Leave a short note about this account (optionally)."
+        />
+      </div>
+      <ModalFooter
+        action={{
+          label: 'Import',
+          onClick: onSubmit,
+          disabled: !isValid,
+        }}
+      />
+    </BaseModal>
   );
 };

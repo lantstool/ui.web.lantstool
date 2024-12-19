@@ -1,0 +1,47 @@
+@mixin badge($color) {
+  width: 12px;
+  height: 12px;
+  background-color: $color;
+  margin: 2px;
+  border-radius: 2px;
+}
+
+.pink {
+  @include badge(#f6337a);
+}
+
+.purple {
+  @include badge(#7c4dff);
+}
+
+.indigo {
+  @include badge(#3949ab);
+}
+
+.blue {
+  @include badge(#1e88e5);
+}
+
+.teal {
+  @include badge(#00897b);
+}
+
+.green {
+  @include badge(#689f38);
+}
+
+.amber {
+  @include badge(#f57c00);
+}
+
+.red {
+  @include badge(#e61c19);
+}
+
+.brown {
+  @include badge(#6d4c41);
+}
+
+.grey {
+  @include badge(#616161);
+}

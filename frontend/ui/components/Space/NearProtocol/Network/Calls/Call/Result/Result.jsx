@@ -1,73 +1,81 @@
-import cn from './Result.module.css';
-import {
-  useStoreAction,
-  useStoreEffect,
-  useStoreState,
-} from '../../../../../../../../../react-vault/index.js';
-import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
-import CodeMirror from '@uiw/react-codemirror';
-import { jsonLanguage } from '@codemirror/lang-json';
-import { Button } from '../../../_general/Button/Button.jsx';
+import { useStoreAction } from '@react-vault';
+import { Button } from '../../../../../../_general/Button/Button.jsx';
+import { ArrowBackOutline } from '../../../../../../_general/icons/ArrowBackOutline.jsx';
+import { Raw } from './Raw/Raw.jsx';
+import { Overview } from './Overview/Overview.jsx';
+import { TabButton } from '../../../../../../_general/tab/TabButton/TabButton.jsx';
+import { TabContainer } from '../../../../../../_general/tab/TabContainer/TabContainer.jsx';
+import { useState } from 'react';
+import { Label } from '../../../../../../_general/Label/Label.jsx';
+import { ErrorCircleBold } from '../../../../../../_general/icons/ErrorCircleBold.jsx';
+import { CheckCircleBold } from '../../../../../../_general/icons/CheckCircleBold.jsx';
+import cn from './Result.module.scss';
 
-const getResultValue = (call) => {
-  const currentResult = call.results.currentResult;
-  return call.results.records.find((el) => el.resultId === currentResult)?.result;
+const getMode = (formValues) => {
+  const overviewMethods = ['getAccount', 'getAccountKey', 'getAccountKeys'];
+  return overviewMethods.includes(formValues.method.value) ? 'overview' : 'raw';
 };
 
-export const Result = ({ call }) => {
-  const setOpenResult = useStoreAction((store) => store.calls.setOpenResult);
-  const callMethod = useStoreEffect((store) => store.calls.callMethod);
-
-  const result = getResultValue(call);
-  const temporaryFormValues = useStoreState(
-    (store) => store.calls.temporaryFormValues[call.callId],
-  );
-
-  const getFormattedJSON = (json) => JSON.stringify(json, null, 2);
+export const Result = ({ callResult, call }) => {
+  const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
+  const { result, isLoading, callId, error, formValues } = callResult;
+  const mode = getMode(formValues);
+  const [viewMode, setViewMode] = useState(mode);
 
   const closeResult = () => {
-    setOpenResult({ callId: call.callId, isOpen: false });
+    setResult({ callId, isOpen: false });
   };
 
-  const resend = () => {
-    const callValue = temporaryFormValues ? temporaryFormValues : call;
-    callMethod(callValue);
+  const changeViewMode = (mode) => {
+    setViewMode(mode);
   };
 
   return (
-    <div>
+    <div className={cn.result}>
       <div className={cn.container}>
-        <div className={cn.topNav}>
-          <button className={cn.backBtn} onClick={closeResult}>
-            <BackIcon style={cn.icon} />
-          </button>
+        <div className={cn.head}>
+          <div className={cn.headWrapper}>
+            <h2 className={cn.title}>Result</h2>
+            <p className={cn.call}>
+              {call.name} ⋅ {formValues.method.label}
+            </p>
+          </div>
+          {!isLoading && (
+            <Label
+              Icon={result ? CheckCircleBold : ErrorCircleBold}
+              color={result ? 'success' : 'error'}
+            >
+              {result ? 'Success' : 'Failed'}
+            </Label>
+          )}
         </div>
-        {call.results.isLoading ? (
-          <p className={cn.loader}>Loading...</p>
-        ) : (
-          <>
-            <h3 className={cn.title}>Result</h3>
-            {!result?.error ? (
-              <>
-                <CodeMirror
-                  readOnly={true}
-                  value={getFormattedJSON(result)}
-                  extensions={[jsonLanguage]}
-                />
-              </>
-            ) : (
-              <p className={cn.error}>{getFormattedJSON(result)}</p>
-            )}
-          </>
+        {mode === 'overview' && result && (
+          <TabContainer>
+            <TabButton
+              onClick={() => changeViewMode('overview')}
+              isActive={viewMode === 'overview'}
+            >
+              Overview
+            </TabButton>
+            <TabButton onClick={() => changeViewMode('raw')} isActive={viewMode === 'raw'}>
+              Raw
+            </TabButton>
+          </TabContainer>
         )}
+        <div className={cn.content}>
+          {isLoading ? (
+            <p className={cn.loader}>Loading...</p>
+          ) : viewMode === 'overview' && result && !error ? (
+            <Overview result={result} formValues={formValues} />
+          ) : (
+            <Raw result={result} error={error} />
+          )}
+        </div>
       </div>
       <div className={cn.footer}>
-        <div className={cn.closeBtn}>
-          <Button onClick={closeResult} text="Close" style="outlined" />
-        </div>
-        <div className={cn.resendBtn}>
-          {!call.results.isLoading && <Button onClick={resend} text="Resend" style="secondary" />}
-        </div>
+        <Button color="tertiary" size="medium" onClick={closeResult} IconLeft={ArrowBackOutline}>
+          Back
+        </Button>
       </div>
     </div>
   );

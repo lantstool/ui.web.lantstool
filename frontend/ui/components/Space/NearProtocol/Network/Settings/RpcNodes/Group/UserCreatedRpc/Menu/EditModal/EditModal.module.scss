@@ -1,0 +1,28 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.modal {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 24px auto 8px auto;
+  grid-template-areas:
+    'a'
+    '.'
+    'b'
+    '.'
+    'c';
+  gap: 0;
+}
+
+.headerContainer {
+  grid-area: a;
+}
+
+.rpcForm {
+  grid-area: b;
+}
+
+.modalFooter {
+  grid-area: c;
+}

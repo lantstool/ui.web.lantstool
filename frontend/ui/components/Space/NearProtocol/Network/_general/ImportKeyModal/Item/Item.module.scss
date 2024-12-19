@@ -1,0 +1,56 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+@mixin item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: none;
+  outline: none;
+  border: none;
+  gap: 8px;
+}
+
+.item {
+  @include item;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .icon {
+      fill: $accent-600;
+    }
+  }
+}
+
+.active {
+  @include item;
+  background-color: $neutral-200;
+  cursor: pointer;
+  .icon {
+    fill: $accent-600;
+  }
+}
+
+.disabled {
+  @include item;
+  .icon {
+    fill: $neutral-500;
+  }
+  .title {
+    color: $neutral-500;
+  }
+}
+
+.title {
+  @include text-sm-regular;
+  color: $neutral-800;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

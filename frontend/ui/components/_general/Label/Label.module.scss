@@ -1,21 +1,20 @@
-@use 'frontend/ui/styles/variables.module' as *;
-@use 'frontend/ui/styles/mixins.module' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 @mixin label {
+  height: max-content;
   display: flex;
   justify-content: center;
-  align-self: center;
   align-items: center;
-  padding: 4px 8px;
   gap: 4px;
   margin: 0;
   border-radius: 12px;
-  max-width: max-content;
 }
 
 @mixin span {
   @include label;
   @include text-sm-medium;
+  padding: 2px 8px;
 }
 
 @mixin textStyle($textColor) {
@@ -34,6 +33,10 @@
   @include iconStyle($neutral-700);
 }
 
+.iconBase{
+  background-color: $neutral-700;
+}
+
 @mixin colorScheme($bgColor, $textColor, $iconColor) {
   @include span;
   background-color: $bgColor;
@@ -42,6 +45,9 @@
   }
   .icon {
     @include iconStyle($iconColor);
+  }
+  .iconBase{
+    background-color: $iconColor;
   }
 }
 
@@ -54,7 +60,7 @@
 }
 
 .error {
-  @include colorScheme($error-50, $error-800, $error-800);
+  @include colorScheme($red-50, $red-600, $red-600);
 }
 
 .cyan {
@@ -74,5 +80,5 @@
 }
 
 .green {
-  @include colorScheme($green-50, $green-800, $green-800);
+  @include colorScheme($accent-50, $accent-600, $accent-600);
 }

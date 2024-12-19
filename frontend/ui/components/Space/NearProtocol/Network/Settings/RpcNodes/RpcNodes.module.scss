@@ -1,0 +1,29 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.rpcNodes {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  @include text-mg-medium;
+  color: $neutral-800;
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  gap: 32px;
+}

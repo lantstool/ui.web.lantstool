@@ -1,0 +1,19 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-800;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-700;
+  margin-top: 4px;
+}
+
+.rpcList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

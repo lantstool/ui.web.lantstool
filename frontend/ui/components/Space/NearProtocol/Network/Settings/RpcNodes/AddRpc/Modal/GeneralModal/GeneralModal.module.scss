@@ -1,0 +1,29 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.modal {
+  height: 540px;
+  display: grid;
+  grid-template-columns: 24px auto 24px;
+  grid-template-rows: 24px min-content 24px min-content 24px auto min-content 24px;
+  grid-template-areas:
+    '. . .'
+    '. a .'
+    '. . .'
+    '. t .'
+    '. . .'
+    'b b b'
+    '. c .'
+    '. . .';
+  padding: 0;
+  gap: 0;
+}
+
+.headerContainer {
+  grid-area: a;
+}
+
+.tabContainer {
+  grid-area: t;
+}

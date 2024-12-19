@@ -1,7 +1,9 @@
-import cn from './Item.module.css';
+import cnm from 'classnames';
+import cn from './Item.module.scss';
 
-export const Item = ({ text, onClick, disabled = false }) => (
-  <button onClick={onClick} className={cn.button} disabled={disabled} type="button">
-    <p className={cn.text}>{text}</p>
+export const Item = ({ color, iconStyles, text, onClick, disabled = false }) => (
+  <button className={cn[color]} onClick={onClick} disabled={disabled} type="button">
+    <span className={cnm(iconStyles, cn.icon)} />
+    {text}
   </button>
 );

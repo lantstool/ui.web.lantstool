@@ -1,0 +1,72 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.checkbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  border: 1px solid $neutral-300;
+  background: $neutral-00;
+  border-radius: 3px;
+}
+
+.checkbox:hover .input ~ .checkmark {
+  border: 1px solid $accent-600;
+}
+
+.input:checked ~ .checkmark {
+  border-radius: 3px;
+  border: 1px solid $accent-600;
+}
+
+.input:checked ~ .checkmark {
+  background: $accent-600;
+  border-radius: 3px;
+}
+
+.input:focus ~ .checkmark {
+  box-shadow: 0 0 0 4px rgba(73, 117, 97, 0.18);
+}
+
+.input:active ~ .checkmark {
+  box-shadow: 0 0 0 4px rgba(73, 117, 97, 0.18);
+}
+
+.checkmark:before {
+  border-radius: 3px;
+  background: url('@assets/chekmarkChekbox.svg');
+  background: $neutral-00;
+  width: 14px;
+  height: 14px;
+  background-size: contain;
+}
+
+.checkbox .checkmark:after {
+  background: url('@assets/chekmarkChekbox.svg');
+  background-size: contain;
+  border-radius: 3px;
+  left: 2px;
+  content: '';
+  position: absolute;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+}

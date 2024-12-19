@@ -1,24 +1,31 @@
-import { Topbar } from './Topbar/Topbar.jsx';
-import cn from './Call.module.css';
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useParams } from 'react-router-dom';
-import { useStoreEffect, useStoreState } from '../../../../../../../../react-vault/index.js';
-import { useLoader } from '../../../../../../hooks/useLoader.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
 import { Result } from './Result/Result.jsx';
-import { Forms } from './Forms/Forms.jsx';
+import { methods } from './methods/methods.js';
+import cn from './Call.module.scss';
 
 export const Call = () => {
   const { callId } = useParams();
-  const call = useStoreState((store) => store.calls.records[callId]);
-  const getOnceAccounts = useStoreEffect((store) => store.accounts.getOnceAccounts);
-  const [isLoading] = useLoader(getOnceAccounts);
+  const callResult = useStoreState((store) => store.nearProtocol.calls.results[callId], [callId]);
+  const onMountCall = useStoreEffect((store) => store.nearProtocol.calls.onMountCall);
+  const callDraft = useStoreState((store) => store.nearProtocol.calls.drafts[callId], [callId]);
 
-  if (isLoading) return null;
-  if (!call) return null;
+  useSaveToHistory();
+  useLoader(onMountCall, callId, [callId]);
+
+  if (!callDraft) return null;
+
+  const Method = methods[callDraft.currentMethod].component;
 
   return (
-    <div className={cn.call} key={callId}>
-      <Topbar call={call} callId={callId} />
-      {!call.results.isOpen ? <Forms call={call} /> : <Result call={call} />}
+    <div className={cn.call}>
+      {callResult?.isOpen ? (
+        <Result callResult={callResult} call={callDraft.origin} />
+      ) : (
+        <Method call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
+      )}
     </div>
   );
 };

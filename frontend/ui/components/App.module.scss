@@ -1,10 +1,20 @@
 .app {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 40px auto;
+  grid-template-columns: 100vw;
+  grid-template-rows: 48px calc(100vh - 48px);
   grid-template-areas:
     'a'
     'b';
+  overflow: hidden;
+}
+
+.appWithoutTopbar {
+  grid-template-rows: 100vh;
+  grid-template-areas: 'b';
+}
+
+.content {
+  grid-area: b;
 }

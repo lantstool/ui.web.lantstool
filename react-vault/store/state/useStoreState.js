@@ -1,25 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStoreContext } from '../provider/StoreProvider.jsx';
 
-export const useStoreState = (selector) => {
+export const useStoreState = (selector, dependencies = []) => {
   const store = useStoreContext();
-  const [, provokeUpdate] = useState(false);
-  const selectorRef = useRef();
-  const stateSliceRef = useRef();
-
-  selectorRef.current = selector;
-  stateSliceRef.current = store.state.useSelector(selector);
+  const [selectedState, setSelectedState] = useState(store.state.useSelector(selector));
 
   useEffect(() => {
+    setSelectedState(store.state.useSelector(selector));
+
     const unsubscribe = store.state.subscribe((state) => {
-      if (Object.is(stateSliceRef.current, selectorRef.current(state))) return;
-      provokeUpdate((v) => !v);
+      const sliceState = selector(state);
+      setSelectedState((prevState) => (Object.is(prevState, sliceState) ? prevState : sliceState));
     });
 
-    return () => {
-      unsubscribe();
-    };
-  }, [store.state]);
+    return () => unsubscribe();
+  }, dependencies);
 
-  return stateSliceRef.current;
+  return selectedState;
 };

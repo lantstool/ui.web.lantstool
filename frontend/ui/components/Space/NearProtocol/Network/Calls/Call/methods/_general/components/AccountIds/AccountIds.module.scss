@@ -1,0 +1,15 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+
+
+.accountIds{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.deleteIcon{
+  @include icon('@assets/icons/trash-bin-outline.svg');
+  background: $neutral-600;
+}

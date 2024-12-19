@@ -1,18 +1,23 @@
-@use '../../../styles/variables.module.scss' as *;
-@use '../../../styles/mixins.module.scss' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 .container {
   position: relative;
-  height: 72px;
+  height: max-content;
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 8px 0;
+}
+
 .label {
   @include text-sm-regular;
   align-content: center;
   color: $neutral-700;
-  padding: 2px 0;
 }

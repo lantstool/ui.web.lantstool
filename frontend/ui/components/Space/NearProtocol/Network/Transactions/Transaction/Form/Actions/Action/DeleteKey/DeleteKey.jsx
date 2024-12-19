@@ -1,17 +1,10 @@
-import Select from 'react-select';
-import { selectStyles } from '../../../_general/components/selectStyles.js';
-import { Controller, useWatch } from 'react-hook-form';
 import { useDropdownOptions } from './useDropdownOptions.js';
-import { Option } from '../../../_general/components/Option/Option.jsx';
-import { SelectHeadLabel } from '../../../_general/components/SelectHeadLabel/SelectHeadLabel.jsx';
-import cn from './DeleteKey.module.scss';
+import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 
-export const DeleteKey = ({ form, getName, action }) => {
+export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle }) => {
   const { control, setValue } = form;
-  const actions = useWatch({ control, name: `actions` });
   const options = useDropdownOptions(control);
-
-  const findAction = actions.find((el) => el.actionId === action.actionId);
 
   const onChange = (field) => (event) => {
     field.onChange(event);
@@ -19,24 +12,25 @@ export const DeleteKey = ({ form, getName, action }) => {
   };
 
   return (
-    <div className={cn.deleteKey}>
-      <SelectHeadLabel text="Access Key" permission={findAction.accessKey} />
-      <div>
-        <Controller
-          name={getName('accessKey')}
-          control={control}
-          render={({ field }) => (
-            <Select
-              {...field}
-              onChange={onChange(field)}
-              isSearchable
-              components={{ Option }}
-              options={options}
-              styles={selectStyles}
-            />
-          )}
-        />
-      </div>
-    </div>
+    <ActionBase
+      removeAction={removeAction}
+      label={name}
+      iconStyle={iconStyle}
+      color="error"
+      order={order}
+      tooltipContent="Delete key"
+    >
+      <FormDropdown
+        onChange={onChange}
+        control={control}
+        name={getName('accessKey')}
+        options={options}
+        label="Access key"
+        placeholder="Select or enter..."
+        dynamicErrorSpace
+        isSearchable
+        isClearable
+      />
+    </ActionBase>
   );
 };

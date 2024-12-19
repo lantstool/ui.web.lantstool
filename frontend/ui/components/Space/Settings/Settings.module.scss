@@ -1,8 +1,19 @@
-.container {
-  min-height: 100vh;
-  width: 100%;
+.settings {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 610px;
+  max-width: 680px;
+  gap: 24px;
 }

@@ -1,0 +1,41 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  height: 48px;
+  width: calc(100% - 32px);
+  border-radius: 16px;
+  background-color: $neutral-50;
+  margin-bottom: 40px;
+}
+
+.date {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 4px 0 0 0;
+}
+
+.name {
+  @include text-sm-medium;
+  padding: 4px;
+  border: none;
+  outline: none;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+//.sideMenu {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  gap: 8px;
+//}

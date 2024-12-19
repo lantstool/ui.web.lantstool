@@ -1,0 +1,12 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+}

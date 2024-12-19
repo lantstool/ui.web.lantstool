@@ -1,0 +1,20 @@
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
+
+.container {
+  position: relative;
+}
+
+.menuIcon {
+  @include icon('@assets/menu-dots-outline.svg');
+}
+
+.menu {
+  position: absolute;
+  background-color: $neutral-00;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px 0 rgba(33, 37, 41, 0.17);
+  padding: 4px;
+  z-index: 100;
+}

@@ -1,0 +1,90 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.list {
+  grid-area: a;
+  min-width: 239px;
+  padding: 8px 0;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  background-color: $neutral-50;
+}
+
+.topBar {
+  display: flex;
+  margin: 0 8px;
+  gap: 2px;
+}
+
+.createBtn {
+  width: 100%;
+  border: none;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  background: none;
+  align-items: center;
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+    .icon {
+      fill: $neutral-800;
+    }
+  }
+}
+
+.tooltip {
+  border-radius: 8px;
+}
+
+.exportBtn {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  .icon {
+    fill: $neutral-600;
+  }
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .icon {
+      fill: $neutral-800;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  color: $neutral-600;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.scrollBar {
+  padding-right: 2px;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-400;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

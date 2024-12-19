@@ -1,0 +1,26 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.backstage {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 16px;
+  box-sizing: border-box;
+  gap: 24px;
+  padding: 24px;
+}

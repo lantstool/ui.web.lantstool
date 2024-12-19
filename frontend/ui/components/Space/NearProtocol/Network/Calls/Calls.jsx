@@ -1,23 +1,25 @@
 import { List } from './List/List.jsx';
-import { useStoreState, useStoreEffect } from '../../../../../../../react-vault/index.js';
-import { Outlet } from 'react-router-dom';
+import { useStoreState, useStoreEffect } from '@react-vault';
+import { Outlet, useParams } from 'react-router-dom';
 import { Empty } from './Empty/Empty.jsx';
 import { useManageRouting } from './useManageRouting.js';
-import cn from './Calls.module.css';
-import { useLoader } from '../../../../../hooks/useLoader.js';
+import { useLoader } from '@hooks/useLoader.js';
+import cn from './Calls.module.scss';
 
 export const Calls = () => {
-  const ids = useStoreState((store) => store.nearProtocol.calls.ids);
-  // const getOnceCalls = useStoreEffect((store) => store.calls.getOnceCalls);
-  // const [isLoading] = useLoader(getOnceCalls);
-  //
+  const list = useStoreState((store) => store.nearProtocol.calls.list);
+  const getList = useStoreEffect((store) => store.nearProtocol.calls.getList);
+  const { spaceId, networkId } = useParams();
+  const [isLoading] = useLoader(getList, { spaceId, networkId }, [spaceId, networkId]);
+
   useManageRouting();
-  // if (isLoading) return null;
-  if (ids.length === 0) return <Empty />;
+
+  if (isLoading) return null;
+  if (list.length === 0) return <Empty />;
 
   return (
     <div className={cn.calls}>
-      <List ids={ids} />
+      <List list={list} />
       <Outlet />
     </div>
   );

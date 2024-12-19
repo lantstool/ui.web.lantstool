@@ -1,0 +1,23 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.empty {
+  height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title{
+  @include text-mg-medium;
+  text-align: center;
+  color: $neutral-500;
+  padding: 0;
+  margin: 24px 0 16px 0;
+}
+
+.btnWrapper{
+  display: flex;
+  gap: 8px;
+}
