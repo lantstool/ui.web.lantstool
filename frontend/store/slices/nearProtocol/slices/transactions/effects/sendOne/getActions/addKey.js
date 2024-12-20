@@ -19,5 +19,5 @@ export const addKey = (action) => {
   const accessKey =
     type === 'FullAccess' ? transactions.fullAccessKey() : functionCallKey(restrictions);
 
-  return transactions.addKey(utils.PublicKey.from(action.publicKey), accessKey);
+  return transactions.addKey(utils.PublicKey.from(action.publicKey.value), accessKey);
 };

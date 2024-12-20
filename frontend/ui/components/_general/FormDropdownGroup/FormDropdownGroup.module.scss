@@ -103,6 +103,11 @@
   border: none;
   border-radius: 0 8px 8px 0;
   padding: 12px;
+  &:disabled {
+    .icon {
+      background-color: $neutral-500;
+    }
+  }
   &:not(:disabled):hover {
     cursor: pointer;
     .icon {

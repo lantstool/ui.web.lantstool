@@ -1,15 +1,11 @@
 import { Button } from '../../../../../_general/Button/Button.jsx';
-import { useState } from 'react';
 import { AccountSquareBold } from '../../../../../_general/icons/AccountSquareBold.jsx';
-import { ImportAccount } from '../_general/ImportAccount/ImportAccount.jsx';
+import { ImportAccount } from '../../_general/ImportAccount/ImportAccount.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './Empty.module.scss';
 
 export const Empty = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const openModal = () => {
-    setOpen(true);
-  };
+  const [isModalOpen, openModal, closeModal] = useToggler();
 
   return (
     <div className={cn.container}>
@@ -20,7 +16,7 @@ export const Empty = () => {
         </h2>
       </div>
       <Button onClick={openModal}>Import account</Button>
-      {isOpen && <ImportAccount setOpen={setOpen} />}
+      {isModalOpen && <ImportAccount closeModal={closeModal} />}
     </div>
   );
 };

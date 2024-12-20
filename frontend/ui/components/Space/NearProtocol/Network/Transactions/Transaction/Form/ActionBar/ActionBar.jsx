@@ -1,16 +1,16 @@
 import { useStoreEffect, useStoreAction, useStoreState } from '@react-vault';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { HistoryOutline } from '../../../../../../../_general/icons/HistoryOutline.jsx';
-import { SaveOutline } from '../../../../../../../_general/icons/SaveOutline.jsx';
 import { useParams } from 'react-router-dom';
-import { ArrowRightOutline } from '../../../../../../../_general/icons/ArrowRightOutline.jsx';
 import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
+import { useIsExtraConfirmation } from './useIsExtraConfirmation.js';
+import { ConfirmationModal } from './ConfirmationModal/ConfirmationModal.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './ActionBar.module.scss';
 
 export const ActionBar = ({ form, transaction }) => {
+  const [isModalOpen, openModal, closeModal] = useToggler();
   const { spaceId, networkId, transactionId } = useParams();
-
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
   const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
   const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
@@ -20,6 +20,7 @@ export const ActionBar = ({ form, transaction }) => {
     [transactionId],
   );
   const hasChanges = useIsFormHasChanges(form, transaction);
+  const extraConfirmation = useIsExtraConfirmation(form);
 
   const onSubmit = form.handleSubmit((formValues) => {
     sendOne({ formValues, spaceId, networkId, transactionId });
@@ -38,7 +39,7 @@ export const ActionBar = ({ form, transaction }) => {
             size="medium"
             onClick={revert}
             color="tertiary"
-            IconLeft={HistoryOutline}
+            iconLeftStyles={cn.historyIcon}
           />
         </Tooltip>
         <Tooltip disabled={!hasChanges} arrow={false} content="Save changes" placement="top">
@@ -47,11 +48,11 @@ export const ActionBar = ({ form, transaction }) => {
             size="medium"
             onClick={save}
             color="tertiary"
-            IconLeft={SaveOutline}
+            iconLeftStyles={cn.saveIcon}
           />
         </Tooltip>
         <hr className={cn.border} />
-        <Button size="medium" onClick={onSubmit}>
+        <Button size="medium" onClick={extraConfirmation ? openModal : onSubmit}>
           Send
         </Button>
       </div>
@@ -63,12 +64,20 @@ export const ActionBar = ({ form, transaction }) => {
               size="medium"
               color="tertiary"
               onClick={openResult}
-              IconRight={ArrowRightOutline}
+              iconRightStyles={cn.arrowRightIcon}
             >
               Open result
             </Button>
           </div>
         </>
+      )}
+      {isModalOpen && (
+        <ConfirmationModal
+          onSubmit={onSubmit}
+          transaction={transaction}
+          closeModal={closeModal}
+          confirmationType={extraConfirmation}
+        />
       )}
     </div>
   );

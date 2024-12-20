@@ -1,71 +1,72 @@
-import cn from './Result.module.scss';
 import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { jsonLanguage } from '@codemirror/lang-json';
-import CodeMirror from '@uiw/react-codemirror';
 import { useStoreAction } from '@react-vault';
-import { BackIcon } from '../../../../../../_general/icons/BackIcon.jsx';
+import { Label } from '../../../../../../_general/Label/Label.jsx';
+import { JsonEditor } from '../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
+import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
+import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
+import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
+import cn from './Result.module.scss';
 
-// TODO Move to utils
-const getFormattedJSON = (json) => JSON.stringify(json, null, 2);
-
-const getResultStatus = (status) => {
-  try {
-    if (status.SuccessValue) {
-      return getFormattedJSON({ SuccessValue: atob(status.SuccessValue) });
-    }
-    return getFormattedJSON(status);
-  } catch (e) {
-    return 'Error during parsing result';
-  }
-};
-
-export const Result = ({ txResult }) => {
-  const { result, isLoading, transactionId } = txResult;
+export const Result = ({ txResult, transaction }) => {
+  const { result, isLoading, transactionId, error } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
+  const data = result ? result : error;
+  const isSuccessResult = result?.status && 'successValue' in result.status;
 
   const closeResult = () => {
     setResult({ transactionId, isOpen: false });
   };
 
   return (
-    <div>
+    <div className={cn.result}>
       <div className={cn.container}>
-        <div className={cn.topNav}>
-          <button className={cn.backBtn} onClick={closeResult}>
-            <BackIcon style={cn.icon} />
-          </button>
+        <div className={cn.head}>
+          <div className={cn.headWrapper}>
+            <h2 className={cn.title}>Result</h2>
+            <p className={cn.call}>{transaction.name}</p>
+          </div>
+          {!isLoading && (
+            <Label
+              iconStyles={isSuccessResult ? cn.checkCircleIcon : cn.errorCircleIcon}
+              color={isSuccessResult ? 'success' : 'error'}
+            >
+              {isSuccessResult ? 'Success' : 'Failed'}
+            </Label>
+          )}
         </div>
         {isLoading ? (
           <p className={cn.loader}>Loading...</p>
         ) : (
           <>
-            <h3 className={cn.title}>Result</h3>
-            {result.status ? (
+            {result && (
               <>
-                <CodeMirror
-                  readOnly={true}
-                  value={getResultStatus(result.status)}
-                  extensions={[jsonLanguage]}
-                />
-                <h3 className={cn.title}>ID</h3>
-                <p className={cn.subtitle}>{result.transactionOutcome?.id}</p>
-                <h3 className={cn.title}>Details</h3>
-                <CodeMirror
-                  readOnly={true}
-                  value={getFormattedJSON(result)}
-                  extensions={[jsonLanguage]}
-                />
+                <div className={cn.hashWrapper}>
+                  <div className={cn.tooltipWrapper}>
+                    <Tooltip content="Transaction hash" placement="top" defaultContent />
+                    <p className={cn.subtitle}>Txn Hash</p>
+                  </div>
+                  <CopyButton type="small" value={result.transactionOutcome?.id} />
+                </div>
+                <div className={cn.hash}>{result.transactionOutcome?.id}</div>
               </>
-            ) : (
-              <p className={cn.error}>{result}</p>
             )}
+            <JsonEditor
+              readOnly
+              value={getFormattedJSON(data)}
+              copyValue={getFormattedJSON(data)}
+            />
           </>
         )}
       </div>
       <div className={cn.footer}>
-        <div className={cn.closeBtn}>
-          <Button onClick={closeResult}>Close</Button>
-        </div>
+        <Button
+          color="tertiary"
+          size="medium"
+          onClick={closeResult}
+          iconLeftStyles={cn.arrowBackIcon}
+        >
+          Back
+        </Button>
       </div>
     </div>
   );

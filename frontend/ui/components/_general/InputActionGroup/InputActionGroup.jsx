@@ -61,7 +61,9 @@ export const InputActionGroup = ({
           [cn.wrapperDefault]: !error && !disabled && !isFocused,
         })}
       >
-        <div className={cn.inputWrapper}>
+        <div
+          className={cnm(cn.inputWrapper, inputGroup === 'text' && !singleValue && cn.inputBorder)}
+        >
           <input
             ref={ref}
             id={name}

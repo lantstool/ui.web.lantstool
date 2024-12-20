@@ -6,7 +6,7 @@ const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
   const newValue =
     accountId && signerId
       ? { value: `${accountId}${singleValue}`, label: `${accountId}${singleValue}` }
-      : { value: '', label: '' };
+      : null;
 
   setValue('receiverId', newValue);
 };
@@ -15,17 +15,14 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, or
   const { control, setValue, watch } = form;
   const signerId = watch('signerId');
   const accountId = watch(getName('accountId'));
-  const singleValue = signerId ? `.${signerId.value}` : '';
+  const singleValue = signerId ? `.${signerId.value}` : null;
 
   useEffect(() => {
     updateReceiverId(accountId, signerId, singleValue, setValue);
   }, [accountId, signerId, singleValue]);
 
   const remove = () => {
-    setValue('receiverId', {
-      value: '',
-      label: '',
-    });
+    setValue('receiverId', null);
     removeAction();
   };
 
@@ -44,6 +41,7 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, or
         name={getName('accountId')}
         label="Account id"
         singleValue={singleValue}
+        placeholder="newaccount"
         dynamicErrorSpace
       />
     </ActionBase>

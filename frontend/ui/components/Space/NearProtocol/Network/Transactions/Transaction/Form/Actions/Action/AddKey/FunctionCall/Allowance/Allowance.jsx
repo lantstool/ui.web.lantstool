@@ -22,7 +22,7 @@ export const Allowance = ({ form, getName }) => {
   const isLimitedAllowance = allowedAllowance === 'Limited';
 
   return (
-    <div className={isLimitedAllowance?cn.allowance : cn.allowanceBigMargin}>
+    <div className={isLimitedAllowance ? cn.allowance : cn.allowanceBigMargin}>
       <h2 className={cn.title}>Allowance</h2>
       <div className={cn.container}>
         <RadioButton
@@ -46,7 +46,7 @@ export const Allowance = ({ form, getName }) => {
             options={options}
             label="Amount"
             dropDownName={allowanceType}
-            // dynamicErrorSpace
+            placeholder={0}
           />
         </div>
       )}

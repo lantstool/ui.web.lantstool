@@ -12,12 +12,9 @@ export const AccountKeys = () => {
     accountId,
   ]);
 
-  if (isLoading || !keys) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading...</p>;
 
-  const { fullAccess, functionCall } = keys;
-
-  if (fullAccess.length === 0 && functionCall.length === 0)
-
+  if (!keys?.fullAccess.length > 0 && !keys?.functionCall.length > 0)
     return (
       <div className={cn.empty}>
         <KeySquareBold style={cn.icon} />
@@ -27,8 +24,8 @@ export const AccountKeys = () => {
 
   return (
     <div className={cn.keys}>
-      <Items keys={fullAccess} type="fullAccess" name="Full Access" />
-      <Items keys={functionCall} type="functionCall" name="Function Call" />
+      <Items keys={keys.fullAccess} type="fullAccess" name="Full Access" />
+      <Items keys={keys.functionCall} type="functionCall" name="Function Call" />
     </div>
   );
 };

@@ -2,6 +2,10 @@ import { effect } from '@react-vault';
 import { createTx } from './createTx.js';
 import { signTx } from './signTx.js';
 
+const getErrorMessage = (error) => {
+  return error?.rpc ? error.rpc : { internalError: error.message };
+};
+
 export const sendOne = effect(async ({ store, slice, payload }) => {
   const { formValues, spaceId, networkId, transactionId } = payload;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
@@ -27,9 +31,9 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     });
 
     const result = await rpc.sendTransaction({ signedTransaction });
-    setResult({ transactionId, result, isLoading: false });
+    setResult({ transactionId, result, error: null, isLoading: false });
   } catch (e) {
     console.log(e);
-    setResult({ transactionId, result: `Error: ${e.message}`, isLoading: false });
+    setResult({ transactionId, result: null, error: getErrorMessage(e), isLoading: false });
   }
 });

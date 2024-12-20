@@ -7,6 +7,7 @@
   background-color: $neutral-50;
   border-radius: 16px;
   padding: 16px;
+  gap: 4px;
 }
 
 .subtitle{
@@ -21,6 +22,7 @@
   color: $neutral-800;
   padding: 0;
   margin: 0 0 16px 0;
+  word-break: break-all;
 }
 
 .date {
@@ -33,7 +35,7 @@
 .btnWrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .copy {

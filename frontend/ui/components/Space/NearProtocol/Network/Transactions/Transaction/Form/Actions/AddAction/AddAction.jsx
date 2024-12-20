@@ -6,6 +6,8 @@ export const AddAction = ({ append, fields }) => {
   const isCreateAccount = fields.length < 1;
   const isDeleteAccount = fields.find((action) => action.type === 'DeleteAccount');
 
+  if (isDeleteAccount) return null;
+
   const createAccount = () => {
     appendAction.createAccount(append);
   };
@@ -41,56 +43,35 @@ export const AddAction = ({ append, fields }) => {
         <div className={cn.container}>
           <Item
             onClick={createAccount}
-            disabled={!isCreateAccount || isDeleteAccount}
-            text="Create Account"
+            disabled={!isCreateAccount}
+            text="Create account"
             iconStyles={cn.iconCreateAccount}
             color="green"
           />
-          <Item
-            onClick={addKey}
-            text="Add Key"
-            iconStyles={cn.iconAddKey}
-            color="green"
-            disabled={isDeleteAccount}
-          />
-          <Item
-            onClick={transfer}
-            text="Transfer"
-            iconStyles={cn.iconTransfer}
-            color="blue"
-            disabled={isDeleteAccount}
-          />
+          <Item onClick={addKey} text="Add key" iconStyles={cn.iconAddKey} color="green" />
+          <Item onClick={transfer} text="Transfer" iconStyles={cn.iconTransfer} color="blue" />
         </div>
         <div className={cn.container}>
           <Item
             onClick={deployContract}
-            text="Deploy Contract"
+            text="Deploy contract"
             iconStyles={cn.iconDeployContract}
             color="deepBlue"
-            disabled={isDeleteAccount}
           />
           <Item
             onClick={functionCall}
-            text="FunctionCall"
+            text="Function call"
             iconStyles={cn.iconFunctionCall}
             color="purple"
-            disabled={isDeleteAccount}
           />
         </div>
         <div className={cn.container}>
-          <Item
-            onClick={deleteKey}
-            text="Delete Key"
-            iconStyles={cn.iconDeleteKey}
-            color="red"
-            disabled={isDeleteAccount}
-          />
+          <Item onClick={deleteKey} text="Delete key" iconStyles={cn.iconDeleteKey} color="red" />
           <Item
             onClick={deleteAccount}
-            text="Delete Account"
+            text="Delete account"
             iconStyles={cn.iconDeleteAccount}
             color="red"
-            disabled={isDeleteAccount}
           />
         </div>
       </div>
