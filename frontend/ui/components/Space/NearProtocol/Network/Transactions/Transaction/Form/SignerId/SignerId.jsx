@@ -9,8 +9,8 @@ import cn from './SignerId.module.scss';
 
 export const SignerId = ({ form }) => {
   const { control, setValue } = form;
-  const signerId = useWatch({ control, name: 'signerId' });
-  const accountsOptions = useAccountsOptions(signerId);
+  const signerId = useWatch({ control, name: 'signerId.value' });
+  const accountsOptions = useAccountsOptions({ signerId });
   const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
   const options = [

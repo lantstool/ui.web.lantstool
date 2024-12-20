@@ -4,7 +4,8 @@
 .title{
   @include text-sm-regular;
   color: $neutral-700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  padding: 2px 0;
 }
 
 .container{

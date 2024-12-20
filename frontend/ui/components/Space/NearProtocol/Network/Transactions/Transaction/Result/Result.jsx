@@ -14,6 +14,7 @@ export const Result = ({ txResult, transaction }) => {
   const { result, isLoading, transactionId, error } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
   const data = result? result: error
+  const isSuccessResult = result?.status && 'successValue' in result.status;
 
   const closeResult = () => {
     setResult({ transactionId, isOpen: false });
@@ -29,10 +30,10 @@ export const Result = ({ txResult, transaction }) => {
           </div>
           {!isLoading && (
             <Label
-              Icon={result ? CheckCircleBold : ErrorCircleBold}
-              color={result ? 'success' : 'error'}
+              Icon={isSuccessResult ? CheckCircleBold : ErrorCircleBold}
+              color={isSuccessResult ? 'success' : 'error'}
             >
-              {result ? 'Success' : 'Failed'}
+              {isSuccessResult ? 'Success' : 'Failed'}
             </Label>
           )}
         </div>

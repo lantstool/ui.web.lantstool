@@ -3,12 +3,11 @@ import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
 
 export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle }) => {
-  const { control, setValue } = form;
+  const { control } = form;
   const options = useDropdownOptions(control);
 
   const onChange = (field) => (event) => {
     field.onChange(event);
-    setValue('accessKey', event);
   };
 
   return (

@@ -8,7 +8,7 @@ import cn from './SignerKey.module.scss';
 export const SignerKey = ({ form }) => {
   const { control, setValue } = form;
   const signerKey = useWatch({ control, name: 'signerKey' });
-  const dropdownOptions = useDropdownOptions(control,signerKey);
+  const dropdownOptions = useDropdownOptions(control, signerKey);
   const [isModalOpen, openModal, closeModal] = useToggler();
   const options = [
     ...dropdownOptions,
@@ -24,8 +24,7 @@ export const SignerKey = ({ form }) => {
     }
   };
 
-  const setKey= (value) => {
-    console.log(value);
+  const setKey = (value) => {
     setValue('signerKey', { value: value, label: value });
   };
 
@@ -39,7 +38,7 @@ export const SignerKey = ({ form }) => {
         isClearable={true}
         label="Access key"
       />
-      {isModalOpen && <ImportKeyModal closeModal={closeModal} setKey={setKey}/>}
+      {isModalOpen && <ImportKeyModal closeModal={closeModal} setKey={setKey} />}
     </div>
   );
 };

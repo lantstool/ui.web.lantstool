@@ -13,8 +13,8 @@ export const useAccountBalance = (accountId) => {
     (async () => {
       try {
         await rpc.configure({ spaceId, networkId });
-        const balance = await rpc.getAccount({ accountId: accountId.value });
-        setBalance(formatNumber(balance.amount));
+        const account = await rpc.getAccount({ accountId });
+        setBalance(formatNumber(account.amount));
       } catch (e) {
         setBalance(null);
       }
