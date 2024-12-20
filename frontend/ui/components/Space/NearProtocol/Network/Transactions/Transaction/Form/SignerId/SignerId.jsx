@@ -13,6 +13,7 @@ export const SignerId = ({ form }) => {
   const accountsOptions = useAccountsOptions({ signerId });
   const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
+
   const options = [
     ...accountsOptions,
     { value: 'importAccount', label: 'Import account', icon: cn.importIcon },

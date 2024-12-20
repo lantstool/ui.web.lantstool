@@ -1,4 +1,4 @@
-import { getBlockTargetParams, transformForExport } from '../utils.js';
+import { getBlockTargetParams, transformForExport, getFormBlockTarget } from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getAccount(
@@ -21,7 +21,13 @@ const exportTransformer = transformForExport({
     }),
 });
 
+const importTransformer = ({ params }) => ({
+  accountId: { value: params.accountId, label: params.accountId },
+  ...getFormBlockTarget(params),
+});
+
 export const getAccount = {
   rpcCaller,
   exportTransformer,
+  importTransformer,
 };

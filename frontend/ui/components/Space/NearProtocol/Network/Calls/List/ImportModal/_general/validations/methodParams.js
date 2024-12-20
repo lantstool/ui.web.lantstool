@@ -2,7 +2,7 @@ import { array, object, string } from 'yup';
 import { blockTargetSchema } from './blockTargetSchema.js';
 
 const getAccount = object({
-  accountId: string().required(),
+  accountId: string().defined(),
 }).concat(blockTargetSchema);
 
 const getAccountChanges = object({

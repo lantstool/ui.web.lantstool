@@ -3,7 +3,7 @@ import { useStoreEffect } from '@react-vault';
 import { EditorView } from '@uiw/react-codemirror';
 import { baseEditorStyles } from '@styles/baseEditorStyles.js';
 import CodeMirror from '@uiw/react-codemirror';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FieldErrorLabel } from '../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
@@ -42,7 +42,8 @@ const collectErrorMessages = (errors) => {
   return messages;
 };
 
-export const PasteJson = () => {
+export const PasteJson = ({ closeModal }) => {
+  const navigate = useNavigate();
   const { spaceId, networkId } = useParams();
   const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
 
@@ -54,7 +55,7 @@ export const PasteJson = () => {
   });
 
   const submit = handleSubmit((formValues) => {
-    importOneFromJson({ spaceId, networkId, formValues });
+    importOneFromJson({ spaceId, networkId, formValues, navigate, closeModal });
   });
 
   return (
