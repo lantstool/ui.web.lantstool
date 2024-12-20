@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .result {
   position: relative;
@@ -42,6 +43,18 @@
   margin: 0;
   padding: 0;
   word-break: break-all;
+}
+
+.checkCircleIcon{
+  @include icon('@assets/icons/check-circle-bold.svg')
+}
+
+.errorCircleIcon{
+  @include icon('@assets/icons/error-circle-bold.svg')
+}
+
+.arrowBackIcon{
+  @include icon('@assets/icons/arrow-back-outline.svg')
 }
 
 .loader {

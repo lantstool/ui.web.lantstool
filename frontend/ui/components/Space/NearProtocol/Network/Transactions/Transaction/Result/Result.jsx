@@ -1,19 +1,16 @@
 import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { useStoreAction } from '@react-vault';
-import { ArrowBackOutline } from '../../../../../../_general/icons/ArrowBackOutline.jsx';
 import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { CheckCircleBold } from '../../../../../../_general/icons/CheckCircleBold.jsx';
-import { ErrorCircleBold } from '../../../../../../_general/icons/ErrorCircleBold.jsx';
 import { JsonEditor } from '../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
 import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
-import {getFormattedJSON} from '../../../../../../../../store/helpers/utils.js';
+import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
 import cn from './Result.module.scss';
 
 export const Result = ({ txResult, transaction }) => {
   const { result, isLoading, transactionId, error } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
-  const data = result? result: error
+  const data = result ? result : error;
   const isSuccessResult = result?.status && 'successValue' in result.status;
 
   const closeResult = () => {
@@ -30,7 +27,7 @@ export const Result = ({ txResult, transaction }) => {
           </div>
           {!isLoading && (
             <Label
-              Icon={isSuccessResult ? CheckCircleBold : ErrorCircleBold}
+              iconStyles={isSuccessResult ? cn.checkCircleIcon : cn.errorCircleIcon}
               color={isSuccessResult ? 'success' : 'error'}
             >
               {isSuccessResult ? 'Success' : 'Failed'}
@@ -48,17 +45,26 @@ export const Result = ({ txResult, transaction }) => {
                     <Tooltip content="Transaction hash" placement="top" defaultContent />
                     <p className={cn.subtitle}>Txn Hash</p>
                   </div>
-                  <CopyButton type='small' value={result.transactionOutcome?.id} />
+                  <CopyButton type="small" value={result.transactionOutcome?.id} />
                 </div>
                 <div className={cn.hash}>{result.transactionOutcome?.id}</div>
               </>
             )}
-            <JsonEditor readOnly value={getFormattedJSON(data)} copyValue={getFormattedJSON(data)} />
+            <JsonEditor
+              readOnly
+              value={getFormattedJSON(data)}
+              copyValue={getFormattedJSON(data)}
+            />
           </>
         )}
       </div>
       <div className={cn.footer}>
-        <Button color="tertiary" size="medium" onClick={closeResult} IconLeft={ArrowBackOutline}>
+        <Button
+          color="tertiary"
+          size="medium"
+          onClick={closeResult}
+          iconLeftStyles={cn.arrowBackIcon}
+        >
           Back
         </Button>
       </div>

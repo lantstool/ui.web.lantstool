@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .actionBar {
   position: fixed;
@@ -33,4 +34,16 @@
   margin: 0;
   background-color: $neutral-200;
   border: none;
+}
+
+.historyIcon{
+  @include icon('@assets/icons/history-outline.svg')
+}
+
+.saveIcon{
+  @include icon('@assets/icons/save-outline.svg')
+}
+
+.arrowRightIcon{
+  @include icon('@assets/icons/arrow-right-outline.svg')
 }
