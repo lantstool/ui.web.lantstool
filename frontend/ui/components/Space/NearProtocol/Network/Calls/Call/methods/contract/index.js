@@ -1,8 +1,8 @@
-import { getContractWasm } from './getContractWasm/index.js';
-import { getContractWasmChanges } from './getContractWasmChanges/index.js';
-import { getContractState } from './getContractState/index.js';
-import { getContractStateChanges } from './getContractStateChanges/index.js';
-import { callContractViewMethod } from './callContractViewMethod/index.js';
+import { getContractWasm } from './GetContractWasm/index.js';
+import { getContractWasmChanges } from './GetContractWasmChanges/index.js';
+import { getContractState } from './GetContractState/index.js';
+import { getContractStateChanges } from './GetContractStateChanges/index.js';
+import { callContractViewMethod } from './CallContractViewMethod/index.js';
 
 export const contract = {
   getContractWasm,

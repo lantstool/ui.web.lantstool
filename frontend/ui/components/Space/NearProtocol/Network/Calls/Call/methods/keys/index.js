@@ -1,7 +1,7 @@
-import { getAccountKey } from './getAccountKey/index.js';
-import { getAccountKeys } from './getAccountKeys/index.js';
-import { getChangesForAccountKey } from './getChangesForAccountKey/index.js';
-import { getChangesForAccountKeys } from './getChangesForAccountKeys/index.js';
+import { getAccountKey } from './GetAccountKey/index.js';
+import { getAccountKeys } from './GetAccountKeys/index.js';
+import { getChangesForAccountKey } from './GetChangesForAccountKey/index.js';
+import { getChangesForAccountKeys } from './GetChangesForAccountKeys/index.js';
 
 export const keys = {
   getAccountKey,
