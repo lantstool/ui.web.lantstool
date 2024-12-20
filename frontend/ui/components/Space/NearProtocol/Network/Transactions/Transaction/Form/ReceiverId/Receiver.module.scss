@@ -17,12 +17,12 @@
 
 .icon {
   @include icon('@assets/icons/user-circle-outline.svg');
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background-color: $neutral-400;
 }
 
 .title {
-  @include text-lg-medium;
+  @include text-mg-medium;
   color: $neutral-800;
 }
