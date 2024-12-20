@@ -1,6 +1,6 @@
-import { getBlock } from './getBlock/index.js';
-import { getBlockChanges } from './getBlockChanges/index.js';
-import { getChunk } from './getChunk/index.js';
+import { getBlock } from './GetBlock/index.js';
+import { getBlockChanges } from './GetBlockChanges/index.js';
+import { getChunk } from './GetChunk/index.js';
 
 export const block = {
   getBlock,

@@ -1,17 +1,22 @@
 import { jsonLanguage } from '@codemirror/lang-json';
+import { useStoreEffect } from '@react-vault';
 import { baseEditorStyles } from '@styles/baseEditorStyles.js';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import { getFormattedJSON } from '../../../../../../../../../../../../../store/helpers/utils.js';
+import { useEffect, useState } from 'react';
 import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
 import { BaseModal } from '../../../../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { ModalHeader } from '../../../../../../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { CopyButton } from '../../../../../../../../../../../_general/CopyButton/CopyButton.jsx';
 import cn from './ExportModal.module.scss';
-import { methods } from '../../../../../../../../../../../../../store/slices/nearProtocol/slices/calls/helpers/methods/index.js';
 
 export const ExportModal = ({ call, form, closeModal }) => {
+  const [data, setData] = useState('');
   const theme = EditorView.theme({ ...baseEditorStyles });
-  const data = getFormattedJSON(methods.getAccount.exportTransformer({ call, form }));
+  const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
+
+  useEffect(() => {
+    setData(exportOneAsJson({ call, form }));
+  }, [call, form]);
 
   const downloadZip = () => {
     console.log(data);

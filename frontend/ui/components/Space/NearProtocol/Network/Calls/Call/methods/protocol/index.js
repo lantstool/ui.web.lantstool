@@ -1,5 +1,5 @@
-import { getGenesisConfig } from './getGenesisConfig/index.js';
-import { getProtocolConfig } from './getProtocolConfig/index.js';
+import { getGenesisConfig } from './GetGenesisConfig/index.js';
+import { getProtocolConfig } from './GetProtocolConfig/index.js';
 
 export const protocol = {
   getGenesisConfig,

@@ -1,5 +1,5 @@
-import { getValidators } from './getValidators/index.js';
-import { getMaintenanceWindows } from './getMaintenanceWindows/index.js';
+import { getValidators } from './GetValidators/index.js';
+import { getMaintenanceWindows } from './GetMaintenanceWindows/index.js';
 
 export const validators = {
   getValidators,
