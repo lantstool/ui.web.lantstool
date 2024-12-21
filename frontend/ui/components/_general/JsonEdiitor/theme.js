@@ -1,7 +1,7 @@
 import { EditorView } from '@uiw/react-codemirror';
 import { baseEditorStyles } from '@styles/baseEditorStyles.js';
 
-export const theme = (error) =>
+export const theme = (error, contentMinHeight) =>
   EditorView.theme({
     ...baseEditorStyles,
     '&': {
@@ -13,6 +13,6 @@ export const theme = (error) =>
       borderWidth: '0 1px 1px',
     },
     '.cm-content, .cm-gutter': {
-      minHeight: '200px',
+      minHeight: contentMinHeight,
     },
   });

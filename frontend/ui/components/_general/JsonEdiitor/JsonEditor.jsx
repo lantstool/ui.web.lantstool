@@ -8,7 +8,6 @@ import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
 export const JsonEditor = ({
-  formRef,
   value = '',
   onChange,
   onBlur,
@@ -20,9 +19,10 @@ export const JsonEditor = ({
   error = null,
   dynamicErrorSpace,
   errorLabel,
+  customTheme,
 }) => {
   const clearValue = () => onChange('');
-  console.log(formRef);
+
   return (
     <div className={cnm(cn.container, classes?.container)}>
       {topbar && (
@@ -37,14 +37,14 @@ export const JsonEditor = ({
           {/*<Tooltip content="Format" placement="top" arrow={false}>*/}
           {/*  <button className={cn.format} />*/}
           {/*</Tooltip>*/}
-          {showCopyBtn && (
-            <Tooltip content="Copy" placement="top" arrow={false}>
-              <CopyButton value={value} />
-            </Tooltip>
-          )}
           {showClearBtn && (
             <Tooltip content="Clear" placement="top" arrow={false}>
               <button className={cn.clear} onClick={clearValue} type="button" />
+            </Tooltip>
+          )}
+          {showCopyBtn && (
+            <Tooltip content="Copy" placement="top" arrow={false}>
+              <CopyButton value={value} />
             </Tooltip>
           )}
         </div>
@@ -55,7 +55,7 @@ export const JsonEditor = ({
         onChange={onChange}
         onBlur={onBlur}
         className={cn.editor}
-        theme={theme(error)}
+        theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={[jsonLanguage, EditorView.lineWrapping]}
         basicSetup={{ tabSize: 2 }}

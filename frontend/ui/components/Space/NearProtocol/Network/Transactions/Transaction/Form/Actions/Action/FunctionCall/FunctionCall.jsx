@@ -65,6 +65,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
               </>
             ),
           }}
+          customTheme={{ contentMinHeight: '200px' }}
         />
         <div className={cn.wrapper}>
           <InputActionGroup

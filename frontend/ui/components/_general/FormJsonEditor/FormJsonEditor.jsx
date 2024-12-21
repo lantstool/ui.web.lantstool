@@ -9,6 +9,7 @@ export const FormJsonEditor = ({
   showClearBtn,
   showCopyBtn,
   classes,
+  customTheme,
   dynamicErrorSpace,
   errorLabel,
 }) => (
@@ -26,6 +27,7 @@ export const FormJsonEditor = ({
         showClearBtn={showClearBtn}
         showCopyBtn={showCopyBtn}
         classes={classes}
+        customTheme={customTheme}
         error={error}
         dynamicErrorSpace={dynamicErrorSpace}
         errorLabel={errorLabel}
