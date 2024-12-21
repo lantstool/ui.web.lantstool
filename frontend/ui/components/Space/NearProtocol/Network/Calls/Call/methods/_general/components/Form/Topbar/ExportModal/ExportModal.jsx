@@ -1,5 +1,5 @@
 import { jsonLanguage } from '@codemirror/lang-json';
-import { useStoreEffect } from '@react-vault';
+import { useStoreAction, useStoreEffect } from '@react-vault';
 import { baseEditorStyles } from '@styles/baseEditorStyles.js';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ export const ExportModal = ({ call, form, closeModal }) => {
   const [data, setData] = useState('');
   const theme = EditorView.theme({ ...baseEditorStyles });
   const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
+  const setNotification = useStoreAction((store) => store.setNotification);
 
   useEffect(() => {
     setData(exportOneAsJson({ call, form }));
@@ -20,6 +21,11 @@ export const ExportModal = ({ call, form, closeModal }) => {
 
   const downloadZip = () => {
     console.log(data);
+  };
+
+  const afterCopyCallback = () => {
+    closeModal();
+    setNotification({ isOpen: true, message: 'Copied to the clipboard', variant: 'success' });
   };
 
   return (
@@ -40,7 +46,12 @@ export const ExportModal = ({ call, form, closeModal }) => {
         <Button color="secondary" size="medium">
           Download .zip
         </Button>
-        <CopyButton value={data} variant="button" button={{ size: 'medium', label: 'Copy JSON' }} />
+        <CopyButton
+          value={data}
+          variant="button"
+          button={{ size: 'medium', label: 'Copy JSON' }}
+          callback={afterCopyCallback}
+        />
       </div>
     </BaseModal>
   );

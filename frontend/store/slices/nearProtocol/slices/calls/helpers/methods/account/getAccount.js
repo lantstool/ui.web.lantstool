@@ -12,6 +12,7 @@ const rpcCaller = (rpc, params) =>
   );
 
 const exportTransformer = transformForExport({
+  version: '1.0',
   paramsExtractor: (params) =>
     getBlockTargetParams({
       accountId: params.accountId?.value || '',

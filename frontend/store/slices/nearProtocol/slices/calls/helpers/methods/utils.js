@@ -4,7 +4,7 @@ export const getBlockTargetParams = ({ finality, blockId, blockTarget, ...rest }
   blockTarget === 'latest' ? { ...rest, finality } : { ...rest, blockId };
 
 export const transformForExport =
-  ({ paramsExtractor, version = '1.0' }) =>
+  ({ paramsExtractor, version }) =>
   ({ call, form }) => ({
     blockchain: 'near-protocol',
     networkId: call.networkId,
