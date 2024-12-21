@@ -1,6 +1,6 @@
 .modal {
   width: 90vw;
-  max-width: 1400px;
+  max-width: 1200px;
   height: 90vh;
   display: grid;
   grid-template-columns: 24px auto 24px;
@@ -28,10 +28,8 @@
   grid-area: a;
 }
 
-.editor {
+.editorContainer {
   grid-area: b;
-  height: 100%;
-  width: 100%;
 }
 
 .modalFooter {

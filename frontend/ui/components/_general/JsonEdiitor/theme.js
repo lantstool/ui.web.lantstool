@@ -12,4 +12,7 @@ export const theme = (error) =>
       border: error ? 'solid #CA2C2C' : 'solid #E9ECEF',
       borderWidth: '0 1px 1px',
     },
+    '.cm-content, .cm-gutter': {
+      minHeight: '200px',
+    },
   });

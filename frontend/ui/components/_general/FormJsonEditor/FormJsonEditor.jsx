@@ -1,19 +1,34 @@
 import { Controller } from 'react-hook-form';
 import { JsonEditor } from '../JsonEdiitor/JsonEditor.jsx';
 
-export const FormJsonEditor = ({ control, label, copyValue, clear, name, value, readOnly }) => (
+export const FormJsonEditor = ({
+  name,
+  control,
+  topbar,
+  readOnly,
+  showClearBtn,
+  showCopyBtn,
+  classes,
+  dynamicErrorSpace,
+  errorLabel,
+}) => (
   <Controller
     name={name}
     control={control}
-    render={({ field, fieldState: { error } }) => (
+    render={({ field: { value, onChange, onBlur, ref }, fieldState: { error } }) => (
       <JsonEditor
-        error={error}
-        clear={clear}
-        copyValue={copyValue}
-        label={label}
-        field={field}
+        formRef={ref}
         value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        topbar={topbar}
         readOnly={readOnly}
+        showClearBtn={showClearBtn}
+        showCopyBtn={showCopyBtn}
+        classes={classes}
+        error={error}
+        dynamicErrorSpace={dynamicErrorSpace}
+        errorLabel={errorLabel}
       />
     )}
   />

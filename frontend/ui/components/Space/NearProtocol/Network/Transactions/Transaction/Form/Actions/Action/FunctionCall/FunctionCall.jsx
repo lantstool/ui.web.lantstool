@@ -1,4 +1,4 @@
-import { Arguments } from './Arguments/Arguments.jsx';
+import { FormJsonEditor } from '../../../../../../../../../_general/FormJsonEditor/FormJsonEditor.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
@@ -54,8 +54,18 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           copy={false}
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
-
-        <Arguments form={form} name={getName('arguments')} />
+        <FormJsonEditor
+          name={name}
+          control={control}
+          topbar={{
+            label: 'Arguments',
+            tooltip: (
+              <>
+                Type contract call arguments <br /> in JSON format
+              </>
+            ),
+          }}
+        />
         <div className={cn.wrapper}>
           <InputActionGroup
             control={control}

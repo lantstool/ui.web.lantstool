@@ -1,6 +1,6 @@
 .modal {
   width: 90vw;
-  max-width: 1400px;
+  max-width: 1200px;
   height: 90vh;
   display: grid;
   grid-template-columns: 24px auto 24px;
@@ -10,8 +10,8 @@
     24px
     32px
     24px
-    calc(90vh - 24px - 24px - 24px - 32px - 24px - 32px - 24px - 24px)
-    24px
+    calc(90vh - 24px - 24px - 24px - 32px - 8px - 32px - 24px - 24px)
+    8px
     32px
     24px;
   grid-template-areas:
@@ -21,7 +21,7 @@
     '. b .'
     '. . .'
     '. c .'
-    '. e .'
+    '. . .'
     '. d .'
     '. . .';
   padding: 0;

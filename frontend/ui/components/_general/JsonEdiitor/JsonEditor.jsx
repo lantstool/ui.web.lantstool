@@ -4,56 +4,65 @@ import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
 import { jsonLanguage } from '@codemirror/lang-json';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
+import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
 export const JsonEditor = ({
-  error = null,
-  label,
-  copyValue,
-  clear,
-  field = null,
-  value = null,
-  tooltip,
-  content,
+  formRef,
+  value = '',
+  onChange,
+  onBlur,
+  topbar,
   readOnly = false,
-}) => (
-  <div>
-    {label && (
-      <div className={cn.label}>
-        <p className={cn.title}>{label}</p>
-        {tooltip && <Tooltip content={content} placement="top" defaultContent />}
+  showClearBtn = true,
+  showCopyBtn = true,
+  classes,
+  error = null,
+  dynamicErrorSpace,
+  errorLabel,
+}) => {
+  const clearValue = () => onChange('');
+  console.log(formRef);
+  return (
+    <div className={cnm(cn.container, classes?.container)}>
+      {topbar && (
+        <div className={cn.label}>
+          <p className={cn.title}>{topbar?.label}</p>
+          {topbar?.tooltip && <Tooltip content={topbar.tooltip} placement="top" defaultContent />}
+        </div>
+      )}
+      <div className={error ? cn.errorPanel : cn.controlPanel}>
+        <p className={cn.subtitle}>json</p>
+        <div className={cn.btnWrapper}>
+          {/*<Tooltip content="Format" placement="top" arrow={false}>*/}
+          {/*  <button className={cn.format} />*/}
+          {/*</Tooltip>*/}
+          {showCopyBtn && (
+            <Tooltip content="Copy" placement="top" arrow={false}>
+              <CopyButton value={value} />
+            </Tooltip>
+          )}
+          {showClearBtn && (
+            <Tooltip content="Clear" placement="top" arrow={false}>
+              <button className={cn.clear} onClick={clearValue} type="button" />
+            </Tooltip>
+          )}
+        </div>
       </div>
-    )}
-    <div className={error ? cn.errorPanel : cn.controlPanel}>
-      <p className={cn.subtitle}>json</p>
-      <div className={cn.btnWrapper}>
-        {/*<Tooltip content="Format" placement="top" arrow={false}>*/}
-        {/*  <button className={cn.format} />*/}
-        {/*</Tooltip>*/}
-        <Tooltip content="Copy" placement="top" arrow={false}>
-          <CopyButton value={copyValue} />
-        </Tooltip>
-        {clear && (
-          <Tooltip content="Clear" placement="top" arrow={false}>
-            <button className={cn.clear} onClick={clear} type="button" />
-          </Tooltip>
-        )}
-      </div>
-    </div>
-    <hr className={cn.border} />
-    <div className={cn.editorWrapper}>
+      <hr className={cn.border} />
       <CodeMirror
-        {...field}
-        {...(value && { value })}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
         className={cn.editor}
         theme={theme(error)}
         readOnly={readOnly}
         extensions={[jsonLanguage, EditorView.lineWrapping]}
-        basicSetup={{
-          tabSize: 2,
-        }}
+        basicSetup={{ tabSize: 2 }}
       />
+      {errorLabel || (
+        <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
+      )}
     </div>
-    <FieldErrorLabel error={error?.message} />
-  </div>
-);
+  );
+};

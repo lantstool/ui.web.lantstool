@@ -50,11 +50,7 @@ export const Result = ({ txResult, transaction }) => {
                 <div className={cn.hash}>{result.transactionOutcome?.id}</div>
               </>
             )}
-            <JsonEditor
-              readOnly
-              value={getFormattedJSON(data)}
-              copyValue={getFormattedJSON(data)}
-            />
+            <JsonEditor readOnly value={getFormattedJSON(data)} showClearBtn={false} />
           </>
         )}
       </div>

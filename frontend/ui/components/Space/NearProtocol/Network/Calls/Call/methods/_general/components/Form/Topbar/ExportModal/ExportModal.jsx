@@ -1,17 +1,14 @@
-import { jsonLanguage } from '@codemirror/lang-json';
 import { useStoreAction, useStoreEffect } from '@react-vault';
-import { baseEditorStyles } from '@styles/baseEditorStyles.js';
-import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { useEffect, useState } from 'react';
 import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
 import { BaseModal } from '../../../../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { ModalHeader } from '../../../../../../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { CopyButton } from '../../../../../../../../../../../_general/CopyButton/CopyButton.jsx';
+import { JsonEditor } from '../../../../../../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
 import cn from './ExportModal.module.scss';
 
 export const ExportModal = ({ call, form, closeModal }) => {
   const [data, setData] = useState('');
-  const theme = EditorView.theme({ ...baseEditorStyles });
   const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
   const setNotification = useStoreAction((store) => store.setNotification);
 
@@ -35,12 +32,12 @@ export const ExportModal = ({ call, form, closeModal }) => {
         close={closeModal}
         classes={{ container: cn.headerContainer }}
       />
-      <CodeMirror
-        theme={theme}
-        readOnly={true}
+      <JsonEditor
         value={data}
-        extensions={[jsonLanguage, EditorView.lineWrapping]}
-        className={cn.editor}
+        readOnly
+        showClearBtn={false}
+        classes={{ container: cn.editorContainer }}
+        dynamicErrorSpace
       />
       <div className={cn.modalFooter}>
         <Button color="secondary" size="medium">
