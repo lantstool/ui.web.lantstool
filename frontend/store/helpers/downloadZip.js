@@ -1,5 +1,5 @@
-export const downloadZip = async (zipped, name) => {
-  const blob = new Blob([zipped], { type: 'application/zip' });
+export const downloadZip = async (zip, name) => {
+  const blob = new Blob([zip], { type: 'application/zip' });
 
   const a = document.createElement('a');
   const url = URL.createObjectURL(blob);

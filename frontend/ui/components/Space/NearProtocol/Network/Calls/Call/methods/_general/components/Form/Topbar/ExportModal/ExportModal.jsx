@@ -10,6 +10,7 @@ import cn from './ExportModal.module.scss';
 export const ExportModal = ({ call, form, closeModal }) => {
   const [data, setData] = useState('');
   const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
+  const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsZip);
   const setNotification = useStoreAction((store) => store.setNotification);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export const ExportModal = ({ call, form, closeModal }) => {
   }, [call, form]);
 
   const downloadZip = () => {
-    console.log(data);
+    exportOneAsZip({ call, form, closeModal });
   };
 
   const afterCopyCallback = () => {
@@ -40,7 +41,7 @@ export const ExportModal = ({ call, form, closeModal }) => {
         dynamicErrorSpace
       />
       <div className={cn.modalFooter}>
-        <Button color="secondary" size="medium">
+        <Button color="secondary" size="medium" onClick={downloadZip}>
           Download .zip
         </Button>
         <CopyButton

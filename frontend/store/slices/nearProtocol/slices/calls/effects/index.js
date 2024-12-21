@@ -11,6 +11,7 @@ import { saveChanges } from './saveChanges.js';
 import { executeOne } from './executeOne.js';
 import { importOneFromJson } from './importOneFromJson.js';
 import { exportOneAsJson } from './exportOneAsJson.js';
+import { exportOneAsZip } from './exportOneAsZip.js';
 
 export const effects = {
   getList,
@@ -26,4 +27,5 @@ export const effects = {
   executeOne,
   importOneFromJson,
   exportOneAsJson,
+  exportOneAsZip,
 };
