@@ -1,6 +1,6 @@
 import { useDropdownOptions } from './useDropdownOptions.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 
 export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle }) => {
   const { control } = form;

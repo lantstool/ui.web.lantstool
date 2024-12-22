@@ -1,6 +1,6 @@
 import { useStoreAction } from '@react-vault';
 import { options } from './options.js';
-import { Dropdown } from '../../../../../../../../../../_general/Dropdown/Dropdown.jsx';
+import { Dropdown } from '../../../../../../../../../../_general/dropdown/Dropdown/Dropdown.jsx';
 import { CodeCircleOutline } from '../../../../../../../../../../_general/icons/CodeCircleOutline.jsx';
 import { methods } from '../../../../methods.js';
 import cn from './SelectMethod.module.scss';

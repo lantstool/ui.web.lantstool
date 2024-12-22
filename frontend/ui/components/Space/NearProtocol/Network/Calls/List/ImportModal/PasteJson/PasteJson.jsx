@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldErrorLabel } from '../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
-import { FormJsonEditor } from '../../../../../../../_general/FormJsonEditor/FormJsonEditor.jsx';
+import { FormJsonEditor } from '../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { callImportSchema } from '../_general/validations/callImportSchema.js';
 import cn from './PasteJson.module.scss';
 

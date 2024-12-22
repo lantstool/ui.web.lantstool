@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { useForm } from 'react-hook-form';
-import { Input } from '../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../_general/input/Input/Input.jsx';
 import { useStoreEffect } from '@react-vault';
 import { ModalFooter } from '../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';

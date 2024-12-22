@@ -1,4 +1,4 @@
-import { FormJsonEditor } from '../../../../../../../../_general/FormJsonEditor/FormJsonEditor.jsx';
+import { FormJsonEditor } from '../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { ContractId } from './ContractId/ContractId.jsx';
 import { MethodName } from './MethodName/MethodName.jsx';

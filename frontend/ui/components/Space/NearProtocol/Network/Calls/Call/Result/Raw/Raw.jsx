@@ -1,5 +1,5 @@
 import { getFormattedJSON } from '../../../../../../../../../store/helpers/utils.js';
-import { JsonEditor } from '../../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
+import { JsonEditor } from '../../../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './Raw.module.scss';
 
 export const Raw = ({ result, error }) => {

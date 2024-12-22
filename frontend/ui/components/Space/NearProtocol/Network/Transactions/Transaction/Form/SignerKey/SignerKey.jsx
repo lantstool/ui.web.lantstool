@@ -1,5 +1,5 @@
 import { useDropdownOptions } from './useDropdownOptions.js';
-import { FormDropdown } from '../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { ImportKeyModal } from '../../../../_general/ImportKeyModal/ImportKeyModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import { useWatch } from 'react-hook-form';

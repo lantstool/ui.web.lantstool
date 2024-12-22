@@ -1,5 +1,5 @@
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
 export const PublicKey = ({ control }) => {

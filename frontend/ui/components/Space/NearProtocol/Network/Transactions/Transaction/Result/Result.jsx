@@ -1,7 +1,7 @@
 import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { useStoreAction } from '@react-vault';
 import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { JsonEditor } from '../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
+import { JsonEditor } from '../../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
 import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';

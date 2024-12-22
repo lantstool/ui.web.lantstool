@@ -1,7 +1,7 @@
-import { FormJsonEditor } from '../../../../../../../../../_general/FormJsonEditor/FormJsonEditor.jsx';
+import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';

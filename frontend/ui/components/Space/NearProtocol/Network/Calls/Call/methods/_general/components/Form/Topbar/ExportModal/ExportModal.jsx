@@ -4,7 +4,7 @@ import { Button } from '../../../../../../../../../../../_general/Button/Button.
 import { BaseModal } from '../../../../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { ModalHeader } from '../../../../../../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { CopyButton } from '../../../../../../../../../../../_general/CopyButton/CopyButton.jsx';
-import { JsonEditor } from '../../../../../../../../../../../_general/JsonEdiitor/JsonEditor.jsx';
+import { JsonEditor } from '../../../../../../../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './ExportModal.module.scss';
 
 export const ExportModal = ({ call, form, closeModal }) => {

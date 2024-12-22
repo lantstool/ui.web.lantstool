@@ -2,7 +2,7 @@ import cnm from 'classnames';
 import { useWatch } from 'react-hook-form';
 import { Checkbox } from '../../Checkbox/Checkbox.jsx';
 import { InfoCircleLinear } from '../../icons/InfoCircleLinear.jsx';
-import { Input } from '../../Input/Input.jsx';
+import { Input } from '../../input/Input/Input.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import cn from './RpcForm.module.scss';
 

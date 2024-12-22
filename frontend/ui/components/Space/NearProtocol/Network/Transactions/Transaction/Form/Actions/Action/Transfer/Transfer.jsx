@@ -1,4 +1,4 @@
-import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 
 const options = [

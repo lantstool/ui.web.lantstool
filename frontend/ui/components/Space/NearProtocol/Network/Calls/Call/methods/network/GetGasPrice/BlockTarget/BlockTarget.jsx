@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { Input } from '../../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
 import cn from './BlockTarget.module.scss';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 

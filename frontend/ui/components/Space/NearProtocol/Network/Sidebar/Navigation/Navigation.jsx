@@ -15,6 +15,6 @@ export const Navigation = () => (
     <LinkItem name="Keys" Icon={KeySquareOutline} to="keys" />
     <LinkItem name="Tools" Icon={ToolsLinear} to="tools" />
     <hr className={cn.divider} />
-    <LinkItem name="Network settings" Icon={NetworkOutline} to="settings" />
+    <LinkItem name="Network Settings" Icon={NetworkOutline} to="settings" />
   </div>
 );

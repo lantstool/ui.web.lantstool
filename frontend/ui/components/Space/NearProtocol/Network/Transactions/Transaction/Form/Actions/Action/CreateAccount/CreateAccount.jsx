@@ -1,5 +1,5 @@
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import { useEffect } from 'react';
 
 const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
