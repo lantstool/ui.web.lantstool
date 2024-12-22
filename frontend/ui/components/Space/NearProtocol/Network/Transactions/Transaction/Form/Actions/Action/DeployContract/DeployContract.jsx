@@ -1,16 +1,7 @@
-import { useState } from 'react';
-import { FileUploader } from '../../../../../../../../../_general/fileUploader/FileUploader/FileUploader.jsx';
+import { FormFileUploader } from '../../../../../../../../../_general/fileUploader/FormFileUploader.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FieldErrorLabel } from '../../../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
-import cn from './DeployContract.module.scss';
 
 export const DeployContract = ({ iconStyle, name, order, removeAction, form, getName }) => {
-  const [file, setFile] = useState(null);
-  const {
-    formState: { errors },
-    setValue,
-  } = form;
-
   return (
     <ActionBase
       iconStyle={iconStyle}
@@ -20,18 +11,14 @@ export const DeployContract = ({ iconStyle, name, order, removeAction, form, get
       color="blue"
       tooltipContent="Contract code"
     >
-      <h2 className={cn.title}>Contract code</h2>
-      <div className={cn.container}>
-        <FileUploader
-          setValue={setValue}
-          name={getName('file')}
-          file={file}
-          setFile={setFile}
-          callToActionText="Upload a .wasm or drag&drop it here"
-          allowedFileTypes={{ 'application/wasm': ['.wasm'] }}
-        />
-      </div>
-      <FieldErrorLabel dynamicErrorSpace error={errors[getName('file')?.message]} />
+      <FormFileUploader
+        name={getName('file')}
+        control={form.control}
+        topbar={{ label: 'Contract WASM' }}
+        callToActionText="Upload a .wasm or drag&drop it here"
+        allowedFileTypes={{ 'application/wasm': ['.wasm'] }}
+        dynamicErrorSpace
+      />
     </ActionBase>
   );
 };
