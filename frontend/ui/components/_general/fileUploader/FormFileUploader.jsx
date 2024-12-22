@@ -21,7 +21,7 @@ export const FormFileUploader = ({
         callToActionText={callToActionText}
         topbar={topbar}
         classes={classes}
-        error={error}
+        error={error?.message}
         dynamicErrorSpace={dynamicErrorSpace}
       />
     )}

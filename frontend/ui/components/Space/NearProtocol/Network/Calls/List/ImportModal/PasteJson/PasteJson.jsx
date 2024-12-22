@@ -6,26 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldErrorLabel } from '../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
 import { FormJsonEditor } from '../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { callImportSchema } from '../_general/validations/callImportSchema.js';
+import { collectFormErrorMessages } from '../../../../../../../../../store/helpers/collectFormErrorMessages.js';
 import cn from './PasteJson.module.scss';
-
-// We want to return the flat error array instead of having a tree -
-// we display only the first error even if multiple errors are present
-const collectErrorMessages = (errors) => {
-  const messages = [];
-
-  const extractMessages = (obj) => {
-    for (const key in obj) {
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        extractMessages(obj[key]);
-      } else if (key === 'message') {
-        messages.push(obj[key]);
-      }
-    }
-  };
-
-  extractMessages(errors);
-  return messages;
-};
 
 export const PasteJson = ({ closeModal }) => {
   const navigate = useNavigate();
@@ -51,7 +33,9 @@ export const PasteJson = ({ closeModal }) => {
         control={control}
         classes={{ container: cn.editor }}
         errorLabel={
-          formState?.errors && <FieldErrorLabel error={collectErrorMessages(formState.errors)[0]} />
+          formState?.errors && (
+            <FieldErrorLabel error={collectFormErrorMessages(formState.errors)[0]} />
+          )
         }
       />
       <div className={cn.modalFooter}>
