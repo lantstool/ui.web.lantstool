@@ -46,12 +46,10 @@ export const PasteJson = ({ closeModal }) => {
   return (
     <>
       <FormJsonEditor
+        topbar={{ label: 'Call Code' }}
         name="json"
         control={control}
         classes={{ container: cn.editor }}
-        topbar={{
-          label: 'Call JSON',
-        }}
         errorLabel={
           formState?.errors && <FieldErrorLabel error={collectErrorMessages(formState.errors)[0]} />
         }

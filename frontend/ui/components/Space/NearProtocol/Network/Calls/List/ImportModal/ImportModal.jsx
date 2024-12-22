@@ -4,6 +4,7 @@ import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/Modal
 import { TabButton } from '../../../../../../_general/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '../../../../../../_general/tab/TabContainer/TabContainer.jsx';
 import { PasteJson } from './PasteJson/PasteJson.jsx';
+import { UploadZip } from './UploadZip/UploadZip.jsx';
 import cn from './ImportModal.module.scss';
 
 export const ImportModal = ({ closeModal }) => {
@@ -20,11 +21,12 @@ export const ImportModal = ({ closeModal }) => {
         <TabButton onClick={() => setTab('pasteJson')} isActive={tab === 'pasteJson'}>
           Paste JSON
         </TabButton>
-        <TabButton onClick={() => setTab('file')} isActive={tab === 'file'}>
+        <TabButton onClick={() => setTab('uploadZip')} isActive={tab === 'uploadZip'}>
           Upload .zip
         </TabButton>
       </TabContainer>
       {tab === 'pasteJson' && <PasteJson closeModal={closeModal} />}
+      {tab === 'uploadZip' && <UploadZip closeModal={closeModal} />}
     </BaseModal>
   );
 };

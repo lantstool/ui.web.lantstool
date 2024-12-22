@@ -1,8 +1,13 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .dropzone {
-  height: 168px;
+  height: 100%;
   display: flex;
   padding: 24px;
   flex-direction: column;

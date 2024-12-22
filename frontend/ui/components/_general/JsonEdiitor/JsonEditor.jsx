@@ -1,3 +1,4 @@
+import { FieldTopbarLabel } from '../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import { Tooltip } from '../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
@@ -25,12 +26,7 @@ export const JsonEditor = ({
 
   return (
     <div className={cnm(cn.container, classes?.container)}>
-      {topbar && (
-        <div className={cn.label}>
-          <p className={cn.title}>{topbar?.label}</p>
-          {topbar?.tooltip && <Tooltip content={topbar.tooltip} placement="top" defaultContent />}
-        </div>
-      )}
+      {topbar && <FieldTopbarLabel label={topbar?.label} tooltip={topbar?.tooltip} />}
       <div className={error ? cn.errorPanel : cn.controlPanel}>
         <p className={cn.subtitle}>json</p>
         <div className={cn.btnWrapper}>

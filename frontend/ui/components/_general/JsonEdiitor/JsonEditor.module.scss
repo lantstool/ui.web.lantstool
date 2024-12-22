@@ -7,19 +7,6 @@
   flex-direction: column;
 }
 
-.label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.title {
-  @include text-sm-regular;
-  color: $neutral-700;
-}
-
 @mixin controlPanel($borderColor) {
   height: 30px;
   display: flex;
