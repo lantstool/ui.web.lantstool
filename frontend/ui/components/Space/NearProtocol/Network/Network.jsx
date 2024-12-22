@@ -6,14 +6,14 @@ import cnm from 'classnames';
 import { useStoreState } from '@react-vault';
 
 export const Network = () => {
-  const isMinimized = useStoreState((state) => state.nearProtocol.isMinimize);
+  const isSidebarMinimized = useStoreState((state) => state.nearProtocol.isSidebarMinimized);
   useManageRouting();
 
   return (
-    <div className={cnm(cn.network, isMinimized && cn.networkMinimized)}>
-      <Sidebar isMinimized={isMinimized} />
+    <div className={cnm(cn.network, isSidebarMinimized && cn.networkMinimized)}>
+      <Sidebar isSidebarMinimized={isSidebarMinimized} />
       <div className={cn.contentWrapper}>
-        <div className={cnm(cn.content, isMinimized && cn.contentMinimized)}>
+        <div className={cnm(cn.content, isSidebarMinimized && cn.contentMinimized)}>
           <Outlet />
         </div>
       </div>
