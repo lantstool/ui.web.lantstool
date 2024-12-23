@@ -5,11 +5,11 @@ import { formatNumber } from '../../../../../../../../../store/helpers/utils.js'
 
 export const useAccountBalance = (accountId) => {
   const { spaceId, networkId } = useParams();
-  const [balance, setBalance] = useState(null)
+  const [balance, setBalance] = useState(null);
   const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
 
   useEffect(() => {
-    if (!accountId) return;
+    if (!accountId) return setBalance(null);
     (async () => {
       try {
         await rpc.configure({ spaceId, networkId });
