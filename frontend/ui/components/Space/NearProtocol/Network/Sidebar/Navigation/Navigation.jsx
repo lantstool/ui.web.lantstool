@@ -1,38 +1,48 @@
 import { LinkItem } from './LinkItem/LinkItem.jsx';
-import { TransactionFileBold } from '../../../../../_general/icons/TransactionFileBold.jsx';
-import { CallsOutline } from '../../../../../_general/icons/CallsOutline.jsx';
-import { AccountSquareOutline } from '../../../../../_general/icons/AccountSquareOutline.jsx';
-import { KeySquareOutline } from '../../../../../_general/icons/KeySquareOutline.jsx';
-import { ToolsLinear } from '../../../../../_general/icons/ToolsLinear.jsx';
-import { NetworkOutline } from '../../../../../_general/icons/NetworkOutline.jsx';
 import cn from './Navigation.module.scss';
 
 export const Navigation = ({ isSidebarMinimized }) => (
   <div className={cn.navigation}>
     <LinkItem
       name="Transactions"
-      Icon={TransactionFileBold}
+      icon={cn.transactions}
+      activeIcon={cn.transactionsActive}
       to="transactions"
       isSidebarMinimized={isSidebarMinimized}
     />
-    <LinkItem name="Calls" Icon={CallsOutline} to="calls" isSidebarMinimized={isSidebarMinimized} />
+    <LinkItem
+      name="Calls"
+      icon={cn.calls}
+      activeIcon={cn.callsActive}
+      to="calls"
+      isSidebarMinimized={isSidebarMinimized}
+    />
     <LinkItem
       name="Accounts"
-      Icon={AccountSquareOutline}
+      icon={cn.accounts}
+      activeIcon={cn.accountsActive}
       to="accounts"
       isSidebarMinimized={isSidebarMinimized}
     />
     <LinkItem
       name="Keys"
-      Icon={KeySquareOutline}
+      icon={cn.keys}
+      activeIcon={cn.keysActive}
       to="keys"
       isSidebarMinimized={isSidebarMinimized}
     />
-    <LinkItem name="Tools" Icon={ToolsLinear} to="tools" isSidebarMinimized={isSidebarMinimized} />
+    <LinkItem
+      name="Utilities"
+      icon={cn.utilities}
+      activeIcon={cn.utilitiesActive}
+      to="tools"
+      isSidebarMinimized={isSidebarMinimized}
+    />
     <hr className={cn.divider} />
     <LinkItem
       name="Network Settings"
-      Icon={NetworkOutline}
+      icon={cn.networkSettings}
+      activeIcon={cn.networkSettingsActive}
       to="settings"
       isSidebarMinimized={isSidebarMinimized}
     />
