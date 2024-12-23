@@ -10,10 +10,10 @@ import cn from './SignerId.module.scss';
 export const SignerId = ({ form }) => {
   const { control, setValue } = form;
   const signerId = useWatch({ control, name: 'signerId.value' });
-  const accountsOptions = useAccountsOptions({ signerId });
-  const balance = useAccountBalance(signerId);
+  const accountsOptions = useAccountsOptions();
+  // const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
-
+  console.log(signerId);
   const options = [
     ...accountsOptions,
     { value: 'importAccount', label: 'Import account', icon: cn.importIcon },
@@ -45,13 +45,13 @@ export const SignerId = ({ form }) => {
         options={options}
         creatableSelect={true}
         label="Account Id"
-        tooltip={
-          balance && (
-            <Label iconStyles={cn.icon} color="grey">
-              {balance}
-            </Label>
-          )
-        }
+        // tooltip={
+        //   balance && (
+        //     <Label iconStyles={cn.icon} color="grey">
+        //       {balance}
+        //     </Label>
+        //   )
+        // }
       />
       {isModalOpen && <ImportAccount closeModal={closeModal} setAccount={setAccount} />}
     </div>
