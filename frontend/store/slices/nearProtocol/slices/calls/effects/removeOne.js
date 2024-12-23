@@ -1,9 +1,5 @@
 import { effect } from '@react-vault';
 
-// TODO: handle the case when we delete the last call in the list - we also need
-// to clear navigation state for calls and we shouldn't navigate to last
-// deleted call
-
 const getDestination = (calls, targetId) => {
   // If we have only 1 call and delete it - redirect to '/calls'
   if (calls.length === 1) return `..`;
@@ -17,6 +13,7 @@ const getDestination = (calls, targetId) => {
 export const removeOne = effect(async ({ payload, slice, store }) => {
   const { spaceId, networkId, callId, navigate, closeModal } = payload;
   const [backend] = store.getEntities((store) => store.backend);
+  const [history] = store.getEntities((store) => store.history);
   const list = slice.getState((slice) => slice.list);
   const setList = slice.getActions((slice) => slice.setList);
   const setNotification = store.getActions((store) => store.setNotification);
@@ -29,11 +26,13 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
       networkId,
       callId,
     });
-
     setList(updatedList);
+
+    history.remove(`/space/${spaceId}/near-protocol/${networkId}/calls/${callId}`);
     closeModal();
+
     setNotification({ isOpen: true, message: 'Call deleted', variant: 'black' });
-    navigate(destination, { relative: 'path ', replace: true });
+    navigate(destination, { relative: 'path', replace: true });
   } catch (e) {
     console.log(e);
   }
