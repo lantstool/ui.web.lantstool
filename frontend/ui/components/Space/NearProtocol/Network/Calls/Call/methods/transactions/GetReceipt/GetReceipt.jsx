@@ -1,5 +1,5 @@
 import { Form } from '../../_general/components/Form/Form.jsx';
-import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';

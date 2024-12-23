@@ -1,7 +1,7 @@
 import { useWatch } from 'react-hook-form';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { Input } from '../../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { config } from '../../config.js';
 import cn from './BlockTarget.module.scss';

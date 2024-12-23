@@ -8,10 +8,7 @@ import cnm from 'classnames';
 export const BaseModal = ({ children, close, classes }) =>
   createPortal(
     <div className={cn.backstage} onMouseDown={close}>
-      <div
-        className={cnm(cn.modal, classes?.modal && classes.modal)}
-        onMouseDown={(e) => e.stopPropagation()}
-      >
+      <div className={cnm(cn.modal, classes?.modal)} onMouseDown={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>,

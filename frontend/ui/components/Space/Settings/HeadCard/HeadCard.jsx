@@ -24,7 +24,7 @@ export const HeadCard = ({ space }) => {
       <div className={cn.container}>
         <p className={cn.type}>{type}</p>
         <EditName name={name} form={form} spaceId={spaceId}/>
-        <span className={cn.date}>{`Imported ${date}, ${hourMinute}`}</span>
+        <span className={cn.date}>{`Created ${date}, ${hourMinute}`}</span>
       </div>
       <div className={cn.buttonWrapper}>
         <BadgeSelector form={form} size="medium" type="submit" spaceId={spaceId} />

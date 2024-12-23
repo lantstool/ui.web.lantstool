@@ -10,7 +10,9 @@ import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { executeOne } from './executeOne.js';
 import { importOneFromJson } from './importOneFromJson.js';
+import { importOneFromZip } from './importOneFromZip.js';
 import { exportOneAsJson } from './exportOneAsJson.js';
+import { exportOneAsZip } from './exportOneAsZip.js';
 
 export const effects = {
   getList,
@@ -25,5 +27,7 @@ export const effects = {
   removeOne,
   executeOne,
   importOneFromJson,
+  importOneFromZip,
   exportOneAsJson,
+  exportOneAsZip,
 };

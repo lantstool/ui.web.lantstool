@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { RadioButton } from '../../../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { InputActionGroup } from '../../../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import cn from './Allowance.module.scss';
 
 const options = [

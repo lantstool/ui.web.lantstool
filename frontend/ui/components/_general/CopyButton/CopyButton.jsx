@@ -19,6 +19,7 @@ export const CopyButton = ({
   event = 'onMouseDown',
   variant = 'icon',
   button,
+  callback = () => {},
 }) => {
   const [copied, setCopied] = useState(false);
   const buttonType = getType(type);
@@ -27,11 +28,14 @@ export const CopyButton = ({
     e.stopPropagation();
     e.preventDefault();
     await navigator.clipboard.writeText(value);
+    callback();
+
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, 400);
   };
+
   const eventHandler =
     event === 'onMouseDown'
       ? { onMouseDown: copyTextToClipboard }

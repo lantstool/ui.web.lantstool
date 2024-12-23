@@ -1,7 +1,7 @@
-import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
 import { Form } from '../../_general/components/Form/Form.jsx';
-import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
 import { WaitUntil } from '.././_general/WaitUntil.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';

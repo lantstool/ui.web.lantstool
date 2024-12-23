@@ -1,7 +1,7 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { RadioButton } from '../../../../../../../../../../../_general/RadioButton/RadioButton.jsx';
 import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
-import { FormDropdownGroup } from '../../../../../../../../../../../_general/FormDropdownGroup/FormDropdownGroup.jsx';
+import { FormDropdownGroup } from '../../../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
 import { Tooltip } from '../../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useContractMethodsOptions } from '../../../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './AllowedMethods.module.scss';

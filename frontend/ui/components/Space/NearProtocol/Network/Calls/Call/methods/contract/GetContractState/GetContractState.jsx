@@ -1,5 +1,5 @@
-import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
-import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
+import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
 import { Form } from '../../_general/components/Form/Form.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';

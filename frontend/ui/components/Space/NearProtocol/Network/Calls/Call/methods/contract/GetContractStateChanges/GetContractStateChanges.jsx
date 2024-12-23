@@ -1,4 +1,4 @@
-import { Input } from '../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
 import { ContractIds } from '../../_general/components/ContractIds/ContractIds.jsx';
 import { Form } from '../../_general/components/Form/Form.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';

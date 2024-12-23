@@ -1,8 +1,8 @@
 import { useWatch } from 'react-hook-form';
 import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
-import { Input } from '../../../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
 import { useKeysOptions } from './useKeysOptions.js';
 import cn from './AddKey.module.scss';

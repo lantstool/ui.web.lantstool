@@ -1,4 +1,4 @@
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import logoLantstool from '@assets/logoLantstool.svg';
 import { Button } from '../_general/Button/Button.jsx';
-import { Input } from '../_general/Input/Input.jsx';
+import { Input } from '../_general/input/Input/Input.jsx';
 import { BadgeSelector } from '../_general/BadgeSelector/BadgeSelector.jsx';
 import { getRandomBadge } from '../../../store/helpers/getRandomBadge.js';
 import { yupResolver } from '@hookform/resolvers/yup';

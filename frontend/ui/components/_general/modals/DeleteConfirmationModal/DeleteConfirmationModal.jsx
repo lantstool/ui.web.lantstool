@@ -1,5 +1,5 @@
 import { BaseModal } from '../BaseModal/BaseModal.jsx';
-import { Input } from '../../Input/Input.jsx';
+import { Input } from '../../input/Input/Input.jsx';
 import { Button } from '../../Button/Button.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

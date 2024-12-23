@@ -5,7 +5,7 @@ import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { Textarea } from '../../../../../../_general/Textarea/Textarea.jsx';
-import { Input } from '../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../_general/input/Input/Input.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';

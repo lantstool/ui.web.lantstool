@@ -1,18 +1,11 @@
 import { v4 as uuid } from 'uuid';
 import { getCount } from './getCount.js';
-
-const getNewCallOrder = async (execute, spaceId, networkId) => {
-  const query = `
-    SELECT COUNT(*) as 'order'
-    FROM near_protocol_calls 
-    WHERE spaceId = '${spaceId}' AND networkId = '${networkId}'
-  `;
-  const [{ order }] = await execute(query);
-  return order;
-};
+import { getNewCallOrder } from './helpers/getNewCallOrder.js';
+import { createCall } from './queries/createCall.js';
 
 export const createOne = async ({ execute, request }) => {
   const { spaceId, networkId } = request.body;
+
   const callId = uuid();
   const createdAt = Date.now();
   const order = await getNewCallOrder(execute, spaceId, networkId);
@@ -27,28 +20,15 @@ export const createOne = async ({ execute, request }) => {
     blockId: '',
   });
 
-  const query = `
-    BEGIN TRANSACTION;
-    
-    INSERT INTO near_protocol_calls
-      (callId, networkId, spaceId, name, 'order', createdAt, body)
-    VALUES(
-      '${callId}', 
-      '${networkId}', 
-      '${spaceId}', 
-      '${name}', 
-       ${order}, 
-       ${createdAt}, 
-      '${body}'
-    )
-    RETURNING *;
-    
-    UPDATE near_protocol_counters
-    SET calls = calls + 1
-    WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
-    
-    COMMIT;
-  `;
+  const query = createCall({
+    spaceId,
+    networkId,
+    callId,
+    createdAt,
+    order,
+    name,
+    body,
+  });
 
   const [call] = await execute(query);
   call.body = JSON.parse(call.body);

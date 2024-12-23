@@ -1,7 +1,6 @@
 import { createStore } from '@react-vault';
 // actions
-import { setNotification } from './actions/setNotification.js';
-import { resetState } from './actions/resetState.js';
+import { actions } from './actions/index.js';
 // effects
 import { effects } from './effects/index.js';
 // entities
@@ -16,8 +15,7 @@ export const store = createStore({
   // state
   notification: {},
   // actions
-  setNotification,
-  resetState,
+  ...actions,
   // effects
   ...effects,
   // entities

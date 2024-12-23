@@ -1,10 +1,15 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.modal {
+  gap: 0;
+}
+
 .bodyWrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 24px 0 8px 0;
 }
 
 .description {
