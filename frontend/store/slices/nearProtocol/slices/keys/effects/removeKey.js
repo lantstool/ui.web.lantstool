@@ -8,8 +8,8 @@ export const removeKey = effect(async ({ store, slice, payload }) => {
 
   try {
     await backend.sendRequest('nearProtocol.keys.remove', { spaceId, networkId, publicKey });
-    // TODO Delete from navigate history
-    deleteKey(publicKey)
+    deleteKey(publicKey);
+
     navigate('..', { relative: 'path', replace: true });
     setNotification({ isOpen: true, message: 'Key removed', variant: 'black' });
   } catch (e) {

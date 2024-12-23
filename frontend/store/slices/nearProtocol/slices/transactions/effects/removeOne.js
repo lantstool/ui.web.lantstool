@@ -1,9 +1,5 @@
 import { effect } from '@react-vault';
 
-// TODO: handle the case when we delete the last tx in the list - we also need
-// to clear navigation state for transactions and we shouldn't navigate to last
-// deleted tx
-
 const getDestination = (transactions, activeTxId) => {
   // If we have only 1 tx and delete it - redirect to '/transactions'
   if (transactions.length === 1) return `..`;
@@ -17,6 +13,7 @@ const getDestination = (transactions, activeTxId) => {
 export const removeOne = effect(async ({ payload, slice, store }) => {
   const { spaceId, networkId, transactionId, navigate, closeModal } = payload;
   const [backend] = store.getEntities((store) => store.backend);
+  const [history] = store.getEntities((store) => store.history);
   const txList = slice.getState((slice) => slice.txList);
   const setList = slice.getActions((slice) => slice.setList);
   const setNotification = store.getActions((store) => store.setNotification);
@@ -31,7 +28,10 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
     });
 
     setList(updatedList);
+
+    history.remove(`/space/${spaceId}/near-protocol/${networkId}/transactions/${transactionId}`);
     closeModal();
+
     setNotification({ isOpen: true, message: 'Transaction deleted', variant: 'black' });
     navigate(destination, { relative: 'path ', replace: true });
   } catch (e) {
