@@ -5,33 +5,30 @@ import { useAccountBalance } from './useAccountBalance.js';
 import { useToggler } from '@hooks/useToggler.js';
 import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.jsx';
 import { useWatch } from 'react-hook-form';
+import { useRef } from 'react';
 import cn from './SignerId.module.scss';
 
 export const SignerId = ({ form }) => {
   const { control, setValue } = form;
   const signerId = useWatch({ control, name: 'signerId.value' });
-  const accountsOptions = useAccountsOptions();
-  // const balance = useAccountBalance(signerId);
+  const accountsOptions = useAccountsOptions(signerId);
+  const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
-  console.log(signerId);
-  const options = [
-    ...accountsOptions,
-    { value: 'importAccount', label: 'Import account', icon: cn.importIcon },
-  ];
+  const ref = useRef(null);
 
   const onChange = (field) => (event) => {
-    if (event?.value === 'importAccount') {
-      field.onChange(field.value);
-      openModal();
-    } else {
-      field.onChange(event);
-      setValue('signerKey', null);
-    }
+    field.onChange(event);
+    setValue('signerKey', null);
   };
 
   const setAccount = (value) => {
     setValue('signerId', { value: value, label: value });
     setValue('signerKey', null);
+  };
+
+  const onClick = () => {
+    openModal();
+    ref.current.blur();
   };
 
   return (
@@ -40,18 +37,20 @@ export const SignerId = ({ form }) => {
         name="signerId"
         isSearchable={true}
         onChange={onChange}
+        dropdownRef={ref}
         isClearable={true}
         control={control}
-        options={options}
+        options={accountsOptions}
         creatableSelect={true}
         label="Account Id"
-        // tooltip={
-        //   balance && (
-        //     <Label iconStyles={cn.icon} color="grey">
-        //       {balance}
-        //     </Label>
-        //   )
-        // }
+        menuParams={{ icon: cn.importIcon, title: 'Import account', onClick }}
+        tooltip={
+          balance && (
+            <Label iconStyles={cn.icon} color="grey">
+              {balance}
+            </Label>
+          )
+        }
       />
       {isModalOpen && <ImportAccount closeModal={closeModal} setAccount={setAccount} />}
     </div>
