@@ -13,15 +13,15 @@ import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import { InfoCircleLinear } from '../../../../../../_general/icons/InfoCircleLinear.jsx';
 import cn from './SeedPhrase.module.scss';
 
-export const SeedPhrase = ({ closeModal, setKey }) => {
+export const SeedPhrase = ({ seedPhraseSchema = null, closeModal, setKey }) => {
   const { spaceId, networkId } = useParams();
   const importFromSeedPhrase = useStoreEffect(
     (store) => store.nearProtocol.keys.importFromSeedPhrase,
   );
-  const schema = createSchema(spaceId, networkId);
+  const schema = seedPhraseSchema ? seedPhraseSchema : createSchema(spaceId, networkId);
 
   const form = useForm({
-    mode: 'all',
+    mode: 'onTouched',
     criteriaMode: 'all',
     resolver: yupResolver(schema),
     defaultValues: {
@@ -35,7 +35,7 @@ export const SeedPhrase = ({ closeModal, setKey }) => {
     handleSubmit,
     clearErrors,
     watch,
-    formState: { errors, isValid },
+    formState: { errors },
   } = form;
 
   const derivationPath = watch('derivationPath');
@@ -88,7 +88,6 @@ export const SeedPhrase = ({ closeModal, setKey }) => {
         action={{
           label: 'Import',
           onClick: onSubmit,
-          disabled: !isValid,
         }}
       />
     </div>

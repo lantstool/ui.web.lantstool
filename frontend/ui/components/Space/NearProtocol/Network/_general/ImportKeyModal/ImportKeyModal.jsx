@@ -8,20 +8,17 @@ import { SeedPhrase } from './SeedPhrase/SeedPhrase.jsx';
 import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import cn from './ImportKeyModal.module.scss';
 
-export const ImportKeyModal = ({ closeModal, setKey = () => ({}) }) => {
-  const [formType, setFormType] = useState('privateKey');
-
-  const close = () => {
-    closeModal();
-    setFormType('privateKey');
-  };
+export const ImportKeyModal = ({
+  privateKeySchema,
+  seedPhraseSchema,
+  closeModal,
+  setKey = () => ({}),
+}) => {
+  const [formType, setFormType] = useState('seedPhrase');
 
   return (
-    <BaseModal close={close} classes={{ modal: cn.modal }}>
+    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
       <div className={cn.list}>
-        <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
-          Private key
-        </Item>
         <Item
           formType={formType}
           setFormType={setFormType}
@@ -30,13 +27,20 @@ export const ImportKeyModal = ({ closeModal, setKey = () => ({}) }) => {
         >
           Seed phrase
         </Item>
+        <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
+          Private key
+        </Item>
         <Item Icon={Ledger} label="Soon" disabled={true}>
           Ledger
         </Item>
       </div>
       <div className={cn.content}>
-        {formType === 'privateKey' && <PrivateKey closeModal={close} setKey={setKey} />}
-        {formType === 'seedPhrase' && <SeedPhrase closeModal={close} setKey={setKey} />}
+        {formType === 'privateKey' && (
+          <PrivateKey privateKeySchema={privateKeySchema} closeModal={closeModal} setKey={setKey} />
+        )}
+        {formType === 'seedPhrase' && (
+          <SeedPhrase seedPhraseSchema={seedPhraseSchema} closeModal={closeModal} setKey={setKey} />
+        )}
       </div>
     </BaseModal>
   );
