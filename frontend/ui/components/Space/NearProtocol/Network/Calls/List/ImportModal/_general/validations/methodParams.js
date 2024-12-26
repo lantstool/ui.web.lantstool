@@ -54,6 +54,31 @@ const getContractWasmChanges = object({
   contractIds: array().of(string()).defined(),
 }).concat(blockTargetSchema);
 
+// keys
+const getAccountKey = object({
+  accountId: string().defined(),
+  publicKey: string().defined(),
+}).concat(blockTargetSchema);
+
+const getAccountKeys = object({
+  accountId: string().defined(),
+}).concat(blockTargetSchema);
+
+const getChangesForAccountKey = object({
+  accountKeyPairs: array()
+    .of(
+      object({
+        accountId: string().defined(),
+        publicKey: string().defined(),
+      }),
+    )
+    .defined(),
+}).concat(blockTargetSchema);
+
+const getChangesForAccountKeys = object({
+  accountIds: array().of(string().defined()).defined(),
+}).concat(blockTargetSchema);
+
 export const methodParams = {
   // account
   getAccount,
@@ -68,4 +93,9 @@ export const methodParams = {
   getContractStateChanges,
   getContractWasm,
   getContractWasmChanges,
+  // keys
+  getAccountKey,
+  getAccountKeys,
+  getChangesForAccountKey,
+  getChangesForAccountKeys,
 };

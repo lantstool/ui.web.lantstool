@@ -1,5 +1,7 @@
 import {
   getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
   getFormBlockTarget,
   transformForExport,
 } from '../utils.js';
@@ -23,19 +25,37 @@ const rpcCaller = (rpc, params) => {
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
+  paramsExtractor: (params) => {
+    const accountKeyPairs = params.accountKeyPairs
+      .filter((pair) => pair.accountId?.value)
+      .map((pair) => ({
+        accountId: getDropdownValueForExport(pair.accountId),
+        publicKey: getDropdownValueForExport(pair.publicKey),
+      }));
+
+    return getBlockTargetParams({
+      accountKeyPairs,
       blockTarget: params.blockTarget,
       finality: params.finality?.value,
       blockId: params.blockId,
-    }),
+    });
+  },
 });
 
-const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
-});
+const importTransformer = ({ params }) => {
+  const accountKeyPairs =
+    params.accountKeyPairs.length === 0
+      ? [{ accountId: null, publicKey: null }]
+      : params.accountKeyPairs.map((pair) => ({
+          accountId: getDropdownValueForImport(pair.accountId),
+          publicKey: getDropdownValueForImport(pair.publicKey),
+        }));
+
+  return {
+    accountKeyPairs,
+    ...getFormBlockTarget(params),
+  };
+};
 
 export const getChangesForAccountKey = {
   rpcCaller,
