@@ -1,8 +1,4 @@
-import {
-  getBlockTargetParams,
-  getFormBlockTarget,
-  transformForExport,
-} from '../utils.js';
+import { transformForExport } from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getReceipt({
@@ -12,18 +8,13 @@ const rpcCaller = (rpc, params) =>
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
-      blockTarget: params.blockTarget,
-      finality: params.finality?.value,
-      blockId: params.blockId,
-    }),
+  paramsExtractor: (params) => ({
+    receiptId: params.receiptId,
+  }),
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
+  receiptId: params.receiptId,
 });
 
 export const getReceipt = {

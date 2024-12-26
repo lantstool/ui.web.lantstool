@@ -1,6 +1,6 @@
 import {
-  getBlockTargetParams,
-  getFormBlockTarget,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
   transformForExport,
 } from '../utils.js';
 
@@ -12,18 +12,13 @@ const rpcCaller = (rpc, params) =>
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
-      blockTarget: params.blockTarget,
-      finality: params.finality?.value,
-      blockId: params.blockId,
-    }),
+  paramsExtractor: (params) => ({
+    validatorId: getDropdownValueForExport(params.validatorId),
+  }),
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
+  validatorId: getDropdownValueForImport(params.validatorId),
 });
 
 export const getMaintenanceWindows = {

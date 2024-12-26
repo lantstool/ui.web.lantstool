@@ -1,6 +1,7 @@
 import {
-  getBlockTargetParams,
-  getFormBlockTarget,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
+  getFormWaitUntil,
   transformForExport,
 } from '../utils.js';
 
@@ -14,18 +15,17 @@ const rpcCaller = (rpc, params) =>
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
-      blockTarget: params.blockTarget,
-      finality: params.finality?.value,
-      blockId: params.blockId,
-    }),
+  paramsExtractor: (params) => ({
+    transactionHash: params.transactionHash,
+    signerId: getDropdownValueForExport(params.signerId),
+    waitUntil: params.waitUntil.value,
+  }),
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
+  transactionHash: params.transactionHash,
+  signerId: getDropdownValueForImport(params.signerId),
+  waitUntil: getFormWaitUntil(params.waitUntil),
 });
 
 export const getTransaction = {

@@ -5,18 +5,20 @@ export const getBlockTargetParams = ({ finality, blockId, blockTarget, ...rest }
 
 export const transformForExport =
   ({ paramsExtractor, version }) =>
-  ({ call, form }) => ({
-    blockchain: 'near-protocol',
-    networkId: call.networkId,
-    call: {
-      version,
-      name: call.name,
-      method: form.getValues().method.value,
-      params: {
-        ...paramsExtractor(form.getValues()),
+  ({ call, form }) => {
+    const params = paramsExtractor ? paramsExtractor(form.getValues()) : undefined;
+
+    return {
+      blockchain: 'near-protocol',
+      networkId: call.networkId,
+      call: {
+        version,
+        name: call.name,
+        method: form.getValues().method.value,
+        params,
       },
-    },
-  });
+    };
+  };
 
 export const getFormBlockTarget = ({ finality, blockId }) =>
   finality
@@ -31,5 +33,6 @@ export const getFormBlockTarget = ({ finality, blockId }) =>
         blockId,
       };
 
+export const getFormWaitUntil = (waitUntil) => config.waitUntil[waitUntil];
 export const getDropdownValueForExport = (value) => value?.value || '';
 export const getDropdownValueForImport = (value) => (value ? { value, label: value } : null);

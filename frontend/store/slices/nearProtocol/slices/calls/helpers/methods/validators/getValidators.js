@@ -1,8 +1,4 @@
-import {
-  getBlockTargetParams,
-  getFormBlockTarget,
-  transformForExport,
-} from '../utils.js';
+import { transformForExport } from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getValidators({
@@ -12,18 +8,14 @@ const rpcCaller = (rpc, params) =>
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
-      blockTarget: params.blockTarget,
-      finality: params.finality?.value,
-      blockId: params.blockId,
-    }),
+  paramsExtractor: (params) => ({
+    epochId: params.epochTarget === 'latest' ? null : params.epochId,
+  }),
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
+  epochId: params.epochId,
+  epochTarget: params.epochId === null ? 'latest' : 'specific',
 });
 
 export const getValidators = {

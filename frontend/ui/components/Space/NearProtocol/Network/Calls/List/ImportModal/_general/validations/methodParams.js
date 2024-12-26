@@ -1,5 +1,6 @@
 import { array, object, string } from 'yup';
 import { blockTargetSchema } from './blockTargetSchema.js';
+import { waitUntilSchema } from './waitUntilSchema.js';
 
 const isString = (str) => typeof str === 'string';
 
@@ -79,6 +80,41 @@ const getChangesForAccountKeys = object({
   accountIds: array().of(string().defined()).defined(),
 }).concat(blockTargetSchema);
 
+// network
+const getGasPrice = object({
+  blockId: string().defined().nullable(),
+});
+const getNetworkInfo = object().notRequired();
+const getNodeStatus = object().notRequired();
+
+// protocol
+const getGenesisConfig = object().notRequired();
+const getProtocolConfig = object().concat(blockTargetSchema);
+
+// transaction
+const getDetailedTransaction = object({
+  transactionHash: string().defined(),
+  signerId: string().defined(),
+}).concat(waitUntilSchema);
+
+const getReceipt = object({
+  receiptId: string().defined(),
+});
+
+const getTransaction = object({
+  transactionHash: string().defined(),
+  signerId: string().defined(),
+}).concat(waitUntilSchema);
+
+// validators
+const getMaintenanceWindows = object({
+  validatorId: string().defined(),
+});
+
+const getValidators = object({
+  epochId: string().defined().nullable(),
+});
+
 export const methodParams = {
   // account
   getAccount,
@@ -98,4 +134,18 @@ export const methodParams = {
   getAccountKeys,
   getChangesForAccountKey,
   getChangesForAccountKeys,
+  // network
+  getGasPrice,
+  getNetworkInfo,
+  getNodeStatus,
+  // protocol
+  getGenesisConfig,
+  getProtocolConfig,
+  // transaction
+  getDetailedTransaction,
+  getReceipt,
+  getTransaction,
+  // validators
+  getMaintenanceWindows,
+  getValidators,
 };

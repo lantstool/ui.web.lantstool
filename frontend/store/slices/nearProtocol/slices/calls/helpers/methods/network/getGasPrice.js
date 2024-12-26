@@ -1,8 +1,4 @@
-import {
-  getBlockTargetParams,
-  getFormBlockTarget,
-  transformForExport,
-} from '../utils.js';
+import { transformForExport } from '../utils.js';
 
 const rpcCaller = (rpc, params) => {
   const blockId = params.blockTarget === 'latest' ? null : params.blockId;
@@ -11,18 +7,14 @@ const rpcCaller = (rpc, params) => {
 
 const exportTransformer = transformForExport({
   version: '1.0',
-  paramsExtractor: (params) =>
-    getBlockTargetParams({
-      accountId: params.accountId?.value || '',
-      blockTarget: params.blockTarget,
-      finality: params.finality?.value,
-      blockId: params.blockId,
-    }),
+  paramsExtractor: (params) => ({
+    blockId: params.blockTarget === 'latest' ? null : params.blockId,
+  }),
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
-  ...getFormBlockTarget(params),
+  blockId: params.blockId,
+  blockTarget: params.blockId === null ? 'latest' : 'specific',
 });
 
 export const getGasPrice = {
