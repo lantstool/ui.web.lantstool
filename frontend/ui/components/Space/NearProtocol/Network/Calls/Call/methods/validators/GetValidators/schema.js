@@ -1,10 +1,9 @@
 import { object, string } from 'yup';
+import { schemes } from '../../../../../_general/validations/schemes.js';
 
 export const schema = object({
-  epochId: string()
-    .test('mandatory', 'Epoch Id is a mandatory field', (value, context) => {
-      if (context.parent.epochTarget === 'latest') return true;
-      return Boolean(value);
-    })
-    .nullable(),
+  epochId: string().when('epochTarget', {
+    is: 'specific',
+    then: () => schemes.hash('Epoch ID'),
+  }),
 });

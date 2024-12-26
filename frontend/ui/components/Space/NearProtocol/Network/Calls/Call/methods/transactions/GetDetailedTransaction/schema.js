@@ -1,10 +1,7 @@
-import { object, string } from 'yup';
+import { object } from 'yup';
+import { schemes } from '../../../../../_general/validations/schemes.js';
 
 export const schema = object({
-  transactionHash: string().required('Transaction hash is a mandatory field'),
-  signerId: object({
-    value: string().required(),
-  })
-    .nullable()
-    .required('Signer Id is a mandatory field'),
+  transactionHash: schemes.hash('Transaction Hash'),
+  signerId: schemes.accountIdDropdown('Signer ID'),
 });

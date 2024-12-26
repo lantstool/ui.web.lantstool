@@ -1,16 +1,21 @@
 import { object, string } from 'yup';
+import { schemes } from '../../../../../_general/validations/schemes.js';
 
 export const schema = object({
-  chunkId: string().test('mandatory', 'Chunk Id is a mandatory field', (value, context) => {
-    if (context.parent.searchType !== 'byChunkId') return true;
-    return Boolean(value);
-  }),
-  blockId: string().test('mandatory', 'Block Id is a mandatory field', (value, context) => {
-    if (context.parent.searchType !== 'inBlock') return true;
-    return Boolean(value);
-  }),
-  shardId: string().test('mandatory', 'Shard Id is a mandatory field', (value, context) => {
-    if (context.parent.searchType !== 'inBlock') return true;
-    return Boolean(value);
+  chunkId: string()
+    .max(44)
+    .when('searchType', {
+      is: 'byChunkId',
+      then: () => schemes.hash('Chunk ID'),
+    }),
+  blockId: string()
+    .max(44)
+    .when('searchType', {
+      is: 'inBlock',
+      then: () => schemes.blockId,
+    }),
+  shardId: string().when('searchType', {
+    is: 'inBlock',
+    then: (schema) => schema.required('Shard ID is a required field'),
   }),
 });
