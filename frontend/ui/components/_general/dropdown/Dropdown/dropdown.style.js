@@ -38,6 +38,12 @@ export const selectStyles = (error) => ({
     ...baseInputStyles,
     maxWidth: '100px',
   }),
+  noOptionsMessage: (styles) => ({
+    ...styles,
+    fontSize: '14px',
+    padding: '8px',
+    color: '#adb5bd',
+  }),
   singleValue: (styles, state) => ({
     ...styles,
     display: 'flex',

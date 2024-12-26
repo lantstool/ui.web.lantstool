@@ -19,6 +19,7 @@ export const FunctionCall = ({ form, getName }) => {
           isClearable
           isSearchable
           creatableSelect
+          placeholder="Select or type..."
           tooltip={<Tooltip placement="top" content="Contract Id" defaultContent />}
         />
       </div>

@@ -69,7 +69,7 @@ export const InputActionGroup = ({
             id={name}
             onChange={fieldOnChange}
             value={val}
-            placeholder={placeholder}
+            placeholder={disabled ? '' : placeholder}
             className={cnm(cn.input, inputGroup === 'text' && !singleValue && cn.inputBorder)}
             type={type}
             disabled={disabled}

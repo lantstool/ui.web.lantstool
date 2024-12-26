@@ -6,7 +6,6 @@ import { IndicatorsContainer } from './IndicatorsContainer/IndicatorsContainer.j
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import { selectStyles } from './dropdown.style.js';
 import { Option } from './Option/Option.jsx';
-import { MenuList } from './MenuList/MenuList.jsx';
 import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
@@ -25,15 +24,15 @@ export const Dropdown = ({
   placeholder = 'Select...',
   label = null,
   tooltip = null,
-  menuParams = null,
+  components = {},
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
-  const components = {
+  const innerComponents = {
     DropdownIndicator,
     ClearIndicator,
     Option,
-    MenuList: (props) => <MenuList props={props} menuParams={menuParams} />,
     ...(copy && { IndicatorsContainer }),
+    ...components,
   };
   const style = selectStyles(error);
 
@@ -51,11 +50,11 @@ export const Dropdown = ({
         onChange={onChange}
         onBlur={onBlur}
         options={options}
-        placeholder={placeholder}
+        placeholder={isDisabled ? '' : placeholder}
         isDisabled={isDisabled}
         isClearable={isClearable}
         isSearchable={isSearchable}
-        components={{ ...components }}
+        components={{ ...innerComponents }}
         styles={style}
       />
       <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />

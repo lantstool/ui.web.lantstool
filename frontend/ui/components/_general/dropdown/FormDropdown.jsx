@@ -15,9 +15,9 @@ export const FormDropdown = ({
   copy,
   placeholder,
   dynamicErrorSpace,
-  menuParams,
   onBlur,
   dropdownRef,
+  components,
 }) => (
   <Controller
     name={name}
@@ -43,7 +43,7 @@ export const FormDropdown = ({
           tooltip={tooltip}
           error={error?.message}
           dynamicErrorSpace={dynamicErrorSpace}
-          menuParams={menuParams}
+          components={components}
         />
       );
     }}

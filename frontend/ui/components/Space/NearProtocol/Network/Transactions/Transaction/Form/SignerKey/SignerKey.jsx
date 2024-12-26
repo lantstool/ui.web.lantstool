@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { createPrivateKeySchema } from './privateKeySchema.js';
 import { createSeedPhraseSchema } from './seedPhraseSchema.js';
 import { useParams } from 'react-router-dom';
+import { MenuList } from '../_general/MenuList/MenuList.jsx';
 import cn from './SignerKey.module.scss';
 
 export const SignerKey = ({ form }) => {
@@ -40,7 +41,12 @@ export const SignerKey = ({ form }) => {
         label="Access key"
         isDisabled={!signerId}
         dropdownRef={ref}
-        menuParams={{ icon: cn.importIcon, title: 'Import key', onClick }}
+        placeholder="Select or type..."
+        components={{
+          MenuList: (props) => (
+            <MenuList props={props} onClick={onClick} icon={cn.importIcon} title="Import key" />
+          ),
+        }}
       />
       {isModalOpen && (
         <ImportKeyModal

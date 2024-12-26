@@ -66,6 +66,7 @@ export const AllowedMethods = ({ form, getName }) => {
               copy={false}
               isSearchable
               isClearable
+              placeholder='Select or type...'
               tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
             />
           ))}

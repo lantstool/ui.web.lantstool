@@ -22,7 +22,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
   const ContractOptions = useAccountsOptions();
   const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
 
-  //TODO lock receiver when we select contract id
   return (
     <ActionBase
       removeAction={removeAction}
@@ -41,7 +40,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           isSearchable
           isClearable
           creatableSelect
-          placeholder="contract"
+          placeholder="Select or type..."
           copy={false}
           tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
         />
@@ -50,7 +49,10 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           options={methodNameOptions}
           name={getName('methodName')}
           label="Method name"
-          placeholder="contract_method"
+          isSearchable
+          isClearable
+          creatableSelect
+          placeholder="Select or type..."
           copy={false}
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
