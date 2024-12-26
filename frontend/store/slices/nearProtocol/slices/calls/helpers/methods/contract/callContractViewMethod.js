@@ -1,5 +1,9 @@
 import { decompress } from 'fzstd';
-import { getBlockTargetParams } from '../utils.js';
+import {
+  getBlockTargetParams,
+  getFormBlockTarget,
+  transformForExport,
+} from '../utils.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
@@ -27,6 +31,24 @@ const rpcCaller = async (rpc, params) => {
   return getResult(result.result, params.methodName.value);
 };
 
+const exportTransformer = transformForExport({
+  version: '1.0',
+  paramsExtractor: (params) =>
+    getBlockTargetParams({
+      accountId: params.accountId?.value || '',
+      blockTarget: params.blockTarget,
+      finality: params.finality?.value,
+      blockId: params.blockId,
+    }),
+});
+
+const importTransformer = ({ params }) => ({
+  accountId: { value: params.accountId, label: params.accountId },
+  ...getFormBlockTarget(params),
+});
+
 export const callContractViewMethod = {
   rpcCaller,
+  exportTransformer,
+  importTransformer,
 };
