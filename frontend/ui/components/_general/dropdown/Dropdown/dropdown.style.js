@@ -38,6 +38,12 @@ export const selectStyles = (error) => ({
     ...baseInputStyles,
     maxWidth: '100px',
   }),
+  noOptionsMessage: (styles) => ({
+    ...styles,
+    fontSize: '14px',
+    padding: '8px',
+    color: '#adb5bd',
+  }),
   singleValue: (styles, state) => ({
     ...styles,
     display: 'flex',
@@ -58,6 +64,9 @@ export const selectStyles = (error) => ({
     backgroundColor: '#FFFFFF',
     marginTop: '5px',
     width: '100%',
+    ':focus': {
+      backgroundColor: 'red',
+    },
   }),
   menuList: (styles) => ({
     ...styles,
@@ -74,19 +83,13 @@ export const selectStyles = (error) => ({
       borderRadius: '16px',
     },
   }),
-  option: (styles, { isSelected, isDisabled, isFocused }) => ({
+  option: (styles, { isDisabled }) => ({
     ...styles,
     fontSize: 14,
     borderRadius: '4px',
     padding: '8px',
-    backgroundColor: isDisabled
-      ? undefined
-      : isSelected
-        ? 'none'
-        : isFocused
-          ? '#F1F3F5'
-          : undefined,
-    color: isDisabled ? '#CED4DA' : '#212529',
+    backgroundColor: 'none',
+    color: isDisabled ? '#CED4DA' : '#495057',
     ':hover': {
       cursor: isDisabled ? 'default' : 'pointer',
       backgroundColor: !isDisabled ? '#F1F3F5' : 'none',

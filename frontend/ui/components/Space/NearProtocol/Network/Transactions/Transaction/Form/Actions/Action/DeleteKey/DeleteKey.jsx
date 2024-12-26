@@ -25,7 +25,7 @@ export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle 
         name={getName('accessKey')}
         options={options}
         label="Access key"
-        placeholder="Select or enter..."
+        placeholder="Select or type..."
         dynamicErrorSpace
         isSearchable
         isClearable

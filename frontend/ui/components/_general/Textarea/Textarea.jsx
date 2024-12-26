@@ -2,7 +2,6 @@ import cnm from 'classnames';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
-import { useRef } from 'react';
 import { useController } from 'react-hook-form';
 import cn from './Textarea.module.scss';
 
@@ -19,16 +18,14 @@ export const Textarea = ({
   copy = false,
   classes = {},
 }) => {
-  const ref = useRef(null);
   const {
-    field: { value = '', onChange, onBlur },
+    field: { value = '', onChange, onBlur, ref },
   } = useController({
     name,
     control,
   });
 
   const handleClear = () => {
-    ref.current.focus();
     onChange('');
   };
 
@@ -49,7 +46,7 @@ export const Textarea = ({
           className={error ? cn.errorTextarea : copy ? cn.fullSize : cn.partSize}
           ref={ref}
           id={id || name}
-          placeholder={placeholder}
+          placeholder={disabled ? '' : placeholder}
           value={value}
           onChange={onChange}
           onBlur={onBlur}

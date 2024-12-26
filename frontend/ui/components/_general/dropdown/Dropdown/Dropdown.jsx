@@ -10,26 +10,29 @@ import cn from './Dropdown.module.scss';
 
 export const Dropdown = ({
   onChange = () => ({}),
+  onBlur = () => ({}),
+  value,
+  innerRef = null,
   options,
   error,
   dynamicErrorSpace = false,
   isDisabled,
-  value = null,
   creatableSelect = false,
   isSearchable = false,
   isClearable = false,
   copy = true,
   placeholder = 'Select...',
-  field = null,
   label = null,
   tooltip = null,
+  components = {},
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
-  const components = {
+  const innerComponents = {
     DropdownIndicator,
     ClearIndicator,
     Option,
     ...(copy && { IndicatorsContainer }),
+    ...components,
   };
   const style = selectStyles(error);
 
@@ -42,15 +45,16 @@ export const Dropdown = ({
         </div>
       )}
       <SelectComponent
-        {...field}
-        {...(value && { value })}
+        ref={innerRef}
+        value={value}
         onChange={onChange}
+        onBlur={onBlur}
         options={options}
-        placeholder={placeholder}
+        placeholder={isDisabled ? '' : placeholder}
         isDisabled={isDisabled}
         isClearable={isClearable}
         isSearchable={isSearchable}
-        components={{ ...components }}
+        components={{ ...innerComponents }}
         styles={style}
       />
       <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />

@@ -24,7 +24,7 @@ export const DeleteAccount = ({ form, getName, name, order, iconStyle, removeAct
         isSearchable
         isClearable
         label="Beneficiary Id"
-        placeholder="Select or enter..."
+        placeholder="Select or type..."
         tooltip={<Tooltip defaultContent placement="top" content="Beneficiar ID" />}
         dynamicErrorSpace
       />

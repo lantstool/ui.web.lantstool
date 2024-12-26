@@ -71,7 +71,7 @@ export const FormDropdownGroup = ({
                   {...field}
                   onChange={innerOnChange}
                   options={options}
-                  placeholder={placeholder}
+                  placeholder={disabled ? '' : placeholder}
                   isDisabled={disabled}
                   isClearable={isClearable}
                   isSearchable={isSearchable}

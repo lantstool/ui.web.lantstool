@@ -6,10 +6,11 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .title {
   @include text-sm-regular;
   color: $neutral-700;
+  padding: 2px;
 }
