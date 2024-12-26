@@ -58,7 +58,7 @@ export const Input = ({
         <input
           ref={ref}
           id={id || name}
-          placeholder={placeholder}
+          placeholder={disabled ? '' : placeholder}
           value={val}
           onChange={fieldOnChange}
           onBlur={handleBlur}

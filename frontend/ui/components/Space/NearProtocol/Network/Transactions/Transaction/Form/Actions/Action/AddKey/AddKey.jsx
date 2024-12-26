@@ -35,6 +35,7 @@ export const AddKey = ({ iconStyle, form, getName, removeAction, name, order }) 
           creatableSelect
           isSearchable
           isClearable
+          placeholder="Select or type..."
         />
         <Input
           control={control}

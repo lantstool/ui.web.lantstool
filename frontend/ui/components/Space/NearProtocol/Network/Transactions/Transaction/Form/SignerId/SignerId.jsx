@@ -6,6 +6,7 @@ import { useToggler } from '@hooks/useToggler.js';
 import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.jsx';
 import { useWatch } from 'react-hook-form';
 import { useRef } from 'react';
+import { MenuList } from '../_general/MenuList/MenuList.jsx';
 import cn from './SignerId.module.scss';
 
 export const SignerId = ({ form }) => {
@@ -43,7 +44,12 @@ export const SignerId = ({ form }) => {
         options={accountsOptions}
         creatableSelect={true}
         label="Account Id"
-        menuParams={{ icon: cn.importIcon, title: 'Import account', onClick }}
+        placeholder="Select or type..."
+        components={{
+          MenuList: (props) => (
+            <MenuList props={props} onClick={onClick} icon={cn.importIcon} title="Import account" />
+          ),
+        }}
         tooltip={
           balance && (
             <Label iconStyles={cn.icon} color="grey">

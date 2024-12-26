@@ -18,9 +18,8 @@ const debounceAsync = (func) => {
     });
 };
 
-const getKey = debounceAsync(async (value, dPath, testName) => {
+const getKey = debounceAsync(async (value, dPath) => {
   try {
-    console.log(`Test: ${testName}`);
     return parseSeedPhrase(value, dPath).publicKey;
   } catch (e) {
     return false;
@@ -53,10 +52,7 @@ export const createSeedPhraseSchema = (spaceId, networkId, signerId) => {
       .test('verified', 'This key already exists', async (value, values) => {
         try {
           const dPath = values.from[0].value.derivationPath;
-          console.log(dPath);
-          console.log(values);
           const publicKey = await getKey(value, dPath, 'secondTest');
-          console.log(publicKey);
           if (!publicKey) return true;
           const key = await getPublicKey({ spaceId, networkId, publicKey });
           return !key;
