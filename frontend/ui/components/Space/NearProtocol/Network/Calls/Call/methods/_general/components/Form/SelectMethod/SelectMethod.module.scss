@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .selectMethods {
   width: 100%;
@@ -17,9 +18,10 @@
 }
 
 .icon {
+  @include icon('@assets/icons/code-circle-outline.svg');
   width: 20px;
   height: 20px;
-  fill: $neutral-400;
+  background-color: $neutral-400;
 }
 
 .title {

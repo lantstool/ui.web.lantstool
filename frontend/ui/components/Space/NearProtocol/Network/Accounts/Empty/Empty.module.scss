@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .container {
   display: flex;
@@ -19,10 +20,11 @@
   width: 340px;
 }
 
-.icon{
+.icon {
+  @include icon('@assets/icons/account-square-bold.svg');
   width: 80px;
   height: 80px;
-  fill: $accent-200;
+  background-color: $accent-200;
 }
 
 .title{
