@@ -18,6 +18,7 @@ export const FormDropdown = ({
   onBlur,
   dropdownRef,
   components,
+  errorExtractor = (error) => error?.message || error?.value?.message,
 }) => (
   <Controller
     name={name}
@@ -41,7 +42,7 @@ export const FormDropdown = ({
           copy={copy}
           label={label}
           tooltip={tooltip}
-          error={error?.message}
+          error={errorExtractor(error)}
           dynamicErrorSpace={dynamicErrorSpace}
           components={components}
         />

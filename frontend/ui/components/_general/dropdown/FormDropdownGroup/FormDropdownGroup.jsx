@@ -28,6 +28,7 @@ export const FormDropdownGroup = ({
   actionDisabled = false,
   dynamicErrorSpace,
   iconStyles,
+  errorExtractor = (error) => error?.message || error?.value?.message,
 }) => {
   const SelectComponent = creatableSelect ? CreatableSelect : Select;
   const components = {
@@ -89,7 +90,7 @@ export const FormDropdownGroup = ({
                 <span className={cnm(cn.icon, iconStyles)} />
               </button>
             </div>
-            <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
+            <FieldErrorLabel error={errorExtractor(error)} dynamicErrorSpace={dynamicErrorSpace} />
           </div>
         );
       }}

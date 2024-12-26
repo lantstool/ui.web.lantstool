@@ -1,5 +1,11 @@
 import { decompress } from 'fzstd';
-import { getBlockTargetParams } from '../utils.js';
+import {
+  getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
+  getFormBlockTarget,
+  transformForExport,
+} from '../utils.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
@@ -27,6 +33,28 @@ const rpcCaller = async (rpc, params) => {
   return getResult(result.result, params.methodName.value);
 };
 
+const exportTransformer = transformForExport({
+  version: '1.0',
+  paramsExtractor: (params) =>
+    getBlockTargetParams({
+      contractId: getDropdownValueForExport(params.contractId),
+      methodName: getDropdownValueForExport(params.methodName),
+      args: params.args,
+      blockTarget: params.blockTarget,
+      finality: params.finality?.value,
+      blockId: params.blockId,
+    }),
+});
+
+const importTransformer = ({ params }) => ({
+  contractId: getDropdownValueForImport(params.contractId),
+  methodName: getDropdownValueForImport(params.methodName),
+  args: params.args,
+  ...getFormBlockTarget(params),
+});
+
 export const callContractViewMethod = {
   rpcCaller,
+  exportTransformer,
+  importTransformer,
 };
