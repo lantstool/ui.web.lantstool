@@ -1,6 +1,5 @@
 import { useStoreAction } from '@react-vault';
 import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { ArrowBackOutline } from '../../../../../../_general/icons/ArrowBackOutline.jsx';
 import { Raw } from './Raw/Raw.jsx';
 import { Overview } from './Overview/Overview.jsx';
 import { TabButton } from '../../../../../../_general/tab/TabButton/TabButton.jsx';
@@ -73,7 +72,7 @@ export const Result = ({ callResult, call }) => {
         </div>
       </div>
       <div className={cn.footer}>
-        <Button color="tertiary" size="medium" onClick={closeResult} IconLeft={ArrowBackOutline}>
+        <Button color="tertiary" size="medium" onClick={closeResult} iconLeftStyles={cn.icon}>
           Back
         </Button>
       </div>
