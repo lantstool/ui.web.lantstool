@@ -1,5 +1,7 @@
 import {
   getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
   getFormBlockTarget,
   transformForExport,
 } from '../utils.js';
@@ -19,7 +21,7 @@ const exportTransformer = transformForExport({
   version: '1.0',
   paramsExtractor: (params) =>
     getBlockTargetParams({
-      accountId: params.accountId?.value || '',
+      contractId: getDropdownValueForExport(params.contractId),
       blockTarget: params.blockTarget,
       finality: params.finality?.value,
       blockId: params.blockId,
@@ -27,7 +29,7 @@ const exportTransformer = transformForExport({
 });
 
 const importTransformer = ({ params }) => ({
-  accountId: { value: params.accountId, label: params.accountId },
+  contractId: getDropdownValueForImport(params.contractId),
   ...getFormBlockTarget(params),
 });
 

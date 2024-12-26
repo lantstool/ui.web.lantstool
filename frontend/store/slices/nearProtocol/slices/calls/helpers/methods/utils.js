@@ -30,3 +30,6 @@ export const getFormBlockTarget = ({ finality, blockId }) =>
         finality: config.finality.final,
         blockId,
       };
+
+export const getDropdownValueForExport = (value) => value?.value || '';
+export const getDropdownValueForImport = (value) => (value ? { value, label: value } : null);

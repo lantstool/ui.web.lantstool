@@ -29,6 +29,31 @@ const getChunk = object({
   return false;
 });
 
+// contract
+const callContractViewMethod = object({
+  contractId: string().defined(),
+  methodName: string().defined(),
+  args: string().defined(),
+}).concat(blockTargetSchema);
+
+const getContractState = object({
+  contractId: string().defined(),
+  keyPrefix: string().defined(),
+}).concat(blockTargetSchema);
+
+const getContractStateChanges = object({
+  contractIds: array().of(string()).defined(),
+  keyPrefix: string().defined(),
+}).concat(blockTargetSchema);
+
+const getContractWasm = object({
+  contractId: string().defined(),
+}).concat(blockTargetSchema);
+
+const getContractWasmChanges = object({
+  contractIds: array().of(string()).defined(),
+}).concat(blockTargetSchema);
+
 export const methodParams = {
   // account
   getAccount,
@@ -37,4 +62,10 @@ export const methodParams = {
   getBlock,
   getBlockChanges,
   getChunk,
+  // contract
+  callContractViewMethod,
+  getContractState,
+  getContractStateChanges,
+  getContractWasm,
+  getContractWasmChanges,
 };
