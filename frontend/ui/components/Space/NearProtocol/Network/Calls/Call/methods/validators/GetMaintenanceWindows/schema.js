@@ -1,9 +1,6 @@
-import { object, string } from 'yup';
+import { object } from 'yup';
+import { schemes } from '../../../../../_general/validations/schemes.js';
 
 export const schema = object({
-  validatorId: object({
-    value: string().required(),
-  })
-    .nullable()
-    .required('Validator Id is a mandatory field'),
+  validatorId: schemes.accountIdDropdown('Validator ID'),
 });

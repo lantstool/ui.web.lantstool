@@ -1,4 +1,10 @@
-import { getBlockTargetParams } from '../utils.js';
+import {
+  getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
+  getFormBlockTarget,
+  transformForExport,
+} from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getAccountKey(
@@ -12,6 +18,26 @@ const rpcCaller = (rpc, params) =>
     }),
   );
 
+const exportTransformer = transformForExport({
+  version: '1.0',
+  paramsExtractor: (params) =>
+    getBlockTargetParams({
+      accountId: getDropdownValueForExport(params.accountId),
+      publicKey: getDropdownValueForExport(params.publicKey),
+      blockTarget: params.blockTarget,
+      finality: params.finality?.value,
+      blockId: params.blockId,
+    }),
+});
+
+const importTransformer = ({ params }) => ({
+  accountId: getDropdownValueForImport(params.accountId),
+  publicKey: getDropdownValueForImport(params.publicKey),
+  ...getFormBlockTarget(params),
+});
+
 export const getAccountKey = {
   rpcCaller,
+  exportTransformer,
+  importTransformer,
 };

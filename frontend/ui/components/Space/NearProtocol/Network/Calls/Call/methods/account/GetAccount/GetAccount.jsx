@@ -36,7 +36,7 @@ export const GetAccount = ({ call, draft }) => {
           isSearchable
           isClearable
           creatableSelect
-          tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
+          tooltip={<Tooltip content="Account Id" placement="top" defaultContent />}
         />
         <BlockTarget />
       </div>

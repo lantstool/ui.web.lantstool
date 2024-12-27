@@ -16,6 +16,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
     field.onChange(event);
     form.setValue(getName('publicKey'), null);
   };
+  const accountId = form.watch(getName('accountId'));
 
   return (
     <div className={cn.accountKeyPair}>
@@ -46,6 +47,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
         control={control}
         options={keyOptions}
         isSearchable
+        isDisabled={!accountId}
         tooltip={<Tooltip content="Publick Key" placement="top" defaultContent />}
       />
     </div>
