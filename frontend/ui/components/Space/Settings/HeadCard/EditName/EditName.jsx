@@ -1,4 +1,3 @@
-import {EditRenameOutline} from '../../../../_general/icons/EditRenameOutline.jsx';
 import { useState } from 'react';
 import { useStoreEffect } from '@react-vault';
 import cn from './EditName.module.scss';
@@ -39,7 +38,7 @@ export const EditName = ({ name, form, spaceId }) => {
   ) : (
     <div className={cn.editName} onClick={changeMode}>
       <h2 className={cn.title}>{name}</h2>
-      <EditRenameOutline style={cn.icon} />
+      <span className={cn.icon} />
     </div>
   );
 };

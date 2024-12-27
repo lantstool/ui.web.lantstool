@@ -2,7 +2,6 @@ import { Link, Outlet } from 'react-router-dom';
 import { HeadCard } from './HeadCard/HeadCard.jsx';
 import { AccountLink } from './AccountLink/AccountLink.jsx';
 import { useManageRouting } from './useManageRouting.js';
-import { ArrowLeftOutline } from '../../../../../_general/icons/ArrowLeftOutline.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import cn from './Account.module.scss';
 
@@ -12,7 +11,7 @@ export const Account = () => {
   return (
     <>
       <Link className={cn.backBtn} to="..">
-        <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline}>
+        <Button color="tertiary" size="small" iconLeftStyles={cn.icon}>
           Back
         </Button>
       </Link>

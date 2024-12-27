@@ -1,9 +1,5 @@
 @use '@styles/icons' as *;
 
-.modal {
-  width: 650px;
-}
-
 .icon {
   @include icon('@assets/icons/trash-bin-outline.svg');
 }

@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .topbar {
   width: 100%;
@@ -29,4 +30,16 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.duplicateIcon {
+  @include icon('@assets/icons/duplicate-outline.svg');
+}
+
+.exportIcon {
+  @include icon('@assets/icons/export-linear.svg');
+}
+
+.deleteIcon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
 }

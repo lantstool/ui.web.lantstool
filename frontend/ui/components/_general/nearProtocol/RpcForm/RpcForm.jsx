@@ -1,7 +1,6 @@
 import cnm from 'classnames';
 import { useWatch } from 'react-hook-form';
 import { Checkbox } from '../../Checkbox/Checkbox.jsx';
-import { InfoCircleLinear } from '../../icons/InfoCircleLinear.jsx';
 import { Input } from '../../input/Input/Input.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import cn from './RpcForm.module.scss';
@@ -39,9 +38,8 @@ export const RpcForm = ({ form, classes }) => {
           <Tooltip
             content="The RPC API allows you to communicate directly with the NEAR network."
             placement="top"
-          >
-            <InfoCircleLinear />
-          </Tooltip>
+            defaultContent
+          />
         }
         copy={false}
       />
@@ -57,11 +55,7 @@ export const RpcForm = ({ form, classes }) => {
             label="Name"
             placeholder="Authorization"
             copy={false}
-            tooltip={
-              <Tooltip content="Name" placement="top">
-                <InfoCircleLinear />
-              </Tooltip>
-            }
+            tooltip={<Tooltip content="Name" placement="top" defaultContent />}
           />
           <Input
             control={control}
@@ -69,11 +63,7 @@ export const RpcForm = ({ form, classes }) => {
             label="Value"
             placeholder="e.g. API key or ID"
             copy={false}
-            tooltip={
-              <Tooltip content="Value" placement="top">
-                <InfoCircleLinear />
-              </Tooltip>
-            }
+            tooltip={<Tooltip content="Value" placement="top" defaultContent />}
           />
         </div>
       )}

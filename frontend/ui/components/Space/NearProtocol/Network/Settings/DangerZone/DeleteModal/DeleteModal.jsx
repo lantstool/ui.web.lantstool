@@ -1,9 +1,9 @@
-import { TrashBinOutline } from '../../../../../../_general/icons/TrashBinOutline.jsx';
 import { useState } from 'react';
 import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate } from 'react-router-dom';
 import { DeleteConfirmationModal } from '../../../../../../_general/modals/DeleteConfirmationModal/DeleteConfirmationModal.jsx';
+import cn from './DeleteModal.module.scss';
 
 export const DeleteModal = ({ network }) => {
   const { networkId, spaceId } = network;
@@ -17,7 +17,7 @@ export const DeleteModal = ({ network }) => {
 
   return (
     <>
-      <Button onClick={open} color="danger" IconLeft={TrashBinOutline} size="medium">
+      <Button onClick={open} color="danger" iconLeftStyles={cn.icon} size="medium">
         Delete network
       </Button>
       {isOpen && (

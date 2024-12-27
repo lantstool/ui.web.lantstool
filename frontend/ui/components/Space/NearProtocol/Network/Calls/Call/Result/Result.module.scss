@@ -70,3 +70,11 @@
 .icon {
   @include icon('@assets/icons/arrow-back-outline.svg');
 }
+
+.checkIcon{
+  @include icon('@assets/icons/check-circle-bold.svg');
+}
+
+.errorIcon{
+  @include icon('@assets/icons/error-circle-bold.svg');
+}

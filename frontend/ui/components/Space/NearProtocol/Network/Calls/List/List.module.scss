@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .list {
   grid-area: a;
@@ -33,8 +34,8 @@
     .title {
       color: $neutral-800;
     }
-    .icon {
-      fill: $neutral-800;
+    .addIcon {
+      background-color: $neutral-800;
     }
   }
 }
@@ -50,14 +51,11 @@
   border-radius: 8px;
   border: none;
   background: none;
-  .icon {
-    fill: $neutral-600;
-  }
   &:hover {
     background-color: $neutral-200;
     cursor: pointer;
-    .icon {
-      fill: $neutral-800;
+    .importIcon {
+      background-color: $neutral-800;
     }
   }
 }
@@ -87,4 +85,14 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.addIcon {
+  @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
+}
+
+.importIcon {
+  @include icon('@assets/icons/import-outline.svg');
+  background: $neutral-600;
 }

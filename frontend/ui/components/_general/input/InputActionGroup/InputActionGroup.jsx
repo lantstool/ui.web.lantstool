@@ -2,7 +2,6 @@ import { Controller, useController } from 'react-hook-form';
 import Select from 'react-select';
 import { selectStyles } from './InputActionGroup.style.js';
 import { DropdownIndicator } from '../../dropdown/Dropdown/DropdownIndicator/DropdownIndicator.jsx';
-import { BackspaceOutline } from '../../icons/BackspaceOutline.jsx';
 import { Option } from '../../dropdown/Dropdown/Option/Option.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import { useRef, useState } from 'react';
@@ -77,7 +76,7 @@ export const InputActionGroup = ({
           {!disabled && value && (
             <div className={cn.buttonWrapper}>
               <button disabled={disabled} type="button" onClick={handleClear} className={cn.button}>
-                <BackspaceOutline style={cn.icon} />
+                <span className={cn.icon} />
               </button>
               {copy && <CopyButton disabled={disabled} value={value} />}
             </div>

@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
 import { Badge } from '../../_general/Badge/Badge.jsx';
-import { SettingsOutline } from '../../_general/icons/SettingsOutline.jsx';
 import { Label } from '../../_general/Label/Label.jsx';
 import cn from './List.module.scss';
 
@@ -39,7 +38,7 @@ export const List = ({ ids }) => {
                 onClick={(e) => navigateTo(e, `/space/${spaceId}/settings`)}
                 className={cn.settings}
               >
-                <SettingsOutline style={cn.icon} />
+                <span className={cn.iconSettings} />
               </div>
             </div>
           </div>

@@ -1,11 +1,9 @@
-import { EyeHideClosedOutline } from '../../../../../../_general/icons/EyeHideClosedOutline.jsx';
-import { EyeShowOutline } from '../../../../../../_general/icons/EyeShowOutline.jsx';
 import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
 import { useState } from 'react';
 import { hideText } from '../../../../../../../../store/helpers/hideText.js';
 import cn from './Item.module.scss';
 
-export const Item = ({ label, Icon, isCopy = true, isVisible = true, value }) => {
+export const Item = ({ label, icon, isCopy = true, isVisible = true, value }) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(!show);
@@ -13,7 +11,7 @@ export const Item = ({ label, Icon, isCopy = true, isVisible = true, value }) =>
   return (
     <div>
       <div className={cn.container}>
-        <Icon />
+        <span className={icon} />
         <h2 className={cn.label}>{label}</h2>
       </div>
       <div className={cn.content}>
@@ -24,11 +22,11 @@ export const Item = ({ label, Icon, isCopy = true, isVisible = true, value }) =>
           {isVisible &&
             (show ? (
               <button className={cn.button} onClick={handleShow}>
-                <EyeHideClosedOutline />
+                <span className={cn.hideEye}/>
               </button>
             ) : (
               <button className={cn.button} onClick={handleShow}>
-                <EyeShowOutline />
+                <span className={cn.showEye} />
               </button>
             ))}
           {isCopy && <CopyButton value={value} />}

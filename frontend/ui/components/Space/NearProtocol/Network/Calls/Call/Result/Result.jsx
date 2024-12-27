@@ -6,8 +6,6 @@ import { TabButton } from '../../../../../../_general/tab/TabButton/TabButton.js
 import { TabContainer } from '../../../../../../_general/tab/TabContainer/TabContainer.jsx';
 import { useState } from 'react';
 import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { ErrorCircleBold } from '../../../../../../_general/icons/ErrorCircleBold.jsx';
-import { CheckCircleBold } from '../../../../../../_general/icons/CheckCircleBold.jsx';
 import cn from './Result.module.scss';
 
 const getMode = (formValues) => {
@@ -41,7 +39,7 @@ export const Result = ({ callResult, call }) => {
           </div>
           {!isLoading && (
             <Label
-              Icon={result ? CheckCircleBold : ErrorCircleBold}
+              iconStyles={result ? cn.checkIcon : cn.errorIcon}
               color={result ? 'success' : 'error'}
             >
               {result ? 'Success' : 'Failed'}

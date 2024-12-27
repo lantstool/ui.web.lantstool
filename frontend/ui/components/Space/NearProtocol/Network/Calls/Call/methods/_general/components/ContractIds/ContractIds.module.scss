@@ -1,14 +1,19 @@
 @use '@styles/icons' as *;
 @use '@styles/variables' as *;
 
-.contractIds{
+.contractIds {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
 }
 
-.deleteIcon{
+.deleteIcon {
   @include icon('@assets/icons/trash-bin-outline.svg');
   background-color: $neutral-600;
+}
+
+.icon {
+  @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
 }

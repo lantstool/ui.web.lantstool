@@ -1,6 +1,5 @@
 import cnm from 'classnames';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
-import { BackspaceOutline } from '../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
 import cn from './Textarea.module.scss';
@@ -63,7 +62,7 @@ export const Textarea = ({
               onClick={handleClear}
               className={cn.button}
             >
-              <BackspaceOutline style={cn.icon} />
+              <span className={cn.icon} />
             </button>
             {copy && <CopyButton disabled={disabled} value={value} />}
           </div>

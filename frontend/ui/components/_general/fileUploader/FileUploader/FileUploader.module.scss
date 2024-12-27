@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .container {
   display: flex;
@@ -20,9 +21,10 @@
 }
 
 .fileSmileBoldIcon {
+  @include icon('@assets/icons/file-smile-bold.svg');
   height: 40px;
   width: 40px;
-  fill: $neutral-400;
+  background-color: $neutral-400;
   margin: 0 0 8px 0;
 }
 
@@ -34,9 +36,10 @@
 }
 
 .fileOutlineIcon {
+  @include icon('@assets/icons/file-outline.svg');
   height: 24px;
   width: 24px;
-  color: $neutral-800;
+  background-color: $neutral-800;
   margin-bottom: 8px;
 }
 

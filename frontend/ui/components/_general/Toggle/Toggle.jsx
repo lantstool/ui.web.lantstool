@@ -1,9 +1,8 @@
-import { InfoCircleLinear } from '../icons/InfoCircleLinear.jsx';
 import { Tooltip } from '../Tooltip/Tooltip.jsx';
 import cn from './Toggle.module.scss';
 import cnm from 'classnames';
 
-export const Toggle = ({ value , onChange, labelText, tooltip, disabled }) => {
+export const Toggle = ({ value, onChange, labelText, tooltip, disabled }) => {
   const toggle = () => {
     onChange(!value);
   };
@@ -23,10 +22,8 @@ export const Toggle = ({ value , onChange, labelText, tooltip, disabled }) => {
         <Tooltip
           content={tooltip.content}
           placement={tooltip.placement || 'top'}
-          style={cn.tooltipIcon}
-        >
-          <InfoCircleLinear />
-        </Tooltip>
+          defaultContent
+        />
       )}
     </div>
   );

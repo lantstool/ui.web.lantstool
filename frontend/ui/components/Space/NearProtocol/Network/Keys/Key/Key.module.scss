@@ -1,7 +1,14 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+
 .backBtn {
   position: fixed;
   top: 80px;
   margin-right: 820px;
+}
+
+.icon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
 }
 
 .key {
@@ -13,4 +20,24 @@
   min-width: 610px;
   max-width: 680px;
   gap: 24px;
+}
+
+.publicKeyIcon {
+  @include icon('@assets/icons/key-outline.svg');
+  background-color: $neutral-600;
+}
+
+.privateKeyIcon {
+  @include icon('@assets/icons/lock-keyhole-outline.svg');
+  background-color: $neutral-600;
+}
+
+.seedPhraseIcon {
+  @include icon('@assets/icons/password-seed-phrase-input-outline.svg');
+  background-color: $neutral-600;
+}
+
+.derivationPassIcon {
+  @include icon('@assets/icons/routing-derivation-path-outline.svg');
+  background-color: $neutral-600;
 }

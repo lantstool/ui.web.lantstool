@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 @mixin badgeDropdown {
   position: absolute;
@@ -110,9 +111,12 @@
 }
 
 .icon {
-  fill: $neutral-700;
+  @include icon('@assets/icons/checkmark-outline.svg');
+  background-color: $neutral-600;
 }
 
 .hidden {
   visibility: hidden;
+  width: 16px;
+  height: 16px;
 }

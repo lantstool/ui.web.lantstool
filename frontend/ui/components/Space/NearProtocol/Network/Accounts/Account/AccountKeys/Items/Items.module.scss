@@ -1,7 +1,8 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -25,7 +26,7 @@
   background-color: $neutral-00;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -48,19 +49,20 @@
   margin: 8px 0 0 0;
 }
 
-.buttonWrapper{
+.buttonWrapper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.tooltip{
+.tooltip {
   display: flex;
   justify-content: center;
 }
 
 .icon {
-  fill: $green-700;
+  @include icon('@assets/icons/check-circle-outline.svg');
+  background-color: $green-700;
 }
 
 .copy {

@@ -3,12 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { HeadCard } from './HeadCard/HeadCard.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
-import { ArrowLeftOutline } from '../../../../../_general/icons/ArrowLeftOutline.jsx';
 import { Item } from './Item/Item.jsx';
-import { KeyOutline } from '../../../../../_general/icons/KeyOutline.jsx';
-import { PasswordSeedPhraseInputOutline } from '../../../../../_general/icons/PasswordSeedPhraseInputOutline.jsx';
-import { LockKeyholeOutline } from '../../../../../_general/icons/LockKeyholeOutline.jsx';
-import { RoutingDerivationPathOutline } from '../../../../../_general/icons/RoutingDerivationPathOutline.jsx';
 import { DangerZone } from './DangerZone/DangerZone.jsx';
 import cn from './Key.module.scss';
 
@@ -24,25 +19,20 @@ export const Key = () => {
   return (
     <>
       <Link className={cn.backBtn} to="..">
-        <Button color="tertiary" size="small" IconLeft={ArrowLeftOutline}>
+        <Button color="tertiary" size="small" iconLeftStyles={cn.icon}>
           Back
         </Button>
       </Link>
       <div className={cn.key}>
         <HeadCard keyData={key} />
-        <Item Icon={KeyOutline} value={publicKey} label="Public key" isVisible={false} />
-        <Item Icon={LockKeyholeOutline} value={privateKey} label="Private key" isVisible={true} />
+        <Item icon={cn.publicKeyIcon} value={publicKey} label="Public key" isVisible={false} />
+        <Item icon={cn.privateKeyIcon} value={privateKey} label="Private key" isVisible={true} />
         {seedPhrase && (
-          <Item
-            Icon={PasswordSeedPhraseInputOutline}
-            value={seedPhrase}
-            label="Seed hrase"
-            isVisible={true}
-          />
+          <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed hrase" isVisible={true} />
         )}
         {derivationPath && (
           <Item
-            Icon={RoutingDerivationPathOutline}
+            icon={cn.derivationPassIcon}
             value={derivationPath}
             label="Derivation path"
             isVisible={false}
