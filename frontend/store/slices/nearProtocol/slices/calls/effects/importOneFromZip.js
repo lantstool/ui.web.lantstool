@@ -1,6 +1,6 @@
 import { effect } from '@react-vault';
 import { unzipSync, strFromU8 } from 'fflate';
-import { callImportSchema } from '../../../../../../ui/components/Space/NearProtocol/Network/Calls/List/ImportModal/_general/validations/callImportSchema.js';
+import { callImportSchema } from '../../../../../../ui/components/Space/NearProtocol/Network/Calls/_general/ImportModal/_general/validations/callImportSchema.js';
 
 const unzipJson = async (file, setError) => {
   try {
