@@ -1,3 +1,4 @@
+import { Label } from '../../../../../../../../_general/Label/Label.jsx';
 import { appendAction } from './appendAction.js';
 import { Item } from './Item/Item.jsx';
 import cn from './AddAction.module.scss';
@@ -37,39 +38,43 @@ export const AddAction = ({ append, fields }) => {
   };
 
   return (
-    <div>
-      <h2 className={cn.title}>Add actions</h2>
-      <div className={cn.addAction}>
-        <div className={cn.container}>
+    <div className={cn.addAction}>
+      <div className={cn.labelWrapper}>
+        <Label iconStyles={cn.addActionIcon} color="grey">
+          Add Action
+        </Label>
+      </div>
+      <div className={cn.actions}>
+        <div className={cn.column}>
           <Item
             onClick={createAccount}
             disabled={!isCreateAccount}
-            text="Create account"
+            text="Create Account"
             iconStyles={cn.iconCreateAccount}
             color="green"
           />
-          <Item onClick={addKey} text="Add key" iconStyles={cn.iconAddKey} color="green" />
+          <Item onClick={addKey} text="Add Key" iconStyles={cn.iconAddKey} color="green" />
           <Item onClick={transfer} text="Transfer" iconStyles={cn.iconTransfer} color="blue" />
         </div>
-        <div className={cn.container}>
+        <div className={cn.column}>
           <Item
             onClick={deployContract}
-            text="Deploy contract"
+            text="Deploy Contract"
             iconStyles={cn.iconDeployContract}
             color="deepBlue"
           />
           <Item
             onClick={functionCall}
-            text="Function call"
+            text="Function Call"
             iconStyles={cn.iconFunctionCall}
             color="purple"
           />
         </div>
-        <div className={cn.container}>
-          <Item onClick={deleteKey} text="Delete key" iconStyles={cn.iconDeleteKey} color="red" />
+        <div className={cn.column}>
+          <Item onClick={deleteKey} text="Delete Key" iconStyles={cn.iconDeleteKey} color="red" />
           <Item
             onClick={deleteAccount}
-            text="Delete account"
+            text="Delete Account"
             iconStyles={cn.iconDeleteAccount}
             color="red"
           />

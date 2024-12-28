@@ -44,7 +44,7 @@ export const ReceiverId = ({ form }) => {
     <div className={cn.receiver}>
       <div className={cn.label}>
         <span className={cn.icon} />
-        <h3 className={cn.title}>Receiver account details</h3>
+        <h3 className={cn.title}>Receiver</h3>
       </div>
       <FormDropdown
         dropdownRef={ref}
