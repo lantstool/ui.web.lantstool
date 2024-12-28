@@ -2,9 +2,6 @@ import { useMatch, useNavigate } from 'react-router-dom';
 import { DropDownSelector } from '../_general/DropDownSelector/DropDownSelector.jsx';
 import { useState } from 'react';
 import { Popper } from '../_general/Popper/Popper.jsx';
-import { NearToken } from '../../_general/icons/NearToken.jsx';
-import { ClockCircleOutline } from '../../_general/icons/ClockCircleOutline.jsx';
-import { CheckMarkOutline } from '../../_general/icons/CheckmarkOutline.jsx';
 import cn from './SelectBlockchain.module.scss';
 
 export const SelectBlockchain = () => {
@@ -30,23 +27,25 @@ export const SelectBlockchain = () => {
       <hr className={cn.border} />
       <div className={cn.selectBlockchain}>
         <DropDownSelector isOpen={isOpen} title="NEAR Protocol" openMenu={openMenu}>
-          <NearToken style={cn.icon} />
+          <span className={cn.nearToken} />
         </DropDownSelector>
         <Popper isOpen={isOpen} closeMenu={closeMenu}>
           <div className={cn.dropdown}>
             <div className={cn.container}>
               <button onClick={selectNearProtocol} className={cn.item}>
                 <div className={cn.itemWrapper}>
-                  <NearToken style={cn.icon} />
+                  <span className={cn.nearTokenLight} />
                   <p className={cn.title}>NEAR Protocol</p>
                 </div>
-                <CheckMarkOutline style={cn.icon} />
+                <span className={cn.checkmarkIcon} />
               </button>
             </div>
             <hr className={cn.settingsBorder} />
             <div className={cn.settings}>
               <div className={cn.comingSoon}>
-                <ClockCircleOutline style={cn.clockIcon} />
+                <div className={cn.clock}>
+                  <span className={cn.clockIcon} />
+                </div>
                 <p className={cn.message}>More blockchains coming later...</p>
               </div>
             </div>

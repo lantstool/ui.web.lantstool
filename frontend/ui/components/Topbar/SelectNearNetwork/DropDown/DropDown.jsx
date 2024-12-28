@@ -1,9 +1,6 @@
 import { Popper } from '../../_general/Popper/Popper.jsx';
-import { CheckMarkOutline } from '../../../_general/icons/CheckmarkOutline.jsx';
 import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
-import { AddSquareOutline } from '../../../_general/icons/AddSquareOutline.jsx';
-import { SettingsOutline } from '../../../_general/icons/SettingsOutline.jsx';
 import cn from './DropDown.module.scss';
 
 export const DropDown = ({ setOpen, isOpen, spaceId, networkId }) => {
@@ -25,7 +22,7 @@ export const DropDown = ({ setOpen, isOpen, spaceId, networkId }) => {
               <div className={cn.itemWrapper}>
                 <p className={cn.title}>{item}</p>
               </div>
-              <CheckMarkOutline style={item === networkId ? cn.icon : cn.hidden} />
+              <span className={item === networkId ? cn.icon : cn.hidden} />
             </Link>
           ))}
         </div>
@@ -36,7 +33,7 @@ export const DropDown = ({ setOpen, isOpen, spaceId, networkId }) => {
             onClick={closeMenu}
             className={cn.settingItem}
           >
-            <AddSquareOutline />
+            <span className={cn.addIcon} />
             Add network
           </Link>
           <Link
@@ -44,7 +41,7 @@ export const DropDown = ({ setOpen, isOpen, spaceId, networkId }) => {
             onClick={closeMenu}
             className={cn.settingItem}
           >
-            <SettingsOutline />
+            <span className={cn.iconSettings} />
             Manage networks
           </Link>
         </div>

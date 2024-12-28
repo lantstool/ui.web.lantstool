@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .input {
   @include text-lg-medium;
@@ -21,6 +22,8 @@
   gap: 4px;
   &:hover {
     .icon {
+      @include icon('@assets/icons/edit-rename-outline.svg');
+      background-color: $neutral-600;
       visibility: visible;
     }
   }

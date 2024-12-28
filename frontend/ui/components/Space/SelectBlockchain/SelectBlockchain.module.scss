@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .selectBlockchain {
   min-height: calc(100vh - 96px);
@@ -12,7 +13,6 @@
   gap: 12px;
   position: relative;
 }
-
 
 .logo {
   display: flex;
@@ -67,6 +67,13 @@
   fill: #1b1b18;
 }
 
+.nearIcon {
+  @include icon('@assets/icons/near-token.svg');
+  background-color: #1b1b18;
+  width: 24px;
+  height: 24px;
+}
+
 @mixin text($color) {
   @include text-mg-medium;
   color: $color;
@@ -89,7 +96,7 @@
   margin: 0;
 }
 
-.radioBtn{
+.radioBtn {
   padding: 8px 0;
 }
 
@@ -115,6 +122,11 @@
   justify-content: center;
   align-items: center;
   background: rgba(73, 117, 97, 0.07);
+}
+
+.clockIcon {
+  @include icon('@assets/icons/clock-circle-outline.svg');
+  background-color: $accent-300;
 }
 
 .wrapper {

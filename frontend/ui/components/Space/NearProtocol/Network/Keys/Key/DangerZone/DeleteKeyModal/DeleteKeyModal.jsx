@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -21,7 +20,7 @@ export const DeleteKeyModal = () => {
 
   return (
     <>
-      <Button onClick={open} color="danger" IconLeft={TrashBinOutline} size="medium">
+      <Button onClick={open} color="danger" iconLeftStyles={cn.icon} size="medium">
         Remove key
       </Button>
       {isOpen && (

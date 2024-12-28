@@ -1,5 +1,4 @@
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
-import { BackspaceOutline } from '../../icons/BackspaceOutline.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
 import cnm from 'classnames';
@@ -75,7 +74,7 @@ export const Input = ({
               onClick={handleClear}
               className={cn.button}
             >
-              <BackspaceOutline style={cn.icon} />
+              <span className={cn.icon} />
             </button>
             {copy && <CopyButton disabled={disabled} value={val} />}
           </div>

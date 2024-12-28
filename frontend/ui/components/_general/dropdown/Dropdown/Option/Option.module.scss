@@ -1,13 +1,13 @@
 @use '@styles/icons' as *;
 @use '@styles/variables' as *;
 
-.container{
+.container {
   display: flex;
   justify-content: space-between;
   gap: 8px;
 }
 
-.singleOption{
+.singleOption {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -15,7 +15,11 @@
 
 .icon {
   @include icon('@assets/icons/checkmark-outline.svg');
+  background-color: $neutral-600;
+}
+
+.hidden {
+  visibility: hidden;
   width: 16px;
   height: 16px;
-  background-color: $neutral-600;
 }

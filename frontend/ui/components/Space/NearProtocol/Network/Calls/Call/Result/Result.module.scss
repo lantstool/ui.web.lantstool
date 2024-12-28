@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .result {
   position: relative;
@@ -64,4 +65,16 @@
   border: 1px solid $neutral-200;
   background: $neutral-00;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  @include icon('@assets/icons/arrow-back-outline.svg');
+}
+
+.checkIcon{
+  @include icon('@assets/icons/check-circle-bold.svg');
+}
+
+.errorIcon{
+  @include icon('@assets/icons/error-circle-bold.svg');
 }

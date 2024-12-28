@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .modal {
   width: 680px;
@@ -9,7 +10,7 @@
   display: grid;
   grid-template-columns: 240px 440px;
   grid-template-rows: auto;
-  grid-template-areas: 'a b'
+  grid-template-areas: 'a b';
 }
 
 .list {
@@ -25,4 +26,29 @@
 .content {
   grid-area: b;
   padding: 24px;
+}
+
+.seedPhraseIcon {
+  @include icon('@assets/icons/password-seed-phrase-input-outline.svg');
+  background-color: $neutral-600;
+}
+
+.seedPhraseOutlineIcon {
+  @include icon('@assets/icons/password-seed-phrase-input-bold.svg');
+  background-color: $accent-600;
+}
+
+.privateKeyIcon{
+  @include icon('@assets/icons/key-outline.svg');
+  background-color: $neutral-600;
+}
+
+.privateKeyOutlineIcon{
+  @include icon('@assets/icons/key-bold.svg');
+  background-color: $accent-600;
+}
+
+.ledgerIcon{
+  @include icon('@assets/icons/ledger.svg');
+  background-color: $neutral-600;
 }

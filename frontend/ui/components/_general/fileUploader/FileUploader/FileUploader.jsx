@@ -1,7 +1,5 @@
 import { useDropzone } from 'react-dropzone';
 import { Button } from '../../Button/Button.jsx';
-import { FileSmileBold } from '../../icons/FileSmileBold.jsx';
-import { FileOutline } from '../../icons/FileOutline.jsx';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import { FieldTopbarLabel } from '../../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import cnm from 'classnames';
@@ -34,12 +32,12 @@ export const FileUploader = ({
         <input {...getInputProps()} />
         {file ? (
           <>
-            <FileOutline style={cn.fileOutlineIcon} />
+            <span className={cn.fileOutlineIcon} />
             <p className={cn.fileName}>{file.name}</p>
           </>
         ) : (
           <>
-            <FileSmileBold style={cn.fileSmileBoldIcon} />
+            <span className={cn.fileSmileBoldIcon} />
             <p className={cn.callToAction}>{callToActionText}</p>
           </>
         )}

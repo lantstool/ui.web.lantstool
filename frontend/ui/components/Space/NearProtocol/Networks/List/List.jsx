@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { SettingsOutline } from '../../../../_general/icons/SettingsOutline.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ ids }) => {
@@ -23,7 +22,7 @@ export const List = ({ ids }) => {
                 onClick={(e) => navigateTo(e, `../${networkId}/settings`)}
                 className={cn.settings}
               >
-                <SettingsOutline style={cn.icon} />
+                <span className={cn.iconSettings} />
               </div>
             </div>
           </div>

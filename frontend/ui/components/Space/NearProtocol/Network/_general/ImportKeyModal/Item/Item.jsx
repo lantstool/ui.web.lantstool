@@ -6,7 +6,8 @@ export const Item = ({
   setFormType,
   type,
   children,
-  Icon,
+  icon,
+  activeIcon,
   label = false,
   disabled = false,
 }) => {
@@ -18,7 +19,7 @@ export const Item = ({
       onClick={changeType}
       className={disabled ? cn.disabled : isActive ? cn.active : cn.item}
     >
-      <Icon style={cn.icon} />
+      <span className={isActive && !disabled ? activeIcon : icon} />
       <div className={cn.container}>
         <p className={cn.title}>{children}</p>
         {label && <Label color="grey">{label}</Label>}

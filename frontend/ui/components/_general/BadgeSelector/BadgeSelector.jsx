@@ -1,7 +1,5 @@
 import { BadgeDropdown } from './BadgeDropdown/BadgeDropdown.jsx';
 import { Button } from '../Button/Button.jsx';
-import { ArrowDownOutline } from '../icons/ArrowDownOutline.jsx';
-import { ArrowUpOutline } from '../icons/ArrowUpOutline.jsx';
 import { useState } from 'react';
 import { Badge } from '../Badge/Badge.jsx';
 import cn from './BadgeSelector.module.scss';
@@ -19,7 +17,7 @@ export const BadgeSelector = ({ form, size = 'large', type = 'button', spaceId =
         size={size}
         onClick={openMenu}
         color="secondary"
-        IconRight={isOpen ? ArrowUpOutline : ArrowDownOutline}
+        iconRightStyles={isOpen ? cn.arrowUpIcon : cn.arrowDownIcon}
       >
         <Badge badge={badge} />
       </Button>

@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .container {
   display: flex;
@@ -66,4 +67,14 @@
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+.hideEye {
+  @include icon('@assets/icons/eye-hide-closed-outline.svg');
+  background-color: $neutral-600;
+}
+
+.showEye {
+  @include icon('@assets/icons/eye-show-outline.svg');
+  background-color: $neutral-600;
 }

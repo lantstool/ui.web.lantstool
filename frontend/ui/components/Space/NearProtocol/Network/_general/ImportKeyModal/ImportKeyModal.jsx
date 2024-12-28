@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { KeyBold } from '../../../../../_general/icons/KeyBold.jsx';
-import { PasswordSeedPhraseInputOutline } from '../../../../../_general/icons/PasswordSeedPhraseInputOutline.jsx';
-import { Ledger } from '../../../../../_general/icons/Ledger.jsx';
 import { Item } from './Item/Item.jsx';
 import { PrivateKey } from './PrivateKey/PrivateKey.jsx';
 import { SeedPhrase } from './SeedPhrase/SeedPhrase.jsx';
@@ -23,14 +20,21 @@ export const ImportKeyModal = ({
           formType={formType}
           setFormType={setFormType}
           type="seedPhrase"
-          Icon={PasswordSeedPhraseInputOutline}
+          icon={cn.seedPhraseIcon}
+          activeIcon={cn.seedPhraseOutlineIcon}
         >
           Seed phrase
         </Item>
-        <Item formType={formType} setFormType={setFormType} type="privateKey" Icon={KeyBold}>
+        <Item
+          formType={formType}
+          setFormType={setFormType}
+          type="privateKey"
+          icon={cn.privateKeyIcon}
+          activeIcon={cn.privateKeyOutlineIcon}
+        >
           Private key
         </Item>
-        <Item Icon={Ledger} label="Soon" disabled={true}>
+        <Item label="Soon" disabled={true} icon={cn.ledgerIcon}>
           Ledger
         </Item>
       </div>

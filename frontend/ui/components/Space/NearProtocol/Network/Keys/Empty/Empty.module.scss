@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .empty {
   display: flex;
@@ -20,9 +21,10 @@
 }
 
 .icon {
+  @include icon('@assets/icons/key-square-bold.svg');
+  background-color: $accent-200;
   width: 80px;
   height: 80px;
-  fill: $accent-200;
 }
 
 .title {

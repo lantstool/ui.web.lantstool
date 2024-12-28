@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .empty {
   height: calc(100vh - 48px);
@@ -9,7 +10,14 @@
   justify-content: center;
 }
 
-.title{
+.callsIcon {
+  @include icon('@assets/icons/calls-bold.svg');
+  background-color: $accent-200;
+  width: 80px;
+  height: 80px;
+}
+
+.title {
   @include text-mg-medium;
   text-align: center;
   color: $neutral-500;
@@ -17,7 +25,11 @@
   margin: 24px 0 16px 0;
 }
 
-.btnWrapper{
+.btnWrapper {
   display: flex;
   gap: 8px;
+}
+
+.importIcon {
+  @include icon('@assets/icons/import-outline.svg');
 }

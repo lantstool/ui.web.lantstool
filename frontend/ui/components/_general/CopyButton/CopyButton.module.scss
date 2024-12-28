@@ -11,7 +11,7 @@
   }
   &:hover {
     .icon {
-      fill: $neutral-800;
+      background-color: $neutral-800;
     }
   }
 }
@@ -31,7 +31,7 @@
   align-items: center;
   background: $neutral-00;
   .icon {
-    fill: $neutral-700;
+    background-color: $neutral-700;
   }
   &:focus {
     box-shadow: $shadow-secondary;
@@ -39,7 +39,7 @@
   &:hover {
     background: $neutral-50;
     .icon {
-      fill: $neutral-700;
+      background-color: $neutral-700;
     }
   }
 }
@@ -51,27 +51,25 @@
   justify-content: center;
   align-items: center;
   .icon {
-    fill: $neutral-600;
+    background-color: $neutral-600;
   }
   &:hover {
     .icon {
-      fill: $neutral-800;
+      background-color: $neutral-800;
     }
   }
 }
 
-.icon {
-  padding: 0;
-  fill: $neutral-600;
-  width: 16px;
-  height: 16px;
+.checkIcon {
+  @include icon('@assets/icons/check-circle-outline.svg');
 }
 
-.iconSecondary {
-  padding: 0;
-  fill: $neutral-700;
-  width: 16px;
-  height: 16px;
+.copyIcon {
+  @include icon('@assets/icons/copy-outline.svg');
+}
+
+.icon {
+  background-color: $neutral-600;
 }
 
 .checkCircleOutline {

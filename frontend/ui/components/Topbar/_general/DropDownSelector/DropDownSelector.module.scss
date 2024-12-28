@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 @mixin select {
   display: flex;
@@ -41,6 +42,10 @@
   padding: 0;
 }
 
-.icon {
-  fill: $neutral-700;
+.arrowUpIcon {
+  @include icon('@assets/icons/arrow-up-outline.svg');
+}
+
+.arrowDownIcon {
+  @include icon('@assets/icons/arrow-down-outline.svg');
 }

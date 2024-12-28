@@ -1,5 +1,4 @@
 import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
-import { TrashBinOutline } from '../../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '../../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
@@ -24,7 +23,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
       <div className={cn.container}>
         <Label color="grey">Pair</Label>
         <Button
-          IconLeft={TrashBinOutline}
+          iconLeftStyles={cn.icon}
           size="small"
           color="tertiary"
           onClick={() => remove(index)}

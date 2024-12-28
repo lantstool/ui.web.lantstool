@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Button } from '../../../../_general/Button/Button.jsx';
-import { TrashBinOutline } from '../../../../_general/icons/TrashBinOutline.jsx';
 import { DeleteConfirmationModal } from '../../../../_general/modals/DeleteConfirmationModal/DeleteConfirmationModal.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate } from 'react-router-dom';
+import cn from './DeleteModal.module.scss';
 
 export const DeleteModal = ({ space: { spaceId, name } }) => {
   const [isOpen, setOpen] = useState(false);
@@ -17,7 +17,7 @@ export const DeleteModal = ({ space: { spaceId, name } }) => {
 
   return (
     <>
-      <Button onClick={open} color="danger" IconLeft={TrashBinOutline} size="medium">
+      <Button onClick={open} color="danger" iconLeftStyles={cn.icon} size="medium">
         Delete space
       </Button>
       {isOpen && (

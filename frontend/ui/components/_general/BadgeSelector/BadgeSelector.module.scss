@@ -1,3 +1,13 @@
-.badge{
+@use '@styles/icons' as *;
+
+.badge {
   position: relative;
+}
+
+.arrowUpIcon {
+  @include icon('@assets/icons/arrow-up-outline.svg');
+}
+
+.arrowDownIcon {
+  @include icon('@assets/icons/arrow-down-outline.svg');
 }

@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .headCard {
   display: grid;
@@ -15,7 +16,6 @@
   display: flex;
   flex-direction: column;
 }
-
 
 .type {
   @include text-xs-regular;
@@ -41,4 +41,8 @@
 .buttonWrapper {
   display: flex;
   gap: 8px;
+}
+
+.exportIcon {
+  @include icon('@assets/icons/export-linear.svg');
 }

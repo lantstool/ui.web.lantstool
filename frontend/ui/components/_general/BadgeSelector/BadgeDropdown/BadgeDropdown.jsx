@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { Badge } from '../../Badge/Badge.jsx';
-import { CheckMarkOutline } from '../../icons/CheckmarkOutline.jsx';
 import { badgeList } from '../../../../../store/helpers/getRandomBadge.js';
 import { useStoreEffect } from '@react-vault';
 import cn from './BadgeDropdown.module.scss';
@@ -43,7 +42,7 @@ export const BadgeDropdown = ({ closeMenu, isOpen, badge, form, type, spaceId })
                 <Badge badge={item} />
                 <p className={cn.title}>{item}</p>
               </div>
-              <CheckMarkOutline style={item === badge ? cn.icon : cn.hidden} />
+              <span className={item === badge ? cn.icon : cn.hidden} />
             </button>
           ))}
         </div>

@@ -1,6 +1,5 @@
 import { ImportKeyModal } from '../../_general/ImportKeyModal/ImportKeyModal.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
-import { KeySquareBold } from '../../../../../_general/icons/KeySquareBold.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import cn from './Empty.module.scss';
 
@@ -10,7 +9,7 @@ export const Empty = () => {
   return (
     <div className={cn.empty}>
       <div className={cn.wrapper}>
-        <KeySquareBold style={cn.icon} />
+        <span className={cn.icon} />
         <h2 className={cn.title}>
           Looks empty. Import your first key to begin, or add one directly through a transaction.
         </h2>

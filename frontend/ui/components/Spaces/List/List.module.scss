@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .list {
   display: flex;
@@ -42,12 +43,14 @@
   align-content: center;
   cursor: pointer;
   &:hover {
-    .icon {
-      fill: $neutral-800;
+    .iconSettings {
+      background-color: $neutral-800;
     }
   }
 }
 
-.icon {
-  padding: 4px;
+.iconSettings {
+  @include icon('@assets/icons/settings-outline.svg');
+  background-color: $neutral-600;
+  margin: 4px;
 }

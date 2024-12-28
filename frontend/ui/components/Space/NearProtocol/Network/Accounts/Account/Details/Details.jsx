@@ -3,7 +3,6 @@ import { useLoader } from '@hooks/useLoader.js';
 import { useParams } from 'react-router-dom';
 import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
 import { Item } from './Item/Item.jsx';
-import { KeySquareBold } from '../../../../../../_general/icons/KeySquareBold.jsx';
 import { Note } from './Note/Note.jsx';
 import accountCircleOutline from '@assets/accountCircleOutline.svg';
 import lockKeyholeOutline from '@assets/lockKeyholeOutline.svg';
@@ -41,7 +40,7 @@ export const Details = () => {
   if (!balance)
     return (
       <div className={cn.empty}>
-        <KeySquareBold style={cn.icon} />
+        <span className={cn.icon} />
         <h1 className={cn.title}>This account is not yet on-chain.</h1>
       </div>
     );

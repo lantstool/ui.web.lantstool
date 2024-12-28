@@ -1,12 +1,6 @@
-import { SettingsOutline } from '../../_general/icons/SettingsOutline.jsx';
-import { FeedbackOutline } from '../../_general/icons/FeedbackOutline.jsx';
 import { Popper } from '../_general/Popper/Popper.jsx';
 import { Link, useNavigate } from 'react-router-dom';
-import { Github } from '../../_general/icons/Github.jsx';
-import { X } from '../../_general/icons/X.jsx';
-import { Telegram } from '../../_general/icons/Telegram.jsx';
 import { Button } from '../../_general/Button/Button.jsx';
-import { MenuDotsOutline } from '../../_general/icons/MenuDotsOutline.jsx';
 import { useState } from 'react';
 import cn from './SideMenu.module.scss';
 
@@ -24,16 +18,16 @@ export const SideMenu = () => {
 
   return (
     <div className={cn.sideMenu}>
-      <Button color="tertiary" size="small" IconLeft={MenuDotsOutline} onClick={openMenu} />
+      <Button color="tertiary" size="small" iconLeftStyles={cn.menuIcon} onClick={openMenu} />
       <Popper isOpen={isOpen} closeMenu={closeMenu} position="right">
         <div className={cn.container}>
           <div className={cn.wrapper}>
             <button className={cn.button} onClick={goToSettings}>
-              <SettingsOutline />
+              <span className={cn.settingsIcon} />
               Settings
             </button>
             <button className={cn.button}>
-              <FeedbackOutline />
+              <span className={cn.feedBackIcon} />
               Share feedback
             </button>
           </div>
@@ -44,19 +38,26 @@ export const SideMenu = () => {
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
+                className={cn.icon}
                 to="https://github.com/lantstool/ui.web.lantstool"
               >
-                <Github style={cn.icon} />
-              </Link>
-              <Link target="_blank" rel="noopener noreferrer" to="https://x.com/?lang=uk">
-                <X style={cn.icon} />
+                <span className={cn.githubIcon} />
               </Link>
               <Link
+                className={cn.icon}
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://x.com/?lang=uk"
+              >
+                <span className={cn.xIcon} />
+              </Link>
+              <Link
+                className={cn.icon}
                 target="_blank"
                 rel="noopener noreferrer"
                 to="https://web.telegram.org/k/#@azov_media"
               >
-                <Telegram style={cn.icon} />
+                <span className={cn.telegramIcon} />
               </Link>
             </div>
           </div>

@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .item {
   display: flex;
@@ -13,4 +14,8 @@
   * {
     cursor: inherit;
   }
+}
+
+.networkIcon {
+  @include icon('@assets/icons/network-bold.svg');
 }

@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .container {
   height: max-content;
@@ -135,15 +136,16 @@
   &:disabled {
     cursor: default;
   }
-  :hover {
+  &:hover {
     .icon {
-      fill: $neutral-800;
+      background-color: $neutral-800;
     }
   }
 }
 
 .icon {
-  fill: $neutral-600;
+  @include icon('@assets/icons/backspace-outline.svg');
+  background-color: $neutral-600;
 }
 
 .wrapper {

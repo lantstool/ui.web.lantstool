@@ -1,8 +1,13 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .accountId {
   @include text-lg-semibold;
   color: $neutral-800;
   word-break: break-all;
+}
+
+.icon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
 }
