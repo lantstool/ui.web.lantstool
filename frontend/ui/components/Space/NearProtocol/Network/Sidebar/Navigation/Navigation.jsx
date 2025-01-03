@@ -36,7 +36,7 @@ export const Navigation = ({ isSidebarMinimized }) => (
       name="Utils"
       icon={cn.utilities}
       activeIcon={cn.utilitiesActive}
-      to="tools"
+      to="utils"
       isSidebarMinimized={isSidebarMinimized}
     />
       <LinkItem

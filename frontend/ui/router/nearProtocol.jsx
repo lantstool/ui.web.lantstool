@@ -12,7 +12,7 @@ import { Keys } from '../components/Space/NearProtocol/Network/Keys/Keys.jsx';
 import { List as KeysList } from '../components/Space/NearProtocol/Network/Keys/List/List.jsx';
 import { Network } from '../components/Space/NearProtocol/Network/Network.jsx';
 import { Settings } from '../components/Space/NearProtocol/Network/Settings/Settings.jsx';
-import { Tools } from '../components/Space/NearProtocol/Network/Tools/Tools.jsx';
+import { Utils } from '../components/Space/NearProtocol/Network/Utils/Utils.jsx';
 import { Transaction } from '../components/Space/NearProtocol/Network/Transactions/Transaction/Transaction.jsx';
 import { Transactions } from '../components/Space/NearProtocol/Network/Transactions/Transactions.jsx';
 import { Networks } from '../components/Space/NearProtocol/Networks/Networks.jsx';
@@ -46,7 +46,7 @@ export const nearProtocol = (
         </Route>
       </Route>
 
-      <Route path="tools" element={<Tools />} />
+      <Route path="utils" element={<Utils />} />
       <Route path="settings" element={<Settings />} />
     </Route>
   </Route>
