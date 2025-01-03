@@ -9,7 +9,9 @@ export const PageNotFound = () => {
     <div className={cn.pageNotFound}>
       <div className={cn.wrapper}>
         <p>{message}</p>
-        <Link to="/">Got it!</Link>
+        <Link to="/" replace>
+          Got it!
+        </Link>
       </div>
     </div>
   );

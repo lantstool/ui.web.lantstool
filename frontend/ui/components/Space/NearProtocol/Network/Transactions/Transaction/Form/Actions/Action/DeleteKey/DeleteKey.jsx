@@ -1,14 +1,13 @@
 import { useDropdownOptions } from './useDropdownOptions.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 
 export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle }) => {
-  const { control, setValue } = form;
+  const { control } = form;
   const options = useDropdownOptions(control);
 
   const onChange = (field) => (event) => {
     field.onChange(event);
-    setValue('accessKey', event);
   };
 
   return (
@@ -26,7 +25,7 @@ export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle 
         name={getName('accessKey')}
         options={options}
         label="Access key"
-        placeholder="Select or enter..."
+        placeholder="Select or type..."
         dynamicErrorSpace
         isSearchable
         isClearable

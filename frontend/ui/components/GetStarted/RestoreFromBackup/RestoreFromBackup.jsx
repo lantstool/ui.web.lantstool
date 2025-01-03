@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BaseModal } from '../../_general/modals/BaseModal/BaseModal.jsx';
 import { ModalHeader } from '../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { ModalFooter } from '../../_general/modals/ModalFooter/ModalFooter.jsx';
-import { FileUploader } from '../../_general/FileUploader/FileUploader.jsx';
+import { FileUploader } from '../../_general/fileUploader/FileUploader/FileUploader.jsx';
 import cn from './RestoreFromBackup.module.scss';
 
 export const RestoreFromBackup = ({ closeModal }) => {
@@ -17,7 +17,7 @@ export const RestoreFromBackup = ({ closeModal }) => {
   };
 
   return (
-    <BaseModal close={closeModal}>
+    <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
       <ModalHeader title="Restore from backup" close={closeModal} />
       <div className={cn.bodyWrapper}>
         <p className={cn.description}>

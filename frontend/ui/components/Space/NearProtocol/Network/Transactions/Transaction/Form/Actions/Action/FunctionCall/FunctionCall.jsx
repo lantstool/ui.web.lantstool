@@ -1,7 +1,7 @@
-import { Arguments } from './Arguments/Arguments.jsx';
+import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
@@ -22,7 +22,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
   const ContractOptions = useAccountsOptions();
   const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
 
-  //TODO lock receiver when we select contract id
   return (
     <ActionBase
       removeAction={removeAction}
@@ -41,7 +40,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           isSearchable
           isClearable
           creatableSelect
-          placeholder="contract"
+          placeholder="Select or type..."
           copy={false}
           tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
         />
@@ -50,12 +49,26 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           options={methodNameOptions}
           name={getName('methodName')}
           label="Method name"
-          placeholder="contract_method"
+          isSearchable
+          isClearable
+          creatableSelect
+          placeholder="Select or type..."
           copy={false}
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
-
-        <Arguments form={form} name={getName('arguments')} />
+        <FormJsonEditor
+          name={name}
+          control={control}
+          topbar={{
+            label: 'Arguments',
+            tooltip: (
+              <>
+                Type contract call arguments <br /> in JSON format
+              </>
+            ),
+          }}
+          customTheme={{ contentMinHeight: '200px' }}
+        />
         <div className={cn.wrapper}>
           <InputActionGroup
             control={control}
@@ -64,6 +77,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             options={gasOptions}
             dropDownName={getName('gasType')}
             dynamicErrorSpace
+            placeholder={0}
             tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
           />
           <InputActionGroup
@@ -73,6 +87,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             options={depositOptions}
             dropDownName={getName('depositType')}
             dynamicErrorSpace
+            placeholder={0}
             tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
           />
         </div>

@@ -1,5 +1,11 @@
+@use '@styles/icons' as *;
+
 .container {
   position: absolute;
   top: 40px;
   left: 40px;
+}
+
+.icon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
 }

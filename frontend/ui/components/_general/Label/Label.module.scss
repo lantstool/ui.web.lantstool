@@ -1,52 +1,33 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
-@mixin label {
-  height: max-content;
+.label {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  margin: 0;
-  border-radius: 12px;
-}
-
-@mixin span {
-  @include label;
-  @include text-sm-medium;
-  padding: 2px 8px;
-}
-
-@mixin textStyle($textColor) {
-  color: $textColor;
-}
-
-@mixin iconStyle($iconColor) {
-  fill: $iconColor;
 }
 
 .text {
-  @include textStyle($neutral-700);
+  color: $neutral-700;
+  word-break: break-all;
 }
 
-.icon {
-  @include iconStyle($neutral-700);
-}
-
-.iconBase{
+.iconBase {
   background-color: $neutral-700;
 }
 
 @mixin colorScheme($bgColor, $textColor, $iconColor) {
-  @include span;
+  @include text-sm-medium;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  border-radius: 12px;
+  padding: 2px 8px;
   background-color: $bgColor;
   .text {
-    @include textStyle($textColor);
+    color: $textColor;
   }
-  .icon {
-    @include iconStyle($iconColor);
-  }
-  .iconBase{
+  .iconBase {
     background-color: $iconColor;
   }
 }

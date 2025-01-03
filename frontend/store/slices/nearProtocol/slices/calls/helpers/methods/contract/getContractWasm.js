@@ -1,4 +1,10 @@
-import { getBlockTargetParams } from '../utils.js';
+import {
+  getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
+  getFormBlockTarget,
+  transformForExport,
+} from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getContractWasm(
@@ -11,6 +17,24 @@ const rpcCaller = (rpc, params) =>
     }),
   );
 
+const exportTransformer = transformForExport({
+  version: '1.0',
+  paramsExtractor: (params) =>
+    getBlockTargetParams({
+      contractId: getDropdownValueForExport(params.contractId),
+      blockTarget: params.blockTarget,
+      finality: params.finality?.value,
+      blockId: params.blockId,
+    }),
+});
+
+const importTransformer = ({ params }) => ({
+  contractId: getDropdownValueForImport(params.contractId),
+  ...getFormBlockTarget(params),
+});
+
 export const getContractWasm = {
   rpcCaller,
+  exportTransformer,
+  importTransformer,
 };

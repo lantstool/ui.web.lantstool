@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { zipSync } from 'fflate';
 import { effect } from '@react-vault';
+import { downloadZip } from '../helpers/downloadZip.js';
 
 const fetchFileFromOPFS = async (name) => {
   const dirHandle = await navigator.storage.getDirectory();
@@ -19,20 +20,6 @@ const createZipFromFile = async (file, name) => {
       mtime: Date.now(),
     },
   );
-};
-
-const downloadZip = async (zipped, name) => {
-  const blob = new Blob([zipped], { type: 'application/zip' });
-
-  const a = document.createElement('a');
-  const url = URL.createObjectURL(blob);
-
-  a.href = url;
-  a.download = `${name}.zip`;
-
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
 };
 
 export const createBackup = effect(async ({ store }) => {

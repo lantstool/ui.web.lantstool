@@ -1,15 +1,22 @@
-import { useState } from 'react';
-import { FileUploader } from '../../../../../../../../../_general/FileUploader/FileUploader.jsx';
+import { useStoreEffect } from '@react-vault';
+import { useController } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+import { FileUploader } from '../../../../../../../../../_general/fileUploader/FileUploader/FileUploader.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FieldErrorLabel } from '../../../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
-import cn from './DeployContract.module.scss';
 
-export const DeployContract = ({ iconStyle, name, order, removeAction, form, getName }) => {
-  const [file, setFile] = useState(null);
+export const DeployContract = ({ iconStyle, name, order, index, removeAction, form, getName }) => {
+  const { transactionId } = useParams();
+  const uploadContract = useStoreEffect((store) => store.nearProtocol.transactions.uploadContract);
+
   const {
-    formState: { errors },
-    setValue,
-  } = form;
+    field: { value, onChange: fieldOnChange },
+    fieldState: { error },
+  } = useController({ name: getName('fileName'), control: form.control });
+
+  const setFile = async (file) => {
+    const setFieldValue = (fileName) => fieldOnChange(fileName);
+    await uploadContract({ transactionId, actionIndex: index, file, setFieldValue });
+  };
 
   return (
     <ActionBase
@@ -18,20 +25,42 @@ export const DeployContract = ({ iconStyle, name, order, removeAction, form, get
       order={order}
       removeAction={removeAction}
       color="blue"
-      tooltipContent="Contract code"
+      tooltipContent="Contract Code"
     >
-      <h2 className={cn.title}>Contract code</h2>
-      <div className={cn.container}>
-        <FileUploader
-          setValue={setValue}
-          name={getName('file')}
-          file={file}
-          setFile={setFile}
-          callToActionText="Upload a file or drag and drop it here"
-          allowedFileTypes={{ 'application/wasm': ['.wasm'] }}
-        />
-      </div>
-      <FieldErrorLabel dynamicErrorSpace error={errors[getName('file')?.message]} />
+      <FileUploader
+        fileName={value}
+        setFile={setFile}
+        allowedFileTypes={{ 'application/wasm': ['.wasm'] }}
+        callToActionText="Upload a .wasm or drag&drop it here"
+        topbar={{ label: 'Contract WASM' }}
+        error={error?.message}
+        dynamicErrorSpace
+      />
     </ActionBase>
   );
 };
+
+{
+  /*<FormFileUploader*/
+}
+{
+  /*  name={getName('file')}*/
+}
+{
+  /*  control={form.control}*/
+}
+{
+  /*  topbar={{ label: 'Contract WASM' }}*/
+}
+{
+  /*  callToActionText="Upload a .wasm or drag&drop it here"*/
+}
+{
+  /*  allowedFileTypes={{ 'application/wasm': ['.wasm'] }}*/
+}
+{
+  /*  dynamicErrorSpace*/
+}
+{
+  /*/>*/
+}

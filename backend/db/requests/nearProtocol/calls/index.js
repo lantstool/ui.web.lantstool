@@ -8,6 +8,7 @@ import { duplicateOne } from './duplicateOne.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
 import { validateCallId } from './validateCallId.js';
+import { importOne } from './importOne.js';
 
 export const calls = {
   getCount,
@@ -20,4 +21,5 @@ export const calls = {
   duplicateOne,
   removeOne,
   validateCallId,
+  importOne,
 };

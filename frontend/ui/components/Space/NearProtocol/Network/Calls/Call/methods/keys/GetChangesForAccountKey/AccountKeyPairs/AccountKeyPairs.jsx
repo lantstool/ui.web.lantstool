@@ -1,7 +1,6 @@
 import { useFieldArray } from 'react-hook-form';
 import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
 import { AccountKeyPair } from './AccountKeyPair/AccountKeyPair.jsx';
-import { AddSquareOutline } from '../../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import cn from './AccountKeyPairs.module.scss';
 
 const getPlaceholderData = (accountKeyPairs) =>
@@ -38,7 +37,7 @@ export const AccountKeyPairs = ({ form, accountKeyPairs }) => {
           />
         ))}
       </div>
-      <Button IconLeft={AddSquareOutline} size="medium" color="secondary" onClick={add}>
+      <Button iconLeftStyles={cn.icon} size="medium" color="secondary" onClick={add}>
         Add Pair
       </Button>
     </div>

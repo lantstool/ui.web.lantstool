@@ -3,10 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
-import { AddSquareOutline } from '../../../../../_general/icons/AddSquareOutline.jsx';
-import { ImportOutline } from '../../../../../_general/icons/ImportOutline.jsx';
 import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';
-import { ImportModal } from './ImportModal/ImportModal.jsx';
+import { ImportModal } from '../_general/ImportModal/ImportModal.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ list }) => {
@@ -33,12 +31,12 @@ export const List = ({ list }) => {
       <div className={cn.list}>
         <div className={cn.topBar}>
           <button className={cn.createBtn} onClick={create}>
-            <AddSquareOutline style={cn.icon} />
+            <span className={cn.addIcon} />
             <h2 className={cn.title}>New call</h2>
           </button>
           <Tooltip style={cn.tooltip} arrow={false} content="Import call" placement="top">
             <button className={cn.exportBtn} onClick={openImport}>
-              <ImportOutline style={cn.icon} />
+              <span className={cn.importIcon} />
             </button>
           </Tooltip>
         </div>

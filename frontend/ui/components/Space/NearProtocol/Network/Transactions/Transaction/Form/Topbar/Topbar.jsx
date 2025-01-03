@@ -3,9 +3,6 @@ import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
-import { DuplicateOutline } from '../../../../../../../_general/icons/DuplicateOutline.jsx';
-import { ExportLinear } from '../../../../../../../_general/icons/ExportLinear.jsx';
-import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { dateFormatter } from '../../../../../../../../../store/helpers/formatDate.js';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';
@@ -26,13 +23,23 @@ export const Topbar = ({ transaction }) => {
       </div>
       <div className={cn.buttonWrapper}>
         <Tooltip arrow={false} content="Duplicate" placement="top">
-          <Button onClick={duplicate} size="medium" color="secondary" IconLeft={DuplicateOutline} />
+          <Button
+            onClick={duplicate}
+            size="medium"
+            color="secondary"
+            iconLeftStyles={cn.duplicateIcon}
+          />
         </Tooltip>
         <Tooltip arrow={false} content="Export JSON" placement="top">
-          <Button size="medium" color="secondary" IconLeft={ExportLinear} />
+          <Button size="medium" color="secondary" iconLeftStyles={cn.exportIcon} />
         </Tooltip>
         <Tooltip arrow={false} content="Delete" placement="top">
-          <Button onClick={openModal} size="medium" color="secondary" IconLeft={TrashBinOutline} />
+          <Button
+            onClick={openModal}
+            size="medium"
+            color="secondary"
+            iconLeftStyles={cn.deleteIcon}
+          />
         </Tooltip>
       </div>
       {isModalOpen && <DeleteModal transaction={transaction} closeModal={closeModal} />}

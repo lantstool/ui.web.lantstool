@@ -1,8 +1,7 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
-import { AddSquareOutline } from '../../../../../../../../../_general/icons/AddSquareOutline.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
-import { FormDropdownGroup } from '../../../../../../../../../_general/FormDropdownGroup/FormDropdownGroup.jsx';
+import { FormDropdownGroup } from '../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './AccountIds.module.scss';
 
@@ -51,7 +50,7 @@ export const AccountIds = ({ form, accountIds }) => {
           iconStyles={cn.deleteIcon}
         />
       ))}
-      <Button IconLeft={AddSquareOutline} size="medium" color="secondary" onClick={add}>
+      <Button iconLeftStyles={cn.icon} size="medium" color="secondary" onClick={add}>
         Add Account
       </Button>
     </div>

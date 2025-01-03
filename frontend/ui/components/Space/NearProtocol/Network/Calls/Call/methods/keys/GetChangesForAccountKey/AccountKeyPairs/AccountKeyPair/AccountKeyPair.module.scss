@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .accountKeyPair {
   display: flex;
@@ -18,4 +19,8 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.icon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
 }

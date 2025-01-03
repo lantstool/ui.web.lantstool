@@ -1,3 +1,4 @@
+import { Label } from '../../../../../../../../_general/Label/Label.jsx';
 import { appendAction } from './appendAction.js';
 import { Item } from './Item/Item.jsx';
 import cn from './AddAction.module.scss';
@@ -5,6 +6,8 @@ import cn from './AddAction.module.scss';
 export const AddAction = ({ append, fields }) => {
   const isCreateAccount = fields.length < 1;
   const isDeleteAccount = fields.find((action) => action.type === 'DeleteAccount');
+
+  if (isDeleteAccount) return null;
 
   const createAccount = () => {
     appendAction.createAccount(append);
@@ -35,62 +38,45 @@ export const AddAction = ({ append, fields }) => {
   };
 
   return (
-    <div>
-      <h2 className={cn.title}>Add actions</h2>
-      <div className={cn.addAction}>
-        <div className={cn.container}>
+    <div className={cn.addAction}>
+      <div className={cn.labelWrapper}>
+        <Label iconStyles={cn.addActionIcon} color="grey">
+          Add Action
+        </Label>
+      </div>
+      <div className={cn.actions}>
+        <div className={cn.column}>
           <Item
             onClick={createAccount}
-            disabled={!isCreateAccount || isDeleteAccount}
+            disabled={!isCreateAccount}
             text="Create Account"
             iconStyles={cn.iconCreateAccount}
             color="green"
           />
-          <Item
-            onClick={addKey}
-            text="Add Key"
-            iconStyles={cn.iconAddKey}
-            color="green"
-            disabled={isDeleteAccount}
-          />
-          <Item
-            onClick={transfer}
-            text="Transfer"
-            iconStyles={cn.iconTransfer}
-            color="blue"
-            disabled={isDeleteAccount}
-          />
+          <Item onClick={addKey} text="Add Key" iconStyles={cn.iconAddKey} color="green" />
+          <Item onClick={transfer} text="Transfer" iconStyles={cn.iconTransfer} color="blue" />
         </div>
-        <div className={cn.container}>
+        <div className={cn.column}>
           <Item
             onClick={deployContract}
             text="Deploy Contract"
             iconStyles={cn.iconDeployContract}
             color="deepBlue"
-            disabled={isDeleteAccount}
           />
           <Item
             onClick={functionCall}
-            text="FunctionCall"
+            text="Function Call"
             iconStyles={cn.iconFunctionCall}
             color="purple"
-            disabled={isDeleteAccount}
           />
         </div>
-        <div className={cn.container}>
-          <Item
-            onClick={deleteKey}
-            text="Delete Key"
-            iconStyles={cn.iconDeleteKey}
-            color="red"
-            disabled={isDeleteAccount}
-          />
+        <div className={cn.column}>
+          <Item onClick={deleteKey} text="Delete Key" iconStyles={cn.iconDeleteKey} color="red" />
           <Item
             onClick={deleteAccount}
             text="Delete Account"
             iconStyles={cn.iconDeleteAccount}
             color="red"
-            disabled={isDeleteAccount}
           />
         </div>
       </div>

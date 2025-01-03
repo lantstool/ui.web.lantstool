@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .selectBlockchain {
   position: relative;
@@ -23,6 +24,20 @@
 
 .icon {
   fill: $neutral-700;
+}
+
+.nearToken {
+  @include icon('@assets/icons/near-token.svg');
+}
+
+.nearTokenLight {
+  @include icon('@assets/icons/near-token.svg');
+  background-color: $neutral-600;
+}
+
+.checkmarkIcon {
+  @include icon('@assets/icons/checkmark-outline.svg');
+  background-color: $neutral-600;
 }
 
 .dropdown {
@@ -58,7 +73,7 @@
 }
 
 .title {
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
   max-width: 276px;
   white-space: nowrap;
@@ -93,9 +108,10 @@
   gap: 8px;
   border: 1px dashed $neutral-200;
   border-radius: 4px;
+  align-items: center;
 }
 
-.clockIcon {
+.clock {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,9 +122,14 @@
   height: 16px;
 }
 
+.clockIcon {
+  @include icon('@assets/icons/clock-circle-outline.svg');
+  background-color: $accent-300;
+}
+
 .message {
   @include text-xs-medium;
-  width: 168px;
+  width: 192px;
   color: $neutral-600;
   padding: 0;
   margin: 0;

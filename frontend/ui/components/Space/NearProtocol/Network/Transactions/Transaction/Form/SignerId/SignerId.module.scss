@@ -1,4 +1,14 @@
+@use '@styles/icons' as *;
+
 .signerAccount {
   width: 100%;
   margin-bottom: 8px;
+}
+
+.icon{
+  @include icon('@assets/icons/near-token.svg')
+}
+
+.importIcon{
+  @include icon('@assets/icons/import-outline.svg')
 }

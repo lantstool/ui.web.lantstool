@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .headerContainer {
   display: flex;
@@ -9,4 +10,8 @@
 .title {
   @include text-lg-medium;
   color: $neutral-800;
+}
+
+.icon {
+  @include icon('@assets/icons/close-circle-outline.svg');
 }

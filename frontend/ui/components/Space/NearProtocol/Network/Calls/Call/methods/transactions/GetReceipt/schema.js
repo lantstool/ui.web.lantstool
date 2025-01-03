@@ -1,5 +1,6 @@
-import { object, string } from 'yup';
+import { object } from 'yup';
+import { schemes } from '../../../../../_general/validations/schemes.js';
 
 export const schema = object({
-  receiptId: string().required('Receipt Id is a mandatory field'),
+  receiptId: schemes.hash('Receipt ID'),
 });

@@ -23,7 +23,7 @@ const createOptionsFromKeys = ({ fullAccess, functionCall }) => [
   },
 ];
 
-export const useDropdownOptions = (control) => {
+export const useDropdownOptions = (control, signerKey) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const getAccountKeys = useStoreEffect((store) => store.nearProtocol.accounts.getAccountKeys);
@@ -39,7 +39,7 @@ export const useDropdownOptions = (control) => {
         setOptions([]);
       }
     })();
-  }, [accountId]);
+  }, [accountId, signerKey]);
 
   return options;
 };

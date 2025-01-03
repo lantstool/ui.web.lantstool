@@ -1,10 +1,7 @@
 import { useStoreEffect, useStoreAction, useStoreState } from '@react-vault';
 import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
-import { HistoryOutline } from '../../../../../../../../../../_general/icons/HistoryOutline.jsx';
-import { SaveOutline } from '../../../../../../../../../../_general/icons/SaveOutline.jsx';
 import { useParams } from 'react-router-dom';
-import { ArrowRightOutline } from '../../../../../../../../../../_general/icons/ArrowRightOutline.jsx';
 import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './ActionBar.module.scss';
 
@@ -34,7 +31,7 @@ export const ActionBar = ({ form, call }) => {
             size="medium"
             onClick={revert}
             color="tertiary"
-            IconLeft={HistoryOutline}
+            iconLeftStyles={cn.historyIcon}
           />
         </Tooltip>
         <Tooltip disabled={!hasChanges} arrow={false} content="Save changes" placement="top">
@@ -43,7 +40,7 @@ export const ActionBar = ({ form, call }) => {
             size="medium"
             onClick={save}
             color="tertiary"
-            IconLeft={SaveOutline}
+            iconLeftStyles={cn.saveIcon}
           />
         </Tooltip>
         <hr className={cn.border} />
@@ -59,7 +56,7 @@ export const ActionBar = ({ form, call }) => {
               size="medium"
               color="tertiary"
               onClick={openResult}
-              IconRight={ArrowRightOutline}
+              iconRightStyles={cn.arrowRightIcon}
             >
               Open result
             </Button>

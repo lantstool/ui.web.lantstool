@@ -1,4 +1,10 @@
+@use '@styles/icons' as *;
+
 .signerKey {
   width: 100%;
   margin-bottom: 24px;
+}
+
+.importIcon{
+  @include icon('@assets/icons/import-outline.svg')
 }

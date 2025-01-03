@@ -1,25 +1,38 @@
+import { config } from '../../../../../../../ui/components/Space/NearProtocol/Network/Calls/Call/methods/_general/config.js';
+
 export const getBlockTargetParams = ({ finality, blockId, blockTarget, ...rest }) =>
   blockTarget === 'latest' ? { ...rest, finality } : { ...rest, blockId };
 
-export const toFormBlockTarget = ({ finality, blockId, ...rest }) =>
+export const transformForExport =
+  ({ paramsExtractor, version }) =>
+  ({ call, form }) => {
+    const params = paramsExtractor ? paramsExtractor(form.getValues()) : undefined;
+
+    return {
+      blockchain: 'near-protocol',
+      networkId: call.networkId,
+      call: {
+        version,
+        name: call.name,
+        method: form.getValues().method.value,
+        params,
+      },
+    };
+  };
+
+export const getFormBlockTarget = ({ finality, blockId }) =>
   finality
     ? {
-        ...rest,
-        finality: { value: finality, label: finality },
+        blockTarget: 'latest',
+        finality: config.finality[finality],
+        blockId: '',
       }
-    : finality;
+    : {
+        blockTarget: 'specific',
+        finality: config.finality.final,
+        blockId,
+      };
 
-export const transformForExport =
-  ({ paramsExtractor, version = '1.0' }) =>
-  ({ call, form }) => ({
-    blockchain: 'near-protocol',
-    networkId: call.networkId,
-    call: {
-      version,
-      name: call.name,
-      method: form.getValues().method.value,
-      params: {
-        ...paramsExtractor(form.getValues()),
-      },
-    },
-  });
+export const getFormWaitUntil = (waitUntil) => config.waitUntil[waitUntil];
+export const getDropdownValueForExport = (value) => value?.value || '';
+export const getDropdownValueForImport = (value) => (value ? { value, label: value } : null);

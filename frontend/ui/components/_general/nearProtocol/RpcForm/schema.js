@@ -8,13 +8,3 @@ export const schema = object({
     value: string().required('Mandatory field').max(250),
   }).nullable(),
 });
-/*
-header: yup.lazy((value) =>
-    value === null
-      ? yup.mixed().nullable()
-      : yup.object({
-          name: yup.string().required('Mandatory field').max(250),
-          value: yup.string().required('Mandatory field').max(250),
-        }),
-  ),
- */

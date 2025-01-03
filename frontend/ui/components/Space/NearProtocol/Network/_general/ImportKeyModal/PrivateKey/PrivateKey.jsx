@@ -8,12 +8,12 @@ import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cn from './PrivateKey.module.scss';
 
-export const PrivateKey = ({ closeModal }) => {
+export const PrivateKey = ({ privateKeySchema = null, closeModal, setKey }) => {
   const { spaceId, networkId } = useParams();
   const importFromPrivateKey = useStoreEffect(
     (store) => store.nearProtocol.keys.importFromPrivateKey,
   );
-  const schema = createSchema(spaceId, networkId);
+  const schema = privateKeySchema ? privateKeySchema : createSchema(spaceId, networkId);
 
   const form = useForm({
     mode: 'onTouched',
@@ -26,11 +26,11 @@ export const PrivateKey = ({ closeModal }) => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = form;
 
   const onSubmit = handleSubmit((formValues) => {
-    importFromPrivateKey({ formValues, spaceId, networkId, closeModal });
+    importFromPrivateKey({ formValues, spaceId, networkId, closeModal, setKey });
   });
 
   return (
@@ -53,7 +53,6 @@ export const PrivateKey = ({ closeModal }) => {
         action={{
           label: 'Import',
           onClick: onSubmit,
-          disabled: !isValid,
         }}
       />
     </form>

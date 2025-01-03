@@ -44,8 +44,6 @@ class History {
   constructor(name, version) {
     this.localStoragesName = `${name}.history.${version}`;
     this.history = this.load();
-
-    window.addEventListener('beforeunload', this.save);
   }
 
   load = () => {
@@ -95,9 +93,25 @@ class History {
       // slice method doesn't include the 2 argument, this is why we use index + 1
       set(this.history, [...segments.slice(0, index + 1), 'next'], segments[index + 1]);
     });
+
+    this.save();
   };
-  // TODO: Implement
-  remove = (path) => {};
+
+  // When we delete space we have to pass '/space/1' even we are on the page 'space/1/settings';
+  remove = (path) => {
+    const segments = this.splitPathOnSegments(path);
+    // Get parent node which contains the deleting node
+    const parentPath = segments.slice(0, -1);
+    const parentNode = get(this.history, parentPath);
+    // Remove target node
+    const nodeToRemove = segments[segments.length - 1];
+    delete parentNode[nodeToRemove];
+    // If the node is currently active we have to clear 'next' connection as well
+    if (parentNode.next === nodeToRemove) {
+      delete parentNode.next;
+    }
+    this.save();
+  };
 
   reset = () => {
     this.history = {};

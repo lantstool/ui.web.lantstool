@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .settings {
   position: relative;
@@ -59,4 +60,8 @@
   padding: 0;
   margin: 0;
   color: $neutral-700;
+}
+
+.exportIcon {
+  @include icon('@assets/icons/export-linear.svg');
 }

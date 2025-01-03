@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { TrashBinOutline } from '../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { DeleteModal as GeneralDeleteModal } from '../../../../../../../_general/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -21,7 +20,7 @@ export const DeleteModal = () => {
 
   return (
     <>
-      <Button IconLeft={TrashBinOutline} size="medium" color="secondary" onClick={open} />
+      <Button iconLeftStyles={cn.icon} size="medium" color="secondary" onClick={open} />
       {isOpen && (
         <GeneralDeleteModal
           close={close}

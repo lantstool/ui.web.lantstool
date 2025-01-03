@@ -1,0 +1,13 @@
+.fileUploader {
+  grid-area: c;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.modalFooter {
+  grid-area: d;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
+}

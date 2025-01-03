@@ -1,6 +1,6 @@
 import { Allowance } from './Allowance/Allowance.jsx';
 import { AllowedMethods } from './AllowedMethods/AllowedMethods.jsx';
-import { FormDropdown } from '../../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
 import cn from './FunctionCall.module.scss';
@@ -19,6 +19,7 @@ export const FunctionCall = ({ form, getName }) => {
           isClearable
           isSearchable
           creatableSelect
+          placeholder="Select or type..."
           tooltip={<Tooltip placement="top" content="Contract Id" defaultContent />}
         />
       </div>

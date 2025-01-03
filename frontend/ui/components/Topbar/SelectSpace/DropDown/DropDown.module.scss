@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .dropdown {
   display: flex;
@@ -58,12 +59,22 @@
   padding: 4px;
 }
 
+.addIcon {
+  @include icon('@assets/icons/add-square-outline.svg');
+  background-color: $neutral-600;
+}
+
 .settingItem {
   @include item;
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
   padding: 8px;
   gap: 8px;
+}
+
+.settingIcon {
+  @include icon('@assets/icons/settings-outline.svg');
+  background-color: $neutral-600;
 }
 
 .itemWrapper {
@@ -73,7 +84,7 @@
 }
 
 .title {
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
   max-width: 276px;
   white-space: nowrap;
@@ -91,9 +102,12 @@
 }
 
 .icon {
-  fill: $neutral-700;
+  @include icon('@assets/icons/checkmark-outline.svg');
+  background-color: $neutral-600;
 }
 
 .hidden {
   visibility: hidden;
+  width: 16px;
+  height: 16px;
 }

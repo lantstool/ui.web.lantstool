@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { RadioButton } from '../../../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { InputActionGroup } from '../../../../../../../../../../../_general/InputActionGroup/InputActionGroup.jsx';
+import { InputActionGroup } from '../../../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import cn from './Allowance.module.scss';
 
 const options = [
@@ -22,7 +22,7 @@ export const Allowance = ({ form, getName }) => {
   const isLimitedAllowance = allowedAllowance === 'Limited';
 
   return (
-    <div className={isLimitedAllowance?cn.allowance : cn.allowanceBigMargin}>
+    <div className={isLimitedAllowance ? cn.allowance : cn.allowanceBigMargin}>
       <h2 className={cn.title}>Allowance</h2>
       <div className={cn.container}>
         <RadioButton
@@ -46,7 +46,7 @@ export const Allowance = ({ form, getName }) => {
             options={options}
             label="Amount"
             dropDownName={allowanceType}
-            // dynamicErrorSpace
+            placeholder={0}
           />
         </div>
       )}

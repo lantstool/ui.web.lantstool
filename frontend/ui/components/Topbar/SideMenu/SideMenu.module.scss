@@ -1,8 +1,13 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .sideMenu {
   position: relative;
+}
+
+.menuIcon {
+  @include icon('@assets/icons/menu-dots-outline.svg');
 }
 
 .container {
@@ -53,7 +58,7 @@
 
 @mixin text($color) {
   @include text-xs-regular;
-  padding: 4px;
+  padding: 4px 8px;
   margin: 0;
   color: $color;
 }
@@ -71,10 +76,34 @@
   gap: 4px;
 }
 
-.icon{
+.icon {
   padding: 8px;
   border-radius: 50%;
-  &:hover{
+  height: 16px;
+  width: 16px;
+  &:hover {
     background-color: $neutral-100;
   }
+}
+
+.settingsIcon {
+  @include icon('@assets/icons/settings-outline.svg');
+  background-color: $neutral-600;
+}
+
+.feedBackIcon {
+  @include icon('@assets/icons/feedback-outline.svg');
+  background-color: $neutral-600;
+}
+
+.githubIcon {
+  @include icon('@assets/socialMedia/social-media-github.svg');
+}
+
+.telegramIcon {
+  @include icon('@assets/socialMedia/social-media-telegram.svg');
+}
+
+.xIcon {
+  @include icon('@assets/socialMedia/social-media-x.svg');
 }

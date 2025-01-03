@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import { KeyList } from './KeyList/KeyList.jsx';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import { ImportKeyModal } from '../../_general/ImportKeyModal/ImportKeyModal.jsx';
+import { useToggler } from '@hooks/useToggler.js';
 import cn from './List.module.scss';
 
 export const List = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const openModal = () => {
-    setOpen(true);
-  };
+  const [isModalOpen, openModal, closeModal] = useToggler();
 
   return (
     <div className={cn.container}>
@@ -25,7 +21,7 @@ export const List = () => {
         </div>
       </div>
       <KeyList />
-      <ImportKeyModal isOpen={isOpen} setOpen={setOpen} />
+      {isModalOpen && <ImportKeyModal closeModal={closeModal} />}
     </div>
   );
 };

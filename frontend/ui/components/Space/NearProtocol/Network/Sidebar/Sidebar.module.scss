@@ -1,4 +1,5 @@
 @use '@styles/variables' as *;
+@use '@styles/icons' as *;
 
 .sidebar {
   grid-area: a;
@@ -17,14 +18,15 @@
   outline: none;
   background: none;
   cursor: pointer;
-  :hover {
+  &:hover {
     color: $neutral-800;
     .icon {
-      fill: $neutral-800;
+      background-color: $neutral-800;
     }
   }
 }
 
 .icon {
-  fill: $neutral-600;
+  @include icon('@assets/icons/sidebar-outline.svg');
+  background-color: $neutral-600;
 }

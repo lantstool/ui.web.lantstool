@@ -1,0 +1,11 @@
+.editor {
+  grid-area: c;
+}
+
+.modalFooter {
+  grid-area: d;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: flex-end;
+}

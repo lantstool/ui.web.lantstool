@@ -1,7 +1,6 @@
 import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
-import { TrashBinOutline } from '../../../../../../../../../../_general/icons/TrashBinOutline.jsx';
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
-import { FormDropdown } from '../../../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
 import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { Label } from '../../../../../../../../../../_general/Label/Label.jsx';
@@ -17,13 +16,14 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
     field.onChange(event);
     form.setValue(getName('publicKey'), null);
   };
+  const accountId = form.watch(getName('accountId'));
 
   return (
     <div className={cn.accountKeyPair}>
       <div className={cn.container}>
         <Label color="grey">Pair</Label>
         <Button
-          IconLeft={TrashBinOutline}
+          iconLeftStyles={cn.icon}
           size="small"
           color="tertiary"
           onClick={() => remove(index)}
@@ -47,6 +47,7 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
         control={control}
         options={keyOptions}
         isSearchable
+        isDisabled={!accountId}
         tooltip={<Tooltip content="Publick Key" placement="top" defaultContent />}
       />
     </div>

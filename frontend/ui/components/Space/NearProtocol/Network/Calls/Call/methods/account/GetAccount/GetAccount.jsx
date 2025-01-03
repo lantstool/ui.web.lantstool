@@ -1,4 +1,4 @@
-import { FormDropdown } from '../../../../../../../../_general/FormDropdown/FormDropdown.jsx';
+import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { Form } from '../../_general/components/Form/Form.jsx';
@@ -36,7 +36,7 @@ export const GetAccount = ({ call, draft }) => {
           isSearchable
           isClearable
           creatableSelect
-          tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
+          tooltip={<Tooltip content="Account Id" placement="top" defaultContent />}
         />
         <BlockTarget />
       </div>

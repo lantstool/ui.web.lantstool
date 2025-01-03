@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .container {
   display: flex;
@@ -18,7 +19,7 @@
   width: 144px;
   color: $neutral-600;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 4px;
   align-items: start;
 }
 
@@ -29,8 +30,19 @@
   margin: 0;
 }
 
-.icon {
-  margin-right: 4px;
+.contractIcon {
+  @include icon('@assets/icons/account-circle-outline.svg');
+  background-color: $neutral-600;
+}
+
+.amountIcon {
+  @include icon('@assets/icons/bill-check-outline.svg');
+  background-color: $neutral-600;
+}
+
+.methodsIcon {
+  @include icon('@assets/icons/code-circle-outline.svg');
+  background-color: $neutral-600;
 }
 
 .iconClose {

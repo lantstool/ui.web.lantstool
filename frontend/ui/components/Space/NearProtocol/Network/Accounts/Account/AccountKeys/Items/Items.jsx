@@ -1,5 +1,4 @@
 import { CopyButton } from '../../../../../../../_general/CopyButton/CopyButton.jsx';
-import { CheckCircleBold } from '../../../../../../../_general/icons/CheckCircleBold.jsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
 import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './Items.module.scss';
@@ -22,7 +21,7 @@ export const Items = ({ keys, type, name }) => {
                   color="black"
                   content="Imported to Lantstool"
                 >
-                  <CheckCircleBold style={cn.icon} />
+                  <span className={cn.icon} />
                 </Tooltip>
               )}
               <div className={cn.copy}>

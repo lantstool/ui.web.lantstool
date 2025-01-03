@@ -1,4 +1,4 @@
-import { Input } from '../../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../../_general/input/Input/Input.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../schema.js';

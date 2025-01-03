@@ -3,9 +3,6 @@ import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { dateFormatter } from '../../../../../../../../../../../../store/helpers/formatDate.js';
-import { TrashBinOutline } from '../../../../../../../../../../_general/icons/TrashBinOutline.jsx';
-import { DuplicateOutline } from '../../../../../../../../../../_general/icons/DuplicateOutline.jsx';
-import { ExportLinear } from '../../../../../../../../../../_general/icons/ExportLinear.jsx';
 import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { ExportModal } from './ExportModal/ExportModal.jsx';
@@ -34,7 +31,7 @@ export const Topbar = ({ call, form }) => {
                 onClick={duplicate}
                 size="medium"
                 color="secondary"
-                IconLeft={DuplicateOutline}
+                iconLeftStyles={cn.duplicateIcon}
               />
             </Tooltip>
             <Tooltip arrow={false} content="Export" placement="top">
@@ -42,7 +39,7 @@ export const Topbar = ({ call, form }) => {
                 onClick={openExport}
                 size="medium"
                 color="secondary"
-                IconLeft={ExportLinear}
+                iconLeftStyles={cn.exportIcon}
               />
             </Tooltip>
             <Tooltip arrow={false} content="Delete" placement="top">
@@ -50,7 +47,7 @@ export const Topbar = ({ call, form }) => {
                 onClick={openDelete}
                 size="medium"
                 color="secondary"
-                IconLeft={TrashBinOutline}
+                iconLeftStyles={cn.deleteIcon}
               />
             </Tooltip>
           </div>

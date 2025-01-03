@@ -1,4 +1,5 @@
 @use '@styles/variables' as *;
+@use '@styles/icons' as *;
 
 .navigation {
   grid-area: c;
@@ -17,4 +18,58 @@
   height: 1px;
   background: $neutral-200;
   border: none;
+}
+
+.transactions {
+  @include icon('@assets/icons/transaction-file-outline.svg');
+}
+
+.transactionsActive {
+  @include icon('@assets/icons/transaction-file-bold.svg');
+  background-color: $accent-600;
+}
+
+.calls {
+  @include icon('@assets/icons/calls-outline.svg');
+}
+
+.callsActive {
+  @include icon('@assets/icons/calls-bold.svg');
+  background-color: $accent-600;
+}
+
+.accounts {
+  @include icon('@assets/icons/account-square-outline.svg');
+}
+
+.accountsActive {
+  @include icon('@assets/icons/account-square-bold.svg');
+  background-color: $accent-600;
+}
+
+.keys {
+  @include icon('@assets/icons/key-square-outline.svg');
+}
+
+.keysActive {
+  @include icon('@assets/icons/key-square-bold.svg');
+  background-color: $accent-600;
+}
+
+.utilities {
+  @include icon('@assets/icons/tools-linear.svg');
+}
+
+.utilitiesActive {
+  @include icon('@assets/icons/tools-bold.svg');
+  background-color: $accent-600;
+}
+
+.networkSettings {
+  @include icon('@assets/icons/network-outline.svg');
+}
+
+.networkSettingsActive {
+  @include icon('@assets/icons/network-bold.svg');
+  background-color: $accent-600;
 }

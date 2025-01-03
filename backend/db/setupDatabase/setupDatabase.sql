@@ -3,13 +3,22 @@ PRAGMA auto_vacuum = FULL;
 
 BEGIN TRANSACTION;
 
+CREATE TABLE IF NOT EXISTS users (
+  userId TEXT PRIMARY KEY,
+  createdAt INTEGER NOT NULL,
+  role TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS spaces (
   spaceId TEXT PRIMARY KEY,
   name TEXT NOT NULL,
   badge TEXT NOT NULL,
   type TEXT NOT NULL,
   createdAt INTEGER NOT NULL,
-  ownerId TEXT NOT NULL
+  ownerId TEXT NOT NULL,
+  FOREIGN KEY (ownerId)
+    REFERENCES users(userId)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS near_protocol_networks (
@@ -92,6 +101,11 @@ CREATE TABLE IF NOT EXISTS near_protocol_counters (
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS settings (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
 );
 
 COMMIT;

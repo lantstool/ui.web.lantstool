@@ -1,7 +1,7 @@
+import { FormJsonEditor } from '../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { ContractId } from './ContractId/ContractId.jsx';
 import { MethodName } from './MethodName/MethodName.jsx';
-import { Arguments } from './Arguments/Arguments.jsx';
 import { Form } from '../../_general/components/Form/Form.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
@@ -24,7 +24,18 @@ export const CallContractViewMethod = ({ call, draft }) => {
       <ConfigureTitle />
       <ContractId />
       <MethodName />
-      <Arguments />
+      <FormJsonEditor
+        name="args"
+        topbar={{
+          label: 'Arguments',
+          tooltip: (
+            <>
+              Type contract call arguments <br /> in JSON format
+            </>
+          ),
+        }}
+        customTheme={{ contentMinHeight: '200px' }}
+      />
       <BlockTarget />
     </Form>
   );

@@ -3,6 +3,7 @@ import { OPFSCoopSyncVFS } from 'wa-sqlite/src/examples/OPFSCoopSyncVFS';
 import { Factory } from 'wa-sqlite/src/sqlite-api';
 import { deleteDbFiles } from '../requests/db/helpers/deleteDbFiles.js';
 import setupDatabaseSQL from './setupDatabase.sql';
+import { setupDefaultData } from './setupDefaultData.js';
 import { errorWithCode } from '../../utils/utils.js';
 
 const createExecuteFn = (sqlite, connection) => async (query) => {
@@ -49,6 +50,8 @@ export const setupDatabase = async ({
     db.connection = connection;
     db.sqlite = sqlite;
     db.execute = createExecuteFn(sqlite, connection);
+    // Setup default app settings
+    await setupDefaultData(db.execute);
   } catch (e) {
     console.log(e);
     // Usually we count that only sqlite.exec can fail on this stage - for example

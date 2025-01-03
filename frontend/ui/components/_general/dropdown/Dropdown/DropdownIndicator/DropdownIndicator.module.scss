@@ -1,0 +1,46 @@
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+@mixin baseIconStyle($icon, $color) {
+  @include icon($icon);
+  background-color: $color;
+}
+
+.button {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  &:hover {
+    .arrowUpIcon {
+      background-color: $neutral-800;
+    }
+    .arrowDownIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.arrowUpIcon {
+  @include baseIconStyle('@assets/icons/arrow-up-outline.svg', $neutral-600);
+}
+
+.arrowUpDisabledIcon {
+  @include baseIconStyle('@assets/icons/arrow-up-outline.svg', $neutral-400);
+}
+
+.arrowDownIcon {
+  @include baseIconStyle('@assets/icons/arrow-down-outline.svg', $neutral-600);
+}
+
+.arrowDownDisabledIcon {
+  @include baseIconStyle('@assets/icons/arrow-down-outline.svg', $neutral-400);
+}

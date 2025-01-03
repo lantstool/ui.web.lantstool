@@ -1,7 +1,6 @@
 import { useStoreEffect } from '@react-vault';
 import { BackButton } from '../_general/BackButton/BackButton.jsx';
 import { Button } from '../_general/Button/Button.jsx';
-import { ExportLinear } from '../_general/icons/ExportLinear.jsx';
 import { ResetAppModal } from './ResetAppModal/ResetAppModal.jsx';
 import { ResetHistoryModal } from './ResetHistoryModal/ResetHistoryModal.jsx';
 import { useState } from 'react';
@@ -29,7 +28,12 @@ export const Settings = () => {
                 will be able to restore your content from this file.
               </p>
             </div>
-            <Button color="secondary" size="medium" IconLeft={ExportLinear} onClick={createBackup}>
+            <Button
+              color="secondary"
+              size="medium"
+              iconLeftStyles={cn.exportIcon}
+              onClick={createBackup}
+            >
               Create Backup
             </Button>
           </div>

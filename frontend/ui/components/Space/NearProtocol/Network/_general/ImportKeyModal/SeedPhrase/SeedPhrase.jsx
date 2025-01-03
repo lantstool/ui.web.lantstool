@@ -5,23 +5,22 @@ import { KEY_DERIVATION_PATH } from 'near-seed-phrase';
 import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
 import { Textarea } from '../../../../../../_general/Textarea/Textarea.jsx';
-import { Input } from '../../../../../../_general/Input/Input.jsx';
+import { Input } from '../../../../../../_general/input/Input/Input.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
-import { InfoCircleLinear } from '../../../../../../_general/icons/InfoCircleLinear.jsx';
 import cn from './SeedPhrase.module.scss';
 
-export const SeedPhrase = ({ closeModal }) => {
+export const SeedPhrase = ({ seedPhraseSchema = null, closeModal, setKey }) => {
   const { spaceId, networkId } = useParams();
   const importFromSeedPhrase = useStoreEffect(
     (store) => store.nearProtocol.keys.importFromSeedPhrase,
   );
-  const schema = createSchema(spaceId, networkId);
+  const schema = seedPhraseSchema ? seedPhraseSchema : createSchema(spaceId, networkId);
 
   const form = useForm({
-    mode: 'all',
+    mode: 'onTouched',
     criteriaMode: 'all',
     resolver: yupResolver(schema),
     defaultValues: {
@@ -35,7 +34,7 @@ export const SeedPhrase = ({ closeModal }) => {
     handleSubmit,
     clearErrors,
     watch,
-    formState: { errors, isValid },
+    formState: { errors },
   } = form;
 
   const derivationPath = watch('derivationPath');
@@ -47,7 +46,7 @@ export const SeedPhrase = ({ closeModal }) => {
   }, [derivationPath]);
 
   const onSubmit = handleSubmit((formValues) => {
-    importFromSeedPhrase({ formValues, spaceId, networkId, closeModal });
+    importFromSeedPhrase({ formValues, spaceId, networkId, closeModal, setKey });
   });
 
   return (
@@ -77,9 +76,8 @@ export const SeedPhrase = ({ closeModal }) => {
               <Tooltip
                 content="A deterministic way to derive foreign addresses from one NEAR account."
                 placement="top"
-              >
-                <InfoCircleLinear />
-              </Tooltip>
+                defaultContent
+              />
             }
           />
         </div>
@@ -88,7 +86,6 @@ export const SeedPhrase = ({ closeModal }) => {
         action={{
           label: 'Import',
           onClick: onSubmit,
-          disabled: !isValid,
         }}
       />
     </div>

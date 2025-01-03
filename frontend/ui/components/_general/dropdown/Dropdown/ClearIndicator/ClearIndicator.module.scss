@@ -1,0 +1,28 @@
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.button {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  &:hover {
+    .icon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.icon {
+  @include icon('@assets/icons/backspace-outline.svg');
+  background-color: $neutral-600;
+}

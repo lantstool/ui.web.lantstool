@@ -1,4 +1,4 @@
-import { getBlockTargetParams } from '../utils.js';
+import { getBlockTargetParams, getFormBlockTarget, transformForExport } from '../utils.js';
 
 const rpcCaller = (rpc, params) =>
   rpc.getProtocolConfig(
@@ -9,6 +9,20 @@ const rpcCaller = (rpc, params) =>
     }),
   );
 
+const exportTransformer = transformForExport({
+  version: '1.0',
+  paramsExtractor: (params) =>
+    getBlockTargetParams({
+      blockTarget: params.blockTarget,
+      finality: params.finality?.value,
+      blockId: params.blockId,
+    }),
+});
+
+const importTransformer = ({ params }) => getFormBlockTarget(params);
+
 export const getProtocolConfig = {
   rpcCaller,
+  exportTransformer,
+  importTransformer,
 };

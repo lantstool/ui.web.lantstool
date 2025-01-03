@@ -9,6 +9,7 @@ import { sendOne } from './sendOne/sendOne.js';
 import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { onMountTransaction } from './onMountTransaction.js';
+import { uploadContract } from './uploadContract.js';
 
 export const effects = {
   getList,
@@ -22,4 +23,5 @@ export const effects = {
   saveChanges,
   removeOne,
   onMountTransaction,
+  uploadContract,
 };

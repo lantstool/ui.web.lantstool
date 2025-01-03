@@ -1,32 +1,32 @@
 const createAccount = (append) =>
   append({
-    name: 'Create account',
+    name: 'Create Account',
     type: 'CreateAccount',
-    accountId: '',
+    accountId: null,
   });
 
 const transfer = (append) =>
   append({
-    name: 'Transfer funds',
+    name: 'Transfer',
     type: 'Transfer',
-    amount: '',
+    amount: null,
     amountType: { value: 'NEAR', label: 'NEAR' },
   });
 
 const addKey = (append) =>
   append({
-    name: 'Add key',
+    name: 'Add Key',
     type: 'AddKey',
-    publicKey: '',
+    publicKey: null,
     permission: {
       type: 'FullAccess', // FullAccess
       restrictions: {
         allowedAllowance: 'Unlimited', // Limited
         allowance: '',
         allowanceType: { value: 'NEAR', label: 'NEAR' },
-        receiverId: { value: '', label: '' },
+        receiverId: null,
         allowedMethods: 'All', // Certain
-        methodNames: [{ name: { value: '', label: '' } }],
+        methodNames: [{ name: null }],
       },
     },
     nonce: '0',
@@ -34,7 +34,7 @@ const addKey = (append) =>
 
 const functionCall = (append) =>
   append({
-    name: 'Function call',
+    name: 'Function Call',
     type: 'FunctionCall',
     contractId: '',
     methodName: '',
@@ -48,23 +48,22 @@ const functionCall = (append) =>
 const deployContract = (append) =>
   append({
     type: 'DeployContract',
-
-    name: 'Deploy contract',
-    file: '',
+    name: 'Deploy Contract',
+    fileName: null,
   });
 
 const deleteKey = (append) =>
   append({
-    name: 'Delete key',
+    name: 'Delete Key',
     type: 'DeleteKey',
-    accessKey: { value: '', label: '' },
+    accessKey: null,
   });
 
 const deleteAccount = (append) =>
   append({
-    name: 'Delete account',
+    name: 'Delete Account',
     type: 'DeleteAccount',
-    beneficiaryId: { value: '', label: '' },
+    beneficiaryId: null,
   });
 
 export const appendAction = {
