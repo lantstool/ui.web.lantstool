@@ -3,7 +3,7 @@ import { utils } from 'near-api-js';
 import { createTransaction } from 'near-api-js/lib/transaction';
 import { getActions } from './getActions/getActions.js';
 
-export const createTx = async ({ rpc, formValues }) => {
+export const createTx = async ({ rpc, formValues, backend }) => {
   const {
     signerId: { value: signerId },
     signerKey: { value: signerKey },
@@ -14,7 +14,7 @@ export const createTx = async ({ rpc, formValues }) => {
   const accessKey = await rpc.getAccountKey({ accountId: signerId, publicKey: signerKey });
   const nonce = accessKey.nonce + 1;
   const recentBlockHash = utils.serialize.base_decode(accessKey.blockHash);
-  const actions = await getActions(rawActions);
+  const actions = await getActions(rawActions, backend);
 
   return createTransaction(
     signerId,

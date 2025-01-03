@@ -8,6 +8,7 @@ const getErrorMessage = (error) => {
 
 export const sendOne = effect(async ({ store, slice, payload }) => {
   const { formValues, spaceId, networkId, transactionId } = payload;
+  const [backend] = store.getEntities((store) => store.backend);
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const getKey = store.getEffects((store) => store.nearProtocol.keys.getKey);
   const setResult = slice.getActions((slice) => slice.setResult);
@@ -16,7 +17,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     setResult({ transactionId, isOpen: true, isLoading: true });
 
     await rpc.configure({ spaceId, networkId });
-    const transaction = await createTx({ rpc, formValues });
+    const transaction = await createTx({ rpc, formValues, backend });
 
     const { privateKey } = await getKey({
       spaceId,

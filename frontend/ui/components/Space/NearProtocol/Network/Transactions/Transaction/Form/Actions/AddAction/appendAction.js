@@ -1,13 +1,13 @@
 const createAccount = (append) =>
   append({
-    name: 'Create account',
+    name: 'Create Account',
     type: 'CreateAccount',
     accountId: null,
   });
 
 const transfer = (append) =>
   append({
-    name: 'Transfer funds',
+    name: 'Transfer',
     type: 'Transfer',
     amount: null,
     amountType: { value: 'NEAR', label: 'NEAR' },
@@ -15,7 +15,7 @@ const transfer = (append) =>
 
 const addKey = (append) =>
   append({
-    name: 'Add key',
+    name: 'Add Key',
     type: 'AddKey',
     publicKey: null,
     permission: {
@@ -34,7 +34,7 @@ const addKey = (append) =>
 
 const functionCall = (append) =>
   append({
-    name: 'Function call',
+    name: 'Function Call',
     type: 'FunctionCall',
     contractId: '',
     methodName: '',
@@ -48,20 +48,20 @@ const functionCall = (append) =>
 const deployContract = (append) =>
   append({
     type: 'DeployContract',
-    name: 'Deploy contract',
-    file: null,
+    name: 'Deploy Contract',
+    fileName: null,
   });
 
 const deleteKey = (append) =>
   append({
-    name: 'Delete key',
+    name: 'Delete Key',
     type: 'DeleteKey',
     accessKey: null,
   });
 
 const deleteAccount = (append) =>
   append({
-    name: 'Delete account',
+    name: 'Delete Account',
     type: 'DeleteAccount',
     beneficiaryId: null,
   });

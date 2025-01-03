@@ -7,6 +7,7 @@ import cn from './FileUploader.module.scss';
 
 export const FileUploader = ({
   file,
+  fileName,
   setFile,
   callToActionText = 'Select a .zip file or drag&drop it here',
   allowedFileTypes,
@@ -30,10 +31,10 @@ export const FileUploader = ({
       {topbar && <FieldTopbarLabel label={topbar?.label} tooltip={topbar?.tooltip} />}
       <div {...getRootProps({ className: cn.dropzone })}>
         <input {...getInputProps()} />
-        {file ? (
+        {fileName || file ? (
           <>
             <span className={cn.fileOutlineIcon} />
-            <p className={cn.fileName}>{file.name}</p>
+            <p className={cn.fileName}>{fileName || file?.name}</p>
           </>
         ) : (
           <>
