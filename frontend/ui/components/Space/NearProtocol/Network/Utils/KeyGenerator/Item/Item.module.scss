@@ -1,0 +1,82 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.label {
+  @include text-sm-regular;
+  color: $neutral-600;
+  padding: 0;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $neutral-50;
+  padding: 12px;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  word-break: break-all;
+  height: auto;
+  min-height: 46px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
+.hideTitle {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-left: 8px;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  height: max-content;
+  padding: 0;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hideEye {
+  @include icon('@assets/icons/eye-hide-closed-outline.svg');
+  background-color: $neutral-600;
+}
+
+.showEye {
+  @include icon('@assets/icons/eye-show-outline.svg');
+  background-color: $neutral-600;
+}

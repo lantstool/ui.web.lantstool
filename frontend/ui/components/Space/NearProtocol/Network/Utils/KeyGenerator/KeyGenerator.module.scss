@@ -1,0 +1,44 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+
+.seedPhraseGenerator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 680px;
+  //min-width: 610px;
+  //max-width: 680px;
+  gap: 24px;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+}
+
+.publicKeyIcon {
+  @include icon('@assets/icons/key-outline.svg');
+  background-color: $neutral-600;
+}
+
+.privateKeyIcon {
+  @include icon('@assets/icons/lock-keyhole-outline.svg');
+  background-color: $neutral-600;
+}
+
+.seedPhraseIcon {
+  @include icon('@assets/icons/password-seed-phrase-input-outline.svg');
+  background-color: $neutral-600;
+}
+
+.derivationPassIcon {
+  @include icon('@assets/icons/routing-derivation-path-outline.svg');
+  background-color: $neutral-600;
+}
+
+.magicStickOutline {
+  @include icon('@assets/icons/magic-stick-outline.svg');
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+}

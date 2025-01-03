@@ -25,7 +25,7 @@ export const Form = ({ transaction, draft }) => {
         <Topbar transaction={transaction} />
         <div className={cn.label}>
           <span className={cn.icon} />
-          <h3 className={cn.title}>Signer details</h3>
+          <h3 className={cn.title}>Signer</h3>
         </div>
         <SignerId form={form} />
         <SignerKey form={form} />

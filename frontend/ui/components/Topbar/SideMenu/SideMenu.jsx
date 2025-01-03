@@ -47,7 +47,7 @@ export const SideMenu = () => {
                 className={cn.icon}
                 target="_blank"
                 rel="noopener noreferrer"
-                to="https://x.com/?lang=uk"
+                to="https://x.com/lantstool"
               >
                 <span className={cn.xIcon} />
               </Link>
@@ -55,7 +55,7 @@ export const SideMenu = () => {
                 className={cn.icon}
                 target="_blank"
                 rel="noopener noreferrer"
-                to="https://web.telegram.org/k/#@azov_media"
+                to="https://t.me/lantstool"
               >
                 <span className={cn.telegramIcon} />
               </Link>
@@ -64,7 +64,7 @@ export const SideMenu = () => {
           <hr className={cn.border} />
           <div className={cn.wrapper}>
             <p className={cn.title}>Privacy policy</p>
-            <p className={cn.liteTitle}>Lantstool v1.0.0</p>
+            <p className={cn.liteTitle}>Lantstool v2.0.0</p>
           </div>
         </div>
       </Popper>

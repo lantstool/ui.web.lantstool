@@ -31,20 +31,20 @@ export const Navigation = ({ isSidebarMinimized }) => (
       to="keys"
       isSidebarMinimized={isSidebarMinimized}
     />
-    <LinkItem
-      name="Utilities"
-      icon={cn.utilities}
-      activeIcon={cn.utilitiesActive}
-      to="tools"
-      isSidebarMinimized={isSidebarMinimized}
-    />
     <hr className={cn.divider} />
     <LinkItem
-      name="Network Settings"
-      icon={cn.networkSettings}
-      activeIcon={cn.networkSettingsActive}
-      to="settings"
+      name="Utils"
+      icon={cn.utilities}
+      activeIcon={cn.utilitiesActive}
+      to="utils"
       isSidebarMinimized={isSidebarMinimized}
     />
+      <LinkItem
+        name="Settings"
+        icon={cn.networkSettings}
+        activeIcon={cn.networkSettingsActive}
+        to="settings"
+        isSidebarMinimized={isSidebarMinimized}
+      />
   </div>
 );

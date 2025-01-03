@@ -18,6 +18,8 @@ const deleteTx = async (execute, transactionId) => {
   await execute(query);
 };
 
+// TODO handle contracts
+
 export const removeOne = async ({ execute, request }) => {
   const { spaceId, networkId, transactionId } = request.body;
   // Get all transactions we have to do an order update

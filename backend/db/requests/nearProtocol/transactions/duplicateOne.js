@@ -58,6 +58,8 @@ const duplicate = async (execute, targetId) => {
   await execute(query);
 };
 
+// TODO if tx contains contract code add +1 for counter
+
 export const duplicateOne = async ({ execute, request }) => {
   const { spaceId, networkId, targetId } = request.body;
   // Get all transactions we have to do an order update

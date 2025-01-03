@@ -51,6 +51,7 @@ export const Action = ({ form, action, index, remove }) => {
           getName={getName}
           form={form}
           order={order}
+          index={index}
           name={name}
           removeAction={removeAction}
           iconStyle={cn.deployContract}

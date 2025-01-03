@@ -4,7 +4,7 @@ import { useStoreEffect } from '@react-vault';
 import { Item } from './Item/Item.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';
-import { ImportModal } from './ImportModal/ImportModal.jsx';
+import { ImportModal } from '../_general/ImportModal/ImportModal.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ list }) => {

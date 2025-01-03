@@ -1,0 +1,20 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.utils {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 24px;
+}
+
+.headerTitle {
+  @include text-lg-medium;
+  color: $neutral-800;
+}

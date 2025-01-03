@@ -7,6 +7,12 @@ const db = {
   execute: async () => {},
 };
 
+const storage = {
+  nearProtocol: {
+    contracts: {},
+  },
+};
+
 await setupDatabase({ db });
 
 // TODO: Add a logger and embed the ability to send it to devs for users
@@ -19,6 +25,7 @@ self.addEventListener('message', async (messageEvent) => {
       request,
       execute: db.execute,
       db,
+      storage,
     };
 
     await handleRequest(request.type, context);

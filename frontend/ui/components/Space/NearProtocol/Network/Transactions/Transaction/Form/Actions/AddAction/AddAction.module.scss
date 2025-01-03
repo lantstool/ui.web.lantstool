@@ -2,20 +2,31 @@
 @use '@styles/mixins' as *;
 @use '@styles/variables' as *;
 
-.title {
-  @include text-mg-medium;
-  color: $neutral-800;
+.addAction {
+  width: calc(100%);
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.labelWrapper {
   margin-bottom: 16px;
 }
 
-.addAction {
+.addActionIcon {
+  @include icon('@assets/icons/add-circle-linear.svg');
+  background-color: $accent-600;
+}
+
+.actions {
   display: flex;
   flex-direction: row;
   gap: 24px;
   width: 100%;
 }
 
-.container {
+.column {
   display: flex;
   width: 184px;
   flex-direction: column;
