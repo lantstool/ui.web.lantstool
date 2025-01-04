@@ -38,15 +38,24 @@ export const uploadFile = async ({ file, name, path }) => {
   await createFileFromU8Buffer({ buffer: new Uint8Array(arrayBuffer), name, path });
 };
 
+const getU8File = async ({ name, path }) => {
+  const dirHandle = await getDirHandle({ path, create: false });
+  const fileHandle = await dirHandle.getFileHandle(name);
+  const file = await fileHandle.getFile();
+  const arrayBuffer = await file.arrayBuffer();
+  return new Uint8Array(arrayBuffer);
+};
+
 const deleteFile = async ({ path, name }) => {
   const dirHandle = await getDirHandle({ path, create: false });
   await dirHandle.removeEntry(name);
-}
+};
 
 export const opfs = {
   isFileExist,
   getDirHandle,
   createFileFromU8Buffer,
   uploadFile,
+  getU8File,
   deleteFile,
 };

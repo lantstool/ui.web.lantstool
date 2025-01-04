@@ -1,5 +1,5 @@
-import { opfs } from '../../../helpers/opfs.js';
-import { getTx } from '../getTx.js';
+import { opfs } from './opfs.js';
+import { getTx } from '../nearProtocol/transactions/getTx.js';
 import { contractWasmUsageCount } from './contractWasmUsageCount.js';
 
 /**

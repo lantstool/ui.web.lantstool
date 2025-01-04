@@ -1,4 +1,4 @@
-import { updateContractUsage } from './helpers/updateContractUsage.js';
+import { updateContractUsage } from '../../helpers/updateContractUsage.js';
 
 export const updateTxBody = async ({ execute, request, storage }) => {
   const { transactionId, body } = request.body;
