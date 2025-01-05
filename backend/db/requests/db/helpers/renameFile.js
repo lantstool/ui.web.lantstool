@@ -1,3 +1,4 @@
+// TODO replace with opfs utils
 export const renameFile = async (sourceName, targetName) => {
   try {
     // 1. Get a root handle

@@ -1,5 +1,5 @@
 import { errorWithCode } from '../../../../utils/utils.js';
-
+// TODO replace with opfs utils
 export const deleteDbFiles = async (name) => {
   try {
     const dir = await navigator.storage.getDirectory();

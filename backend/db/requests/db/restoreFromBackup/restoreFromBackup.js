@@ -1,18 +1,19 @@
 import { unzipSync } from 'fflate';
-import { setupDatabase } from '../../setupDatabase/setupDatabase.js';
-import { closeConnection } from './closeConnection.js';
-import { getCount } from '../spaces/getCount.js';
-import { deleteDbFiles } from './helpers/deleteDbFiles.js';
-import { renameFile } from './helpers/renameFile.js';
-import { createFileFromU8Buffer } from './helpers/createFileFromU8Buffer.js';
-import { deleteFile } from './helpers/deleteFile.js';
-import { errorWithCode } from '../../../utils/utils.js';
+import { setupDatabase } from '../../../setupDatabase/setupDatabase.js';
+import { closeConnection } from '../closeConnection.js';
+import { getCount } from '../../spaces/getCount.js';
+import { deleteDbFiles } from '../helpers/deleteDbFiles.js';
+import { renameFile } from '../helpers/renameFile.js';
+import { deleteFile } from '../helpers/deleteFile.js';
+import { errorWithCode } from '../../../../utils/utils.js';
+import { opfs } from '../../helpers/opfs.js';
+import { transformUnzippedFiles } from './transformUnzippedFiles.js';
 
 const unzipBackup = async (file) => {
   try {
     const arrayBuffer = await file.arrayBuffer();
     const files = unzipSync(new Uint8Array(arrayBuffer));
-    return Object.entries(files)[0];
+    return transformUnzippedFiles(files);
   } catch (e) {
     console.log(e);
     errorWithCode(400, 'Cannot unzip the backup');
@@ -49,13 +50,23 @@ const validateBackup = async (backupName) => {
   }
 };
 
+const createContractFiles = async (contracts) =>
+  Promise.all(
+    contracts.map(({ name, u8File }) =>
+      opfs.createFileFromU8Buffer({ buffer: u8File, name, path: 'near-protocol/contracts' }),
+    ),
+  );
+
 export const restoreFromBackup = async ({ db, request }) => {
-  const [backupName, u8Buffer] = await unzipBackup(request.body.backup);
-  await createFileFromU8Buffer(u8Buffer, backupName);
-  await validateBackup(backupName);
+  const { backup, nearProtocol } = await unzipBackup(request.body.backup);
+
+  await opfs.createFileFromU8Buffer({ buffer: backup.u8File, name: backup.name });
+  await validateBackup(backup.name);
 
   await closeConnection({ db });
   await deleteDbFiles('lantstool.sqlite');
-  await renameFile(backupName, 'lantstool.sqlite');
+  await renameFile(backup.name, 'lantstool.sqlite');
+
   await setupDatabase({ db });
+  await createContractFiles(nearProtocol.contracts);
 };

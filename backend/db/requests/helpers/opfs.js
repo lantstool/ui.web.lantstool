@@ -80,7 +80,6 @@ const getDirFiles = async ({ path }) => {
 
 const getDirU8Files = async ({ path }) => {
   const files = await getDirFiles({ path });
-
   return Promise.all(
     files.map(async ({ name, file }) => {
       const arrayBuffer = await file.arrayBuffer();

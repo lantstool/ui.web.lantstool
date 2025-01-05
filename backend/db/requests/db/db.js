@@ -1,6 +1,6 @@
 import { closeConnection } from './closeConnection.js';
 import { reset } from './reset.js';
-import { restoreFromBackup } from './restoreFromBackup.js';
+import { restoreFromBackup } from './restoreFromBackup/restoreFromBackup.js';
 import { createBackup } from './createBackup.js';
 
 export const db = {
