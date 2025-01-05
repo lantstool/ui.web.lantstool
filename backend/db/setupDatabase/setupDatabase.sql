@@ -103,6 +103,11 @@ CREATE TABLE IF NOT EXISTS near_protocol_counters (
     ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS near_protocol_transaction_contract_wasm_usage (
+  fileName TEXT PRIMARY KEY,
+  usageCount INTEGER NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS settings (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
