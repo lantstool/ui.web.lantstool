@@ -48,9 +48,14 @@ const getU8File = async ({ name, path }) => {
   return new Uint8Array(arrayBuffer);
 };
 
-const deleteFile = async ({ path, name }) => {
-  const dirHandle = await getDirHandle({ path, create: false });
-  await dirHandle.removeEntry(name);
+const removeEntry = async ({ path, name }) => {
+  try {
+    const dirHandle = await getDirHandle({ path, create: false });
+    await dirHandle.removeEntry(name, { recursive: true });
+  } catch (e) {
+    if (e.name === 'NotFoundError') return;
+    throw e;
+  }
 };
 
 // Return all files of the particular directory; nested folders will be ignored;
@@ -67,9 +72,9 @@ const getDirFiles = async ({ path }) => {
         return { name, file };
       }),
     );
-  } catch (err) {
-    if (err.name === 'NotFoundError') return [];
-    throw err;
+  } catch (e) {
+    if (e.name === 'NotFoundError') return [];
+    throw e;
   }
 };
 
@@ -90,7 +95,7 @@ export const opfs = {
   createFileFromU8Buffer,
   uploadFile,
   getU8File,
-  deleteFile,
+  removeEntry,
   getDirFiles,
   getDirU8Files,
 };

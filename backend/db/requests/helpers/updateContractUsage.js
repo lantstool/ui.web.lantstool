@@ -108,7 +108,7 @@ const decreaseUsage = async (execute, fileName, counter) => {
     return;
   }
   // If there are no more usages on the wasm - remove it from OPFS and DB;
-  await opfs.deleteFile({ path: 'near-protocol/contracts', name: fileName });
+  await opfs.removeEntry({ path: 'near-protocol/contracts', name: fileName });
   await contractWasmUsageCount.remove({ execute, fileName });
 };
 
