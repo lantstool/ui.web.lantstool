@@ -1,9 +1,7 @@
+import { PresetForm } from '../../../../../_general/nearProtocol/PresetForm/PresetForm.jsx';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { useForm } from 'react-hook-form';
-import { Item } from './Item/Item.jsx';
-import { Button } from '../../../../../_general/Button/Button.jsx';
-import cn from './Preset.module.scss';
 
 export const Preset = ({ availablePresets }) => {
   const { spaceId } = useParams();
@@ -18,15 +16,11 @@ export const Preset = ({ availablePresets }) => {
   });
 
   return (
-    <>
-      <div className={cn.presetWrapper}>
-        {availablePresets.map((presetId) => (
-          <Item key={presetId} presetId={presetId} form={form} />
-        ))}
-      </div>
-      <div className={cn.buttonWrapper}>
-        <Button onClick={onSubmit}>Add Network</Button>
-      </div>
-    </>
+    <PresetForm
+      availablePresets={availablePresets}
+      onSubmit={onSubmit}
+      form={form}
+      btnText="Add network"
+    />
   );
 };

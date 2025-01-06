@@ -4,11 +4,12 @@
 .rpcFormContainer {
   grid-area: e;
   margin-top: 24px;
-  min-height: 314px;
+  min-height: 320px;
 }
 
 .buttonWrapper {
   grid-area: f;
   justify-self: center;
-  margin-bottom: 40px;
+  display: flex;
+  gap: 8px;
 }

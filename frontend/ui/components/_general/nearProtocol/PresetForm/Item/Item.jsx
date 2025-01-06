@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
-import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { RadioButton } from '../../../../../../_general/RadioButton/RadioButton.jsx';
+import { Label } from '../../../Label/Label.jsx';
+import { RadioButton } from '../../../RadioButton/RadioButton.jsx';
 import cn from './Item.module.scss';
 
 export const Item = ({ presetId, form }) => {

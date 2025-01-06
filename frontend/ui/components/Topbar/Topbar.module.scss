@@ -8,8 +8,8 @@
   justify-content: space-between;
   padding: 0 16px;
   align-items: center;
-  border-bottom: 1px solid var(--Colors-Neutral-Gray-200, #e9ecef);
-  background: var(--Colors-Neutral-Gray-00, #fff);
+  border-bottom: 1px solid $neutral-200;
+  background: $neutral-00;
   user-select: none;
 }
 

@@ -2,13 +2,14 @@
 @use '@styles/mixins' as *;
 
 .container {
-  min-height: calc(100vh - 48px);
+  height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: auto 480px auto;
   grid-template-rows:
     min-content
     auto
+    min-content
     min-content
     min-content
     min-content
@@ -19,6 +20,7 @@
     '. . .'
     '. b .'
     '. c .'
+    '. d .'
     '. e .'
     '. . .'
     '. f .';
@@ -52,14 +54,9 @@
   margin-top: 8px;
 }
 
-.rpcFormContainer {
-  grid-area: e;
-  margin-top: 24px;
-  min-height: 314px;
-}
-
-.buttonWrapper {
-  grid-area: f;
-  justify-self: center;
-  margin-bottom: 58px;
+.tabs {
+  grid-area: d;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
 }
