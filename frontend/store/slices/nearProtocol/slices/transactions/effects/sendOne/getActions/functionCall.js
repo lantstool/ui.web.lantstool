@@ -11,7 +11,7 @@ const allowanceFormat = (action) =>
 
 export const functionCall = (action) =>
   transactions.functionCall(
-    action.method.value,
+    action.methodName.value,
     JSON.parse(action.args),
     gasFormat(action),
     allowanceFormat(action),

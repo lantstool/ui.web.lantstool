@@ -47,7 +47,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
         <FormDropdown
           control={control}
           options={methodNameOptions}
-          name={getName('method')}
+          name={getName('methodName')}
           label="Method"
           isSearchable
           isClearable

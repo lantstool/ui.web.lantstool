@@ -29,7 +29,7 @@ const functionCall = (append) =>
   append({
     type: 'FunctionCall',
     contractId: null,
-    method: null,
+    methodName: null,
     args: '',
     gas: '50',
     deposit: '0',

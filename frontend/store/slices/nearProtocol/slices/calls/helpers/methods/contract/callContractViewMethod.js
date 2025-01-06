@@ -39,7 +39,7 @@ const exportTransformer = transformForExport({
   paramsExtractor: (params) =>
     getBlockTargetParams({
       contractId: getDropdownValueForExport(params.contractId),
-      method: getDropdownValueForExport(params.methodName), // TODO Rename methodName to method in the whole app
+      methodName: getDropdownValueForExport(params.methodName),
       args: params.args,
       blockTarget: params.blockTarget,
       finality: params.finality?.value,
@@ -49,7 +49,7 @@ const exportTransformer = transformForExport({
 
 const importTransformer = ({ params }) => ({
   contractId: getDropdownValueForImport(params.contractId),
-  methodName: getDropdownValueForImport(params.method),
+  methodName: getDropdownValueForImport(params.methodName),
   args: params.args,
   ...getFormBlockTarget(params),
 });
