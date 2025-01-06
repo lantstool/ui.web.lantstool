@@ -1,7 +1,6 @@
 import { effect } from '@react-vault';
 import { zipSync, strToU8 } from 'fflate';
 import { getFormattedJSON } from '../../../../../helpers/utils.js';
-import { methods } from '../helpers/methods/index.js';
 import { sanitizeFilename, generateHashFromBytes } from '../../../../../helpers/utils.js';
 import { downloadZip } from '../../../../../helpers/downloadZip.js';
 
@@ -18,10 +17,11 @@ const createZipFromJsonString = async (json, callName) => {
 };
 
 export const exportOneAsZip = effect(async ({ store, payload }) => {
-  const { origin: call, form, closeModal } = payload;
+  const { origin: transaction, form, closeModal } = payload;
   const setNotification = store.getActions((store) => store.setNotification);
-
+  console.log(transaction);
   try {
+    return;
     const method = form.getValues().method.value;
     const json = getFormattedJSON(methods[method].exportTransformer({ call, form }));
 

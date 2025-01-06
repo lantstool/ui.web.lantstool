@@ -33,7 +33,7 @@ const getChunk = object({
 // contract
 const callContractViewMethod = object({
   contractId: string().defined(),
-  methodName: string().defined(),
+  method: string().defined(),
   args: string().defined(),
 }).concat(blockTargetSchema);
 
