@@ -47,8 +47,8 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
         <FormDropdown
           control={control}
           options={methodNameOptions}
-          name={getName('methodName')}
-          label="Method name"
+          name={getName('method')}
+          label="Method"
           isSearchable
           isClearable
           creatableSelect
@@ -57,7 +57,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
         <FormJsonEditor
-          name={name}
+          name={getName('args')}
           control={control}
           topbar={{
             label: 'Arguments',
