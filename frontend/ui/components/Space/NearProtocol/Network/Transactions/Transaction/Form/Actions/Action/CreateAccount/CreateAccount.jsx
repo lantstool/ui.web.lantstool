@@ -2,10 +2,10 @@ import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import { useEffect } from 'react';
 
-const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
+const updateReceiverId = (subAccountId, signerId, singleValue, setValue) => {
   const newValue =
-    accountId && signerId
-      ? { value: `${accountId}${singleValue}`, label: `${accountId}${singleValue}` }
+    subAccountId && signerId
+      ? { value: `${subAccountId}${singleValue}`, label: `${subAccountId}${singleValue}` }
       : null;
 
   setValue('receiverId', newValue);
@@ -14,12 +14,12 @@ const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
 export const CreateAccount = ({ iconStyle, getName, form, removeAction, order }) => {
   const { control, setValue, watch } = form;
   const signerId = watch('signerId');
-  const accountId = watch(getName('accountId'));
+  const subAccountId = watch(getName('subAccountId'));
   const singleValue = signerId ? `.${signerId.value}` : null;
 
   useEffect(() => {
-    updateReceiverId(accountId, signerId, singleValue, setValue);
-  }, [accountId, signerId, singleValue]);
+    updateReceiverId(subAccountId, signerId, singleValue, setValue);
+  }, [subAccountId, signerId, singleValue]);
 
   const remove = () => {
     setValue('receiverId', null);
@@ -38,8 +38,8 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, order })
       <InputActionGroup
         control={control}
         inputGroup="text"
-        name={getName('accountId')}
-        label="Account id"
+        name={getName('subAccountId')}
+        label="Sub Account Id"
         singleValue={singleValue}
         placeholder="newaccount"
         dynamicErrorSpace

@@ -1,4 +1,4 @@
-const createAccount = (append) => append({ type: 'CreateAccount', accountId: null });
+const createAccount = (append) => append({ type: 'CreateAccount', subAccountId: null });
 
 const transfer = (append) =>
   append({
@@ -38,7 +38,7 @@ const functionCall = (append) =>
   });
 
 const deployContract = (append) => append({ type: 'DeployContract', fileName: null });
-const deleteKey = (append) => append({ type: 'DeleteKey', accessKey: null });
+const deleteKey = (append) => append({ type: 'DeleteKey', publicKey: null });
 const deleteAccount = (append) => append({ type: 'DeleteAccount', beneficiaryId: null });
 
 export const appendAction = {

@@ -22,9 +22,9 @@ export const DeleteKey = ({ form, getName, order, removeAction, iconStyle }) => 
       <FormDropdown
         onChange={onChange}
         control={control}
-        name={getName('accessKey')}
+        name={getName('publicKey')}
         options={options}
-        label="Access key"
+        label="Public Key"
         placeholder="Select or type..."
         dynamicErrorSpace
         isSearchable
