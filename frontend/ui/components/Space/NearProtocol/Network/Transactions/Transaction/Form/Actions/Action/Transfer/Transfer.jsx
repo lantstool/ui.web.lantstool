@@ -6,10 +6,10 @@ const options = [
   { value: 'yoctoNEAR', label: 'yoctoNEAR' },
 ];
 
-export const Transfer = ({ iconStyle, form, name, getName, removeAction, order }) => (
+export const Transfer = ({ iconStyle, form, getName, removeAction, order }) => (
   <ActionBase
     removeAction={removeAction}
-    label={name}
+    label="Transfer"
     order={order}
     color="cyan"
     tooltipContent="Transfer funds"

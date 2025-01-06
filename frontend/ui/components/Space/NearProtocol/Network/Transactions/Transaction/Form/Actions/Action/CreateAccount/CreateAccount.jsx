@@ -11,7 +11,7 @@ const updateReceiverId = (accountId, signerId, singleValue, setValue) => {
   setValue('receiverId', newValue);
 };
 
-export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, order }) => {
+export const CreateAccount = ({ iconStyle, getName, form, removeAction, order }) => {
   const { control, setValue, watch } = form;
   const signerId = watch('signerId');
   const accountId = watch(getName('accountId'));
@@ -28,12 +28,12 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, name, or
 
   return (
     <ActionBase
-      label={name}
+      label="Create Account"
       iconStyle={iconStyle}
       color="green"
       order={order}
       removeAction={remove}
-      tooltipContent="Create account"
+      tooltipContent="Create Account"
     >
       <InputActionGroup
         control={control}

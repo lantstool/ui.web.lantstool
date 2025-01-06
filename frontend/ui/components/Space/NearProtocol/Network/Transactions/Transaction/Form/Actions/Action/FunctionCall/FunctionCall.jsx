@@ -17,7 +17,7 @@ const depositOptions = [
   { value: 'yoctoNEAR', label: 'yoctoNEAR' },
 ];
 
-export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, name }) => {
+export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) => {
   const { control } = form;
   const ContractOptions = useAccountsOptions();
   const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
@@ -25,10 +25,10 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
   return (
     <ActionBase
       removeAction={removeAction}
-      label={name}
+      label="Function Call"
       order={order}
       color="purple"
-      tooltipContent="Functioin call"
+      tooltipContent="Functioin Call"
       iconStyle={iconStyle}
     >
       <div className={cn.container}>

@@ -7,7 +7,7 @@ import { RadioButton } from '../../../../../../../../../_general/RadioButton/Rad
 import { useKeysOptions } from './useKeysOptions.js';
 import cn from './AddKey.module.scss';
 
-export const AddKey = ({ iconStyle, form, getName, removeAction, name, order }) => {
+export const AddKey = ({ iconStyle, form, getName, removeAction, order }) => {
   const { control, register } = form;
   const options = useKeysOptions();
   const permissionName = getName('permission.type');
@@ -19,7 +19,7 @@ export const AddKey = ({ iconStyle, form, getName, removeAction, name, order }) 
   return (
     <ActionBase
       iconStyle={iconStyle}
-      label={name}
+      label="Add Key"
       order={order}
       color="green"
       tooltipContent="Add key"
