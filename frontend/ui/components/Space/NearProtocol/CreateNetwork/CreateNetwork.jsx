@@ -1,7 +1,7 @@
 import { useLoader } from '@hooks/useLoader.js';
 import { useParams } from 'react-router-dom';
-import { GeneralPage } from './GeneralPage/GeneralPage.jsx';
 import { CreateManually } from './CreateManually/CreateManually.jsx';
+import { GeneralPage } from './GeneralPage/GeneralPage.jsx';
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { presets } from '../../../../../store/slices/nearProtocol/slices/networks/presets.js';
 

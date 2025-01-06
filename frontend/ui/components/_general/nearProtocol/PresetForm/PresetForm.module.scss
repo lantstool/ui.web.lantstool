@@ -3,7 +3,7 @@
 
 .presetWrapper {
   grid-area: e;
-  min-height: 314px; // same as add manually form
+  min-height: 320px; // same as add manually form
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -14,5 +14,6 @@
 .buttonWrapper {
   grid-area: f;
   justify-self: center;
-  margin-bottom: 40px;
+  display: flex;
+  gap: 8px;
 }
