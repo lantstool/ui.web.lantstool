@@ -72,20 +72,20 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
         <div className={cn.wrapper}>
           <InputActionGroup
             control={control}
-            name={getName('gas')}
-            label="Gas coverage"
+            name={getName('gas.amount')}
+            label="Gas Limit"
             options={gasOptions}
-            dropDownName={getName('gasType')}
+            dropDownName={getName('gas.unit')}
             dynamicErrorSpace
             placeholder={0}
-            tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
+            tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
           />
           <InputActionGroup
             control={control}
-            name={getName('deposit')}
+            name={getName('deposit.amount')}
             label="Deposit"
             options={depositOptions}
-            dropDownName={getName('depositType')}
+            dropDownName={getName('deposit.unit')}
             dynamicErrorSpace
             placeholder={0}
             tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}

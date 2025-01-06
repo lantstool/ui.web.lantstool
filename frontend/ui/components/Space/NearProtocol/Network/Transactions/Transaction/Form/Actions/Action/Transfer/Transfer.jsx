@@ -17,11 +17,11 @@ export const Transfer = ({ iconStyle, form, getName, removeAction, order }) => (
   >
     <InputActionGroup
       control={form.control}
-      name={getName('amount')}
+      name={getName('quantity.amount')}
       placeholder={0}
       options={options}
       label="Amount"
-      dropDownName={getName('amountType')}
+      dropDownName={getName('quantity.unit')}
       dynamicErrorSpace
     />
   </ActionBase>

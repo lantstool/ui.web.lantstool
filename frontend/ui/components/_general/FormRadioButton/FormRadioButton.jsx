@@ -1,29 +1,36 @@
 import { useState } from 'react';
+import { useController } from 'react-hook-form';
 import cnm from 'classnames';
-import cn from './RadioButton.module.scss';
+import cn from './FormRadioButton.module.scss';
 
-export const RadioButton = ({ register, label, value, name, disabled = false }) => {
+export const FormRadioButton = ({ control, value, label, name, disabled = false }) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
+  const {
+    field: { value: fieldValue, onChange, onBlur },
+  } = useController({ name, control });
+
+  const id = `${name}-${value}`;
+
+  const handleChange = () => onChange(value);
+  const handleFocus = () => setIsFocused(true);
 
   const handleBlur = () => {
     setIsFocused(false);
+    onBlur();
   };
 
   return (
     <div className={cn.radioButton}>
       <label className={cn.radioContainer}>
         <input
-          {...register(name)}
-          id={value}
+          id={id}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
           type="radio"
-          value={value}
           disabled={disabled}
+          checked={value === fieldValue}
         />
         <span
           className={cnm(cn.customRadio, {
@@ -32,7 +39,7 @@ export const RadioButton = ({ register, label, value, name, disabled = false }) 
           })}
         />
       </label>
-      <label htmlFor={value} className={disabled ? cn.disabledText : cn.enabledText}>
+      <label htmlFor={id} className={disabled ? cn.disabledText : cn.enabledText}>
         {label}
       </label>
     </div>

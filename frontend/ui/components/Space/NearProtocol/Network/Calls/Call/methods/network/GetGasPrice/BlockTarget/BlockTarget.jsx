@@ -1,11 +1,11 @@
 import { useWatch } from 'react-hook-form';
-import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
 import cn from './BlockTarget.module.scss';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
 export const BlockTarget = ({ form }) => {
-  const { control, register } = form;
+  const { control } = form;
 
   const blockTarget = useWatch({ control, name: 'blockTarget' });
 
@@ -17,8 +17,8 @@ export const BlockTarget = ({ form }) => {
           <Tooltip content="Block traget" placement="top" defaultContent />
         </div>
         <div className={cn.wrapper}>
-          <RadioButton register={register} label="Latest" name="blockTarget" value="latest" />
-          <RadioButton register={register} label="Specific" name="blockTarget" value="specific" />
+          <FormRadioButton control={control} label="Latest" name="blockTarget" value="latest" />
+          <FormRadioButton control={control} label="Specific" name="blockTarget" value="specific" />
         </div>
         {blockTarget === 'specific' && (
           <div className={cn.content}>
