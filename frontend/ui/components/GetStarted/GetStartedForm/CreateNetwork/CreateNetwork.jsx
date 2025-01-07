@@ -19,7 +19,7 @@ export const CreateNetwork = ({
           availablePresets={availablePresets}
           onSubmit={onSubmit}
           form={form}
-          btnText="Add network"
+          btnText={btnText}
           goBack={goBack}
         />
       )}

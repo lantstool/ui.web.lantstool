@@ -26,7 +26,7 @@ export const GetStartedForm = ({ step, setStep }) => {
       badge: randomBadge,
       spaceName: '',
       //Select blockchain
-      near: '',
+      blockchain: 'near-protocol',
       //Create network
       networkCreateType: 'selectPredefined',
       presetId: availablePresets[0],
@@ -37,7 +37,7 @@ export const GetStartedForm = ({ step, setStep }) => {
     },
   });
 
-  const { handleSubmit, trigger, setValue, setError, watch, register } = form;
+  const { handleSubmit, trigger, setValue, setError, watch, control } = form;
 
   const setNetworkCreateType = (value) => {
     setValue('networkCreateType', value);
@@ -70,7 +70,7 @@ export const GetStartedForm = ({ step, setStep }) => {
       )}
       {step === 'selectBlockchain' && (
         <SelectBlockchainForm
-          register={register}
+          control={control}
           onClick={() => setStep('createNetwork')}
           btnText="Continue"
           goBack={() => goBack('createSpace')}

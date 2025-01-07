@@ -1,10 +1,10 @@
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import logoLantstool from '@assets/logoLantstool.svg';
-import { RadioButton } from '../RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../FormRadioButton/FormRadioButton.jsx';
 import { Button } from '../Button/Button.jsx';
 import cn from './SelectBlockchainForm.module.scss';
 
-export const SelectBlockchainForm = ({ register, onClick, goBack, btnText }) => {
+export const SelectBlockchainForm = ({ control, onClick, goBack, btnText }) => {
   useSaveToHistory();
 
   return (
@@ -22,7 +22,7 @@ export const SelectBlockchainForm = ({ register, onClick, goBack, btnText }) => 
             </div>
             <p className={cn.text}>NEAR Protocol</p>
             <div className={cn.radioBtn}>
-              <RadioButton register={register} name="near" />
+              <FormRadioButton control={control} name="blockchain" value="near-protocol" />
             </div>
           </div>
           <div className={cn.comingSoon}>

@@ -1,5 +1,4 @@
-import { effect } from '@react-vault';
-import { getRpcType } from '../slices/nearProtocol/slices/networks/effects/helpers/getRpcType.js';
+import { getRpcType } from '../../slices/nearProtocol/slices/networks/effects/helpers/getRpcType.js';
 
 const validateNetworkId = async (backend, networkId) => {
   // We don't really expect that someone would create a network with id 'networks',
@@ -10,8 +9,7 @@ const validateNetworkId = async (backend, networkId) => {
     `);
 };
 
-export const createManuallyNetwork = effect(async ({ store, payload }) => {
-  const { formValues, navigate } = payload;
+export const createManuallyNetwork = async ({ store, formValues, navigate }) => {
   const { name, url, header, spaceName, badge } = formValues;
   console.log(formValues);
   const [backend] = store.getEntities((store) => store.backend);
@@ -49,4 +47,4 @@ export const createManuallyNetwork = effect(async ({ store, payload }) => {
 
   putNetworkToList(network);
   navigate(`/space/${space.spaceId}/near-protocol/${network.networkId}/transactions`);
-});
+};

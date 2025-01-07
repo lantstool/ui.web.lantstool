@@ -1,8 +1,6 @@
-import { effect } from '@react-vault';
-import { presets } from '../slices/nearProtocol/slices/networks/presets.js';
+import { presets } from '../../slices/nearProtocol/slices/networks/presets.js';
 
-export const createFromPresetNetwork = effect(async ({ store, payload }) => {
-  const { formValues, navigate } = payload;
+export const createFromPresetNetwork = async ({ store, formValues, navigate }) => {
   const { spaceName, badge, presetId } = formValues;
   const [backend] = store.getEntities((store) => store.backend);
   const putSpaceToList = store.getActions((store) => store.spaces.putOneToList);
@@ -20,4 +18,4 @@ export const createFromPresetNetwork = effect(async ({ store, payload }) => {
 
   putNetworkToList(network);
   navigate(`/space/${space.spaceId}/near-protocol/${network.networkId}/transactions`);
-});
+};

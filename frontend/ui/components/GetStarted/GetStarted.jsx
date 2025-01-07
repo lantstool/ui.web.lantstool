@@ -6,10 +6,12 @@ import logoLantstool from '@assets/logoLantstool.svg';
 import cn from './GetStarted.module.scss';
 import { useState } from 'react';
 import { GetStartedForm } from './GetStartedForm/GetStartedForm.jsx';
+import { useManageRouting } from './useManageRouting.js';
 
 export const GetStarted = () => {
   const [isOpenBackup, openBackup, closeBackup] = useToggler();
   const [step, setStep] = useState('getStarted');
+  useManageRouting();
 
   const changeStep = () => setStep('createSpace');
 
