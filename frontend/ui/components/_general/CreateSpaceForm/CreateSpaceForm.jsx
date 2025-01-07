@@ -24,7 +24,7 @@ export const CreateSpaceForm = ({ form, onClick, btnText }) => {
             name="spaceName"
             placeholder="My workspace"
             copy={false}
-            error={errors?.name?.message}
+            error={errors?.spaceName?.message}
           />
           <BadgeSelector form={form} />
         </div>

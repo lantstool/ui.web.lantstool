@@ -1,5 +1,6 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .presetWrapper {
   grid-area: e;
@@ -16,4 +17,8 @@
   justify-self: center;
   display: flex;
   gap: 8px;
+}
+
+.backIcon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
 }

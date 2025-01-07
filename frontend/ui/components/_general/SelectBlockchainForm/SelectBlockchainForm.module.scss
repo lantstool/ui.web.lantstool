@@ -137,3 +137,7 @@
   display: flex;
   gap: 8px;
 }
+
+.backIcon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
+}

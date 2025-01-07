@@ -38,7 +38,7 @@ export const SelectBlockchainForm = ({ register, onClick, goBack, btnText }) => 
       </div>
       <div className={cn.btnWrapper}>
         {goBack && (
-          <Button color="secondary" onClick={goBack}>
+          <Button color="secondary" onClick={goBack} iconLeftStyles={cn.backIcon}>
             Back
           </Button>
         )}
