@@ -1,12 +1,12 @@
-const createAccount = (append) => append({ type: 'CreateAccount', subAccountId: null });
+const createAccount = (append) => append({ type: 'CreateAccount', subAccountId: '' });
 
 const NEAR = { value: 'NEAR', label: 'NEAR' };
-const TGas = { value: 'tGas', label: 'TGas' };
+const TGas = { value: 'TGas', label: 'TGas' };
 
 const transfer = (append) =>
   append({
     type: 'Transfer',
-    quantity: { amount: null, unit: NEAR },
+    quantity: { amount: '', unit: NEAR },
   });
 
 const addKey = (append) =>
@@ -38,7 +38,7 @@ const functionCall = (append) =>
     deposit: { amount: '0', unit: NEAR },
   });
 
-const deployContract = (append) => append({ type: 'DeployContract', fileName: null });
+const deployContract = (append) => append({ type: 'DeployContract', fileName: '' });
 const deleteKey = (append) => append({ type: 'DeleteKey', publicKey: null });
 const deleteAccount = (append) => append({ type: 'DeleteAccount', beneficiaryId: null });
 

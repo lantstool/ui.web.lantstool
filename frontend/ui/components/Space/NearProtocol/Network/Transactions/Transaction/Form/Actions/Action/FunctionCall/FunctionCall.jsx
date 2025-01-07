@@ -8,7 +8,7 @@ import { useContractMethodsOptions } from '../../../../../../_general/hooks/useC
 import cn from './FunctionCall.module.scss';
 
 const gasOptions = [
-  { value: 'tGas', label: 'TGas' },
+  { value: 'TGas', label: 'TGas' },
   { value: 'gas', label: 'Gas' },
 ];
 
