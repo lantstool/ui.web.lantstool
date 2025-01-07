@@ -1,9 +1,10 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
+@use '@styles/icons' as *;
 
 .presetWrapper {
   grid-area: e;
-  min-height: 314px; // same as add manually form
+  min-height: 320px; // same as add manually form
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -14,5 +15,10 @@
 .buttonWrapper {
   grid-area: f;
   justify-self: center;
-  margin-bottom: 40px;
+  display: flex;
+  gap: 8px;
+}
+
+.backIcon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
 }

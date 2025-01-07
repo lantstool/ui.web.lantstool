@@ -9,7 +9,7 @@ export const selectStyles = (error) => {
       ...styles.control(baseStyles, state),
       cursor: 'pointer',
       border: 'none',
-      height: '40px',
+      height: '38px',
       width: '100%',
       borderRadius: '8px 0 0 8px',
       ':hover': {

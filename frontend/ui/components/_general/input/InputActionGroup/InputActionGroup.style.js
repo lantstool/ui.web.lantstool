@@ -11,7 +11,7 @@ export const selectStyles = (error) => {
       color: '#495057',
       backgroundColor: 'fff',
       border: 'none',
-      height: '40px',
+      height: '38px',
       maxWidth: '220px',
       width: 'max-content',
       padding: '8px 12px',

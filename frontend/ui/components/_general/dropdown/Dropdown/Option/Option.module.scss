@@ -7,15 +7,10 @@
   gap: 8px;
 }
 
-.singleOption {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .icon {
   @include icon('@assets/icons/checkmark-outline.svg');
   background-color: $neutral-600;
+  min-width: 16px;
 }
 
 .hidden {
