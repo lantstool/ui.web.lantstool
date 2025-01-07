@@ -1,24 +1,23 @@
-import { useStoreAction, useStoreEffect } from '@react-vault';
+import { useStoreAction } from '@react-vault';
 import { useEffect, useState } from 'react';
-import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
-import { BaseModal } from '../../../../../../../../../../../_general/modals/BaseModal/BaseModal.jsx';
-import { ModalHeader } from '../../../../../../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
-import { CopyButton } from '../../../../../../../../../../../_general/CopyButton/CopyButton.jsx';
-import { JsonEditor } from '../../../../../../../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
+import { Button } from '../../../../../_general/Button/Button.jsx';
+import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
+import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
+import { CopyButton } from '../../../../../_general/CopyButton/CopyButton.jsx';
+import { JsonEditor } from '../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './ExportModal.module.scss';
 
-export const ExportModal = ({ call, form, closeModal }) => {
+// origin is call or transaction
+export const ExportModal = ({ origin, form, closeModal, exportOneAsJson, exportOneAsZip }) => {
   const [data, setData] = useState('');
-  const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
-  const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsZip);
   const setNotification = useStoreAction((store) => store.setNotification);
 
   useEffect(() => {
-    setData(exportOneAsJson({ call, form }));
-  }, [call, form]);
+    setData(exportOneAsJson({ origin, form }));
+  }, [origin, form]);
 
   const downloadZip = () => {
-    exportOneAsZip({ call, form, closeModal });
+    exportOneAsZip({ origin, form, closeModal });
   };
 
   const afterCopyCallback = () => {
@@ -29,7 +28,7 @@ export const ExportModal = ({ call, form, closeModal }) => {
   return (
     <BaseModal close={closeModal} classes={{ modal: cn.modal }}>
       <ModalHeader
-        title={`Export ${call.name}`}
+        title={`Export ${origin.name}`}
         close={closeModal}
         classes={{ container: cn.headerContainer }}
       />

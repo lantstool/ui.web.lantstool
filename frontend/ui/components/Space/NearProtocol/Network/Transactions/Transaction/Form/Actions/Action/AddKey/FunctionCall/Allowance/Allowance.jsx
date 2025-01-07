@@ -1,5 +1,4 @@
-import { useWatch } from 'react-hook-form';
-import { RadioButton } from '../../../../../../../../../../../_general/RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../../../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import { InputActionGroup } from '../../../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import cn from './Allowance.module.scss';
 
@@ -9,44 +8,39 @@ const options = [
 ];
 
 export const Allowance = ({ form, getName }) => {
-  const allowedAllowanceName = getName('permission.restrictions.allowedAllowance');
-  const allowanceName = getName('permission.restrictions.allowance');
-  const allowanceType = getName('permission.restrictions.allowanceType');
-  const { control, register } = form;
+  const isUnlimitedFormName = getName('restrictions.allowance.isUnlimited');
+  const amountFormName = getName('restrictions.allowance.amount');
+  const unitFormName = getName('restrictions.allowance.unit');
 
-  const allowedAllowance = useWatch({
-    control,
-    name: allowedAllowanceName,
-  });
-
-  const isLimitedAllowance = allowedAllowance === 'Limited';
+  const { control } = form;
+  const isUnlimited = form.watch(isUnlimitedFormName);
 
   return (
-    <div className={isLimitedAllowance ? cn.allowance : cn.allowanceBigMargin}>
+    <div className={isUnlimited ? cn.allowanceBigMargin : cn.allowance}>
       <h2 className={cn.title}>Allowance</h2>
       <div className={cn.container}>
-        <RadioButton
+        <FormRadioButton
           label="Unlimited"
-          name={allowedAllowanceName}
-          register={register}
-          value="Unlimited"
+          name={isUnlimitedFormName}
+          control={control}
+          value={true}
         />
-        <RadioButton
+        <FormRadioButton
           label="Limited"
-          name={allowedAllowanceName}
-          register={register}
-          value="Limited"
+          name={isUnlimitedFormName}
+          control={control}
+          value={false}
         />
       </div>
-      {isLimitedAllowance && (
+      {!isUnlimited && (
         <div className={cn.limitedAllowance}>
           <InputActionGroup
             control={form.control}
-            name={allowanceName}
+            name={amountFormName}
             options={options}
             label="Amount"
-            dropDownName={allowanceType}
-            placeholder={0}
+            dropDownName={unitFormName}
+            placeholder="0.25"
           />
         </div>
       )}

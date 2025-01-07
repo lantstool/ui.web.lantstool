@@ -10,6 +10,8 @@ import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { onMountTransaction } from './onMountTransaction.js';
 import { uploadContract } from './uploadContract.js';
+import { exportOneAsJson } from './exportOneAsJson.js';
+import { exportOneAsZip } from './exportOneAsZip.js';
 
 export const effects = {
   getList,
@@ -24,4 +26,6 @@ export const effects = {
   removeOne,
   onMountTransaction,
   uploadContract,
+  exportOneAsJson,
+  exportOneAsZip,
 };

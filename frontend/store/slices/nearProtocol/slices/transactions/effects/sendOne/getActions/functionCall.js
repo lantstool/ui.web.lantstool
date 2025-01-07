@@ -1,18 +1,25 @@
 import { transactions, utils } from 'near-api-js';
-import BN from 'bn.js';
 
-const gasFormat = (action) =>
-  action.gasType.value === 'tGas' ? new BN(Number(action.gas) * 1000000000000) : action.gas;
+const getGas = (action) =>
+  action.gas.unit.value === 'TGas' ? Number(action.gas.amount) * 1000000000000 : action.gas.amount;
 
-const allowanceFormat = (action) =>
-  action.depositType.value === 'NEAR'
-    ? utils.format.parseNearAmount(action.deposit)
-    : action.deposit;
+const getDeposit = (action) =>
+  action.deposit.unit.value === 'NEAR'
+    ? utils.format.parseNearAmount(action.deposit.amount)
+    : action.deposit.amount;
+
+const getArgs = (action) => {
+  try {
+    return JSON.parse(action.args)
+  } catch (e) {
+    return ''
+  }
+}
 
 export const functionCall = (action) =>
   transactions.functionCall(
     action.methodName.value,
-    JSON.parse(action.arguments),
-    gasFormat(action),
-    allowanceFormat(action),
+    getArgs(action),
+    getGas(action),
+    getDeposit(action),
   );

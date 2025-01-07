@@ -30,6 +30,7 @@ const rpcCaller = async (rpc, params) => {
       responseNameConvention: 'snake_case',
     }),
   );
+
   return getResult(result.result, params.methodName.value);
 };
 

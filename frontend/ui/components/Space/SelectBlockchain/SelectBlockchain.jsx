@@ -1,7 +1,7 @@
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import logoLantstool from '@assets/logoLantstool.svg';
 import { BackButton } from '../../_general/BackButton/BackButton.jsx';
-import { RadioButton } from '../../_general/RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../../_general/FormRadioButton/FormRadioButton.jsx';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../_general/Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import cn from './SelectBlockchain.module.scss';
 
 export const SelectBlockchain = () => {
   const navigate = useNavigate();
-  const { register } = useForm({ defaultValues: { near: '' } });
+  const { control } = useForm({ defaultValues: { blockchain: 'near-protocol' } });
 
   useSaveToHistory();
 
@@ -33,7 +33,7 @@ export const SelectBlockchain = () => {
             </div>
             <p className={cn.text}>NEAR Protocol</p>
             <div className={cn.radioBtn}>
-              <RadioButton register={register} name="near" />
+              <FormRadioButton control={control} name="blockchain" value="near-protocol" />
             </div>
           </div>
           <div className={cn.comingSoon}>

@@ -22,7 +22,7 @@ export const Form = ({ transaction, draft }) => {
   return (
     <div className={cn.form}>
       <form className={cn.formContainer}>
-        <Topbar transaction={transaction} />
+        <Topbar transaction={transaction} form={form} />
         <div className={cn.label}>
           <span className={cn.icon} />
           <h3 className={cn.title}>Signer</h3>

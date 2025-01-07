@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { config } from '../../config.js';
@@ -12,7 +12,6 @@ const finalityOptions = [finality.final, finality['near-final'], finality.optimi
 export const BlockTarget = ({ form }) => {
   const {
     control,
-    register,
     formState: { errors },
   } = form;
 
@@ -26,8 +25,8 @@ export const BlockTarget = ({ form }) => {
           <Tooltip content="Block traget" placement="top" defaultContent />
         </div>
         <div className={cn.wrapper}>
-          <RadioButton register={register} label="Latest" name="blockTarget" value="latest" />
-          <RadioButton register={register} label="Specific" name="blockTarget" value="specific" />
+          <FormRadioButton control={control} label="Latest" name="blockTarget" value="latest" />
+          <FormRadioButton control={control} label="Specific" name="blockTarget" value="specific" />
         </div>
         {blockTarget === 'latest' && (
           <FormDropdown

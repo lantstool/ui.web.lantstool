@@ -14,7 +14,7 @@ export const FunctionCall = ({ form, getName }) => {
         <FormDropdown
           control={form.control}
           options={options}
-          name={getName('permission.restrictions.receiverId')}
+          name={getName('restrictions.contractId')}
           label="Contact Id"
           isClearable
           isSearchable

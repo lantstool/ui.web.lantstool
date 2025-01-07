@@ -6,10 +6,10 @@ const options = [
   { value: 'yoctoNEAR', label: 'yoctoNEAR' },
 ];
 
-export const Transfer = ({ iconStyle, form, name, getName, removeAction, order }) => (
+export const Transfer = ({ iconStyle, form, getName, removeAction, order }) => (
   <ActionBase
     removeAction={removeAction}
-    label={name}
+    label="Transfer"
     order={order}
     color="cyan"
     tooltipContent="Transfer funds"
@@ -17,11 +17,11 @@ export const Transfer = ({ iconStyle, form, name, getName, removeAction, order }
   >
     <InputActionGroup
       control={form.control}
-      name={getName('amount')}
+      name={getName('quantity.amount')}
       placeholder={0}
       options={options}
       label="Amount"
-      dropDownName={getName('amountType')}
+      dropDownName={getName('quantity.unit')}
       dynamicErrorSpace
     />
   </ActionBase>

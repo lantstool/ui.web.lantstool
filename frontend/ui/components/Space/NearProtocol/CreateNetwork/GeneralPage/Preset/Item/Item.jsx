@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { RadioButton } from '../../../../../../_general/RadioButton/RadioButton.jsx';
+import { FormRadioButton } from '../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import cn from './Item.module.scss';
 
 export const Item = ({ presetId, form }) => {
@@ -13,7 +13,7 @@ export const Item = ({ presetId, form }) => {
       <Label iconStyles={cn.networkIcon} color={selected === presetId ? 'green' : 'grey'}>
         {presetId}
       </Label>
-      <RadioButton register={form.register} name="presetId" value={presetId} />
+      <FormRadioButton control={form.control} name="presetId" value={presetId} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormD
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 
-export const DeleteAccount = ({ form, getName, name, order, iconStyle, removeAction }) => {
+export const DeleteAccount = ({ form, getName, order, iconStyle, removeAction }) => {
   const { control } = form;
   const options = useAccountsOptions();
 
@@ -12,9 +12,9 @@ export const DeleteAccount = ({ form, getName, name, order, iconStyle, removeAct
       iconStyle={iconStyle}
       color="error"
       removeAction={removeAction}
-      label={name}
+      label="Delete Account"
       order={order}
-      tooltipContent="Delete account"
+      tooltipContent="Delete Account"
     >
       <FormDropdown
         name={getName('beneficiaryId')}
