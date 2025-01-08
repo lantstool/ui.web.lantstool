@@ -1,37 +1,9 @@
 import { cloneDeep } from 'lodash';
 import { utils } from '../../../../helpers/utils.js';
+import { AddKey } from './addKey.js';
+import { DeployContract } from './deployContract.js';
 
 const CreateAccount = (formAction) => cloneDeep(formAction);
-
-const getAllowance = (allowance) =>
-  allowance.isUnlimited
-    ? 'unlimited'
-    : {
-        amount: allowance.amount,
-        unit: utils.getDropdownValueForExport(allowance.unit),
-      };
-
-const getMethods = (methods) =>
-  methods.onlyCertain
-    ? methods.list.map((method) => utils.getDropdownValueForExport(method.methodName))
-    : 'all';
-
-const AddKey = (formAction) => {
-  const action = cloneDeep(formAction);
-
-  action.publicKey = utils.getDropdownValueForExport(action.publicKey);
-
-  if (action.permission === 'FullAccess') {
-    delete action.restrictions;
-    return action;
-  }
-
-  action.restrictions.contractId = utils.getDropdownValueForExport(action.restrictions.contractId);
-  action.restrictions.allowance = getAllowance(action.restrictions.allowance);
-  action.restrictions.methods = getMethods(action.restrictions.methods);
-
-  return action;
-};
 
 const Transfer = (formAction) => {
   const action = cloneDeep(formAction);
@@ -48,14 +20,6 @@ const FunctionCall = (formAction) => {
   action.deposit.unit = utils.getDropdownValueForExport(action.deposit.unit);
 
   return action;
-};
-
-const DeployContract = (formAction) => {
-  return {
-    type: formAction.type,
-    fileName: formAction.fileName,
-    base64File: '',
-  };
 };
 
 const DeleteKey = (formAction) => ({
@@ -78,20 +42,18 @@ const transformers = {
   DeleteAccount,
 };
 
-const transformActions = (actions) => actions.map((action) => transformers[action.type](action));
+const transformActions = (actions, store) =>
+  Promise.all(actions.map((action) => transformers[action.type](action, store)));
 
-export const transformTxForExport = (savedTx, formValues) => {
-  console.log(savedTx);
-  return {
-    blockchain: 'near-protocol',
-    networkId: savedTx.networkId,
-    transaction: {
-      version: '1.0',
-      name: savedTx.name,
-      signerId: utils.getDropdownValueForExport(formValues.signerId),
-      signerKey: utils.getDropdownValueForExport(formValues.signerKey),
-      receiverId: utils.getDropdownValueForExport(formValues.receiverId),
-      actions: transformActions(formValues.actions),
-    },
-  };
-};
+export const transformTxForExport = async (savedTx, formValues, store) => ({
+  blockchain: 'near-protocol',
+  networkId: savedTx.networkId,
+  transaction: {
+    version: '1.0',
+    name: savedTx.name,
+    signerId: utils.getDropdownValueForExport(formValues.signerId),
+    signerKey: utils.getDropdownValueForExport(formValues.signerKey),
+    receiverId: utils.getDropdownValueForExport(formValues.receiverId),
+    actions: await transformActions(formValues.actions, store),
+  },
+});
