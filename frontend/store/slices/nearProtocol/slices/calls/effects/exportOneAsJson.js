@@ -3,7 +3,11 @@ import { getFormattedJSON } from '../../../../../helpers/utils.js';
 import { methods } from '../helpers/methods/index.js';
 
 export const exportOneAsJson = effect(({ payload }) => {
-  const { origin: call, form } = payload;
+  const { origin: call, form, setData } = payload;
   const method = form.getValues().method.value;
-  return getFormattedJSON(methods[method].exportTransformer({ call, form }));
+
+  const json = methods[method].exportTransformer({ call, form });
+  const formatedJson = getFormattedJSON(json);
+
+  setData(formatedJson);
 });

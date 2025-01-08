@@ -1,37 +1,24 @@
 import { effect } from '@react-vault';
-import { zipSync, strToU8 } from 'fflate';
 import { getFormattedJSON } from '../../../../../helpers/utils.js';
-import { sanitizeFilename, generateHashFromBytes } from '../../../../../helpers/utils.js';
 import { downloadZip } from '../../../../../helpers/downloadZip.js';
-
-const createZipFromJsonString = async (json, callName) => {
-  const jsonBytes = strToU8(json);
-  const hash = await generateHashFromBytes(jsonBytes);
-  const sanitizedName = await sanitizeFilename(callName);
-  const fileName = `${sanitizedName}#${hash}`;
-
-  return {
-    name: fileName,
-    zip: zipSync({ [`${fileName}.json`]: jsonBytes }, { mtime: Date.now() }),
-  };
-};
+import { transformTxForExport } from './helpers/transformTxForExport.js';
+import { createZipFromJsonString } from '../../../../../helpers/createZipFromJsonString.js';
 
 export const exportOneAsZip = effect(async ({ store, payload }) => {
   const { origin: transaction, form, closeModal } = payload;
   const setNotification = store.getActions((store) => store.setNotification);
-  console.log(transaction);
-  try {
-    return;
-    const method = form.getValues().method.value;
-    const json = getFormattedJSON(methods[method].exportTransformer({ call, form }));
 
-    const { name, zip } = await createZipFromJsonString(json, call.name);
+  try {
+    const json = await transformTxForExport(transaction, form.getValues(), store);
+    const formatedJson = getFormattedJSON(json);
+
+    const { name, zip } = await createZipFromJsonString(formatedJson, transaction.name);
     await downloadZip(zip, name);
 
     closeModal();
-    setNotification({ isOpen: true, message: 'Downloaded zipped call', variant: 'success' });
+    setNotification({ isOpen: true, message: 'Downloaded zipped transaction', variant: 'success' });
   } catch (e) {
     console.log(e);
-    setNotification({ isOpen: true, message: 'Call export error', variant: 'error' });
+    setNotification({ isOpen: true, message: 'Transaction export error', variant: 'error' });
   }
 });

@@ -1,4 +1,4 @@
-import { array, object, string } from 'yup';
+import { array, mixed, object, string } from 'yup';
 import { blockTargetSchema } from './blockTargetSchema.js';
 import { waitUntilSchema } from './waitUntilSchema.js';
 
@@ -34,7 +34,7 @@ const getChunk = object({
 const callContractViewMethod = object({
   contractId: string().defined(),
   methodName: string().defined(),
-  args: string().defined(),
+  args: mixed().defined(),
 }).concat(blockTargetSchema);
 
 const getContractState = object({

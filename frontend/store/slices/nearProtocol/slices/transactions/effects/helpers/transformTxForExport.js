@@ -2,23 +2,13 @@ import { cloneDeep } from 'lodash';
 import { utils } from '../../../../helpers/utils.js';
 import { AddKey } from './addKey.js';
 import { DeployContract } from './deployContract.js';
+import { FunctionCall } from './functionCall.js';
 
 const CreateAccount = (formAction) => cloneDeep(formAction);
 
 const Transfer = (formAction) => {
   const action = cloneDeep(formAction);
   action.quantity.unit = utils.getDropdownValueForExport(action.quantity.unit);
-  return action;
-};
-
-const FunctionCall = (formAction) => {
-  const action = cloneDeep(formAction);
-
-  action.contractId = utils.getDropdownValueForExport(action.contractId);
-  action.methodName = utils.getDropdownValueForExport(action.methodName);
-  action.gas.unit = utils.getDropdownValueForExport(action.gas.unit);
-  action.deposit.unit = utils.getDropdownValueForExport(action.deposit.unit);
-
   return action;
 };
 

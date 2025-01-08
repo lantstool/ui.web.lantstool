@@ -1,21 +1,8 @@
 import { effect } from '@react-vault';
-import { zipSync, strToU8 } from 'fflate';
 import { getFormattedJSON } from '../../../../../helpers/utils.js';
 import { methods } from '../helpers/methods/index.js';
-import { sanitizeFilename, generateHashFromBytes } from '../../../../../helpers/utils.js';
 import { downloadZip } from '../../../../../helpers/downloadZip.js';
-
-const createZipFromJsonString = async (json, callName) => {
-  const jsonBytes = strToU8(json);
-  const hash = await generateHashFromBytes(jsonBytes);
-  const sanitizedName = await sanitizeFilename(callName);
-  const fileName = `${sanitizedName}#${hash}`;
-
-  return {
-    name: fileName,
-    zip: zipSync({ [`${fileName}.json`]: jsonBytes }, { mtime: Date.now() }),
-  };
-};
+import { createZipFromJsonString } from '../../../../../helpers/createZipFromJsonString.js';
 
 export const exportOneAsZip = effect(async ({ store, payload }) => {
   const { origin: call, form, closeModal } = payload;
