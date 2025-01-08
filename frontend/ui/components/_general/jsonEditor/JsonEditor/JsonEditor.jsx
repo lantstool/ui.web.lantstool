@@ -8,6 +8,13 @@ import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
+const getEditorClass = (label, dynamicErrorSpace) => {
+  if (!label && dynamicErrorSpace) return cn.editorNoLabelAndDynamicErrorSpace;
+  if (label && dynamicErrorSpace) return cn.editorWithLabelAndDynamicErrorSpace;
+  if (label && !dynamicErrorSpace) return cn.editorWithLabelAndStaticErrorSpace;
+  if (!label && !dynamicErrorSpace) return cn.editorNoLabelAndStaticErrorSpace;
+};
+
 export const JsonEditor = ({
   value = '',
   onChange,
@@ -50,7 +57,7 @@ export const JsonEditor = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        className={cn.editor}
+        className={getEditorClass(topbar?.label, dynamicErrorSpace)}
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={[jsonLanguage, EditorView.lineWrapping]}
