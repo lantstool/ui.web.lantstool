@@ -1,5 +1,5 @@
 import { strToU8, zipSync } from 'fflate';
-import { generateHashFromBytes, sanitizeFilename } from './utils.js';
+import { generateHashFromBytes, sanitizeFilename } from '../../../helpers/utils.js';
 
 export const createZipFromJsonString = async (json, name) => {
   const jsonBytes = strToU8(json);

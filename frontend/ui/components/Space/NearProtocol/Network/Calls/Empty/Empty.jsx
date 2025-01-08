@@ -2,13 +2,16 @@ import { useToggler } from '@hooks/useToggler.js';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../../../../_general/Button/Button.jsx';
-import { ImportModal } from '../_general/ImportModal/ImportModal.jsx';
+import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
+import { callImportSchema } from '../_general/validations/callImportSchema.js';
 import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const { spaceId, networkId } = useParams();
   const [isImportOpen, openImport, closeImport] = useToggler(false);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
+  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
+  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.calls.importOneFromZip);
   const navigate = useNavigate();
 
   const create = () => createOne({ spaceId, networkId, navigate });
@@ -35,7 +38,15 @@ export const Empty = () => {
           </Button>
         </div>
       </div>
-      {isImportOpen && <ImportModal closeModal={closeImport} />}
+      {isImportOpen && (
+        <ImportModal
+          closeModal={closeImport}
+          yupSchema={callImportSchema}
+          importOneFromJson={importOneFromJson}
+          importOneFromZip={importOneFromZip}
+          entityName="Call"
+        />
+      )}
     </>
   );
 };

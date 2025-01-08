@@ -1,16 +1,19 @@
 import { useToggler } from '@hooks/useToggler.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
+import { callImportSchema } from '../_general/validations/callImportSchema.js';
 import { Item } from './Item/Item.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';
-import { ImportModal } from '../_general/ImportModal/ImportModal.jsx';
+import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ list }) => {
   const [isImportOpen, openImport, closeImport] = useToggler(false);
   const reorder = useStoreEffect((store) => store.nearProtocol.calls.reorder);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
+  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
+  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.calls.importOneFromZip);
 
   const params = useParams();
   const { spaceId, networkId } = useParams();
@@ -60,7 +63,15 @@ export const List = ({ list }) => {
           </Droppable>
         </DragDropContext>
       </div>
-      {isImportOpen && <ImportModal closeModal={closeImport} />}
+      {isImportOpen && (
+        <ImportModal
+          closeModal={closeImport}
+          yupSchema={callImportSchema}
+          importOneFromJson={importOneFromJson}
+          importOneFromZip={importOneFromZip}
+          entityName="Call"
+        />
+      )}
     </>
   );
 };

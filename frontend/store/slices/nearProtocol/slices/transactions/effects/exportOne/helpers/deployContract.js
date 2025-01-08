@@ -1,4 +1,4 @@
-import { toBase64 } from '../../../../../../helpers/toBase64.js';
+import { toBase64 } from '../../../../../../../helpers/toBase64.js';
 
 export const DeployContract = async (formAction, store) => {
   const defaultValue = {

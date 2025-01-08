@@ -1,5 +1,5 @@
 import { object, string } from 'yup';
-import { methods } from '../../../../Call/methods/methods.js';
+import { methods } from '../../Call/methods/methods.js';
 import { methodParams } from './methodParams.js';
 
 export const callImportSchema = object({

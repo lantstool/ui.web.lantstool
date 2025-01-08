@@ -2,7 +2,7 @@ import { effect } from '@react-vault';
 import { getFormattedJSON } from '../../../../../helpers/utils.js';
 import { methods } from '../helpers/methods/index.js';
 import { downloadZip } from '../../../../../helpers/downloadZip.js';
-import { createZipFromJsonString } from '../../../../../helpers/createZipFromJsonString.js';
+import { createZipFromJsonString } from '../../../helpers/createZipFromJsonString.js';
 
 export const exportOneAsZip = effect(async ({ store, payload }) => {
   const { origin: call, form, closeModal } = payload;

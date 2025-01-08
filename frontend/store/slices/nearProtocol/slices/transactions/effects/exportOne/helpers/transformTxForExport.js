@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import { utils } from '../../../../helpers/utils.js';
+import { utils } from '../../../../../helpers/utils.js';
 import { AddKey } from './addKey.js';
 import { DeployContract } from './deployContract.js';
 import { FunctionCall } from './functionCall.js';

@@ -1,23 +1,20 @@
-import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
+import { Button } from '../../../../../../_general/Button/Button.jsx';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FieldErrorLabel } from '../../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
-import { FormJsonEditor } from '../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
-import { callImportSchema } from '../_general/validations/callImportSchema.js';
-import { collectFormErrorMessages } from '../../../../../../../../../store/helpers/collectFormErrorMessages.js';
+import { FieldErrorLabel } from '../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
+import { FormJsonEditor } from '../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { collectFormErrorMessages } from '../../../../../../../../store/helpers/collectFormErrorMessages.js';
 import cn from './PasteJson.module.scss';
 
-export const PasteJson = ({ closeModal }) => {
+export const PasteJson = ({ closeModal, yupSchema, importOneFromJson }) => {
   const navigate = useNavigate();
   const { spaceId, networkId } = useParams();
-  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
 
   const { control, formState, handleSubmit } = useForm({
     defaultValues: { json: '' },
     mode: 'onTouched',
-    resolver: yupResolver(callImportSchema),
+    resolver: yupResolver(yupSchema),
     shouldFocusError: false,
   });
 
@@ -28,7 +25,7 @@ export const PasteJson = ({ closeModal }) => {
   return (
     <>
       <FormJsonEditor
-        topbar={{ label: 'Call Code' }}
+        topbar={{ label: 'Exported JSON' }}
         name="json"
         control={control}
         classes={{ container: cn.editor }}
