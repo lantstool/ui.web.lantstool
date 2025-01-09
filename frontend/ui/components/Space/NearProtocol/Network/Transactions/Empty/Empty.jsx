@@ -5,19 +5,22 @@ import { Button } from '../../../../../_general/Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';
 import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
 import { transactionImportSchema } from '../_general/validations/transactionImportSchema.js';
+import { transactionConfig } from '../_general/transactionConfig.js';
 import cn from './Empty.module.scss';
 
 export const Empty = () => {
   const { spaceId, networkId } = useParams();
   const navigate = useNavigate();
   const createTx = useStoreEffect((store) => store.nearProtocol.transactions.create);
-  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
-  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.calls.importOneFromZip);
+  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromJson);
+  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromZip);
   const [isImportOpen, openImport, closeImport] = useToggler(false);
 
   const create = () => {
     createTx({ spaceId, networkId, navigate });
   };
+
+  const withTxConfig = (fn) => (args) => fn({ ...args, transactionConfig });
 
   return (
     <>
@@ -46,8 +49,8 @@ export const Empty = () => {
         <ImportModal
           closeModal={closeImport}
           yupSchema={transactionImportSchema}
-          importOneFromJson={importOneFromJson}
-          importOneFromZip={importOneFromZip}
+          importOneFromJson={withTxConfig(importOneFromJson)}
+          importOneFromZip={withTxConfig(importOneFromZip)}
           entityName="Transaction"
         />
       )}

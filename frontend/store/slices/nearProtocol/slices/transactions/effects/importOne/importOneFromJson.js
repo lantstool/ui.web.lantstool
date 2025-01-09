@@ -1,36 +1,38 @@
 import { effect } from '@react-vault';
-import { config } from '../../../../../../../ui/components/Space/NearProtocol/Network/Calls/Call/methods/_general/config.js';
+import { transformBodyForImport } from './helpers/transformBodyForImport.js';
+import { extractContracts } from './helpers/extractContracts.js';
 
 export const importOneFromJson = effect(async ({ store, slice, payload }) => {
-  const { spaceId, networkId, formValues, navigate, closeModal } = payload;
+  const { spaceId, networkId, formValues, navigate, closeModal, transactionConfig } = payload;
   const [backend] = store.getEntities((store) => store.backend);
-  const pushOneToList = slice.getActions((slice) => slice.pushOneToList);
+  const pushTxToList = slice.getActions((slice) => slice.pushTxToList);
   const setNotification = store.getActions((store) => store.setNotification);
 
   try {
-    const { name, method, params } = formValues.json.call;
+    const body = await transformBodyForImport(
+      formValues.json.transaction,
+      store,
+      transactionConfig,
+    );
+    const { contracts, bodyWithoutBase64Files } = extractContracts(body);
 
-    const body = {
-      method: config.methodNames[method],
-      // ...methods[method].importTransformer({ params }),
-    };
-
-    const call = await backend.sendRequest('nearProtocol.calls.importOne', {
+    const transaction = await backend.sendRequest('nearProtocol.transactions.importOne', {
       spaceId,
       networkId,
-      name,
-      body,
+      name: formValues.json.transaction.name,
+      body: bodyWithoutBase64Files,
+      contracts,
     });
 
-    pushOneToList(call);
-    navigate(`${call.callId}`);
+    pushTxToList(transaction);
+    navigate(`${transaction.transactionId}`);
     closeModal();
 
     setTimeout(
       () =>
         setNotification({
           isOpen: true,
-          message: 'Call imported successfully',
+          message: 'Transaction imported successfully',
           variant: 'success',
         }),
       100,

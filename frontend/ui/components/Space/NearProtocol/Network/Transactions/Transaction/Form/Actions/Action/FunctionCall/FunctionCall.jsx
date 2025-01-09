@@ -1,4 +1,5 @@
 import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { transactionConfig } from '../../../../../_general/transactionConfig.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
@@ -7,15 +8,8 @@ import { useAccountsOptions } from '../../../../../../_general/hooks/useAccounts
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './FunctionCall.module.scss';
 
-const gasOptions = [
-  { value: 'TGas', label: 'TGas' },
-  { value: 'gas', label: 'Gas' },
-];
-
-const depositOptions = [
-  { value: 'NEAR', label: 'NEAR' },
-  { value: 'yoctoNEAR', label: 'yoctoNEAR' },
-];
+const gasOptions = [transactionConfig.gasUnits.TGas, transactionConfig.gasUnits.gas];
+const depositOptions = [transactionConfig.nearUnits.NEAR, transactionConfig.nearUnits.yoctoNEAR];
 
 export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) => {
   const { control } = form;

@@ -1,11 +1,9 @@
 import { FormRadioButton } from '../../../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import { InputActionGroup } from '../../../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { transactionConfig } from '../../../../../../../_general/transactionConfig.js';
 import cn from './Allowance.module.scss';
 
-const options = [
-  { value: 'NEAR', label: 'NEAR' },
-  { value: 'yoctoNEAR', label: 'yoctoNEAR' },
-];
+const nearUnitOptions = [transactionConfig.nearUnits.NEAR, transactionConfig.nearUnits.yoctoNEAR];
 
 export const Allowance = ({ form, getName }) => {
   const isUnlimitedFormName = getName('restrictions.allowance.isUnlimited');
@@ -37,7 +35,7 @@ export const Allowance = ({ form, getName }) => {
           <InputActionGroup
             control={form.control}
             name={amountFormName}
-            options={options}
+            options={nearUnitOptions}
             label="Amount"
             dropDownName={unitFormName}
             placeholder="0.25"
