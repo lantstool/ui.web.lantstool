@@ -1,5 +1,6 @@
-import { object, string } from 'yup';
+import { object } from 'yup';
+import { accountIdDropdown } from '../../../../_general/validations/accountId.js';
 
 export const deleteAccountSchema = object({
-  beneficiaryId: string().defined(),
+  beneficiaryId: accountIdDropdown('beneficiaryId'),
 });

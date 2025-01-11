@@ -18,10 +18,9 @@ export const Form = ({ transaction, draft }) => {
   const form = useForm({
     defaultValues: body,
     mode: 'onSubmit',
-    // reValidateMode: 'onSubmit',
     resolver: yupResolver(transactionSchema),
   });
-
+  console.log(form.formState.errors);
   useEffect(() => {
     form.reset(draft);
     return () => setDraft({ transactionId, draft: form.getValues() });

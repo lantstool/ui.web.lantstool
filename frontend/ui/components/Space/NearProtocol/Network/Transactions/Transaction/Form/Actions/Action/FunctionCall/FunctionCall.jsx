@@ -35,7 +35,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          copy={false}
           tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
         />
         <FormDropdown
@@ -47,7 +46,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          copy={false}
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
         <FormJsonEditor
@@ -64,28 +62,27 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           customTheme={{ contentMinHeight: '200px' }}
           classes={{ editor: cn.editor }}
         />
-        <div className={cn.wrapper}>
-          <FormInputActionGroup
-            control={control}
-            name={getName('gas.amount')}
-            label="Gas Limit"
-            options={gasOptions}
-            dropDownName={getName('gas.unit')}
-            dynamicErrorSpace
-            placeholder={0}
-            tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
-          />
-          <FormInputActionGroup
-            control={control}
-            name={getName('deposit.amount')}
-            label="Deposit"
-            options={depositOptions}
-            dropDownName={getName('deposit.unit')}
-            dynamicErrorSpace
-            placeholder={0}
-            tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
-          />
-        </div>
+        <FormInputActionGroup
+          control={control}
+          name={getName('gas.amount')}
+          label="Gas Limit"
+          options={gasOptions}
+          dropDownName={getName('gas.unit')}
+          placeholder={0}
+          tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
+          copy
+        />
+        <FormInputActionGroup
+          control={control}
+          name={getName('deposit.amount')}
+          label="Deposit"
+          options={depositOptions}
+          dropDownName={getName('deposit.unit')}
+          dynamicErrorSpace
+          placeholder={0}
+          tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
+          copy
+        />
       </div>
     </ActionBase>
   );

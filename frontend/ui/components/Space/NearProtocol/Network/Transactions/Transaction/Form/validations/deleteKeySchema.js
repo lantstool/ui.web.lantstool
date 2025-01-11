@@ -1,6 +1,6 @@
-import { object, string } from 'yup';
+import { object } from 'yup';
+import { publicKeyDropdown } from '../../../../_general/validations/publicKey.js';
 
 export const deleteKeySchema = object({
-  type: string().required(),
-  publicKey: string().defined(),
+  publicKey: publicKeyDropdown,
 });

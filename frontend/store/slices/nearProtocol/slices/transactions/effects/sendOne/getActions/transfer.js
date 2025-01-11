@@ -6,5 +6,5 @@ export const transfer = (action) => {
       ? utils.format.parseNearAmount(action.quantity.amount)
       : action.quantity.amount;
 
-  return transactions.transfer(BigInt(amount));
+  return transactions.transfer(amount);
 };

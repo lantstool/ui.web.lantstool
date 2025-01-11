@@ -1,20 +1,26 @@
-import { lazy, object, string } from 'yup';
-
-const argsSchema = lazy((args) =>
-  typeof args === 'string' ? string().defined() : object().required().json(),
-);
+import { object, string } from 'yup';
+import { accountIdDropdown } from '../../../../_general/validations/accountId.js';
 
 export const functionCallSchema = object({
-  type: string().required(),
-  contractId: string().defined(),
-  methodName: string().defined(),
-  args: argsSchema,
+  contractId: accountIdDropdown('contractId'),
+  methodName: object({
+    value: string().required(),
+  }),
+  // args: string()object().json(),
   gas: object({
-    amount: string().defined(),
-    unit: string().required().oneOf(['gas', 'TGas']),
+    amount: string()
+      .required()
+      .test(
+        'is-amount-a-valid-positive-number',
+        'amount must be a positive number',
+        (amount) => Number(amount) > 0,
+      ),
   }),
   deposit: object({
-    amount: string().defined(),
-    unit: string().required().oneOf(['NEAR', 'yoctoNEAR']),
+    amount: string().test(
+      'is-amount-a-valid-positive-number',
+      'amount must be >= 0',
+      (amount) => Number(amount) >= 0,
+    ),
   }),
 });

@@ -1,15 +1,13 @@
-import { object, string } from 'yup';
-
-/**
- * 3. Schema for "Transfer":
- *    - type: "Transfer"
- *    - quantity: an object { amount: string, unit: "NEAR" | "yoctoNEAR" }
- */
+import { string, object } from 'yup';
 
 export const transferSchema = object({
-  type: string().required(),
   quantity: object({
-    amount: string().defined(),
-    unit: string().required().oneOf(['NEAR', 'yoctoNEAR']),
+    amount: string()
+      .required()
+      .test(
+        'is-amount-a-valid-positive-number',
+        'amount must be a positive number',
+        (amount) => Number(amount) > 0,
+      ),
   }).required(),
 });
