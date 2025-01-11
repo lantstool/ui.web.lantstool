@@ -1,4 +1,4 @@
-import { object, string, mixed, number, array } from 'yup';
+import { object, string, mixed, array } from 'yup';
 import { accountIdDropdown } from '../../../../_general/validations/accountId.js';
 import { publicKeyDropdown } from '../../../../_general/validations/publicKey.js';
 
