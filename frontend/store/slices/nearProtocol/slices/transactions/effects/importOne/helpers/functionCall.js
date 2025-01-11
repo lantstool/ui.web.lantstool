@@ -10,6 +10,7 @@ const getArgsForImport = (args) => {
 };
 
 export const FunctionCall = ({ action, transactionConfig }) => {
+  console.log(action);
   action.contractId = utils.getDropdownValueForImport(action.contractId);
   action.methodName = utils.getDropdownValueForImport(action.methodName);
   action.args = getArgsForImport(action.args);

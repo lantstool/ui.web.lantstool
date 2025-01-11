@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Button } from '../../../../../_general/Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';
 import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
-import { transactionImportSchema } from '../_general/validations/transactionImportSchema.js';
+import { transactionImportSchema } from '../_general/transactionImportSchema/transactionImportSchema.js';
 import { transactionConfig } from '../_general/transactionConfig.js';
 import cn from './Empty.module.scss';
 

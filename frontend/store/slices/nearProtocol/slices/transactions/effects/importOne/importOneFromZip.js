@@ -3,7 +3,17 @@ import { unzipJsonImportFile } from '../../../../helpers/unzipJsonImportFile.js'
 import { validateJson } from '../../../../helpers/validateJson.js';
 
 export const importOneFromZip = effect(async ({ slice, payload }) => {
-  const { spaceId, networkId, formValues, navigate, closeModal, setError, yupSchema } = payload;
+  const {
+    spaceId,
+    networkId,
+    formValues,
+    navigate,
+    closeModal,
+    setError,
+    yupSchema,
+    transactionConfig,
+  } = payload;
+
   const importOneFromJson = slice.getEffects((slice) => slice.importOneFromJson);
 
   const json = await unzipJsonImportFile(formValues.file, setError);
@@ -12,5 +22,12 @@ export const importOneFromZip = effect(async ({ slice, payload }) => {
   const isValid = await validateJson(json, setError, yupSchema);
   if (!isValid) return;
 
-  await importOneFromJson({ spaceId, networkId, formValues: { json }, navigate, closeModal });
+  await importOneFromJson({
+    spaceId,
+    networkId,
+    formValues: { json },
+    navigate,
+    closeModal,
+    transactionConfig,
+  });
 });

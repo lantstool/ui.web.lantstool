@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
 import { transactionConfig } from '../_general/transactionConfig.js';
-import { transactionImportSchema } from '../_general/validations/transactionImportSchema.js';
+import { transactionImportSchema } from '../_general/transactionImportSchema/transactionImportSchema.js';
 import { Transaction } from './Transaction/Transaction.jsx';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';

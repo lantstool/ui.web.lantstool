@@ -1,13 +1,15 @@
-
-.container{
+.container {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
+.editor {
+  min-height: 201px;
+}
