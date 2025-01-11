@@ -10,8 +10,10 @@ import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { onMountTransaction } from './onMountTransaction.js';
 import { uploadContract } from './uploadContract.js';
-import { exportOneAsJson } from './exportOneAsJson.js';
-import { exportOneAsZip } from './exportOneAsZip.js';
+import { exportOneAsJson } from './exportOne/exportOneAsJson.js';
+import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
+import { importOneFromJson } from './importOne/importOneFromJson.js';
+import { importOneFromZip } from './importOne/importOneFromZip.js';
 
 export const effects = {
   getList,
@@ -28,4 +30,6 @@ export const effects = {
   uploadContract,
   exportOneAsJson,
   exportOneAsZip,
+  importOneFromJson,
+  importOneFromZip,
 };

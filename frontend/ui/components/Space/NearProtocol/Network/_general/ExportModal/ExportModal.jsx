@@ -13,7 +13,7 @@ export const ExportModal = ({ origin, form, closeModal, exportOneAsJson, exportO
   const setNotification = useStoreAction((store) => store.setNotification);
 
   useEffect(() => {
-    setData(exportOneAsJson({ origin, form }));
+    exportOneAsJson({ origin, form, setData });
   }, [origin, form]);
 
   const downloadZip = () => {

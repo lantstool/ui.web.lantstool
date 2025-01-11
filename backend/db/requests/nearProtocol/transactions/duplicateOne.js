@@ -1,3 +1,4 @@
+import { updateContractUsage } from '../../helpers/updateContractUsage.js';
 import { getUpdateOrderQuery } from './queries/getUpdateOrderQuery.js';
 import { getListQuery } from './queries/getListQuery.js';
 import { getListForOrderUpdateQuery } from './queries/getListForOrderUpdateQuery.js';
@@ -29,7 +30,7 @@ const getDuplicateName = async (execute, name) => {
     SELECT COUNT(*) as count
     FROM near_protocol_transactions
     WHERE name LIKE '%${originName}%';
-  `
+  `;
   const [{ count }] = await execute(query);
 
   if (count === 1) return `${originName} - copy`;
@@ -58,8 +59,6 @@ const duplicate = async (execute, targetId) => {
   await execute(query);
 };
 
-// TODO if tx contains contract code add +1 for counter
-
 export const duplicateOne = async ({ execute, request }) => {
   const { spaceId, networkId, targetId } = request.body;
   // Get all transactions we have to do an order update
@@ -68,6 +67,20 @@ export const duplicateOne = async ({ execute, request }) => {
   if (listForUpdate.length > 0) await updateList(execute, listForUpdate);
   // Create a target copy with updated name
   await duplicate(execute, targetId);
+
+  // Update the contracts usage if it's present in the target transaction;
+  // We do a trick here - if the tx has some Deploy Contract actions then we call
+  // updateContractUsage with x2 Deploy Contract actions. And this will update usage
+  // exactly in x2 times;
+  const target = await getTarget(execute, targetId);
+  const { actions } = JSON.parse(target.body);
+
+  await updateContractUsage({
+    execute,
+    transactionId: targetId,
+    body: { actions: [...actions, ...actions] },
+  });
+
   // We want to return the updated list in order to avoid extra steps during the state update
   return await execute(getListQuery(spaceId, networkId));
 };

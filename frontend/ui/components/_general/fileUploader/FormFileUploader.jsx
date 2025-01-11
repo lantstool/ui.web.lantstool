@@ -9,6 +9,7 @@ export const FormFileUploader = ({
   topbar,
   classes,
   dynamicErrorSpace,
+  errorExtractor = (error) => error?.message,
 }) => (
   <Controller
     name={name}
@@ -21,7 +22,7 @@ export const FormFileUploader = ({
         callToActionText={callToActionText}
         topbar={topbar}
         classes={classes}
-        error={error?.message}
+        error={errorExtractor(error)}
         dynamicErrorSpace={dynamicErrorSpace}
       />
     )}

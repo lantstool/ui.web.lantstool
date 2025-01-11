@@ -10,7 +10,7 @@ export const KeyGenerator = () => {
   const onMountKeyGenerator = useStoreEffect(
     (store) => store.nearProtocol.utils.onMountKeyGenerator,
   );
-  const { publicKey, privateKey, seedPhrase, derivationPath } = generatedKey;
+  const { publicKey, privateKey, seedPhrase, derivationPath, implicitAccount } = generatedKey;
 
   useEffect(() => {
     onMountKeyGenerator();
@@ -22,7 +22,13 @@ export const KeyGenerator = () => {
       <Item icon={cn.privateKeyIcon} value={privateKey} label="Private key" isVisible={true} />
       <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed hrase" isVisible={true} />
       <Item
-        icon={cn.derivationPassIcon}
+        icon={cn.implicitAccountIcon}
+        value={implicitAccount}
+        label="Implicit Account"
+        isVisible={false}
+      />
+      <Item
+        icon={cn.derivationPathIcon}
         value={derivationPath}
         label="Derivation path"
         isVisible={false}

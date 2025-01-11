@@ -1,7 +1,7 @@
 import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
 import { Form } from '../../_general/components/Form/Form.jsx';
-import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { WaitUntil } from '../_general/WaitUntil.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
@@ -23,7 +23,7 @@ export const GetDetailedTransaction = ({ call, draft }) => {
       }
     >
       <ConfigureTitle />
-      <Input
+      <FormInput
         name="transactionHash"
         label="Transaction Hash"
         tooltip={<Tooltip content="Transaction hash" placement="top" defaultContent />}

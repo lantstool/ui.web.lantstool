@@ -24,3 +24,12 @@
   padding: 0;
   margin: 24px 0 16px 0;
 }
+
+.btnWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.importIcon {
+  @include icon('@assets/icons/import-outline.svg');
+}

@@ -1,5 +1,5 @@
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
 import { useEffect } from 'react';
 
 const updateReceiverId = (subAccountId, signerId, singleValue, setValue) => {
@@ -35,7 +35,7 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, order })
       removeAction={remove}
       tooltipContent="Create Account"
     >
-      <InputActionGroup
+      <FormInputActionGroup
         control={control}
         inputGroup="text"
         name={getName('subAccountId')}

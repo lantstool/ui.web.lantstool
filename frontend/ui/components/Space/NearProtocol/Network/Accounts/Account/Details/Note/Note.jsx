@@ -1,4 +1,4 @@
-import { Input } from '../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from '../schema.js';
@@ -28,7 +28,7 @@ export const Note = ({ note }) => {
   });
 
   return (
-    <Input
+    <FormInput
       onBlur={editName}
       name="note"
       error={errors?.note?.message}

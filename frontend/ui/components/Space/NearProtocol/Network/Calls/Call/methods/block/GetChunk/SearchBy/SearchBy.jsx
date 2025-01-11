@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
-import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './SearchBy.module.scss';
 
@@ -20,7 +20,7 @@ export const SearchBy = ({ form }) => {
         <FormRadioButton control={control} label="In Block" name="searchType" value="inBlock" />
       </div>
       {searchType === 'byChunkId' && (
-        <Input
+        <FormInput
           name="chunkId"
           control={control}
           label="Chunk Id"
@@ -30,13 +30,13 @@ export const SearchBy = ({ form }) => {
       )}
       {searchType === 'inBlock' && (
         <div className={cn.blockWrapper}>
-          <Input
+          <FormInput
             name="blockId"
             control={control}
             label="Block Id"
             tooltip={<Tooltip content="Block Id" placement="top" defaultContent />}
           />
-          <Input
+          <FormInput
             name="shardId"
             control={control}
             label="Shard Id"

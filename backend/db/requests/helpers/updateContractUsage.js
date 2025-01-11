@@ -73,28 +73,27 @@ const getFileUsageDiff = (oldActions, newActions) => {
   }, {});
 };
 
-const increaseUsage = async (execute, storage, fileName, counter) => {
+export const increaseContractUsage = async ({ execute, storage, u8File, fileName, counter }) => {
   const currentCount = await contractWasmUsageCount.get({ execute, fileName });
-  const nextCount = currentCount + counter;
   // If file already used in the app - just update the usage counter
-  if (currentCount) {
+  if (Number(currentCount)) {
     await contractWasmUsageCount.update({
       execute,
       fileName,
-      usageCount: nextCount,
+      usageCount: currentCount + counter,
     });
     return;
   }
-  // if the WASM is saving for the first time - copy it from memory to OPFS
+  // if the WASM is saving for the first time - copy it from memory or u8File to OPFS
   await opfs.createFileFromU8Buffer({
-    buffer: storage.nearProtocol.contracts[fileName],
+    buffer: u8File || storage.nearProtocol.contracts[fileName],
     path: 'near-protocol/contracts',
     name: fileName,
   });
   await contractWasmUsageCount.create({ execute, fileName, usageCount: counter });
 };
 
-const decreaseUsage = async (execute, fileName, counter) => {
+const decreaseContractUsage = async (execute, fileName, counter) => {
   const currentCount = await contractWasmUsageCount.get({ execute, fileName });
   const nextCount = currentCount + counter; // counter is a negative number here
   // If after update there are still some txs which uses the WASM
@@ -120,8 +119,8 @@ export const updateContractUsage = async ({ execute, storage, transactionId, bod
   await Promise.all(
     Object.entries(diffMap).map(([fileName, counter]) =>
       counter > 0
-        ? increaseUsage(execute, storage, fileName, counter)
-        : decreaseUsage(execute, fileName, counter),
+        ? increaseContractUsage({ execute, storage, fileName, counter })
+        : decreaseContractUsage(execute, fileName, counter),
     ),
   );
 };

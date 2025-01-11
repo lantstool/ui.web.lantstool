@@ -1,5 +1,5 @@
 import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { useAccountsOptions } from '../../../../../_general/hooks/useAccountsOptions.js';
 import { Form } from '../../_general/components/Form/Form.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
@@ -32,7 +32,7 @@ export const GetContractState = ({ call, draft }) => {
         creatableSelect
         tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
       />
-      <Input
+      <FormInput
         name="keyPrefix"
         label="State Prefix"
         tooltip={<Tooltip content="State prefix" placement="top" defaultContent />}

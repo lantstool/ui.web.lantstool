@@ -1,6 +1,6 @@
 import logoLantstool from '@assets/logoLantstool.svg';
 import { Button } from '../Button/Button.jsx';
-import { Input } from '../input/Input/Input.jsx';
+import { FormInput } from '../input/FormInput/FormInput.jsx';
 import { BadgeSelector } from '../BadgeSelector/BadgeSelector.jsx';
 import cn from './CreateSpaceForm.module.scss';
 
@@ -19,7 +19,7 @@ export const CreateSpaceForm = ({ form, onClick, btnText }) => {
         <h1 className={cn.title}>Let’s create your space</h1>
         <h1 className={cn.liteTitle}>Name it whatever you prefer</h1>
         <div className={cn.wrapper}>
-          <Input
+          <FormInput
             control={control}
             name="spaceName"
             placeholder="My workspace"

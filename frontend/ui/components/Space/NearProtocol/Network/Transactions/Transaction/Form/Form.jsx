@@ -7,13 +7,20 @@ import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
 import { useEffect } from 'react';
 import { Topbar } from './Topbar/Topbar.jsx';
 import { ActionBar } from './ActionBar/ActionBar.jsx';
+import { transactionSchema } from './validations/transactionSchema.js';
+import { yupResolver } from '@hookform/resolvers/yup';
 import cn from './Form.module.scss';
 
 export const Form = ({ transaction, draft }) => {
   const { transactionId, body } = transaction;
   const setDraft = useStoreAction((store) => store.nearProtocol.transactions.setDraft);
-  const form = useForm({ defaultValues: body });
 
+  const form = useForm({
+    defaultValues: body,
+    mode: 'onSubmit',
+    resolver: yupResolver(transactionSchema),
+  });
+  console.log(form.formState.errors);
   useEffect(() => {
     form.reset(draft);
     return () => setDraft({ transactionId, draft: form.getValues() });

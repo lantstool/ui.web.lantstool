@@ -1,0 +1,67 @@
+{
+  "blockchain": "near-protocol",
+  "networkId": "testnet",
+  "transaction": {
+    "version": "1.0",
+    "name": "Transaction#3",
+    "signerId": "eclipseer.testnet",
+    "signerKey": "ed25519:6RrvkTQKSo1DwW23rv3TWLhZZw5jySeW1AEVrLSfAhka",
+    "receiverId": "test.eclipseer.testnet",
+    "actions": [
+      {
+        "type": "CreateAccount",
+        "subAccountId": "test"
+      },
+      {
+        "type": "AddKey",
+        "publicKey": "ed25519:6RrvkTQKSo1DwW23rv3TWLhZZw5jySeW1AEVrLSfAhka",
+        "permission": "FunctionCall",
+        "restrictions": {
+          "contractId": "testnet",
+          "allowance": {
+            "amount": "0.25",
+            "unit": "NEAR"
+          },
+          "methods": ["send", "new", "create_account_advanced"]
+        }
+      },
+      {
+        "type": "Transfer",
+        "quantity": {
+          "amount": "1",
+          "unit": "yoctoNEAR"
+        }
+      },
+      {
+        "type": "DeployContract",
+        "fileName": "",
+        "base64File": ""
+      },
+      {
+        "type": "FunctionCall",
+        "contractId": "test.eclipseer.testnet",
+        "methodName": "new",
+        "args": {
+          "test": 1,
+          "abc": ["abs"]
+        },
+        "gas": {
+          "amount": "50",
+          "unit": "TGas"
+        },
+        "deposit": {
+          "amount": "0",
+          "unit": "NEAR"
+        }
+      },
+      {
+        "type": "DeleteKey",
+        "publicKey": "ed25519:2daCm7Ux8igXXFDtMJ2nSRHVR5PM8jSaarum6X8ka9oy"
+      },
+      {
+        "type": "DeleteAccount",
+        "beneficiaryId": "eclipseer.testnet"
+      }
+    ]
+  }
+}
