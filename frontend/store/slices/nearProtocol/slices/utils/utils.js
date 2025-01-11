@@ -8,6 +8,7 @@ export const utils = {
     privateKey: '',
     seedPhrase: '',
     derivationPath: KEY_DERIVATION_PATH,
+    implicitAccount: '',
   },
   ...actions,
   ...effects,

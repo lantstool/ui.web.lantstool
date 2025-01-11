@@ -29,10 +29,16 @@
   background-color: $neutral-600;
 }
 
-.derivationPassIcon {
+.derivationPathIcon {
   @include icon('@assets/icons/routing-derivation-path-outline.svg');
   background-color: $neutral-600;
 }
+
+.implicitAccountIcon {
+  @include icon('@assets/icons/account-circle-outline.svg');
+  background-color: $neutral-600;
+}
+
 
 .magicStickOutline {
   @include icon('@assets/icons/magic-stick-outline.svg');
