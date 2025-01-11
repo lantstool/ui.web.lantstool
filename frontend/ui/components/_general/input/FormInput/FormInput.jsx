@@ -2,9 +2,9 @@ import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
 import cnm from 'classnames';
-import cn from './Input.module.scss';
+import cn from './FormInput.module.scss';
 
-export const Input = ({
+export const FormInput = ({
   control,
   id,
   name,
@@ -16,6 +16,7 @@ export const Input = ({
   copy = true,
   tooltip = null,
   dynamicErrorSpace = false,
+  errorExtractor = (error) => error?.message,
 }) => {
   const {
     field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur, ref },
@@ -80,7 +81,7 @@ export const Input = ({
           </div>
         )}
       </div>
-      <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
+      <FieldErrorLabel error={errorExtractor(error)} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

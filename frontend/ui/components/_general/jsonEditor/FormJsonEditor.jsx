@@ -12,6 +12,7 @@ export const FormJsonEditor = ({
   customTheme,
   dynamicErrorSpace,
   errorLabel,
+  errorExtractor = (error) => error?.message,
 }) => (
   <Controller
     name={name}
@@ -28,7 +29,7 @@ export const FormJsonEditor = ({
         showCopyBtn={showCopyBtn}
         classes={classes}
         customTheme={customTheme}
-        error={error}
+        error={errorExtractor(error)}
         dynamicErrorSpace={dynamicErrorSpace}
         errorLabel={errorLabel}
       />

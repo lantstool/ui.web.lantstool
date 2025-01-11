@@ -2,9 +2,9 @@ import cnm from 'classnames';
 import { FieldErrorLabel } from '../FieldErrorLabel/FieldErrorLabel.jsx';
 import { CopyButton } from '../CopyButton/CopyButton.jsx';
 import { useController } from 'react-hook-form';
-import cn from './Textarea.module.scss';
+import cn from './FormTextarea.module.scss';
 
-export const Textarea = ({
+export const FormTextarea = ({
   control,
   name,
   id,
@@ -12,17 +12,15 @@ export const Textarea = ({
   cols,
   rows,
   disabled = false,
-  error = false,
   dynamicErrorSpace = false,
   copy = false,
   classes = {},
+  errorExtractor = (error) => error?.message,
 }) => {
   const {
     field: { value = '', onChange, onBlur, ref },
-  } = useController({
-    name,
-    control,
-  });
+    fieldState: { error },
+  } = useController({ name, control });
 
   const handleClear = () => {
     onChange('');
@@ -68,7 +66,7 @@ export const Textarea = ({
           </div>
         )}
       </div>
-      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
+      <FieldErrorLabel error={errorExtractor(error)} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

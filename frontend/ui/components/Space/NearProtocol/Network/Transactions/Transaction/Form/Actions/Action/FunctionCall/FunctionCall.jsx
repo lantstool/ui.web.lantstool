@@ -1,7 +1,7 @@
 import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
 import { transactionConfig } from '../../../../../_general/transactionConfig.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
@@ -65,7 +65,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           classes={{ editor: cn.editor }}
         />
         <div className={cn.wrapper}>
-          <InputActionGroup
+          <FormInputActionGroup
             control={control}
             name={getName('gas.amount')}
             label="Gas Limit"
@@ -75,7 +75,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
             placeholder={0}
             tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
           />
-          <InputActionGroup
+          <FormInputActionGroup
             control={control}
             name={getName('deposit.amount')}
             label="Deposit"

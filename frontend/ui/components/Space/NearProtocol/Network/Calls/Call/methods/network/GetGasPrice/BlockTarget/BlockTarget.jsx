@@ -1,6 +1,6 @@
 import { useWatch } from 'react-hook-form';
 import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
-import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import cn from './BlockTarget.module.scss';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 
@@ -22,7 +22,7 @@ export const BlockTarget = ({ form }) => {
         </div>
         {blockTarget === 'specific' && (
           <div className={cn.content}>
-            <Input
+            <FormInput
               name="blockId"
               control={control}
               label="Block Id"

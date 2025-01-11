@@ -1,15 +1,15 @@
 import { Controller, useController } from 'react-hook-form';
 import Select from 'react-select';
-import { selectStyles } from './InputActionGroup.style.js';
+import { selectStyles } from './formInputActionGroup.style.js';
 import { DropdownIndicator } from '../../dropdown/Dropdown/DropdownIndicator/DropdownIndicator.jsx';
 import { Option } from '../../dropdown/Dropdown/Option/Option.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import { useRef, useState } from 'react';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
-import cn from './InputActionGroup.module.scss';
+import cn from './FormInputActionGroup.module.scss';
 
-export const InputActionGroup = ({
+export const FormInputActionGroup = ({
   control = () => ({}),
   options = [],
   name,
@@ -23,6 +23,7 @@ export const InputActionGroup = ({
   singleValue = null,
   dynamicErrorSpace = false,
   tooltip,
+  errorExtractor = (error) => error?.message,
 }) => {
   const ref = useRef(null);
   const {
@@ -107,7 +108,7 @@ export const InputActionGroup = ({
           </div>
         )}
       </div>
-      <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />
+      <FieldErrorLabel error={errorExtractor(error)} dynamicErrorSpace={dynamicErrorSpace} />
     </div>
   );
 };

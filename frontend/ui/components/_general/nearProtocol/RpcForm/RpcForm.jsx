@@ -1,7 +1,7 @@
 import cnm from 'classnames';
 import { useWatch } from 'react-hook-form';
 import { Checkbox } from '../../Checkbox/Checkbox.jsx';
-import { Input } from '../../input/Input/Input.jsx';
+import { FormInput } from '../../input/FormInput/FormInput.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import cn from './RpcForm.module.scss';
 
@@ -22,14 +22,14 @@ export const RpcForm = ({ form, classes }) => {
 
   return (
     <div className={cnm(cn.rpcForm, classes?.container && classes.container)}>
-      <Input
+      <FormInput
         control={control}
         name="name"
         label="RPC Name"
         placeholder="My Awesome RPC"
         copy={false}
       />
-      <Input
+      <FormInput
         control={control}
         name="url"
         label="RPC URL"
@@ -49,7 +49,7 @@ export const RpcForm = ({ form, classes }) => {
       </div>
       {header && (
         <div className={cn.container}>
-          <Input
+          <FormInput
             control={control}
             name="header.name"
             label="Name"
@@ -57,7 +57,7 @@ export const RpcForm = ({ form, classes }) => {
             copy={false}
             tooltip={<Tooltip content="Name" placement="top" defaultContent />}
           />
-          <Input
+          <FormInput
             control={control}
             name="header.value"
             label="Value"

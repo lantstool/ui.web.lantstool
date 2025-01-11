@@ -1,4 +1,4 @@
-import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { ContractIds } from '../../_general/components/ContractIds/ContractIds.jsx';
 import { Form } from '../../_general/components/Form/Form.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
@@ -22,7 +22,7 @@ export const GetContractStateChanges = ({ call, draft }) => {
     >
       <ConfigureTitle />
       <ContractIds contractIds={draft.contractIds} />
-      <Input
+      <FormInput
         name="keyPrefix"
         label="State Prefix"
         tooltip={<Tooltip content="State prefix" placement="top" defaultContent />}

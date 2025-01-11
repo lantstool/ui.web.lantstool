@@ -1,5 +1,5 @@
 import { Form } from '../../_general/components/Form/Form.jsx';
-import { Input } from '../../../../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
 import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
@@ -19,7 +19,7 @@ export const GetReceipt = ({ call, draft }) => {
       }
     >
       <ConfigureTitle />
-      <Input
+      <FormInput
         name="receiptId"
         label="Receipt Id"
         tooltip={<Tooltip content="Receipt id" placement="top" defaultContent />}

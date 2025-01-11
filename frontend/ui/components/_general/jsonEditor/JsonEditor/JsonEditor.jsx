@@ -63,9 +63,7 @@ export const JsonEditor = ({
         extensions={[jsonLanguage, EditorView.lineWrapping]}
         basicSetup={{ tabSize: 2 }}
       />
-      {errorLabel || (
-        <FieldErrorLabel error={error?.message} dynamicErrorSpace={dynamicErrorSpace} />
-      )}
+      {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
 import { useForm } from 'react-hook-form';
-import { Input } from '../../../../../_general/input/Input/Input.jsx';
+import { FormInput } from '../../../../../_general/input/FormInput/FormInput.jsx';
 import { useStoreEffect } from '@react-vault';
 import { ModalFooter } from '../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
@@ -43,14 +43,14 @@ export const ImportAccount = ({ closeModal, setAccount = () => ({}) }) => {
     <BaseModal close={close} classes={{ modal: cn.modal }}>
       <ModalHeader title="Import account" close={close} />
       <div className={cn.inputs}>
-        <Input
+        <FormInput
           control={control}
           name="accountId"
           error={errors?.accountId?.message}
           placeholder="name.near"
           label="Enter an Account ID. You can also add accounts that are not yet on-chain."
         />
-        <Input
+        <FormInput
           control={control}
           name="note"
           error={errors?.note?.message}
