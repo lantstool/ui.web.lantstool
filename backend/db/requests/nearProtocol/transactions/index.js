@@ -8,8 +8,9 @@ import { duplicateOne } from './duplicateOne.js';
 import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
 import { uploadContractToMemory } from './uploadContractToMemory.js';
-import { getContract } from './getContract.js';
+import { getU8Contract } from './getU8Contract.js';
 import { validateTransactionId } from './validateTransactionId.js';
+import { importOne } from './importOne.js';
 
 export const transactions = {
   create,
@@ -22,6 +23,7 @@ export const transactions = {
   reorder,
   removeOne,
   uploadContractToMemory,
-  getContract,
+  getU8Contract,
   validateTransactionId,
+  importOne,
 };

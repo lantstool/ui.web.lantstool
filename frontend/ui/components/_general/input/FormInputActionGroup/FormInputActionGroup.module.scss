@@ -1,0 +1,162 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.container {
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+@mixin wrapper($color) {
+  padding: 0;
+  outline: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid $color;
+  border-radius: 8px;
+}
+
+.wrapperDefault {
+  @include wrapper($neutral-200);
+  &:hover {
+    border-color: $neutral-400;
+    .borderDefault {
+      background-color: $neutral-400;
+    }
+  }
+}
+
+.wrapperError {
+  @include wrapper($red-600);
+}
+
+.wrapperFocused {
+  @include wrapper($neutral-500);
+  .borderDefault {
+    background-color: $neutral-500;
+  }
+}
+
+.wrapperDisabled {
+  @include wrapper($neutral-200);
+  color: $neutral-400;
+  .borderDefault {
+    background-color: $neutral-300;
+  }
+  .input {
+    color: $neutral-600;
+    background-color: $neutral-200;
+    &::placeholder {
+      color: $neutral-400;
+    }
+  }
+}
+
+@mixin border($color) {
+  border: none;
+  height: 38px;
+  width: 1px;
+  min-width: 1px;
+  background-color: $color;
+  margin: 0;
+  padding: 0;
+}
+
+.borderDefault {
+  @include border($neutral-300);
+}
+
+.borderError {
+  @include border($red-600);
+}
+
+.label {
+  @include text-sm-regular;
+  align-content: center;
+  color: $neutral-700;
+  padding: 2px 0;
+}
+
+.inputWrapper {
+  border-radius: 8px 0 0 8px;
+  background-color: $neutral-50;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+}
+
+.input {
+  @include text-mg-regular;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 24px;
+  width: 100%;
+  border-radius: 7px 0 0 7px;
+  background: $neutral-50;
+  border: none;
+  outline: none;
+  padding: 7px 12px;
+  &::placeholder {
+    color: $neutral-400;
+  }
+}
+
+.inputBorder {
+  border-radius: 7px;
+}
+
+.buttonWrapper {
+  width: max-content;
+  display: flex;
+  padding: 7px 12px 7px 0;
+  justify-content: right;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  &:disabled {
+    cursor: default;
+  }
+  &:hover {
+    .icon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.icon {
+  @include icon('@assets/icons/backspace-outline.svg');
+  background-color: $neutral-600;
+}
+
+.wrapper {
+  max-width: 200px;
+}
+
+.singleValue {
+  @include text-sm-regular;
+  padding: 7px 12px;
+  color: $neutral-700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

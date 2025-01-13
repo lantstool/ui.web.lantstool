@@ -1,27 +1,25 @@
-import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
+import { transactionConfig } from '../../../../../_general/transactionConfig.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 
-const options = [
-  { value: 'NEAR', label: 'NEAR' },
-  { value: 'yoctoNEAR', label: 'yoctoNEAR' },
-];
+const nearUnitOptions = [transactionConfig.nearUnits.NEAR, transactionConfig.nearUnits.yoctoNEAR];
 
-export const Transfer = ({ iconStyle, form, name, getName, removeAction, order }) => (
+export const Transfer = ({ iconStyle, form, getName, removeAction, order }) => (
   <ActionBase
     removeAction={removeAction}
-    label={name}
+    label="Transfer"
     order={order}
     color="cyan"
     tooltipContent="Transfer funds"
     iconStyle={iconStyle}
   >
-    <InputActionGroup
+    <FormInputActionGroup
       control={form.control}
-      name={getName('amount')}
+      name={getName('quantity.amount')}
       placeholder={0}
-      options={options}
+      options={nearUnitOptions}
       label="Amount"
-      dropDownName={getName('amountType')}
+      dropDownName={getName('quantity.unit')}
       dynamicErrorSpace
     />
   </ActionBase>

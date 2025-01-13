@@ -1,6 +1,6 @@
 import { ModalFooter } from '../../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '../../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
-import { Textarea } from '../../../../../../_general/Textarea/Textarea.jsx';
+import { FormTextarea } from '../../../../../../_general/FormTextarea/FormTextarea.jsx';
 import { useForm } from 'react-hook-form';
 import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
@@ -41,20 +41,14 @@ export const PrivateKey = ({ privateKeySchema = null, closeModal, setKey }) => {
           Import your private access key locally for transaction signing. It can be any valid
           ed25519 key, even if it is not currently associated with an account.
         </p>
-        <Textarea
+        <FormTextarea
           control={control}
           rows={3}
           name="privateKey"
-          error={errors?.privateKey?.message}
           placeholder="ed25519:5sAGQFD878c7MRoy9ACfgtTzejubjm76FPxUQpBPqUG26H9XMayZn36244vwkTuxrYFcFBE4YMXNcna1jXC6RxqU"
         />
       </div>
-      <ModalFooter
-        action={{
-          label: 'Import',
-          onClick: onSubmit,
-        }}
-      />
+      <ModalFooter action={{ label: 'Import', onClick: onSubmit }} />
     </form>
   );
 };

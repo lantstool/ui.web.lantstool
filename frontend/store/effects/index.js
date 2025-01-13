@@ -4,6 +4,8 @@ import { restoreFromBackup } from './restoreFromBackup.js';
 import { resetApp } from './resetApp.js';
 import { resetHistory } from './resetHistory.js';
 import { resetAppState } from './resetAppState.js';
+import { getStarted } from './getStarted/getStarted.js';
+import { importFromGithub } from './importFromGithub/importFromGithub.js';
 
 export const effects = {
   initApp,
@@ -12,4 +14,6 @@ export const effects = {
   resetApp,
   resetHistory,
   resetAppState,
+  getStarted,
+  importFromGithub,
 };

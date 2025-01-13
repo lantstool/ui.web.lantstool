@@ -1,9 +1,7 @@
+import { ManuallyForm } from '../../../../../_general/nearProtocol/ManuallyForm/ManuallyForm.jsx';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
-import { Button } from '../../../../../_general/Button/Button.jsx';
-import { RpcForm } from '../../../../../_general/nearProtocol/RpcForm/RpcForm.jsx';
 import { useRpcForm } from '../../../../../_general/nearProtocol/RpcForm/useRpcForm.js';
-import cn from './Manually.module.scss';
 
 export const Manually = () => {
   const { spaceId } = useParams();
@@ -16,12 +14,5 @@ export const Manually = () => {
     createManually({ formValues, spaceId, navigate });
   });
 
-  return (
-    <>
-      <RpcForm form={form} classes={{ container: cn.rpcFormContainer }} />
-      <div className={cn.buttonWrapper}>
-        <Button onClick={onSubmit}>Add Network</Button>
-      </div>
-    </>
-  );
+  return <ManuallyForm form={form} onSubmit={onSubmit} btnText="Add network" />;
 };

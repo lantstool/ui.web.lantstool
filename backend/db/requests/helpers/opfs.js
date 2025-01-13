@@ -1,3 +1,5 @@
+import { asyncIteratorToArray } from './asyncIteratorToArray.js';
+
 export const getDirHandle = async ({ path, create = true }) => {
   const rootHandle = await navigator.storage.getDirectory();
   if (!path) return rootHandle;
@@ -35,7 +37,55 @@ export const createFileFromU8Buffer = async ({ buffer, name, path }) => {
 
 export const uploadFile = async ({ file, name, path }) => {
   const arrayBuffer = await file.arrayBuffer();
-  await opfs.createFileFromU8Buffer({ buffer: new Uint8Array(arrayBuffer), name, path });
+  await createFileFromU8Buffer({ buffer: new Uint8Array(arrayBuffer), name, path });
+};
+
+const getU8File = async ({ name, path }) => {
+  const dirHandle = await getDirHandle({ path, create: false });
+  const fileHandle = await dirHandle.getFileHandle(name);
+  const file = await fileHandle.getFile();
+  const arrayBuffer = await file.arrayBuffer();
+  return new Uint8Array(arrayBuffer);
+};
+
+const removeEntry = async ({ path, name }) => {
+  try {
+    const dirHandle = await getDirHandle({ path, create: false });
+    await dirHandle.removeEntry(name, { recursive: true });
+  } catch (e) {
+    if (e.name === 'NotFoundError') return;
+    throw e;
+  }
+};
+
+// Return all files of the particular directory; nested folders will be ignored;
+// If no files - return empty array;
+const getDirFiles = async ({ path }) => {
+  try {
+    const dirHandle = await getDirHandle({ path, create: false });
+    const entriesArray = await asyncIteratorToArray(dirHandle.entries());
+    const fileEntries = entriesArray.filter(([, entry]) => entry.kind === 'file');
+
+    return Promise.all(
+      fileEntries.map(async ([name, entry]) => {
+        const file = await entry.getFile();
+        return { name, file };
+      }),
+    );
+  } catch (e) {
+    if (e.name === 'NotFoundError') return [];
+    throw e;
+  }
+};
+
+const getDirU8Files = async ({ path }) => {
+  const files = await getDirFiles({ path });
+  return Promise.all(
+    files.map(async ({ name, file }) => {
+      const arrayBuffer = await file.arrayBuffer();
+      return { name, file: new Uint8Array(arrayBuffer) };
+    }),
+  );
 };
 
 export const opfs = {
@@ -43,4 +93,8 @@ export const opfs = {
   getDirHandle,
   createFileFromU8Buffer,
   uploadFile,
+  getU8File,
+  removeEntry,
+  getDirFiles,
+  getDirU8Files,
 };

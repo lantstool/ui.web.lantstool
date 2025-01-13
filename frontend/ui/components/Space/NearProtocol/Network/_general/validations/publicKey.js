@@ -2,7 +2,7 @@ import { object, string } from 'yup';
 import bs58 from 'bs58';
 
 export const publicKey = string()
-  .required(`Public Key is a required field`)
+  .required(`publicKey is a required field`)
   .test('isEd25519', 'Invalid Public Key format',(value) => {
     // Check if the string starts with "ed25519:"
     if (!value.startsWith('ed25519:')) return false;
@@ -20,4 +20,4 @@ export const publicKey = string()
 
 export const publicKeyDropdown = object({
   value: publicKey,
-}).required('Public Key is a required field');
+}).required('publicKey is a required field');

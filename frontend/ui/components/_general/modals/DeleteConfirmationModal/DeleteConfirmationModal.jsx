@@ -1,5 +1,5 @@
 import { BaseModal } from '../BaseModal/BaseModal.jsx';
-import { Input } from '../../input/Input/Input.jsx';
+import { FormInput } from '../../input/FormInput/FormInput.jsx';
 import { Button } from '../../Button/Button.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -33,7 +33,7 @@ export const DeleteConfirmationModal = ({
         <h2 className={cn.title}>{title}</h2>
         <p className={cn.description}>{description}</p>
       </div>
-      <Input
+      <FormInput
         name="confirmation"
         error={errors?.confirmation?.message}
         control={control}

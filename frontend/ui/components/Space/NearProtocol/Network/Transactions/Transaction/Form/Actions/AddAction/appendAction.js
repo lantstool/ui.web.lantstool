@@ -1,70 +1,45 @@
-const createAccount = (append) =>
-  append({
-    name: 'Create Account',
-    type: 'CreateAccount',
-    accountId: null,
-  });
+import { transactionConfig } from '../../../../_general/transactionConfig.js';
+
+const createAccount = (append) => append({ type: 'CreateAccount', subAccountId: '' });
 
 const transfer = (append) =>
   append({
-    name: 'Transfer',
     type: 'Transfer',
-    amount: null,
-    amountType: { value: 'NEAR', label: 'NEAR' },
+    quantity: { amount: '', unit: transactionConfig.nearUnits.NEAR },
   });
 
 const addKey = (append) =>
   append({
-    name: 'Add Key',
     type: 'AddKey',
     publicKey: null,
-    permission: {
-      type: 'FullAccess', // FullAccess
-      restrictions: {
-        allowedAllowance: 'Unlimited', // Limited
-        allowance: '',
-        allowanceType: { value: 'NEAR', label: 'NEAR' },
-        receiverId: null,
-        allowedMethods: 'All', // Certain
-        methodNames: [{ name: null }],
+    permission: 'FullAccess', // FunctionCall
+    restrictions: {
+      contractId: null,
+      allowance: {
+        isUnlimited: true,
+        amount: '0.25',
+        unit: transactionConfig.nearUnits.NEAR,
+      },
+      methods: {
+        onlyCertain: false,
+        list: [{ methodName: null }],
       },
     },
-    nonce: '0',
   });
 
 const functionCall = (append) =>
   append({
-    name: 'Function Call',
     type: 'FunctionCall',
-    contractId: '',
-    methodName: '',
-    arguments: '{}',
-    gas: '50',
-    deposit: '0',
-    gasType: { value: 'tGas', label: 'TGas' },
-    depositType: { value: 'NEAR', label: 'NEAR' },
+    contractId: null,
+    methodName: null,
+    args: '',
+    gas: { amount: '50', unit: transactionConfig.gasUnits.TGas },
+    deposit: { amount: '0', unit: transactionConfig.nearUnits.NEAR },
   });
 
-const deployContract = (append) =>
-  append({
-    type: 'DeployContract',
-    name: 'Deploy Contract',
-    fileName: null,
-  });
-
-const deleteKey = (append) =>
-  append({
-    name: 'Delete Key',
-    type: 'DeleteKey',
-    accessKey: null,
-  });
-
-const deleteAccount = (append) =>
-  append({
-    name: 'Delete Account',
-    type: 'DeleteAccount',
-    beneficiaryId: null,
-  });
+const deployContract = (append) => append({ type: 'DeployContract', fileName: '' });
+const deleteKey = (append) => append({ type: 'DeleteKey', publicKey: null });
+const deleteAccount = (append) => append({ type: 'DeleteAccount', beneficiaryId: null });
 
 export const appendAction = {
   createAccount,

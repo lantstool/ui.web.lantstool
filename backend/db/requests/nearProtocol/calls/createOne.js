@@ -12,6 +12,7 @@ export const createOne = async ({ execute, request }) => {
   const count = await getCount({ execute, request });
   const name = `Call#${count + 1}`;
 
+  // TODO move this logic to the effect
   const body = JSON.stringify({
     method: { value: 'getAccount', label: 'Get Account' },
     accountId: null,

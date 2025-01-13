@@ -1,7 +1,7 @@
 import { useWatch } from 'react-hook-form';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { RadioButton } from '../../../../../../../../../_general/RadioButton/RadioButton.jsx';
-import { Input } from '../../../../../../../../../_general/input/Input/Input.jsx';
+import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
+import { FormInput } from '../../../../../../../../../_general/input/FormInput/FormInput.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { config } from '../../config.js';
 import cn from './BlockTarget.module.scss';
@@ -12,7 +12,6 @@ const finalityOptions = [finality.final, finality['near-final'], finality.optimi
 export const BlockTarget = ({ form }) => {
   const {
     control,
-    register,
     formState: { errors },
   } = form;
 
@@ -26,8 +25,8 @@ export const BlockTarget = ({ form }) => {
           <Tooltip content="Block traget" placement="top" defaultContent />
         </div>
         <div className={cn.wrapper}>
-          <RadioButton register={register} label="Latest" name="blockTarget" value="latest" />
-          <RadioButton register={register} label="Specific" name="blockTarget" value="specific" />
+          <FormRadioButton control={control} label="Latest" name="blockTarget" value="latest" />
+          <FormRadioButton control={control} label="Specific" name="blockTarget" value="specific" />
         </div>
         {blockTarget === 'latest' && (
           <FormDropdown
@@ -41,7 +40,7 @@ export const BlockTarget = ({ form }) => {
           />
         )}
         {blockTarget === 'specific' && (
-          <Input
+          <FormInput
             name="blockId"
             control={control}
             label="Block Id"

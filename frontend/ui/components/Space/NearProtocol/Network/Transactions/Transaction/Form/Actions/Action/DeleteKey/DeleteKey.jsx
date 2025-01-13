@@ -2,7 +2,7 @@ import { useDropdownOptions } from './useDropdownOptions.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 
-export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle }) => {
+export const DeleteKey = ({ form, getName, order, removeAction, iconStyle }) => {
   const { control } = form;
   const options = useDropdownOptions(control);
 
@@ -13,18 +13,18 @@ export const DeleteKey = ({ form, getName, name, order, removeAction, iconStyle 
   return (
     <ActionBase
       removeAction={removeAction}
-      label={name}
+      label="Delete Key"
       iconStyle={iconStyle}
       color="error"
       order={order}
-      tooltipContent="Delete key"
+      tooltipContent="Delete Key"
     >
       <FormDropdown
         onChange={onChange}
         control={control}
-        name={getName('accessKey')}
+        name={getName('publicKey')}
         options={options}
-        label="Access key"
+        label="Public Key"
         placeholder="Select or type..."
         dynamicErrorSpace
         isSearchable

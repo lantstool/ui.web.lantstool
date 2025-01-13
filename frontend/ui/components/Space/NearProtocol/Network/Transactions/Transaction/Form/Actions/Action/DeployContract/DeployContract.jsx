@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { FileUploader } from '../../../../../../../../../_general/fileUploader/FileUploader/FileUploader.jsx';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 
-export const DeployContract = ({ iconStyle, name, order, index, removeAction, form, getName }) => {
+export const DeployContract = ({ iconStyle, order, index, removeAction, form, getName }) => {
   const { transactionId } = useParams();
   const uploadContract = useStoreEffect((store) => store.nearProtocol.transactions.uploadContract);
 
@@ -21,7 +21,7 @@ export const DeployContract = ({ iconStyle, name, order, index, removeAction, fo
   return (
     <ActionBase
       iconStyle={iconStyle}
-      label={name}
+      label="Deploy Contract"
       order={order}
       removeAction={removeAction}
       color="blue"

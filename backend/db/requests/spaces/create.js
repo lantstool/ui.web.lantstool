@@ -10,7 +10,7 @@ const getOwnerId = async (execute) => {
 
 export const create = async ({ execute, request }) => {
   const spaceId = uuid();
-  const name = request.body.name;
+  const name = request.body.spaceName;
   const badge = request.body.badge;
   const type = 'local'; // In the future will be possible to select more space types
   const createdAt = Date.now();

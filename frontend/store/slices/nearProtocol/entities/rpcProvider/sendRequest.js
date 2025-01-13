@@ -40,6 +40,7 @@ export async function sendRequest({ body, responseNameConvention }) {
   });
 
   if (error) throw rpcError(error);
+  if (result.error) throw rpcError(result.error);
   if (responseNameConvention === 'snake_case') return result;
   if (responseNameConvention === 'camelCase') return toCamelCase(result);
 }

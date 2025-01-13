@@ -1,15 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import { getCount } from './getCount.js';
-
-const getNewTransactionOrder = async (execute, spaceId, networkId) => {
-  const query = `
-    SELECT COUNT(*) as 'order'
-    FROM near_protocol_transactions 
-    WHERE spaceId = '${spaceId}' AND networkId = '${networkId}'
-  `;
-  const [{ order }] = await execute(query);
-  return order;
-};
+import { createTransactionQuery } from './queries/createTransactionQuery.js';
+import { getNewTransactionOrder } from './helpers/getNewTransactionOrder.js';
 
 export const create = async ({ execute, request }) => {
   const { spaceId, networkId } = request.body;
@@ -26,28 +18,15 @@ export const create = async ({ execute, request }) => {
     actions: [],
   });
 
-  const query = `
-    BEGIN TRANSACTION;
-    
-    INSERT INTO near_protocol_transactions
-      (transactionId, networkId, spaceId, name, 'order', createdAt, body)
-    VALUES(
-      '${transactionId}', 
-      '${networkId}', 
-      '${spaceId}', 
-      '${name}', 
-       ${order}, 
-       ${createdAt}, 
-      '${body}'
-    )
-    RETURNING *;
-    
-    UPDATE near_protocol_counters
-    SET transactions = transactions + 1
-    WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
-    
-    COMMIT;
-  `;
+  const query = createTransactionQuery({
+    spaceId,
+    networkId,
+    transactionId,
+    name,
+    order,
+    createdAt,
+    body,
+  });
 
   const [transaction] = await execute(query);
   transaction.body = JSON.parse(transaction.body);

@@ -1,0 +1,62 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 480px auto;
+  grid-template-rows:
+    min-content
+    auto
+    min-content
+    min-content
+    min-content
+    min-content
+    auto
+    min-content;
+  grid-template-areas:
+    '. a .'
+    '. . .'
+    '. b .'
+    '. c .'
+    '. d .'
+    '. e .'
+    '. . .'
+    '. f .';
+}
+
+.backButtonContainer {
+  grid-area: 1 / 1 / 2 / 2;
+  transform: translateX(40px) translateY(40px);
+  top: initial;
+  left: initial;
+}
+
+.logo {
+  grid-area: a;
+  margin-top: 40px;
+  justify-self: center;
+}
+
+.title {
+  grid-area: b;
+  @include text-xlg-bold;
+  color: $neutral-800;
+  text-align: center;
+}
+
+.description {
+  grid-area: c;
+  @include text-mg-regular;
+  color: $neutral-700;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.tabs {
+  grid-area: d;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}

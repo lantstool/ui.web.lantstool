@@ -38,8 +38,8 @@ export const useDropdownOptions = (control) => {
     () =>
       new Set(
         actions
-          .filter(({ type, accessKey }) => type === 'DeleteKey' && accessKey?.value)
-          .map(({ accessKey }) => accessKey.value),
+          .filter(({ type, publicKey }) => type === 'DeleteKey' && publicKey?.value)
+          .map(({ publicKey }) => publicKey.value),
       ),
     [actions],
   );

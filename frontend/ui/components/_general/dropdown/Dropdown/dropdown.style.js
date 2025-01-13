@@ -16,7 +16,7 @@ export const selectStyles = (error) => ({
     ...styles,
     border: `1px solid ${getBorderColor(state, error)}`,
     boxShadow: 'none',
-    height: '42px',
+    height: '40px',
     padding: '8px 12px',
     lineHeight: '20px',
     fontSize: '16px',

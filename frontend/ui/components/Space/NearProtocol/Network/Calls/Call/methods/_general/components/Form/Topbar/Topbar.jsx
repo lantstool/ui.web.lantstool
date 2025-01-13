@@ -5,12 +5,14 @@ import { useStoreEffect } from '@react-vault';
 import { dateFormatter } from '../../../../../../../../../../../../store/helpers/formatDate.js';
 import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
-import { ExportModal } from './ExportModal/ExportModal.jsx';
+import { ExportModal } from '../../../../../../../_general/ExportModal/ExportModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import cn from './Topbar.module.scss';
 
 export const Topbar = ({ call, form }) => {
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.calls.duplicateOne);
+  const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
+  const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsZip);
   const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
   const [isExportOpen, openExport, closeExport] = useToggler(false);
   const { spaceId, networkId, callId } = useParams();
@@ -53,7 +55,15 @@ export const Topbar = ({ call, form }) => {
           </div>
         </div>
       </div>
-      {isExportOpen && <ExportModal call={call} form={form} closeModal={closeExport} />}
+      {isExportOpen && (
+        <ExportModal
+          origin={call}
+          form={form}
+          closeModal={closeExport}
+          exportOneAsJson={exportOneAsJson}
+          exportOneAsZip={exportOneAsZip}
+        />
+      )}
       {isDeleteOpen && <DeleteModal call={call} closeModal={closeDelete} />}
     </>
   );

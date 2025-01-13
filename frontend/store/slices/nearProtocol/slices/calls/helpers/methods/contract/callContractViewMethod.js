@@ -6,6 +6,7 @@ import {
   getFormBlockTarget,
   transformForExport,
 } from '../utils.js';
+import { getFormattedJSON } from '../../../../../../../helpers/utils.js';
 
 const getJsonABI = (result) => {
   const raw = decompress(new Uint8Array(result));
@@ -30,7 +31,24 @@ const rpcCaller = async (rpc, params) => {
       responseNameConvention: 'snake_case',
     }),
   );
+
   return getResult(result.result, params.methodName.value);
+};
+
+const getArgsForExport = (args) => {
+  try {
+    return JSON.parse(args);
+  } catch (e) {
+    return String(args);
+  }
+};
+
+const getArgsFromImport = (args) => {
+  try {
+    return getFormattedJSON(args);
+  } catch (e) {
+    return String(args);
+  }
 };
 
 const exportTransformer = transformForExport({
@@ -39,7 +57,7 @@ const exportTransformer = transformForExport({
     getBlockTargetParams({
       contractId: getDropdownValueForExport(params.contractId),
       methodName: getDropdownValueForExport(params.methodName),
-      args: params.args,
+      args: getArgsForExport(params.args),
       blockTarget: params.blockTarget,
       finality: params.finality?.value,
       blockId: params.blockId,
@@ -49,7 +67,7 @@ const exportTransformer = transformForExport({
 const importTransformer = ({ params }) => ({
   contractId: getDropdownValueForImport(params.contractId),
   methodName: getDropdownValueForImport(params.methodName),
-  args: params.args,
+  args: getArgsFromImport(params.args),
   ...getFormBlockTarget(params),
 });
 

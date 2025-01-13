@@ -9,6 +9,7 @@ import { Spaces } from '../components/Spaces/Spaces.jsx';
 import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
 import { Settings as AppSettings } from '../components/Settings/Settings.jsx';
 import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
+import { ImportFromGithub } from '../components/ImportFromGithub/ImportFromGithub.jsx';
 import { nearProtocol } from './nearProtocol.jsx';
 
 export const router = createBrowserRouter(
@@ -28,6 +29,7 @@ export const router = createBrowserRouter(
           <Route path="create" element={<CreateSpace />} />
         </Route>
         <Route path="settings" element={<AppSettings />} />
+        <Route path="import/gh/*" element={<ImportFromGithub />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </>,

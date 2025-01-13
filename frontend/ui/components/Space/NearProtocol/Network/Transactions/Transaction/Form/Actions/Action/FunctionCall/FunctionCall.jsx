@@ -1,23 +1,17 @@
 import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { transactionConfig } from '../../../../../_general/transactionConfig.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { InputActionGroup } from '../../../../../../../../../_general/input/InputActionGroup/InputActionGroup.jsx';
+import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './FunctionCall.module.scss';
 
-const gasOptions = [
-  { value: 'tGas', label: 'TGas' },
-  { value: 'gas', label: 'Gas' },
-];
+const gasOptions = [transactionConfig.gasUnits.TGas, transactionConfig.gasUnits.gas];
+const depositOptions = [transactionConfig.nearUnits.NEAR, transactionConfig.nearUnits.yoctoNEAR];
 
-const depositOptions = [
-  { value: 'NEAR', label: 'NEAR' },
-  { value: 'yoctoNEAR', label: 'yoctoNEAR' },
-];
-
-export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, name }) => {
+export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) => {
   const { control } = form;
   const ContractOptions = useAccountsOptions();
   const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
@@ -25,10 +19,10 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
   return (
     <ActionBase
       removeAction={removeAction}
-      label={name}
+      label="Function Call"
       order={order}
       color="purple"
-      tooltipContent="Functioin call"
+      tooltipContent="Functioin Call"
       iconStyle={iconStyle}
     >
       <div className={cn.container}>
@@ -41,23 +35,21 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          copy={false}
           tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
         />
         <FormDropdown
           control={control}
           options={methodNameOptions}
           name={getName('methodName')}
-          label="Method name"
+          label="Method"
           isSearchable
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          copy={false}
           tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
         <FormJsonEditor
-          name={name}
+          name={getName('args')}
           control={control}
           topbar={{
             label: 'Arguments',
@@ -68,29 +60,29 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order, na
             ),
           }}
           customTheme={{ contentMinHeight: '200px' }}
+          classes={{ editor: cn.editor }}
         />
-        <div className={cn.wrapper}>
-          <InputActionGroup
-            control={control}
-            name={getName('gas')}
-            label="Gas coverage"
-            options={gasOptions}
-            dropDownName={getName('gasType')}
-            dynamicErrorSpace
-            placeholder={0}
-            tooltip={<Tooltip content="Gas coverage" placement="top" defaultContent />}
-          />
-          <InputActionGroup
-            control={control}
-            name={getName('deposit')}
-            label="Deposit"
-            options={depositOptions}
-            dropDownName={getName('depositType')}
-            dynamicErrorSpace
-            placeholder={0}
-            tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
-          />
-        </div>
+        <FormInputActionGroup
+          control={control}
+          name={getName('gas.amount')}
+          label="Gas Limit"
+          options={gasOptions}
+          dropDownName={getName('gas.unit')}
+          placeholder={0}
+          tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
+          copy
+        />
+        <FormInputActionGroup
+          control={control}
+          name={getName('deposit.amount')}
+          label="Deposit"
+          options={depositOptions}
+          dropDownName={getName('deposit.unit')}
+          dynamicErrorSpace
+          placeholder={0}
+          tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
+          copy
+        />
       </div>
     </ActionBase>
   );

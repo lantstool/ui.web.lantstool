@@ -68,7 +68,7 @@
 
 @mixin border($color) {
   border: none;
-  height: 40px;
+  height: 38px;
   width: 1px;
   min-width: 1px;
   background-color: $color;
@@ -89,7 +89,7 @@
 }
 
 .border {
-  height: 40px;
+  height: 38px;
   min-width: 1px;
   background-color: $neutral-200;
   border: none;
@@ -103,7 +103,7 @@
   outline: none;
   border: none;
   border-radius: 0 8px 8px 0;
-  padding: 12px;
+  padding: 11px;
   &:disabled {
     .icon {
       background-color: $neutral-500;

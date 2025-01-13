@@ -8,7 +8,7 @@ import { DeleteAccount } from './DeleteAccount/DeleteAccount.jsx';
 import cn from './Action.module.scss';
 
 export const Action = ({ form, action, index, remove }) => {
-  const { type, name } = action;
+  const { type } = action;
   const order = index + 1;
 
   const getName = (name) => `actions.${index}.${name}`;
@@ -20,7 +20,6 @@ export const Action = ({ form, action, index, remove }) => {
         <CreateAccount
           iconStyle={cn.createAccount}
           order={order}
-          name={name}
           getName={getName}
           removeAction={removeAction}
           form={form}
@@ -30,7 +29,6 @@ export const Action = ({ form, action, index, remove }) => {
         <Transfer
           form={form}
           order={order}
-          name={name}
           removeAction={removeAction}
           getName={getName}
           iconStyle={cn.transfer}
@@ -41,7 +39,6 @@ export const Action = ({ form, action, index, remove }) => {
           getName={getName}
           form={form}
           order={order}
-          name={name}
           removeAction={removeAction}
           iconStyle={cn.key}
         />
@@ -52,7 +49,6 @@ export const Action = ({ form, action, index, remove }) => {
           form={form}
           order={order}
           index={index}
-          name={name}
           removeAction={removeAction}
           iconStyle={cn.deployContract}
         />
@@ -62,7 +58,6 @@ export const Action = ({ form, action, index, remove }) => {
           form={form}
           getName={getName}
           order={order}
-          name={name}
           removeAction={removeAction}
           iconStyle={cn.functionCall}
         />
@@ -72,7 +67,6 @@ export const Action = ({ form, action, index, remove }) => {
           form={form}
           getName={getName}
           order={order}
-          name={name}
           removeAction={removeAction}
           iconStyle={cn.key}
         />
@@ -82,7 +76,6 @@ export const Action = ({ form, action, index, remove }) => {
           form={form}
           getName={getName}
           order={order}
-          name={name}
           removeAction={removeAction}
           iconStyle={cn.deleteAccount}
         />
