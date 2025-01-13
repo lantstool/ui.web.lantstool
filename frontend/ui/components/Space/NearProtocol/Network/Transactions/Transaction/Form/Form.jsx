@@ -20,7 +20,7 @@ export const Form = ({ transaction, draft }) => {
     mode: 'onSubmit',
     resolver: yupResolver(transactionSchema),
   });
-  console.log(form.formState.errors);
+
   useEffect(() => {
     form.reset(draft);
     return () => setDraft({ transactionId, draft: form.getValues() });

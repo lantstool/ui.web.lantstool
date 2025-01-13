@@ -1,0 +1,29 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  @include text-lg-medium;
+  color: $neutral-700;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.error {
+  @include text-mg-medium;
+  color: $red-600;
+  width: 600px;
+  text-align: center;
+}
