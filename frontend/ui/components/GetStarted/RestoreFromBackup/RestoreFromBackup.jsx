@@ -22,8 +22,7 @@ export const RestoreFromBackup = ({ closeModal }) => {
       <div className={cn.bodyWrapper}>
         <p className={cn.description}>
           Use this to restore the entire app data with multiple spaces and settings - upload a
-          lantstool-backup-[date].zip file. If you want to import just a single space, use the
-          Import Space option.
+          lantstool-backup-[date].zip file.
         </p>
         <FileUploader
           file={file}

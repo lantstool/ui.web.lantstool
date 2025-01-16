@@ -8,7 +8,8 @@ export const DangerZone = ({ space }) => (
       <div className={cn.warningWrapper}>
         <h2 className={cn.subtitle}>Delete this space</h2>
         <p className={cn.warningText}>
-          Deleting a space is permanent and cannot be undone, be careful.
+          Are you sure you want to delete this space? This action will permanently
+          remove all data within the space, including networks, keys and more.
         </p>
       </div>
       <DeleteModal space={space} />

@@ -28,18 +28,15 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 75%;
 }
 
 .subtitle {
   @include text-sm-medium;
   color: $neutral-800;
-  padding: 0;
-  margin: 0;
 }
 
 .warningText {
-  @include text-sm-medium;
+  @include text-sm-regular;
   color: $neutral-700;
-  padding: 0;
-  margin: 0;
 }
