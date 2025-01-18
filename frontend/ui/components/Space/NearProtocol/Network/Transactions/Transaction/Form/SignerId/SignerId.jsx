@@ -43,7 +43,7 @@ export const SignerId = ({ form }) => {
         control={control}
         options={accountsOptions}
         creatableSelect={true}
-        label="Account Id"
+        label="Signer Id"
         placeholder="Select or type..."
         components={{
           MenuList: (props) => (

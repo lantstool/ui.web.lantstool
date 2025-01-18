@@ -2,7 +2,6 @@ import { useFieldArray, useWatch } from 'react-hook-form';
 import { FormRadioButton } from '../../../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
 import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
 import { FormDropdownGroup } from '../../../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
-import { Tooltip } from '../../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useContractMethodsOptions } from '../../../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './AllowedMethods.module.scss';
 
@@ -59,7 +58,6 @@ export const AllowedMethods = ({ form, getName }) => {
               isSearchable
               isClearable
               placeholder="Select or type..."
-              tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
             />
           ))}
           <Button iconLeftStyles={cn.iconAdd} color="secondary" size="medium" onClick={addMethod}>

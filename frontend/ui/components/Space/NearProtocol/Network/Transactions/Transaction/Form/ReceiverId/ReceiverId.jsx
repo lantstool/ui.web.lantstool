@@ -55,7 +55,7 @@ export const ReceiverId = ({ form }) => {
         isDisabled={isRestricted || hasCreateAccount}
         options={options}
         creatableSelect
-        label="Account Id"
+        label="Receiver Id"
         placeholder="Select or type..."
         components={{
           MenuList: (props) => (

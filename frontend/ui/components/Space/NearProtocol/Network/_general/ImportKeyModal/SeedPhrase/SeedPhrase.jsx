@@ -9,7 +9,6 @@ import { FormInput } from '../../../../../../_general/input/FormInput/FormInput.
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
-import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './SeedPhrase.module.scss';
 
 export const SeedPhrase = ({ seedPhraseSchema = null, closeModal, setKey }) => {
@@ -70,13 +69,6 @@ export const SeedPhrase = ({ seedPhraseSchema = null, closeModal, setKey }) => {
             copy={false}
             name="derivationPath"
             placeholder="m/44'/397'/0"
-            tooltip={
-              <Tooltip
-                content="A deterministic way to derive foreign addresses from one NEAR account."
-                placement="top"
-                defaultContent
-              />
-            }
           />
         </div>
       </div>
