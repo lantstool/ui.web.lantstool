@@ -1,7 +1,6 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
 import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
-import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { FormDropdownGroup } from '../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
 import cn from './ContractIds.module.scss';
 
@@ -44,7 +43,6 @@ export const ContractIds = ({ form, contractIds }) => {
           isSearchable
           isClearable
           creatableSelect
-          tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
           onClick={() => remove(index)}
           actionDisabled={list.length < 2}
           iconStyles={cn.deleteIcon}

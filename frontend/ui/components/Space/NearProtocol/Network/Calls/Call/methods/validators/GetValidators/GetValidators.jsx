@@ -12,7 +12,12 @@ export const GetValidators = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="It provides detailed information about validators in the network, including their stake, activity, and potential issues such as slashing or kick-outs from the previous epoch."
+          description={
+            <>
+              Returns information about all validators for a particular epoch, including the list of
+              active validators and any validator proposals.
+            </>
+          }
           link="https://docs.near.org/api/rpc/network#validation-status"
         />
       }

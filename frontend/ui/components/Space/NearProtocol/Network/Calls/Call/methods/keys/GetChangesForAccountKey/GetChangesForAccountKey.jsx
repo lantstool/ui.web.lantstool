@@ -13,7 +13,13 @@ export const GetChangesForAccountKey = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={
+            <>
+              Returns the changes related to a specific account key in a given block (for example,
+              updates to the nonce). It is possible to retrieve changes for multiple account-key
+              pairs simultaneously.
+            </>
+          }
           link="https://docs.near.org/api/rpc/access-keys#view-access-key-changes-single"
         />
       }

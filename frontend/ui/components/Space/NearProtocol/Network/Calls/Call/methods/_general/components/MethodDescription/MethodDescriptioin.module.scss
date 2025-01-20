@@ -2,6 +2,7 @@
 @use '@styles/mixins' as *;
 
 .description {
+  width: 100%;
   max-width: 600px;
   @include text-sm-regular;
   color: $neutral-800;

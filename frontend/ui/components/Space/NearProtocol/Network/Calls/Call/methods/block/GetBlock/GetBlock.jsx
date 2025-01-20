@@ -12,10 +12,12 @@ export const GetBlock = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description={<>
-            Provides a general information about the block, including chunks headers date and block approvals.
-            Doesn't include chunk transactions and receipts.
-          </>}
+          description={
+            <>
+              Returns a block with brief information about its chunks (excluding details on
+              transactions or receipts).
+            </>
+          }
           link="https://docs.near.org/api/rpc/block-chunk#block-details"
         />
       }

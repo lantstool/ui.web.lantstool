@@ -1,5 +1,4 @@
 import { FormDropdown } from '../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { config } from '../../_general/config.js';
 
 const { waitUntil } = config;
@@ -21,6 +20,5 @@ export const WaitUntil = ({ control }) => (
     control={control}
     isSearchable
     copy={false}
-    tooltip={<Tooltip content="Wait until" placement="top" defaultContent />}
   />
 );

@@ -12,7 +12,7 @@ export const GetGasPrice = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Returns a gas price for the most recent or specific block."
+          description={<>Returns the gas price at a specific block.</>}
           link="https://docs.near.org/api/rpc/gas#gas-price"
         />
       }

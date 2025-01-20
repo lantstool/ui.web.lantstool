@@ -8,7 +8,6 @@ import { ConfigureTitle } from '../../_general/components/ConfigureTitle/Configu
 import { schema } from './schema.js';
 
 export const CallContractViewMethod = ({ call, draft }) => {
-  // TODO add custom validation for the form
   return (
     <Form
       call={call}
@@ -16,7 +15,12 @@ export const CallContractViewMethod = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={
+            <>
+              Invokes a contract’s view (read-only) method. This method cannot be used to execute
+              transactions (write methods).
+            </>
+          }
           link="https://docs.near.org/api/rpc/contracts#call-a-contract-function"
         />
       }
@@ -24,18 +28,7 @@ export const CallContractViewMethod = ({ call, draft }) => {
       <ConfigureTitle />
       <ContractId />
       <MethodName />
-      <FormJsonEditor
-        name="args"
-        topbar={{
-          label: 'Arguments',
-          tooltip: (
-            <>
-              Type contract call arguments <br /> in JSON format
-            </>
-          ),
-        }}
-        customTheme={{ contentMinHeight: '200px' }}
-      />
+      <FormJsonEditor name="args" customTheme={{ contentMinHeight: '200px' }} />
       <BlockTarget />
     </Form>
   );

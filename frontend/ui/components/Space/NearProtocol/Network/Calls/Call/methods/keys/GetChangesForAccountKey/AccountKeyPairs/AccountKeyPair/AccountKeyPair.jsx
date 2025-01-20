@@ -2,7 +2,6 @@ import { Button } from '../../../../../../../../../../_general/Button/Button.jsx
 import { useAccountsOptions } from '../../../../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '../../../../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { usePublicKeyOptions } from './usePublicKeyOptions.js';
-import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { Label } from '../../../../../../../../../../_general/Label/Label.jsx';
 import cn from './AccountKeyPair.module.scss';
 
@@ -39,7 +38,6 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
         isSearchable
         isClearable
         creatableSelect
-        tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
       />
       <FormDropdown
         name={getName('publicKey')}
@@ -48,7 +46,6 @@ export const AccountKeyPair = ({ form, control, index, remove, isDisabled }) => 
         options={keyOptions}
         isSearchable
         isDisabled={!accountId}
-        tooltip={<Tooltip content="Publick Key" placement="top" defaultContent />}
       />
     </div>
   );

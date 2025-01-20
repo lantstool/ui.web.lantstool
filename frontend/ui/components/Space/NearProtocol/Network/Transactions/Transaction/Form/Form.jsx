@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useStoreAction } from '@react-vault';
+import { Tooltip } from '../../../../../../_general/Tooltip/Tooltip.jsx';
 import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { Actions } from './Actions/Actions.jsx';
@@ -33,6 +34,7 @@ export const Form = ({ transaction, draft }) => {
         <div className={cn.label}>
           <span className={cn.icon} />
           <h3 className={cn.title}>Signer</h3>
+          <Tooltip content="Block traget" placement="top" defaultContent />
         </div>
         <SignerId form={form} />
         <SignerKey form={form} />

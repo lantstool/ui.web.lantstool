@@ -41,6 +41,8 @@
   display: flex;
   align-items: center;
   @include icon('@assets/icons/info-circle-linear.svg');
+  height: 14px;
+  width: 14px;
   background-color: $neutral-600;
   &:hover {
     background-color: $accent-600;

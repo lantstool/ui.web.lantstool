@@ -8,7 +8,7 @@ export const GetGenesisConfig = ({ call, draft }) => {
       draft={draft}
       methodDescription={
         <MethodDescription
-          description="Returns a current Genesis configuration. It does not require any input parameters."
+          description={<>Returns the chain configuration as it was at the network genesis.</>}
           link="https://docs.near.org/api/rpc/protocol#genesis-config"
         />
       }

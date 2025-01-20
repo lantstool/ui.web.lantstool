@@ -1,3 +1,4 @@
+import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useEffect, useRef } from 'react';
@@ -45,6 +46,7 @@ export const ReceiverId = ({ form }) => {
       <div className={cn.label}>
         <span className={cn.icon} />
         <h3 className={cn.title}>Receiver</h3>
+        <Tooltip content="Block traget" placement="top" defaultContent />
       </div>
       <FormDropdown
         dropdownRef={ref}
