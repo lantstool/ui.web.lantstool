@@ -1,4 +1,3 @@
-import { Button } from '../../../_general/Button/Button.jsx';
 import { BadgeSelector } from '../../../_general/BadgeSelector/BadgeSelector.jsx';
 import { useForm } from 'react-hook-form';
 import { formatDate } from '../../../../../store/helpers/formatDate.js';
@@ -26,9 +25,6 @@ export const HeadCard = ({ space }) => {
       </div>
       <div className={cn.buttonWrapper}>
         <BadgeSelector form={form} size="medium" type="submit" spaceId={spaceId} />
-        <Button size="medium" color="secondary" iconLeftStyles={cn.exportIcon}>
-          Export data
-        </Button>
       </div>
     </form>
   );

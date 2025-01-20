@@ -16,8 +16,9 @@ export const ResetHistoryModal = ({ setResetHistory }) => {
       text={{
         title: 'Reset history?',
         description: `
-        Reset the app navigation history if the app redirects you incorrectly. 
-        Don’t worry, this won’t delete any important data.
+        Do you want to reset the app’s navigation history? 
+        This action is useful if you are being redirected incorrectly, 
+        and it won’t delete any important data.
         `,
         submitButtonText: 'Reset',
       }}

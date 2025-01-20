@@ -25,7 +25,16 @@ export const DeployContract = ({ iconStyle, order, index, removeAction, form, ge
       order={order}
       removeAction={removeAction}
       color="blue"
-      tooltipContent="Contract Code"
+      tooltipContent={
+        <>
+          Uploads a contract to an account so that its methods can be invoked in the future.
+          <br />• The contract must be compiled into WASM format.
+          <br />• The size of the contract that can be deployed is limited; this limit can be
+          reviewed in the protocol configuration.
+          <br />• This action can only be executed on the Signer’s account or on a newly created
+          subaccount.
+        </>
+      }
     >
       <FileUploader
         fileName={value}

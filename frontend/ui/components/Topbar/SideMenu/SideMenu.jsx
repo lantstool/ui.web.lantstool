@@ -26,10 +26,10 @@ export const SideMenu = () => {
               <span className={cn.settingsIcon} />
               Settings
             </button>
-            <button className={cn.button}>
-              <span className={cn.feedBackIcon} />
-              Share feedback
-            </button>
+            {/*<button className={cn.button}>*/}
+            {/*  <span className={cn.feedBackIcon} />*/}
+            {/*  Share feedback*/}
+            {/*</button>*/}
           </div>
           <hr className={cn.border} />
           <div className={cn.wrapper}>
@@ -63,8 +63,8 @@ export const SideMenu = () => {
           </div>
           <hr className={cn.border} />
           <div className={cn.wrapper}>
-            <p className={cn.title}>Privacy policy</p>
-            <p className={cn.liteTitle}>Lantstool v2.0.0</p>
+            {/*<p className={cn.title}>Privacy policy</p>*/}
+            <p className={cn.liteTitle}>Lantstool v1.0.0</p>
           </div>
         </div>
       </Popper>

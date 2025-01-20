@@ -3,7 +3,6 @@ import { transactionConfig } from '../../../../../_general/transactionConfig.js'
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
 import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
 import cn from './FunctionCall.module.scss';
@@ -22,7 +21,18 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
       label="Function Call"
       order={order}
       color="purple"
-      tooltipContent="Functioin Call"
+      tooltipContent={
+        <>
+          Invokes a contract method.
+          <br />• The arguments for the call must be provided in JSON format.
+          <br />• Each call consumes gas to cover network fees, with a maximum of 300 TGas per call.
+          <br />• During the call, it is possible to transfer a specified amount of NEAR to the
+          contract. This is applicable only for methods that support a deposit.
+          <br />• All contract methods can be invoked; however, for read-only methods it is more
+          efficient to use Calls, as they do not incur gas fees.
+          <br />• This action can be executed on behalf of any account if a Full Access Key is used.
+        </>
+      }
       iconStyle={iconStyle}
     >
       <div className={cn.container}>
@@ -35,7 +45,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
         />
         <FormDropdown
           control={control}
@@ -46,18 +55,12 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           isClearable
           creatableSelect
           placeholder="Select or type..."
-          tooltip={<Tooltip content="Method name" placement="top" defaultContent />}
         />
         <FormJsonEditor
           name={getName('args')}
           control={control}
           topbar={{
             label: 'Arguments',
-            tooltip: (
-              <>
-                Type contract call arguments <br /> in JSON format
-              </>
-            ),
           }}
           customTheme={{ contentMinHeight: '200px' }}
           classes={{ editor: cn.editor }}
@@ -69,7 +72,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           options={gasOptions}
           dropDownName={getName('gas.unit')}
           placeholder={0}
-          tooltip={<Tooltip content="Gas Limit" placement="top" defaultContent />}
           copy
         />
         <FormInputActionGroup
@@ -80,7 +82,6 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           dropDownName={getName('deposit.unit')}
           dynamicErrorSpace
           placeholder={0}
-          tooltip={<Tooltip content="Deposit" placement="top" defaultContent />}
           copy
         />
       </div>

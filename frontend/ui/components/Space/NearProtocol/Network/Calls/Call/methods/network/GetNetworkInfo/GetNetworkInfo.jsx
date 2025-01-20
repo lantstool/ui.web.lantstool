@@ -8,7 +8,11 @@ export const GetNetworkInfo = ({ call, draft }) => {
       draft={draft}
       methodDescription={
         <MethodDescription
-          description="It is used to retrieve details about the current state of network connections, such as active peers, transmitted data rates, and known producers."
+          description={
+            <>
+              Returns data on the current state of the network, such as details about active peers.
+            </>
+          }
           link="https://docs.near.org/api/rpc/network#network-info"
         />
       }

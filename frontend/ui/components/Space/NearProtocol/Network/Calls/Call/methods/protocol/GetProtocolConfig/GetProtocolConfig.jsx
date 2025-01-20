@@ -12,7 +12,7 @@ export const GetProtocolConfig = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Returns a protocol configuration for the most recent or specific block."
+          description={<>Returns the current chain configuration at a specific block.</>}
           link="https://docs.near.org/api/rpc/protocol#protocol-config"
         />
       }

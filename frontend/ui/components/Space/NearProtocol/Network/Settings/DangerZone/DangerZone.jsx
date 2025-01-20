@@ -8,8 +8,8 @@ export const DangerZone = ({ network }) => (
       <div className={cn.warningWrapper}>
         <h2 className={cn.subtitle}>Delete this network</h2>
         <p className={cn.warningText}>
-          This will permanently erase all local data for this network, including keys, transactions,
-          calls and other. This action cannot be undone.
+          Are you sure you want to delete this network?
+          This action will permanently remove all data within the network, including keys, accounts and more.
         </p>
       </div>
       <DeleteModal network={network} />

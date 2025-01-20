@@ -29,9 +29,9 @@ export const DeleteModal = ({ network }) => {
             title: `Delete ${networkId}?`,
             description: (
               <>
-                Deleting this network is permanent and cannot be undone. This will remove all data
-                within the network including accounts,
-                <b> keys</b>, transactions, etc.
+                Are you sure you want to delete this network?
+                This action will permanently remove all data within the network,
+                including keys, accounts and more.
               </>
             ),
             inputLabelText: 'Enter the network ID to confirm',

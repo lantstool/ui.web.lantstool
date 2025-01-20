@@ -46,7 +46,7 @@ export const SelectBlockchain = () => {
                 <div className={cn.clock}>
                   <span className={cn.clockIcon} />
                 </div>
-                <p className={cn.message}>More blockchains coming later...</p>
+                <p className={cn.message}>More blockchains coming soon</p>
               </div>
             </div>
           </div>

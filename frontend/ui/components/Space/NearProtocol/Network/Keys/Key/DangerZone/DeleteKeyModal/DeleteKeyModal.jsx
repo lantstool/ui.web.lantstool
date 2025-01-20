@@ -37,8 +37,8 @@ export const DeleteKeyModal = () => {
               </>
             ),
             description: `
-              Be sure to save this key elsewhere before removing it to avoid losing access to the
-              associated account(-s).
+              Make sure to save this key in another secure location before removal, 
+              to avoid losing access to your account(s).
             `,
             inputLabelText: 'Paste this key to confirm',
             submitButtonText: 'Remove',

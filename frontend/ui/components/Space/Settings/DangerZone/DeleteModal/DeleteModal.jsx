@@ -28,8 +28,8 @@ export const DeleteModal = ({ space: { spaceId, name } }) => {
           text={{
             title: `Delete ${name}?`,
             description: `
-              Deleting this space is permanent and cannot be undone. This will remove all data
-              within the space, including accounts, keys, transactions, calls, and networks.
+              Are you sure you want to delete this space? This action will permanently 
+              remove all data within the space, including networks, keys and more.
             `,
             inputLabelText: 'Enter the space name to confirm',
             submitButtonText: 'Delete',

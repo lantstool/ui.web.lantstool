@@ -5,7 +5,6 @@ import { Form } from '../../_general/components/Form/Form.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { MethodDescription } from '../../_general/components/MethodDescription/MethodDescription.jsx';
 import { ConfigureTitle } from '../../_general/components/ConfigureTitle/ConfiguresTitle.jsx';
-import { Tooltip } from '../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { schema } from './schema.js';
 
 export const GetContractState = ({ call, draft }) => {
@@ -17,7 +16,15 @@ export const GetContractState = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={
+            <>
+              Returns the contract state (key-value pairs) encoded in base64. To obtain
+              human-readable data, you must additionally convert this information using a Borsh
+              schema derived from the contract’s state structure. It is also possible to filter the
+              state by a specific key prefix (the prefix is defined in the contract code for collections
+              such as a Lookup Map).
+            </>
+          }
           link="https://docs.near.org/api/rpc/contracts#view-contract-state"
         />
       }
@@ -30,12 +37,10 @@ export const GetContractState = ({ call, draft }) => {
         isSearchable
         isClearable
         creatableSelect
-        tooltip={<Tooltip content="Contract id" placement="top" defaultContent />}
       />
       <FormInput
         name="keyPrefix"
-        label="State Prefix"
-        tooltip={<Tooltip content="State prefix" placement="top" defaultContent />}
+        label="Key Prefix"
       />
       <BlockTarget />
     </Form>

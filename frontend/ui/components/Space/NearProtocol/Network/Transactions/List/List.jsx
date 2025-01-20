@@ -39,9 +39,9 @@ export const List = ({ txList }) => {
         <div className={cn.topBar}>
           <button className={cn.createBtn} onClick={onSubmit}>
             <span className={cn.addIcon} />
-            <h2 className={cn.title}>New transaction</h2>
+            <h2 className={cn.title}>Create Transaction</h2>
           </button>
-          <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="bottom">
+          <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="top">
             <button className={cn.importBtn} onClick={openImport}>
               <span className={cn.importIcon} />
             </button>

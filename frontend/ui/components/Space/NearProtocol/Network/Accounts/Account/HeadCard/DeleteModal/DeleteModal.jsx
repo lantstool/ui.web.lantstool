@@ -31,7 +31,7 @@ export const DeleteModal = () => {
                 Remove <span className={cn.accountId}>{accountId}?</span>
               </>
             ),
-            description: `No worries, this action will not delete this account from blockchain.`,
+            description: `Don’t worry, this action will not delete your account from the blockchain.`,
             submitButtonText: 'Remove',
           }}
         />

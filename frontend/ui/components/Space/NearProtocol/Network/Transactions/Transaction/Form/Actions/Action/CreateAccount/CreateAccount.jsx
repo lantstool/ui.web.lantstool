@@ -33,7 +33,24 @@ export const CreateAccount = ({ iconStyle, getName, form, removeAction, order })
       color="green"
       order={order}
       removeAction={remove}
-      tooltipContent="Create Account"
+      tooltipContent={
+        <>
+          Creates a subaccount for the signer. For example:
+          <br />• lantstool.testnet can create dev.lantstool.testnet;
+          <br />• lantstool.testnet cannot create alice.testnet or alice.dev.lantstool.testnet.
+          <br />
+          <br />
+          Additional notes:
+          <br />• This action must always be the first in the list.
+          <br />• A subaccount ID may only consist of Latin letters, digits, -, and _.
+          <br />• The total length of the Account ID must not exceed 64 characters.
+          <br />• All subsequent actions in the list, such as Deploy Contract or Function Call, will
+          pertain to this subaccount rather than the original Signer.
+          <br />• Once created, the subaccount becomes a fully independent account, and the Signer
+          will no longer be able to perform actions (e.g., Transfer or Delete Account) on its
+          behalf.
+        </>
+      }
     >
       <FormInputActionGroup
         control={control}

@@ -35,9 +35,9 @@ export const List = ({ list }) => {
         <div className={cn.topBar}>
           <button className={cn.createBtn} onClick={create}>
             <span className={cn.addIcon} />
-            <h2 className={cn.title}>New call</h2>
+            <h2 className={cn.title}>Create Call</h2>
           </button>
-          <Tooltip style={cn.tooltip} arrow={false} content="Import call" placement="top">
+          <Tooltip style={cn.tooltip} arrow={false} content="Import Call" placement="top">
             <button className={cn.exportBtn} onClick={openImport}>
               <span className={cn.importIcon} />
             </button>
