@@ -17,8 +17,8 @@ export const ResetAppModal = ({ setResetApp }) => {
       text={{
         title: 'Reset the app?',
         description: `
-        If you encounter technical issues or want to erase all content,
-        you can reset it, but all data will be lost forever.
+          Are you sure you want to erase all content and start fresh? 
+          This action will permanently delete all data.
         `,
         inputLabelText: 'Type RESET to confirm',
         submitButtonText: 'Reset',
@@ -26,30 +26,3 @@ export const ResetAppModal = ({ setResetApp }) => {
     />
   );
 };
-
-/*
-<BaseModal isOpen={isResetApp} closeModal={closeModal}>
-      <div className={cn.textWrapper}>
-        <h2 className={cn.title}>Reset the app?</h2>
-        <p className={cn.subtitle}>
-          If you encounter technical issues or want to erase all content, you can reset it, but all
-          data will be lost forever.
-        </p>
-      </div>
-      <Input
-        name="reset"
-        error={errors?.reset?.message}
-        control={control}
-        label="Type RESET to confirm"
-        copy={false}
-      />
-      <div className={cn.buttonWrapper}>
-        <Button color="secondary" size="medium" onClick={closeModal}>
-          Cancel
-        </Button>
-        <Button disabled={!isValid} color="danger" size="medium" onClick={onSubmit}>
-          Reset
-        </Button>
-      </div>
-    </BaseModal>
- */

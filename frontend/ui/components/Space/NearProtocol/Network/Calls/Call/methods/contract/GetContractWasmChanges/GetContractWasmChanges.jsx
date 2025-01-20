@@ -6,7 +6,6 @@ import { ConfigureTitle } from '../../_general/components/ConfigureTitle/Configu
 import { schema } from './schema.js';
 
 export const GetContractWasmChanges = ({ call, draft }) => {
-  // TODO add custom validation for the form
   return (
     <Form
       call={call}
@@ -14,7 +13,12 @@ export const GetContractWasmChanges = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={
+            <>
+              Returns the modifications made to a contract’s code in a specific block. Changes for
+              multiple accounts can be retrieved simultaneously.
+            </>
+          }
           link="https://docs.near.org/api/rpc/contracts#view-contract-code-changes"
         />
       }

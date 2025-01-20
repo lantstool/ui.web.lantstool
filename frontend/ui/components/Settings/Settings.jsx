@@ -24,8 +24,9 @@ export const Settings = () => {
             <div className={cn.wrapper}>
               <p className={cn.subtitle}>Create backup file</p>
               <p className={cn.subtitleLight}>
-                This will export all data including existing spaces with their content. Then you
-                will be able to restore your content from this file.
+                This operation will export all your data,
+                including existing spaces and their content.
+                You can later restore your data using this backup file.
               </p>
             </div>
             <Button
@@ -43,8 +44,9 @@ export const Settings = () => {
               <div className={cn.wrapper}>
                 <p className={cn.subtitle}>Reset history</p>
                 <p className={cn.subtitleLight}>
-                  Reset the app navigation history if the app redirects you incorrectly. Don’t
-                  worry, this won’t delete any important data.
+                  Do you want to reset the app’s navigation history?
+                  This action is useful if you are being redirected incorrectly,
+                  and it won’t delete any important data.
                 </p>
               </div>
               <Button color="dangerSecondary" size="medium" onClick={openResetHistory}>
@@ -55,8 +57,8 @@ export const Settings = () => {
               <div className={cn.wrapper}>
                 <p className={cn.subtitle}>Reset the app</p>
                 <p className={cn.subtitleLight}>
-                  If you encounter technical issues or want to erase all content, you can reset it,
-                  but all data will be lost forever.
+                  Are you sure you want to erase all content and start fresh?
+                  This action will permanently delete all data.
                 </p>
               </div>
               <Button color="danger" size="medium" onClick={openResetApp}>

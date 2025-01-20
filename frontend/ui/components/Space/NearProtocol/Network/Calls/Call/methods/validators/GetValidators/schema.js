@@ -5,5 +5,6 @@ export const schema = object({
   epochId: string().when('epochTarget', {
     is: 'specific',
     then: () => schemes.hash('Epoch ID'),
+    otherwise: () => string().notRequired(),
   }),
 });

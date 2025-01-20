@@ -1,3 +1,4 @@
+import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '../../../../../../../_general/dropdown/FormDropdown.jsx';
 import { useEffect, useRef } from 'react';
@@ -45,6 +46,18 @@ export const ReceiverId = ({ form }) => {
       <div className={cn.label}>
         <span className={cn.icon} />
         <h3 className={cn.title}>Receiver</h3>
+        <Tooltip
+          content={
+            <div className={cn.tooltipContent}>
+              The account relative to which the actions are executed. Examples:
+              <br />• A Transfer action will send tokens from the Signer to this account.
+              <br />• The Signer will invoke a Function Call on this contract.
+              <br />• In the case of a Delete Account action, the Signer deletes itself.
+            </div>
+          }
+          placement="top"
+          defaultContent
+        />
       </div>
       <FormDropdown
         dropdownRef={ref}
@@ -55,7 +68,7 @@ export const ReceiverId = ({ form }) => {
         isDisabled={isRestricted || hasCreateAccount}
         options={options}
         creatableSelect
-        label="Account Id"
+        label="Receiver Id"
         placeholder="Select or type..."
         components={{
           MenuList: (props) => (

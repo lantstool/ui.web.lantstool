@@ -30,3 +30,7 @@
 .importIcon{
   @include icon('@assets/icons/import-outline.svg')
 }
+
+.tooltipContent {
+  text-align: start;
+}

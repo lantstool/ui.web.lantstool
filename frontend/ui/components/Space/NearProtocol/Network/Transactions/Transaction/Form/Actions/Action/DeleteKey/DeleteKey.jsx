@@ -17,7 +17,15 @@ export const DeleteKey = ({ form, getName, order, removeAction, iconStyle }) => 
       iconStyle={iconStyle}
       color="error"
       order={order}
-      tooltipContent="Delete Key"
+      tooltipContent={
+        <>
+          Removes an access key from the account.
+          <br />• If the last Full Access Key is removed, the account will be permanently locked and
+          direct actions (such as Transfer or Add Key) will no longer be possible.
+          <br />• This action can only be executed on the Signer’s account or on a newly created
+          subaccount.
+        </>
+      }
     >
       <FormDropdown
         onChange={onChange}

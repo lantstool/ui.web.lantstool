@@ -12,7 +12,11 @@ export const GetBlockChanges = ({ call, draft }) => {
       schema={schema}
       methodDescription={
         <MethodDescription
-          description="Provides general account details, including creation date, associated keys, and possibly the contract’s state."
+          description={
+            <>
+              Returns the changes (account-change type pairs) that occurred within a block.
+            </>
+          }
           link="https://docs.near.org/api/rpc/block-chunk#changes-in-block"
         />
       }

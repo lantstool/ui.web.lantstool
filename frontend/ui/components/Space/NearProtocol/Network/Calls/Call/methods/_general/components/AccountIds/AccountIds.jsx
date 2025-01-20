@@ -2,7 +2,6 @@ import { useFieldArray, useWatch } from 'react-hook-form';
 import { Button } from '../../../../../../../../../_general/Button/Button.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdownGroup } from '../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
-import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
 import cn from './AccountIds.module.scss';
 
 const getPlaceholderData = (accountIds) =>
@@ -46,7 +45,6 @@ export const AccountIds = ({ form, accountIds }) => {
           creatableSelect
           onClick={() => remove(index)}
           actionDisabled={list.length < 2}
-          tooltip={<Tooltip content="Account id" placement="top" defaultContent />}
           iconStyles={cn.deleteIcon}
         />
       ))}

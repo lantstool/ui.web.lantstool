@@ -21,8 +21,9 @@ export const DeleteModal = ({ closeModal, transaction }) => {
           </>
         ),
         description: `
-          Deleting this transaction is permanent and cannot be undone. Be sure to export it 
-          if you don’t want to lose any important data.
+          Are you sure you want to delete this transaction? 
+          This action will permanently remove it. 
+          Be sure to export any important data before proceeding.
         `,
         submitButtonText: 'Delete',
       }}

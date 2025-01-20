@@ -8,7 +8,12 @@ export const GetNodeStatus = ({ call, draft }) => {
       draft={draft}
       methodDescription={
         <MethodDescription
-          description="Provides detailed information about the status of a NEAR node. This includes data about its synchronization state, protocol version, and more. It does not require any input parameters. "
+          description={
+            <>
+              Returns the overall status of a given node, including its sync state, nearcore
+              version, protocol version, and the current set of validators.
+            </>
+          }
           link="https://docs.near.org/api/rpc/network#node-status"
         />
       }
