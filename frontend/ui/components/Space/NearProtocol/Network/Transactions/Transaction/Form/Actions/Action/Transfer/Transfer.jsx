@@ -10,7 +10,12 @@ export const Transfer = ({ iconStyle, form, getName, removeAction, order }) => (
     label="Transfer"
     order={order}
     color="cyan"
-    tooltipContent="Transfer funds"
+    tooltipContent={
+      <>
+        Transfers NEAR native tokens to the receiver.
+        <br />• This action can be executed in relation to any account.
+      </>
+    }
     iconStyle={iconStyle}
   >
     <FormInputActionGroup

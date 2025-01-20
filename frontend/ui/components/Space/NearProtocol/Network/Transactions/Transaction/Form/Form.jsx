@@ -34,7 +34,23 @@ export const Form = ({ transaction, draft }) => {
         <div className={cn.label}>
           <span className={cn.icon} />
           <h3 className={cn.title}>Signer</h3>
-          <Tooltip content="Block traget" placement="top" defaultContent />
+          <Tooltip
+            content={
+              <div className={cn.tooltipContent}>
+                The account on behalf of which the transaction is created, signed, and executed.
+                <br />
+                - This account pays for the gas fees;
+                <br />
+                - For an account to sign a transaction, its private key must be imported into the
+                application.
+                <br />- An imported <strong>Full Access Key</strong> can sign transactions with any
+                actions, whereas a <strong>Function Call Key</strong> is limited to signing a
+                Function Call action for a specific contract.
+              </div>
+            }
+            placement="top"
+            defaultContent
+          />
         </div>
         <SignerId form={form} />
         <SignerKey form={form} />

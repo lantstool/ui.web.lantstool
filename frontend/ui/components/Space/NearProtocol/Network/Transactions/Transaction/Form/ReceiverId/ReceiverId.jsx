@@ -46,7 +46,18 @@ export const ReceiverId = ({ form }) => {
       <div className={cn.label}>
         <span className={cn.icon} />
         <h3 className={cn.title}>Receiver</h3>
-        <Tooltip content="Block traget" placement="top" defaultContent />
+        <Tooltip
+          content={
+            <div className={cn.tooltipContent}>
+              The account relative to which the actions are executed. Examples:
+              <br />• A Transfer action will send tokens from the Signer to this account.
+              <br />• The Signer will invoke a Function Call on this contract.
+              <br />• In the case of a Delete Account action, the Signer deletes itself.
+            </div>
+          }
+          placement="top"
+          defaultContent
+        />
       </div>
       <FormDropdown
         dropdownRef={ref}

@@ -21,7 +21,18 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
       label="Function Call"
       order={order}
       color="purple"
-      tooltipContent="Functioin Call"
+      tooltipContent={
+        <>
+          Invokes a contract method.
+          <br />• The arguments for the call must be provided in JSON format.
+          <br />• Each call consumes gas to cover network fees, with a maximum of 300 TGas per call.
+          <br />• During the call, it is possible to transfer a specified amount of NEAR to the
+          contract. This is applicable only for methods that support a deposit.
+          <br />• All contract methods can be invoked; however, for read-only methods it is more
+          efficient to use Calls, as they do not incur gas fees.
+          <br />• This action can be executed on behalf of any account if a Full Access Key is used.
+        </>
+      }
       iconStyle={iconStyle}
     >
       <div className={cn.container}>
