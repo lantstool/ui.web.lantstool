@@ -44,7 +44,7 @@ export const EditName = ({ call }) => {
   ) : (
     <div className={cn.editName} onClick={changeMode}>
       <h2 className={cn.title}>{name}</h2>
-      <span className={cn.icon}/>
+      <span className={cn.icon} />
     </div>
   );
 };

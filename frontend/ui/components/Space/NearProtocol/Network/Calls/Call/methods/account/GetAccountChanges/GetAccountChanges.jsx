@@ -15,8 +15,8 @@ export const GetAccountChanges = ({ call, draft }) => {
         <MethodDescription
           description={
             <>
-              Returns a list of state changes for an account that occurred in a specific block - such
-              as balance updates or storage usage changes. Changes for multiple accounts can be
+              Returns a list of state changes for an account that occurred in a specific block -
+              such as balance updates or storage usage changes. Changes for multiple accounts can be
               retrieved simultaneously.
             </>
           }

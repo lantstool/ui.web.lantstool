@@ -27,8 +27,8 @@
   color: $neutral-800;
 }
 
-.importIcon{
-  @include icon('@assets/icons/import-outline.svg')
+.importIcon {
+  @include icon('@assets/icons/import-outline.svg');
 }
 
 .tooltipContent {

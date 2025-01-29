@@ -1,5 +1,7 @@
 import {
-  getBlockTargetParams, getDropdownValueForExport, getDropdownValueForImport,
+  getBlockTargetParams,
+  getDropdownValueForExport,
+  getDropdownValueForImport,
   getFormBlockTarget,
   transformForExport,
 } from '../utils.js';
@@ -14,7 +16,6 @@ const rpcCaller = (rpc, params) =>
       responseNameConvention: 'snake_case',
     }),
   );
-
 
 const exportTransformer = transformForExport({
   version: '1.0',

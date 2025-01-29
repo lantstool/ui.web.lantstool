@@ -45,7 +45,9 @@
 
 .fileName {
   @include text-sm-regular;
-  font-family: Roboto Mono, serif;
+  font-family:
+    Roboto Mono,
+    serif;
   color: $neutral-800;
   margin: 0 0 24px 0;
   text-align: center;

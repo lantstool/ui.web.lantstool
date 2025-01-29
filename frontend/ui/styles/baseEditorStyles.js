@@ -61,4 +61,4 @@ export const baseEditorStyles = {
     width: '0',
     padding: '0',
   },
-}
+};

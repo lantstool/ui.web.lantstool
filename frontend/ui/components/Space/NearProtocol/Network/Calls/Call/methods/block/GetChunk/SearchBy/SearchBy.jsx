@@ -16,7 +16,12 @@ export const SearchBy = ({ form }) => {
         <Tooltip content="Secarh" placement="top" defaultContent />
       </div>
       <div className={cn.wrapper}>
-        <FormRadioButton control={control} label="By Chunk ID" name="searchType" value="byChunkId" />
+        <FormRadioButton
+          control={control}
+          label="By Chunk ID"
+          name="searchType"
+          value="byChunkId"
+        />
         <FormRadioButton control={control} label="In Block" name="searchType" value="inBlock" />
       </div>
       {searchType === 'byChunkId' && (

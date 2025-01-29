@@ -57,4 +57,3 @@ export const selectStyles = (error) => {
     }),
   };
 };
-

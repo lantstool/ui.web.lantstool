@@ -22,7 +22,7 @@ export const Item = ({ label, icon, isCopy = true, isVisible = true, value }) =>
           {isVisible &&
             (show ? (
               <button className={cn.button} onClick={handleShow}>
-                <span className={cn.hideEye}/>
+                <span className={cn.hideEye} />
               </button>
             ) : (
               <button className={cn.button} onClick={handleShow}>

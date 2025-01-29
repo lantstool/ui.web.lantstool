@@ -10,11 +10,11 @@ const getDeposit = (action) =>
 
 const getArgs = (action) => {
   try {
-    return JSON.parse(action.args)
+    return JSON.parse(action.args);
   } catch (e) {
-    return ''
+    return '';
   }
-}
+};
 
 export const functionCall = (action) =>
   transactions.functionCall(

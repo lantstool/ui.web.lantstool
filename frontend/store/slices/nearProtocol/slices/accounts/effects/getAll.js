@@ -7,7 +7,7 @@ export const getAll = effect(async ({ store, slice, payload }) => {
   try {
     const accounts = await backend.sendRequest('nearProtocol.accounts.getAll', payload);
     setAccounts(accounts);
-    return accounts
+    return accounts;
   } catch (e) {
     console.log(e);
   }

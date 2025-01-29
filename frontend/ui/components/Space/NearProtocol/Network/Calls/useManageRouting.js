@@ -7,10 +7,7 @@ export const useManageRouting = () => {
   const navigate = useNavigate();
   const history = useStoreEntity((store) => store.history);
 
-  const match = matchPath(
-    '/space/:spaceId/near-protocol/:networkId/calls',
-    location.pathname,
-  );
+  const match = matchPath('/space/:spaceId/near-protocol/:networkId/calls', location.pathname);
 
   useEffect(() => {
     if (!match) return;

@@ -12,7 +12,9 @@ import cn from './Topbar.module.scss';
 export const Topbar = ({ transaction, form }) => {
   const { spaceId, networkId, transactionId } = useParams();
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.transactions.duplicateOne);
-  const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.transactions.exportOneAsJson);
+  const exportOneAsJson = useStoreEffect(
+    (store) => store.nearProtocol.transactions.exportOneAsJson,
+  );
   const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.transactions.exportOneAsZip);
   const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
   const [isExportOpen, openExport, closeExport] = useToggler(false);

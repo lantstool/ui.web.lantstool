@@ -15,7 +15,7 @@
   padding: 40px 0 24px 0;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   width: 480px;
@@ -40,7 +40,7 @@
   @include text($neutral-800);
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   align-items: start;
   gap: 8px;

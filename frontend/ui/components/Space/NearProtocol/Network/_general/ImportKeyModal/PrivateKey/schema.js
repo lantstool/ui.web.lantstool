@@ -16,7 +16,7 @@ export const createSchema = (spaceId, networkId) => {
     privateKey: yup
       .string()
       .required('Empty field')
-      .length(96,'Private key length must be 96 characters.')
+      .length(96, 'Private key length must be 96 characters.')
       .test('matches', "Can't generate Key Pair from provided private key", isValidPublicKey)
       .test('matches', 'This key already exists', async (value) => {
         try {

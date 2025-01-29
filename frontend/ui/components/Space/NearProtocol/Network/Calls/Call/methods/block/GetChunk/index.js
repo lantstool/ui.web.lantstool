@@ -1,5 +1,5 @@
 import { defaultValues } from './defaultValues.js';
-import { GetChunk  } from './GetChunk.jsx';
+import { GetChunk } from './GetChunk.jsx';
 
 export const getChunk = {
   defaultValues,

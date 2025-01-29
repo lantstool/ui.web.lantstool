@@ -3,7 +3,7 @@ import bs58 from 'bs58';
 
 export const publicKey = string()
   .required(`publicKey is a required field`)
-  .test('isEd25519', 'Invalid Public Key format',(value) => {
+  .test('isEd25519', 'Invalid Public Key format', (value) => {
     // Check if the string starts with "ed25519:"
     if (!value.startsWith('ed25519:')) return false;
     // Extract the base58 portion after the prefix

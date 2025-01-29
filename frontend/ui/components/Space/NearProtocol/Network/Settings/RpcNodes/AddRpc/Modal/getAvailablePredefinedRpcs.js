@@ -8,7 +8,8 @@ const getFilteredRpcs = (rpcList, rpcType, networkId) => {
 export const getAvailablePredefinedRpcs = (network) => {
   const { networkId, rpcList } = network;
 
-  if (!presets[networkId])  // we have presets for mainnet and testnet only
+  if (!presets[networkId])
+    // we have presets for mainnet and testnet only
     return {
       hasAvailablePredefinedRpcs: false,
     };

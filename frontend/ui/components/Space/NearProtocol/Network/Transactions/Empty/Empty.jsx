@@ -12,8 +12,12 @@ export const Empty = () => {
   const { spaceId, networkId } = useParams();
   const navigate = useNavigate();
   const createTx = useStoreEffect((store) => store.nearProtocol.transactions.create);
-  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromJson);
-  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromZip);
+  const importOneFromJson = useStoreEffect(
+    (store) => store.nearProtocol.transactions.importOneFromJson,
+  );
+  const importOneFromZip = useStoreEffect(
+    (store) => store.nearProtocol.transactions.importOneFromZip,
+  );
   const [isImportOpen, openImport, closeImport] = useToggler(false);
 
   const create = () => {
