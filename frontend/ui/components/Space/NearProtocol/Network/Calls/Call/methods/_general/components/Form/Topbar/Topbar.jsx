@@ -12,6 +12,7 @@ import cn from './Topbar.module.scss';
 export const Topbar = ({ call, form }) => {
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.calls.duplicateOne);
   const exportOneAsJson = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJson);
+  const exportOneAsJsonFile = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsJsonFile);
   const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.calls.exportOneAsZip);
   const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
   const [isExportOpen, openExport, closeExport] = useToggler(false);
@@ -61,6 +62,7 @@ export const Topbar = ({ call, form }) => {
           form={form}
           closeModal={closeExport}
           exportOneAsJson={exportOneAsJson}
+          exportOneAsJsonFile={exportOneAsJsonFile}
           exportOneAsZip={exportOneAsZip}
         />
       )}

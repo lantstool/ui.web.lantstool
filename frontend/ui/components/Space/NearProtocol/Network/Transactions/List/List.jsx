@@ -18,8 +18,8 @@ export const List = ({ txList }) => {
   const importOneFromJson = useStoreEffect(
     (store) => store.nearProtocol.transactions.importOneFromJson,
   );
-  const importOneFromZip = useStoreEffect(
-    (store) => store.nearProtocol.transactions.importOneFromZip,
+  const importOneFromFile = useStoreEffect(
+    (store) => store.nearProtocol.transactions.importOneFromFile,
   );
   const [isImportOpen, openImport, closeImport] = useToggler(false);
 
@@ -76,7 +76,7 @@ export const List = ({ txList }) => {
           closeModal={closeImport}
           yupSchema={transactionImportSchema}
           importOneFromJson={withTxConfig(importOneFromJson)}
-          importOneFromZip={withTxConfig(importOneFromZip)}
+          importOneFromFile={withTxConfig(importOneFromFile)}
           entityName="Transaction"
         />
       )}

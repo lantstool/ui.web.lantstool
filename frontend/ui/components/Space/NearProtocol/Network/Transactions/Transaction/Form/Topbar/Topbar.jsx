@@ -15,6 +15,9 @@ export const Topbar = ({ transaction, form }) => {
   const exportOneAsJson = useStoreEffect(
     (store) => store.nearProtocol.transactions.exportOneAsJson,
   );
+  const exportOneAsJsonFile = useStoreEffect(
+    (store) => store.nearProtocol.transactions.exportOneAsJsonFile,
+  );
   const exportOneAsZip = useStoreEffect((store) => store.nearProtocol.transactions.exportOneAsZip);
   const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
   const [isExportOpen, openExport, closeExport] = useToggler(false);
@@ -61,6 +64,7 @@ export const Topbar = ({ transaction, form }) => {
           form={form}
           closeModal={closeExport}
           exportOneAsJson={exportOneAsJson}
+          exportOneAsJsonFile={exportOneAsJsonFile}
           exportOneAsZip={exportOneAsZip}
         />
       )}

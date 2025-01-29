@@ -8,13 +8,24 @@ import { JsonEditor } from '../../../../../_general/jsonEditor/JsonEditor/JsonEd
 import cn from './ExportModal.module.scss';
 
 // origin is call or transaction
-export const ExportModal = ({ origin, form, closeModal, exportOneAsJson, exportOneAsZip }) => {
+export const ExportModal = ({
+  origin,
+  form,
+  closeModal,
+  exportOneAsJson,
+  exportOneAsJsonFile,
+  exportOneAsZip,
+}) => {
   const [data, setData] = useState('');
   const setNotification = useStoreAction((store) => store.setNotification);
 
   useEffect(() => {
     exportOneAsJson({ origin, form, setData });
   }, [origin, form]);
+
+  const downloadJson = () => {
+    exportOneAsJsonFile({ origin, form, closeModal });
+  };
 
   const downloadZip = () => {
     exportOneAsZip({ origin, form, closeModal });
@@ -42,6 +53,9 @@ export const ExportModal = ({ origin, form, closeModal, exportOneAsJson, exportO
       <div className={cn.modalFooter}>
         <Button color="secondary" size="medium" onClick={downloadZip}>
           Download .zip
+        </Button>
+        <Button color="secondary" size="medium" onClick={downloadJson}>
+          Download .json
         </Button>
         <CopyButton
           value={data}

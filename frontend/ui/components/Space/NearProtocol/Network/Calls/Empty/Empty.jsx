@@ -11,7 +11,7 @@ export const Empty = () => {
   const [isImportOpen, openImport, closeImport] = useToggler(false);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
   const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
-  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.calls.importOneFromZip);
+  const importOneFromFile = useStoreEffect((store) => store.nearProtocol.calls.importOneFromFile);
   const navigate = useNavigate();
 
   const create = () => createOne({ spaceId, networkId, navigate });
@@ -43,7 +43,7 @@ export const Empty = () => {
           closeModal={closeImport}
           yupSchema={callImportSchema}
           importOneFromJson={importOneFromJson}
-          importOneFromZip={importOneFromZip}
+          importOneFromFile={importOneFromFile}
           entityName="Call"
         />
       )}
