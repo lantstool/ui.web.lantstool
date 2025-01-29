@@ -1,7 +1,8 @@
 import { effect } from '@react-vault';
-import { unzipJsonImportFile } from '../../slices/nearProtocol/helpers/unzipJsonImportFile.js';
 import { transactionImportSchema } from '../../../ui/components/Space/NearProtocol/Network/Transactions/_general/transactionImportSchema/transactionImportSchema.js';
 import { callImportSchema } from '../../../ui/components/Space/NearProtocol/Network/Calls/_general/validations/callImportSchema.js';
+import { readJsonFromFile } from '../../slices/nearProtocol/helpers/readJsonFromFile.js';
+import { unzipJsonImportFile } from '../../slices/nearProtocol/helpers/unzipJsonImportFile.js';
 import { addToExistingSpace } from './addToExistingSpace.js';
 import { createNewSpace } from './createNewSpace.js';
 import { matchPath } from 'react-router-dom';
@@ -19,6 +20,15 @@ const getGithubUrl = (location) => {
 
   const { username, repository, branch, '*': path } = match.params;
   return `https://raw.githubusercontent.com/${username}/${repository}/${branch}/${path}`;
+};
+
+/**
+ * Here we want to extract a json data from the json or zip file
+ */
+const extractJsonFromResponse = (response, setError) => {
+  const contentType = response.headers.get('content-type');
+  if (contentType === 'application/zip') return unzipJsonImportFile(response, setError);
+  if (contentType === 'application/json') return readJsonFromFile(response, setError);
 };
 
 const validateImportData = async (json) => {
@@ -46,7 +56,7 @@ export const importFromGithub = effect(async ({ store, payload }) => {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Can't download file from GitHub`);
 
-    const json = await unzipJsonImportFile(response, setError);
+    const json = await extractJsonFromResponse(response, setError);
 
     // 2. Validate fetched file
     // Right now we can only have near-protocol testnet/mainnet imported entities
