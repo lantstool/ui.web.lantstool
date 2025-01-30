@@ -1,12 +1,12 @@
 import { effect } from '@react-vault';
-import { unzipJsonImportFile } from '../../../helpers/unzipJsonImportFile.js';
-import { validateJson } from '../../../helpers/validateJson.js';
+import { validateJson } from '../../../../helpers/validateJson.js';
+import { extractJsonFromImportFile } from '../../../../helpers/extractJsonFromImportFile.js';
 
-export const importOneFromZip = effect(async ({ slice, payload }) => {
+export const importOneFromFile = effect(async ({ slice, payload }) => {
   const { spaceId, networkId, formValues, navigate, closeModal, setError, yupSchema } = payload;
   const importOneFromJson = slice.getEffects((slice) => slice.importOneFromJson);
 
-  const json = await unzipJsonImportFile(formValues.file, setError);
+  const json = await extractJsonFromImportFile(formValues.file, setError);
   if (!json) return;
 
   const isValid = await validateJson(json, setError, yupSchema);

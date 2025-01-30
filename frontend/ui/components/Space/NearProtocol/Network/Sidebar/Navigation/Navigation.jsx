@@ -39,12 +39,12 @@ export const Navigation = ({ isSidebarMinimized }) => (
       to="utils"
       isSidebarMinimized={isSidebarMinimized}
     />
-      <LinkItem
-        name="Settings"
-        icon={cn.networkSettings}
-        activeIcon={cn.networkSettingsActive}
-        to="settings"
-        isSidebarMinimized={isSidebarMinimized}
-      />
+    <LinkItem
+      name="Settings"
+      icon={cn.networkSettings}
+      activeIcon={cn.networkSettingsActive}
+      to="settings"
+      isSidebarMinimized={isSidebarMinimized}
+    />
   </div>
 );

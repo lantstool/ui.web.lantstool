@@ -1,8 +1,6 @@
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { TabButton } from '../../../../_general/tab/TabButton/TabButton.jsx';
-import {
-  TabContainer
-} from '../../../../_general/tab/TabContainer/TabContainer.jsx';
+import { TabContainer } from '../../../../_general/tab/TabContainer/TabContainer.jsx';
 import { KeyGenerator } from './KeyGenerator/KeyGenerator.jsx';
 import cn from './Utils.module.scss';
 
@@ -19,7 +17,6 @@ export const Utils = () => {
         </TabContainer>
         <KeyGenerator />
       </div>
-
     </div>
   );
 };

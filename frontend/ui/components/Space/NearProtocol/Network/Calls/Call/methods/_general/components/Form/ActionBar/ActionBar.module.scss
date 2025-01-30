@@ -20,11 +20,11 @@
   padding: 8px;
 }
 
-.historyIcon{
+.historyIcon {
   @include icon('@assets/icons/history-outline.svg');
 }
 
-.saveIcon{
+.saveIcon {
   @include icon('@assets/icons/save-outline.svg');
 }
 

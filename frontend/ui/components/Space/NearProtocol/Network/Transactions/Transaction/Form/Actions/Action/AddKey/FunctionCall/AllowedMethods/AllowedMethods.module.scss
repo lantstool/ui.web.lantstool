@@ -2,29 +2,29 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
-.title{
+.title {
   @include text-mg-medium;
   color: $neutral-800;
   margin-bottom: 8px;
 }
 
-.container{
+.container {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-.methods{
+.methods {
   display: flex;
   flex-direction: column;
   margin-top: 8px;
   gap: 8px;
 }
 
-.icon{
-  @include icon('@assets/icons/trash-bin-outline.svg')
+.icon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
 }
 
-.iconAdd{
-  @include icon('@assets/icons/add-square-outline.svg')
+.iconAdd {
+  @include icon('@assets/icons/add-square-outline.svg');
 }

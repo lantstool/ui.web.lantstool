@@ -36,14 +36,14 @@
   border: none;
 }
 
-.historyIcon{
-  @include icon('@assets/icons/history-outline.svg')
+.historyIcon {
+  @include icon('@assets/icons/history-outline.svg');
 }
 
-.saveIcon{
-  @include icon('@assets/icons/save-outline.svg')
+.saveIcon {
+  @include icon('@assets/icons/save-outline.svg');
 }
 
-.arrowRightIcon{
-  @include icon('@assets/icons/arrow-right-outline.svg')
+.arrowRightIcon {
+  @include icon('@assets/icons/arrow-right-outline.svg');
 }

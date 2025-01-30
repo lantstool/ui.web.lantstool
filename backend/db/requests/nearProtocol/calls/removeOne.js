@@ -21,9 +21,7 @@ const deleteCall = async (execute, callId) => {
 export const removeOne = async ({ execute, request }) => {
   const { spaceId, networkId, callId } = request.body;
   // Get all calls we have to do an order update
-  const listForUpdate = await execute(
-    getListForOrderUpdateQuery(spaceId, networkId, callId),
-  );
+  const listForUpdate = await execute(getListForOrderUpdateQuery(spaceId, networkId, callId));
   // When we delete the last call there is no calls to update and query will fail
   if (listForUpdate.length > 0) await updateList(execute, listForUpdate);
   await deleteCall(execute, callId);

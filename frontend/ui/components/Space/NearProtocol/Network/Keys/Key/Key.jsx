@@ -28,7 +28,7 @@ export const Key = () => {
         <Item icon={cn.publicKeyIcon} value={publicKey} label="Public key" isVisible={false} />
         <Item icon={cn.privateKeyIcon} value={privateKey} label="Private key" isVisible={true} />
         {seedPhrase && (
-          <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed hrase" isVisible={true} />
+          <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed Phrase" isVisible={true} />
         )}
         {derivationPath && (
           <Item

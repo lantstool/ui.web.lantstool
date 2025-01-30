@@ -14,4 +14,3 @@ export const validateSpaceId = async ({ execute, request }) => {
     throw error;
   }
 };
-

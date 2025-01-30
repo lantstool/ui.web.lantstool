@@ -5,5 +5,5 @@ export const getOne = async ({ execute, request }) => {
     `;
 
   const [space] = await execute(query);
-  return space
+  return space;
 };

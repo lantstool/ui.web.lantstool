@@ -4,4 +4,4 @@ const getDropdownValueForImport = (value) => (value ? { value, label: value } : 
 export const utils = {
   getDropdownValueForExport,
   getDropdownValueForImport,
-}
+};

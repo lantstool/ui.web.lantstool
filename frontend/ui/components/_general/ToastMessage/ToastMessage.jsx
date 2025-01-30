@@ -4,9 +4,9 @@ import cnm from 'classnames';
 import cn from './ToastMessage.module.scss';
 
 const type = {
-  black: { container: cn.black, icon: cn.infoIcon},
-  success: { container: cn.success, icon: cn.successIcon},
-  error: { container: cn.error, icon: cn.errorIcon},
+  black: { container: cn.black, icon: cn.infoIcon },
+  success: { container: cn.success, icon: cn.successIcon },
+  error: { container: cn.error, icon: cn.errorIcon },
   warning: { container: cn.warning, icon: cn.warningIcon },
 };
 
@@ -24,7 +24,7 @@ export const ToastMessage = () => {
   useEffect(() => {
     let displayTimeout; // animation open time 500 like at css
     let closeTimeout;
-    const closeTime = 500 + delay;// 500 it is animation close time and delay it is message duration
+    const closeTime = 500 + delay; // 500 it is animation close time and delay it is message duration
 
     if (isOpen) {
       setIsAnimating(true);
@@ -46,7 +46,7 @@ export const ToastMessage = () => {
 
   return (
     <div className={cnm(container, isAnimating ? cn.start : cn.end)}>
-      <span className={icon}/>
+      <span className={icon} />
       <h2 className={cn.title}>{message}</h2>
     </div>
   );

@@ -13,7 +13,7 @@ export const List = ({ list }) => {
   const reorder = useStoreEffect((store) => store.nearProtocol.calls.reorder);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
   const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
-  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.calls.importOneFromZip);
+  const importOneFromFile = useStoreEffect((store) => store.nearProtocol.calls.importOneFromFile);
 
   const params = useParams();
   const { spaceId, networkId } = useParams();
@@ -68,7 +68,7 @@ export const List = ({ list }) => {
           closeModal={closeImport}
           yupSchema={callImportSchema}
           importOneFromJson={importOneFromJson}
-          importOneFromZip={importOneFromZip}
+          importOneFromFile={importOneFromFile}
           entityName="Call"
         />
       )}

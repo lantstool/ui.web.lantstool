@@ -22,10 +22,7 @@ export const GetTransaction = ({ call, draft }) => {
       }
     >
       <ConfigureTitle />
-      <FormInput
-        name="transactionHash"
-        label="Transaction Hash"
-      />
+      <FormInput name="transactionHash" label="Transaction Hash" />
       <FormDropdown
         name="signerId"
         label="Signer Id"

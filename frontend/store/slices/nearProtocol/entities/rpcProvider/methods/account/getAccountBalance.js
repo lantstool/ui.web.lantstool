@@ -15,18 +15,20 @@ export async function getAccountBalance({
   const totalBalance = BigInt(account.amount) + staked;
   const availableBalance = totalBalance - (staked > stateStaked ? staked : stateStaked);
 
-  if (responseNameConvention === 'camelCase') return  {
-    total: totalBalance.toString(),
-    stateStaked: stateStaked.toString(),
-    staked: staked.toString(),
-    available: availableBalance.toString(),
-  };
+  if (responseNameConvention === 'camelCase')
+    return {
+      total: totalBalance.toString(),
+      stateStaked: stateStaked.toString(),
+      staked: staked.toString(),
+      available: availableBalance.toString(),
+    };
 
   // At this moment this option exists only for convention
-  if (responseNameConvention === 'snake_case') return  {
-    total: totalBalance.toString(),
-    state_staked: stateStaked.toString(),
-    staked: staked.toString(),
-    available: availableBalance.toString(),
-  };
+  if (responseNameConvention === 'snake_case')
+    return {
+      total: totalBalance.toString(),
+      state_staked: stateStaked.toString(),
+      staked: staked.toString(),
+      available: availableBalance.toString(),
+    };
 }

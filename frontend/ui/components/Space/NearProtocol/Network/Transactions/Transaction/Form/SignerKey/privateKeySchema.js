@@ -10,7 +10,7 @@ const isValidPublicKey = (value) => {
   }
 };
 
-export const createPrivateKeySchema= (spaceId, networkId, signerId) => {
+export const createPrivateKeySchema = (spaceId, networkId, signerId) => {
   const getPublicKey = useStoreEffect((store) => store.nearProtocol.keys.getPublicKey);
   const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
 
@@ -18,15 +18,15 @@ export const createPrivateKeySchema= (spaceId, networkId, signerId) => {
     privateKey: yup
       .string()
       .required('Empty field')
-      .length(96,'Private key length must be 96 characters.')
+      .length(96, 'Private key length must be 96 characters.')
       .test('matches', "Can't generate Key Pair from provided private key", isValidPublicKey)
       .test('matches', 'Key not exist in this account', async (value) => {
-        try{
+        try {
           const publicKey = KeyPair.fromString(value).getPublicKey().toString();
           await rpc.configure({ spaceId, networkId });
           const accessKey = await rpc.getAccountKey({ accountId: signerId, publicKey });
-          return !accessKey.error
-        }catch(e){
+          return !accessKey.error;
+        } catch (e) {
           return false;
         }
       })

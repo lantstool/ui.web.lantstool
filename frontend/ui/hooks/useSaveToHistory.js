@@ -9,4 +9,4 @@ export const useSaveToHistory = () => {
   useEffect(() => {
     history.update(location.pathname);
   }, [location.pathname, history]);
-}
+};

@@ -26,9 +26,7 @@ const mainnet = {
         logo: 'rpc_pagoda.svg',
         headers: [],
         isPredefined: true,
-        links: [
-          { type: 'x', url: 'https://x.com/PagodaPlatform' },
-        ],
+        links: [{ type: 'x', url: 'https://x.com/PagodaPlatform' }],
       },
       {
         id: 'free.rpc.fastnear.com',
@@ -142,9 +140,7 @@ const testnet = {
         logo: 'rpc_pagoda.svg',
         headers: [],
         isPredefined: true,
-        links: [
-          { type: 'x', url: 'https://x.com/PagodaPlatform' },
-        ],
+        links: [{ type: 'x', url: 'https://x.com/PagodaPlatform' }],
       },
       {
         id: 'test.rpc.fastnear.com',

@@ -30,7 +30,9 @@ export const Spaces = () => {
             <h1 className={cn.title}>Spaces</h1>
             <p className={cn.subtitle}>Here you can manage all your spaces.</p>
           </div>
-          <Button size="medium" onClick={handleClick}>Create space</Button>
+          <Button size="medium" onClick={handleClick}>
+            Create space
+          </Button>
         </div>
         <List ids={ids} />
       </div>

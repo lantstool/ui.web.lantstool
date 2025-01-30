@@ -13,9 +13,7 @@ export const GetBlockChanges = ({ call, draft }) => {
       methodDescription={
         <MethodDescription
           description={
-            <>
-              Returns the changes (account-change type pairs) that occurred within a block.
-            </>
+            <>Returns the changes (account-change type pairs) that occurred within a block.</>
           }
           link="https://docs.near.org/api/rpc/block-chunk#changes-in-block"
         />

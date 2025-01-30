@@ -18,8 +18,8 @@ export const GetContractStateChanges = ({ call, draft }) => {
             <>
               Returns the state changes (key-value pairs) of a contract that occurred in a specific
               block. Changes for multiple accounts can be retrieved at the same time. You can also
-              filter the results by a specified key prefix (the prefix is defined in the contract code
-              for collections such as a Lookup Map).
+              filter the results by a specified key prefix (the prefix is defined in the contract
+              code for collections such as a Lookup Map).
             </>
           }
           link="https://docs.near.org/api/rpc/contracts#view-contract-state-changes"

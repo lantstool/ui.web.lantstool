@@ -22,7 +22,6 @@
   left: 0;
 }
 
-
 .badgeDropdownResized {
   @include badgeDropdown;
   top: 46px;
@@ -65,7 +64,7 @@
   }
 }
 
-.scrollBar{
+.scrollBar {
   overflow-x: auto;
   padding-right: 2px;
   &::-webkit-scrollbar {

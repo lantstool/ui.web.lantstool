@@ -31,4 +31,4 @@ export const RpcNodes = ({ network }) => {
       </div>
     </div>
   );
-}
+};
