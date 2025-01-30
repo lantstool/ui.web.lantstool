@@ -7,4 +7,4 @@ const derivationPath = {
 
 export const utils = {
   derivationPath,
-}
+};

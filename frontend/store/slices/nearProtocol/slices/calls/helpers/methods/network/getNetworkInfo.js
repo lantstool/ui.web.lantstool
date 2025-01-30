@@ -9,5 +9,5 @@ const exportTransformer = transformForExport({
 export const getNetworkInfo = {
   rpcCaller,
   exportTransformer,
-  importTransformer:  () => ({}),
+  importTransformer: () => ({}),
 };

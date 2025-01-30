@@ -1,6 +1,6 @@
 import { effect } from '@react-vault';
-import { methods } from '../helpers/methods/index.js';
-import { config } from '../../../../../../ui/components/Space/NearProtocol/Network/Calls/Call/methods/_general/config.js';
+import { methods } from '../../helpers/methods/index.js';
+import { config } from '../../../../../../../ui/components/Space/NearProtocol/Network/Calls/Call/methods/_general/config.js';
 
 export const importOneFromJson = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, formValues, navigate, closeModal } = payload;

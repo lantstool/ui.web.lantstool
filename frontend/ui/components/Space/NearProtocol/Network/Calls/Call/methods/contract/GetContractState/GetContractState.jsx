@@ -21,8 +21,8 @@ export const GetContractState = ({ call, draft }) => {
               Returns the contract state (key-value pairs) encoded in base64. To obtain
               human-readable data, you must additionally convert this information using a Borsh
               schema derived from the contract’s state structure. It is also possible to filter the
-              state by a specific key prefix (the prefix is defined in the contract code for collections
-              such as a Lookup Map).
+              state by a specific key prefix (the prefix is defined in the contract code for
+              collections such as a Lookup Map).
             </>
           }
           link="https://docs.near.org/api/rpc/contracts#view-contract-state"
@@ -38,10 +38,7 @@ export const GetContractState = ({ call, draft }) => {
         isClearable
         creatableSelect
       />
-      <FormInput
-        name="keyPrefix"
-        label="Key Prefix"
-      />
+      <FormInput name="keyPrefix" label="Key Prefix" />
       <BlockTarget />
     </Form>
   );

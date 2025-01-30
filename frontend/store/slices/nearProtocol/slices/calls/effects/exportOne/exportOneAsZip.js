@@ -1,8 +1,8 @@
 import { effect } from '@react-vault';
-import { getFormattedJSON } from '../../../../../helpers/utils.js';
-import { methods } from '../helpers/methods/index.js';
-import { downloadZip } from '../../../../../helpers/downloadZip.js';
-import { createZipFromJsonString } from '../../../helpers/createZipFromJsonString.js';
+import { getFormattedJSON } from '../../../../../../helpers/utils.js';
+import { methods } from '../../helpers/methods/index.js';
+import { downloadZip } from '../../../../../../helpers/downloadZip.js';
+import { createZipFromJsonString } from '../../../../helpers/createZipFromJsonString.js';
 
 export const exportOneAsZip = effect(async ({ store, payload }) => {
   const { origin: call, form, closeModal } = payload;
@@ -16,7 +16,7 @@ export const exportOneAsZip = effect(async ({ store, payload }) => {
     await downloadZip(zip, name);
 
     closeModal();
-    setNotification({ isOpen: true, message: 'Downloaded zipped call', variant: 'success' });
+    setNotification({ isOpen: true, message: 'Call exported successfully', variant: 'success' });
   } catch (e) {
     console.log(e);
     setNotification({ isOpen: true, message: 'Call export error', variant: 'error' });

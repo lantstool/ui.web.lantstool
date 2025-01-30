@@ -38,17 +38,17 @@
   background-color: $accent-600;
 }
 
-.privateKeyIcon{
+.privateKeyIcon {
   @include icon('@assets/icons/key-outline.svg');
   background-color: $neutral-600;
 }
 
-.privateKeyOutlineIcon{
+.privateKeyOutlineIcon {
   @include icon('@assets/icons/key-bold.svg');
   background-color: $accent-600;
 }
 
-.ledgerIcon{
+.ledgerIcon {
   @include icon('@assets/icons/ledger.svg');
   background-color: $neutral-600;
 }

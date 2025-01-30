@@ -20,7 +20,7 @@ export const KeyGenerator = () => {
     <div className={cn.seedPhraseGenerator}>
       <Item icon={cn.publicKeyIcon} value={publicKey} label="Public key" isVisible={false} />
       <Item icon={cn.privateKeyIcon} value={privateKey} label="Private key" isVisible={true} />
-      <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed hrase" isVisible={true} />
+      <Item icon={cn.seedPhraseIcon} value={seedPhrase} label="Seed Phrase" isVisible={true} />
       <Item
         icon={cn.implicitAccountIcon}
         value={implicitAccount}

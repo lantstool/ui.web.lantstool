@@ -4,14 +4,14 @@ import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHea
 import { TabButton } from '../../../../../_general/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '../../../../../_general/tab/TabContainer/TabContainer.jsx';
 import { PasteJson } from './PasteJson/PasteJson.jsx';
-import { UploadZip } from './UploadZip/UploadZip.jsx';
+import { UploadFile } from './UploadFile/UploadFile.jsx';
 import cn from './ImportModal.module.scss';
 
 export const ImportModal = ({
   closeModal,
   yupSchema,
   importOneFromJson,
-  importOneFromZip,
+  importOneFromFile,
   entityName,
 }) => {
   const [tab, setTab] = useState('pasteJson');
@@ -27,8 +27,8 @@ export const ImportModal = ({
         <TabButton onClick={() => setTab('pasteJson')} isActive={tab === 'pasteJson'}>
           Paste JSON
         </TabButton>
-        <TabButton onClick={() => setTab('uploadZip')} isActive={tab === 'uploadZip'}>
-          Upload .zip
+        <TabButton onClick={() => setTab('uploadFile')} isActive={tab === 'uploadFile'}>
+          Upload file
         </TabButton>
       </TabContainer>
       {tab === 'pasteJson' && (
@@ -38,11 +38,11 @@ export const ImportModal = ({
           importOneFromJson={importOneFromJson}
         />
       )}
-      {tab === 'uploadZip' && (
-        <UploadZip
+      {tab === 'uploadFile' && (
+        <UploadFile
           closeModal={closeModal}
           yupSchema={yupSchema}
-          importOneFromZip={importOneFromZip}
+          importOneFromFile={importOneFromFile}
         />
       )}
     </BaseModal>

@@ -11,9 +11,10 @@ import { saveChanges } from './saveChanges.js';
 import { onMountTransaction } from './onMountTransaction.js';
 import { uploadContract } from './uploadContract.js';
 import { exportOneAsJson } from './exportOne/exportOneAsJson.js';
+import { exportOneAsJsonFile } from './exportOne/exportOneAsJsonFile.js';
 import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
 import { importOneFromJson } from './importOne/importOneFromJson.js';
-import { importOneFromZip } from './importOne/importOneFromZip.js';
+import { importOneFromFile } from './importOne/importOneFromFile.js';
 
 export const effects = {
   getList,
@@ -29,7 +30,8 @@ export const effects = {
   onMountTransaction,
   uploadContract,
   exportOneAsJson,
+  exportOneAsJsonFile,
   exportOneAsZip,
   importOneFromJson,
-  importOneFromZip,
+  importOneFromFile,
 };

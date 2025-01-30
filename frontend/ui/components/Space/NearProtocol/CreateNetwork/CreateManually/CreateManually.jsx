@@ -24,8 +24,8 @@ export const CreateManually = () => {
       <img className={cn.logo} src={logoLantstool} alt="Lantstool logo" />
       <h1 className={cn.title}>Add Network</h1>
       <p className={cn.description}>
-        Enter the RPC URL, and the app will handle everything for you.
-        You can manage this RPC later in the settings.
+        Enter the RPC URL, and the app will handle everything for you. You can manage this RPC later
+        in the settings.
       </p>
       <RpcForm form={form} classes={{ container: cn.rpcFormContainer }} />
       <div className={cn.buttonWrapper}>

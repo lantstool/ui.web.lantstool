@@ -15,7 +15,7 @@
   margin: 0;
 }
 
-.option{
+.option {
   background: none;
   cursor: pointer;
   border: none;
@@ -27,12 +27,12 @@
   margin: 4px;
   border-width: 1px 0 0 0;
   border-radius: 4px;
-  &:hover{
+  &:hover {
     background-color: $neutral-100;
   }
 }
 
-.title{
+.title {
   @include text-sm-regular;
   color: $neutral-700;
 }

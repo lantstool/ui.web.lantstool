@@ -12,12 +12,10 @@ export const Empty = () => {
 
   return (
     <div className={cn.empty}>
-      <BackButton  />
+      <BackButton />
       <div className={cn.wrapper}>
-        <span className={cn.icon}/>
-        <h2 className={cn.title}>
-          Nothing here. Click "Add network" to set up your first one.
-        </h2>
+        <span className={cn.icon} />
+        <h2 className={cn.title}>Nothing here. Click "Add network" to set up your first one.</h2>
       </div>
       <Button onClick={handleClick}>Add Network</Button>
     </div>

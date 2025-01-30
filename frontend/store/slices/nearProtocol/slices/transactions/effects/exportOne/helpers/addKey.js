@@ -5,9 +5,9 @@ const getAllowance = (allowance) =>
   allowance.isUnlimited
     ? 'unlimited'
     : {
-      amount: allowance.amount,
-      unit: utils.getDropdownValueForExport(allowance.unit),
-    };
+        amount: allowance.amount,
+        unit: utils.getDropdownValueForExport(allowance.unit),
+      };
 
 const getMethods = (methods) =>
   methods.onlyCertain

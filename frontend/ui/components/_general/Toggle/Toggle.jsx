@@ -19,11 +19,7 @@ export const Toggle = ({ value, onChange, labelText, tooltip, disabled }) => {
       </button>
       {labelText && <span className={cn.label}>{labelText}</span>}
       {tooltip && (
-        <Tooltip
-          content={tooltip.content}
-          placement={tooltip.placement || 'top'}
-          defaultContent
-        />
+        <Tooltip content={tooltip.content} placement={tooltip.placement || 'top'} defaultContent />
       )}
     </div>
   );

@@ -16,7 +16,7 @@ export const exportOneAsZip = effect(async ({ store, payload }) => {
     await downloadZip(zip, name);
 
     closeModal();
-    setNotification({ isOpen: true, message: 'Downloaded zipped transaction', variant: 'success' });
+    setNotification({ isOpen: true, message: 'Transaction exported successfully', variant: 'success' });
   } catch (e) {
     console.log(e);
     setNotification({ isOpen: true, message: 'Transaction export error', variant: 'error' });

@@ -45,16 +45,16 @@
   word-break: break-all;
 }
 
-.checkCircleIcon{
-  @include icon('@assets/icons/check-circle-bold.svg')
+.checkCircleIcon {
+  @include icon('@assets/icons/check-circle-bold.svg');
 }
 
-.errorCircleIcon{
-  @include icon('@assets/icons/error-circle-bold.svg')
+.errorCircleIcon {
+  @include icon('@assets/icons/error-circle-bold.svg');
 }
 
-.arrowBackIcon{
-  @include icon('@assets/icons/arrow-back-outline.svg')
+.arrowBackIcon {
+  @include icon('@assets/icons/arrow-back-outline.svg');
 }
 
 .loader {

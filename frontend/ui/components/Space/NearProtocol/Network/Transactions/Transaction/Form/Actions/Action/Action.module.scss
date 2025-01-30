@@ -1,6 +1,6 @@
 @use '@styles/icons' as *;
 
-.action{
+.action {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -19,7 +19,7 @@
   @include icon('@assets/icons/key-outline.svg');
 }
 
-.deployContract{
+.deployContract {
   @include icon('@assets/icons/deploy-contract-linear.svg');
 }
 
@@ -27,8 +27,6 @@
   @include icon('@assets/icons/function-call-outline.svg');
 }
 
-.deleteAccount{
+.deleteAccount {
   @include icon('@assets/icons/minus-circle-linear.svg');
-
 }
-

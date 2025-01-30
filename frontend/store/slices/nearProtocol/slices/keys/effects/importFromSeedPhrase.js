@@ -20,7 +20,7 @@ export const importFromSeedPhrase = effect(async ({ store, slice, payload }) => 
       derivationPath,
     });
 
-    setKey(publicKey)
+    setKey(publicKey);
     addKeyToList(key);
     setNotification({ isOpen: true, message: 'Key imported successfully', variant: 'success' });
     closeModal();

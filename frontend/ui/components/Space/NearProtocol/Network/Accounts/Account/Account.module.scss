@@ -35,6 +35,6 @@
   width: max-content;
 }
 
-.icon{
-  @include icon('@assets/icons/arrow-left-outline.svg')
+.icon {
+  @include icon('@assets/icons/arrow-left-outline.svg');
 }

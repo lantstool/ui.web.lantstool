@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 
-
 export const useMethods = (methodNames) => {
   const [maxMethods, setMaxMethods] = useState(methodNames.length);
   const [showAll, setShowAll] = useState(false);
@@ -39,7 +38,6 @@ export const useMethods = (methodNames) => {
     return () => window.removeEventListener('resize', calculateVisibleMethods);
   }, [methodNames]);
 
-
   return {
     maxMethods: showAll ? methodNames.length : maxMethods,
     showAll,
@@ -47,4 +45,3 @@ export const useMethods = (methodNames) => {
     ref,
   };
 };
-

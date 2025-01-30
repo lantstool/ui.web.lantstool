@@ -9,10 +9,11 @@ import { updateOneName } from './updateOneName.js';
 import { revertChanges } from './revertChanges.js';
 import { saveChanges } from './saveChanges.js';
 import { executeOne } from './executeOne.js';
-import { importOneFromJson } from './importOneFromJson.js';
-import { importOneFromZip } from './importOneFromZip.js';
-import { exportOneAsJson } from './exportOneAsJson.js';
-import { exportOneAsZip } from './exportOneAsZip.js';
+import { importOneFromJson } from './importOne/importOneFromJson.js';
+import { importOneFromFile } from './importOne/importOneFromFile.js';
+import { exportOneAsJson } from './exportOne/exportOneAsJson.js';
+import { exportOneAsJsonFile } from './exportOne/exportOneAsJsonFile.js';
+import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
 
 export const effects = {
   getList,
@@ -27,7 +28,8 @@ export const effects = {
   removeOne,
   executeOne,
   importOneFromJson,
-  importOneFromZip,
+  importOneFromFile,
   exportOneAsJson,
+  exportOneAsJsonFile,
   exportOneAsZip,
 };

@@ -8,8 +8,8 @@ export const DangerZone = ({ network }) => (
       <div className={cn.warningWrapper}>
         <h2 className={cn.subtitle}>Delete this network</h2>
         <p className={cn.warningText}>
-          Are you sure you want to delete this network?
-          This action will permanently remove all data within the network, including keys, accounts and more.
+          Are you sure you want to delete this network? This action will permanently remove all data
+          within the network, including keys, accounts and more.
         </p>
       </div>
       <DeleteModal network={network} />

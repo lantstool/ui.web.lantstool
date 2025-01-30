@@ -15,8 +15,12 @@ export const List = ({ txList }) => {
   const navigate = useNavigate();
   const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
   const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
-  const importOneFromJson = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromJson);
-  const importOneFromZip = useStoreEffect((store) => store.nearProtocol.transactions.importOneFromZip);
+  const importOneFromJson = useStoreEffect(
+    (store) => store.nearProtocol.transactions.importOneFromJson,
+  );
+  const importOneFromFile = useStoreEffect(
+    (store) => store.nearProtocol.transactions.importOneFromFile,
+  );
   const [isImportOpen, openImport, closeImport] = useToggler(false);
 
   const withTxConfig = (fn) => (args) => fn({ ...args, transactionConfig });
@@ -72,7 +76,7 @@ export const List = ({ txList }) => {
           closeModal={closeImport}
           yupSchema={transactionImportSchema}
           importOneFromJson={withTxConfig(importOneFromJson)}
-          importOneFromZip={withTxConfig(importOneFromZip)}
+          importOneFromFile={withTxConfig(importOneFromFile)}
           entityName="Transaction"
         />
       )}
