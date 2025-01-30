@@ -28,7 +28,7 @@ const getGithubUrl = (location) => {
 const extractJsonFromResponse = (response, setError) => {
   const contentType = response.headers.get('content-type');
   if (contentType === 'application/zip') return unzipJsonImportFile(response, setError);
-  if (contentType === 'application/json') return readJsonFromFile(response, setError);
+  return readJsonFromFile(response, setError);
 };
 
 const validateImportData = async (json) => {
