@@ -15,4 +15,5 @@ export const blockId = string()
 export const targetBlockId = string().when('blockTarget', {
   is: 'specific',
   then: () => blockId,
+  otherwise: () => string().notRequired(),
 });
