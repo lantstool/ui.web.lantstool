@@ -5,7 +5,8 @@
       "@react-vault": ["react-vault/index.js"],
       "@hooks/*": ["frontend/ui/hooks/*"],
       "@styles/*": ["frontend/ui/styles/*"],
-      "@assets/*": ["frontend/ui/assets/*"]
+      "@assets/*": ["frontend/ui/assets/*"],
+      "@gc/*": ["frontend/ui/components/_general/*"]
     }
   },
   "exclude": ["node_modules", "public"]

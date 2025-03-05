@@ -5,21 +5,7 @@ import { deleteDbFiles } from '../requests/db/helpers/deleteDbFiles.js';
 import setupDatabaseSQL from './setupDatabase.sql';
 import { setupDefaultData } from './setupDefaultData.js';
 import { errorWithCode } from '../../utils/utils.js';
-
-const createExecuteFn = (sqlite, connection) => async (query) => {
-  const result = [];
-
-  await sqlite.exec(connection, query, (row, columns) => {
-    result.push(
-      columns.reduce((acc, column, index) => {
-        acc[column] = row[index];
-        return acc;
-      }, {}),
-    );
-  });
-
-  return result;
-};
+import { createExecuteFn } from './createExecuteFn.js';
 
 const getSqlite = async (dnName) => {
   const SQLiteEMSModule = await SQLiteESMFactory();

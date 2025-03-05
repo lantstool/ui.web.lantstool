@@ -1,0 +1,24 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.unitConverter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 880px;
+  //min-width: 610px;
+  //max-width: 680px;
+  gap: 24px;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+}
+
+.form {
+  display: flex;
+  gap: 16px;
+}
+
+.decimals {
+  width: 200px;
+}

@@ -64,7 +64,7 @@ export const SideMenu = () => {
           <hr className={cn.border} />
           <div className={cn.wrapper}>
             {/*<p className={cn.title}>Privacy policy</p>*/}
-            <p className={cn.liteTitle}>Lantstool v1.1.0</p>
+            <p className={cn.liteTitle}>Lantstool v1.1.2</p>
           </div>
         </div>
       </Popper>
