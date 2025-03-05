@@ -1,24 +1,23 @@
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 import { updateContractUsage } from '../../helpers/updateContractUsage.js';
-import { getUpdateOrderQuery } from './queries/getUpdateOrderQuery.js';
-import { getListQuery } from './queries/getListQuery.js';
-import { getListForOrderUpdateQuery } from './queries/getListForOrderUpdateQuery.js';
 import { v4 as uuid } from 'uuid';
+import { queries } from './queries/queries.js';
 
 const updateList = async (execute, list) => {
   const updatedList = list.map((transaction) => ({
     ...transaction,
     order: transaction.order + 1,
   }));
-  await execute(getUpdateOrderQuery(updatedList));
+  await execute(queries.getUpdateOrderQuery(updatedList));
 };
 
 // Get the Tx data we want to duplicate
 const getTarget = async (execute, transactionId) => {
   const query = `
     SELECT * FROM near_protocol_transactions
-    WHERE transactionId = '${transactionId}';
+    WHERE transactionId = @transactionId;
   `;
-  const [transaction] = await execute(query);
+  const [transaction] = await execute(query, addPrefixToObjKeys({ transactionId }));
   return transaction;
 };
 
@@ -29,9 +28,11 @@ const getDuplicateName = async (execute, name) => {
   const query = `
     SELECT COUNT(*) as count
     FROM near_protocol_transactions
-    WHERE name LIKE '%${originName}%';
+    WHERE name LIKE @originName;
   `;
-  const [{ count }] = await execute(query);
+  const params = { '@originName': `%${originName}%` };
+
+  const [{ count }] = await execute(query, params);
 
   if (count === 1) return `${originName} - copy`;
   return `${originName} - copy(${count - 1})`;
@@ -45,24 +46,44 @@ const duplicate = async (execute, targetId) => {
 
   const query = `
     INSERT INTO near_protocol_transactions
-      (transactionId, networkId, spaceId, name, 'order', createdAt, body)
-    VALUES(
-      '${transactionId}', 
-      '${target.networkId}', 
-      '${target.spaceId}', 
-      '${name}', 
-       ${target.order + 1}, 
-       ${createdAt}, 
-      '${target.body}'
-    )
+      VALUES(
+        @transactionId,
+        @networkId,
+        @spaceId,
+        @name,
+        @order,
+        @createdAt,
+        @editedAt,
+        @body
+      )
   `;
-  await execute(query);
+
+  await execute(
+    query,
+    addPrefixToObjKeys({
+      spaceId: target.spaceId,
+      networkId: target.networkId,
+      transactionId,
+      name,
+      order: target.order + 1,
+      createdAt,
+      editedAt: null,
+      body: target.body,
+    }),
+  );
 };
 
 export const duplicateOne = async ({ execute, request }) => {
   const { spaceId, networkId, targetId } = request.body;
   // Get all transactions we have to do an order update
-  const listForUpdate = await execute(getListForOrderUpdateQuery(spaceId, networkId, targetId));
+  const listForUpdate = await execute(
+    queries.getListForOrderUpdate,
+    addPrefixToObjKeys({
+      spaceId,
+      networkId,
+      transactionId: targetId,
+    }),
+  );
   // When we duplicate the last tx there is no transactions to update and query will fail
   if (listForUpdate.length > 0) await updateList(execute, listForUpdate);
   // Create a target copy with updated name
@@ -82,5 +103,5 @@ export const duplicateOne = async ({ execute, request }) => {
   });
 
   // We want to return the updated list in order to avoid extra steps during the state update
-  return await execute(getListQuery(spaceId, networkId));
+  return await execute(queries.getTransactions, addPrefixToObjKeys(request.body));
 };

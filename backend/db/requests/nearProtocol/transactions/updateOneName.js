@@ -1,11 +1,11 @@
-export const updateOneName = async ({ execute, request }) => {
-  const { transactionId, name } = request.body;
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
+export const updateOneName = async ({ execute, request }) => {
   const query = `
     UPDATE near_protocol_transactions
-    SET name = '${name}'
-    WHERE transactionId = '${transactionId}'
+    SET name = @name
+    WHERE transactionId = @transactionId
   `;
 
-  await execute(query);
+  await execute(query, addPrefixToObjKeys(request.body));
 };
