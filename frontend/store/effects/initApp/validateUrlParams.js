@@ -1,4 +1,4 @@
-/*
+/**
  Here we want to check if URL params entered by user is valid.
 
  Why? Without this check it's possible to enter invalid spaceId, networkId etc.
@@ -15,7 +15,7 @@ const getRequestType = (params) => {
   if (params.callId) return 'nearProtocol.calls.validateCallId';
   if (params.accountId) return 'nearProtocol.accounts.validateAccountId';
   if (params.publicKey) return 'nearProtocol.keys.validatePublicKey';
-  if (params.networkId) return 'nearProtocol.networkIs.validateNetworkId';
+  if (params.networkId) return 'nearProtocol.networks.validateNetworkId';
   if (params.spaceId) return 'spaces.validateSpaceId';
 };
 

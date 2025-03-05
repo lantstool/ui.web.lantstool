@@ -1,3 +1,4 @@
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 import { validateNetworkId } from '../networks/validateNetworkId.js';
 
 export const validateAccountId = async ({ execute, request }) => {
@@ -8,12 +9,12 @@ export const validateAccountId = async ({ execute, request }) => {
 
   const query = `
     SELECT accountId FROM near_protocol_accounts
-    WHERE accountId = '${accountId}'
-      AND networkId = '${networkId}'
-      AND spaceId = '${spaceId}';
+    WHERE accountId = @accountId
+      AND networkId = @networkId
+      AND spaceId = @spaceId;
   `;
 
-  const [account] = await execute(query);
+  const [account] = await execute(query, addPrefixToObjKeys(request.body));
 
   if (!account) {
     const error = new Error();
