@@ -1,11 +1,11 @@
-export const getCount = async ({ execute, request }) => {
-  const { spaceId, networkId } = request.body;
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
+export const getCount = async ({ execute, request }) => {
   const query = `
     SELECT calls FROM near_protocol_counters
-    WHERE spaceId = '${spaceId}' AND networkId = '${networkId}';
+    WHERE spaceId = @spaceId AND networkId = @networkId;
   `;
 
-  const [{ calls }] = await execute(query);
+  const [{ calls }] = await execute(query, addPrefixToObjKeys(request.body));
   return calls;
 };

@@ -10,7 +10,7 @@ export const onMountCall = effect(async ({ store, slice, payload: callId }) => {
   if (draft) return;
 
   try {
-    const call = await backend.sendRequest('nearProtocol.calls.getOne', callId);
+    const call = await backend.sendRequest('nearProtocol.calls.getOne', { callId });
     setupDraft(call);
   } catch (e) {
     console.log(e);
