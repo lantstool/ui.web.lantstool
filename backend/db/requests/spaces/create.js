@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { addPrefixToObjKeys } from '../helpers/addPrefixToObjKeys.js';
 
 const getOwnerId = async (execute) => {
   const query = `
@@ -17,11 +18,29 @@ export const create = async ({ execute, request }) => {
   const ownerId = await getOwnerId(execute);
 
   const query = `
-    INSERT INTO spaces (spaceId, name, badge, type, createdAt, ownerId)
-    VALUES('${spaceId}', '${name}', '${badge}', '${type}', ${createdAt}, '${ownerId}')
+    INSERT INTO spaces
+      VALUES(
+        @spaceId, 
+        @name, 
+        @badge, 
+        @type, 
+        @createdAt, 
+        @ownerId
+      )
     RETURNING *;
   `;
 
-  const [space] = await execute(query);
+  const [space] = await execute(
+    query,
+    addPrefixToObjKeys({
+      spaceId,
+      name,
+      badge,
+      type,
+      createdAt,
+      ownerId,
+    }),
+  );
+
   return space;
 };

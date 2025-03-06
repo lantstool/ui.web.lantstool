@@ -10,5 +10,8 @@ export const getOne = async ({ execute, request }) => {
 
   const [key] = await execute(query, addPrefixToObjKeys(request.body));
 
+  // TODO Remove after migration - we have to update all keys and replace all ` on '
+  key.derivationPath = key.derivationPath.replaceAll('`', "'");
+
   return key;
 };
