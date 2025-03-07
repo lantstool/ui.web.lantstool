@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@tippyjs/react": "^4.2.6",
     "@uiw/react-codemirror": "^4.23.1",
+    "bignumber.js": "^9.1.2",
     "bn.js": "^5.2.1",
     "bs58": "^6.0.0",
     "buffer": "^6.0.3",

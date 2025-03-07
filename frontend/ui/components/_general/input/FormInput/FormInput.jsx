@@ -12,6 +12,7 @@ export const FormInput = ({
   label,
   type = 'text',
   disabled = false,
+  onChange,
   onBlur = () => ({}),
   copy = true,
   tooltip = null,
@@ -19,15 +20,18 @@ export const FormInput = ({
   errorExtractor = (error) => error?.message,
 }) => {
   const {
-    field: { value, onChange: fieldOnChange, onBlur: fieldOnBlur, ref },
+    field,
     fieldState: { error },
   } = useController({ name, control });
+
+  const { value, onBlur: fieldOnBlur, ref } = field;
+  const innerOnChange = onChange ? onChange(field) : field.onChange;
 
   // We want to avoid React error when value is null
   const val = typeof value !== 'string' ? '' : value;
 
   const handleClear = () => {
-    fieldOnChange('');
+    innerOnChange('');
   };
 
   const handleMouseDown = (e) => {
@@ -60,7 +64,7 @@ export const FormInput = ({
           id={id || name}
           placeholder={disabled ? '' : placeholder}
           value={val}
-          onChange={fieldOnChange}
+          onChange={innerOnChange}
           onBlur={handleBlur}
           className={error ? cn.errorInput : cn.input}
           type={type}
