@@ -1,3 +1,4 @@
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 import { getOne } from './getOne.js';
 
 const updateWhenSameType = (network, rpcType, newRpc) => {
@@ -40,13 +41,21 @@ export const updateRpc = async ({ execute, request }) => {
 
   const query = `
       UPDATE near_protocol_networks
-      SET rpcList = '${JSON.stringify(network.rpcList)}',
-          activeRpc = '${JSON.stringify(network.activeRpc)}'
-      WHERE spaceId = '${spaceId}'
-        AND networkId = '${networkId}'
+      SET rpcList = @rpcList,
+          activeRpc = @activeRpc
+      WHERE spaceId = @spaceId
+        AND networkId = @networkId
     `;
 
-  await execute(query);
+  await execute(
+    query,
+    addPrefixToObjKeys({
+      spaceId,
+      networkId,
+      rpcList: JSON.stringify(network.rpcList),
+      activeRpc: JSON.stringify(network.activeRpc),
+    }),
+  );
 
   return network;
 };

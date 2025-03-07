@@ -23,6 +23,7 @@ export const handleRequest = async (requestType, context) => {
 
     self.postMessage({ response: { id, type, status: 'ok', data } });
   } catch (e) {
+    console.log(e);
     self.postMessage({
       response: {
         id,

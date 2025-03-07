@@ -1,11 +1,14 @@
+import { addPrefixToObjKeys } from '../helpers/addPrefixToObjKeys.js';
+
 export const validateSpaceId = async ({ execute, request }) => {
   const { spaceId } = request.body;
+
   const query = `
     SELECT spaceId FROM spaces
-    WHERE spaceId = '${spaceId}'
+    WHERE spaceId = @spaceId
   `;
 
-  const [space] = await execute(query);
+  const [space] = await execute(query, addPrefixToObjKeys(request.body));
 
   if (!space) {
     const error = new Error();

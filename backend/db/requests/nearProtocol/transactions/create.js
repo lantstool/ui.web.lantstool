@@ -1,7 +1,8 @@
 import { v4 as uuid } from 'uuid';
 import { getCount } from './getCount.js';
-import { createTransactionQuery } from './queries/createTransactionQuery.js';
+import { queries } from './queries/queries.js';
 import { getNewTransactionOrder } from './helpers/getNewTransactionOrder.js';
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
 export const create = async ({ execute, request }) => {
   const { spaceId, networkId } = request.body;
@@ -18,18 +19,20 @@ export const create = async ({ execute, request }) => {
     actions: [],
   });
 
-  const query = createTransactionQuery({
-    spaceId,
-    networkId,
-    transactionId,
-    name,
-    order,
-    createdAt,
-    body,
-  });
+  const [transaction] = await execute(
+    queries.createTransaction,
+    addPrefixToObjKeys({
+      transactionId,
+      spaceId,
+      networkId,
+      name,
+      order,
+      createdAt,
+      editedAt: null,
+      body,
+    }),
+  );
 
-  const [transaction] = await execute(query);
   transaction.body = JSON.parse(transaction.body);
-
   return transaction;
 };

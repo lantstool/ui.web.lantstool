@@ -5,6 +5,7 @@ const db = {
   sqlite: null,
   connection: null,
   execute: async () => {},
+  run: async () => {},
 };
 
 const storage = {

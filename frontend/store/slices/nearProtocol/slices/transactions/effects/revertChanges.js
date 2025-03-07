@@ -6,7 +6,9 @@ export const revertChanges = effect(async ({ store, payload, slice }) => {
   const setupDraft = slice.getActions((slice) => slice.setupDraft);
 
   try {
-    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', transactionId);
+    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', {
+      transactionId,
+    });
     setupDraft(transaction);
     form.reset(transaction.body);
   } catch (e) {

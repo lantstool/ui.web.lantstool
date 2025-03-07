@@ -1,7 +1,7 @@
 {
   "name": "ui.web.lantstool",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@tippyjs/react": "^4.2.6",
     "@uiw/react-codemirror": "^4.23.1",
-    "bn.js": "^5.2.1",
+    "bignumber.js": "^9.1.2",
     "bs58": "^6.0.0",
     "buffer": "^6.0.3",
     "classnames": "^2.5.1",

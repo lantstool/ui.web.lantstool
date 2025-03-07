@@ -14,6 +14,7 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, 'frontend/ui/hooks'),
       '@styles': path.resolve(__dirname, 'frontend/ui/styles'),
       '@assets': path.resolve(__dirname, 'frontend/ui/assets'),
+      '@gc': path.resolve(__dirname, 'frontend/ui/components/_general'),
     },
   },
   plugins: [

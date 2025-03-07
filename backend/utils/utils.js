@@ -4,3 +4,5 @@ export const errorWithCode = (code, message) => {
   error.message = message;
   throw error;
 };
+
+export const serializeApostrophe = (str) => str.replace(/'/g, "''");

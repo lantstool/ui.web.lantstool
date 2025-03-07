@@ -1,4 +1,6 @@
 import { v4 as uuid } from 'uuid';
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
+import { createNetwork } from './queries/createNetwork.js';
 
 const getRpcData = (rpc, type) => {
   const rpcList = { regular: [], archival: [] };
@@ -21,22 +23,16 @@ export const createManually = async ({ execute, request }) => {
   const { rpcList, activeRpc } = getRpcData(rpc, rpcType);
   const createdAt = Date.now();
 
-  const query = `
-    BEGIN TRANSACTION;
-
-    INSERT INTO near_protocol_networks
-      (networkId, spaceId, createdAt, activeRpc, rpcList)
-    VALUES('${networkId}', '${spaceId}', ${createdAt}, '${activeRpc}', '${rpcList}')
-    RETURNING *;
-
-    INSERT INTO near_protocol_counters
-      (spaceId, networkId, transactions, calls)
-    VALUES('${spaceId}', '${networkId}', 0, 0);
-
-    COMMIT;
-  `;
-
-  const [network] = await execute(query);
+  const [network] = await execute(
+    createNetwork,
+    addPrefixToObjKeys({
+      networkId,
+      spaceId,
+      createdAt,
+      activeRpc,
+      rpcList,
+    }),
+  );
 
   network.activeRpc = JSON.parse(network.activeRpc);
   network.rpcList = JSON.parse(network.rpcList);

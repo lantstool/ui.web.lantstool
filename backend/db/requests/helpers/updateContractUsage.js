@@ -112,7 +112,7 @@ const decreaseContractUsage = async (execute, fileName, counter) => {
 };
 
 export const updateContractUsage = async ({ execute, storage, transactionId, body }) => {
-  const savedTx = await getTx({ execute, request: { body: transactionId } });
+  const savedTx = await getTx({ execute, request: { body: { transactionId } } });
   const diffMap = getFileUsageDiff(savedTx.body.actions, body.actions);
   // Iterate over all differences and increase counter and create a contract file
   // if needed or decrease counter and remove a contract file if needed

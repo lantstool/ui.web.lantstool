@@ -6,7 +6,7 @@ export const revertChanges = effect(async ({ store, slice, payload }) => {
   const setupDraft = slice.getActions((slice) => slice.setupDraft);
 
   try {
-    const call = await backend.sendRequest('nearProtocol.calls.getOne', callId);
+    const call = await backend.sendRequest('nearProtocol.calls.getOne', { callId });
     setupDraft(call);
     form.reset(call.body);
   } catch (e) {

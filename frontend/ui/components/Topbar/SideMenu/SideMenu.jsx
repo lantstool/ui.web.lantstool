@@ -1,6 +1,6 @@
 import { Popper } from '../_general/Popper/Popper.jsx';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { useState } from 'react';
 import cn from './SideMenu.module.scss';
 
@@ -64,7 +64,7 @@ export const SideMenu = () => {
           <hr className={cn.border} />
           <div className={cn.wrapper}>
             {/*<p className={cn.title}>Privacy policy</p>*/}
-            <p className={cn.liteTitle}>Lantstool v1.1.0</p>
+            <p className={cn.liteTitle}>Lantstool v1.2.0</p>
           </div>
         </div>
       </Popper>

@@ -10,7 +10,9 @@ export const onMountTransaction = effect(async ({ store, slice, payload: transac
   if (draft) return;
 
   try {
-    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', transactionId);
+    const transaction = await backend.sendRequest('nearProtocol.transactions.getTx', {
+      transactionId,
+    });
     setupDraft(transaction);
   } catch (e) {
     console.log(e);
