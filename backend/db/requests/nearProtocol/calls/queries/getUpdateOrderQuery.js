@@ -1,4 +1,4 @@
-/*
+/**
   getUpdateOrderQuery generates a query like:
 
   UPDATE near_protocol_calls
@@ -8,7 +8,7 @@
     WHEN callId = 'call3' THEN 3
     ELSE "order"
   END
-  WHERE callId IN ('tx1', 'tx2', 'tx3');
+  WHERE callId IN ('call1', 'call2', 'call3');
 
   We use it for update calls order during reorder / remove call operations
 */

@@ -1,15 +1,17 @@
-import { utils } from './utils.js';
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
 export const getOne = async ({ execute, request }) => {
   const query = `
     SELECT * FROM near_protocol_keys
-    WHERE spaceId = '${request.body.spaceId}' 
-      AND networkId = '${request.body.networkId}'
-      AND publicKey = '${request.body.publicKey}'
+    WHERE spaceId = @spaceId 
+      AND networkId = @networkId
+      AND publicKey = @publicKey;
   `;
 
-  const [key] = await execute(query);
-  key.derivationPath = utils.derivationPath.deserialize(key.derivationPath);
+  const [key] = await execute(query, addPrefixToObjKeys(request.body));
+
+  // TODO Remove after migration - we have to update all keys and replace all ` on '
+  key.derivationPath = key.derivationPath.replaceAll('`', "'");
 
   return key;
 };

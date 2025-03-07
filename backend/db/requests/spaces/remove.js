@@ -1,3 +1,4 @@
+import { addPrefixToObjKeys } from '../helpers/addPrefixToObjKeys.js';
 import { getAll as getAllNetworks } from '../nearProtocol/networks/getAll.js';
 import { removeOne as removeNetwork } from '../nearProtocol/networks/removeOne.js';
 
@@ -15,7 +16,7 @@ export const remove = async ({ execute, request }) => {
 
   const query = `
     DELETE FROM spaces
-    WHERE spaceId = '${spaceId}';
+    WHERE spaceId = @spaceId;
   `;
-  await execute(query);
+  await execute(query, addPrefixToObjKeys(request.body));
 };

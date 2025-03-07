@@ -46,3 +46,17 @@
 .sideMenu {
   position: relative;
 }
+
+.icon {
+  padding: 8px;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  &:hover {
+    background-color: $neutral-100;
+  }
+}
+
+.xIcon {
+  @include icon('@assets/socialMedia/social-media-x.svg');
+}

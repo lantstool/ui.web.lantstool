@@ -1,0 +1,28 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.container {
+}
+
+.button {
+  margin: 0;
+  border: 0;
+  background: none;
+  border-radius: 8px;
+  padding: 4px 12px;
+  cursor: pointer;
+  background: $neutral-100;
+  color: $neutral-700;
+  &:hover {
+    background: $neutral-200;
+  }
+}
+
+.active {
+  background: $accent-50;
+  color: $accent-600;
+  &:hover {
+    background: $accent-50;
+    color: $accent-600;
+  }
+}

@@ -1,4 +1,5 @@
 import { updateContractUsage } from '../../helpers/updateContractUsage.js';
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
 export const updateTxBody = async ({ execute, request, storage }) => {
   const { transactionId, body } = request.body;
@@ -7,12 +8,19 @@ export const updateTxBody = async ({ execute, request, storage }) => {
 
   const query = `
     UPDATE near_protocol_transactions
-    SET body = '${JSON.stringify(body)}'
-    WHERE transactionId = '${transactionId}'
+    SET body = @body
+    WHERE transactionId = @transactionId
     RETURNING *;
   `;
 
-  const [transaction] = await execute(query);
+  const [transaction] = await execute(
+    query,
+    addPrefixToObjKeys({
+      body: JSON.stringify(body),
+      transactionId,
+    }),
+  );
+
   transaction.body = JSON.parse(transaction.body);
   return transaction;
 };

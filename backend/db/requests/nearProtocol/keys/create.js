@@ -1,25 +1,22 @@
-import { utils } from './utils.js';
+import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 
 export const create = async ({ execute, request }) => {
-  const { publicKey, spaceId, networkId, privateKey, seedPhrase, derivationPath } = request.body;
   const createdAt = Date.now();
-  const dPath = utils.derivationPath.serialize(derivationPath);
 
   const query = `
     INSERT INTO near_protocol_keys 
-      (publicKey, spaceId, networkId, createdAt, privateKey, seedPhrase, derivationPath)
-    VALUES(
-      '${publicKey}', 
-      '${spaceId}', 
-      '${networkId}', 
-      ${createdAt}, 
-      '${privateKey}', 
-      '${seedPhrase}',
-      '${dPath}'
-    )
+      VALUES(
+        @publicKey,
+        @networkId,
+        @spaceId,
+        @createdAt,
+        @privateKey,
+        @seedPhrase,
+        @derivationPath
+      )
     RETURNING publicKey, createdAt;
   `;
 
-  const [key] = await execute(query);
+  const [key] = await execute(query, addPrefixToObjKeys({ ...request.body, createdAt }));
   return key;
 };

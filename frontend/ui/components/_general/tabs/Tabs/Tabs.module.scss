@@ -1,0 +1,12 @@
+@use '@styles/variables' as *;
+
+.tabs {
+  border-radius: 8px;
+  display: flex;
+  padding: 4px;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+  background-color: $neutral-100;
+  width: max-content;
+}
