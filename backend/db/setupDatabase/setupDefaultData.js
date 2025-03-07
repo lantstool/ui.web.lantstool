@@ -11,7 +11,7 @@ export const setupDefaultData = async (execute) => {
     
     INSERT OR IGNORE INTO settings (key, value) VALUES
       ('history', '{}'),
-      ('appVersion', '1.1.2'),
+      ('appVersion', '1.2.0'),
       ('appSettings', '${appSettings}');
     
     INSERT INTO users (userId, createdAt, role)

@@ -1,5 +1,3 @@
-import { Button } from '@gc/Button/Button.jsx';
-import { Label } from '@gc/Label/Label.jsx';
 import cnm from 'classnames';
 import cn from './Item.module.scss';
 
