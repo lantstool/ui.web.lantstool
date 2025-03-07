@@ -28,6 +28,7 @@ export const Units = ({ form }) => {
       name="units"
       label="Units"
       placeholder="100000000000000000000000"
+      dynamicErrorSpace
     />
   );
 };

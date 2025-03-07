@@ -9,6 +9,7 @@ export const Decimals = ({ form }) => {
       name="decimals"
       label="Decimals"
       placeholder="24"
+      dynamicErrorSpace
     />
   );
 };

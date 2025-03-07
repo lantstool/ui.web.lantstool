@@ -10,6 +10,7 @@ export const utils = {
     derivationPath: KEY_DERIVATION_PATH,
     implicitAccount: '',
   },
+  unitConverter: {},
   ...actions,
   ...effects,
 };

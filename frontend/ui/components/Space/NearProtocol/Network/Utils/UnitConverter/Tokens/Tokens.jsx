@@ -28,6 +28,7 @@ export const Tokens = ({ form }) => {
       name="tokens"
       label="Tokens"
       placeholder="1"
+      dynamicErrorSpace
     />
   );
 };

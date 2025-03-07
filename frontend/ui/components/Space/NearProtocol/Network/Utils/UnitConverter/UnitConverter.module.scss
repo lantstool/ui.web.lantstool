@@ -6,17 +6,16 @@
   flex-direction: column;
   justify-content: space-between;
   width: 680px;
-  //min-width: 610px;
-  //max-width: 680px;
   gap: 24px;
   border-radius: 16px;
   padding: 16px;
   border: 1px solid $neutral-200;
 }
 
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 24px;
 }
 

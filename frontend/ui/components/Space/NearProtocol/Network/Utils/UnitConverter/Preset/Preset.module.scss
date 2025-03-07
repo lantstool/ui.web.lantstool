@@ -1,0 +1,7 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.preset {
+  display: flex;
+  gap: 8px;
+}

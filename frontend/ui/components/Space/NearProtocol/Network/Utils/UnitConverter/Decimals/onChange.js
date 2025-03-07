@@ -20,7 +20,7 @@ export const updateValues = (decimals, form) => {
     : setNewValue('tokens', units, decimals, form.setValue);
 };
 
-export const transformValue = (val) => {
+const transformValue = (val) => {
   // Remove any non-digit characters
   let value = val.replace(/[^0-9]/g, '');
 
