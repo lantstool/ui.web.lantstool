@@ -1,11 +1,10 @@
-import { setupDatabase } from './db/setupDatabase/setupDatabase.js';
-import { handleRequest } from './db/requests/handleRequest.js';
+import { setupDatabase } from './setupDatabase/setupDatabase.js';
+import { handleRequest } from './requests/handleRequest.js';
 
 const db = {
   sqlite: null,
   connection: null,
   execute: async () => {},
-  run: async () => {},
 };
 
 const storage = {
