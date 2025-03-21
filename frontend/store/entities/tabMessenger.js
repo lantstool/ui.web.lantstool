@@ -56,6 +56,7 @@ const createTabMessenger = (store, navigate) => {
     if (event.data.event === 'afterRestoreFromBackup') afterRestoreFromBackup(store, navigate);
   };
 
+  // Don't sure if we need this at all
   window.addEventListener('beforeunload', () => {
     channel.close();
   });

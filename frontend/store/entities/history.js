@@ -1,7 +1,7 @@
 import { get, set } from 'lodash';
 import { entity } from '@react-vault';
 
-/*
+/**
   This is an example of a history state
   {
     '': {
