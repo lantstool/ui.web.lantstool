@@ -11,7 +11,7 @@ const createAnalytics = async (backend) => {
 
   const emitEvent = ({ payload, keepAlive = false }) => {
     try {
-      fetch('http://localhost:3000/analytics/events', {
+      fetch(`${import.meta.env.VITE_ANALYTICS_URL}/analytics/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,34 +30,9 @@ const createAnalytics = async (backend) => {
     // TODO implement - use it after the app reset action
   };
 
-  const openPage = () => {
-    emitEvent({
-      payload: {
-        eventType: 'open-page',
-        data: {
-          page: location.pathname,
-        },
-      },
-    });
-  };
-
-  const click = (params = {}) => {
-    emitEvent({
-      payload: {
-        eventType: 'click',
-        data: {
-          page: location.pathname,
-          ...params,
-        },
-      },
-    });
-  };
-
   return {
     emitEvent,
     reset,
-    openPage,
-    click,
   };
 };
 

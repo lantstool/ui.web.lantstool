@@ -2,22 +2,23 @@ import { parseUserAgent } from './parseUserAgent.js';
 
 // TODO move to analytics
 export const emitStartSession = async (analytics) => {
-  const userData = await parseUserAgent();
+  const userAgentData = await parseUserAgent();
 
   analytics.emitEvent({
     payload: {
       eventType: 'start-session',
-      data: {
+      eventData: {
         referrer: document.referrer || null,
         page: location.pathname,
         language: navigator.language,
         screenWidth: screen.width,
         screenHeight: screen.height,
-        userData,
+        userAgentData,
       },
     },
   });
 };
+
 // TODO move to analytics
 export const setupEmitEventsOnVisibilityChange = (analytics) => {
   document.addEventListener('visibilitychange', () => {
@@ -25,12 +26,18 @@ export const setupEmitEventsOnVisibilityChange = (analytics) => {
       analytics.emitEvent({
         payload: {
           eventType: 'continue-session',
+          eventData: {
+            page: location.pathname,
+          },
         },
       });
     } else {
       analytics.emitEvent({
         payload: {
           eventType: 'stop-session',
+          eventData: {
+            page: location.pathname,
+          },
         },
         keepAlive: true,
       });
