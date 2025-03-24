@@ -2,6 +2,7 @@ import { db } from './db/db.js';
 import { settings } from './settings/settings.js';
 import { spaces } from './spaces/index.js';
 import { nearProtocol } from './nearProtocol/nearProtocol.js';
+import { users } from './users/users.js';
 import get from 'lodash/get';
 
 const handlers = {
@@ -9,6 +10,7 @@ const handlers = {
   settings,
   spaces,
   nearProtocol,
+  users,
 };
 
 export const handleRequest = async (requestType, context) => {

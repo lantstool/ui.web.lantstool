@@ -4,7 +4,7 @@ import { Factory } from 'wa-sqlite/src/sqlite-api';
 import { deleteDbFiles } from '../requests/db/helpers/deleteDbFiles.js';
 import setupDatabaseSQL from './setupDatabase.sql';
 import { setupDefaultData } from './setupDefaultData.js';
-import { errorWithCode } from '../../utils/utils.js';
+import { errorWithCode } from '../utils/utils.js';
 import { createExecuteFn } from './createExecuteFn.js';
 
 const getSqlite = async (dnName) => {

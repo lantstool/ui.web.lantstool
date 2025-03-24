@@ -1,13 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { addPrefixToObjKeys } from '../helpers/addPrefixToObjKeys.js';
-
-const getOwnerId = async (execute) => {
-  const query = `
-    SELECT userId FROM users WHERE role = 'owner';
-  `;
-  const [{ userId }] = await execute(query);
-  return userId;
-};
+import { getOwnerId } from '../users/getOwnerId.js';
 
 export const create = async ({ execute, request }) => {
   const spaceId = uuid();
@@ -15,7 +8,7 @@ export const create = async ({ execute, request }) => {
   const badge = request.body.badge;
   const type = 'local'; // In the future will be possible to select more space types
   const createdAt = Date.now();
-  const ownerId = await getOwnerId(execute);
+  const ownerId = await getOwnerId({ execute });
 
   const query = `
     INSERT INTO spaces

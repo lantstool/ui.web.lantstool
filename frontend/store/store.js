@@ -7,6 +7,7 @@ import { effects } from './effects/index.js';
 import { backend } from './entities/backend.js';
 import { history } from './entities/history.js';
 import { tabMessenger } from './entities/tabMessenger.js';
+import { analytics } from './entities/analytics.js';
 // slices
 import { spaces } from './slices/spaces/spaces.js';
 import { nearProtocol } from './slices/nearProtocol/nearProtocol.js';
@@ -22,6 +23,7 @@ export const store = createStore({
   backend,
   history,
   tabMessenger,
+  analytics,
   // slices
   spaces,
   nearProtocol,

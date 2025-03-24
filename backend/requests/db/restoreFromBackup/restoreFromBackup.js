@@ -5,7 +5,7 @@ import { getCount } from '../../spaces/getCount.js';
 import { deleteDbFiles } from '../helpers/deleteDbFiles.js';
 import { renameFile } from '../helpers/renameFile.js';
 import { deleteFile } from '../helpers/deleteFile.js';
-import { errorWithCode } from '../../../../utils/utils.js';
+import { errorWithCode } from '../../../utils/utils.js';
 import { opfs } from '../../helpers/opfs.js';
 import { transformUnzippedFiles } from './transformUnzippedFiles.js';
 
