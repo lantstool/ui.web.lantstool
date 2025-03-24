@@ -1,4 +1,4 @@
-import { errorWithCode } from '../../../../utils/utils.js';
+import { errorWithCode } from '../../../utils/utils.js';
 // TODO replace with opfs utils
 export const deleteFile = async (name) => {
   try {
