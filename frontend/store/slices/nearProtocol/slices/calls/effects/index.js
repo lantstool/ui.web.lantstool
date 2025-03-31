@@ -14,6 +14,7 @@ import { importOneFromFile } from './importOne/importOneFromFile.js';
 import { exportOneAsJson } from './exportOne/exportOneAsJson.js';
 import { exportOneAsJsonFile } from './exportOne/exportOneAsJsonFile.js';
 import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
+import { downloadWasm } from './downloadWasm.js';
 
 export const effects = {
   getList,
@@ -32,4 +33,5 @@ export const effects = {
   exportOneAsJson,
   exportOneAsJsonFile,
   exportOneAsZip,
+  downloadWasm,
 };

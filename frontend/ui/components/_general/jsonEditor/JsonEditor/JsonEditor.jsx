@@ -20,6 +20,7 @@ export const JsonEditor = ({
   onChange,
   onBlur,
   topbar,
+  title = 'json',
   readOnly = false,
   showClearBtn = true,
   showCopyBtn = true,
@@ -35,7 +36,7 @@ export const JsonEditor = ({
     <div className={cnm(cn.container, classes?.container)}>
       {topbar && <FieldTopbarLabel label={topbar?.label} tooltip={topbar?.tooltip} />}
       <div className={error ? cn.errorPanel : cn.controlPanel}>
-        <p className={cn.subtitle}>json</p>
+        <p className={cn.subtitle}>{title}</p>
         <div className={cn.btnWrapper}>
           {/*<Tooltip content="Format" placement="top" arrow={false}>*/}
           {/*  <button className={cn.format} />*/}

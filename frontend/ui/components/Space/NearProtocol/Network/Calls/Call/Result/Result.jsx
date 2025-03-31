@@ -1,17 +1,22 @@
 import { useStoreAction } from '@react-vault';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { Raw } from './Raw/Raw.jsx';
 import { Overview } from './Overview/Overview.jsx';
-import { TabButton } from '../../../../../../_general/tab/TabButton/TabButton.jsx';
-import { TabContainer } from '../../../../../../_general/tab/TabContainer/TabContainer.jsx';
+import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
+import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
 import { useState } from 'react';
-import { Label } from '../../../../../../_general/Label/Label.jsx';
+import { Label } from '@gc/Label/Label.jsx';
 import cn from './Result.module.scss';
 
-const getMode = (formValues) => {
-  const overviewMethods = ['getAccount', 'getAccountKey', 'getAccountKeys'];
-  return overviewMethods.includes(formValues.method.value) ? 'overview' : 'raw';
-};
+const methodsWithOverview = new Set([
+  'getAccount',
+  'getAccountKey',
+  'getAccountKeys',
+  'getContractWasm',
+]);
+
+const getMode = (formValues) =>
+  methodsWithOverview.has(formValues.method.value) ? 'overview' : 'raw';
 
 export const Result = ({ callResult, call }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
