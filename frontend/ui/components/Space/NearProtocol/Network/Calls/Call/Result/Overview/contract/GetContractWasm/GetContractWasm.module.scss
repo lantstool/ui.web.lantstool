@@ -1,0 +1,12 @@
+.getAccountKeys {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.firstRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
