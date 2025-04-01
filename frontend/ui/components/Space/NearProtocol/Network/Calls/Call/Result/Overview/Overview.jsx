@@ -1,6 +1,7 @@
 import { GetAccount } from './account/GetAccount/GetAccount.jsx';
 import { GetAccountKeys } from './keys/GetAccountKeys/GetAccountKeys.jsx';
 import { GetAccountKey } from './keys/GetAccountKey/GetAccountKey.jsx';
+import { GetContractWasm } from './contract/GetContractWasm/GetContractWasm.jsx';
 import { toCamelCase } from '../../../../../../../../../store/helpers/toCamelCase.js';
 import cn from './Overview.module.scss';
 
@@ -16,6 +17,9 @@ export const Overview = ({ result, formValues }) => {
       )}
       {method === 'getAccountKey' && (
         <GetAccountKey result={camelCaseResult} formValues={formValues} />
+      )}
+      {method === 'getContractWasm' && (
+        <GetContractWasm result={camelCaseResult} formValues={formValues} />
       )}
     </div>
   );

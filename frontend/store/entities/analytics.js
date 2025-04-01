@@ -10,8 +10,12 @@ const createAnalytics = async (backend) => {
   };
 
   const emitEvent = ({ payload, keepAlive = false }) => {
+    const analyticsUrl = import.meta.env.VITE_ANALYTICS_URL;
+    // Usually we don't want to send events during development
+    if (!analyticsUrl) return;
+
     try {
-      fetch(`${import.meta.env.VITE_ANALYTICS_URL}/analytics/events`, {
+      fetch(`${analyticsUrl}/analytics/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

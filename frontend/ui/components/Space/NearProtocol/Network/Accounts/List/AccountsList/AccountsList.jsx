@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
-import { Label } from '../../../../../../_general/Label/Label.jsx';
-import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
+import { Label } from '@gc/Label/Label.jsx';
+import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import cn from './AccountsList.module.scss';
 
 export const AccountsList = () => {
@@ -18,7 +18,7 @@ export const AccountsList = () => {
               {records[accountId].note && <Label color="grey">{records[accountId].note}</Label>}
             </div>
             <div className={cn.copy}>
-              <CopyButton color="secondary" value={records[accountId].accountId} />
+              <CopyButton color="secondary" value={records[accountId].accountId} event="onClick" />
             </div>
           </Link>
         ))}
