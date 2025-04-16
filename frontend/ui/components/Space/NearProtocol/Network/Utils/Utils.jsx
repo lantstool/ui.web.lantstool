@@ -1,25 +1,21 @@
-import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
-import { useState } from 'react';
-import { Tabs } from '../../../../_general/tabs/Tabs/Tabs.jsx';
-import { Tab } from '../../../../_general/tabs/Tab/Tab.jsx';
-import { KeyGenerator } from './KeyGenerator/KeyGenerator.jsx';
-import { UnitConverter } from './UnitConverter/UnitConverter.jsx';
+import { Tabs } from '@gc/tabs/Tabs/Tabs.jsx';
+import { TabLink } from '@gc/tabs/TabLink/TabLink.jsx';
+import { Outlet } from 'react-router-dom';
+import { useManageRouting } from './useManageRouting.js';
 import cn from './Utils.module.scss';
 
 export const Utils = () => {
-  const [activeTab, setActiveTab] = useState('keyGenerator');
-  useSaveToHistory();
+  useManageRouting();
 
   return (
     <div className={cn.utils}>
       <div className={cn.contentContainer}>
         <h1 className={cn.headerTitle}>Utils</h1>
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab}>
-          <Tab name="keyGenerator">Key Generator</Tab>
-          <Tab name="unitConverter">Unit Converter</Tab>
+        <Tabs>
+          <TabLink to="key-generator">Key Generator</TabLink>
+          <TabLink to="unit-converter">Unit Converter</TabLink>
         </Tabs>
-        {activeTab === 'keyGenerator' && <KeyGenerator />}
-        {activeTab === 'unitConverter' && <UnitConverter />}
+        <Outlet />
       </div>
     </div>
   );

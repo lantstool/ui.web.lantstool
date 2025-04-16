@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
+import { BaseModal } from '@gc/modals/BaseModal/BaseModal.jsx';
 import { useForm } from 'react-hook-form';
-import { FormInput } from '../../../../../_general/input/FormInput/FormInput.jsx';
+import { FormInput } from '@gc/input/FormInput/FormInput.jsx';
 import { useStoreEffect } from '@react-vault';
-import { ModalFooter } from '../../../../../_general/modals/ModalFooter/ModalFooter.jsx';
-import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
+import { ModalFooter } from '@gc/modals/ModalFooter/ModalFooter.jsx';
+import { ModalHeader } from '@gc/modals/ModalHeader/ModalHeader.jsx';
 import { createSchema } from './schema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cn from './ImportAccount.module.scss';

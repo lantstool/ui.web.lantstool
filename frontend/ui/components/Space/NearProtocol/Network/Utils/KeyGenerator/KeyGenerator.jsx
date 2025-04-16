@@ -1,7 +1,8 @@
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useStoreEffect, useStoreState } from '@react-vault';
 import { useEffect } from 'react';
 import { Item } from './Item/Item.jsx';
-import { Button } from '../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import cn from './KeyGenerator.module.scss';
 
 export const KeyGenerator = () => {
@@ -11,6 +12,8 @@ export const KeyGenerator = () => {
     (store) => store.nearProtocol.utils.onMountKeyGenerator,
   );
   const { publicKey, privateKey, seedPhrase, derivationPath, implicitAccount } = generatedKey;
+
+  useSaveToHistory();
 
   useEffect(() => {
     onMountKeyGenerator();
