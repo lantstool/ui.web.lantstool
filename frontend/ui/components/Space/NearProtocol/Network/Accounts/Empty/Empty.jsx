@@ -1,4 +1,4 @@
-import { Button } from '../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { ImportAccount } from '../../_general/ImportAccount/ImportAccount.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import cn from './Empty.module.scss';
@@ -14,7 +14,7 @@ export const Empty = () => {
           Nothing here. Import your first account to use it within the app.
         </h2>
       </div>
-      <Button onClick={openModal}>Import account</Button>
+      <Button onClick={openModal}>Import Account</Button>
       {isModalOpen && <ImportAccount closeModal={closeModal} />}
     </div>
   );

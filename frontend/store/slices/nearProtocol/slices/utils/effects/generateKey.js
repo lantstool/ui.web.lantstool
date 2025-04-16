@@ -8,14 +8,20 @@ const createImplicitAccount = (pubKeyString) => {
   return Buffer.from(rawBytes).toString('hex');
 };
 
-export const generateKey = effect(async ({ slice }) => {
+export const generateKey = effect(({ slice, payload }) => {
+  const { spaceId, networkId } = payload;
   const setGeneratedKey = slice.getActions((slice) => slice.setGeneratedKey);
   const { seedPhrase, secretKey: privateKey, publicKey } = generateSeedPhrase();
+
   setGeneratedKey({
-    seedPhrase,
-    privateKey,
-    publicKey,
-    derivationPath: KEY_DERIVATION_PATH,
-    implicitAccount: createImplicitAccount(publicKey),
+    values: {
+      seedPhrase,
+      privateKey,
+      publicKey,
+      derivationPath: KEY_DERIVATION_PATH,
+      implicitAccount: createImplicitAccount(publicKey),
+    },
+    spaceId,
+    networkId,
   });
 });

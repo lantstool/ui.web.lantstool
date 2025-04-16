@@ -1,23 +1,31 @@
+import { useLoader } from '@hooks/useLoader.js';
 import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useStoreEffect, useStoreState } from '@react-vault';
-import { useEffect } from 'react';
+import get from 'lodash/get';
+import { useParams } from 'react-router-dom';
 import { Item } from './Item/Item.jsx';
 import { Button } from '@gc/Button/Button.jsx';
 import cn from './KeyGenerator.module.scss';
 
 export const KeyGenerator = () => {
-  const generatedKey = useStoreState((store) => store.nearProtocol.utils.generatedKey);
+  const { spaceId, networkId } = useParams();
+  const keyGenerator = useStoreState((store) => store.nearProtocol.utils.keyGenerator);
   const generateKey = useStoreEffect((store) => store.nearProtocol.utils.generateKey);
   const onMountKeyGenerator = useStoreEffect(
     (store) => store.nearProtocol.utils.onMountKeyGenerator,
   );
-  const { publicKey, privateKey, seedPhrase, derivationPath, implicitAccount } = generatedKey;
 
   useSaveToHistory();
 
-  useEffect(() => {
-    onMountKeyGenerator();
-  }, []);
+  const [isLoading] = useLoader(onMountKeyGenerator, { spaceId, networkId }, [spaceId, networkId]);
+  if (isLoading) return null;
+
+  const { publicKey, privateKey, seedPhrase, derivationPath, implicitAccount } = get(keyGenerator, [
+    spaceId,
+    networkId,
+  ]);
+
+  const generate = () => generateKey({ spaceId, networkId });
 
   return (
     <div className={cn.seedPhraseGenerator}>
@@ -38,7 +46,7 @@ export const KeyGenerator = () => {
         isCopy={false}
       />
       <div className={cn.btnContainer}>
-        <Button iconLeftStyles={cn.magicStickOutline} onClick={generateKey}>
+        <Button iconLeftStyles={cn.magicStickOutline} onClick={generate}>
           Generate Key
         </Button>
       </div>

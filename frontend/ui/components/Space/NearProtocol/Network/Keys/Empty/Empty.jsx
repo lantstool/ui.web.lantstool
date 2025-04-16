@@ -1,5 +1,5 @@
 import { ImportKeyModal } from '../../_general/ImportKeyModal/ImportKeyModal.jsx';
-import { Button } from '../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import cn from './Empty.module.scss';
 
@@ -14,7 +14,7 @@ export const Empty = () => {
           Looks empty. Import your first key to begin, or add one directly through a transaction.
         </h2>
       </div>
-      <Button onClick={openModal}>Import key</Button>
+      <Button onClick={openModal}>Import Key</Button>
       {isModalOpen && <ImportKeyModal closeModal={closeModal} />}
     </div>
   );
