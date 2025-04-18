@@ -1,6 +1,6 @@
 import { transactions, InMemorySigner, utils, keyStores } from 'near-api-js';
 
-export const signTx = async ({ transaction, networkId, privateKey }) => {
+export const signTransaction = async ({ transaction, networkId, privateKey }) => {
   const keyPair = utils.KeyPair.fromString(privateKey);
   const keyStore = new keyStores.InMemoryKeyStore();
   await keyStore.setKey(networkId, transaction.signerId, keyPair);

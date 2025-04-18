@@ -17,6 +17,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
     setResult({ transactionId, isOpen: true, isLoading: true });
 
     await rpc.configure({ spaceId, networkId });
+
     const transaction = await createTx({ rpc, formValues, backend });
 
     const { privateKey } = await getKey({
@@ -31,7 +32,7 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
       privateKey,
     });
 
-    const result = await rpc.sendTransaction({ signedTransaction });
+    const result = await rpc.sendSignedTransaction({ signedTransaction });
     setResult({ transactionId, result, error: null, isLoading: false });
   } catch (e) {
     console.log(e);
