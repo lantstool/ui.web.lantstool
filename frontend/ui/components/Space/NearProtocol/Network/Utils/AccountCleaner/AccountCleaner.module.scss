@@ -9,11 +9,35 @@
   border-radius: 16px;
   padding: 16px;
   border: 1px solid $neutral-200;
+  margin-bottom: 270px;
+}
+
+.header {
+  @include text-mg-medium;
+  color: $neutral-800;
+  margin-bottom: 4px;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-700;
+  margin-bottom: 32px;
 }
 
 .modeSelector {
   display: flex;
-  //flex-direction: column;
-  gap: 24px;
+  flex-direction: column;
+  gap: 8px;
   margin-bottom: 24px;
+}
+
+.modeTitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 2px 2px 0 2px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
 }

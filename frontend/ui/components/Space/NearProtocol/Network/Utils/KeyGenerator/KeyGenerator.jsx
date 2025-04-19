@@ -53,8 +53,8 @@ export const KeyGenerator = () => {
         isCopy={false}
       />
       <div className={cn.btnContainer}>
-        <Button iconLeftStyles={cn.magicStickOutline} onClick={generate}>
-          Generate Key
+        <Button size="medium" onClick={generate}>
+          Generate New Key
         </Button>
       </div>
     </div>

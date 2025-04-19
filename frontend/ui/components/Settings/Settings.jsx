@@ -1,6 +1,6 @@
 import { useStoreEffect } from '@react-vault';
-import { BackButton } from '../_general/BackButton/BackButton.jsx';
-import { Button } from '../_general/Button/Button.jsx';
+import { BackButton } from '@gc/BackButton/BackButton.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { ResetAppModal } from './ResetAppModal/ResetAppModal.jsx';
 import { ResetHistoryModal } from './ResetHistoryModal/ResetHistoryModal.jsx';
 import { useState } from 'react';
@@ -19,7 +19,7 @@ export const Settings = () => {
       <div className={cn.settings}>
         <BackButton />
         <div className={cn.content}>
-          <h1 className={cn.title}>Setting</h1>
+          <h1 className={cn.title}>Settings</h1>
           <div className={cn.container}>
             <div className={cn.wrapper}>
               <p className={cn.subtitle}>Create backup file</p>

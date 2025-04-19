@@ -22,7 +22,7 @@ export const FormRadioButton = ({ control, value, label, name, disabled = false 
 
   return (
     <div className={cn.radioButton}>
-      <label className={cn.radioContainer}>
+      <div className={cn.radioContainer}>
         <input
           id={id}
           onChange={handleChange}
@@ -38,10 +38,12 @@ export const FormRadioButton = ({ control, value, label, name, disabled = false 
             [cn.disabled]: disabled,
           })}
         />
-      </label>
-      <label htmlFor={id} className={disabled ? cn.disabledText : cn.enabledText}>
-        {label}
-      </label>
+      </div>
+      {label && (
+        <label htmlFor={id} className={disabled ? cn.disabledText : cn.enabledText}>
+          {label}
+        </label>
+      )}
     </div>
   );
 };
