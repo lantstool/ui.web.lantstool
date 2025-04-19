@@ -1,5 +1,5 @@
 import { effect } from '@react-vault';
-import { removeAccessKeys } from './removeAccessKeys.js';
+import { deleteAccessKeys } from './deleteAccessKeys.js';
 
 // Runs only on mainnet
 export const runAccountCleaner = effect(async ({ store, payload }) => {
@@ -11,9 +11,11 @@ export const runAccountCleaner = effect(async ({ store, payload }) => {
   } = formValues;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
 
+  return console.log(formValues);
+
   try {
-    if (mode === 'removeAccessKeys')
-      await removeAccessKeys({
+    if (mode === 'deleteAccessKeys')
+      await deleteAccessKeys({
         rpc,
         signerId,
         signerPublicKey,

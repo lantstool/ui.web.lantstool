@@ -38,7 +38,7 @@ export const createSeedPhraseSchema = (spaceId, networkId, signerId) => {
       .max(208)
       .test(
         'match',
-        'This key not exists or has not Full Access permission',
+        `This key not exists or doesn't have Full Access permission`,
         async (value, values) => {
           try {
             const dPath = values.from[0].value.derivationPath;

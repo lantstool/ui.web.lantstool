@@ -1,7 +1,7 @@
 import { chunk } from 'lodash/array.js';
 import pRetry from 'p-retry';
 
-const removeKeyChunk = async ({ rpc, keyChunk, signerId, signerPublicKey, spaceId, networkId }) => {
+const deleteChunkKeys = async ({ rpc, keyChunk, signerId, signerPublicKey, spaceId, networkId }) => {
   const actions = keyChunk.map((publicKey) => ({ type: 'DeleteKey', publicKey }));
 
   const result = await pRetry(
@@ -28,7 +28,7 @@ const removeKeyChunk = async ({ rpc, keyChunk, signerId, signerPublicKey, spaceI
   console.log('Deleted chunk:', result);
 };
 
-export const removeAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId, networkId }) => {
+export const deleteAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId, networkId }) => {
   await rpc.configure({ spaceId, networkId });
 
   // RPC call return all account keys;
@@ -43,7 +43,7 @@ export const removeAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId
   const chunks = chunk(removeList, 100);
 
   for (const keyChunk of chunks) {
-    await removeKeyChunk({
+    await deleteChunkKeys({
       rpc,
       keyChunk,
       signerId,

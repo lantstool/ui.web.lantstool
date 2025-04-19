@@ -37,7 +37,7 @@ export const SignerKey = ({ form }) => {
         name="signerKey"
         control={control}
         options={dropdownOptions}
-        isClearable={true}
+        isClearable
         label="Signer Key"
         isDisabled={!signerId}
         dropdownRef={ref}
