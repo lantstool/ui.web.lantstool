@@ -4,21 +4,18 @@ import { useParams } from 'react-router-dom';
 import { texts } from './texts.jsx';
 
 export const ConfirmationModal = ({ closeModal, form }) => {
-  const runAccountCleaner = useStoreEffect((store) => store.nearProtocol.utils.runAccountCleaner);
+  const runProcess = useStoreEffect((store) => store.nearProtocol.utils.accountCleaner.runProcess);
   const { spaceId, networkId } = useParams();
   const formValues = form.getValues();
 
-  const text = texts[formValues.mode]({
-    accountId: formValues.signerId.value,
-  });
+  const text = texts[formValues.mode]({ accountId: formValues.signerId.value });
 
   const submit = () => {
-    console.log('submit');
-    closeModal();
-    runAccountCleaner({
+    runProcess({
       spaceId,
       networkId,
       formValues,
+      closeModal,
     });
   };
 

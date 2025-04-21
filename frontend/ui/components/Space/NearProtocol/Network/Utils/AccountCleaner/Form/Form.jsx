@@ -20,8 +20,8 @@ const labels = {
 };
 
 export const Form = ({ defaultValues, spaceId, networkId }) => {
-  const setAccountCleanerFormValues = useStoreAction(
-    (store) => store.nearProtocol.utils.setAccountCleanerFormValues,
+  const setFormValues = useStoreAction(
+    (store) => store.nearProtocol.utils.accountCleaner.setFormValues,
   );
   const [isModalOpen, openModal, closeModal] = useToggler(false);
 
@@ -47,7 +47,7 @@ export const Form = ({ defaultValues, spaceId, networkId }) => {
   useEffect(() => {
     form.reset(defaultValues);
     return () =>
-      setAccountCleanerFormValues({
+      setFormValues({
         spaceId,
         networkId,
         formValues: form.getValues(),

@@ -1,0 +1,12 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.progressLog {
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+}
