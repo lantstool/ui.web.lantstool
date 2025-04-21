@@ -1,6 +1,6 @@
 import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useParams } from 'react-router-dom';
-import { useAccountsOptions } from '../../../_general/hooks/useAccountsOptions.js';
+import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import cn from './BeneficiaryId.module.scss';
 
 export const BeneficiaryId = ({ control }) => {

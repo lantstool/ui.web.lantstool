@@ -1,9 +1,9 @@
-import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { EditName } from './EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { dateFormatter } from '../../../../../../../../../../../../store/helpers/formatDate.js';
-import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import { ExportModal } from '../../../../../../../_general/ExportModal/ExportModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';

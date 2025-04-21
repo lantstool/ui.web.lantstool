@@ -1,7 +1,14 @@
 import { chunk } from 'lodash/array.js';
 import pRetry from 'p-retry';
 
-const deleteChunkKeys = async ({ rpc, keyChunk, signerId, signerPublicKey, spaceId, networkId }) => {
+const deleteChunkKeys = async ({
+  rpc,
+  keyChunk,
+  signerId,
+  signerPublicKey,
+  spaceId,
+  networkId,
+}) => {
   const actions = keyChunk.map((publicKey) => ({ type: 'DeleteKey', publicKey }));
 
   const result = await pRetry(

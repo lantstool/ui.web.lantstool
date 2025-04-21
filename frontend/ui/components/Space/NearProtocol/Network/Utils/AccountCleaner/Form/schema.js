@@ -1,5 +1,5 @@
 import { object } from 'yup';
-import { schemes } from '../../_general/validations/schemes.js';
+import { schemes } from '../../../_general/validations/schemes.js';
 
 export const schema = object({
   signerId: schemes.accountIdDropdown('signerId'),

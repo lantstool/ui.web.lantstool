@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStoreEntity } from '@react-vault';
-import { formatNumber } from '../../../../../../../../store/helpers/utils.js';
+import { formatNumber } from '../../../../../../../../../store/helpers/utils.js';
 
 export const useAccountBalance = (accountId) => {
   const { spaceId, networkId } = useParams();

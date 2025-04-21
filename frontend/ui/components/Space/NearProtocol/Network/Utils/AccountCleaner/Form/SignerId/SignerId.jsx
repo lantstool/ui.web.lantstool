@@ -1,4 +1,4 @@
-import  { useAccountsOptions } from '../../../_general/hooks/useAccountsOptions.js';
+import  { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
 import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { Label } from '@gc/Label/Label.jsx';
 import { useAccountBalance } from './useAccountBalance.js';

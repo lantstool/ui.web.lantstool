@@ -1,0 +1,8 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.accountId {
+  @include text-lg-semibold;
+  color: $neutral-800;
+  word-break: break-all;
+}
