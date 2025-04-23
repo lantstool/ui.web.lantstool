@@ -3,7 +3,7 @@ import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
 import { texts } from './texts.jsx';
 
-export const ConfirmationModal = ({ closeModal, form }) => {
+export const ConfirmationModal = ({ closeModal, form, }) => {
   const runProcess = useStoreEffect((store) => store.nearProtocol.utils.accountCleaner.runProcess);
   const { spaceId, networkId } = useParams();
   const formValues = form.getValues();

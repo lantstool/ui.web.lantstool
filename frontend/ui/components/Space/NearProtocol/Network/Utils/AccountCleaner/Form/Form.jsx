@@ -92,7 +92,9 @@ export const Form = ({ defaultValues, spaceId, networkId }) => {
           </Button>
         </div>
       </div>
-      {isModalOpen && <ConfirmationModal closeModal={closeModal} form={form} />}
+      {isModalOpen && (
+        <ConfirmationModal closeModal={closeModal} form={form} />
+      )}
     </>
   );
 };

@@ -1,0 +1,30 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.log {
+  display: grid;
+  grid-template-columns: min-content 8px auto;
+  grid-auto-rows: auto;
+  grid-template-areas: 'a . b';
+}
+
+.time {
+  grid-area: a;
+  @include text-sm-regular;
+  font-family: Roboto Mono, sans-serif;
+  color: $neutral-700;
+}
+
+.message {
+  grid-area: b;
+  @include text-sm-regular;
+  color: $neutral-700;
+}
+
+.errorText {
+  color: $red-500;
+}
+
+.successText {
+  color: $green-600;
+}
