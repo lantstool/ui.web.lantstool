@@ -8,10 +8,11 @@ const deleteChunkKeys = async ({
   signerPublicKey,
   spaceId,
   networkId,
+  logger,
 }) => {
   const actions = keyChunk.map((publicKey) => ({ type: 'DeleteKey', publicKey }));
 
-  const result = await pRetry(
+  await pRetry(
     () =>
       rpc.createAndSendTransaction({
         signerId,
@@ -23,19 +24,27 @@ const deleteChunkKeys = async ({
         waitUntil: 'EXECUTED',
       }),
     {
-      retries: 2, // Every new request will be sent to the new random RPC;
+      retries: 3, // Every new request will be sent to the new random RPC;
       onFailedAttempt: (error) => {
-        console.log(
+        logger.error(
           `Attempt ${error.attemptNumber} failed. There are ${error.retriesLeft} retries left`,
         );
       },
     },
   );
-
-  console.log('Deleted chunk:', result);
 };
 
-export const deleteAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId, networkId }) => {
+export const deleteAccessKeys = async ({
+  rpc,
+  signerId,
+  signerPublicKey,
+  spaceId,
+  networkId,
+  chunkSize = 100, // We can maximum add 100 actions to a single transaction;
+  logger,
+}) => {
+  logger.info(`Starting to delete access keys for ${signerId}`);
+
   await rpc.configure({ spaceId, networkId });
 
   // RPC call return all account keys;
@@ -46,10 +55,17 @@ export const deleteAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId
     .filter((key) => key.publicKey !== signerPublicKey)
     .map((key) => key.publicKey);
 
-  // We can maximum add 100 actions to a single transaction;
-  const chunks = chunk(removeList, 100);
+  logger.info(`${keys.length} access keys found - ${removeList.length} will be deleted`);
+  // split all keys to portions
+  const chunks = chunk(removeList, chunkSize);
 
-  for (const keyChunk of chunks) {
+  for (let i = 0; i < chunks.length; i++) {
+    const keyChunk = chunks[i];
+
+    const from = i * chunkSize + 1;
+    const to = from + keyChunk.length - 1;
+    logger.info(`Deleting access keys ${from}-${to}...`);
+
     await deleteChunkKeys({
       rpc,
       keyChunk,
@@ -57,6 +73,9 @@ export const deleteAccessKeys = async ({ rpc, signerId, signerPublicKey, spaceId
       signerPublicKey,
       spaceId,
       networkId,
+      logger,
     });
   }
+
+  logger.success(`${removeList.length} access keys deleted successfully`);
 };

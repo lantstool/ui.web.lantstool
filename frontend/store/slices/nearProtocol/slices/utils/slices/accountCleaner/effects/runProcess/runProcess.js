@@ -1,6 +1,6 @@
 import { effect } from '@react-vault';
 import { deleteAccessKeys } from './deleteAccessKeys.js';
-import { mockLogger } from './mockLogger.js';
+import { createLogger } from './createLogger.js';
 
 // Runs only on mainnet
 export const runProcess = effect(async ({ store, slice, payload }) => {
@@ -14,14 +14,11 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
   const signerPublicKey = formValues.signerKey.value;
   const mode = formValues.mode;
   const beneficiaryId = formValues.beneficiaryId?.value;
-
-  console.log(formValues);
+  const logger = createLogger({ addLog, spaceId, networkId });
 
   closeModal();
   goToStep({ spaceId, networkId, step: 'operation-progress' });
 
-  await mockLogger({ addLog, spaceId, networkId, setOperationStatus });
-  return;
   try {
     if (mode === 'deleteAccessKeys')
       await deleteAccessKeys({
@@ -30,8 +27,13 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
         signerPublicKey,
         spaceId,
         networkId,
+        logger,
+        setOperationStatus,
+        chunkSize: 3,
       });
   } catch (e) {
-    console.log(e);
+    logger.error(`Operation failed: ${e.message}`);
+  } finally {
+    setOperationStatus({ spaceId, networkId, status: 'completed' });
   }
 });

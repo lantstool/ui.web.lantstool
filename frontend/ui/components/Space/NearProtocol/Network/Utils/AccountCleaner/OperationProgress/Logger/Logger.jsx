@@ -19,8 +19,8 @@ export const Logger = ({ logs }) => {
       <h3 className={cn.label}>Logs</h3>
       <div className={cn.logs}>
         <div className={cn.scrollable} ref={scrollRef}>
-          {logs.map((log) => (
-            <Log key={log.timestamp} log={log} />
+          {logs.map((log, i) => (
+            <Log key={log.timestamp + i} log={log} />
           ))}
         </div>
       </div>
