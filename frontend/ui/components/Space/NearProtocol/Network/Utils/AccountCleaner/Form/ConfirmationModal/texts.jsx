@@ -1,16 +1,21 @@
 import cn from './ConfirmationModal.module.scss';
 
+const warningText = (
+  <>
+    This operation is irreversible and may take a few minutes to complete.
+    <br />
+    Do not refresh or close the browser tab during the process — this might interrupt the operation
+    and cause unexpected results.
+  </>
+);
+
 const deleteAccount = ({ accountId }) => ({
   title: (
     <>
       Delete <span className={cn.accountId}>{accountId}?</span>
     </>
   ),
-  description: `
-      Are you sure you want to delete this call? 
-      This action will permanently remove it. 
-      Be sure to export any important data before proceeding.
-    `,
+  description: warningText,
   submitButtonText: 'Delete Account',
 });
 
@@ -20,11 +25,7 @@ const clearContractState = ({ accountId }) => ({
       Clear the contract state of <span className={cn.accountId}>{accountId}?</span>
     </>
   ),
-  description: `
-      Are you sure you want to delete this call? 
-      This action will permanently remove it. 
-      Be sure to export any important data before proceeding.
-    `,
+  description: warningText,
   submitButtonText: 'Clear Contract State',
 });
 
@@ -34,11 +35,7 @@ const deleteAccessKeys = ({ accountId }) => ({
       Delete access keys of <span className={cn.accountId}>{accountId}?</span>
     </>
   ),
-  description: `
-      Are you sure you want to delete this call? 
-      This action will permanently remove it. 
-      Be sure to export any important data before proceeding.
-    `,
+  description: warningText,
   submitButtonText: 'Delete Access Keys',
 });
 
