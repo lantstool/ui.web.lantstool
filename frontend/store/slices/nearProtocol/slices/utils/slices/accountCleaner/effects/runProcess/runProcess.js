@@ -1,5 +1,6 @@
 import { effect } from '@react-vault';
 import { deleteAccessKeys } from './deleteAccessKeys.js';
+import { clearContractState } from './clearContractState/clearContractState.js';
 import { createLogger } from './createLogger.js';
 
 // Runs only on mainnet
@@ -20,7 +21,7 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
   goToStep({ spaceId, networkId, step: 'operation-progress' });
 
   try {
-    if (mode === 'deleteAccessKeys')
+    if (mode === 'deleteAccessKeys') {
       await deleteAccessKeys({
         rpc,
         signerId,
@@ -28,9 +29,20 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
         spaceId,
         networkId,
         logger,
-        setOperationStatus,
         chunkSize: 3,
       });
+    }
+
+    if (mode === 'clearContractState') {
+      await clearContractState({
+        rpc,
+        signerId,
+        signerPublicKey,
+        spaceId,
+        networkId,
+        logger,
+      });
+    }
   } catch (e) {
     logger.error(`Operation failed: ${e.message}`);
   } finally {

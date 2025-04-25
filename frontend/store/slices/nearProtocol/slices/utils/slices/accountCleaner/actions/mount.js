@@ -22,7 +22,7 @@ export const mount = action(({ slice, payload }) => {
         value: 'ed25519:FWpYPfQf9Kw2CMFiKAaTWReAiYvSnZHCEFthV1oMAXPZ',
         label: 'ed25519:FWpYPfQf9Kw2CMFiKAaTWReAiYvSnZHCEFthV1oMAXPZ',
       },
-      mode: 'deleteAccessKeys',
+      mode: 'clearContractState',
       beneficiaryId: null,
     },
     operationProgress: {
