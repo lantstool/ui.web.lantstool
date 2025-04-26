@@ -56,6 +56,8 @@ export const deleteAccessKeys = async ({
     .map((key) => key.publicKey);
 
   logger.info(`${keys.length} access keys found - ${removeList.length} will be deleted`);
+  if (removeList.length === 0) return;
+
   // split all keys to portions
   const chunks = chunk(removeList, chunkSize);
 
@@ -77,5 +79,5 @@ export const deleteAccessKeys = async ({
     });
   }
 
-  logger.success(`${removeList.length} access keys deleted successfully`);
+  logger.info(`${removeList.length} access keys deleted successfully`);
 };

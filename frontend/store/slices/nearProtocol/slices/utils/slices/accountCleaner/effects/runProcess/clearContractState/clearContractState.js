@@ -1,5 +1,6 @@
 import { viewStatePaginated } from './viewStatePaginated.js';
 import { deployCleanerContract } from './deployCleanerContract.js';
+import { deleteState } from './deleteState/deleteState.js';
 
 export const clearContractState = async ({
   rpc,
@@ -33,4 +34,17 @@ export const clearContractState = async ({
     logger,
   });
 
+  // 3. Delete all key-value pairs from the state;
+  logger.info(`Starting to delete key-value pairs...`);
+
+  await deleteState({
+    rpc,
+    signerId,
+    signerPublicKey,
+    spaceId,
+    networkId,
+    logger,
+  });
+
+  logger.info(`Contract state was cleared successfully`);
 };

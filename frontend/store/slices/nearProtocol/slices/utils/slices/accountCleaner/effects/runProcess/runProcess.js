@@ -29,7 +29,6 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
         spaceId,
         networkId,
         logger,
-        chunkSize: 3,
       });
     }
 
@@ -43,6 +42,8 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
         logger,
       });
     }
+
+    logger.success('Operation completed successfully');
   } catch (e) {
     logger.error(`Operation failed: ${e.message}`);
   } finally {

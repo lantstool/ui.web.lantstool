@@ -1,10 +1,10 @@
 import { fetchJson } from '../../../../../../../../../helpers/fetchJson.js';
 import { toCamelCase } from '../../../../../../../../../helpers/toCamelCase.js';
 
-export const viewStatePaginated = async ({ rpc, accountId, blockId }) => {
-  // Get the current block ID if not provided
+export const viewStatePaginated = async ({ rpc, accountId, nextPageToken = null }) => {
+  // Get the latest block ID
   const blockInfo = await rpc.getBlock();
-  blockId = blockInfo.header.height;
+  const blockId = blockInfo.header.height;
 
   // FastNear method require a specific block_id and doesn't support 'finality': final
   const jsonResponse = await fetchJson('https://read.rpc.fastnear.com', {
@@ -19,6 +19,7 @@ export const viewStatePaginated = async ({ rpc, accountId, blockId }) => {
       params: {
         block_id: blockId,
         account_id: accountId,
+        next_page_token: nextPageToken,
       },
     }),
   });

@@ -1,7 +1,7 @@
 const CLEANER_CONTRACT_URL =
   'https://raw.githubusercontent.com/' +
-  'near/' +
-  'core-contracts/' +
+  'lantstool/' +
+  'near-core-contracts/' +
   'master/' +
   'state-manipulation/res/state_cleanup.wasm';
 
