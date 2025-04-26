@@ -2,7 +2,7 @@ import { chunk } from 'lodash/array.js';
 import { transactions } from 'near-api-js';
 import pRetry from 'p-retry';
 
-const CLEANER_CONTRACT_URL = 'https://raw.githubusercontent.com/near/state-cleaner/main/res/state_cleaner.wasm';
+
 const MAX_GAS_PER_TX = 250n * 1000000000000n; // 250 TGas
 
 // Fetch the cleaner contract from GitHub

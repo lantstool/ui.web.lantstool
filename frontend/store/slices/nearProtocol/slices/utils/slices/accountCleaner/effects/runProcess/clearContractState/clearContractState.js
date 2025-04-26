@@ -1,4 +1,5 @@
 import { viewStatePaginated } from './viewStatePaginated.js';
+import { deployCleanerContract } from './deployCleanerContract.js';
 
 export const clearContractState = async ({
   rpc,
@@ -8,8 +9,10 @@ export const clearContractState = async ({
   networkId,
   logger,
 }) => {
-  // 1. Check if account has state;
   logger.info(`Starting to clear the contract state of ${signerId}`);
+
+  // 1. Check if account has state;
+  logger.info(`Checking if the account has state...`);
 
   const state = await viewStatePaginated({ accountId: signerId, rpc });
   // No key-value pairs = no state
@@ -18,7 +21,16 @@ export const clearContractState = async ({
     return;
   }
 
-  // logger.info(`Account ${signerId} has state. Proceeding with state clearing...`);
+  // 2. Deploy the cleaner contract if needed
+  logger.info(`Deploying the cleaner contract on the account...`);
 
-  // 2. Check if the account has enough balance to cover a deployment the cleanup contract
+  await deployCleanerContract({
+    rpc,
+    signerId,
+    signerPublicKey,
+    spaceId,
+    networkId,
+    logger,
+  });
+
 };
