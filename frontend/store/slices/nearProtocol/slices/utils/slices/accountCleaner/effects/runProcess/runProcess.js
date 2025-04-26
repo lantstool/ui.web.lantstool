@@ -1,6 +1,7 @@
 import { effect } from '@react-vault';
 import { deleteAccessKeys } from './deleteAccessKeys.js';
 import { clearContractState } from './clearContractState/clearContractState.js';
+import { deleteAccount } from './deleteAccount.js';
 import { createLogger } from './createLogger.js';
 
 // Runs only on mainnet
@@ -40,6 +41,18 @@ export const runProcess = effect(async ({ store, slice, payload }) => {
         spaceId,
         networkId,
         logger,
+      });
+    }
+
+    if (mode === 'deleteAccount') {
+      await deleteAccount({
+        rpc,
+        signerId,
+        signerPublicKey,
+        spaceId,
+        networkId,
+        logger,
+        beneficiaryId,
       });
     }
 
