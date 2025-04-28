@@ -17,7 +17,8 @@ import { getAccountKeys } from './methods/keys/getAccountKeys.js';
 import { getChangesForAccountKey } from './methods/keys/getChangesForAccountKey.js';
 import { getChangesForAccountKeys } from './methods/keys/getChangesForAccountKeys.js';
 // Transactions
-import { sendTransaction } from './methods/transactions/sendTransaction.js';
+import { createAndSendTransaction } from './methods/transactions/createAndSendTransaction/createAndSendTransaction.js';
+import { sendSignedTransaction } from './methods/transactions/sendSignedTransaction.js';
 import { getTransaction } from './methods/transactions/getTransaction.js';
 import { getDetailedTransaction } from './methods/transactions/getDetailedTransaction.js';
 import { getReceipt } from './methods/transactions/getReceipt.js';
@@ -69,7 +70,8 @@ class RpcProvider {
   getBlockChanges = getBlockChanges;
   getChunk = getChunk;
   // Transactions
-  sendTransaction = sendTransaction;
+  sendSignedTransaction = sendSignedTransaction;
+  createAndSendTransaction = createAndSendTransaction;
   getTransaction = getTransaction;
   getDetailedTransaction = getDetailedTransaction;
   getReceipt = getReceipt;

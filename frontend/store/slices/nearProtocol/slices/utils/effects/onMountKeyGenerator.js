@@ -1,8 +1,10 @@
 import { effect } from '@react-vault';
+import get from 'lodash/get';
 
-export const onMountKeyGenerator = effect(async ({ slice }) => {
-  const generatedKey = slice.getState((slice) => slice.generatedKey);
+export const onMountKeyGenerator = effect(({ slice, payload }) => {
+  const { spaceId, networkId } = payload;
+  const keyGenerator = slice.getState((slice) => slice.keyGenerator);
   const generateKey = slice.getEffects((slice) => slice.generateKey);
 
-  if (!generatedKey.seedPhrase) generateKey();
+  if (!get(keyGenerator, [spaceId, networkId, 'seedPhrase'])) generateKey(payload);
 });

@@ -1,6 +1,6 @@
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
-import { FormDropdown } from '../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { Label } from '../../../../../../../_general/Label/Label.jsx';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
+import { Label } from '@gc/Label/Label.jsx';
 import { useAccountBalance } from './useAccountBalance.js';
 import { useToggler } from '@hooks/useToggler.js';
 import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.jsx';

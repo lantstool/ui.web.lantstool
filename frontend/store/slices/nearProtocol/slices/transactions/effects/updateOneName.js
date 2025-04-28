@@ -7,11 +7,12 @@ export const updateOneName = effect(async ({ payload, slice, store }) => {
   const editTxName = slice.getActions((slice) => slice.editTxName);
 
   try {
+    editTxName({ name, transactionId });
+
     await backend.sendRequest('nearProtocol.transactions.updateOneName', {
       name,
       transactionId,
     });
-    editTxName({ name, transactionId });
   } catch (e) {
     console.log(e);
   }

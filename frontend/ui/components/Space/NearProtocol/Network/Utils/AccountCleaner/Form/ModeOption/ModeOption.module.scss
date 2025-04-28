@@ -1,0 +1,27 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.modeOption {
+  display: flex;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  cursor: pointer;
+  gap: 16px;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px
+}
+
+.title {
+  @include text-sm-medium;
+  color: $neutral-700;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-600;
+}

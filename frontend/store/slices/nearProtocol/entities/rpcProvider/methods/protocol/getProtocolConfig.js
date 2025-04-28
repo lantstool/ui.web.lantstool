@@ -6,7 +6,7 @@ export async function getProtocolConfig({
   finality,
   blockId,
   responseNameConvention = 'camelCase',
-}) {
+} = {}) {
   return await this.sendRequest({
     body: {
       method: 'EXPERIMENTAL_protocol_config',
