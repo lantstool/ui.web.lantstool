@@ -63,6 +63,7 @@ export const selectStyles = (error) => ({
     borderRadius: '8px',
     backgroundColor: '#FFFFFF',
     marginTop: '5px',
+    marginBottom: '36px',
     width: '100%',
     ':focus': {
       backgroundColor: 'red',

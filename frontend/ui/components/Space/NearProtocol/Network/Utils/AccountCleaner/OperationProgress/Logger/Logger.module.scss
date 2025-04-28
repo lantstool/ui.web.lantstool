@@ -1,0 +1,38 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.logger {
+  grid-area: c;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.label {
+  @include text-sm-regular;
+  align-content: center;
+  color: $neutral-700;
+  padding: 2px;
+  margin-bottom: 6px;
+}
+
+.logs {
+  border-radius: 8px;
+  border: 1px solid $neutral-200;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.scrollable {
+  margin: 1px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  padding: 14px 16px;
+  scrollbar-color: $neutral-400 transparent; // thumb color + track color
+  scrollbar-width: thin; // auto | thin | none
+  scrollbar-gutter: stable;
+}

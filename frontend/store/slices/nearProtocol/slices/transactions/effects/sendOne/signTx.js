@@ -7,12 +7,12 @@ export const signTx = async ({ transaction, networkId, privateKey }) => {
 
   const signer = new InMemorySigner(keyStore);
 
-  const [_hash, signature] = await transactions.signTransaction(
+  const [_hash, signedTransaction] = await transactions.signTransaction(
     transaction,
     signer,
     transaction.signerId,
     networkId,
   );
 
-  return signature;
+  return signedTransaction;
 };

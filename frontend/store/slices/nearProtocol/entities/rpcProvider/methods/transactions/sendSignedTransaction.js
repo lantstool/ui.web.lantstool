@@ -3,7 +3,7 @@ import { transactions } from 'near-api-js';
 
 // https://docs.near.org/api/rpc/transactions#send-tx
 
-export async function sendTransaction({
+export async function sendSignedTransaction({
   signedTransaction,
   waitUntil = 'EXECUTED_OPTIMISTIC',
   responseNameConvention = 'camelCase',

@@ -1,16 +1,16 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import { App } from '../components/App.jsx';
-import { GetStarted } from '../components/GetStarted/GetStarted.jsx';
-import { Space } from '../components/Space/Space.jsx';
-import { SpaceId } from '../components/Space/SpaceId/SpaceId.jsx';
-import { SelectBlockchain } from '../components/Space/SelectBlockchain/SelectBlockchain.jsx';
-import { Settings as SpaceSetting } from '../components/Space/Settings/Settings.jsx';
-import { Spaces } from '../components/Spaces/Spaces.jsx';
-import { CreateSpace } from '../components/CreateSpace/CreateSpace.jsx';
-import { Settings as AppSettings } from '../components/Settings/Settings.jsx';
-import { PageNotFound } from '../components/PageNotFound/PageNotFound.jsx';
-import { ImportFromGithub } from '../components/ImportFromGithub/ImportFromGithub.jsx';
-import { nearProtocol } from './nearProtocol.jsx';
+import { App } from './components/App.jsx';
+import { GetStarted } from './components/GetStarted/GetStarted.jsx';
+import { Space } from './components/Space/Space.jsx';
+import { SpaceId } from './components/Space/SpaceId/SpaceId.jsx';
+import { SelectBlockchain } from './components/Space/SelectBlockchain/SelectBlockchain.jsx';
+import { Settings as SpaceSetting } from './components/Space/Settings/Settings.jsx';
+import { Spaces } from './components/Spaces/Spaces.jsx';
+import { CreateSpace } from './components/CreateSpace/CreateSpace.jsx';
+import { Settings as AppSettings } from './components/Settings/Settings.jsx';
+import { PageNotFound } from './components/PageNotFound/PageNotFound.jsx';
+import { ImportFromGithub } from './components/ImportFromGithub/ImportFromGithub.jsx';
+import { router as nearProtocolRouter } from './components/Space/NearProtocol/router.jsx';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,7 +21,7 @@ export const router = createBrowserRouter(
           <Route path=":spaceId" element={<SpaceId />}>
             <Route path="select-blockchain" element={<SelectBlockchain />} />
             <Route path="settings" element={<SpaceSetting />} />
-            {nearProtocol}
+            {nearProtocolRouter}
           </Route>
         </Route>
         <Route path="spaces">

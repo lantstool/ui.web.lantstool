@@ -1,0 +1,39 @@
+@use '@styles/mixins' as *;
+@use '@styles/variables' as *;
+
+.operationProgress {
+  height: calc(100vh - 48px - 40px - 24px - 24px - 36px - 24px - 24px);
+  width: 680px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: min-content 4px min-content 24px 1fr 24px min-content;
+  grid-template-areas:
+    'a'
+    '.'
+    'b'
+    '.'
+    'c'
+    '.'
+    'd';
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid $neutral-200;
+  box-sizing: border-box;
+}
+
+.header {
+  @include text-mg-medium;
+  color: $neutral-800;
+  grid-area: a;
+}
+
+.description {
+  @include text-sm-regular;
+  color: $neutral-700;
+  grid-area: b;
+}
+
+.backButton {
+  grid-area: d;
+  justify-self: end;
+}

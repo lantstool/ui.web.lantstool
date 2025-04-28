@@ -1,3 +1,4 @@
+import { useSaveToHistory } from '@hooks/useSaveToHistory.js';
 import { useStoreAction, useStoreState } from '@react-vault';
 import { get } from 'lodash';
 import { useEffect } from 'react';
@@ -25,6 +26,8 @@ export const UnitConverter = () => {
   );
 
   const form = useForm({ defaultValues: getDefaultValues(unitConverter, spaceId, networkId) });
+
+  useSaveToHistory();
 
   useEffect(() => {
     form.reset(getDefaultValues(unitConverter, spaceId, networkId));

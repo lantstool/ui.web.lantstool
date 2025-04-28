@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
-import { DeleteModal as GeneralDeleteModal } from '../../../../../../../_general/modals/DeleteModal/DeleteModal.jsx';
+import { Button } from '@gc/Button/Button.jsx';
+import { DeleteModal as GeneralDeleteModal } from '@gc/modals/DeleteModal/DeleteModal.jsx';
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import cn from './DeleteModal.module.scss';

@@ -20,9 +20,6 @@ export const convertUnitsToTokens = (units, precision) => {
 
 // Example usage:
 // For Near, if precision = 24, then 1 token = 1e24 units:
-// const tokens = convertUnitsToTokens('1000000000000000000000000', 24);
-// console.log(tokens); // Output: "1"
-
 export const convertTokensToUnits = (tokens, precision) => {
   const conversionFactor = new BigNumber(10).pow(precision);
   return new BigNumber(tokens).times(conversionFactor).toString();
