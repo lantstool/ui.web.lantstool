@@ -28,6 +28,7 @@ export const GetContractWasm = ({ result, formValues }) => {
         topbar={{ label: 'Base64 WASM' }}
         showClearBtn={false}
         title="Base64"
+        withLineWrapping
       />
     </div>
   );
