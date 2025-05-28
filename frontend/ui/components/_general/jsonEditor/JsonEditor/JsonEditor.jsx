@@ -15,6 +15,12 @@ const getEditorClass = (label, dynamicErrorSpace) => {
   if (!label && !dynamicErrorSpace) return cn.editorNoLabelAndStaticErrorSpace;
 };
 
+const getEditorExtensions = ({ withLineWrapping }) => {
+  const extensions = [jsonLanguage];
+  if (withLineWrapping) extensions.push(EditorView.lineWrapping);
+  return extensions;
+};
+
 export const JsonEditor = ({
   value = '',
   onChange,
@@ -29,8 +35,10 @@ export const JsonEditor = ({
   dynamicErrorSpace,
   errorLabel,
   customTheme,
+  withLineWrapping,
 }) => {
   const clearValue = () => onChange('');
+  const extensions = getEditorExtensions({ withLineWrapping });
 
   return (
     <div className={cnm(cn.container, classes?.container)}>
@@ -61,7 +69,7 @@ export const JsonEditor = ({
         className={cnm(getEditorClass(topbar?.label, dynamicErrorSpace), classes?.editor)}
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
-        extensions={[jsonLanguage, EditorView.lineWrapping]}
+        extensions={extensions}
         basicSetup={{ tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}

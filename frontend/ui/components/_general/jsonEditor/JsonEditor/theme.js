@@ -15,4 +15,11 @@ export const theme = (error, contentMinHeight) =>
     '.cm-content, .cm-gutter': {
       minHeight: contentMinHeight,
     },
+    '.cm-scroller': {
+      outline: 'none',
+      overflowX: 'auto',
+      scrollbarColor: '#ced4da #f7f9fa', // thumb color + track color
+      scrollbarWidth: 'thin', // auto | thin | none
+      scrollbarGutter: 'stable',
+    },
   });

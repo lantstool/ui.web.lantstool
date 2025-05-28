@@ -49,6 +49,7 @@ export const ExportModal = ({
         showClearBtn={false}
         classes={{ container: cn.editorContainer }}
         dynamicErrorSpace
+        withLineWrapping
       />
       <div className={cn.modalFooter}>
         <Button color="secondary" size="medium" onClick={downloadZip}>

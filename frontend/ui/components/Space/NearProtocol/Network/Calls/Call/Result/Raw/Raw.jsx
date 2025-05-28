@@ -1,5 +1,5 @@
 import { getFormattedJSON } from '../../../../../../../../../store/helpers/utils.js';
-import { JsonEditor } from '../../../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
+import { JsonEditor } from '@gc/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './Raw.module.scss';
 
 export const Raw = ({ result, error }) => {
@@ -13,6 +13,7 @@ export const Raw = ({ result, error }) => {
       classes={{
         container: cn.editorContainer,
       }}
+      withLineWrapping
     />
   );
 };

@@ -55,7 +55,7 @@ export const SideMenu = () => {
                 className={cn.icon}
                 target="_blank"
                 rel="noopener noreferrer"
-                to="https://t.me/lantstool"
+                to="https://t.me/lantstool_announcements"
               >
                 <span className={cn.telegramIcon} />
               </Link>

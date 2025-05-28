@@ -34,6 +34,7 @@ export const PasteJson = ({ closeModal, yupSchema, importOneFromJson }) => {
             <FieldErrorLabel error={collectFormErrorMessages(formState.errors)[0]} />
           )
         }
+        withLineWrapping
       />
       <div className={cn.modalFooter}>
         <Button size="medium" onClick={submit}>

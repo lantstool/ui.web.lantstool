@@ -13,6 +13,7 @@ export const FormJsonEditor = ({
   dynamicErrorSpace,
   errorLabel,
   errorExtractor = (error) => error?.message,
+  withLineWrapping,
 }) => (
   <Controller
     name={name}
@@ -32,6 +33,7 @@ export const FormJsonEditor = ({
         error={errorExtractor(error)}
         dynamicErrorSpace={dynamicErrorSpace}
         errorLabel={errorLabel}
+        withLineWrapping={withLineWrapping}
       />
     )}
   />
