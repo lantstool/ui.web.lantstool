@@ -4,6 +4,8 @@ import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
 import { jsonLanguage } from '@codemirror/lang-json';
+import { syntaxHighlighting } from '@codemirror/language';
+import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
@@ -16,7 +18,7 @@ const getEditorClass = (label, dynamicErrorSpace) => {
 };
 
 const getEditorExtensions = ({ withLineWrapping }) => {
-  const extensions = [jsonLanguage];
+  const extensions = [jsonLanguage, syntaxHighlighting(highlightStyle)];
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
   return extensions;
 };

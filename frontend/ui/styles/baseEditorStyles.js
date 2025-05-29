@@ -15,21 +15,7 @@ export const baseEditorStyles = {
   },
   '.cm-line': {
     fontFamily: 'Roboto Mono',
-    color: '#212529',
   },
-  '.ͼe': {
-    color: '#212529',
-  },
-  '.ͼb': {
-    color: '#212529',
-  },
-  '.ͼc': {
-    color: '#212529',
-  },
-  '.ͼd': {
-    color: '#212529',
-  },
-
   '&.cm-editor': {
     overflow: 'hidden',
   },
