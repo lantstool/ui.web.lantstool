@@ -15,7 +15,7 @@
   padding: 0 0 8px 0;
 }
 
-.item {
+@mixin item($pointer) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,6 +24,14 @@
   border: 1px solid $neutral-200;
   border-radius: 8px;
   background-color: $neutral-00;
+  cursor: $pointer;
+}
+.item {
+  @include item(default);
+}
+
+.itemPointer {
+  @include item(pointer);
 }
 
 .wrapper {
