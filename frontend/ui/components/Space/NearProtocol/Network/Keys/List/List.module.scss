@@ -2,6 +2,8 @@
 @use '@styles/mixins' as *;
 
 .container {
+  grid-area: b;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
