@@ -10,9 +10,9 @@ export const Methods = ({ methodNames }) => {
   const visibleMethods = methodNames.slice(0, maxMethods);
   const hiddenMethodsCount = methodNames.length - visibleMethods.length;
 
-  const onClick = (e, showAll) => {
+  const onClick = (e, isOpen) => {
     e.stopPropagation();
-    setShowAll(showAll);
+    setShowAll(isOpen);
   };
 
   return (
