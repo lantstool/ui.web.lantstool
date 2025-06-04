@@ -1,4 +1,4 @@
-import { Label } from '../../../../../../../../../_general/Label/Label.jsx';
+import { Label } from '@gc/Label/Label.jsx';
 import cn from './Methods.module.scss';
 import { useMethods } from './useMethods.js';
 
@@ -10,6 +10,11 @@ export const Methods = ({ methodNames }) => {
   const visibleMethods = methodNames.slice(0, maxMethods);
   const hiddenMethodsCount = methodNames.length - visibleMethods.length;
 
+  const onClick = (e, isOpen) => {
+    e.stopPropagation();
+    setShowAll(isOpen);
+  };
+
   return (
     <div className={cn.methods} ref={ref}>
       {visibleMethods.map((method, index) => (
@@ -18,12 +23,12 @@ export const Methods = ({ methodNames }) => {
         </Label>
       ))}
       {hiddenMethodsCount > 0 && (
-        <button className={cn.showBtn} onClick={() => setShowAll(true)}>
+        <button className={cn.showBtn} onClick={(e) => onClick(e, true)}>
           +{hiddenMethodsCount}
         </button>
       )}
       {showAll && (
-        <button className={cn.hideBtn} onClick={() => setShowAll(false)}>
+        <button className={cn.hideBtn} onClick={(e) => onClick(e, false)}>
           Show less
         </button>
       )}

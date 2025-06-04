@@ -32,5 +32,5 @@ export const highlightStyle = HighlightStyle.define([
   { tag: tags.number, color: '#e37400' },
   { tag: tags.bool, color: '#c5221f' },
   { tag: tags.null, color: '#5f6368' },
-  { tag: tags.punctuation, color: '#dadce0' },
+  { tag: tags.punctuation, color: '#7c7c7c' },
 ]);

@@ -2,20 +2,7 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.title {
-  @include text-mg-medium;
-  color: $neutral-800;
-  margin: 0;
-  padding: 0 0 8px 0;
-}
-
-.item {
+@mixin item($pointer) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,6 +11,14 @@
   border: 1px solid $neutral-200;
   border-radius: 8px;
   background-color: $neutral-00;
+  cursor: $pointer;
+}
+.item {
+  @include item(default);
+}
+
+.itemPointer {
+  @include item(pointer);
 }
 
 .wrapper {
@@ -52,7 +47,7 @@
 }
 
 .icon {
-  @include icon('@assets/icons/check-circle-outline.svg');
+  @include icon('@assets/icons/check-circle-bold.svg');
   background-color: $green-700;
 }
 
