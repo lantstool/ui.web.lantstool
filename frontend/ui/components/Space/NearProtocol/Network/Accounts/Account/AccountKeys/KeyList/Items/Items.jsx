@@ -8,14 +8,14 @@ export const Items = ({ value, type }) => {
   const navigate = useNavigate();
   const { spaceId, networkId } = useParams();
 
-  const redirectExistKeys = () => {
+  const redirectExistKey = () => {
     if (value.isLocalExists) {
       navigate(`/space/${spaceId}/near-protocol/${networkId}/keys/${value.publicKey}`);
     }
   };
 
   return (
-    <div className={value.isLocalExists ? cn.itemPointer : cn.item} onClick={redirectExistKeys}>
+    <div className={value.isLocalExists ? cn.itemPointer : cn.item} onClick={redirectExistKey}>
       <div className={cn.wrapper}>
         <p className={cn.subtitle}>{value.publicKey}</p>
         <div className={cn.buttonWrapper}>
