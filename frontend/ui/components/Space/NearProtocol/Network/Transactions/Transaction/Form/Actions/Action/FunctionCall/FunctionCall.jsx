@@ -1,10 +1,11 @@
-import { FormJsonEditor } from '../../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { FormJsonEditor } from '@gc/jsonEditor/FormJsonEditor.jsx';
 import { transactionConfig } from '../../../../../_general/transactionConfig.js';
 import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
-import { FormInputActionGroup } from '../../../../../../../../../_general/input/FormInputActionGroup/FormInputActionGroup.jsx';
-import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
+import { FormInputActionGroup } from '@gc/input/FormInputActionGroup/FormInputActionGroup.jsx';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
+import { useFunctionCallController } from './useFunctionCallController.jsx';
 import cn from './FunctionCall.module.scss';
 
 const gasOptions = [transactionConfig.gasUnits.TGas, transactionConfig.gasUnits.gas];
@@ -14,6 +15,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
   const { control } = form;
   const ContractOptions = useAccountsOptions();
   const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
+  const { isRestricted, hasCreateAccount } = useFunctionCallController(form, getName);
 
   return (
     <ActionBase
@@ -45,6 +47,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
           isClearable
           creatableSelect
           placeholder="Select or type..."
+          isDisabled={hasCreateAccount || isRestricted}
         />
         <FormDropdown
           control={control}
