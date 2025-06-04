@@ -2,16 +2,15 @@ import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { FunctionCall } from './FunctionCall/FunctionCall.jsx';
 import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { useNavigate, useParams } from 'react-router-dom';
-import cn from './Items.module.scss';
+import cn from './Item.module.scss';
 
-export const Items = ({ value, type }) => {
+export const Item = ({ value, type }) => {
   const navigate = useNavigate();
   const { spaceId, networkId } = useParams();
 
   const redirectExistKey = () => {
-    if (value.isLocalExists) {
-      navigate(`/space/${spaceId}/near-protocol/${networkId}/keys/${value.publicKey}`);
-    }
+    if (!value.isLocalExists) return;
+    navigate(`/space/${spaceId}/near-protocol/${networkId}/keys/${value.publicKey}`);
   };
 
   return (

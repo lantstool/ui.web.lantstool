@@ -47,7 +47,7 @@
 }
 
 .icon {
-  @include icon('@assets/icons/check-circle-outline.svg');
+  @include icon('@assets/icons/check-circle-bold.svg');
   background-color: $green-700;
 }
 
