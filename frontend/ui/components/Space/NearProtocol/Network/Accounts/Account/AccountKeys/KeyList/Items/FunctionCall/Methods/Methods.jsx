@@ -1,4 +1,4 @@
-import { Label } from '../../../../../../../../../_general/Label/Label.jsx';
+import { Label } from '@gc/Label/Label.jsx';
 import cn from './Methods.module.scss';
 import { useMethods } from './useMethods.js';
 
