@@ -7,8 +7,8 @@ export const KeyList = ({ keys, type, name }) => {
   return (
     <div className={cn.container}>
       <h2 className={cn.title}>{name}</h2>
-      {keys.map((value) => (
-        <Items key={value.publicKey} value={value} keys={keys} type={type} />
+      {keys.map((key) => (
+        <Items key={key.publicKey} value={key} keys={keys} type={type} />
       ))}
     </div>
   );
