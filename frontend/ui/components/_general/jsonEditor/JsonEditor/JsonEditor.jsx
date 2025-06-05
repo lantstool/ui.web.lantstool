@@ -3,7 +3,10 @@ import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
-import { jsonLanguage } from '@codemirror/lang-json';
+// import { javascript } from '@codemirror/lang-javascript';
+import { json5 } from 'codemirror-json5';
+import { linter } from '@codemirror/lint';
+import { json5ParseLinter } from '@gc/jsonEditor/JsonEditor/json5Linter.js';
 import { syntaxHighlighting } from '@codemirror/language';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
@@ -18,7 +21,13 @@ const getEditorClass = (label, dynamicErrorSpace) => {
 };
 
 const getEditorExtensions = ({ withLineWrapping }) => {
-  const extensions = [jsonLanguage, syntaxHighlighting(highlightStyle)];
+  const extensions = [
+    /*javascript({ typescript: true })*/
+    json5(),
+    linter(json5ParseLinter()),
+    syntaxHighlighting(highlightStyle),
+  ];
+
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
   return extensions;
 };
@@ -28,7 +37,7 @@ export const JsonEditor = ({
   onChange,
   onBlur,
   topbar,
-  title = 'json',
+  title = 'json5',
   readOnly = false,
   showClearBtn = true,
   showCopyBtn = true,
