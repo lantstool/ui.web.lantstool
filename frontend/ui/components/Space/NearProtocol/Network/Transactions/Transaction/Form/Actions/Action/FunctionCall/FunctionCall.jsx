@@ -4,8 +4,8 @@ import { ActionBase } from '../_general/ActionBase/ActionBase.jsx';
 import { FormInputActionGroup } from '@gc/input/FormInputActionGroup/FormInputActionGroup.jsx';
 import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
-import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
-import { useFunctionCallController } from './useFunctionCallController.jsx';
+import { useContractMethodsOptions } from './useContractMethodsOptions.js';
+import { useFunctionCallController } from './useFunctionCallController.js';
 import cn from './FunctionCall.module.scss';
 
 const gasOptions = [transactionConfig.gasUnits.TGas, transactionConfig.gasUnits.gas];
@@ -14,8 +14,14 @@ const depositOptions = [transactionConfig.nearUnits.NEAR, transactionConfig.near
 export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) => {
   const { control } = form;
   const ContractOptions = useAccountsOptions();
-  const methodNameOptions = useContractMethodsOptions(control, getName('contractId.value'));
   const { isRestricted, hasCreateAccount } = useFunctionCallController(form, getName);
+  const methodNameOptions = useContractMethodsOptions(
+    form,
+    getName('contractId.value'),
+    hasCreateAccount,
+    order,
+  );
+
 
   return (
     <ActionBase
