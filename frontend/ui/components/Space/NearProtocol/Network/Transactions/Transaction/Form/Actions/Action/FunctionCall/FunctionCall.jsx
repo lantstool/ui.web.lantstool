@@ -15,13 +15,7 @@ export const FunctionCall = ({ iconStyle, form, getName, removeAction, order }) 
   const { control } = form;
   const ContractOptions = useAccountsOptions();
   const { isRestricted, hasCreateAccount } = useFunctionCallController(form, getName);
-  const methodNameOptions = useContractMethodsOptions(
-    form,
-    getName('contractId.value'),
-    hasCreateAccount,
-    order,
-  );
-
+  const methodNameOptions = useContractMethodsOptions(form, getName, order);
 
   return (
     <ActionBase

@@ -4,8 +4,8 @@ import { DeployContract } from './exportOne/helpers/deployContract.js';
 const transformActions = (actions, store) =>
   Promise.all(
     actions.map((action) =>
-      action.type === 'DeployContract' ? DeployContract(action, store) : action
-    )
+      action.type === 'DeployContract' ? DeployContract(action, store) : action,
+    ),
   );
 
 const groupActions = (grouped, hasCreateAccount) => {
@@ -34,12 +34,13 @@ const groupActions = (grouped, hasCreateAccount) => {
 };
 
 const findDeployForOrder = (groupedActions, order) =>
-  groupedActions.find((group) =>
-    group.functionCalls.some((fc) => fc.indexInActions === order)
-  )?.contractWasm || null;
+  groupedActions.find((group) => group.functionCalls.some((fc) => fc.indexInActions === order))
+    ?.contractWasm || null;
 
 export const getActionsWithWasm = effect(async ({ store, payload }) => {
-  const { actions, hasCreateAccount, order } = payload;
+  const { actions, order } = payload;
+  const hasCreateAccount = actions.some((action) => action.type === 'CreateAccount');
+
   try {
     const transformedActions = await transformActions(actions, store);
     const grouped = groupActions(transformedActions, hasCreateAccount);

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useLoader } from '@hooks/useLoader.js';
+import { useDebounce } from '@hooks/useDebounce.js';
 
 const base64ToArrayBuffer = (base64String) => {
   const binaryString = window.atob(base64String);
@@ -18,31 +19,34 @@ const getExportedWasmFunctions = async (arrayBuffer) => {
   return exports.filter((exp) => exp.kind === 'function');
 };
 
-const loadWasmAndGetOptions = async (base64, rpc, contractId, networkId, spaceId) => {
-  if (base64 === 'accountContract') {
+const loadWasmAndGetFunctions = async (contractWasm, rpc, contractId, networkId, spaceId) => {
+  if (contractWasm === 'accountContract') {
     await rpc.configure({ spaceId, networkId });
     const { codeBase64 } = await rpc.getContractWasm({ contractId });
-    base64 = codeBase64;
+    contractWasm = codeBase64;
   }
-  const arrayBuffer = base64ToArrayBuffer(base64);
+
+  const arrayBuffer = base64ToArrayBuffer(contractWasm);
   return getExportedWasmFunctions(arrayBuffer);
 };
 
-export const useContractMethodsOptions = (form, name, hasCreateAccount, order) => {
+export const useContractMethodsOptions = (form, getName, order) => {
   const { control } = form;
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
   const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
-  const contractId = useWatch({ control, name });
+  const contractId = useWatch({ control, name: getName('contractId.value') });
   const actions = useWatch({ control, name: 'actions' });
   const getActionsWithWasm = useStoreEffect(
     (store) => store.nearProtocol.transactions.getActionsWithWasm,
   );
 
-  const [isLoading, contractWasm] = useLoader(
+  // Debounce to get current actions for correct update FC with createAccount
+  const debouncedActions = useDebounce(actions, 200);
+  const [_, contractWasm] = useLoader(
     getActionsWithWasm,
-    { actions, hasCreateAccount, order },
-    [contractId, JSON.stringify(actions)],
+    { actions: debouncedActions, order },
+    [contractId, JSON.stringify(debouncedActions)],
   );
 
   useEffect(() => {
@@ -55,20 +59,20 @@ export const useContractMethodsOptions = (form, name, hasCreateAccount, order) =
           return;
         }
 
-        const options = await loadWasmAndGetOptions(
+        const exportedFunctions = await loadWasmAndGetFunctions(
           contractWasm,
           rpc,
           contractId,
           networkId,
           spaceId,
         );
-        setOptions(options.map((fn) => ({ value: fn.name, label: fn.name })));
+        setOptions(exportedFunctions.map((fn) => ({ value: fn.name, label: fn.name })));
       } catch (e) {
-        console.error(e);
+        console.log(e);
         setOptions([]);
       }
     })();
-  }, [contractId, JSON.stringify(actions), isLoading, contractWasm]);
+  }, [contractId, JSON.stringify(actions), contractWasm]);
 
   return options;
 };
