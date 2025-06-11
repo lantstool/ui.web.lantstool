@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect, useStoreEntity } from '@react-vault';
 import { useWatch } from 'react-hook-form';
+import { useLoader } from '@hooks/useLoader.js';
 
 const checkLastAccessKey = (actions, keys) => {
   const isDeleteAccount = actions.find((action) => action.type === 'DeleteAccount');
@@ -37,11 +38,12 @@ export const useIsExtraConfirmation = (from) => {
   const accountId = useWatch({ control, name: 'signerId.value' });
   const actions = useWatch({ control, name: 'actions' });
 
+  const [_, keys] = useLoader(getAccountKeys, { spaceId, networkId, accountId }, [accountId]);
+
   useEffect(() => {
     (async () => {
       try {
         if (!accountId) return setConfirmation(null);
-        const keys = await getAccountKeys({ spaceId, networkId, accountId });
         const isLastAccessKey = checkLastAccessKey(actions, keys);
 
         await rpc.configure({ spaceId, networkId });
