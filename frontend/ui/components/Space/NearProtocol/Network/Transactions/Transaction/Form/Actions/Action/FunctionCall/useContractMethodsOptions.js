@@ -4,23 +4,11 @@ import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useLoader } from '@hooks/useLoader.js';
 import { useDebounce } from '@hooks/useDebounce.js';
-
-const base64ToArrayBuffer = (base64String) => {
-  const binaryString = window.atob(base64String);
-  const bytes = Uint8Array.from({ length: binaryString.length }, (_, i) =>
-    binaryString.charCodeAt(i),
-  );
-  return bytes.buffer;
-};
-
-const getExportedWasmFunctions = async (arrayBuffer) => {
-  const module = await WebAssembly.compile(arrayBuffer);
-  const exports = WebAssembly.Module.exports(module);
-  return exports.filter((exp) => exp.kind === 'function');
-};
+import { base64ToArrayBuffer } from '../../../../../../../../../../../store/helpers/base64ToArrayBuffer.js';
+import { getExportedWasmFunctions } from '../../../../../../../../../../../store/helpers/getExportedWasmFunctions.js';
 
 const loadWasmAndGetFunctions = async (contractWasm, rpc, contractId, networkId, spaceId) => {
-  if (contractWasm === 'accountContract') {
+  if (contractWasm === 'existContract') {
     await rpc.configure({ spaceId, networkId });
     const { codeBase64 } = await rpc.getContractWasm({ contractId });
     contractWasm = codeBase64;
@@ -37,20 +25,19 @@ export const useContractMethodsOptions = (form, getName, order) => {
   const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
   const contractId = useWatch({ control, name: getName('contractId.value') });
   const actions = useWatch({ control, name: 'actions' });
-  const getActionsWithWasm = useStoreEffect(
-    (store) => store.nearProtocol.transactions.getActionsWithWasm,
+  const getContractWasm = useStoreEffect(
+    (store) => store.nearProtocol.transactions.getContractWasm,
   );
 
   // Debounce to get current actions for correct update FC with createAccount
   const debouncedActions = useDebounce(actions, 200);
-  const [_, contractWasm] = useLoader(
-    getActionsWithWasm,
-    { actions: debouncedActions, order },
-    [contractId, JSON.stringify(debouncedActions)],
-  );
+  const [_, contractWasm] = useLoader(getContractWasm, { actions: debouncedActions, order }, [
+    contractId,
+    JSON.stringify(debouncedActions),
+  ]);
 
   useEffect(() => {
-    if (!contractId) return;
+    if (!contractId) return setOptions([]);
 
     (async () => {
       try {
