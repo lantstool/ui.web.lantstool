@@ -31,8 +31,8 @@ export const useContractMethodsOptions = (form, getName, order) => {
 
   // Debounce to get current actions for correct update FC with createAccount
   const debouncedActions = useDebounce(actions, 200);
+
   const [_, contractWasm] = useLoader(getContractWasm, { actions: debouncedActions, order }, [
-    contractId,
     JSON.stringify(debouncedActions),
   ]);
 
@@ -59,7 +59,7 @@ export const useContractMethodsOptions = (form, getName, order) => {
         setOptions([]);
       }
     })();
-  }, [contractId, JSON.stringify(actions), contractWasm]);
+  }, [contractId, contractWasm]);
 
   return options;
 };
