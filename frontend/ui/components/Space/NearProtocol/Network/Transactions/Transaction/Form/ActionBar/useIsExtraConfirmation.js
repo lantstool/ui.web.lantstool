@@ -9,9 +9,9 @@ const checkLastAccessKey = (actions, keys) => {
   if (keys?.fullAccess?.length === 0 || isDeleteAccount) return false;
 
   const deleteKeyActions = actions.filter(
-    (action) => action.type === 'DeleteKey' && action.accessKey,
+    (action) => action.type === 'DeleteKey' && action.publicKey,
   );
-  const valueSet = new Set(deleteKeyActions.map((action) => action.accessKey.value));
+  const valueSet = new Set(deleteKeyActions.map((action) => action.publicKey.value));
   return keys.fullAccess.every((item) => valueSet.has(item.publicKey));
 };
 
