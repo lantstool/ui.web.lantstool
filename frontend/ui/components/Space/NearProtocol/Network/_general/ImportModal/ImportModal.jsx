@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
-import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
-import { TabButton } from '../../../../../_general/tab/TabButton/TabButton.jsx';
-import { TabContainer } from '../../../../../_general/tab/TabContainer/TabContainer.jsx';
+import { BaseModal } from '@gc/modals/BaseModal/BaseModal.jsx';
+import { ModalHeader } from '@gc/modals/ModalHeader/ModalHeader.jsx';
+import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
+import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
 import { PasteJson } from './PasteJson/PasteJson.jsx';
 import { UploadFile } from './UploadFile/UploadFile.jsx';
 import cn from './ImportModal.module.scss';
