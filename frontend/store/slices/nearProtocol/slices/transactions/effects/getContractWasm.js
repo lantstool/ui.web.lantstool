@@ -9,7 +9,7 @@ const transformActions = (actions, store) =>
   );
 
 const findWasmForOrder = (actions, order) => {
-  let contractWasm = 'existContract';
+  let contractWasm = 'onChainContract';
   let hasCreateAccount = false;
 
   //Iterate backwards from the current FunctionCall (by order index)
@@ -30,6 +30,7 @@ const findWasmForOrder = (actions, order) => {
   return hasCreateAccount ? null : contractWasm;
 };
 
+// Searching contract WASM from the nearest DeployContract before the FunctionCall
 export const getContractWasm = effect(async ({ store, payload }) => {
   const { actions, order } = payload;
 

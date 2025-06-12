@@ -8,7 +8,7 @@ import { base64ToArrayBuffer } from '../../../../../../../../../../../store/help
 import { getExportedWasmFunctions } from '../../../../../../../../../../../store/helpers/getExportedWasmFunctions.js';
 
 const loadWasmAndGetFunctions = async (contractWasm, rpc, contractId, networkId, spaceId) => {
-  if (contractWasm === 'existContract') {
+  if (contractWasm === 'onChainContract') {
     await rpc.configure({ spaceId, networkId });
     const { codeBase64 } = await rpc.getContractWasm({ contractId });
     contractWasm = codeBase64;
