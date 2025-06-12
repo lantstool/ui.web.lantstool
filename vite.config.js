@@ -63,7 +63,6 @@ export default defineConfig({
         manualChunks: {
           lodash: ['lodash'],
           '@uiw/react-codemirror': ['@uiw/react-codemirror'],
-          '@codemirror/lang-json': ['@codemirror/lang-json'],
         },
       },
     },
