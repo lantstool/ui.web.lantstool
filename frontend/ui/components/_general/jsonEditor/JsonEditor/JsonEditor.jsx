@@ -1,7 +1,7 @@
 import { FieldTopbarLabel } from '../../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
-import CodeMirror, { EditorView, lineNumbers } from '@uiw/react-codemirror';
+import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
 // import { javascript } from '@codemirror/lang-javascript';
 import { json5 } from 'codemirror-json5';
@@ -22,16 +22,19 @@ const getEditorClass = (label, dynamicErrorSpace) => {
   if (!label && !dynamicErrorSpace) return cn.editorNoLabelAndStaticErrorSpace;
 };
 
+const foldMarker = foldGutter({
+  markerDOM: (open) => {
+    const el = document.createElement('div');
+    el.className = 'cm-fold-marker';
+    el.textContent = open ? '−' : '+';
+    return el;
+  },
+});
+
 const getEditorExtensions = ({ withLineWrapping }) => {
   const extensions = [
     commentFolderExtension,
-    // singleLineCommentFolder,
-    /*javascript({ typescript: true })*/
-    foldGutter({
-      openText: '+',
-      closedText: '-',
-    }),
-    lineNumbers(),
+    foldMarker,
     json5(),
     linter(json5ParseLinter()),
     syntaxHighlighting(highlightStyle),
@@ -59,7 +62,7 @@ export const JsonEditor = ({
 }) => {
   const clearValue = () => onChange('');
   const extensions = getEditorExtensions({ withLineWrapping });
-  console.log(extensions);
+
   return (
     <div className={cnm(cn.container, classes?.container)}>
       {topbar && <FieldTopbarLabel label={topbar?.label} tooltip={topbar?.tooltip} />}
@@ -90,7 +93,7 @@ export const JsonEditor = ({
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={extensions}
-        basicSetup={{ lineNumbers: false, foldGutter: false, tabSize: 2 }}
+        basicSetup={{ foldGutter: false, tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>
