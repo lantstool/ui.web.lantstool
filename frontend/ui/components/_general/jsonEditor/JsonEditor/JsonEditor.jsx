@@ -1,7 +1,7 @@
 import { FieldTopbarLabel } from '../../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
-import CodeMirror, { EditorView } from '@uiw/react-codemirror';
+import CodeMirror, { EditorView, lineNumbers } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
 // import { javascript } from '@codemirror/lang-javascript';
 import { json5 } from 'codemirror-json5';
@@ -11,6 +11,7 @@ import { syntaxHighlighting } from '@codemirror/language';
 import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
+import { foldGutter } from '@codemirror/language';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
@@ -26,6 +27,11 @@ const getEditorExtensions = ({ withLineWrapping }) => {
     commentFolderExtension,
     // singleLineCommentFolder,
     /*javascript({ typescript: true })*/
+    foldGutter({
+      openText: '+',
+      closedText: '-',
+    }),
+    lineNumbers(),
     json5(),
     linter(json5ParseLinter()),
     syntaxHighlighting(highlightStyle),
@@ -53,7 +59,7 @@ export const JsonEditor = ({
 }) => {
   const clearValue = () => onChange('');
   const extensions = getEditorExtensions({ withLineWrapping });
-
+  console.log(extensions);
   return (
     <div className={cnm(cn.container, classes?.container)}>
       {topbar && <FieldTopbarLabel label={topbar?.label} tooltip={topbar?.tooltip} />}
@@ -84,7 +90,7 @@ export const JsonEditor = ({
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={extensions}
-        basicSetup={{ tabSize: 2 }}
+        basicSetup={{ lineNumbers: false, foldGutter: false, tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>
