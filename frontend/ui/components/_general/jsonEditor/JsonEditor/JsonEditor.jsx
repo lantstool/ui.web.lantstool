@@ -11,6 +11,7 @@ import { syntaxHighlighting } from '@codemirror/language';
 import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
+import { foldGutter } from '@codemirror/language';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
@@ -21,11 +22,19 @@ const getEditorClass = (label, dynamicErrorSpace) => {
   if (!label && !dynamicErrorSpace) return cn.editorNoLabelAndStaticErrorSpace;
 };
 
+const foldMarker = foldGutter({
+  markerDOM: (open) => {
+    const el = document.createElement('div');
+    el.className = 'cm-fold-marker';
+    el.textContent = open ? '−' : '+';
+    return el;
+  },
+});
+
 const getEditorExtensions = ({ withLineWrapping }) => {
   const extensions = [
     commentFolderExtension,
-    // singleLineCommentFolder,
-    /*javascript({ typescript: true })*/
+    foldMarker,
     json5(),
     linter(json5ParseLinter()),
     syntaxHighlighting(highlightStyle),
@@ -84,7 +93,7 @@ export const JsonEditor = ({
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={extensions}
-        basicSetup={{ tabSize: 2 }}
+        basicSetup={{ foldGutter: false, tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>

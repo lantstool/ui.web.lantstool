@@ -29,6 +29,15 @@ export const baseEditorStyles = {
     backgroundColor: '#F1F3F5',
     color: '#868E96',
     border: 'none',
+
+  },
+  '.cm-fold-marker': {
+    minWidth: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '14px',
+    cursor: 'pointer',
   },
   '.cm-lineNumbers .cm-gutterElement': {
     minWidth: '30px',
