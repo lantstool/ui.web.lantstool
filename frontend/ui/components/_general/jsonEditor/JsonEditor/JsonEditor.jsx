@@ -8,6 +8,7 @@ import { json5 } from 'codemirror-json5';
 import { linter } from '@codemirror/lint';
 import { json5ParseLinter } from '@gc/jsonEditor/JsonEditor/json5Linter.js';
 import { syntaxHighlighting } from '@codemirror/language';
+import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
 import cnm from 'classnames';
@@ -22,6 +23,8 @@ const getEditorClass = (label, dynamicErrorSpace) => {
 
 const getEditorExtensions = ({ withLineWrapping }) => {
   const extensions = [
+    commentFolderExtension,
+    // singleLineCommentFolder,
     /*javascript({ typescript: true })*/
     json5(),
     linter(json5ParseLinter()),
