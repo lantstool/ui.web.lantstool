@@ -1,0 +1,28 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.title {
+  @include text-xlg-regular;
+  text-align: center;
+}
+
+.textareaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message {
+  @include text-sm-regular;
+  padding: 2px;
+  color: $neutral-700;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+}
+
+.telegram{
+  color: $green-700;
+}

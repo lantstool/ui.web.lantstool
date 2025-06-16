@@ -31,6 +31,12 @@ const types = (isIcon, children) => {
         iconColor: cn.iconSecondary,
         iconStyle: cn.iconSecondaryStyle,
       },
+      small: {
+        button: isIcon ? cn.secondarySmIcon : cn.secondarySm,
+        btnText: cn.secondaryText,
+        iconColor: cn.iconSecondary,
+        iconStyle: cn.iconSecondaryStyle,
+      },
     },
     danger: {
       large: {
