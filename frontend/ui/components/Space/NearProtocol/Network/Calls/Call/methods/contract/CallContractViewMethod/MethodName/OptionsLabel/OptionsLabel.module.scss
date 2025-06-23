@@ -1,0 +1,34 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.modWrapper{
+  width: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  @include icon('@assets/icons/checkmark-outline.svg');
+  background-color: $neutral-600;
+  min-width: 16px;
+}
+
+.hidden {
+  visibility: hidden;
+  width: 16px;
+  height: 16px;
+}

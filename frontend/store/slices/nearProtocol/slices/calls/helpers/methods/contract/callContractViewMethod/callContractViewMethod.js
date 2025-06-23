@@ -1,13 +1,7 @@
-import { decompress } from 'fzstd';
 import { getBlockTargetParams } from '../../utils.js';
 import { exportTransformer } from './exportTransformer.js';
 import { importTransformers } from './importTransformers.js';
-
-const getJsonABI = (result) => {
-  const raw = decompress(new Uint8Array(result));
-  const json = new TextDecoder().decode(raw);
-  return JSON.parse(json);
-};
+import { getJsonABI } from '../../../../../../helpers/getJsonAbi.js';
 
 const getResult = (result, methodName) => {
   if (methodName === '__contract_abi') return getJsonABI(result);

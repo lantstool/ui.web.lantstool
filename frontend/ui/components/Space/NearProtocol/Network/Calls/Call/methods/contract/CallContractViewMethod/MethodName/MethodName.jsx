@@ -1,8 +1,27 @@
-import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
+import { useContractMethodsOptions } from './useContractMethodsOptions.js';
+import { createStringTemplate } from '../../../../../../../../../../../store/slices/nearProtocol/slices/contractAbi/helpers/createStringTemplate/createStringTemplate.js';
+import { useStoreState } from '@react-vault';
+import { Option } from './OptionsLabel/OptionsLabel.jsx';
 
-export const MethodName = ({ control }) => {
-  const options = useContractMethodsOptions(control, 'contractId.value');
+export const MethodName = ({ control, form }) => {
+  const contractHash = useStoreState((state) => state.nearProtocol.contractAbi.contractHash);
+  const options = useContractMethodsOptions(control, 'contractId.value', contractHash);
+  const records = useStoreState((state) => state.nearProtocol.contractAbi.records);
+
+  const onChange = (field) => async (event) => {
+    field.onChange(event);
+    form.setValue('args', '');
+
+    if (!records[contractHash].isAbiSupported) return;
+    const methodArgs = records[contractHash]?.readFunctions[event?.value]?.args;
+
+    if (!methodArgs) return;
+    const args =
+      typeof methodArgs === 'string' ? methodArgs : await createStringTemplate(methodArgs);
+    form.setValue('args', args);
+  };
+
   return (
     <FormDropdown
       name="methodName"
@@ -12,6 +31,12 @@ export const MethodName = ({ control }) => {
       isSearchable
       isClearable
       creatableSelect
+      onChange={onChange}
+      components={{
+        Option: (props) => (
+          <Option props={props} records={records} contractHash={contractHash} methodType="read" />
+        ),
+      }}
     />
   );
 };
