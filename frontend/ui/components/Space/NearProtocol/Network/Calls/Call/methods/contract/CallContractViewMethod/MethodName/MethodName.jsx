@@ -13,7 +13,7 @@ export const MethodName = ({ control, form }) => {
     field.onChange(event);
     form.setValue('args', '');
 
-    if (!records[contractHash].isAbiSupported) return;
+    if (!records[contractHash]?.isAbiSupported) return;
     const methodArgs = records[contractHash]?.readFunctions[event?.value]?.args;
 
     if (!methodArgs) return;

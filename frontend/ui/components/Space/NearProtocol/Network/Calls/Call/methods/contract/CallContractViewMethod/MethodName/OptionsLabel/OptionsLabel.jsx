@@ -9,7 +9,7 @@ const type = {
 };
 
 export const Option = ({ props, records, contractHash, methodType}) => {
-  const isAbiSupported = records[contractHash].isAbiSupported;
+  const isAbiSupported = records[contractHash]?.isAbiSupported;
 
   const functions= methodType === 'read'
     ? records[contractHash]?.readFunctions
