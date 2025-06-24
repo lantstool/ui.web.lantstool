@@ -42,18 +42,16 @@ const createTemplateFromAbi = (abi) => {
 };
 
 export const addContract = effect(async ({ store, slice, payload }) => {
-  const { spaceId, networkId, formValues } = payload;
+  const { spaceId, networkId, contractId } = payload;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const setFunctions = slice.getActions((slice) => slice.setFunctions);
   const setContractHash = slice.getActions((slice) => slice.setContractHash);
   const records = slice.getState((slice) => slice.records);
 
   try {
-    await rpc.configure({ spaceId, networkId });
-    const contractId = formValues.contractId?.value;
-
     if (!contractId) return;
 
+    await rpc.configure({ spaceId, networkId });
     const { codeHash } = await rpc.getAccount({ accountId: contractId });
 
     if (codeHash === '11111111111111111111111111111111') {

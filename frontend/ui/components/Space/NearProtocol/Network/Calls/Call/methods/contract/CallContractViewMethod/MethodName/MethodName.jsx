@@ -6,7 +6,7 @@ import { Option } from './OptionsLabel/OptionsLabel.jsx';
 
 export const MethodName = ({ control, form }) => {
   const contractHash = useStoreState((state) => state.nearProtocol.contractAbi.contractHash);
-  const options = useContractMethodsOptions(control, 'contractId.value', contractHash);
+  const options = useContractMethodsOptions(control, 'contractId.value', contractHash, 'read');
   const records = useStoreState((state) => state.nearProtocol.contractAbi.records);
 
   const onChange = (field) => async (event) => {
