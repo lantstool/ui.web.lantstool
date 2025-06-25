@@ -1,6 +1,5 @@
 import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useContractMethodsOptions } from './useContractMethodsOptions.js';
-import { createStringTemplate } from '../../../../../../../../../../../store/slices/nearProtocol/slices/contractAbi/helpers/createStringTemplate/createStringTemplate.js';
 import { useStoreState } from '@react-vault';
 import { Option } from './OptionsLabel/OptionsLabel.jsx';
 
@@ -17,9 +16,7 @@ export const MethodName = ({ control, form }) => {
     const methodArgs = records[contractHash]?.readFunctions[event?.value]?.args;
 
     if (!methodArgs) return;
-    const args =
-      typeof methodArgs === 'string' ? methodArgs : await createStringTemplate(methodArgs);
-    form.setValue('args', args);
+    form.setValue('args', methodArgs);
   };
 
   return (

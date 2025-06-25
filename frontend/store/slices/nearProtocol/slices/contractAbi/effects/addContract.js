@@ -3,8 +3,9 @@ import { createTemplateObject } from '../helpers/createTemplateObject/createTemp
 import { base64ToArrayBuffer } from '../../../../../helpers/base64ToArrayBuffer.js';
 import { getExportedWasmFunctions } from '../../../../../helpers/getExportedWasmFunctions.js';
 import { getJsonABI } from '../../../helpers/getJsonAbi.js';
+import { createStringTemplate } from '../helpers/createStringTemplate/createStringTemplate.js';
 
-const createTemplateFromAbi = (abi) => {
+const createTemplateFromAbi = async (abi) => {
   const readFunctions = {};
   const writeFunctions = {};
 
@@ -18,7 +19,8 @@ const createTemplateFromAbi = (abi) => {
       args = '// This function uses a non-JSON serialization type';
     } else {
       try {
-        args = createTemplateObject(params.args, abi.body.root_schema);
+        const templateObject = createTemplateObject(params.args, abi.body.root_schema);
+        args = await createStringTemplate(templateObject);
       } catch (e) {
         args = `// Error during parsing ABI: ${e.message}`;
       }
@@ -42,7 +44,7 @@ const createTemplateFromAbi = (abi) => {
 };
 
 export const addContract = effect(async ({ store, slice, payload }) => {
-  const { spaceId, networkId, contractId } = payload;
+  const { spaceId, networkId, contractId, functionsType } = payload;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const setFunctions = slice.getActions((slice) => slice.setFunctions);
   const setContractHash = slice.getActions((slice) => slice.setContractHash);
@@ -53,7 +55,7 @@ export const addContract = effect(async ({ store, slice, payload }) => {
 
     await rpc.configure({ spaceId, networkId });
     const { codeHash } = await rpc.getAccount({ accountId: contractId });
-
+    console.log(codeHash);
     if (codeHash === '11111111111111111111111111111111') {
       return setContractHash(null);
     }
@@ -79,8 +81,20 @@ export const addContract = effect(async ({ store, slice, payload }) => {
       return setFunctions({ codeHash, functions });
     }
 
-    const functions = createTemplateFromAbi(jsonAbi);
+    const functions = await createTemplateFromAbi(jsonAbi);
     setFunctions({ codeHash, functions });
+
+
+    const functionsTransform =  functions.isAbiSupported
+      ? Object.keys(
+          functionsType === 'read'
+            ? functions.readFunctions || {}
+            : functions.writeFunctions || {},
+        )
+      : records[codeHash].functions || [];
+
+    console.log(functionsTransform);
+    return functionsTransform;
   } catch (e) {
     console.log(e);
     setContractHash(null);
