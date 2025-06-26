@@ -15,6 +15,7 @@
     "@hello-pangea/dnd": "^16.6.0",
     "@hookform/resolvers": "^3.9.0",
     "@lezer/highlight": "^1.2.1",
+    "@noble/hashes": "^1.8.0",
     "@tippyjs/react": "^4.2.6",
     "@uiw/react-codemirror": "^4.23.1",
     "bignumber.js": "^9.1.2",
