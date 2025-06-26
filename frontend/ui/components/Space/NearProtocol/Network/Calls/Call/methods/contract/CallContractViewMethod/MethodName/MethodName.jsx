@@ -3,14 +3,12 @@ import { useContractMethodsOptions } from './useContractMethodsOptions.js';
 import { Option } from './OptionsLabel/OptionsLabel.jsx';
 
 export const MethodName = ({ control, form }) => {
-  const [options, reedFunctions] = useContractMethodsOptions(control, 'contractId.value',);
+  const { options, argsTemplates } = useContractMethodsOptions(control);
 
   const onChange = (field) => async (event) => {
+    const { argsTemplate } = argsTemplates[event?.value] || '';
+    form.setValue('args', argsTemplate);
     field.onChange(event);
-    form.setValue('args', '');
-
-    const fn = reedFunctions[event?.value];
-    if (fn) return form.setValue('args', fn?.args);
   };
 
   return (

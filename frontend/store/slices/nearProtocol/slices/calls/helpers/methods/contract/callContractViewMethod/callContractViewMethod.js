@@ -9,20 +9,26 @@ const getResult = (result, methodName) => {
   return JSON.parse(Buffer.from(result).toString());
 };
 
+const json5ToJson = (args) => {
+  try {
+    return JSON.stringify(JSON5.parse(args));
+  } catch (e) {
+    return '';
+  }
+};
+
 const rpcCaller = async (rpc, params) => {
-  const parsedArgs = JSON5.parse(params.args);
   const result = await rpc.callContractViewMethod(
     getBlockTargetParams({
       contractId: params.contractId.value,
       methodName: params.methodName.value,
-      args: JSON.stringify(parsedArgs),
+      args: json5ToJson(params.args),
       blockTarget: params.blockTarget,
       finality: params.finality.value,
       blockId: params.blockId,
       responseNameConvention: 'snake_case',
     }),
   );
-
   return getResult(result.result, params.methodName.value);
 };
 

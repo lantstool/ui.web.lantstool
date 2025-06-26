@@ -6,7 +6,7 @@ import { getBlockTarget } from '../utils.js';
 export async function callContractViewMethod({
   contractId,
   methodName,
-  args,
+  args = '',
   finality,
   blockId,
   responseNameConvention = 'camelCase',

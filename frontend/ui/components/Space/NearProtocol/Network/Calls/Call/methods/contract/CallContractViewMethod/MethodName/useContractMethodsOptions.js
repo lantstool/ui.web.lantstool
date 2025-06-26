@@ -4,25 +4,41 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
 
-const getFunctions = (contractFunctions, setReadFunctions) => {
-  const { isAbiSupported, functions, readFunctions } = contractFunctions;
-  if (!isAbiSupported) {
-    setReadFunctions(functions);
-    return functions.map((methodName) => ({ methodName }));
-  }
-  setReadFunctions(readFunctions);
+const getOptionsAndArgsTemplates = (contractFunctions) => {
+  if (!contractFunctions) return { options: [], argsTemplates: {} };
 
-  return Object.entries(readFunctions).map(([methodName, fn]) => ({
-    methodName,
-    modifiers: fn.modifiers || [],
+  const { isAbiSupported, functions, readFunctions } = contractFunctions;
+
+  if (isAbiSupported) {
+    const options = Object.entries(readFunctions).map(([key, value]) => ({
+      value: key,
+      label: key,
+      modifiers: value.modifiers,
+    }));
+    return { options, argsTemplates: readFunctions };
+  }
+  // If ABI is not supported and only WASM functions is present
+  const options = functions.map((fnName) => ({
+    value: fnName,
+    label: fnName,
+    modifiers: [],
   }));
+
+  const argsTemplates = functions.reduce((acc, fnName) => {
+    acc[fnName] = {
+      argsTemplate: '',
+    };
+    return acc;
+  }, {});
+
+  return { options, argsTemplates };
 };
 
-export const useContractMethodsOptions = (control, name) => {
+export const useContractMethodsOptions = (control) => {
   const { spaceId, networkId } = useParams();
   const [options, setOptions] = useState([]);
-  const [readFunctions, setReadFunctions] = useState({});
-  const contractId = useWatch({ control, name });
+  const [argsTemplates, setArgsTemplates] = useState({});
+  const contractId = useWatch({ control, name: 'contractId.value' });
   const getContractFunctions = useStoreEffect(
     (store) => store.nearProtocol.contractsMethods.getContractFunctions,
   );
@@ -35,16 +51,11 @@ export const useContractMethodsOptions = (control, name) => {
 
   useEffect(() => {
     if (isLoading) return;
-    const rawFunctions = getFunctions(contractFunctions, setReadFunctions);
+    const { options, argsTemplates } = getOptionsAndArgsTemplates(contractFunctions);
 
-    const methodOptions = rawFunctions.map((fn) => ({
-      value: fn.methodName,
-      label: fn.methodName,
-      modifiers: fn.modifiers,
-    }));
+    setOptions(options);
+    setArgsTemplates(argsTemplates);
+  }, [contractFunctions]);
 
-    setOptions(methodOptions);
-  }, [isLoading, contractFunctions, contractId]);
-
-  return [options, readFunctions];
+  return { options, argsTemplates };
 };
