@@ -1,5 +1,6 @@
 @use '@styles/icons' as *;
 @use '@styles/variables' as *;
+@use '@styles/mixins' as *;
 
 .container {
   display: flex;
@@ -7,18 +8,18 @@
   gap: 8px;
 }
 
+.text{
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-}
-
-.modWrapper{
-  width: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: max-content;
 }
 
 .icon {
