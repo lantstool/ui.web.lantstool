@@ -2,8 +2,8 @@ import { useStoreEntity } from '@react-vault';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { base64ToArrayBuffer } from '../../../../../../../store/helpers/base64ToArrayBuffer.js';
-import { getExportedWasmFunctions } from '../../../../../../../store/helpers/getExportedWasmFunctions.js';
+import { base64ToArrayBuffer } from '../../../../../../../../../../../../../store/helpers/base64ToArrayBuffer.js';
+import { getExportedWasmFunctions } from '../../../../../../../../../../../../../store/helpers/getExportedWasmFunctions.js';
 
 export const useContractMethodsOptions = (control, name) => {
   const { spaceId, networkId } = useParams();

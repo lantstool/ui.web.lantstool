@@ -1,8 +1,16 @@
-import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { useContractMethodsOptions } from '../../../../../../_general/hooks/useContractMethodsOptions.js';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
+import { useContractMethodsOptions } from './useContractMethodsOptions.js';
+import { Option } from './OptionsLabel/OptionsLabel.jsx';
 
-export const MethodName = ({ control }) => {
-  const options = useContractMethodsOptions(control, 'contractId.value');
+export const MethodName = ({ control, form }) => {
+  const { options, argsTemplates } = useContractMethodsOptions(control);
+
+  const onChange = (field) => async (event) => {
+    const { argsTemplate } = argsTemplates[event?.value] || '';
+    form.setValue('args', argsTemplate);
+    field.onChange(event);
+  };
+
   return (
     <FormDropdown
       name="methodName"
@@ -12,6 +20,10 @@ export const MethodName = ({ control }) => {
       isSearchable
       isClearable
       creatableSelect
+      onChange={onChange}
+      components={{
+        Option: (props) => <Option props={props} />,
+      }}
     />
   );
 };
