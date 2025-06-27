@@ -39,7 +39,7 @@ export const transformTxForExport = async (savedTx, formValues, store) => ({
   blockchain: 'near-protocol',
   networkId: savedTx.networkId,
   transaction: {
-    version: '1.0',
+    version: '1.1',
     name: savedTx.name,
     signerId: utils.getDropdownValueForExport(formValues.signerId),
     signerKey: utils.getDropdownValueForExport(formValues.signerKey),
