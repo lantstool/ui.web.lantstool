@@ -55,6 +55,7 @@ export const Result = ({ txResult, transaction }) => {
               value={getFormattedJSON(data)}
               showClearBtn={false}
               withLineWrapping
+              title="json"
             />
           </>
         )}

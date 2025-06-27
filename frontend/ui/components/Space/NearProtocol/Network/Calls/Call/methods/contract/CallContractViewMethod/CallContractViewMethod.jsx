@@ -1,4 +1,4 @@
-import { FormJsonEditor } from '../../../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { FormJsonEditor } from '@gc/jsonEditor/FormJsonEditor.jsx';
 import { BlockTarget } from '../../_general/components/BlockTarget/BlockTarget.jsx';
 import { ContractId } from './ContractId/ContractId.jsx';
 import { MethodName } from './MethodName/MethodName.jsx';
@@ -28,7 +28,11 @@ export const CallContractViewMethod = ({ call, draft }) => {
       <ConfigureTitle />
       <ContractId />
       <MethodName />
-      <FormJsonEditor name="args" customTheme={{ contentMinHeight: '200px' }} />
+      <FormJsonEditor
+        name="args"
+        topbar={{ label: 'Arguments' }}
+        customTheme={{ contentMinHeight: '200px' }}
+      />
       <BlockTarget />
     </Form>
   );

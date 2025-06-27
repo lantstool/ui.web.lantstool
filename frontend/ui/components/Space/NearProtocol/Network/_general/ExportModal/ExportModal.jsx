@@ -1,10 +1,10 @@
 import { useStoreAction } from '@react-vault';
 import { useEffect, useState } from 'react';
-import { Button } from '../../../../../_general/Button/Button.jsx';
-import { BaseModal } from '../../../../../_general/modals/BaseModal/BaseModal.jsx';
-import { ModalHeader } from '../../../../../_general/modals/ModalHeader/ModalHeader.jsx';
-import { CopyButton } from '../../../../../_general/CopyButton/CopyButton.jsx';
-import { JsonEditor } from '../../../../../_general/jsonEditor/JsonEditor/JsonEditor.jsx';
+import { Button } from '@gc/Button/Button.jsx';
+import { BaseModal } from '@gc/modals/BaseModal/BaseModal.jsx';
+import { ModalHeader } from '@gc/modals/ModalHeader/ModalHeader.jsx';
+import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
+import { JsonEditor } from '@gc/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './ExportModal.module.scss';
 
 // origin is call or transaction
@@ -46,6 +46,7 @@ export const ExportModal = ({
       <JsonEditor
         value={data}
         readOnly
+        title="json"
         showClearBtn={false}
         classes={{ container: cn.editorContainer }}
         dynamicErrorSpace

@@ -14,6 +14,7 @@ export const Raw = ({ result, error }) => {
         container: cn.editorContainer,
       }}
       withLineWrapping
+      title="json"
     />
   );
 };
