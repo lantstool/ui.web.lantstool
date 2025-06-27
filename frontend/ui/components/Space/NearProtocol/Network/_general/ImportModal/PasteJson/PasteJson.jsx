@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FieldErrorLabel } from '../../../../../../_general/FieldErrorLabel/FieldErrorLabel.jsx';
-import { FormJsonEditor } from '../../../../../../_general/jsonEditor/FormJsonEditor.jsx';
+import { FieldErrorLabel } from '@gc/FieldErrorLabel/FieldErrorLabel.jsx';
+import { FormJsonEditor } from '@gc/jsonEditor/FormJsonEditor.jsx';
 import { collectFormErrorMessages } from '../../../../../../../../store/helpers/collectFormErrorMessages.js';
 import cn from './PasteJson.module.scss';
 
@@ -27,6 +27,7 @@ export const PasteJson = ({ closeModal, yupSchema, importOneFromJson }) => {
       <FormJsonEditor
         topbar={{ label: 'Exported JSON' }}
         name="json"
+        title="json"
         control={control}
         classes={{ container: cn.editor }}
         errorLabel={
