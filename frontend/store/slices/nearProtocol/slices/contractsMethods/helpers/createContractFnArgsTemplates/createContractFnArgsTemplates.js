@@ -1,4 +1,3 @@
-import { getJsonABI } from '../../../../helpers/getJsonAbi.js';
 import { createTemplateObject } from './createTemplateObject/createTemplateObject.js';
 import { createStringTemplate } from './createStringTemplate/createStringTemplate.js';
 
@@ -18,8 +17,7 @@ const createFnArgsTemplate = async (abi, fn) => {
   }
 };
 
-export const createContractFnArgsTemplates = async (compressedAbi) => {
-  const abiObject = getJsonABI(compressedAbi);
+export const createContractFnArgsTemplates = async (abiObject) => {
 
   if (abiObject.schema_version !== '0.4.0')
     throw new Error('Unsupported ABI version - only v0.4.0 is supported');

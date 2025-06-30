@@ -1,28 +1,44 @@
-import { useStoreEffect, useStoreEntity } from '@react-vault';
+import { useStoreEffect } from '@react-vault';
 import { useEffect, useState } from 'react';
 import { useWatch } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import { useLoader } from '@hooks/useLoader.js';
 import { useDebounce } from '@hooks/useDebounce.js';
-import { base64ToArrayBuffer } from '../../../../../../../../../../../store/helpers/base64ToArrayBuffer.js';
-import { getExportedWasmFunctions } from '../../../../../../../../../../../store/helpers/getExportedWasmFunctions.js';
 
-const loadWasmAndGetFunctions = async (contractWasm, rpc, contractId, networkId, spaceId) => {
-  if (contractWasm === 'onChainContract') {
-    await rpc.configure({ spaceId, networkId });
-    const { codeBase64 } = await rpc.getContractWasm({ contractId });
-    contractWasm = codeBase64;
+const getOptionsAndArgsTemplates = (contractFunctions) => {
+  if (!contractFunctions) return { options: [], argsTemplates: {} };
+
+  const { isAbiSupported, functions, writeFunctions } = contractFunctions;
+
+  if (isAbiSupported) {
+    const options = Object.entries(writeFunctions).map(([key, value]) => ({
+      value: key,
+      label: key,
+      modifiers: value.modifiers,
+    }));
+    return { options, argsTemplates: writeFunctions };
   }
+  // If ABI is not supported and only WASM functions is present
+  const options = functions.map((fnName) => ({
+    value: fnName,
+    label: fnName,
+    modifiers: [],
+  }));
 
-  const arrayBuffer = base64ToArrayBuffer(contractWasm);
-  return getExportedWasmFunctions(arrayBuffer);
+  const argsTemplates = functions.reduce((acc, fnName) => {
+    acc[fnName] = {
+      argsTemplate: '',
+    };
+    return acc;
+  }, {});
+
+  return { options, argsTemplates };
 };
 
-export const useContractMethodsOptions = (form, getName, order) => {
+export const useContractMethodsOptions = (form, getName, order, loadContractFunctions) => {
   const { control } = form;
-  const { spaceId, networkId } = useParams();
+  const [isLoading, contractFunctions] = loadContractFunctions
   const [options, setOptions] = useState([]);
-  const rpc = useStoreEntity((store) => store.nearProtocol.rpcProvider);
+  const [argsTemplates, setArgsTemplates] = useState({});
   const contractId = useWatch({ control, name: getName('contractId.value') });
   const actions = useWatch({ control, name: 'actions' });
   const getContractWasm = useStoreEffect(
@@ -37,29 +53,18 @@ export const useContractMethodsOptions = (form, getName, order) => {
   ]);
 
   useEffect(() => {
-    if (!contractId) return setOptions([]);
+    if (isLoading || !contractId) return;
 
-    (async () => {
-      try {
-        if (!contractWasm) {
-          setOptions([]);
-          return;
-        }
+    if (contractWasm === 'onChainContract') {
+      const { options, argsTemplates } = getOptionsAndArgsTemplates(contractFunctions);
+      setOptions(options);
+      setArgsTemplates(argsTemplates);
+    } else {
+      const { options, argsTemplates } = getOptionsAndArgsTemplates(contractWasm);
+      setOptions(options);
+      setArgsTemplates(argsTemplates);
+    }
+  }, [contractId, contractWasm, actions.length, JSON.stringify(actions), contractFunctions]);
 
-        const exportedFunctions = await loadWasmAndGetFunctions(
-          contractWasm,
-          rpc,
-          contractId,
-          networkId,
-          spaceId,
-        );
-        setOptions(exportedFunctions.map((fn) => ({ value: fn.name, label: fn.name })));
-      } catch (e) {
-        console.log(e);
-        setOptions([]);
-      }
-    })();
-  }, [contractId, contractWasm]);
-
-  return options;
+  return { options, argsTemplates };
 };

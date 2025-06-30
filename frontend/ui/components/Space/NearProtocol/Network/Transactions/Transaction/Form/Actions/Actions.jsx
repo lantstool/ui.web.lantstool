@@ -1,14 +1,54 @@
-import { useFieldArray } from 'react-hook-form';
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { useFieldArray, useWatch } from 'react-hook-form';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { Action } from './Action/Action.jsx';
 import { AddAction } from './AddAction/AddAction.jsx';
+import { useParams } from 'react-router-dom';
+import { useStoreEffect } from '@react-vault';
+import { useLoader } from '@hooks/useLoader.js';
 import cn from './Actions.module.scss';
 
+const BLOCKERS = new Set([
+  'CreateAccount',
+  'DeleteAccount',
+  'DeleteKey',
+  'DeployContract',
+  'AddKey',
+]);
+
+
+// Return contractId without blockers before first FunctionCall
+// or null for a quick return of getContractFunctions
+const getContractIdBeforeBlockers = (actions) => {
+  const firstFnIdx = actions.findIndex((a) => a.type === 'FunctionCall');
+  if (firstFnIdx === -1) return null;
+
+  const isContractIdBeforeBlockers = !actions.slice(0, firstFnIdx).some((a) => BLOCKERS.has(a.type));
+  const contractId = actions.find((action) => action?.type === 'FunctionCall')?.contractId?.value;
+
+  return isContractIdBeforeBlockers ? contractId : null;
+};
+
 export const Actions = ({ form }) => {
+  const { control } = form;
+  const { spaceId, networkId } = useParams();
+  const getContractFunctions = useStoreEffect(
+    (store) => store.nearProtocol.contractsMethods.getContractFunctions,
+  );
+  const actions = useWatch({ control, name: 'actions' });
+
   const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: 'actions',
   });
+
+  const contractId = getContractIdBeforeBlockers(actions);
+
+  const loadContractFunctions = useLoader(
+    getContractFunctions,
+    { spaceId, networkId, contractId },
+    [spaceId, networkId, contractId],
+  );
+
 
   return (
     <div className={cn.actions}>
@@ -38,7 +78,14 @@ export const Actions = ({ form }) => {
         />
       </div>
       {fields.map((action, index) => (
-        <Action key={action.id} index={index} action={action} form={form} remove={remove} />
+        <Action
+          key={action.id}
+          index={index}
+          action={action}
+          form={form}
+          remove={remove}
+          loadContractFunctions={loadContractFunctions}
+        />
       ))}
       <AddAction append={append} fields={fields} />
     </div>

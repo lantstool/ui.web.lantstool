@@ -7,7 +7,7 @@ import { DeleteKey } from './DeleteKey/DeleteKey.jsx';
 import { DeleteAccount } from './DeleteAccount/DeleteAccount.jsx';
 import cn from './Action.module.scss';
 
-export const Action = ({ form, action, index, remove }) => {
+export const Action = ({ form, action, index, remove, loadContractFunctions }) => {
   const { type } = action;
   const order = index + 1;
 
@@ -60,6 +60,7 @@ export const Action = ({ form, action, index, remove }) => {
           order={order}
           removeAction={removeAction}
           iconStyle={cn.functionCall}
+          loadContractFunctions={loadContractFunctions}
         />
       )}
       {type === 'DeleteKey' && (
