@@ -22,7 +22,7 @@ export const useContractMethodsOptions = (form, getName, order, loadContractFunc
   const [_, functions] = useLoader(
     getContractWasm,
     { actions: debouncedActions, order, contractFunctions },
-    [JSON.stringify(debouncedActions), contractFunctions, contractId],
+    [JSON.stringify(debouncedActions), contractFunctions],
   );
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const useContractMethodsOptions = (form, getName, order, loadContractFunc
     const { options, argsTemplates } = getOptionsAndArgsTemplates(functions, 'write');
     setOptions(options);
     setArgsTemplates(argsTemplates);
-  }, [contractId, functions, actions.length]);
+  }, [contractId, functions]);
 
   return { options, argsTemplates };
 };

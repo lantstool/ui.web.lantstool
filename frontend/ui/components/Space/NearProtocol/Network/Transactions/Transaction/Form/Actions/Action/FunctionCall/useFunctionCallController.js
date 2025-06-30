@@ -37,11 +37,13 @@ export const useFunctionCallController = (form, getName) => {
   // Sync contractId when we have createAccount or restrictedTypes
   useEffect(() => {
     if (isOnlyFunctionCallOrTransfer) return;
+
     actions.forEach((action, idx) => {
       if (action.type !== 'FunctionCall') return;
+
       if (action.contractId === receiverId) return;
       setValue(`actions.${idx}.contractId`, receiverId);
-
+      //Clear methodName and args when receiver is null
       if (!receiverId) {
         setValue(`actions.${idx}.methodName`, '');
         setValue(`actions.${idx}.args`, '');

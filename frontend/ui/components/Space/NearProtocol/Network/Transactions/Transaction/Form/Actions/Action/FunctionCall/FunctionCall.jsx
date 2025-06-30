@@ -19,7 +19,7 @@ export const FunctionCall = ({
   getName,
   removeAction,
   order,
-                               loadContractFunctions,
+  loadContractFunctions,
 }) => {
   const { control } = form;
   const ContractOptions = useAccountsOptions();
@@ -34,6 +34,7 @@ export const FunctionCall = ({
 
   const onChangeContract = (field) => (event) => {
     if (field.value?.value === event?.value) return;
+
     form.setValue('receiverId', event);
     actions.forEach((action, index) => {
       if (action.type === 'FunctionCall') {

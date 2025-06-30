@@ -4,6 +4,7 @@ export const getOptionsAndArgsTemplates = (contractFunctions, functionsType) => 
   const { isAbiSupported, functions, writeFunctions, readFunctions } = contractFunctions;
 
   const fn = functionsType === 'read' ? readFunctions : writeFunctions
+
   if (isAbiSupported) {
     const options = Object.entries(fn).map(([key, value]) => ({
       value: key,

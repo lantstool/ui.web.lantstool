@@ -36,12 +36,12 @@ const loadFunctionsFromAbi = async (fileName, codeHash, getContractAbiObject, se
 
 const loadFunctionsFromWasm = async (fileName, codeHash, store, setFunctions) => {
   try {
-    const wasmB64 = await getWasm({ fileName }, store);
-    const buffer = base64ToArrayBuffer(wasmB64);
-    const exported = await getExportedWasmFunctions(buffer);
+    const wasm= await getWasm({ fileName }, store);
+    const buffer = base64ToArrayBuffer(wasm);
+    const exportedFunctions = await getExportedWasmFunctions(buffer);
     const functions = {
       isAbiSupported: false,
-      functions: exported.map((f) => f.name),
+      functions: exportedFunctions.map((f) => f.name),
     };
 
     setFunctions({ codeHash, functions });
@@ -94,7 +94,7 @@ const findFunctionsForOrder = async (
     );
     if (wasmFunctions) return wasmFunctions;
   }
-  //If we haven't functions return null when CreateAccount or preloaded contract functions
+  //If we haven't functions return null or preloaded contractFunctions from chain
   return hasCreateAccount ? null : contractFunctions;
 };
 
