@@ -28,7 +28,7 @@ export const useFunctionCallController = (form, getName) => {
       if (action.type !== 'FunctionCall') return;
 
       //If receiverId exist add first time value to new contract id
-      if (receiverId && currentValue !== newValue || !currentValue) {
+      if ((receiverId && currentValue !== newValue) || !currentValue) {
         setValue(`actions.${index}.contractId`, receiverId);
       }
     });
@@ -37,9 +37,14 @@ export const useFunctionCallController = (form, getName) => {
   // Sync contractId when we have createAccount or restrictedTypes
   useEffect(() => {
     if (isOnlyFunctionCallOrTransfer) return;
-    actions.forEach((action, index) => {
-      if (action.type === 'FunctionCall' && action.contractId !== receiverId) {
-        setValue(`actions.${index}.contractId`, receiverId);
+    actions.forEach((action, idx) => {
+      if (action.type !== 'FunctionCall') return;
+      if (action.contractId === receiverId) return;
+      setValue(`actions.${idx}.contractId`, receiverId);
+
+      if (!receiverId) {
+        setValue(`actions.${idx}.methodName`, '');
+        setValue(`actions.${idx}.args`, '');
       }
     });
   }, [receiverId]);

@@ -15,7 +15,7 @@ import { exportOneAsJsonFile } from './exportOne/exportOneAsJsonFile.js';
 import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
 import { importOneFromJson } from './importOne/importOneFromJson.js';
 import { importOneFromFile } from './importOne/importOneFromFile.js';
-import { getContractWasm } from './getContractWasm.js';
+import { getContractFunctions } from './getContractFunctions.js';
 
 export const effects = {
   getList,
@@ -35,5 +35,5 @@ export const effects = {
   exportOneAsZip,
   importOneFromJson,
   importOneFromFile,
-  getContractWasm,
+  getContractFunctions,
 };
