@@ -3,19 +3,16 @@ import { useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 
+//We search contractId before CreateContract action
+//because we don't want to Fetch getContractFunctions if we have CreateContract.
+const getContractId = (actions) => {
+  const functionCall = actions.find((a) => a.type === 'FunctionCall');
+  if (!functionCall) return null;
 
-//We search contractId before CreateContract  action
-//because we don't want to Fetch getContractFunctions if we have BLOCKERS.
-const getContractIdBeforeBlockers = (actions) => {
-  const firstFnIdx = actions.findIndex((a) => a.type === 'FunctionCall');
-  if (firstFnIdx === -1) return null;
+  const hasCreateAccount = actions.some((action) => action?.type === 'CreateAccount');
 
-  const contractId = actions.find((action) => action?.type === 'FunctionCall')?.contractId?.value;
-  const hasCreateAccount = actions.find((action) => action?.type === 'CreateAccount')
-
-  return hasCreateAccount ? null : contractId;
+  return hasCreateAccount ? null : functionCall.contractId?.value || null;
 };
-
 
 export const useLoadContractFunctions = (control) => {
   const [isLoading, setLoading] = useState(true);
@@ -26,7 +23,7 @@ export const useLoadContractFunctions = (control) => {
     (store) => store.nearProtocol.contractsMethods.getContractFunctions,
   );
 
-  const contractId = getContractIdBeforeBlockers(actions);
+  const contractId = getContractId(actions);
 
   useEffect(() => {
     if (!contractId) {
