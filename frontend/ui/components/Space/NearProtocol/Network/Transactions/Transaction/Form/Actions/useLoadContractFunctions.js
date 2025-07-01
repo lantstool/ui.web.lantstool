@@ -4,18 +4,16 @@ import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 
 
-const BLOCKERS = ['CreateAccount', 'DeployContract'];
-
-//We search contractId before CreateContract or DeployContract actions
+//We search contractId before CreateContract  action
 //because we don't want to Fetch getContractFunctions if we have BLOCKERS.
 const getContractIdBeforeBlockers = (actions) => {
   const firstFnIdx = actions.findIndex((a) => a.type === 'FunctionCall');
   if (firstFnIdx === -1) return null;
 
   const contractId = actions.find((action) => action?.type === 'FunctionCall')?.contractId?.value;
-  const isContractIdBeforeBlockers = !actions.slice(0, firstFnIdx).some((a) => BLOCKERS[a]);
+  const hasCreateAccount = actions.find((action) => action?.type === 'CreateAccount')
 
-  return isContractIdBeforeBlockers ? contractId : null;
+  return hasCreateAccount ? null : contractId;
 };
 
 

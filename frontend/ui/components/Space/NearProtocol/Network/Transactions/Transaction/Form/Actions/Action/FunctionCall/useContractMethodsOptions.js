@@ -12,7 +12,7 @@ export const useContractMethodsOptions = (form, getName, order, loadContractFunc
   const [argsTemplates, setArgsTemplates] = useState({});
   const contractId = useWatch({ control, name: getName('contractId.value') });
   const actions = useWatch({ control, name: 'actions' });
-  const getContractWasm = useStoreEffect(
+  const getContractFunctions = useStoreEffect(
     (store) => store.nearProtocol.transactions.getContractFunctions,
   );
 
@@ -20,7 +20,7 @@ export const useContractMethodsOptions = (form, getName, order, loadContractFunc
   const debouncedActions = useDebounce(actions, 200);
 
   const [_, functions] = useLoader(
-    getContractWasm,
+    getContractFunctions,
     { actions: debouncedActions, order, contractFunctions },
     [JSON.stringify(debouncedActions), contractFunctions],
   );

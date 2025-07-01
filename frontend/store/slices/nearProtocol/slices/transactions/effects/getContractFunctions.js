@@ -121,6 +121,6 @@ export const getContractFunctions = effect(async ({ store, payload }) => {
       contractFunctions,
     );
   } catch (e) {
-    console.error(e);
+    console.log(e);
   }
 });
