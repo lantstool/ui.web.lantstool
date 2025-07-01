@@ -34,7 +34,7 @@ export const useContractMethodsOptions = (form, getName, order, loadContractFunc
     const { options, argsTemplates } = getOptionsAndArgsTemplates(functions, 'write');
     setOptions(options);
     setArgsTemplates(argsTemplates);
-  }, [contractId, functions]);
+  }, [contractId, functions, actions.lenght, JSON.stringify(actions), contractFunctions]);
 
   return { options, argsTemplates };
 };
