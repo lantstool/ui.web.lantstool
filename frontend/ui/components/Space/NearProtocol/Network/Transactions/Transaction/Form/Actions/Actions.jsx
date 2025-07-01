@@ -1,12 +1,17 @@
 import { useFieldArray } from 'react-hook-form';
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { Action } from './Action/Action.jsx';
 import { AddAction } from './AddAction/AddAction.jsx';
+import { useLoadContractFunctions } from './useLoadContractFunctions.js';
 import cn from './Actions.module.scss';
 
+
 export const Actions = ({ form }) => {
+  const { control } = form;
+  const loadContractFunctions = useLoadContractFunctions(control);
+
   const { fields, append, remove } = useFieldArray({
-    control: form.control,
+    control,
     name: 'actions',
   });
 
@@ -38,7 +43,14 @@ export const Actions = ({ form }) => {
         />
       </div>
       {fields.map((action, index) => (
-        <Action key={action.id} index={index} action={action} form={form} remove={remove} />
+        <Action
+          key={action.id}
+          index={index}
+          action={action}
+          form={form}
+          remove={remove}
+          loadContractFunctions={loadContractFunctions}
+        />
       ))}
       <AddAction append={append} fields={fields} />
     </div>

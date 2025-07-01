@@ -2,13 +2,14 @@ import { effect } from '@react-vault';
 import { base64ToArrayBuffer } from '../../../../../helpers/base64ToArrayBuffer.js';
 import { getExportedWasmFunctions } from '../../../../../helpers/getExportedWasmFunctions.js';
 import { createContractFnArgsTemplates } from '../helpers/createContractFnArgsTemplates/createContractFnArgsTemplates.js';
+import { getJsonABI } from '../../../helpers/getJsonAbi.js';
 
 const getAbiFnsFromResult = async (abiRequestResult) => {
   if (abiRequestResult.status !== 'fulfilled') return;
 
   try {
     const { readFunctions, writeFunctions } = await createContractFnArgsTemplates(
-      abiRequestResult.value.result,
+      getJsonABI(abiRequestResult.value.result),
     );
 
     return {
