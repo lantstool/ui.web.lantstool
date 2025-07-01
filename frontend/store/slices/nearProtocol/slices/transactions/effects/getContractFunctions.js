@@ -98,7 +98,7 @@ const findFunctionsForOrder = async (
   return hasCreateAccount ? null : contractFunctions;
 };
 
-// Searching contract WASM from the nearest DeployContract before the FunctionCall
+// Getting contract functions from the nearest DeployContract before the FunctionCall
 export const getContractFunctions = effect(async ({ store, payload }) => {
   const { actions, order, contractFunctions } = payload;
   const [backend] = store.getEntities((store) => store.backend);

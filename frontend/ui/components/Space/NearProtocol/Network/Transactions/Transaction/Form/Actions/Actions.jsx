@@ -1,47 +1,19 @@
-import { useFieldArray, useWatch } from 'react-hook-form';
+import { useFieldArray } from 'react-hook-form';
 import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { Action } from './Action/Action.jsx';
 import { AddAction } from './AddAction/AddAction.jsx';
-import { useParams } from 'react-router-dom';
-import { useStoreEffect } from '@react-vault';
-import { useLoader } from '@hooks/useLoader.js';
+import { useLoadContractFunctions } from './useLoadContractFunctions.js';
 import cn from './Actions.module.scss';
 
-// Return contractId without blockers before first FunctionCall
-// or null for a quick return of getContractFunctions
-const getContractIdBeforeBlockers = (actions) => {
-  const firstFnIdx = actions.findIndex((a) => a.type === 'FunctionCall');
-  if (firstFnIdx === -1) return null;
-
-  const contractId = actions.find((action) => action?.type === 'FunctionCall')?.contractId?.value;
-  const BLOCKERS = ['CreateAccount', 'DeployContract'];
-  const isContractIdBeforeBlockers = !actions
-    .slice(0, firstFnIdx)
-    .some((a) => BLOCKERS[a]);
-
-  return isContractIdBeforeBlockers ? contractId : null;
-};
 
 export const Actions = ({ form }) => {
   const { control } = form;
-  const { spaceId, networkId } = useParams();
-  const getContractFunctions = useStoreEffect(
-    (store) => store.nearProtocol.contractsMethods.getContractFunctions,
-  );
-  const actions = useWatch({ control, name: 'actions' });
+  const loadContractFunctions = useLoadContractFunctions(control);
 
   const { fields, append, remove } = useFieldArray({
-    control: form.control,
+    control,
     name: 'actions',
   });
-
-  const contractId = getContractIdBeforeBlockers(actions);
-
-  const loadContractFunctions = useLoader(
-    getContractFunctions,
-    { spaceId, networkId, contractId },
-    [spaceId, networkId, contractId],
-  );
 
   return (
     <div className={cn.actions}>
