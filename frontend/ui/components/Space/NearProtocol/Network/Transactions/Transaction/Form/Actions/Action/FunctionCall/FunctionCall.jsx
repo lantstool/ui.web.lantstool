@@ -46,7 +46,7 @@ export const FunctionCall = ({
   };
 
   const onChangeMethods = (field) => (event) => {
-    const { argsTemplate } = argsTemplates[event?.value] || '';
+    const argsTemplate = argsTemplates?.[event?.value]?.argsTemplate || '';
     form.setValue(getName('args'), argsTemplate);
     field.onChange(event);
   };
