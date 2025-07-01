@@ -7,23 +7,17 @@ import { useStoreEffect } from '@react-vault';
 import { useLoader } from '@hooks/useLoader.js';
 import cn from './Actions.module.scss';
 
-const BLOCKERS = new Set([
-  'CreateAccount',
-  'DeleteAccount',
-  'DeleteKey',
-  'DeployContract',
-  'AddKey',
-]);
-
-
 // Return contractId without blockers before first FunctionCall
 // or null for a quick return of getContractFunctions
 const getContractIdBeforeBlockers = (actions) => {
   const firstFnIdx = actions.findIndex((a) => a.type === 'FunctionCall');
   if (firstFnIdx === -1) return null;
 
-  const isContractIdBeforeBlockers = !actions.slice(0, firstFnIdx).some((a) => BLOCKERS.has(a.type));
   const contractId = actions.find((action) => action?.type === 'FunctionCall')?.contractId?.value;
+  const BLOCKERS = ['CreateAccount', 'DeployContract'];
+  const isContractIdBeforeBlockers = !actions
+    .slice(0, firstFnIdx)
+    .some((a) => BLOCKERS[a]);
 
   return isContractIdBeforeBlockers ? contractId : null;
 };
@@ -48,7 +42,6 @@ export const Actions = ({ form }) => {
     { spaceId, networkId, contractId },
     [spaceId, networkId, contractId],
   );
-
 
   return (
     <div className={cn.actions}>
