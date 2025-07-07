@@ -2,9 +2,12 @@
 @use '@styles/variables' as *;
 
 .backBtn {
+  grid-area: a;
+  margin-top: 40px;
+  margin-left: 40px;
+  height: fit-content;
+  width: fit-content;
   position: fixed;
-  top: 80px;
-  margin-right: 820px;
 }
 
 .icon {
@@ -12,6 +15,8 @@
 }
 
 .key {
+  grid-area: b;
+  justify-self: center;
   padding: 40px 0;
   display: flex;
   flex-direction: column;

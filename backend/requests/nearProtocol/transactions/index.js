@@ -11,6 +11,7 @@ import { uploadContractToMemory } from './uploadContractToMemory.js';
 import { getU8Contract } from './getU8Contract.js';
 import { validateTransactionId } from './validateTransactionId.js';
 import { importOne } from './importOne.js';
+import { getContractAbiObject } from './getContractAbiObject.js';
 
 export const transactions = {
   create,
@@ -26,4 +27,5 @@ export const transactions = {
   getU8Contract,
   validateTransactionId,
   importOne,
+  getContractAbiObject,
 };

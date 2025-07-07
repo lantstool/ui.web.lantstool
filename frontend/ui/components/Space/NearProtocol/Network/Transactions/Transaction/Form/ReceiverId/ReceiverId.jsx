@@ -1,6 +1,6 @@
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
-import { FormDropdown } from '../../../../../../../_general/dropdown/FormDropdown.jsx';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useEffect, useRef } from 'react';
 import { MenuList } from '../_general/MenuList/MenuList.jsx';
 import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.jsx';
@@ -12,7 +12,8 @@ const restrictedTypes = ['AddKey', 'DeployContract', 'DeleteKey', 'DeleteAccount
 const getActionsState = (actions) => {
   const isRestricted = actions.some((action) => restrictedTypes.includes(action.type));
   const hasCreateAccount = actions.some((action) => action.type === 'CreateAccount');
-  return { isRestricted, hasCreateAccount };
+  const hasFunctionCall = actions.some((action) => action.type === 'FunctionCall');
+  return { isRestricted, hasCreateAccount, hasFunctionCall };
 };
 
 export const ReceiverId = ({ form }) => {
@@ -24,7 +25,8 @@ export const ReceiverId = ({ form }) => {
   const receiverId = watch('receiverId.value');
   const actions = watch('actions');
 
-  const { isRestricted, hasCreateAccount } = getActionsState(actions);
+  const { isRestricted, hasCreateAccount, hasFunctionCall } = getActionsState(actions);
+  const disableReceiverId = isRestricted || hasCreateAccount || hasFunctionCall;
 
   useEffect(() => {
     if (isRestricted && !hasCreateAccount) {
@@ -65,7 +67,7 @@ export const ReceiverId = ({ form }) => {
         control={control}
         isSearchable
         isClearable
-        isDisabled={isRestricted || hasCreateAccount}
+        isDisabled={disableReceiverId}
         options={options}
         creatableSelect
         label="Receiver Id"

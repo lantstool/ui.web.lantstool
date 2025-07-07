@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '../../../../../../_general/Button/Button.jsx';
-import { FormFileUploader } from '../../../../../../_general/fileUploader/FormFileUploader.jsx';
+import { Button } from '@gc/Button/Button.jsx';
+import { FormFileUploader } from '@gc/fileUploader/FormFileUploader.jsx';
 import { schema } from './schema.js';
 import cn from './UploadFile.module.scss';
 

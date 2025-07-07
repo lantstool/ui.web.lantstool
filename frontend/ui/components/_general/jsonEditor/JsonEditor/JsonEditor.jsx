@@ -3,8 +3,15 @@ import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
-import { jsonLanguage } from '@codemirror/lang-json';
+// import { javascript } from '@codemirror/lang-javascript';
+import { json5 } from 'codemirror-json5';
+import { linter } from '@codemirror/lint';
+import { json5ParseLinter } from '@gc/jsonEditor/JsonEditor/json5Linter.js';
+import { syntaxHighlighting } from '@codemirror/language';
+import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
+import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
+import { foldGutter } from '@codemirror/language';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
@@ -15,12 +22,34 @@ const getEditorClass = (label, dynamicErrorSpace) => {
   if (!label && !dynamicErrorSpace) return cn.editorNoLabelAndStaticErrorSpace;
 };
 
+const foldMarker = foldGutter({
+  markerDOM: (open) => {
+    const el = document.createElement('div');
+    el.className = 'cm-fold-marker';
+    el.textContent = open ? '−' : '+';
+    return el;
+  },
+});
+
+const getEditorExtensions = ({ withLineWrapping }) => {
+  const extensions = [
+    commentFolderExtension,
+    foldMarker,
+    json5(),
+    linter(json5ParseLinter()),
+    syntaxHighlighting(highlightStyle),
+  ];
+
+  if (withLineWrapping) extensions.push(EditorView.lineWrapping);
+  return extensions;
+};
+
 export const JsonEditor = ({
   value = '',
   onChange,
   onBlur,
   topbar,
-  title = 'json',
+  title = 'json5',
   readOnly = false,
   showClearBtn = true,
   showCopyBtn = true,
@@ -29,8 +58,10 @@ export const JsonEditor = ({
   dynamicErrorSpace,
   errorLabel,
   customTheme,
+  withLineWrapping,
 }) => {
   const clearValue = () => onChange('');
+  const extensions = getEditorExtensions({ withLineWrapping });
 
   return (
     <div className={cnm(cn.container, classes?.container)}>
@@ -61,8 +92,8 @@ export const JsonEditor = ({
         className={cnm(getEditorClass(topbar?.label, dynamicErrorSpace), classes?.editor)}
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
-        extensions={[jsonLanguage, EditorView.lineWrapping]}
-        basicSetup={{ tabSize: 2 }}
+        extensions={extensions}
+        basicSetup={{ foldGutter: false, tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>

@@ -1,6 +1,8 @@
 import { Controller } from 'react-hook-form';
 import { JsonEditor } from './JsonEditor/JsonEditor.jsx';
 
+const defaultErrorExtractor = (error) => error?.message;
+
 export const FormJsonEditor = ({
   name,
   control,
@@ -12,7 +14,9 @@ export const FormJsonEditor = ({
   customTheme,
   dynamicErrorSpace,
   errorLabel,
-  errorExtractor = (error) => error?.message,
+  errorExtractor = defaultErrorExtractor,
+  withLineWrapping,
+  title,
 }) => (
   <Controller
     name={name}
@@ -32,6 +36,8 @@ export const FormJsonEditor = ({
         error={errorExtractor(error)}
         dynamicErrorSpace={dynamicErrorSpace}
         errorLabel={errorLabel}
+        withLineWrapping={withLineWrapping}
+        title={title}
       />
     )}
   />

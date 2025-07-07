@@ -15,7 +15,7 @@
 }
 
 @mixin colorScheme($bgColor, $textColor, $iconColor) {
-  @include text-sm-medium;
+  //@include text-sm-medium;
   height: max-content;
   display: flex;
   align-items: center;
@@ -30,6 +30,14 @@
   .iconBase {
     background-color: $iconColor;
   }
+}
+
+.medium {
+  @include text-sm-medium;
+}
+
+.small {
+  @include text-xs-medium;
 }
 
 .grey {

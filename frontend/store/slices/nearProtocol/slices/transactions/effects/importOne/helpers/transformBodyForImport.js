@@ -31,23 +31,24 @@ const transformers = {
   DeleteAccount,
 };
 
-const transformActions = (actions, store, transactionConfig) =>
+const transformActions = ({ actions, store, transactionConfig, version }) =>
   Promise.all(
     actions.map((action) =>
       transformers[action.type]({
         action,
         store,
         transactionConfig,
+        version,
       }),
     ),
   );
 
 export const transformBodyForImport = async (transaction, store, transactionConfig) => {
-  const { signerId, signerKey, receiverId, actions } = transaction;
+  const { signerId, signerKey, receiverId, actions, version } = transaction;
   return {
     signerId: utils.getDropdownValueForImport(signerId),
     signerKey: utils.getDropdownValueForImport(signerKey),
     receiverId: utils.getDropdownValueForImport(receiverId),
-    actions: await transformActions(actions, store, transactionConfig),
+    actions: await transformActions({ actions, store, transactionConfig, version }),
   };
 };

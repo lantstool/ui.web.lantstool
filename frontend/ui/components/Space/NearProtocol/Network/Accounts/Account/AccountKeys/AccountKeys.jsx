@@ -1,6 +1,6 @@
 import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
-import { Items } from './Items/Items.jsx';
+import {KeyList} from './KeyList/KeyList.jsx';
 import { useLoader } from '@hooks/useLoader.js';
 import cn from './AccountKeys.module.scss';
 
@@ -23,8 +23,8 @@ export const AccountKeys = () => {
 
   return (
     <div className={cn.keys}>
-      <Items keys={keys.fullAccess} type="fullAccess" name="Full Access" />
-      <Items keys={keys.functionCall} type="functionCall" name="Function Call" />
+      <KeyList keys={keys.fullAccess} type="fullAccess" name="Full Access" />
+      <KeyList keys={keys.functionCall} type="functionCall" name="Function Call" />
     </div>
   );
 };

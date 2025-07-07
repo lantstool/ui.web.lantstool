@@ -1,8 +1,16 @@
-import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { useAccountsOptions } from '../../../../../../_general/hooks/useAccountsOptions.js';
 
-export const ContractId = ({ control }) => {
+export const ContractId = ({ control, form }) => {
   const options = useAccountsOptions();
+
+  const onChange = (field) => (event) => {
+    if (field.value?.value === event?.value) return
+    field.onChange(event);
+    form.setValue('methodName', null);
+    form.setValue('args', '');
+  };
+
   return (
     <FormDropdown
       name="contractId"
@@ -12,6 +20,7 @@ export const ContractId = ({ control }) => {
       isSearchable
       isClearable
       creatableSelect
+      onChange={onChange}
     />
   );
 };

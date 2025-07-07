@@ -15,21 +15,7 @@ export const baseEditorStyles = {
   },
   '.cm-line': {
     fontFamily: 'Roboto Mono',
-    color: '#212529',
   },
-  '.ͼe': {
-    color: '#212529',
-  },
-  '.ͼb': {
-    color: '#212529',
-  },
-  '.ͼc': {
-    color: '#212529',
-  },
-  '.ͼd': {
-    color: '#212529',
-  },
-
   '&.cm-editor': {
     overflow: 'hidden',
   },
@@ -43,6 +29,15 @@ export const baseEditorStyles = {
     backgroundColor: '#F1F3F5',
     color: '#868E96',
     border: 'none',
+
+  },
+  '.cm-fold-marker': {
+    minWidth: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '14px',
+    cursor: 'pointer',
   },
   '.cm-lineNumbers .cm-gutterElement': {
     minWidth: '30px',
