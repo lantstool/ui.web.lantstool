@@ -8,9 +8,14 @@ import cn from './Transactions.module.scss';
 
 export const Transactions = () => {
   const txList = useStoreState((store) => store.nearProtocol.transactions.txList);
-  const getList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
+  const foldersList = useStoreState((store) => store.nearProtocol.folders.records);
+  const getTransactionsList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
+  const getFoldersList = useStoreEffect((store) => store.nearProtocol.folders.getList);
+
   const { spaceId, networkId } = useParams();
-  const [isLoading] = useLoader(getList, { spaceId, networkId }, [spaceId, networkId]);
+  const [isLoading] = useLoader(getTransactionsList, { spaceId, networkId }, [spaceId, networkId]);
+
+  useLoader(getFoldersList, { spaceId, networkId }, [spaceId, networkId]);
 
   useManageRouting();
 
@@ -19,7 +24,7 @@ export const Transactions = () => {
 
   return (
     <div className={cn.transactions}>
-      <List txList={txList} />
+      <List txList={txList} foldersList={foldersList} />
       <Outlet />
     </div>
   );

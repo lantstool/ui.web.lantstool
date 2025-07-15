@@ -4,7 +4,7 @@
 
 .list {
   grid-area: a;
-  min-width: 239px;
+  min-width: 249px;
   padding: 8px 0;
   display: flex;
   gap: 8px;
@@ -83,6 +83,11 @@
 
 .addIcon {
   @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
+}
+
+.FolderIcon {
+  @include icon('@assets/icons/add-folder-outline.svg');
   background: $neutral-600;
 }
 
