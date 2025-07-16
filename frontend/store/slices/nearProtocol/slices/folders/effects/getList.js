@@ -10,7 +10,7 @@ export const getList = effect(async ({ store, slice, payload }) => {
     //Transform collapsed for boolean type because DB doesn't support boolean
     const newList = list.map((item) => ({
       ...item,
-      collapsed: item.collapsed === 0,
+      collapsed: item.collapsed === 1,
     }));
 
     setList(newList);

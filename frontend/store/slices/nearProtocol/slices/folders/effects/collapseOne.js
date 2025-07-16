@@ -2,19 +2,21 @@ import { effect } from '@react-vault';
 
 export const collapseOne = effect(async ({ store, slice, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
-  const { spaceId, networkId, item, collapsed } = payload;
+  const { spaceId, networkId, item, wrapperProps } = payload;
+  const { collapsed, onCollapse } = wrapperProps;
   const updateOne = slice.getActions((slice) => slice.updateOne);
 
-  //We transform to an integer because DB does not support boolean type
-  const isCollapsed = collapsed === true ? 1 : 0;
-
   try {
+    //We transform to an integer because DB does not support boolean type
+    const isCollapsed = collapsed ? 0 : 1;
+
     await backend.sendRequest('nearProtocol.folders.collapseOne', {
       spaceId,
       networkId,
       folderId: item.folderId,
       collapsed: isCollapsed,
     });
+    onCollapse();
     updateOne({ item });
   } catch (e) {
     console.log(e);

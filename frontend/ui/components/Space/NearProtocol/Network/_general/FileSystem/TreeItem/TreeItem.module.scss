@@ -10,8 +10,6 @@
   }
 
   cursor: auto !important;
-  display: flex;
-  align-items: center;
   width: 100%;
   margin-bottom: 2px !important;
   border-radius: 8px;
@@ -23,8 +21,9 @@
 
 .folderWrapper {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
   align-items: center;
-  gap: 6px;
 }
 
 .collapseButton {
@@ -64,6 +63,7 @@
 .folderIcon {
   @include icon('@assets/icons/folder-outline.svg');
   background: $neutral-600;
+  //width: 11px;
 }
 
 .link {
@@ -72,7 +72,6 @@
 }
 
 .title {
-  //width: 208px;
   margin: 0;
   font-size: 14px;
   overflow: hidden;
@@ -83,4 +82,25 @@
 
 .active {
   background-color: $neutral-200;
+}
+
+.deleteButton{
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  &:hover{
+    .deleteIcon{
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.deleteIcon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
+  background-color: $neutral-600;
 }

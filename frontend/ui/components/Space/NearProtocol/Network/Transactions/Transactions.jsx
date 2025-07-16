@@ -11,16 +11,22 @@ export const Transactions = () => {
   const foldersList = useStoreState((store) => store.nearProtocol.folders.records);
   const getTransactionsList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
   const getFoldersList = useStoreEffect((store) => store.nearProtocol.folders.getList);
-
   const { spaceId, networkId } = useParams();
-  const [isLoading] = useLoader(getTransactionsList, { spaceId, networkId }, [spaceId, networkId]);
 
-  useLoader(getFoldersList, { spaceId, networkId }, [spaceId, networkId]);
+  const [isLoadingTx] = useLoader(getTransactionsList, { spaceId, networkId }, [
+    spaceId,
+    networkId,
+  ]);
+
+  const [isLoadingFolders] = useLoader(getFoldersList, { spaceId, networkId }, [
+    spaceId,
+    networkId,
+  ]);
 
   useManageRouting();
 
-  if (isLoading) return null;
-  if (txList.length === 0) return <Empty />;
+  if (isLoadingTx || isLoadingFolders) return null;
+  if (txList.length === 0 && foldersList.length === 0) return <Empty />;
 
   return (
     <div className={cn.transactions}>
