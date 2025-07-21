@@ -18,10 +18,11 @@ export const Transactions = () => {
     networkId,
   ]);
 
-  const [isLoadingFolders] = useLoader(getFoldersList, { spaceId, networkId }, [
-    spaceId,
-    networkId,
-  ]);
+  const [isLoadingFolders] = useLoader(
+    getFoldersList,
+    { spaceId, networkId, type: 'transaction' },
+    [spaceId, networkId],
+  );
 
   useManageRouting();
 
@@ -31,6 +32,7 @@ export const Transactions = () => {
   return (
     <div className={cn.transactions}>
       <List txList={txList} foldersList={foldersList} />
+      {foldersList.length !== 0 && <Empty />}
       <Outlet />
     </div>
   );

@@ -1,4 +1,4 @@
-import { Popper } from '../../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
 import cn from './DropDown.module.scss';

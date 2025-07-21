@@ -1,0 +1,34 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: calc(100% - 15px);
+  height: 100%;
+  padding: 8px;
+
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+  }
+}
+
+.children {
+  padding-left: 28px;
+  width: calc(100% - 36px);
+}
+
+.active {
+  background-color: $neutral-200;
+}
+
+.title {
+  padding-left: 20px;
+}
+
+.shortTitle{
+  padding-left: 20px;
+}

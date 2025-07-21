@@ -1,0 +1,25 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.treeItem {
+  border: none !important;
+
+  :global(.dnd-sortable-tree_simple_tree-item) {
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  cursor: auto !important;
+  width: 100%;
+  margin-bottom: 2px !important;
+  border-radius: 8px;
+
+  :global(.dnd-sortable-tree_simple_tree-item) {
+    border-radius: 8px !important;
+  }
+}
+
+.active {
+  background-color: $neutral-200;
+}

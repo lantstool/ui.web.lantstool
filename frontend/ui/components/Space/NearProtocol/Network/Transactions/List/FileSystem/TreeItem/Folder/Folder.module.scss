@@ -2,28 +2,23 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
-.treeItem {
-  border: none !important;
-  :global(.dnd-sortable-tree_simple_tree-item) {
-    padding: 8px !important;
-    border: none !important;
-  }
-
-  cursor: auto !important;
+.folder {
+  display: flex;
+  gap: 12px;
   width: 100%;
-  margin-bottom: 2px !important;
+  height: 100%;
+  padding: 8px;
   border-radius: 8px;
+  justify-content: space-between;
+
+  align-items: center;
   &:hover {
     background-color: $neutral-200;
-    cursor: pointer;
   }
 }
 
-.folderWrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
+.activeFolder {
+  background-color: $neutral-200;
 }
 
 .collapseButton {
@@ -34,8 +29,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 8px;
+  height: 8px;
   cursor: pointer;
   padding: 0;
 }
@@ -57,34 +52,24 @@
 .titleWrapper {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+}
+
+@mixin folderIcon {
+  @include icon('@assets/icons/folder-outline.svg');
+  background: $neutral-600;
+}
+
+.emptyFolderIcon {
+  @include folderIcon;
+  margin-left: 16px;
 }
 
 .folderIcon {
-  @include icon('@assets/icons/folder-outline.svg');
-  background: $neutral-600;
-  //width: 11px;
+  @include folderIcon;
 }
 
-.link {
-  width: 100%;
-  height: 100%;
-}
-
-.title {
-  margin: 0;
-  font-size: 14px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: $neutral-800;
-}
-
-.active {
-  background-color: $neutral-200;
-}
-
-.deleteButton{
+.deleteButton {
   padding: 0;
   margin: 0;
   border: none;
@@ -93,8 +78,8 @@
   justify-content: center;
   background: none;
   cursor: pointer;
-  &:hover{
-    .deleteIcon{
+  &:hover {
+    .deleteIcon {
       background-color: $neutral-800;
     }
   }

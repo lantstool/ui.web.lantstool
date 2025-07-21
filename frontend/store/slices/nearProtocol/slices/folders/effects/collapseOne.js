@@ -4,7 +4,7 @@ export const collapseOne = effect(async ({ store, slice, payload }) => {
   const [backend] = store.getEntities((store) => store.backend);
   const { spaceId, networkId, item, wrapperProps } = payload;
   const { collapsed, onCollapse } = wrapperProps;
-  const updateOne = slice.getActions((slice) => slice.updateOne);
+  const collapse = slice.getActions((slice) => slice.collapse);
 
   try {
     //We transform to an integer because DB does not support boolean type
@@ -16,8 +16,9 @@ export const collapseOne = effect(async ({ store, slice, payload }) => {
       folderId: item.folderId,
       collapsed: isCollapsed,
     });
+
     onCollapse();
-    updateOne({ item });
+    collapse({ item });
   } catch (e) {
     console.log(e);
   }

@@ -1,4 +1,4 @@
-import { Popper } from '../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@gc/Button/Button.jsx';
 import { useState } from 'react';

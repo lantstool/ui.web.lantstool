@@ -1,16 +1,15 @@
 import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
+import { removeOne as removeTx } from '../transactions/removeOne.js';
 
-export const removeOne = async ({ execute, request }) => {
+export const removeTxFolder = async ({ execute, request }) => {
   const { spaceId, networkId, folderId, children } = request.body;
 
   // Step 1: Delete all transactions in this folder
-  if (Array.isArray(children) && children.length > 0) {
-    const txIds = children.map((tx) => `'${tx.transactionId}'`).join(', ');
-    const deleteTxQuery = `
-      DELETE FROM near_protocol_transactions
-      WHERE transactionId IN (${txIds});
-    `;
-    await execute(deleteTxQuery);
+  for (const { transactionId } of children) {
+    await removeTx({
+      execute,
+      request: { body: { spaceId, networkId, transactionId } },
+    });
   }
 
   // Step 2: Delete the folder
@@ -20,5 +19,6 @@ export const removeOne = async ({ execute, request }) => {
       AND networkId = @networkId
       AND folderId = @folderId;
   `;
+
   await execute(deleteFolderQuery, addPrefixToObjKeys({ spaceId, networkId, folderId }));
 };

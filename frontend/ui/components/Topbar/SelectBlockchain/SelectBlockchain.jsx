@@ -1,7 +1,7 @@
 import { useMatch, useNavigate } from 'react-router-dom';
 import { DropDownSelector } from '../_general/DropDownSelector/DropDownSelector.jsx';
 import { useState } from 'react';
-import { Popper } from '../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import cn from './SelectBlockchain.module.scss';
 
 export const SelectBlockchain = () => {

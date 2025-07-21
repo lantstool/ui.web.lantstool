@@ -1,7 +1,7 @@
-import { Popper } from '../../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
-import { Badge } from '../../../_general/Badge/Badge.jsx';
+import { Badge } from '@gc/Badge/Badge.jsx';
 import cn from './DropDown.module.scss';
 
 export const DropDown = ({ setOpen, isOpen, spaceId }) => {

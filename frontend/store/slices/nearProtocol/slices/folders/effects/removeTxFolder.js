@@ -15,10 +15,9 @@ const getDestination = (firstOrder, lastOrder, children, txList, activeTxId) => 
   const nextTx = txList.find((tx) => tx.order === lastOrder + 1);
 
   if (nextTx) return `../transactions/${nextTx.transactionId}`;
-
 };
 
-export const removeOne = effect(async ({ payload, slice, store }) => {
+export const removeTxFolder = effect(async ({ payload, slice, store }) => {
   const { spaceId, networkId, transactionId, item, navigate, closeModal } = payload;
 
   const [backend] = store.getEntities((store) => store.backend);
@@ -36,7 +35,7 @@ export const removeOne = effect(async ({ payload, slice, store }) => {
 
     const destination = getDestination(firstOrder, lastOrder, children, txList, transactionId);
 
-    await backend.sendRequest('nearProtocol.folders.removeOne', {
+    await backend.sendRequest('nearProtocol.folders.removeTxFolder', {
       spaceId,
       networkId,
       folderId: item.folderId,
