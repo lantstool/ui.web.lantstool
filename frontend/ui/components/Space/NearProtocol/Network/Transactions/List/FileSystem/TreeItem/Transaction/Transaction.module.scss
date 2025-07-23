@@ -2,7 +2,7 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
-.link {
+.transaction {
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -16,6 +16,12 @@
   }
 }
 
+.link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .children {
   padding-left: 28px;
   width: calc(100% - 36px);
@@ -26,9 +32,5 @@
 }
 
 .title {
-  padding-left: 20px;
-}
-
-.shortTitle{
-  padding-left: 20px;
+  margin-left: 20px;
 }

@@ -30,10 +30,16 @@ export const EditName = ({ name, itemId, updateName, styles }) => {
   };
 
   return isEditing ? (
-    <input {...register('name')} className={cnm(cn.input, styles)} autoFocus maxLength={100} onBlur={editName} />
+    <input
+      {...register('name')}
+      className={cnm(cn.input, styles)}
+      autoFocus
+      maxLength={100}
+      onBlur={editName}
+    />
   ) : (
-    <div className={cn.editName} onClick={changeMode}>
-      <h2 className={cnm(cn.title, styles)}>{name}</h2>
+    <div className={cnm(cn.editName, styles)} onClick={changeMode}>
+      <h2 className={cn.title}>{name}</h2>
       <span className={cn.icon} />
     </div>
   );

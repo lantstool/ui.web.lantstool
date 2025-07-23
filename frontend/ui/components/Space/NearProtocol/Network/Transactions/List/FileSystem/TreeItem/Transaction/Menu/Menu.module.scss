@@ -7,7 +7,8 @@
 }
 
 .menuIcon {
-  @include icon('@assets/icons/menu-dots-outline.svg');
+  @include icon('@assets/icons/menu-dots-vertical-outline.svg');
+  background-color: $neutral-600;
 }
 
 .container {
@@ -23,6 +24,7 @@
 }
 
 .menuButton {
+  position: relative;
   padding: 0;
   margin: 0;
   border: none;
@@ -31,6 +33,11 @@
   background: none;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
 }
 
 @mixin createBtn($borderRadius) {
@@ -58,9 +65,10 @@
   }
 }
 
-
 .activeBtn {
-  background-color: $neutral-200;
+  .menuIcon {
+    background-color: $neutral-800;
+  }
   .addIcon {
     background-color: $neutral-800;
   }
@@ -108,4 +116,3 @@
 .deleteIcon {
   @include icon('@assets/icons/trash-bin-outline.svg');
 }
-

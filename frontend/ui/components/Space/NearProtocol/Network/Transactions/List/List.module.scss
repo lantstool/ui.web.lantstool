@@ -18,30 +18,10 @@
   gap: 2px;
 }
 
-.createBtn {
-  width: 100%;
-  border: none;
-  gap: 8px;
-  padding: 8px;
-  display: flex;
-  justify-content: start;
-  background: none;
-  align-items: center;
-  border-radius: 8px;
-  &:hover {
-    background-color: $neutral-200;
-    cursor: pointer;
-    .title {
-      color: $neutral-800;
-    }
-    .addIcon {
-      background-color: $neutral-800;
-    }
-  }
-}
 
 .tooltip {
   border-radius: 8px;
+  width: 100%;
 }
 
 .importBtn {
@@ -60,6 +40,28 @@
   }
 }
 
+.importBtn {
+  width: 100%;
+  border: none;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  background: none;
+  align-items: center;
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+    .importIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
 .title {
   margin: 0;
   padding: 0;
@@ -68,17 +70,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
-}
-
-.scrollBar {
-  @include scrollbar;
-  overflow-x: hidden;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .addIcon {

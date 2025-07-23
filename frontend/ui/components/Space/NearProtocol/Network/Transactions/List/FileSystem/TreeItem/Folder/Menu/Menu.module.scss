@@ -7,7 +7,8 @@
 }
 
 .menuIcon {
-  @include icon('@assets/icons/menu-dots-outline.svg');
+  @include icon('@assets/icons/menu-dots-vertical-outline.svg');
+  background-color: $neutral-600;
 }
 
 .container {
@@ -31,6 +32,12 @@
   background: none;
   align-items: center;
   cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
 }
 
 @mixin createBtn($borderRadius) {
@@ -58,7 +65,6 @@
   }
 }
 
-
 .activeBtn {
   background-color: $neutral-200;
   .addIcon {
@@ -68,7 +74,6 @@
     color: $neutral-800;
   }
 }
-
 
 .folderButton {
   @include createBtn(4px);
@@ -92,4 +97,3 @@
 .deleteIcon {
   @include icon('@assets/icons/trash-bin-outline.svg');
 }
-

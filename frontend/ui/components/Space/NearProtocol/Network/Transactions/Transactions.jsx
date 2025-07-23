@@ -32,7 +32,7 @@ export const Transactions = () => {
   return (
     <div className={cn.transactions}>
       <List txList={txList} foldersList={foldersList} />
-      {foldersList.length !== 0 && <Empty />}
+      {foldersList.length !== 0 && txList.length === 0 && <Empty />}
       <Outlet />
     </div>
   );

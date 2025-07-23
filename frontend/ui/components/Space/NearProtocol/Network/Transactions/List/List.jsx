@@ -27,6 +27,7 @@ export const List = ({ txList, foldersList }) => {
           <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="top">
             <button className={cn.importBtn} onClick={openImport}>
               <span className={cn.importIcon} />
+              <h2 className={cn.title}>Import</h2>
             </button>
           </Tooltip>
         </div>
