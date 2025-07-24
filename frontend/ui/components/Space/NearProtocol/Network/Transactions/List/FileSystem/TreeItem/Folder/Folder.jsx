@@ -32,8 +32,13 @@ export const Folder = ({ item, wrapperProps }) => {
             </button>
           )}
           <span className={wrapperProps?.childCount > 0 ? cn.folderIcon : cn.emptyFolderIcon} />
-          <EditName name={item.name} itemId={item.folderId} updateName={updateName} />
         </div>
+        <EditName
+          styles={cn.editName}
+          name={item.name}
+          itemId={item.folderId}
+          updateName={updateName}
+        />
         <Menu item={item} isOpenMenu={isOpenMenu} openMenu={openMenu} closeMenu={closeMenu} />
       </div>
     </>

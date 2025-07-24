@@ -4,6 +4,7 @@
 .fileSystem {
   @include scrollbar();
   padding: 0;
+  margin-right: 2px;
   scrollbar-gutter: stable;
   overflow-x: hidden;
   height: 100%;

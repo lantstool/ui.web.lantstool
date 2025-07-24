@@ -7,7 +7,7 @@
   font-size: 14px;
   font-weight: 400;
   color: $neutral-800;
-  max-width: 149px;
+  width: 100%;
   padding: 0;
   margin: 0;
   background: none;
@@ -18,7 +18,7 @@
 .editName {
   display: flex;
   align-items: center;
-
+  max-width: calc(100% - 48px);
   cursor: text;
   gap: 6px;
   &:hover {
@@ -38,7 +38,6 @@
   font-size: 14px;
   color: $neutral-800;
   font-weight: 400;
-  max-width: 127px;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;

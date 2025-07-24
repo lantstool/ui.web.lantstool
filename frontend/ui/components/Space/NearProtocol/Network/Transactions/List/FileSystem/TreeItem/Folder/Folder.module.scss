@@ -5,7 +5,7 @@
 .folder {
   display: flex;
   gap: 12px;
-  width: 100%;
+  width: calc(100% - 16px);
   height: 100%;
   padding: 8px;
   border-radius: 8px;
@@ -15,6 +15,10 @@
   &:hover {
     background-color: $neutral-200;
   }
+}
+
+.editName{
+  width: calc(100% - 78px);
 }
 
 .activeFolder {

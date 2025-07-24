@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  width: calc(100% - 15px);
+  width: calc(100% - 16px);
   height: 100%;
   padding: 8px;
 
@@ -14,12 +14,6 @@
   &:hover {
     background-color: $neutral-200;
   }
-}
-
-.link {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 .children {

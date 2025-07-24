@@ -2,7 +2,7 @@ import { effect } from '@react-vault';
 
 const getDestination = (transactions, removedTxId, activeTxId) => {
   // If we have only 1 tx and delete it - redirect to '/transactions'
-  if (transactions.length === 1) return;
+  if (transactions.length === 1) return `..`;
   const index = transactions.findIndex(({ transactionId }) => transactionId === removedTxId);
   // If we want to delete a transaction that is not active and avoid redirecting
   if (activeTxId && activeTxId !== removedTxId) return activeTxId;

@@ -18,48 +18,27 @@
   We use it for update transactions order during reorder / remove tx operations
 */
 
-// export const getUpdateOrderQuery = (list) => {
-//   if (!list) throw new Error('Can`t reorder empty list');
-//
-//   const part1 = `UPDATE near_protocol_transactions SET "order" = CASE`;
-//   console.log(list);
-//   const part2 = list
-//     .map(({ transactionId, order }) => ` WHEN transactionId = '${transactionId}' THEN ${order}`)
-//     .join('');
-//
-//   const part3 = `ELSE "order" END WHERE transactionId IN`;
-//   const part4 = `(${list.map(({ transactionId }) => `'${transactionId}'`).join(', ')})`;
-//   console.log(part2);
-//   return `${part1}${part2} ${part3} ${part4}`;
-// };
-
-
-//TODO: improve and rework comments
 export const getUpdateOrderQuery = (list) => {
   if (!list) throw new Error('Can`t reorder empty list');
 
-  const part1 = `UPDATE near_protocol_transactions SET`;
+  const part1 = `UPDATE near_protocol_transactions SET "order" = CASE`;
 
-  const part2 =
-    ` "order" = CASE` +
-    list
-      .map(({ transactionId, order }) => ` WHEN transactionId = '${transactionId}' THEN ${order}`)
-      .join('') +
-    ` ELSE "order" END,`;
+  const part2 = list
+    .map(({ transactionId, order }) => ` WHEN transactionId = '${transactionId}' THEN ${order}`)
+    .join('');
 
-  const part3 =
-    ` "parentId" = CASE` +
-    list
-      .map(
-        ({ transactionId, parentId }) =>
-          ` WHEN transactionId = '${transactionId}' THEN ${parentId ? `'${parentId}'` : `NULL`}`,
-      )
-      .join('') +
-    ` ELSE "parentId" END`;
+  const part3 = `ELSE "order" END, "parentId" = CASE`;
 
-  const part4 = ` WHERE transactionId IN (${list
-    .map(({ transactionId }) => `'${transactionId}'`)
-    .join(', ')})`;
+  const part4 = list
+    .map(
+      ({ transactionId, parentId }) =>
+        ` WHEN transactionId = '${transactionId}' THEN ${parentId ? `'${parentId}'` : 'NULL'}`,
+    )
+    .join('');
 
-  return `${part1}${part2}${part3}${part4}`;
+  const part5 = `ELSE "parentId" END WHERE transactionId IN`;
+
+  const part6 = `(${list.map(({ transactionId }) => `'${transactionId}'`).join(', ')})`;
+
+  return `${part1}${part2} ${part3}${part4} ${part5} ${part6}`;
 };

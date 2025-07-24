@@ -2,14 +2,26 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
+.listWrapper {
+  display: flex;
+}
+
 .list {
-  grid-area: a;
-  min-width: 249px;
+  min-width: 250px;
+  max-width: 400px;
   padding: 8px 0;
   display: flex;
-  gap: 8px;
   flex-direction: column;
+  gap: 8px;
   background-color: $neutral-50;
+}
+
+.resizer {
+  width: 3px;
+  cursor: col-resize;
+  &:hover {
+    background-color: $neutral-600;
+  }
 }
 
 .topBar {
@@ -17,7 +29,6 @@
   margin: 0 8px;
   gap: 2px;
 }
-
 
 .tooltip {
   border-radius: 8px;
