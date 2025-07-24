@@ -2,14 +2,26 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
+.listWrapper {
+  display: flex;
+}
+
 .list {
-  grid-area: a;
-  min-width: 239px;
+  min-width: 250px;
+  max-width: 400px;
   padding: 8px 0;
   display: flex;
-  gap: 8px;
   flex-direction: column;
+  gap: 8px;
   background-color: $neutral-50;
+}
+
+.resizer {
+  width: 3px;
+  cursor: col-resize;
+  &:hover {
+    background-color: $neutral-600;
+  }
 }
 
 .topBar {
@@ -18,30 +30,9 @@
   gap: 2px;
 }
 
-.createBtn {
-  width: 100%;
-  border: none;
-  gap: 8px;
-  padding: 8px;
-  display: flex;
-  justify-content: start;
-  background: none;
-  align-items: center;
-  border-radius: 8px;
-  &:hover {
-    background-color: $neutral-200;
-    cursor: pointer;
-    .title {
-      color: $neutral-800;
-    }
-    .addIcon {
-      background-color: $neutral-800;
-    }
-  }
-}
-
 .tooltip {
   border-radius: 8px;
+  width: 100%;
 }
 
 .importBtn {
@@ -60,6 +51,28 @@
   }
 }
 
+.importBtn {
+  width: 100%;
+  border: none;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  background: none;
+  align-items: center;
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+    .importIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
 .title {
   margin: 0;
   padding: 0;
@@ -70,19 +83,13 @@
   line-height: 16px;
 }
 
-.scrollBar {
-  @include scrollbar;
-  overflow-x: hidden;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
 .addIcon {
   @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
+}
+
+.FolderIcon {
+  @include icon('@assets/icons/add-folder-outline.svg');
   background: $neutral-600;
 }
 

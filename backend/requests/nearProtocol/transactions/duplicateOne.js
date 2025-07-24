@@ -54,7 +54,8 @@ const duplicate = async (execute, targetId) => {
         @order,
         @createdAt,
         @editedAt,
-        @body
+        @body,
+        @parentId
       )
   `;
 
@@ -69,6 +70,7 @@ const duplicate = async (execute, targetId) => {
       createdAt,
       editedAt: null,
       body: target.body,
+      parentId: target.parentId,
     }),
   );
 };

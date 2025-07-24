@@ -1,0 +1,24 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.title {
+  @include text-lg-medium;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+}
+
+.deleteText {
+  @include text-lg-semibold;
+  color: $neutral-800;
+  padding: 0;
+  margin: 0;
+  word-break: break-all;
+}
+
+.subtitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  padding: 0;
+  margin: 0;
+}

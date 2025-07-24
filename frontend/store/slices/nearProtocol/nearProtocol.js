@@ -12,6 +12,7 @@ import { accounts } from './slices/accounts/accounts.js';
 import { keys } from './slices/keys/keys.js';
 import { utils } from './slices/utils/utils.js';
 import { contractsMethods } from './slices/contractsMethods/contractsMethods.js';
+import { folders } from './slices/folders/folders.js';
 
 export const nearProtocol = {
   // actions
@@ -28,4 +29,5 @@ export const nearProtocol = {
   keys,
   utils,
   contractsMethods,
+  folders,
 };
