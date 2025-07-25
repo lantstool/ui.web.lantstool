@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_calls (
   createdAt INTEGER NOT NULL,
   editedAt INTEGER,
   body TEXT NOT NULL,
+  parentId TEXT,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE

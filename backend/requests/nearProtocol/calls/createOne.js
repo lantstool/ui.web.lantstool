@@ -24,6 +24,7 @@ export const createOne = async ({ execute, request }) => {
       createdAt,
       editedAt: null,
       body: JSON.stringify(body),
+      parentId: null,
     }),
   );
 
