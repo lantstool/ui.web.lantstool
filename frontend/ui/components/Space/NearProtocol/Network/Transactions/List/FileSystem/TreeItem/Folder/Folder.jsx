@@ -25,20 +25,22 @@ export const Folder = ({ item, wrapperProps }) => {
   return (
     <>
       <div className={cnm(cn.folder, isOpenMenu && cn.activeFolder)}>
-        <div className={cn.titleWrapper}>
-          {wrapperProps?.childCount > 0 && (
-            <button onClick={onCollapse} className={cn.collapseButton}>
-              <span className={wrapperProps?.collapsed ? cn.plusIcon : cn.minusIcon} />
-            </button>
-          )}
-          <span className={wrapperProps?.childCount > 0 ? cn.folderIcon : cn.emptyFolderIcon} />
+        <div className={cn.wrapper}>
+          <div className={cn.titleWrapper}>
+            {wrapperProps?.childCount > 0 && (
+              <button onClick={onCollapse} className={cn.collapseButton}>
+                <span className={wrapperProps?.collapsed ? cn.plusIcon : cn.minusIcon} />
+              </button>
+            )}
+            <span className={wrapperProps?.childCount > 0 ? cn.folderIcon : cn.emptyFolderIcon} />
+          </div>
+          <EditName
+            styles={cn.editName}
+            name={item.name}
+            itemId={item.folderId}
+            updateName={updateName}
+          />
         </div>
-        <EditName
-          styles={cn.editName}
-          name={item.name}
-          itemId={item.folderId}
-          updateName={updateName}
-        />
         <Menu item={item} isOpenMenu={isOpenMenu} openMenu={openMenu} closeMenu={closeMenu} />
       </div>
     </>

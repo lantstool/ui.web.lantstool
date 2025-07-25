@@ -18,7 +18,6 @@ export const useResizableSidebar = ({ initialWidth, onResizeEnd }) => {
     return Math.max(min, Math.min(max, value));
   };
 
-
   // Called on every mousemove while dragging
   const handleMouseMove = (e) => {
     if (!ref.current) return;
@@ -31,7 +30,7 @@ export const useResizableSidebar = ({ initialWidth, onResizeEnd }) => {
   };
   // Finalize drag and trigger onResizeEnd callback
   const handleMouseUp = () => {
-    onResizeEnd?.(nextWidth.current);
+    onResizeEnd(nextWidth.current);
     isDragging.current = false;
 
     document.body.style.userSelect = '';
