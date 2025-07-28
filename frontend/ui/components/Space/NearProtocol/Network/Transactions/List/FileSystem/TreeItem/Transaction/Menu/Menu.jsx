@@ -1,7 +1,7 @@
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Popper } from '@gc/Popper/Popper.jsx';
-import { DeleteModal } from '../../_general/DeleteModal/DeleteModal.jsx';
+import { DeleteModal } from '../../../../../../_general/DeleteModal/DeleteModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import { ExportTransaction } from './ExportTransaction/ExportTransaction.jsx';
 import { useRef } from 'react';

@@ -1,5 +1,5 @@
 import { Popper } from '@gc/Popper/Popper.jsx';
-import { DeleteModal } from '../../_general/DeleteModal/DeleteModal.jsx';
+import { DeleteModal } from '../../../../../../_general/DeleteModal/DeleteModal.jsx';
 import { useToggler } from '@hooks/useToggler.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';

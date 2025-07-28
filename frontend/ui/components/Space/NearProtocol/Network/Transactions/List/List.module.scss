@@ -36,22 +36,6 @@
 }
 
 .importBtn {
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  background: none;
-  &:hover {
-    background-color: $neutral-200;
-    cursor: pointer;
-    .importIcon {
-      background-color: $neutral-800;
-    }
-  }
-}
-
-.importBtn {
   width: 100%;
   border: none;
   gap: 8px;
@@ -88,8 +72,8 @@
   background: $neutral-600;
 }
 
-.FolderIcon {
-  @include icon('@assets/icons/add-folder-outline.svg');
+.transactionIcon {
+  @include icon('@assets/icons/transaction-file-outline.svg');
   background: $neutral-600;
 }
 

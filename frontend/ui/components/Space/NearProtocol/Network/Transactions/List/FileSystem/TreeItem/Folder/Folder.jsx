@@ -1,4 +1,4 @@
-import { EditName } from '../_general/EditName/EditName.jsx';
+import { EditName } from '../../../../../_general/EditName/EditName.jsx';
 import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { Menu } from './Menu/Menu.jsx';

@@ -23,7 +23,7 @@ export const Call = ({ item, wrapperProps }) => {
         to={item.callId}
         className={cnm(cn.call, depth === 1 && cn.children, isActive && cn.active)}
       >
-        <EditName name={item.name} itemId={item.callId} updateName={updateName} styles={cn.title} />
+          <EditName name={item.name} itemId={item.callId} updateName={updateName} styles={cn.editName} />
         <Menu item={item} />
       </NavLink>
     </>

@@ -1,6 +1,6 @@
 import { NavLink, useParams } from 'react-router-dom';
 import { Menu } from './Menu/Menu.jsx';
-import { EditName } from '../_general/EditName/EditName.jsx';
+import { EditName } from '../../../../../_general/EditName/EditName.jsx';
 import { useStoreEffect } from '@react-vault';
 import cnm from 'classnames';
 import cn from './Transaction.module.scss';
@@ -26,7 +26,7 @@ export const Transaction = ({ item, wrapperProps }) => {
           name={item.name}
           itemId={item.transactionId}
           updateName={updateName}
-          styles={cn.title}
+          styles={cn.editName}
         />
         <Menu item={item} />
       </NavLink>

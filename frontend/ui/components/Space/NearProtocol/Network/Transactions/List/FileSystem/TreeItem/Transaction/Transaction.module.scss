@@ -5,6 +5,7 @@
 .transaction {
   display: flex;
   justify-content: space-between;
+
   gap: 12px;
   width: calc(100% - 16px);
   height: 100%;
@@ -18,13 +19,13 @@
 
 .children {
   padding-left: 28px;
-  width: calc(100% - 36px);
+  max-width: calc(100% - 36px);
 }
 
 .active {
   background-color: $neutral-200;
 }
 
-.title {
-  margin-left: 20px;
+.editName {
+  padding-left: 20px;
 }

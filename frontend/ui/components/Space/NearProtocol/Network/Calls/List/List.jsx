@@ -10,12 +10,13 @@ import { useResizableSidebar } from '../../_general/hooks/useResizeSidebar.js';
 import cn from './List.module.scss';
 
 export const List = ({ list, foldersList }) => {
-  const [isImportOpen, openImport, closeImport] = useToggler(false);
   const sidebarSize = useStoreState((store) => store.nearProtocol.callsSidebarSize);
   const updateSidebarSize = useStoreEffect((store) => store.nearProtocol.updateSidebarSize);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
   const importOneFromJson = useStoreEffect((store) => store.nearProtocol.calls.importOneFromJson);
   const importOneFromFile = useStoreEffect((store) => store.nearProtocol.calls.importOneFromFile);
+
+  const [isImportOpen, openImport, closeImport] = useToggler(false);
 
   const { spaceId, networkId } = useParams();
   const navigate = useNavigate();

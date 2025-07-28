@@ -20,11 +20,11 @@
 .wrapper {
   display: flex;
   gap: 8px;
-  width: calc(100% - 65px);
+  width: calc(100% - 24px);
 }
 
 .editName {
-  max-width: 100%;
+  max-width: calc(100% - 46px);
 }
 
 .activeFolder {

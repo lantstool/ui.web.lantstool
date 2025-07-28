@@ -32,6 +32,7 @@
   @include icon('@assets/icons/edit-rename-outline.svg');
   background-color: $neutral-600;
   visibility: hidden;
+  min-height: 16px;
   min-width: 16px;
 }
 

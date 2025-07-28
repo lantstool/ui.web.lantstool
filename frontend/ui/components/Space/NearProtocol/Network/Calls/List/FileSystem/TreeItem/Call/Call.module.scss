@@ -19,14 +19,13 @@
 
 .children {
   padding-left: 28px;
-  width: calc(100% - 36px);
+  max-width: calc(100% - 36px);
 }
 
 .active {
   background-color: $neutral-200;
 }
 
-.title {
-  max-width: calc(100% - 48px);
+.editName {
   padding-left: 20px;
 }
