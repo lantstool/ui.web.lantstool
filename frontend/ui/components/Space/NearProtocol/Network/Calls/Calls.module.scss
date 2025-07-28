@@ -1,5 +1,5 @@
 .calls {
-  grid-template-columns: 240px auto;
+  grid-template-columns: max-content auto;
   grid-template-rows: calc(100vh - 48px);
   max-height: calc(100vh - 48px);
   grid-template-areas: 'a b';

@@ -9,7 +9,7 @@ export const createOne = effect(async ({ store, slice, payload }) => {
     const folder = await backend.sendRequest('nearProtocol.folders.createOne', {
       spaceId,
       networkId,
-      type
+      type,
     });
 
     pushOneToList(folder);

@@ -2,14 +2,26 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
+.listWrapper {
+  display: flex;
+}
+
 .list {
-  grid-area: a;
-  min-width: 239px;
+  min-width: 250px;
+  max-width: 400px;
   padding: 8px 0;
   display: flex;
-  gap: 8px;
   flex-direction: column;
+  gap: 8px;
   background-color: $neutral-50;
+}
+
+.resizer {
+  width: 3px;
+  cursor: col-resize;
+  &:hover {
+    background-color: $neutral-600;
+  }
 }
 
 .topBar {
@@ -18,7 +30,28 @@
   gap: 2px;
 }
 
-.createBtn {
+.tooltip {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.importBtn {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .importIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.importBtn {
   width: 100%;
   border: none;
   gap: 8px;
@@ -34,26 +67,6 @@
     .title {
       color: $neutral-800;
     }
-    .addIcon {
-      background-color: $neutral-800;
-    }
-  }
-}
-
-.tooltip {
-  border-radius: 8px;
-}
-
-.exportBtn {
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  background: none;
-  &:hover {
-    background-color: $neutral-200;
-    cursor: pointer;
     .importIcon {
       background-color: $neutral-800;
     }
@@ -70,29 +83,12 @@
   line-height: 16px;
 }
 
-.scrollBar {
-  padding-right: 2px;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $neutral-400;
-  }
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.addIcon {
-  @include icon('@assets/icons/add-square-outline.svg');
+.importIcon {
+  @include icon('@assets/icons/import-outline.svg');
   background: $neutral-600;
 }
 
-.importIcon {
-  @include icon('@assets/icons/import-outline.svg');
+.callIcon {
+  @include icon('@assets/icons/calls-outline.svg');
   background: $neutral-600;
 }

@@ -1,0 +1,32 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.call {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 12px;
+  width: calc(100% - 16px);
+  height: 100%;
+  padding: 8px;
+
+  border-radius: 8px;
+  &:hover {
+    background-color: $neutral-200;
+  }
+}
+
+.children {
+  padding-left: 28px;
+  width: calc(100% - 36px);
+}
+
+.active {
+  background-color: $neutral-200;
+}
+
+.title {
+  max-width: calc(100% - 48px);
+  padding-left: 20px;
+}

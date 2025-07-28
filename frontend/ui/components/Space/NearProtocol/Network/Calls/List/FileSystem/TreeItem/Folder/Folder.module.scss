@@ -1,0 +1,101 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.folder {
+  display: flex;
+  gap: 8px;
+  width: calc(100% - 16px);
+  height: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  justify-content: space-between;
+
+  align-items: center;
+  &:hover {
+    background-color: $neutral-200;
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  width: calc(100% - 65px);
+}
+
+.editName {
+  max-width: 100%;
+}
+
+.activeFolder {
+  background-color: $neutral-200;
+}
+
+.collapseButton {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.plusIcon {
+  @include icon('@assets/icons/plus-outline.svg');
+  background: $neutral-600;
+  width: 8px;
+  height: 8px;
+}
+
+.minusIcon {
+  @include icon('@assets/icons/minus-outline.svg');
+  width: 8px;
+  height: 8px;
+  background: $neutral-600;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@mixin folderIcon {
+  @include icon('@assets/icons/folder-outline.svg');
+  background: $neutral-600;
+}
+
+.emptyFolderIcon {
+  @include folderIcon;
+  margin-left: 16px;
+}
+
+.folderIcon {
+  @include folderIcon;
+}
+
+.deleteButton {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  &:hover {
+    .deleteIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.deleteIcon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
+  background-color: $neutral-600;
+}
