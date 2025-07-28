@@ -1,6 +1,7 @@
 // actions
 import { setIsSidebarMinimized } from './actions/setIsSidebarMinimized.js';
 import { resetState } from './actions/resetState.js';
+import { editSidebarSize } from './actions/editSidebarSize.js';
 // entities
 import { rpcProvider } from './entities/rpcProvider/rpcProvider.js';
 import { effects } from './effects/index.js';
@@ -18,6 +19,7 @@ export const nearProtocol = {
   // actions
   setIsSidebarMinimized,
   resetState,
+  editSidebarSize,
   // entities
   rpcProvider,
   ...effects,

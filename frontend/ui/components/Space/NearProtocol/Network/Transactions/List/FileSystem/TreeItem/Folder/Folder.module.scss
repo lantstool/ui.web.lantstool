@@ -4,7 +4,7 @@
 
 .folder {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   width: calc(100% - 16px);
   height: 100%;
   padding: 8px;
@@ -17,8 +17,14 @@
   }
 }
 
-.editName{
-  width: calc(100% - 78px);
+.wrapper {
+  display: flex;
+  gap: 8px;
+  width: calc(100% - 65px);
+}
+
+.editName {
+  max-width: 100%;
 }
 
 .activeFolder {
