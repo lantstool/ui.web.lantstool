@@ -18,8 +18,10 @@
 
 .resizer {
   width: 3px;
-  cursor: col-resize;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
   &:hover {
+
+    cursor: col-resize;
     background-color: $neutral-600;
   }
 }

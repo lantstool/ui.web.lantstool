@@ -22,7 +22,6 @@ export const FileSystem = ({ list, foldersList }) => {
       order: index,
       parentId: call.parentId,
     }));
-    console.log(reorderedCallList);
     reorderCall({ reorderedCallList });
   };
 
