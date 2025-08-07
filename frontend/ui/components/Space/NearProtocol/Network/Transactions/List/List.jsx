@@ -8,6 +8,7 @@ import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { FileSystem } from './FileSystem/FileSystem.jsx';
 import { CreateMenu } from '../../_general/CreateMenu/CreateMenu.jsx';
 import { useResizableSidebar } from '../../_general/hooks/useResizeSidebar.js';
+import { Button } from '@gc/Button/Button.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ txList, foldersList }) => {
@@ -19,7 +20,6 @@ export const List = ({ txList, foldersList }) => {
   const importOneFromFile = useStoreEffect(
     (store) => store.nearProtocol.transactions.importOneFromFile,
   );
-
   const createOneTransaction = useStoreEffect((store) => store.nearProtocol.transactions.create);
   const sidebarSize = useStoreState((store) => store.nearProtocol.transactionsSidebarSize);
   const updateSidebarSize = useStoreEffect((store) => store.nearProtocol.updateSidebarSize);
@@ -46,15 +46,17 @@ export const List = ({ txList, foldersList }) => {
               <span className={cn.transactionIcon} />
             </CreateMenu>
             <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="top">
-              <button className={cn.importBtn} onClick={openImport}>
-                <span className={cn.importIcon} />
-                <h2 className={cn.title}>Import</h2>
-              </button>
+              <Button iconLeftStyles={cn.importIcon} size={'medium'} color='tertiary' onClick={openImport}>
+                Import
+              </Button>
             </Tooltip>
           </div>
+          <hr className={cn.border}/>
           <FileSystem list={txList} foldersList={foldersList} />
         </div>
-        <div className={cn.resizer} onMouseDown={handleMouseDown} />
+        <div className={cn.resizerWrapper} onMouseDown={handleMouseDown}>
+          <div className={cn.resizer}  />
+        </div>
       </div>
       {isImportOpen && (
         <ImportModal

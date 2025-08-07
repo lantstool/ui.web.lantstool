@@ -7,7 +7,7 @@
 }
 
 .menuIcon {
-  @include icon('@assets/icons/menu-dots-vertical-outline.svg');
+  @include icon('@assets/icons/menu-dots-outline.svg');
   background-color: $neutral-600;
 }
 
@@ -19,28 +19,36 @@
   border: 1px solid $neutral-200;
   border-radius: 8px;
   gap: 4px;
-  width: 100px;
+  width: 170px;
   background-color: $neutral-00;
 }
 
 .menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
   padding: 0;
   margin: 0;
   border: none;
-  display: flex;
-  justify-content: start;
   background: none;
-  align-items: center;
   cursor: pointer;
   border-radius: 4px;
   &:hover {
+    background-color: $neutral-300;
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
+  &:active {
     .menuIcon {
       background-color: $neutral-800;
     }
   }
 }
 
-@mixin createBtn($borderRadius) {
+@mixin button {
   width: 100%;
   border: none;
   gap: 8px;
@@ -49,7 +57,7 @@
   justify-content: start;
   background: none;
   align-items: center;
-  border-radius: $borderRadius;
+  border-radius: 4px;
   &:focus {
     .title {
       color: $neutral-800;
@@ -66,19 +74,31 @@
 }
 
 .activeBtn {
-  background-color: $neutral-200;
-  .addIcon {
+  background-color: $neutral-300;
+  .menuIcon {
     background-color: $neutral-800;
-  }
-  .title {
-    color: $neutral-800;
   }
 }
 
-.folderButton {
-  @include createBtn(4px);
+.deleteButton {
+  @include button;
   &:hover {
-    .folderIcon {
+    .deleteIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.renameButton {
+  @include button;
+  &:hover {
+    .renameIcon {
       background-color: $neutral-800;
     }
   }
@@ -94,6 +114,23 @@
   line-height: 16px;
 }
 
+.subtitle {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: $neutral-500;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
 .deleteIcon {
   @include icon('@assets/icons/trash-bin-outline.svg');
+  background-color: $neutral-600;
+}
+
+.renameIcon {
+  @include icon('@assets/icons/edit-rename-outline.svg');
+  background-color: $neutral-600;
 }

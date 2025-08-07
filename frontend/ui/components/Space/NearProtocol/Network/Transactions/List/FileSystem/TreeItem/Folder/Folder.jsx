@@ -1,47 +1,70 @@
 import { EditName } from '../../../../../_general/EditName/EditName.jsx';
-import { useParams } from 'react-router-dom';
 import { useStoreEffect } from '@react-vault';
 import { Menu } from './Menu/Menu.jsx';
-import { useToggler } from '@hooks/useToggler.js';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useFileSystemContext } from '../../../../../_general/FileSystemContext/FileSystemContext.jsx';
 import cnm from 'classnames';
 import cn from './Folder.module.scss';
 
-export const Folder = ({ item, wrapperProps }) => {
+export const Folder = ({ item, wrapperProps, onCollapse, items }) => {
   const { spaceId, networkId } = useParams();
-  const collapseOne = useStoreEffect((store) => store.nearProtocol.folders.collapseOne);
+  const navigate = useNavigate();
   const updateOneName = useStoreEffect((store) => store.nearProtocol.folders.updateOneName);
-  const [isOpenMenu, openMenu, closeMenu] = useToggler(false);
+  const createOneTransaction = useStoreEffect(
+    (store) => store.nearProtocol.transactions.createInFolder,
+  );
+  const [isEditing, setIsEditing] = useState(false);
+  const { openMenuId, setOpenMenuId } = useFileSystemContext();
 
-  const updateName = (formValues) => updateOneName({ formValues, folderId: item.folderId });
+  const isOpenMenu = openMenuId === item.folderId;
+  const isActive = isOpenMenu || isEditing;
+  const { childCount, collapsed } = wrapperProps;
 
-  const onCollapse = () => {
-    collapseOne({
-      spaceId,
-      networkId,
-      item,
-      wrapperProps,
-    });
+  const updateName = (formValues) => {
+    updateOneName({ formValues, folderId: item.folderId, items, type: 'transaction' });
   };
+
+  const addTransaction = () =>
+    createOneTransaction({ spaceId, networkId, navigate, parentId: item.folderId, items });
+
+  const openMenu = () => setOpenMenuId(item.folderId);
+  const closeMenu = () => setOpenMenuId(null);
+
   return (
     <>
-      <div className={cnm(cn.folder, isOpenMenu && cn.activeFolder)}>
+      <div className={cnm(cn.folder, isActive && cn.activeFolder)} data-edit-id={item.folderId}>
         <div className={cn.wrapper}>
           <div className={cn.titleWrapper}>
-            {wrapperProps?.childCount > 0 && (
+            {childCount > 0 && (
               <button onClick={onCollapse} className={cn.collapseButton}>
-                <span className={wrapperProps?.collapsed ? cn.plusIcon : cn.minusIcon} />
+                <span className={collapsed ? cn.plusIcon : cn.minusIcon} />
               </button>
             )}
-            <span className={wrapperProps?.childCount > 0 ? cn.folderIcon : cn.emptyFolderIcon} />
+            <span className={childCount > 0 ? cn.folderIcon : cn.emptyFolderIcon} />
           </div>
           <EditName
-            styles={cn.editName}
             name={item.name}
             itemId={item.folderId}
             updateName={updateName}
+            setIsEditing={setIsEditing}
+            isEditing={isEditing}
+            openMenuId={openMenuId}
           />
         </div>
-        <Menu item={item} isOpenMenu={isOpenMenu} openMenu={openMenu} closeMenu={closeMenu} />
+        <div className={cn.settingsWrapper} onClick={(e) => e.stopPropagation()}>
+          <button className={cn.addButton} onClick={addTransaction}>
+            <span className={cn.addIcon} />
+          </button>
+          <Menu
+            item={item}
+            isOpenMenu={isOpenMenu}
+            openMenu={openMenu}
+            closeMenu={closeMenu}
+            setIsEditing={setIsEditing}
+          />
+        </div>
       </div>
     </>
   );

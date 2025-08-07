@@ -12,6 +12,7 @@ import { getU8Contract } from './getU8Contract.js';
 import { validateTransactionId } from './validateTransactionId.js';
 import { importOne } from './importOne.js';
 import { getContractAbiObject } from './getContractAbiObject.js';
+import { createInFolder } from './createInFolder.js';
 
 export const transactions = {
   create,
@@ -28,4 +29,5 @@ export const transactions = {
   validateTransactionId,
   importOne,
   getContractAbiObject,
+  createInFolder,
 };

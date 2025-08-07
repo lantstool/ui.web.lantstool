@@ -2,7 +2,7 @@ import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { Popper } from '@gc/Popper/Popper.jsx';
-import cnm from 'classnames';
+import { Button } from '@gc/Button/Button.jsx';
 import cn from './CreateMenu.module.scss';
 
 export const CreateMenu = ({ children, type, text, create }) => {
@@ -26,10 +26,9 @@ export const CreateMenu = ({ children, type, text, create }) => {
 
   return (
     <div className={cn.createMenu} ref={anchorRef}>
-      <button className={cnm(cn.createBtn, isOpen && cn.activeBtn)} onClick={openMenu}>
-        <span className={cn.addIcon} />
-        <h2 className={cn.title}>Create</h2>
-      </button>
+      <Button iconLeftStyles={cn.addIcon} size={'medium'} color="tertiary" onClick={openMenu}>
+        Create
+      </Button>
       <Popper isOpen={isOpen} closeMenu={closeMenu} position="right" anchorEl={anchorRef.current}>
         <div className={cn.container}>
           <button className={cn.createOneButton} onClick={createOne}>

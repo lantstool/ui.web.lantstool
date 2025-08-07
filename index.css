@@ -10,6 +10,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+  caret-color: transparent !important;
 }
 
 a {

@@ -6,5 +6,5 @@ export const editTxName = action(({ slice, payload }) => {
   const transaction = slice.txList.find((tx) => tx.transactionId === transactionId);
   transaction.name = name;
 
-  slice.drafts[transactionId].origin.name = name;
+  if (slice.drafts[transactionId]) slice.drafts[transactionId].origin.name = name;
 });

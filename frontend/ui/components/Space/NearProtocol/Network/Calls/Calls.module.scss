@@ -5,4 +5,5 @@
   grid-template-areas: 'a b';
   display: grid;
   width: 100%;
+  transition: grid-template-columns 250ms ease;
 }

@@ -15,11 +15,12 @@ const transformFolders = (foldersList) =>
     children: [],
   }));
 
+//Prepare a sorted folder hierarchy and group transactions accordingly
 export const prepareItems = (list, foldersList) => {
   const folders = transformFolders(foldersList);
   const transactions = transformTx(list);
-  const sortedFolders = folders.sort((a, b) => a.name.localeCompare(b.name));
-  const folderMap = Object.fromEntries(folders.map((folder) => [folder.folderId, folder]));
+  const sortedFolders = [...folders].sort((a, b) => a.name.localeCompare(b.name));
+  const folderMap = Object.fromEntries(sortedFolders.map((folder) => [folder.folderId, folder]));
   const rootTransaction = [];
 
   transactions.forEach((tx) => {

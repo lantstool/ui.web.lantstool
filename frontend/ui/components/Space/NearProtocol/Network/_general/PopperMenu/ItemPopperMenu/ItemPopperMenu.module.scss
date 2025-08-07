@@ -2,13 +2,20 @@
 @use '@styles/mixins' as *;
 @use '@styles/icons' as *;
 
-.menu {
-  position: relative;
-}
 
 .menuIcon {
-  @include icon('@assets/icons/menu-dots-vertical-outline.svg');
+  @include icon('@assets/icons/menu-dots-outline.svg');
   background-color: $neutral-600;
+}
+
+.d {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
 }
 
 .container {
@@ -19,28 +26,37 @@
   border: 1px solid $neutral-200;
   border-radius: 8px;
   gap: 4px;
-  width: 100px;
+  width: 170px;
   background-color: $neutral-00;
 }
 
 .menuButton {
+  position: relative;
   padding: 0;
   margin: 0;
   border: none;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   background: none;
   align-items: center;
-  cursor: pointer;
   border-radius: 4px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
   &:hover {
+    background-color: $neutral-300;
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
+  &:active {
     .menuIcon {
       background-color: $neutral-800;
     }
   }
 }
 
-@mixin createBtn($borderRadius) {
+@mixin createBtn {
   width: 100%;
   border: none;
   gap: 8px;
@@ -49,7 +65,7 @@
   justify-content: start;
   background: none;
   align-items: center;
-  border-radius: $borderRadius;
+  border-radius: 4px;
   &:focus {
     .title {
       color: $neutral-800;
@@ -66,22 +82,47 @@
 }
 
 .activeBtn {
-  background-color: $neutral-200;
-  .addIcon {
+  background-color: $neutral-300;
+  .menuIcon {
     background-color: $neutral-800;
   }
-  .title {
-    color: $neutral-800;
+}
+
+.duplicateButton {
+  @include createBtn;
+  &:hover {
+    .transactionIcon {
+      background-color: $neutral-800;
+    }
   }
 }
 
 .folderButton {
-  @include createBtn(4px);
+  @include createBtn;
   &:hover {
     .folderIcon {
       background-color: $neutral-800;
     }
   }
+}
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.renameButton {
+  @include createBtn;
+  &:hover {
+    .renameIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.renameIcon {
+  @include icon('@assets/icons/edit-rename-outline.svg');
+  background-color: $neutral-600;
 }
 
 .title {
@@ -92,6 +133,25 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: $neutral-500;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.duplicateIcon {
+  @include icon('@assets/icons/duplicate-outline.svg');
+}
+
+.exportIcon {
+  @include icon('@assets/icons/export-linear.svg');
 }
 
 .deleteIcon {

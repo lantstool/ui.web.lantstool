@@ -7,9 +7,12 @@ import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
 import { CreateMenu } from '../../_general/CreateMenu/CreateMenu.jsx';
 import { FileSystem } from './FileSystem/FileSystem.jsx';
 import { useResizableSidebar } from '../../_general/hooks/useResizeSidebar.js';
+import { Button } from '@gc/Button/Button.jsx';
 import cn from './List.module.scss';
 
 export const List = ({ list, foldersList }) => {
+  const { spaceId, networkId } = useParams();
+  const navigate = useNavigate();
   const sidebarSize = useStoreState((store) => store.nearProtocol.callsSidebarSize);
   const updateSidebarSize = useStoreEffect((store) => store.nearProtocol.updateSidebarSize);
   const createOne = useStoreEffect((store) => store.nearProtocol.calls.createOne);
@@ -17,9 +20,6 @@ export const List = ({ list, foldersList }) => {
   const importOneFromFile = useStoreEffect((store) => store.nearProtocol.calls.importOneFromFile);
 
   const [isImportOpen, openImport, closeImport] = useToggler(false);
-
-  const { spaceId, networkId } = useParams();
-  const navigate = useNavigate();
 
   const { sidebarRef, handleMouseDown, newWidth } = useResizableSidebar({
     initialWidth: sidebarSize,
@@ -39,17 +39,18 @@ export const List = ({ list, foldersList }) => {
               <span className={cn.callIcon} />
             </CreateMenu>
             <Tooltip style={cn.tooltip} arrow={false} content="Import Call" placement="top">
-              <button className={cn.importBtn} onClick={openImport}>
-                <span className={cn.importIcon} />
-                <h2 className={cn.title}>Import</h2>
-              </button>
+              <Button iconLeftStyles={cn.importIcon} size={'medium'} color='tertiary' onClick={openImport}>
+                Import
+              </Button>
             </Tooltip>
           </div>
+          <hr className={cn.border}/>
           <FileSystem list={list} foldersList={foldersList} />
         </div>
-        <div className={cn.resizer} onMouseDown={handleMouseDown} />
+        <div className={cn.resizerWrapper} onMouseDown={handleMouseDown}>
+          <div className={cn.resizer}  />
+        </div>
       </div>
-
       {isImportOpen && (
         <ImportModal
           closeModal={closeImport}

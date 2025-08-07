@@ -1,38 +1,37 @@
 import { useStoreEffect } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Popper } from '@gc/Popper/Popper.jsx';
 import { DeleteModal } from '../../../../../../_general/DeleteModal/DeleteModal.jsx';
-import { useToggler } from '@hooks/useToggler.js';
+import { ItemPopperMenu } from '../../../../../../_general/PopperMenu/ItemPopperMenu/ItemPopperMenu.jsx';
 import { ExportTransaction } from './ExportTransaction/ExportTransaction.jsx';
-import { useRef } from 'react';
-import cnm from 'classnames';
+import { useRef, useState } from 'react';
 import cn from './Menu.module.scss';
 
-export const Menu = ({ item }) => {
+export const Menu = ({ item, isOpenMenu, openMenu, closeMenu, setIsEditing }) => {
   const { spaceId, networkId, transactionId } = useParams();
   const navigate = useNavigate();
   const duplicateOne = useStoreEffect((store) => store.nearProtocol.transactions.duplicateOne);
   const removeOne = useStoreEffect((store) => store.nearProtocol.transactions.removeOne);
-  const anchorRef = useRef(null);
-
-  const [isOpenMenu, openMenu, closeMenu] = useToggler(false);
-  const [isDeleteOpen, openDelete, closeDelete] = useToggler(false);
-  const [isExportOpen, openExport, closeExport] = useToggler(false);
-
   const onMountTransaction = useStoreEffect(
     (store) => store.nearProtocol.transactions.onMountTransaction,
   );
+  const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const [isExportOpen, setExportOpen] = useState(false);
+  const anchorRef = useRef(null);
 
-  const exportModal = async () => {
+  const openDelete = () => {
+    closeMenu();
+    setDeleteOpen(true);
+  };
+
+  const closeDelete = () => setDeleteOpen(false);
+
+  const openExport = async () => {
+    closeMenu();
     await onMountTransaction(item.transactionId);
-    openExport();
-    closeMenu();
+    setExportOpen(true);
   };
 
-  const deleteModal = () => {
-    closeMenu();
-    openDelete();
-  };
+  const closeExport = () => setExportOpen(false);
 
   const duplicate = () => {
     closeMenu();
@@ -51,43 +50,27 @@ export const Menu = ({ item }) => {
     });
   };
 
+  const openEditMode = () => {
+    setIsEditing(true);
+    closeMenu();
+  };
+
   return (
     <div
       className={cn.menu}
+      onClick={(e) => e.preventDefault()}
       onPointerDown={(e) => e.stopPropagation()}
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      }}
     >
-      <button
-        ref={anchorRef}
-        className={cnm(cn.menuButton, isOpenMenu && cn.activeBtn)}
-        onClick={openMenu}
-      >
-        <span className={cn.menuIcon} />
-      </button>
-      <Popper
-        isOpen={isOpenMenu}
+      <ItemPopperMenu
+        isOpenMenu={isOpenMenu}
+        openMenu={openMenu}
         closeMenu={closeMenu}
-        position="left"
-        anchorEl={anchorRef.current}
-      >
-        <div className={cn.container}>
-          <button className={cn.txButton} onClick={duplicate}>
-            <span className={cn.duplicateIcon} />
-            <p className={cn.title}>Duplicate</p>
-          </button>
-          <button className={cn.folderButton} onClick={exportModal}>
-            <span className={cn.exportIcon} />
-            <p className={cn.title}>Export</p>
-          </button>
-          <button className={cn.folderButton} onClick={deleteModal}>
-            <span className={cn.deleteIcon} />
-            <p className={cn.title}>Delete</p>
-          </button>
-        </div>
-      </Popper>
+        anchorRef={anchorRef}
+        duplicate={duplicate}
+        openExport={openExport}
+        openEditMode={openEditMode}
+        openDelete={openDelete}
+      />
       {isExportOpen && (
         <ExportTransaction
           transactionId={item.transactionId}
