@@ -13,7 +13,8 @@ const wasIndexChanged = (updatedItems, sortedItems, folderId) => {
   return oldIndex !== newIndex;
 };
 
-const sortFoldersFirstByName = (updatedItems, type) => {
+// Sort items: folders first (A–Z), then transactions/calls
+const sortItemsByFoldersFirst = (updatedItems, type) => {
   const idKey = `${type}Id`;
   const folders = updatedItems.filter((item) => item.type === type && !item[idKey]);
   const items = updatedItems.filter((item) => item[idKey]);
@@ -61,12 +62,12 @@ export const updateOneName = effect(async ({ payload, slice, store }) => {
       name,
       folderId,
     });
-    //Get items with new folder name
+    // Get items with new folder name
     const updatedItems = items.map((item) =>
       item.folderId === folderId ? { ...item, name } : item,
     );
 
-    const sortedItems = sortFoldersFirstByName(updatedItems, type);
+    const sortedItems = sortItemsByFoldersFirst(updatedItems, type);
     const isIndexChanged = wasIndexChanged(updatedItems, sortedItems, folderId);
 
     if (!isIndexChanged) return;
