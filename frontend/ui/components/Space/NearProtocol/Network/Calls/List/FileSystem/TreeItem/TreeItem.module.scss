@@ -1,0 +1,33 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.treeItem {
+  border: none !important;
+
+  :global(.dnd-sortable-tree_simple_tree-item) {
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 8px !important;
+  }
+
+  cursor: auto !important;
+  width: 100%;
+  border-radius: 8px;
+
+  :global(.dnd-sortable-tree_simple_tree-item) {
+    border-radius: 8px !important;
+  }
+
+  &:global(.dnd-sortable-tree_simple_clone) {
+    padding: 0 !important;
+    background-color: $neutral-200;
+  }
+  &:global(.dnd-sortable-tree_simple_ghost) {
+    opacity: 0 !important;
+  }
+}
+
+.active {
+  background-color: $neutral-200;
+}

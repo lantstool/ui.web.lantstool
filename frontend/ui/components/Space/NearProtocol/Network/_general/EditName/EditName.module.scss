@@ -1,0 +1,44 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.inputWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.input {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  color: $neutral-800;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  background-color: $neutral-50;
+  border-radius: 4px;
+  border: none;
+}
+
+.editName {
+  display: flex;
+  align-items: center;
+  max-width: calc(100% - 40px);
+  gap: 6px;
+}
+
+
+.title {
+  font-size: 14px;
+  color: $neutral-800;
+  font-weight: 400;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+}

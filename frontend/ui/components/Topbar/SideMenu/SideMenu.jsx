@@ -1,7 +1,7 @@
-import { Popper } from '../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@gc/Button/Button.jsx';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import cn from './SideMenu.module.scss';
 
 export const SideMenu = () => {
@@ -16,10 +16,12 @@ export const SideMenu = () => {
     closeMenu();
   };
 
+  const anchorRef = useRef(null);
+
   return (
-    <div className={cn.sideMenu}>
+    <div className={cn.sideMenu} ref={anchorRef}>
       <Button color="tertiary" size="small" iconLeftStyles={cn.menuIcon} onClick={openMenu} />
-      <Popper isOpen={isOpen} closeMenu={closeMenu} position="right">
+      <Popper isOpen={isOpen} closeMenu={closeMenu} position="left" anchorEl={anchorRef.current}>
         <div className={cn.container}>
           <div className={cn.wrapper}>
             <button className={cn.button} onClick={goToSettings}>

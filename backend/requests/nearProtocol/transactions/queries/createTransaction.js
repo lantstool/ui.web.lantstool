@@ -10,7 +10,8 @@ export const createTransaction = `
      @order, 
      @createdAt, 
      @editedAt, 
-     @body
+     @body,
+     @parentId
     )
   RETURNING *;
   

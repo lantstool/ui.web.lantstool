@@ -1,0 +1,114 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.folder {
+  display: flex;
+  width: calc(100% - 16px);
+  height: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  &:hover {
+    background-color: $neutral-100;
+    .settingsWrapper {
+      visibility: visible;
+    }
+  }
+}
+
+.activeFolder {
+  background-color: $neutral-100;
+  .settingsWrapper {
+    visibility: visible;
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: 8px;
+  width: calc(100% - 58px);
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collapseButton {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.plusIcon {
+  @include icon('@assets/icons/plus-outline.svg');
+  background: $neutral-600;
+  width: 8px;
+  height: 8px;
+}
+
+.minusIcon {
+  @include icon('@assets/icons/minus-outline.svg');
+  width: 8px;
+  height: 8px;
+  background: $neutral-600;
+}
+
+@mixin folderIcon {
+  @include icon('@assets/icons/folder-outline.svg');
+  background: $neutral-600;
+}
+
+.emptyFolderIcon {
+  @include folderIcon;
+  margin-left: 16px;
+}
+
+.folderIcon {
+  @include folderIcon;
+}
+
+.addButton {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  background: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: $neutral-300;
+    .addIcon {
+      background: $neutral-800;
+    }
+  }
+}
+
+.addIcon {
+  @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
+}
+
+.settingsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  visibility: hidden;
+}

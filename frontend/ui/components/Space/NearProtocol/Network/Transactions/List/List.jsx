@@ -1,75 +1,62 @@
 import { useToggler } from '@hooks/useToggler.js';
+import { useStoreEffect, useStoreState } from '@react-vault';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useStoreEffect } from '@react-vault';
 import { ImportModal } from '../../_general/ImportModal/ImportModal.jsx';
 import { transactionConfig } from '../_general/transactionConfig.js';
 import { transactionImportSchema } from '../_general/transactionImportSchema/transactionImportSchema.js';
-import { Transaction } from './Transaction/Transaction.jsx';
-import { DragDropContext, Droppable } from '@hello-pangea/dnd';
-import { Tooltip } from '../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
+import { FileSystem } from './FileSystem/FileSystem.jsx';
+import { CreateMenu } from '../../_general/CreateMenu/CreateMenu.jsx';
+import { useResizableSidebar } from '../../_general/hooks/useResizeSidebar.js';
+import { Button } from '@gc/Button/Button.jsx';
 import cn from './List.module.scss';
 
-export const List = ({ txList }) => {
-  const params = useParams();
+export const List = ({ txList, foldersList }) => {
   const { spaceId, networkId } = useParams();
   const navigate = useNavigate();
-  const reorder = useStoreEffect((store) => store.nearProtocol.transactions.reorder);
-  const create = useStoreEffect((store) => store.nearProtocol.transactions.create);
   const importOneFromJson = useStoreEffect(
     (store) => store.nearProtocol.transactions.importOneFromJson,
   );
   const importOneFromFile = useStoreEffect(
     (store) => store.nearProtocol.transactions.importOneFromFile,
   );
+  const createOneTransaction = useStoreEffect((store) => store.nearProtocol.transactions.create);
+  const sidebarSize = useStoreState((store) => store.nearProtocol.transactionsSidebarSize);
+  const updateSidebarSize = useStoreEffect((store) => store.nearProtocol.updateSidebarSize);
+
   const [isImportOpen, openImport, closeImport] = useToggler(false);
 
   const withTxConfig = (fn) => (args) => fn({ ...args, transactionConfig });
 
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-    reorder({
-      source: result.source.index,
-      destination: result.destination.index,
-    });
-  };
+  const { sidebarRef, handleMouseDown, newWidth } = useResizableSidebar({
+    initialWidth: sidebarSize,
+    onResizeEnd: (newSize) => {
+      updateSidebarSize({ type: 'transactionsSidebarSize', size: newSize });
+    },
+  });
 
-  const onSubmit = () => {
-    create({ spaceId, networkId, navigate });
-  };
+  const createTransaction = () => createOneTransaction({ spaceId, networkId, navigate });
 
   return (
     <>
-      <div className={cn.list}>
-        <div className={cn.topBar}>
-          <button className={cn.createBtn} onClick={onSubmit}>
-            <span className={cn.addIcon} />
-            <h2 className={cn.title}>Create Transaction</h2>
-          </button>
-          <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="top">
-            <button className={cn.importBtn} onClick={openImport}>
-              <span className={cn.importIcon} />
-            </button>
-          </Tooltip>
+      <div className={cn.listWrapper}>
+        <div className={cn.list} ref={sidebarRef} style={{ width: `${newWidth}px` }}>
+          <div className={cn.topBar}>
+            <CreateMenu type="transaction" text="Transaction" create={createTransaction}>
+              <span className={cn.transactionIcon} />
+            </CreateMenu>
+            <Tooltip style={cn.tooltip} arrow={false} content="Import transaction" placement="top">
+              <Button iconLeftStyles={cn.importIcon} size={'medium'} color='tertiary' onClick={openImport}>
+                Import
+              </Button>
+            </Tooltip>
+          </div>
+          <hr className={cn.border}/>
+          <FileSystem list={txList} foldersList={foldersList} />
         </div>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="transactions">
-            {(provided) => (
-              <div className={cn.scrollBar}>
-                <div {...provided.droppableProps} ref={provided.innerRef} className={cn.wrapper}>
-                  {txList.map((tx, index) => (
-                    <Transaction
-                      index={index}
-                      key={tx.transactionId}
-                      transaction={tx}
-                      isActive={tx.transactionId === params?.transactionId}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+        <div className={cn.resizerWrapper} onMouseDown={handleMouseDown}>
+          <div className={cn.resizer}  />
+        </div>
       </div>
       {isImportOpen && (
         <ImportModal

@@ -30,6 +30,7 @@ export const create = async ({ execute, request }) => {
       createdAt,
       editedAt: null,
       body,
+      parentId: null,
     }),
   );
 

@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_transactions (
   createdAt INTEGER NOT NULL,
   editedAt INTEGER,
   body TEXT NOT NULL,
+  parentId TEXT,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE
@@ -56,6 +57,7 @@ CREATE TABLE IF NOT EXISTS near_protocol_calls (
   createdAt INTEGER NOT NULL,
   editedAt INTEGER,
   body TEXT NOT NULL,
+  parentId TEXT,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE
@@ -82,6 +84,18 @@ CREATE TABLE IF NOT EXISTS near_protocol_keys (
   seedPhrase TEXT,
   derivationPath TEXT,
   PRIMARY KEY (spaceId, networkId, publicKey),
+  FOREIGN KEY (spaceId, networkId)
+    REFERENCES near_protocol_networks(spaceId, networkId)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS near_protocol_folders (
+  folderId TEXT PRIMARY KEY,
+  networkId TEXT NOT NULL,
+  spaceId TEXT NOT NULL,
+  name TEXT NOT NULL,
+  type TEXT NOT NULL,
+  collapsed INTEGER,
   FOREIGN KEY (spaceId, networkId)
     REFERENCES near_protocol_networks(spaceId, networkId)
     ON DELETE CASCADE

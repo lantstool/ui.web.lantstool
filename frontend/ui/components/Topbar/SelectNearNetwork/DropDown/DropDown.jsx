@@ -1,15 +1,15 @@
-import { Popper } from '../../_general/Popper/Popper.jsx';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import { Link } from 'react-router-dom';
 import { useStoreState } from '@react-vault';
 import cn from './DropDown.module.scss';
 
-export const DropDown = ({ setOpen, isOpen, spaceId, networkId }) => {
+export const DropDown = ({ setOpen, isOpen, spaceId, networkId, anchorEl }) => {
   const ids = useStoreState((store) => store.nearProtocol.networks.ids);
 
   const closeMenu = () => setOpen(false);
 
   return (
-    <Popper isOpen={isOpen} closeMenu={closeMenu}>
+    <Popper isOpen={isOpen} closeMenu={closeMenu} position="right" anchorEl={anchorEl}>
       <div className={cn.dropdown}>
         <div className={cn.container}>
           {ids.map((item) => (

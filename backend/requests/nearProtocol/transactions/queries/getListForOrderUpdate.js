@@ -8,7 +8,7 @@
  */
 
 export const getListForOrderUpdate = `
-  SELECT transactionId, name, "order"
+  SELECT transactionId, name, "order", parentId
   FROM near_protocol_transactions
   WHERE spaceId = @spaceId
     AND networkId = @networkId
