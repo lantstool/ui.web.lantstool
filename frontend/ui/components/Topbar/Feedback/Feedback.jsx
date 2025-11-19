@@ -6,7 +6,8 @@ import { BaseModal } from '@gc/modals/BaseModal/BaseModal.jsx';
 import { ModalFooter } from '@gc/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '@gc/modals/ModalHeader/ModalHeader.jsx';
 import { FormTextarea } from '@gc/FormTextarea/FormTextarea.jsx';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
+import { useStoreEffect } from '@react-vault';
 import { Link } from 'react-router-dom';
 import cn from './Feedback.module.scss';
 
@@ -27,12 +28,25 @@ const feedbackType = [
 
 export const Feedback = () => {
   const [open, setOpen] = useState(false);
-  const form = useForm({});
-  const { control } = form;
-  const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
-  const sendFeedback = () => console.log('send feedback');
+  const sendFeedback = useStoreEffect((store) => store.spaces.sendFeedback);
+  const form = useForm({
+    defaultValues: { name: '', email: '', feedbackType: '', message: '' },
+    mode: 'all',
+  });
 
+  const { control, reset } = form;
+  const data = useWatch({ control });
+
+  const openModal = () => setOpen(true);
+  const closeModal = () => {
+    setOpen(false);
+    reset();
+  };
+
+  const send = () => {
+    const { name, email, feedbackType, message } = data;
+    sendFeedback({ name, email, feedbackType: feedbackType, message, closeModal });
+  };
 
   return (
     <>
@@ -59,13 +73,20 @@ export const Feedback = () => {
           <FormDropdown
             control={control}
             options={feedbackType}
+            copy={false}
             label="Feedback type"
             name={'feedbackType'}
             placeholder="Select feedback type..."
           />
           <div className={cn.textareaContainer}>
             <p className={cn.message}>Message</p>
-            <FormTextarea control={control} name="message" label="Message" rows={5} dynamicErrorSpace />
+            <FormTextarea
+              control={control}
+              name="message"
+              label="Message"
+              rows={5}
+              dynamicErrorSpace
+            />
             <p className={cn.subtitle}>
               To send additional files, please use the{' '}
               <Link className={cn.telegram} target="_blank" to="https://t.me/+TyHdG_WXJmViZDVi">
@@ -74,10 +95,7 @@ export const Feedback = () => {
               .
             </p>
           </div>
-          <ModalFooter
-            close={closeModal}
-            action={{ label: 'Send feedback', onClick: sendFeedback }}
-          />
+          <ModalFooter close={closeModal} action={{ label: 'Send feedback', onClick: send }} />
         </BaseModal>
       )}
     </>
