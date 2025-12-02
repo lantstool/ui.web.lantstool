@@ -1,8 +1,8 @@
 import { useFieldArray, useWatch } from 'react-hook-form';
-import { FormRadioButton } from '../../../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
-import { Button } from '../../../../../../../../../../../_general/Button/Button.jsx';
-import { FormDropdownGroup } from '../../../../../../../../../../../_general/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
-import { useContractMethodsOptions } from '../../../../../../../../_general/hooks/useContractMethodsOptions.js';
+import { FormRadioButton } from '@gc/FormRadioButton/FormRadioButton.jsx';
+import { Button } from '@gc/Button/Button.jsx';
+import { FormDropdownGroup } from '@gc/dropdown/FormDropdownGroup/FormDropdownGroup.jsx';
+import { useContractMethodsOptions } from './useContractMethodsOptions.js';
 import cn from './AllowedMethods.module.scss';
 
 const toSet = (selectedMethods = []) =>

@@ -42,19 +42,6 @@ const mainnet = {
         ],
       },
       {
-        id: 'endpoints.omniatech.io/v1/near/mainnet/public',
-        name: 'Omnia',
-        url: 'https://endpoints.omniatech.io/v1/near/mainnet/public',
-        logo: 'rpc_omnia.svg',
-        headers: [],
-        isPredefined: true,
-        links: [
-          { type: 'github', url: 'https://github.com/omniaprotocol' },
-          { type: 'x', url: 'https://x.com/omnia_protocol' },
-          { type: 'website', url: 'https://omniatech.io/' },
-        ],
-      },
-      {
         id: 'near.blockpi.network/v1/rpc/public',
         url: 'https://near.blockpi.network/v1/rpc/public',
         name: 'BlockPI',
