@@ -1,6 +1,14 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.modal {
+  gap: 8px;
+}
+
+.header {
+  padding-bottom: 16px;
+}
+
 .title {
   @include text-xlg-regular;
   text-align: center;
@@ -23,6 +31,12 @@
   color: $neutral-700;
 }
 
-.telegram{
+.telegram {
   color: $green-700;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
