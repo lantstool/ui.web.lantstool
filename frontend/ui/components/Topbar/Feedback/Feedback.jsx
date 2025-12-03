@@ -80,46 +80,48 @@ export const Feedback = () => {
             title="Send your feedback for us"
             classes={{ container: cn.header }}
           />
-          <FormInput name="name" control={control} label="Name (optionally)" placeholder="Jhon" />
-          <FormDropdown
-            control={control}
-            options={contactOptions}
-            onChange={onChange}
-            copy={false}
-            label="Сontact method"
-            name="contactMethod"
-            placeholder="Select contact method..."
-          />
-          <FormInput
-            name="contactInfo"
-            control={control}
-            label="Сontact info"
-            placeholder={contractInfoPlaceholder}
-          />
-          <FormDropdown
-            control={control}
-            options={feedbackOptions}
-            copy={false}
-            label="Feedback type"
-            name="feedbackType"
-            placeholder="Select feedback type..."
-          />
-          <div className={cn.textareaContainer}>
-            <p className={cn.message}>Message</p>
-            <FormTextarea control={control} name="message" label="Message" rows={5} />
-          </div>
-          <div className={cn.footer}>
-            <p className={cn.subtitle}>
-              To send additional files, please use the{' '}
-              <Link className={cn.telegram} target="_blank" to="https://t.me/+TyHdG_WXJmViZDVi">
-                Telegram
-              </Link>
-              .
-            </p>
-            <ModalFooter
-              close={closeModal}
-              action={{ label: 'Send feedback', onClick: onSubmit }}
+          <div className={cn.container}>
+            <FormInput name="name" control={control} label="Name (optionally)" placeholder="Jhon" />
+            <FormDropdown
+              control={control}
+              options={contactOptions}
+              onChange={onChange}
+              copy={false}
+              label="Сontact method"
+              name="contactMethod"
+              placeholder="Select contact method..."
             />
+            <FormInput
+              name="contactInfo"
+              control={control}
+              label="Сontact info"
+              placeholder={contractInfoPlaceholder}
+            />
+            <FormDropdown
+              control={control}
+              options={feedbackOptions}
+              copy={false}
+              label="Feedback type"
+              name="feedbackType"
+              placeholder="Select feedback type..."
+            />
+            <div className={cn.textareaContainer}>
+              <p className={cn.message}>Message</p>
+              <FormTextarea control={control} name="message" label="Message" rows={5} />
+            </div>
+            <div className={cn.footer}>
+              <p className={cn.subtitle}>
+                To send additional files, please use the{' '}
+                <Link className={cn.telegram} target="_blank" to="https://t.me/+TyHdG_WXJmViZDVi">
+                  Telegram
+                </Link>
+                .
+              </p>
+              <ModalFooter
+                close={closeModal}
+                action={{ label: 'Send feedback', onClick: onSubmit }}
+              />
+            </div>
           </div>
         </BaseModal>
       )}
