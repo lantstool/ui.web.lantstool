@@ -3,10 +3,34 @@
 
 .modal {
   gap: 8px;
+  padding: 24px 0;
+}
+@media (max-height: 760px) {
+  .modal {
+    max-height: 90vh;
+  }
+  .container {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $neutral-400;
+      border-radius: 5px;
+    }
+  }
 }
 
 .header {
-  padding-bottom: 16px;
+  padding: 0 24px 16px 24px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 8px;
+  padding: 0 24px;
 }
 
 .title {
