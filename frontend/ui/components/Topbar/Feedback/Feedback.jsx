@@ -6,13 +6,24 @@ import { BaseModal } from '@gc/modals/BaseModal/BaseModal.jsx';
 import { ModalFooter } from '@gc/modals/ModalFooter/ModalFooter.jsx';
 import { ModalHeader } from '@gc/modals/ModalHeader/ModalHeader.jsx';
 import { FormTextarea } from '@gc/FormTextarea/FormTextarea.jsx';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { schema } from './schema.js';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useStoreEffect } from '@react-vault';
 import { Link } from 'react-router-dom';
 import { contactOptions, feedbackOptions } from './dropdownOptions.js';
 import cn from './Feedback.module.scss';
+
+const contactInfoPlaceholders = {
+  Email: 'email@example.com',
+  Telegram: '@username',
+  Discord: 'username#1234',
+};
+
+const getContactInfoPlaceholder = (contractMethod) =>
+  contactInfoPlaceholders[contractMethod]
+    ? contactInfoPlaceholders[contractMethod]
+    : contactInfoPlaceholders['Email'];
 
 export const Feedback = () => {
   const [open, setOpen] = useState(false);
@@ -36,6 +47,9 @@ export const Feedback = () => {
     trigger,
     formState: { touchedFields },
   } = form;
+
+  const contractMethod = useWatch({ control, name: 'contactMethod.value' });
+  const contractInfoPlaceholder = getContactInfoPlaceholder(contractMethod);
 
   const openModal = () => setOpen(true);
   const closeModal = () => {
@@ -80,7 +94,7 @@ export const Feedback = () => {
             name="contactInfo"
             control={control}
             label="Сontact info"
-            placeholder="email@example.com"
+            placeholder={contractInfoPlaceholder}
           />
           <FormDropdown
             control={control}
