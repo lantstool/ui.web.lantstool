@@ -10,7 +10,6 @@ import { useForm, useWatch } from 'react-hook-form';
 import { schema } from './schema.js';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useStoreEffect } from '@react-vault';
-import { Link } from 'react-router-dom';
 import { contactOptions, feedbackOptions } from './dropdownOptions.js';
 import cn from './Feedback.module.scss';
 
@@ -34,9 +33,15 @@ export const Feedback = () => {
     mode: 'onTouched',
     defaultValues: {
       name: '',
-      contactMethod: { value: '' },
+      contactMethod: {
+        label: 'Email',
+        value: 'Email',
+      },
       contactInfo: '',
-      feedbackType: { value: '' },
+      feedbackType: {
+        label: 'Ask a question',
+        value: 'AskQuestion',
+      },
       message: '',
     },
   });
@@ -70,7 +75,12 @@ export const Feedback = () => {
 
   return (
     <>
-      <Button color="secondary" size="small" onClick={openModal}>
+      <Button
+        color="secondary"
+        size="small"
+        onClick={openModal}
+        classes={{ button: cn.feedbackBtn, btnText: cn.btnText }}
+      >
         Feedback
       </Button>
       {open && (
@@ -94,7 +104,7 @@ export const Feedback = () => {
             <FormInput
               name="contactInfo"
               control={control}
-              label="Сontact info"
+              label={contractMethod}
               placeholder={contractInfoPlaceholder}
             />
             <FormDropdown
@@ -109,19 +119,10 @@ export const Feedback = () => {
               <p className={cn.message}>Message</p>
               <FormTextarea control={control} name="message" label="Message" rows={5} />
             </div>
-            <div className={cn.footer}>
-              <p className={cn.subtitle}>
-                To send additional files, please use the{' '}
-                <Link className={cn.telegram} target="_blank" to="https://t.me/+TyHdG_WXJmViZDVi">
-                  Telegram
-                </Link>
-                .
-              </p>
-              <ModalFooter
-                close={closeModal}
-                action={{ label: 'Send feedback', onClick: onSubmit }}
-              />
-            </div>
+            <ModalFooter
+              close={closeModal}
+              action={{ label: 'Send feedback', onClick: onSubmit }}
+            />
           </div>
         </BaseModal>
       )}

@@ -1,15 +1,15 @@
 export const feedbackOptions = [
   {
     label: 'Ask a question',
-    value: 'AskAQuestion',
+    value: 'AskQuestion',
   },
   {
     label: 'Report a bug',
-    value: 'ReportABug',
+    value: 'ReportBug',
   },
   {
     label: 'Suggest an improvement',
-    value: 'SuggestAnImprovement',
+    value: 'SuggestImprovement',
   },
 ];
 

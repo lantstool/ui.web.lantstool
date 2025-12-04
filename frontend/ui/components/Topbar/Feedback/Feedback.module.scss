@@ -1,6 +1,15 @@
 @use '@styles/variables' as *;
 @use '@styles/mixins' as *;
 
+.feedbackBtn {
+  border: none;
+}
+
+.btnText {
+  font-size: 13px;
+  font-weight: 400;
+}
+
 .modal {
   gap: 8px;
   padding: 24px 0;
@@ -48,19 +57,4 @@
   @include text-sm-regular;
   padding: 2px;
   color: $neutral-700;
-}
-
-.subtitle {
-  @include text-sm-regular;
-  color: $neutral-700;
-}
-
-.telegram {
-  color: $green-700;
-}
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
