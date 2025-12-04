@@ -1,20 +1,15 @@
 import { effect } from '@react-vault';
 
-const errorMessages = {
-  TOO_MANY_REQUESTS:
-    'You have sent too many feedback requests. Please wait a minute and try again.',
-  BAD_REQUEST: 'Server error. Your feedback was not saved. Please try again.',
-  NETWORK_ERROR:
-    'Network error. The server is not responding. Please check your connection or try again later.',
-};
-
 const getErrorMessageFromStatus = (status) => {
   const errorCods = {
-    429: errorMessages.TOO_MANY_REQUESTS,
-    400: errorMessages.BAD_REQUEST,
+    429: 'You have sent too many feedback requests. Please wait a minute and try again.',
+    400: 'Server error. Your feedback was not saved. Please try again.',
   };
 
-  return errorCods[status] ?? errorMessages.NETWORK_ERROR;
+  return (
+    errorCods[status] ??
+    'Network error. The server is not responding. Please check your connection or try again later.'
+  );
 };
 
 export const sendFeedback = effect(async ({ store, payload }) => {
@@ -24,8 +19,7 @@ export const sendFeedback = effect(async ({ store, payload }) => {
 
   closeModal(true);
   try {
-    //TODO: change to normal URL
-    const response = await fetch('https://perceptive-intuition-lantstoolapitest.up.railway.app/feedback', {
+    const response = await fetch(import.meta.env.VITE_FEEDBACK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +45,8 @@ export const sendFeedback = effect(async ({ store, payload }) => {
     closeModal(true);
     setNotification({
       isOpen: true,
-      message: errorMessages.NETWORK_ERROR,
+      message:
+        'Network error. The server is not responding. Please check your connection or try again later.',
       variant: 'error',
       delay: 5000,
     });

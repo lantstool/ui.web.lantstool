@@ -1,14 +1,9 @@
-import { z } from 'zod';
+import * as z from 'zod/mini';
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const telegramRegex = /^@?[a-zA-Z0-9_]{5,32}$/;
 const discordRegex = /^[^#]{2,32}#\d{4}$|^(?!.*\.\.|[A-Z])[a-z\d_.]{2,32}$/;
 
 const contactInfoRules = {
-  Email: {
-    regex: emailRegex,
-    message: 'Please enter a valid email address',
-  },
   Telegram: {
     regex: telegramRegex,
     message: 'Please enter a valid Telegram username',
@@ -21,43 +16,66 @@ const contactInfoRules = {
 
 export const schema = z
   .object({
-    name: z.string().max(100, 'Name must be at most 100 characters').optional(),
-
+    name: z.string().check(z.maxLength(100, { message: 'Name method is required' })),
     contactMethod: z.object({
-      value: z.string().nonempty('Contact method is required'),
+      value: z.string(),
     }),
 
-    contactInfo: z
-      .string()
-      .trim()
-      .min(1, 'Contact info is required')
-      .max(100, 'Contact info must be at most 100 characters'),
+    contactInfo: z.string().check(z.trim()),
 
     feedbackType: z.object({
-      value: z.string().nonempty('Feedback type is required'),
+      value: z.string(),
     }),
 
     message: z
       .string()
-      .trim()
-      .nonempty('Message is required')
-      .min(2, 'Message must be at least 2 characters')
-      .max(1000, 'Message must be at most 1000 characters'),
+      .check(
+        z.trim(),
+        z.minLength(1, { message: 'Message is required' }),
+        z.minLength(2, { message: 'Message must be at least 2 characters' }),
+        z.maxLength(1000, { message: 'Message must be at most 1000 characters' }),
+      ),
   })
-  .superRefine((data, context) => {
-    const methodRaw = data.contactMethod.value;
-    const value = data.contactInfo;
+  .check(
+    z.superRefine((data, context) => {
+      const methodRaw = data?.contactMethod?.value;
+      const value = data?.contactInfo;
 
-    if (!value) return;
+      if (!value) {
+        context.addIssue({
+          code: 'custom',
+          path: ['contactInfo'],
+          message: `${methodRaw} is required`,
+        });
+        return;
+      }
+      if (value.length > 100) {
+        context.addIssue({
+          code: 'custom',
+          path: ['contactInfo'],
+          message: `${methodRaw} must be at most 100 characters`,
+        });
+        return;
+      }
 
-    const rule = contactInfoRules[methodRaw];
-    if (!rule) return;
+      if (methodRaw === 'Email' && !z.string().check(z.email()).safeParse(value).success) {
+        context.addIssue({
+          code: 'custom',
+          path: ['contactInfo'],
+          message: 'Please enter a valid Email address',
+        });
+        return;
+      }
 
-    if (!rule.regex.test(value)) {
-      context.addIssue({
-        code: 'custom',
-        path: ['contactInfo'],
-        message: rule.message,
-      });
-    }
-  });
+      const rule = contactInfoRules[methodRaw];
+      if (!rule) return;
+
+      if (!rule.regex.test(value)) {
+        context.addIssue({
+          code: 'custom',
+          path: ['contactInfo'],
+          message: rule.message,
+        });
+      }
+    }),
+  );
