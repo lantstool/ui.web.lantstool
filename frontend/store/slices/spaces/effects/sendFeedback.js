@@ -1,17 +1,5 @@
 import { effect } from '@react-vault';
 
-const getErrorMessageFromStatus = (status) => {
-  const errorCods = {
-    429: 'You have sent too many feedback requests. Please wait a minute and try again.',
-    400: 'Server error. Your feedback was not saved. Please try again.',
-  };
-
-  return (
-    errorCods[status] ??
-    'Network error. The server is not responding. Please check your connection or try again later.'
-  );
-};
-
 export const sendFeedback = effect(async ({ store, payload }) => {
   const setNotification = store.getActions((store) => store.setNotification);
   const { formValues, closeModal } = payload;
@@ -34,8 +22,8 @@ export const sendFeedback = effect(async ({ store, payload }) => {
     });
 
     if (!response.ok) {
-      const errorMessage = getErrorMessageFromStatus(response.status);
-      setNotification({ isOpen: true, message: errorMessage, variant: 'error', delay: 5000 });
+      const errorData = await response.json();
+      setNotification({ isOpen: true, message: errorData.message, variant: 'error', delay: 5000 });
       return;
     }
 
