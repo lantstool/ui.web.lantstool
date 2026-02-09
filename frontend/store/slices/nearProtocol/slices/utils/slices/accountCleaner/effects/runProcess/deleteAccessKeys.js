@@ -45,7 +45,8 @@ export const deleteAccessKeys = async ({
 }) => {
   logger.info(`Starting to delete access keys for ${signerId}`);
 
-  await rpc.configure({ spaceId, networkId });
+  const rpcUrl = networkId === 'mainnet' ? 'https://rpc.intea.rs' : 'https://testnet-rpc.intea.rs';
+  await rpc.specify({ url: rpcUrl, headers: [] });
 
   // RPC call return all account keys;
   const { keys } = await rpc.getAccountKeys({ accountId: signerId });
