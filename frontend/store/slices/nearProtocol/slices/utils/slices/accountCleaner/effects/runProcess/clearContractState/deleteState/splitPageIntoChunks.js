@@ -1,6 +1,7 @@
 // Looks like it's a safe limit - we can't calculate the exact gas because
 // touchingTrieNode and readCachedTrieNode
 const GAS_LIMIT = 75_000_000_000_000;
+const MAX_KEYS_PER_BATCH = 1000;
 
 // TODO Looks like it's not a fully correct function; Need to do a better research
 const getDeletePairCost = (pair, protocolConfig) => {
@@ -51,7 +52,7 @@ const firstFitDecreasing = (entries, gasLimit) => {
   for (const entry of sortedEntries) {
     let placed = false;
     for (const bin of bins) {
-      if (bin.totalCost + entry.cost <= gasLimit) {
+      if (bin.totalCost + entry.cost <= gasLimit && bin.entries.length < MAX_KEYS_PER_BATCH) {
         bin.entries.push(entry);
         bin.totalCost += entry.cost;
         placed = true;

@@ -7,13 +7,13 @@ import { useStoreEntity } from '@react-vault';
   is available only on mainnet; If user will try to reach the page from any other networks
   via entering the URL - we will redirect him to 404;
  */
-export const useManageRouting = (isMainnet) => {
+export const useManageRouting = (isAvailableNetwork) => {
   const location = useLocation();
   const navigate = useNavigate();
   const history = useStoreEntity((store) => store.history);
 
   useEffect(() => {
-    if (isMainnet) {
+    if (isAvailableNetwork) {
       history.update(location.pathname);
     } else {
       navigate('/page-not-found', {
@@ -21,5 +21,5 @@ export const useManageRouting = (isMainnet) => {
         state: { message: `Page ${location.pathname} not found` },
       });
     }
-  }, [isMainnet]);
+  }, [isAvailableNetwork]);
 };

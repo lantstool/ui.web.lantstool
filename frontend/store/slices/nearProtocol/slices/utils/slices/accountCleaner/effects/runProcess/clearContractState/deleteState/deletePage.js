@@ -13,14 +13,14 @@ export const deletePage = async ({
 }) => {
   const [page, protocolConfig] = await Promise.all([
     viewStatePaginated({
+      networkId,
       accountId: signerId,
-      rpc,
-      nextPageToken: state.nextPageToken,
+      nextCursor: state.nextCursor,
     }),
     rpc.getProtocolConfig(),
   ]);
 
-  state.nextPageToken = page.nextPageToken;
+  state.nextCursor = page.nextCursor;
   const chunks = splitPageIntoChunks(page, protocolConfig);
 
   for (let i = 0; i < chunks.length; i++) {

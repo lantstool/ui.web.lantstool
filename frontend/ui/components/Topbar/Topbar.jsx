@@ -3,6 +3,7 @@ import { SelectBlockchain } from './SelectBlockchain/SelectBlockchain.jsx';
 import { SelectNearNetwork } from './SelectNearNetwork/SelectNearNetwork.jsx';
 import { Link, useMatch } from 'react-router-dom';
 import { SideMenu } from './SideMenu/SideMenu.jsx';
+import {Feedback} from './Feedback/Feedback.jsx';
 import cn from './Topbar.module.scss';
 
 export const Topbar = () => {
@@ -16,6 +17,7 @@ export const Topbar = () => {
         <SelectNearNetwork />
       </div>
       <div className={cn.menu}>
+        <Feedback/>
         <Link
           className={cn.icon}
           target="_blank"

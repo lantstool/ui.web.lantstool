@@ -170,6 +170,16 @@
   padding: 7px;
 }
 
+.secondarySm {
+  @include secondary;
+  @include sm-btn;
+}
+
+.secondarySmIcon {
+  @include secondary;
+  @include sm-btn-icon;
+}
+
 @mixin dangerSecondary {
   @include secondary;
   &:disabled .dangerSecondaryText {
