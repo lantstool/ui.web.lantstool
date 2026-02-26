@@ -1,0 +1,60 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.migration {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:
+    40px
+    min-content
+    auto
+    min-content
+    auto
+    40px;
+  grid-template-areas:
+    '.'
+    'a'
+    '.'
+    'b'
+    '.'
+    '.';
+  justify-items: center;
+}
+
+.logo {
+  grid-area: a;
+}
+
+.content {
+  grid-area: b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  @include text-xlg-bold;
+  color: $neutral-800;
+}
+
+.subtitle {
+  @include text-mg-regular;
+  padding-top: 30px;
+  max-width: 660px;
+}
+
+.card {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.actionButton {
+  width: 100%;
+}
+
+.historyIcon {
+  @include icon('@assets/icons/history-outline.svg');
+}

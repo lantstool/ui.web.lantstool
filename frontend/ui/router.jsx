@@ -10,6 +10,7 @@ import { CreateSpace } from './components/CreateSpace/CreateSpace.jsx';
 import { Settings as AppSettings } from './components/Settings/Settings.jsx';
 import { PageNotFound } from './components/PageNotFound/PageNotFound.jsx';
 import { ImportFromGithub } from './components/ImportFromGithub/ImportFromGithub.jsx';
+import { Migration } from './components/Migration/Migration.jsx';
 import { router as nearProtocolRouter } from './components/Space/NearProtocol/router.jsx';
 
 export const router = createBrowserRouter(
@@ -17,6 +18,7 @@ export const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />}>
         <Route path="get-started" element={<GetStarted />} />
+        <Route path="migration" element={<Migration />} />
         <Route path="space" element={<Space />}>
           <Route path=":spaceId" element={<SpaceId />}>
             <Route path="select-blockchain" element={<SelectBlockchain />} />
