@@ -15,6 +15,7 @@ import { nearProtocol } from './slices/nearProtocol/nearProtocol.js';
 export const store = createStore({
   // state
   notification: {},
+  migrations: {},
   // actions
   ...actions,
   // effects

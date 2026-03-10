@@ -6,6 +6,7 @@ export const resetApp = effect(async ({ store, payload }) => {
   const [history] = store.getEntities((store) => store.history);
   const [tabMessenger] = store.getEntities((store) => store.tabMessenger);
   const resetAppState = store.getEffects((store) => store.resetAppState);
+  const checkMigrations = store.getEffects((store) => store.checkMigrations);
 
   try {
     tabMessenger.beforeResetApp();
@@ -20,6 +21,7 @@ export const resetApp = effect(async ({ store, payload }) => {
       history.reset();
       resetAppState();
       tabMessenger.afterResetApp();
+      checkMigrations()
       navigate('/get-started');
     }, 25);
   } catch (e) {

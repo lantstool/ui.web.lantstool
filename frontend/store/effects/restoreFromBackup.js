@@ -7,6 +7,7 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
   const [tabMessenger] = store.getEntities((store) => store.tabMessenger);
   const resetAppState = store.getEffects((store) => store.resetAppState);
   const setNotification = store.getActions((store) => store.setNotification);
+  const checkMigrations = store.getEffects((store) => store.checkMigrations);
 
   try {
     tabMessenger.beforeRestoreFromBackup();
@@ -18,6 +19,10 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
       resetAppState();
       navigate('/');
       tabMessenger.afterRestoreFromBackup();
+
+      //Check migration after restore backup
+      await checkMigrations()
+
       setNotification({ isOpen: true, message: 'Backup Restored', variant: 'success' });
     }, 25);
   } catch (e) {

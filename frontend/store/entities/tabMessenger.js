@@ -44,6 +44,21 @@ const afterRestoreFromBackup = async (store, navigate) => {
   }
 };
 
+const afterMigration = async (store, navigate) => {
+  const [backend] = store.getEntities((store) => store.backend);
+  const [history] = store.getEntities((store) => store.history);
+  const resetAppState = store.getEffects((store) => store.resetAppState);
+
+  try {
+    await backend.start();
+    history.reset();
+    resetAppState();
+    navigate('/');
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const createTabMessenger = (store, navigate) => {
   const channel = new BroadcastChannel('tabMessenger');
 
@@ -54,6 +69,8 @@ const createTabMessenger = (store, navigate) => {
     if (event.data.event === 'afterResetApp') afterResetApp(store, navigate);
     if (event.data.event === 'beforeRestoreFromBackup') stopBackend(store);
     if (event.data.event === 'afterRestoreFromBackup') afterRestoreFromBackup(store, navigate);
+    if (event.data.event === 'beforeMigration') stopBackend(store);
+    if (event.data.event === 'afterMigration') afterMigration(store, navigate);
   };
 
   // Don't sure if we need this at all
@@ -68,6 +85,8 @@ const createTabMessenger = (store, navigate) => {
     afterResetApp: () => channel.postMessage({ event: 'afterResetApp' }),
     beforeRestoreFromBackup: () => channel.postMessage({ event: 'beforeRestoreFromBackup' }),
     afterRestoreFromBackup: () => channel.postMessage({ event: 'afterRestoreFromBackup' }),
+    beforeMigration: () => channel.postMessage({ event: 'beforeMigration' }),
+    afterMigration: () => channel.postMessage({ event: 'afterMigration' }),
   };
 };
 

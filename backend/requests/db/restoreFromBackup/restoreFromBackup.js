@@ -8,6 +8,7 @@ import { deleteFile } from '../helpers/deleteFile.js';
 import { errorWithCode } from '../../../utils/utils.js';
 import { opfs } from '../../helpers/opfs.js';
 import { transformUnzippedFiles } from './transformUnzippedFiles.js';
+import { runMigrations } from '../runMigrations.js';
 
 const unzipBackup = async (file) => {
   try {
@@ -20,10 +21,12 @@ const unzipBackup = async (file) => {
   }
 };
 
-// TODO check DB version, do migration if needed
 const validateDb = async (backupDb, backupName) => {
   try {
     await getCount({ execute: backupDb.execute });
+    // Running migration
+    console.log('Running migrations on the backup file...');
+    await runMigrations({ db: backupDb });
   } catch (e) {
     await closeConnection({ db: backupDb });
     await deleteDbFiles(backupName);
