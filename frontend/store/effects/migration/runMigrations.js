@@ -7,20 +7,18 @@ export const runMigrations = effect(async ({ store, payload }) => {
   const [history] = store.getEntities((store) => store.history);
   const resetAppState = store.getEffects((store) => store.resetAppState);
   const setNotification = store.getActions((store) => store.setNotification);
-  const checkMigrations = store.getEffects((store) => store.checkMigrations);
+  const setMigration = store.getActions((store) => store.setMigrations);
 
   try {
     tabMessenger.beforeMigration();
-    await backend.sendRequest('db.runMigrations');
+    const migrations = await backend.sendRequest('db.runMigrations');
 
     setTimeout(async () => {
       history.reset();
       resetAppState();
       navigate('/');
       tabMessenger.afterMigration();
-
-      //Check migration after restore backup
-     await checkMigrations()
+      setMigration(migrations)
 
       setNotification({ isOpen: true, message: 'Migration complete', variant: 'success' });
     }, 25);

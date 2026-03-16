@@ -6,7 +6,6 @@ export const checkMigrations = effect(async ({ store }) => {
 
   try {
     const migration = await backend.sendRequest('db.checkMigrations');
-    console.log(migration, 'check');
     setMigration(migration);
     return migration;
   } catch (e) {

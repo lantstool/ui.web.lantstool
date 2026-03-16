@@ -19,8 +19,6 @@ export const restoreFromBackup = effect(async ({ store, payload }) => {
       resetAppState();
       navigate('/');
       tabMessenger.afterRestoreFromBackup();
-
-      //Check migration after restore backup
       await checkMigrations()
 
       setNotification({ isOpen: true, message: 'Backup Restored', variant: 'success' });

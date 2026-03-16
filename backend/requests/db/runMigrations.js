@@ -1,5 +1,6 @@
 import { migrations } from './migrations/index.js';
 import { SQLITE_ROW } from 'wa-sqlite/src/sqlite-constants.js';
+import { errorWithCode } from '../../utils/utils.js';
 
 const query = async (sqlite, connection, sql) => {
   const rows = [];
@@ -28,12 +29,8 @@ const ensureMigrationsTable = (sqlite, connection) =>
   );
 
 const getCurrentVersion = async (sqlite, connection) => {
-  const rows = await query(
-    sqlite,
-    connection,
-    'SELECT MAX(version) as maxVersion FROM _migrations;',
-  );
-  return rows[0]?.maxVersion || 0;
+  const rows = await query(sqlite, connection, 'SELECT MAX(version) as version FROM _migrations;');
+  return rows[0]?.version || 0;
 };
 
 export const runMigrations = async ({ db }) => {
@@ -42,6 +39,8 @@ export const runMigrations = async ({ db }) => {
 
   const currentVersion = await getCurrentVersion(sqlite, connection);
   const latestVersion = migrations.at(-1)?.version || 0;
+
+  if (currentVersion > latestVersion) errorWithCode(422, 'DB version is higher than the latest version.');
 
   const pending = migrations
     .filter((m) => m.version > currentVersion)

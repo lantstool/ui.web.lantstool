@@ -18,11 +18,13 @@ const afterResetApp = async (store, navigate) => {
   const [backend] = store.getEntities((store) => store.backend);
   const [history] = store.getEntities((store) => store.history);
   const resetAppState = store.getEffects((store) => store.resetAppState);
+  const checkMigrations = store.getEffects((store) => store.checkMigrations);
 
   try {
     await backend.start();
     history.reset();
     resetAppState();
+    await checkMigrations();
     navigate('/');
   } catch (e) {
     console.log(e);
@@ -33,11 +35,13 @@ const afterRestoreFromBackup = async (store, navigate) => {
   const [backend] = store.getEntities((store) => store.backend);
   const [history] = store.getEntities((store) => store.history);
   const resetAppState = store.getEffects((store) => store.resetAppState);
+  const checkMigrations = store.getEffects((store) => store.checkMigrations);
 
   try {
     await backend.start();
     history.reset();
     resetAppState();
+    await checkMigrations();
     navigate('/');
   } catch (e) {
     console.log(e);
@@ -48,11 +52,13 @@ const afterMigration = async (store, navigate) => {
   const [backend] = store.getEntities((store) => store.backend);
   const [history] = store.getEntities((store) => store.history);
   const resetAppState = store.getEffects((store) => store.resetAppState);
+  const checkMigrations = store.getEffects((store) => store.checkMigrations);
 
   try {
     await backend.start();
     history.reset();
     resetAppState();
+    await checkMigrations();
     navigate('/');
   } catch (e) {
     console.log(e);

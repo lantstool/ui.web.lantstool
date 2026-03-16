@@ -21,7 +21,7 @@ export const resetApp = effect(async ({ store, payload }) => {
       history.reset();
       resetAppState();
       tabMessenger.afterResetApp();
-      checkMigrations()
+      await checkMigrations();
       navigate('/get-started');
     }, 25);
   } catch (e) {

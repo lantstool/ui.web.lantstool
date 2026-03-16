@@ -12,17 +12,13 @@ export const initApp = effect(async ({ store, payload }) => {
   const [, createNearProtocolRpcProvider] = store.getEntities(
     (store) => store.nearProtocol.rpcProvider,
   );
-  const checkMigrations = store.getEffects((store) => store.checkMigrations);
+  const setMigration = store.getActions((store) => store.setMigrations);
 
   // Start app services;
   const backend = await createBackend();
   const analytics = await createAnalytics();
 
-  // Check DB for migrations
-  const migrations = await checkMigrations();
-  checkMigrations(migrations)
-  // if (migrations?.needsMigration) return;
-
+  setMigration(backend.migrations);
   createTabMessenger({ navigate });
   createHistory();
   createNearProtocolRpcProvider();
