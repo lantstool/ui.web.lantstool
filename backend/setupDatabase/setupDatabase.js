@@ -42,12 +42,8 @@ export const setupDatabase = async ({
 
     if (isNewDb) {
       // Instant run migration for new users
-      console.log('DB not detected. Running migrations...');
       await runMigrations({ db });
-
       await setupDefaultData(db.execute);
-    } else {
-      console.log('DB detected.');
     }
   } catch (e) {
     console.log(e);

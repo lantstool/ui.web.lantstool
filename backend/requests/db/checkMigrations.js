@@ -8,7 +8,7 @@ export const checkMigrations = async ({ db }) => {
 
   if (!tableCheck?.[0]?.count) {
     return {
-      needsMigration: migrations.length > 0,
+      needsMigration: true,
       currentVersion: 0,
       latestVersion: migrations.at(-1).version,
     };
@@ -16,8 +16,8 @@ export const checkMigrations = async ({ db }) => {
 
   const rows = await db.execute('SELECT MAX(version) as version FROM _migrations;');
 
-  const currentVersion = rows?.[0]?.version ?? 0;
-  const latestVersion  = migrations.at(-1).version;
+  const currentVersion = rows[0].version ?? 0;
+  const latestVersion = migrations.at(-1).version;
 
   return {
     needsMigration: currentVersion < latestVersion,

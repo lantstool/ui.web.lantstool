@@ -42,11 +42,11 @@ export const runMigrations = async ({ db }) => {
 
   if (currentVersion > latestVersion) errorWithCode(422, 'DB version is higher than the latest version.');
 
-  const pending = migrations
+  const pendingMigrations = migrations
     .filter((m) => m.version > currentVersion)
     .sort((a, b) => a.version - b.version);
 
-  if (pending.length === 0) {
+  if (pendingMigrations.length === 0) {
     return {
       needsMigration: false,
       currentVersion,
@@ -57,7 +57,7 @@ export const runMigrations = async ({ db }) => {
   await sqlite.exec(connection, 'BEGIN TRANSACTION;');
 
   try {
-    for (const { version, name, sql } of pending) {
+    for (const { version, name, sql } of pendingMigrations) {
       try {
         await sqlite.exec(connection, sql);
         await sqlite.exec(
@@ -71,16 +71,16 @@ export const runMigrations = async ({ db }) => {
 
     await sqlite.exec(connection, 'COMMIT;');
 
-    const newCurrentVersion = pending.at(-1).version;
+    const newCurrentVersion = pendingMigrations.at(-1).version;
 
     return {
       needsMigration: false,
       currentVersion: newCurrentVersion,
       latestVersion,
     };
-  } catch (error) {
+  } catch (e) {
     await sqlite.exec(connection, 'ROLLBACK;');
-    console.error('Migration aborted. Database restored to previous state:', error);
-    throw error;
+    console.error('Migration aborted. Database restored to previous state:', e);
+    throw e;
   }
 };
