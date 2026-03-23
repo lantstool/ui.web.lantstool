@@ -10,7 +10,6 @@ export const AccountCleaner = () => {
   const isAvailableNetwork = networkId === 'mainnet' || 'testnet';
   const accountCleaner = useStoreState(
     (store) => store.nearProtocol.utils.accountCleaner?.[spaceId]?.[networkId],
-    [spaceId, networkId],
   );
   const onMount = useStoreEffect((store) => store.nearProtocol.utils.accountCleaner.onMount);
 
