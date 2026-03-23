@@ -8,7 +8,7 @@
 */
 
 export const getListForOrderUpdate = `
-  SELECT callId, name, "order"
+  SELECT callId, name, parentId, "order"
   FROM near_protocol_calls
   WHERE spaceId = @spaceId
     AND networkId = @networkId

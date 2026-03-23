@@ -1,0 +1,136 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.menu {
+  position: relative;
+}
+
+.menuIcon {
+  @include icon('@assets/icons/menu-dots-outline.svg');
+  background-color: $neutral-600;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  box-shadow: $dropdown-menu;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  gap: 4px;
+  width: 170px;
+  background-color: $neutral-00;
+}
+
+.menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: $neutral-300;
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
+  &:active {
+    .menuIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+@mixin button {
+  width: 100%;
+  border: none;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  background: none;
+  align-items: center;
+  border-radius: 4px;
+  &:focus {
+    .title {
+      color: $neutral-800;
+    }
+    background-color: $neutral-200;
+  }
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+  }
+}
+
+.activeBtn {
+  background-color: $neutral-300;
+  .menuIcon {
+    background-color: $neutral-800;
+  }
+}
+
+.deleteButton {
+  @include button;
+  &:hover {
+    .deleteIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.renameButton {
+  @include button;
+  &:hover {
+    .renameIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  color: $neutral-600;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: $neutral-500;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.deleteIcon {
+  @include icon('@assets/icons/trash-bin-outline.svg');
+  background-color: $neutral-600;
+}
+
+.renameIcon {
+  @include icon('@assets/icons/edit-rename-outline.svg');
+  background-color: $neutral-600;
+}

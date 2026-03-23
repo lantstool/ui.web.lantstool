@@ -15,6 +15,7 @@ import { exportOneAsJson } from './exportOne/exportOneAsJson.js';
 import { exportOneAsJsonFile } from './exportOne/exportOneAsJsonFile.js';
 import { exportOneAsZip } from './exportOne/exportOneAsZip.js';
 import { downloadWasm } from './downloadWasm.js';
+import { createInFolder } from './createInFolder.js';
 
 export const effects = {
   getList,
@@ -34,4 +35,5 @@ export const effects = {
   exportOneAsJsonFile,
   exportOneAsZip,
   downloadWasm,
+  createInFolder,
 };
