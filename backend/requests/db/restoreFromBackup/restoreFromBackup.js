@@ -8,6 +8,7 @@ import { deleteFile } from '../helpers/deleteFile.js';
 import { errorWithCode } from '../../../utils/utils.js';
 import { opfs } from '../../helpers/opfs.js';
 import { transformUnzippedFiles } from './transformUnzippedFiles.js';
+import { runMigrations } from '../runMigrations.js';
 
 const unzipBackup = async (file) => {
   try {
@@ -20,13 +21,16 @@ const unzipBackup = async (file) => {
   }
 };
 
-// TODO check DB version, do migration if needed
 const validateDb = async (backupDb, backupName) => {
   try {
     await getCount({ execute: backupDb.execute });
+    await runMigrations({ db: backupDb });
   } catch (e) {
     await closeConnection({ db: backupDb });
     await deleteDbFiles(backupName);
+
+    // When a user restores a backup of a higher version of the app than it supports
+    if (e.code === 422) errorWithCode(422, 'Unsupported backup version. Refresh the page and try again.');
     errorWithCode(420, 'Incompatible SQLite database');
   }
 };
@@ -43,6 +47,8 @@ const validateBackup = async (backupName) => {
     await deleteFile(`${backupName}-journal`);
   } catch (e) {
     console.log(e);
+    // If DB exist but version higher than max version
+    if (e.code === 422) throw e;
     // If DB is a real SQLite DB but is an incompatible - just end up with error
     if (e.code === 420) throw e;
     // In other cases just throw the default error

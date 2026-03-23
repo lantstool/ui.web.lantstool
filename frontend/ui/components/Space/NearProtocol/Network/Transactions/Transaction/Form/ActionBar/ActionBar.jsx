@@ -1,7 +1,7 @@
 import { useStoreEffect, useStoreAction, useStoreState } from '@react-vault';
-import { Button } from '../../../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { useParams } from 'react-router-dom';
-import { Tooltip } from '../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
 import { useIsExtraConfirmation } from './useIsExtraConfirmation.js';
 import { ConfirmationModal } from './ConfirmationModal/ConfirmationModal.jsx';
@@ -15,10 +15,7 @@ export const ActionBar = ({ form, transaction }) => {
   const sendOne = useStoreEffect((store) => store.nearProtocol.transactions.sendOne);
   const saveChanges = useStoreEffect((store) => store.nearProtocol.transactions.saveChanges);
   const revertChanges = useStoreEffect((store) => store.nearProtocol.transactions.revertChanges);
-  const txResult = useStoreState(
-    (store) => store.nearProtocol.transactions.results[transactionId],
-    [transactionId],
-  );
+  const txResult = useStoreState((store) => store.nearProtocol.transactions.results[transactionId]);
   const hasChanges = useIsFormHasChanges(form, transaction);
   const extraConfirmation = useIsExtraConfirmation(form);
 

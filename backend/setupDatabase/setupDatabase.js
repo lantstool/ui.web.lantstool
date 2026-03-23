@@ -2,10 +2,9 @@ import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite.mjs';
 import { OPFSCoopSyncVFS } from 'wa-sqlite/src/examples/OPFSCoopSyncVFS';
 import { Factory } from 'wa-sqlite/src/sqlite-api';
 import { deleteDbFiles } from '../requests/db/helpers/deleteDbFiles.js';
-import setupDatabaseSQL from './setupDatabase.sql';
-import { setupDefaultData } from './setupDefaultData.js';
 import { errorWithCode } from '../utils/utils.js';
 import { createExecuteFn } from './createExecuteFn.js';
+import { runMigrations } from '../requests/db/runMigrations.js';
 
 const getSqlite = async (dnName) => {
   const SQLiteEMSModule = await SQLiteESMFactory();
@@ -30,14 +29,20 @@ export const setupDatabase = async ({
     sqlite = await getSqlite(name);
     // Open connection
     connection = await sqlite.open_v2(name);
-    // Configure db & setup tables if needed
-    await sqlite.exec(connection, setupDatabaseSQL);
     // Set fields to the global object
     db.connection = connection;
     db.sqlite = sqlite;
     db.execute = createExecuteFn(sqlite, connection);
-    // Setup default app settings
-    await setupDefaultData(db.execute);
+
+    const tablesCount = await db.execute(`
+      SELECT count(*) as count FROM sqlite_master WHERE type='table';
+    `);
+    const isNewDb = tablesCount[0].count === 0;
+
+    if (isNewDb) {
+      // Instant run migration for new users
+      await runMigrations({ db });
+    }
   } catch (e) {
     console.log(e);
     // Usually we count that only sqlite.exec can fail on this stage - for example

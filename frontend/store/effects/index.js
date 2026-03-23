@@ -6,6 +6,8 @@ import { resetHistory } from './resetHistory.js';
 import { resetAppState } from './resetAppState.js';
 import { getStarted } from './getStarted/getStarted.js';
 import { importFromGithub } from './importFromGithub/importFromGithub.js';
+import { checkMigrations } from './migration/checkMigrations.js';
+import { runMigrations } from './migration/runMigrations.js';
 
 export const effects = {
   initApp,
@@ -16,4 +18,6 @@ export const effects = {
   resetAppState,
   getStarted,
   importFromGithub,
+  checkMigrations,
+  runMigrations,
 };

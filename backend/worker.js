@@ -1,5 +1,6 @@
 import { setupDatabase } from './setupDatabase/setupDatabase.js';
 import { handleRequest } from './requests/handleRequest.js';
+import { checkMigrations } from './requests/db/checkMigrations.js';
 
 const db = {
   sqlite: null,
@@ -14,6 +15,8 @@ const storage = {
 };
 
 await setupDatabase({ db });
+
+const migrations = await checkMigrations({ db });
 
 // TODO: Add a logger and embed the ability to send it to devs for users
 self.addEventListener('message', async (messageEvent) => {
@@ -35,4 +38,4 @@ self.addEventListener('message', async (messageEvent) => {
 });
 
 // We need to notify main thread that worker is ready to work
-self.postMessage({ event: { type: 'backendReadyToWork' } });
+self.postMessage({ event: { type: 'backendReadyToWork', data: migrations } });
