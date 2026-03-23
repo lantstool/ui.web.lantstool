@@ -12,13 +12,11 @@ export const initApp = effect(async ({ store, payload }) => {
   const [, createNearProtocolRpcProvider] = store.getEntities(
     (store) => store.nearProtocol.rpcProvider,
   );
-  const setMigration = store.getActions((store) => store.setMigrations);
 
   // Start app services;
   const backend = await createBackend();
   const analytics = await createAnalytics();
 
-  setMigration(backend.migrations);
   createTabMessenger({ navigate });
   createHistory();
   createNearProtocolRpcProvider();

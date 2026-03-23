@@ -103,4 +103,11 @@ export const v1 = `
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
   );
+
+  INSERT OR IGNORE INTO settings (key, value) VALUES
+    ('appSettings', '{"isSidebarMinimized": false}');
+
+  INSERT INTO users (userId, createdAt, role)
+  SELECT '${crypto.randomUUID()}', ${Date.now()}, 'owner'
+    WHERE NOT EXISTS (SELECT 1 FROM users WHERE role = 'owner');
 `;

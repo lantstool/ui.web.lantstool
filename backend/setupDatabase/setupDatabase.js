@@ -2,7 +2,6 @@ import SQLiteESMFactory from 'wa-sqlite/dist/wa-sqlite.mjs';
 import { OPFSCoopSyncVFS } from 'wa-sqlite/src/examples/OPFSCoopSyncVFS';
 import { Factory } from 'wa-sqlite/src/sqlite-api';
 import { deleteDbFiles } from '../requests/db/helpers/deleteDbFiles.js';
-import { setupDefaultData } from './setupDefaultData.js';
 import { errorWithCode } from '../utils/utils.js';
 import { createExecuteFn } from './createExecuteFn.js';
 import { runMigrations } from '../requests/db/runMigrations.js';
@@ -43,7 +42,6 @@ export const setupDatabase = async ({
     if (isNewDb) {
       // Instant run migration for new users
       await runMigrations({ db });
-      await setupDefaultData(db.execute);
     }
   } catch (e) {
     console.log(e);

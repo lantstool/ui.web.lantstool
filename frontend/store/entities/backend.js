@@ -86,8 +86,11 @@ class Backend {
   };
 }
 
-export const backend = entity(async () => {
+export const backend = entity(async ({ store }) => {
+  const setMigration = store.getActions((store) => store.setMigrations);
   const backendWorker = new Backend();
+
   await backendWorker.start();
+  setMigration(backendWorker.migrations);
   return backendWorker;
 });

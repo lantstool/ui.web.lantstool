@@ -1,16 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { formatDate } from '../../../../../../../../store/helpers/formatDate.js';
-import { CopyButton } from '../../../../../../_general/CopyButton/CopyButton.jsx';
+import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { useStoreState } from '@react-vault';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
 import cn from './HeadCard.module.scss';
 
 export const HeadCard = () => {
   const { accountId } = useParams();
-  const { createdAt } = useStoreState(
-    (store) => store.nearProtocol.accounts.records[accountId],
-    [accountId],
-  );
+  const { createdAt } = useStoreState((store) => store.nearProtocol.accounts.records[accountId]);
   const { date, hourMinute } = formatDate(createdAt);
 
   return (

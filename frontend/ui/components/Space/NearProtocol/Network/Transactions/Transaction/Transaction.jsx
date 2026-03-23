@@ -13,12 +13,8 @@ export const Transaction = () => {
   );
   const transactionDraft = useStoreState(
     (store) => store.nearProtocol.transactions.drafts[transactionId],
-    [transactionId],
   );
-  const txResult = useStoreState(
-    (store) => store.nearProtocol.transactions.results[transactionId],
-    [transactionId],
-  );
+  const txResult = useStoreState((store) => store.nearProtocol.transactions.results[transactionId]);
 
   useSaveToHistory();
   useLoader(onMountTransaction, transactionId, [transactionId]);

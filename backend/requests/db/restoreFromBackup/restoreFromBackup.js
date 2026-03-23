@@ -29,6 +29,7 @@ const validateDb = async (backupDb, backupName) => {
     await closeConnection({ db: backupDb });
     await deleteDbFiles(backupName);
 
+    // When a user restores a backup of a higher version of the app than it supports
     if (e.code === 422) errorWithCode(422, 'Unsupported backup version. Refresh the page and try again.');
     errorWithCode(420, 'Incompatible SQLite database');
   }

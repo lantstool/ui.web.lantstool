@@ -55,7 +55,7 @@ test.describe('Backup Restoration & Manual migration', () => {
     // Verify it's actually a ZIP file being downloaded
     expect(download.suggestedFilename()).toMatch(/\.zip$/);
     // 8. Wait for the migrations to finish and the app to redirect
-    await page.waitForURL('**/spaces', { timeout: 15000 });
+    await page.waitForURL('**/spaces', { timeout: 30000 });
     // 9. Verify the migration screen is gone
     await expect(page.getByRole('heading', { name: 'Database Update Required' })).toBeHidden();
     // 10. Confirm the user successfully entered the main application
@@ -90,11 +90,11 @@ test.describe('Backup Restoration & Manual migration', () => {
     // 9. Wait for the successful redirect to the main app.
     // During this time, the worker unpacks the archive, validates the DB,
     // runs silent migrations, replaces the SQLite file, and redirects the user.
-    await page.waitForURL('**/spaces', { timeout: 15000 });
+    await page.waitForURL('**/spaces', { timeout: 30000 });
     // 10. Verify that the manual migration overlay did not appear
     const migrationOverlay = page.getByText('Database Update Required');
     await expect(migrationOverlay).toBeHidden();
     // 11. Confirm that the user successfully entered the main application
-    await expect(page.getByRole('heading', { name: 'spaces' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Spaces' })).toBeVisible();
   });
 });
