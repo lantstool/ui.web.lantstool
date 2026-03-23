@@ -5,6 +5,7 @@ import { getCount } from './effects/getCount.js';
 import { remove } from './effects/remove.js';
 import { updateOneName } from './effects/updateOneName.js';
 import { updateOneBadge } from './effects/updateOneBadge.js';
+import { sendFeedback } from './effects/sendFeedback.js';
 
 export const spaces = {
   // state
@@ -19,4 +20,5 @@ export const spaces = {
   remove,
   updateOneName,
   updateOneBadge,
+  sendFeedback,
 };

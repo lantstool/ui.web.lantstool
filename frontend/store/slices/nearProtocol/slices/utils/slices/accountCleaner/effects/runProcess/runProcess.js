@@ -4,7 +4,7 @@ import { clearContractState } from './clearContractState/clearContractState.js';
 import { deleteAccount } from './deleteAccount.js';
 import { createLogger } from './createLogger.js';
 
-// Runs only on mainnet
+// Runs only on mainnet and testnet
 export const runProcess = effect(async ({ store, slice, payload }) => {
   const { formValues, spaceId, networkId, closeModal } = payload;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);

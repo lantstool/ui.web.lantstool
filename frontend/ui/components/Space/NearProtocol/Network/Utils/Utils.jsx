@@ -6,8 +6,8 @@ import { useManageRouting } from './useManageRouting.js';
 import cn from './Utils.module.scss';
 
 export const Utils = () => {
-  const { isMainnet } = useNetworkId();
-
+  const { networkId } = useNetworkId();
+  const isAvailableNetwork = networkId === 'mainnet' || 'testnet';
   useManageRouting();
 
   return (
@@ -17,7 +17,7 @@ export const Utils = () => {
         <Tabs>
           <TabLink to="key-generator">Key Generator</TabLink>
           <TabLink to="unit-converter">Unit Converter</TabLink>
-          {isMainnet && <TabLink to="account-cleaner">Account Cleaner</TabLink>}
+          {isAvailableNetwork && <TabLink to="account-cleaner">Account Cleaner</TabLink>}
         </Tabs>
         <Outlet />
       </div>

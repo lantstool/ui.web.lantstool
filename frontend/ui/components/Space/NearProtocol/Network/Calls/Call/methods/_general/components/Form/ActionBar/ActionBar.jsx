@@ -1,8 +1,8 @@
 import { useStoreEffect, useStoreAction, useStoreState } from '@react-vault';
-import { Button } from '../../../../../../../../../../_general/Button/Button.jsx';
+import { Button } from '@gc/Button/Button.jsx';
 import { useIsFormHasChanges } from './useIsFormHasChanges.js';
 import { useParams } from 'react-router-dom';
-import { Tooltip } from '../../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import cn from './ActionBar.module.scss';
 
 export const ActionBar = ({ form, call }) => {
@@ -11,7 +11,7 @@ export const ActionBar = ({ form, call }) => {
   const saveChanges = useStoreEffect((store) => store.nearProtocol.calls.saveChanges);
   const revertChanges = useStoreEffect((store) => store.nearProtocol.calls.revertChanges);
   const executeOne = useStoreEffect((store) => store.nearProtocol.calls.executeOne);
-  const result = useStoreState((store) => store.nearProtocol.calls.results[callId], [callId]);
+  const result = useStoreState((store) => store.nearProtocol.calls.results[callId]);
   const hasChanges = useIsFormHasChanges(form, call);
 
   const revert = () => revertChanges({ form, callId });

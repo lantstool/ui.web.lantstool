@@ -18,12 +18,12 @@ const getActionsState = (actions) => {
 
 export const ReceiverId = ({ form }) => {
   const { control, watch, setValue } = form;
-  const options = useAccountsOptions();
   const [isModalOpen, openModal, closeModal] = useToggler();
   const ref = useRef(null);
   const signerId = watch('signerId');
   const receiverId = watch('receiverId.value');
   const actions = watch('actions');
+  const options = useAccountsOptions(signerId);
 
   const { isRestricted, hasCreateAccount, hasFunctionCall } = getActionsState(actions);
   const disableReceiverId = isRestricted || hasCreateAccount || hasFunctionCall;

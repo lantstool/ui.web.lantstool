@@ -15,7 +15,7 @@ export const clearContractState = async ({
   // 1. Check if account has state;
   logger.info(`Checking if the account has state...`);
 
-  const state = await viewStatePaginated({ accountId: signerId, rpc });
+  const state = await viewStatePaginated({ networkId, accountId: signerId });
   // No key-value pairs = no state
   if (!(state.values.length > 0)) {
     logger.info(`Account ${signerId} has no state. Nothing to clear`);

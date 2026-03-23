@@ -1,7 +1,7 @@
 {
   "name": "ui.web.lantstool",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,7 @@
     "@codemirror/lang-javascript": "^6.2.4",
     "@codemirror/language": "^6.11.0",
     "@codemirror/lint": "^6.8.5",
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^5.2.2",
     "@lezer/highlight": "^1.2.1",
     "@noble/hashes": "^1.8.0",
     "@tippyjs/react": "^4.2.6",
@@ -41,9 +41,12 @@
     "ua-parser-js": "^2.0.3",
     "uuid": "^10.0.0",
     "wa-sqlite": "github:rhashimoto/wa-sqlite#v1.0.4",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0",
     "@vitejs/plugin-react-swc": "^3.9.0",
     "prettier": "^3.5.3",
     "rollup-plugin-visualizer": "^5.14.0",

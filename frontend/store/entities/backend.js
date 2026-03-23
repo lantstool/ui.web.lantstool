@@ -27,6 +27,7 @@ class Backend {
     this.worker = null;
     this.subscribers = {}; // There is only 1 subscriber for every event
     this.requests = {};
+    this.migrations = {};
   }
 
   start = () => {
@@ -49,7 +50,8 @@ class Backend {
     // because all worker messages will be handled only after 'init' func will be
     // completed - creation of a new promise is a sync operation
     return new Promise((resolve) => {
-      this.subscribers['backendReadyToWork'] = () => {
+      this.subscribers['backendReadyToWork'] = (data) => {
+        this.migrations = data;
         resolve();
       };
     });
@@ -84,8 +86,11 @@ class Backend {
   };
 }
 
-export const backend = entity(async () => {
+export const backend = entity(async ({ store }) => {
+  const setMigration = store.getActions((store) => store.setMigrations);
   const backendWorker = new Backend();
+
   await backendWorker.start();
+  setMigration(backendWorker.migrations);
   return backendWorker;
 });

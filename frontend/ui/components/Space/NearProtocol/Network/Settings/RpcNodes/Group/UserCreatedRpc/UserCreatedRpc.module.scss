@@ -42,4 +42,7 @@
 .url {
   @include text-sm-regular;
   color: $neutral-600;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

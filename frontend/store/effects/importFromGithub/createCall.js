@@ -1,6 +1,11 @@
 import { config } from '../../../ui/components/Space/NearProtocol/Network/Calls/Call/methods/_general/config.js';
 import { methods } from '../../slices/nearProtocol/slices/calls/helpers/methods/index.js';
 
+const getVersionedTransformer = (method, version) =>
+  methods[method].importTransformers
+    ? methods[method].importTransformers[version]
+    : methods[method].importTransformer;
+
 export const createCall = async ({
   json,
   backend,
@@ -9,11 +14,13 @@ export const createCall = async ({
   navigate,
   setNotification,
 }) => {
-  const { name, method, params } = json.call;
+  const { name, method, params, version } = json.call;
+
+  const transformer = getVersionedTransformer(method, version);
 
   const body = {
     method: config.methodNames[method],
-    ...methods[method].importTransformer({ params }),
+    ...transformer({ params }),
   };
 
   const call = await backend.sendRequest('nearProtocol.calls.importOne', {

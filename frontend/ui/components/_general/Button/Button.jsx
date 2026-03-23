@@ -31,6 +31,12 @@ const types = (isIcon, children) => {
         iconColor: cn.iconSecondary,
         iconStyle: cn.iconSecondaryStyle,
       },
+      small: {
+        button: isIcon ? cn.secondarySmIcon : cn.secondarySm,
+        btnText: cn.secondaryText,
+        iconColor: cn.iconSecondary,
+        iconStyle: cn.iconSecondaryStyle,
+      },
     },
     danger: {
       large: {
@@ -115,7 +121,7 @@ export const Button = ({
     >
       {IconLeft && <IconLeft style={iconColor} />}
       {iconLeftStyles && <span className={cnm(iconStyle, iconLeftStyles)} />}
-      {children && <span className={btnText}>{children}</span>}
+      {children && <span className={cnm(btnText, classes?.btnText)}>{children}</span>}
       {IconRight && <IconRight className={iconColor} />}
       {iconRightStyles && <span className={cnm(iconStyle, iconRightStyles)} />}
     </button>

@@ -9,7 +9,7 @@ export const deleteState = async ({
   logger,
 }) => {
   const state = {
-    nextPageToken: null,
+    nextCursor: null,
     startDeletionFrom: 1,
   };
 
@@ -23,5 +23,5 @@ export const deleteState = async ({
       networkId,
       logger,
     });
-  } while (state.nextPageToken);
+  } while (state.nextCursor);
 };
