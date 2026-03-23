@@ -3,6 +3,7 @@ import { transactions } from './transactions/index.js';
 import { calls } from './calls/index.js';
 import { accounts } from './accounts/index.js';
 import { keys } from './keys/index.js';
+import { folders } from './folders/index.js';
 
 export const nearProtocol = {
   networks,
@@ -10,4 +11,5 @@ export const nearProtocol = {
   calls,
   accounts,
   keys,
+  folders,
 };

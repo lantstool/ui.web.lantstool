@@ -1,0 +1,106 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.createMenu {
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  box-shadow: $dropdown-menu;
+  border: 1px solid $neutral-200;
+  border-radius: 8px;
+  gap: 4px;
+  width: 170px;
+  background-color: $neutral-00;
+}
+
+@mixin createBtn($borderRadius) {
+  width: 100%;
+  border: none;
+  gap: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  background: none;
+  align-items: center;
+  border-radius: $borderRadius;
+  &:focus {
+    .title {
+      color: $neutral-800;
+    }
+    background-color: $neutral-200;
+  }
+  &:hover {
+    background-color: $neutral-200;
+    cursor: pointer;
+    .title {
+      color: $neutral-800;
+    }
+  }
+}
+
+.createBtn {
+  @include createBtn(8px);
+  &:focus {
+    .addIcon {
+      background-color: $neutral-800;
+    }
+  }
+  &:hover {
+    .addIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.activeBtn {
+  background-color: $neutral-200;
+  .addIcon {
+    background-color: $neutral-800;
+  }
+  .title {
+    color: $neutral-800;
+  }
+}
+
+.createOneButton {
+  @include createBtn(4px);
+  &:hover {
+    .transactionIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.folderButton {
+  @include createBtn(4px);
+  &:hover {
+    .folderIcon {
+      background-color: $neutral-800;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  color: $neutral-600;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.addIcon {
+  @include icon('@assets/icons/add-square-outline.svg');
+  background: $neutral-600;
+}
+
+.folderIcon {
+  @include icon('@assets/icons/add-folder-outline.svg');
+  background: $neutral-600;
+}

@@ -1,13 +1,14 @@
 import { useMatch, useNavigate } from 'react-router-dom';
 import { DropDownSelector } from '../_general/DropDownSelector/DropDownSelector.jsx';
-import { useState } from 'react';
-import { Popper } from '../_general/Popper/Popper.jsx';
+import { useRef, useState } from 'react';
+import { Popper } from '@gc/Popper/Popper.jsx';
 import cn from './SelectBlockchain.module.scss';
 
 export const SelectBlockchain = () => {
   const navigate = useNavigate();
   const match = useMatch('/space/:spaceId/:segment/*');
   const [isOpen, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   if (!match) return null;
 
@@ -25,11 +26,11 @@ export const SelectBlockchain = () => {
   return (
     <>
       <hr className={cn.border} />
-      <div className={cn.selectBlockchain}>
+      <div className={cn.selectBlockchain} ref={anchorRef}>
         <DropDownSelector isOpen={isOpen} title="NEAR Protocol" openMenu={openMenu}>
           <span className={cn.nearToken} />
         </DropDownSelector>
-        <Popper isOpen={isOpen} closeMenu={closeMenu}>
+        <Popper isOpen={isOpen} closeMenu={closeMenu} position="right" anchorEl={anchorRef.current}>
           <div className={cn.dropdown}>
             <div className={cn.container}>
               <button onClick={selectNearProtocol} className={cn.item}>

@@ -1,6 +1,7 @@
 import { addPrefixToObjKeys } from '../../helpers/addPrefixToObjKeys.js';
 import { removeOne as removeTx } from '../transactions/removeOne.js';
 import { getList as getTxList } from '../transactions/getList.js';
+import { removeAll as removeAllFolders } from '../folders/removeAll.js';
 
 // We remove all tx manually in order to delete all contract files of the network
 const removeAllTransactions = async (execute, spaceId, networkId) => {
@@ -18,6 +19,7 @@ export const removeOne = async ({ execute, request }) => {
   const { spaceId, networkId } = request.body;
 
   await removeAllTransactions(execute, spaceId, networkId);
+  await removeAllFolders({ execute, request });
 
   const query = `
     DELETE FROM near_protocol_networks

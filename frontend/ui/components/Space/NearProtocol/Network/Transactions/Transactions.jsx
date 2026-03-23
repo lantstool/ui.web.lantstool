@@ -8,18 +8,31 @@ import cn from './Transactions.module.scss';
 
 export const Transactions = () => {
   const txList = useStoreState((store) => store.nearProtocol.transactions.txList);
-  const getList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
+  const foldersList = useStoreState((store) => store.nearProtocol.folders.records);
+  const getTransactionsList = useStoreEffect((store) => store.nearProtocol.transactions.getList);
+  const getFoldersList = useStoreEffect((store) => store.nearProtocol.folders.getList);
   const { spaceId, networkId } = useParams();
-  const [isLoading] = useLoader(getList, { spaceId, networkId }, [spaceId, networkId]);
+
+  const [isLoadingTx] = useLoader(getTransactionsList, { spaceId, networkId }, [
+    spaceId,
+    networkId,
+  ]);
+
+  const [isLoadingFolders] = useLoader(
+    getFoldersList,
+    { spaceId, networkId, type: 'transaction' },
+    [spaceId, networkId],
+  );
 
   useManageRouting();
 
-  if (isLoading) return null;
-  if (txList.length === 0) return <Empty />;
+  if (isLoadingTx || isLoadingFolders) return null;
+  if (txList.length === 0 && foldersList.length === 0) return <Empty />;
 
   return (
     <div className={cn.transactions}>
-      <List txList={txList} />
+      <List txList={txList} foldersList={foldersList} />
+      {foldersList.length !== 0 && txList.length === 0 && <Empty />}
       <Outlet />
     </div>
   );

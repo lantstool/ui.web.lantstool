@@ -10,7 +10,8 @@ export const createCall = `
       @order, 
       @createdAt, 
       @editedAt,
-      @body
+      @body,
+      @parentId
     )
   RETURNING *;
   

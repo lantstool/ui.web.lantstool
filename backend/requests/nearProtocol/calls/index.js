@@ -9,6 +9,7 @@ import { reorder } from './reorder.js';
 import { removeOne } from './removeOne.js';
 import { validateCallId } from './validateCallId.js';
 import { importOne } from './importOne.js';
+import { createInFolder } from './createInFolder.js';
 
 export const calls = {
   getCount,
@@ -22,4 +23,5 @@ export const calls = {
   removeOne,
   validateCallId,
   importOne,
+  createInFolder,
 };

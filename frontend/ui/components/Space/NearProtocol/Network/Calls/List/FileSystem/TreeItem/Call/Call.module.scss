@@ -1,0 +1,51 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+@use '@styles/icons' as *;
+
+.call {
+  display: flex;
+  width: calc(100% - 16px);
+  height: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  &:hover {
+    background-color: $neutral-100;
+    .menuWrapper {
+      visibility: visible;
+    }
+  }
+}
+
+.children {
+  padding-left: 28px;
+  max-width: calc(100% - 36px);
+}
+
+.active {
+  background-color: $neutral-200;
+  .menuWrapper {
+    visibility: visible;
+  }
+  &:hover {
+    background-color: $neutral-200;
+  }
+}
+
+.focused {
+  background-color: $neutral-100;
+  .menuWrapper {
+    visibility: visible;
+  }
+}
+
+.editName {
+  max-width: calc(100% - 52px);
+  padding-left: 20px;
+}
+
+.menuWrapper {
+  visibility: hidden;
+}

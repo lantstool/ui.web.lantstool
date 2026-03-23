@@ -6,7 +6,7 @@ export const onMountTransaction = effect(async ({ store, slice, payload: transac
   const draft = slice.getState((slice) => slice.drafts[transactionId]);
 
   // We don't need to prepare and setup base draft from DB data
-  // if user already was on this call page - he may have unsaved changes
+  // if user already was on this transaction page - he may have unsaved changes
   if (draft) return;
 
   try {
