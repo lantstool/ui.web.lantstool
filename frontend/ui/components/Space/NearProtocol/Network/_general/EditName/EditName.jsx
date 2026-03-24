@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema.js';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import cnm from 'classnames';
 import cn from './EditName.module.scss';
 
@@ -14,8 +14,6 @@ export const EditName = ({
   setIsEditing,
   openMenuId,
 }) => {
-  const mousePos = useRef({ x: 0, y: 0 });
-
   const form = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
@@ -38,28 +36,21 @@ export const EditName = ({
   });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
-    };
-
     const handleKeyDown = (e) => {
       if (!e.ctrlKey || e.code !== 'KeyQ') return;
       if (openMenuId) return;
 
-      const { x, y } = mousePos.current;
-      const hovered = document.elementFromPoint(x, y);
-      const wrapper = hovered?.closest('[data-edit-id]');
-      const hoveredId = wrapper?.getAttribute('data-edit-id');
+      const wrapper = document.querySelector(
+        `[data-edit-id="${itemId}"]:hover`
+      );
 
-      if (hoveredId === itemId) {
+      if (wrapper) {
         setIsEditing(true);
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [itemId, openMenuId]);
