@@ -1,0 +1,42 @@
+@use '@styles/variables' as *;
+@use '@styles/icons' as *;
+
+.modal {
+  gap: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0 24px 0;
+}
+
+.submitButton {
+  min-width: 135px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: $neutral-700;
+}
+
+.spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: top;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

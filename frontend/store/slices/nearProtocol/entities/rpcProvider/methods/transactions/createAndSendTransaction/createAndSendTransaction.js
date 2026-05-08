@@ -15,10 +15,15 @@ export async function createAndSendTransaction({
   networkId,
   waitUntil = 'EXECUTED_OPTIMISTIC',
   responseNameConvention = 'camelCase',
+  finality,
 }) {
   const getKey = this.store.getEffects((store) => store.nearProtocol.keys.getKey);
 
-  const accessKey = await this.getAccountKey({ accountId: signerId, publicKey: signerPublicKey });
+  const accessKey = await this.getAccountKey({
+    accountId: signerId,
+    publicKey: signerPublicKey,
+    finality,
+  });
   const nonce = accessKey.nonce + 1;
   const recentBlockHash = utils.serialize.base_decode(accessKey.blockHash);
   const transformedActions = await transformActions(actions);

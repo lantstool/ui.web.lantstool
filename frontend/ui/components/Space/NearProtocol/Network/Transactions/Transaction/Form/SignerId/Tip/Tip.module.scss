@@ -1,0 +1,42 @@
+@use '@styles/icons' as *;
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.tip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 42px;
+  padding: 16px;
+  border: 1px solid $accent-100;
+  background-color: $accent-50;
+  border-radius: 8px;
+  margin: 8px 0 16px 0;
+}
+
+.tipContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tipWrapper {
+  display: flex;
+
+  gap: 4px;
+}
+
+.tipTitle {
+  color: $accent-700;
+  @include text-sm-medium;
+}
+
+.tipIcon {
+  @include icon('@assets/icons/lightbulb-bold.svg');
+  background-color: $accent-700;
+}
+
+.tipText {
+  @include text-sm-regular;
+  color: $neutral-700;
+}

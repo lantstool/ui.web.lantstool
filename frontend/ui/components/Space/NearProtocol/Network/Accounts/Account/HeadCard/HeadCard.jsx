@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { formatDate } from '../../../../../../../../store/helpers/formatDate.js';
 import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { DeleteModal } from './DeleteModal/DeleteModal.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import cn from './HeadCard.module.scss';
 
 export const HeadCard = ({ accountData }) => {
@@ -17,8 +18,12 @@ export const HeadCard = ({ accountData }) => {
         <span className={cn.date}>{`Imported ${date}, ${hourMinute}`}</span>
       </div>
       <div className={cn.btnWrapper}>
-        <CopyButton event="onClick" type="bordered" value={accountId} />
-        <DeleteModal />
+        <Tooltip arrow={false} content="Copy" placement="top">
+          <CopyButton event="onClick" type="bordered" value={accountId} />
+        </Tooltip>
+        <Tooltip arrow={false} content="Delete" placement="top">
+          <DeleteModal />
+        </Tooltip>
       </div>
     </div>
   );
