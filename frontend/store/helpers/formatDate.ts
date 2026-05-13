@@ -1,6 +1,13 @@
 import { format, isThisYear, isToday, isYesterday } from 'date-fns';
 
-export const formatDate = (time) => {
+type Timestamp = number;
+
+interface FormattedDate {
+  date: string; // 'Today' | 'Yesterday' | 'Mar 15'
+  hourMinute: string; // '14:30'
+}
+
+export const formatDate = (time: Timestamp): FormattedDate => {
   const dateTime = new Date(time);
   const currentDate = new Date();
 
@@ -24,7 +31,7 @@ export const formatDate = (time) => {
   return { date, hourMinute };
 };
 
-export const dateFormatter = (dateTime) => {
+export const dateFormatter = (dateTime: Timestamp): string => {
   if (isToday(dateTime)) {
     return `Today, at ${format(dateTime, 'HH:mm')}`;
   }

@@ -1,5 +1,5 @@
 // TODO unite the downloadZip and create a downloadFile function instead
-export const downloadJson = (data, name) => {
+export const downloadJson = (data: string, name: string): void => {
   const blob = new Blob([data], { type: 'application/json' });
 
   const a = document.createElement('a');

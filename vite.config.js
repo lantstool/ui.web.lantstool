@@ -21,7 +21,7 @@ export default defineConfig({
     nodePolyfills(),
     react(),
     checker({
-      typescript: false,
+      typescript: true,
     }),
     visualizer({
       template: 'treemap',

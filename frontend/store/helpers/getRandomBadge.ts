@@ -9,9 +9,11 @@ export const badgeList = [
   'red',
   'brown',
   'grey',
-];
+] as const;
 
-export const getRandomBadge = () => {
+export type Badge = (typeof badgeList)[number];
+
+export const getRandomBadge = (): Badge => {
   const randomColor = Math.floor(Math.random() * badgeList.length);
-  return badgeList[randomColor];
+  return badgeList[randomColor]!;
 };

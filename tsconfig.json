@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
+    "jsx": "preserve",
+    "useDefineForClassFields": true,
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@react-vault": ["./react-vault/index.js"],
+      "@hooks/*": ["./frontend/ui/hooks/*"],
+      "@styles/*": ["./frontend/ui/styles/*"],
+      "@assets/*": ["./frontend/ui/assets/*"],
+      "@gc/*": ["./frontend/ui/components/_general/*"]
+    },
+    "types": ["node", "vite/client"]
+  },
+  "include": ["frontend", "backend", "react-vault", "vite.config.js"],
+  "exclude": ["node_modules", "dist", "public", "playwright-report", "test-results", "tests"]
+}
