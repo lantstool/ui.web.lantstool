@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 
-export const useToggler = (defaultState = false) => {
+type UseTogglerResult = [isOpen: boolean, open: () => void, close: () => void];
+
+export const useToggler = (defaultState: boolean = false): UseTogglerResult => {
   const [isOpen, setOpen] = useState(defaultState);
 
   const open = useCallback(() => setOpen(true), []);

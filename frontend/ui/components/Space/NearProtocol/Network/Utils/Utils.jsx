@@ -7,7 +7,7 @@ import cn from './Utils.module.scss';
 
 export const Utils = () => {
   const { networkId } = useNetworkId();
-  const isAvailableNetwork = networkId === 'mainnet' || 'testnet';
+  const isAvailableNetwork = networkId === 'mainnet' || networkId === 'testnet';
   useManageRouting();
 
   return (
