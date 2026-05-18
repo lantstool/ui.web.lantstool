@@ -55,7 +55,6 @@ export const createTestnetAccount = effect(async ({ store, slice, payload }) => 
       signerPublicKey: publicKey,
       signerPrivateKey: secretKey,
       receiverId: tmpAccountId,
-      finality: 'optimistic',
       actions: [{ type: 'DeleteAccount', beneficiaryId: import.meta.env.VITE_MASTER_ACCOUNT_ID }],
     });
 

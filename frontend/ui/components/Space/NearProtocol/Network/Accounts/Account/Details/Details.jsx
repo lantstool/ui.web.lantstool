@@ -104,7 +104,7 @@ export const Details = () => {
             iconLeftStyles={!isFaucetPending && cn.iconFaucetTokens}
             classes={{ button: cn.faucetButton }}
           >
-            {isFaucetPending ? <span className={cn.spinner} /> : 'Get tokens'}
+            {isFaucetPending ? <span className={cn.spinner} /> : 'Get 5 NEAR'}
           </Button>
         </div>
       )}

@@ -41,7 +41,7 @@ export const createSchema = (spaceId, networkId) => {
         message: 'Account ID must be at most 64 characters in total.',
       }),
       z.regex(prefixRegex, {
-        message: 'Allowed characters: a-z, 0-9, "-", "_".',
+        message: 'Single-level sub-account only (no "."). Allowed characters: a-z, 0-9, "-", "_".',
       }),
       z.refine(
         async (value) => {
