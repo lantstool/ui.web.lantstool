@@ -93,7 +93,7 @@ export const Details = () => {
       {balance && isTestnet && (
         <div className={cn.faucetWrapper}>
           <h2 className={cn.faucetTitle}>
-            Claim 9 NEAR for testnet. Requests are limited and reset every 12 hours. Please use
+            Claim 5 NEAR for testnet. Requests are limited and reset every 12 hours. Please use
             responsibly.
           </h2>
           <Button
