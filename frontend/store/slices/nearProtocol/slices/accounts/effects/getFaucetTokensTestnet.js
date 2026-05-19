@@ -64,15 +64,15 @@ export const getFaucetTokensTestnet = effect(async ({ store, slice, payload }) =
       throw new Error(message);
     }
 
+    // 4. Refetch account details to show updated balance
+    getAccountDetails({ spaceId, networkId, accountId });
+    setIsFaucetPending(false);
+
     setNotification({
       isOpen: true,
       message: `Tokens sent to ${accountId} successfully`,
       variant: 'success',
     });
-
-    // 4. Refetch account details to show updated balance
-    getAccountDetails({ spaceId, networkId, accountId });
-    setIsFaucetPending(false);
   } catch (e) {
     console.log(e);
     setIsFaucetPending(false);
