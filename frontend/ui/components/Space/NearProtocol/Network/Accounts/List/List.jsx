@@ -27,11 +27,11 @@ export const List = () => {
           <p className={cn.subtitle}>Here you'll find the accounts used throughout this space.</p>
         </div>
         <div className={cn.btnWrapper}>
-          <Button size="medium" onClick={openModal}>
+          <Button size="medium" onClick={openModal} color="secondary">
             Import
           </Button>
           {isTestnet && (
-            <Button size="medium" onClick={openCreateModal} color="secondary">
+            <Button size="medium" onClick={openCreateModal}>
               Create
             </Button>
           )}

@@ -27,12 +27,12 @@ export const Empty = () => {
         </h2>
       </div>
       <div className={cn.btnWrapper}>
-        {<Button onClick={openModal}>Import Account</Button>}
-        {isTestnet && (
-          <Button color="secondary" onClick={openCreateModal}>
-            Create account
+        {
+          <Button onClick={openModal} color="secondary">
+            Import Account
           </Button>
-        )}
+        }
+        {isTestnet && <Button onClick={openCreateModal}>Create account</Button>}
       </div>
       {isCreateModalOpen && isTestnet && <CreateAccount closeModal={closeCreateModal} />}
       {isModalOpen && <ImportAccount closeModal={closeModal} />}
