@@ -34,3 +34,9 @@
   margin: 0 0 16px 0;
   padding: 0;
 }
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}

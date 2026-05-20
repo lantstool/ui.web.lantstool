@@ -16,8 +16,8 @@ export const getAccountDetails = effect(async ({ store, slice, payload }) => {
     });
 
     const [details, balance] = await Promise.all([
-      rpc.getAccount({ accountId }),
-      rpc.getAccountBalance({ accountId }),
+      rpc.getAccount({ accountId, finality: 'optimistic' }),
+      rpc.getAccountBalance({ accountId, finality: 'optimistic' }),
     ]);
 
     setAccountDetails({ details, balance, account });

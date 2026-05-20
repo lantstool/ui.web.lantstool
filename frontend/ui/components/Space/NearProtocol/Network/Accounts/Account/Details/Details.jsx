@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoader } from '@hooks/useLoader.js';
 import { useParams } from 'react-router-dom';
 import { useStoreAction, useStoreEffect, useStoreState } from '@react-vault';
@@ -9,10 +9,17 @@ import lockKeyholeOutline from '@assets/lockKeyholeOutline.svg';
 import walletOutline from '@assets/walletOutline.svg';
 import storageSquareOutline from '@assets/storageSquareOutline.svg';
 import deployContractLinear from '@assets/deployContractLinear.svg';
+import { useNetworkId } from '@hooks/useNetworkId.js';
+import { Button } from '@gc/Button/Button.jsx';
+import { DetailsSkeleton } from './DetailsKeleton/DetailsSkeleton.jsx';
 import cn from './Details.module.scss';
 
 export const Details = () => {
   const { spaceId, networkId, accountId } = useParams();
+  const { isTestnet } = useNetworkId();
+  const getFaucetTokens = useStoreEffect(
+    (store) => store.nearProtocol.accounts.getFaucetTokensTestnet,
+  );
   const getAccountDetails = useStoreEffect(
     (store) => store.nearProtocol.accounts.getAccountDetails,
   );
@@ -21,11 +28,16 @@ export const Details = () => {
   );
   const details = useStoreState((store) => store.nearProtocol.accounts.account.details);
   const [isLoading] = useLoader(getAccountDetails, { spaceId, networkId, accountId });
+  const [isFaucetPending, setIsFaucetPending] = useState(false);
   // We have to reset data because we will display the wrong data (of prev account)
   // if user will try to open the non-existing account details page
   useEffect(() => resetAccountDetails, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  const sendTokens = () => {
+    getFaucetTokens({ spaceId, networkId, accountId, setIsFaucetPending });
+  };
+
+  if (isLoading) return <DetailsSkeleton />;
 
   const {
     note,
@@ -77,6 +89,25 @@ export const Details = () => {
       </div>
       <hr className={cn.border} />
       <Note note={note} />
+      <hr className={cn.border} />
+      {balance && isTestnet && (
+        <div className={cn.faucetWrapper}>
+          <h2 className={cn.faucetTitle}>
+            Claim 5 NEAR for testnet. Requests are limited and reset every 12 hours. Please use
+            responsibly.
+          </h2>
+          <Button
+            onClick={sendTokens}
+            disabled={isFaucetPending}
+            size="medium"
+            color="secondary"
+            iconLeftStyles={!isFaucetPending && cn.iconFaucetTokens}
+            classes={{ button: cn.faucetButton }}
+          >
+            {isFaucetPending ? <span className={cn.spinner} /> : 'Get 5 NEAR'}
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

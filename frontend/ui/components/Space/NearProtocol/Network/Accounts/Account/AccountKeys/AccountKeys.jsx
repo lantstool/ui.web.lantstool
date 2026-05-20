@@ -1,7 +1,8 @@
 import { useStoreEffect } from '@react-vault';
 import { useParams } from 'react-router-dom';
-import {KeyList} from './KeyList/KeyList.jsx';
+import { KeyList } from './KeyList/KeyList.jsx';
 import { useLoader } from '@hooks/useLoader.js';
+import { AccountKeysSkeleton } from './AccountKeysSkeleton/AccountKeysSkeleton.jsx';
 import cn from './AccountKeys.module.scss';
 
 export const AccountKeys = () => {
@@ -11,7 +12,7 @@ export const AccountKeys = () => {
     accountId,
   ]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <AccountKeysSkeleton />;
 
   if (!keys?.fullAccess.length > 0 && !keys?.functionCall.length > 0)
     return (

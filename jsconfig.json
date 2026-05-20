@@ -7,7 +7,8 @@
       "@styles/*": ["frontend/ui/styles/*"],
       "@assets/*": ["frontend/ui/assets/*"],
       "@gc/*": ["frontend/ui/components/_general/*"]
-    }
+    },
+    "jsx": "react"
   },
   "exclude": ["node_modules", "public"]
 }

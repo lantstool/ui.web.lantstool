@@ -14,6 +14,9 @@ import { getAccountKeys } from './effects/getAccountKeys.js';
 import { getAccountDetails } from './effects/getAccountDetails.js';
 import { getAccountBalance } from './effects/getAccountBalance.js';
 import { updateOneNote } from './effects/updateOneNote.js';
+import { createTestnetAccount } from './effects/createTestnetAccount.js';
+import { getAccount } from './effects/getAccount.js';
+import { getFaucetTokensTestnet } from './effects/getFaucetTokensTestnet.js';
 
 export const accounts = {
   ids: [],
@@ -39,4 +42,7 @@ export const accounts = {
   getAccountKeys,
   getAccountBalance,
   updateOneNote,
+  createTestnetAccount,
+  getAccount,
+  getFaucetTokensTestnet,
 };

@@ -7,14 +7,18 @@ import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.
 import { useWatch } from 'react-hook-form';
 import { useRef } from 'react';
 import { MenuList } from '../_general/MenuList/MenuList.jsx';
+import { Tip } from './Tip/Tip.jsx';
+import { useNetworkId } from '@hooks/useNetworkId.js';
 import cn from './SignerId.module.scss';
 
 export const SignerId = ({ form }) => {
   const { control, setValue } = form;
+  const { isTestnet } = useNetworkId();
   const signerId = useWatch({ control, name: 'signerId.value' });
   const accountsOptions = useAccountsOptions(signerId);
   const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
+
   const ref = useRef(null);
 
   const onChange = (field) => (event) => {
@@ -58,6 +62,7 @@ export const SignerId = ({ form }) => {
           )
         }
       />
+      {isTestnet && accountsOptions.length === 0 && <Tip />}
       {isModalOpen && <ImportAccount closeModal={closeModal} setAccount={setAccount} />}
     </div>
   );

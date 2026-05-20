@@ -1,0 +1,17 @@
+@use '@styles/variables' as *;
+
+.skeleton {
+  display: inline-block;
+  background: linear-gradient(90deg, $neutral-100 0%, $neutral-200 50%, $neutral-100 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

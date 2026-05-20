@@ -15,7 +15,7 @@ export const List = () => {
             <h1 className={cn.title}>Keys</h1>
             <p className={cn.subtitle}>Here you'll find the keys used throughout this space.</p>
           </div>
-          <Button size="medium" onClick={openModal}>
+          <Button size="medium" onClick={openModal} color="secondary">
             Import
           </Button>
         </div>

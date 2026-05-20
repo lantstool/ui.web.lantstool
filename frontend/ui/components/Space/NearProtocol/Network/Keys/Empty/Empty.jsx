@@ -14,7 +14,9 @@ export const Empty = () => {
           Looks empty. Import your first key to begin, or add one directly through a transaction.
         </h2>
       </div>
-      <Button onClick={openModal}>Import Key</Button>
+      <Button onClick={openModal} color="secondary">
+        Import Key
+      </Button>
       {isModalOpen && <ImportKeyModal closeModal={closeModal} />}
     </div>
   );
