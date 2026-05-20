@@ -7,7 +7,7 @@ import { OperationProgress } from './OperationProgress/OperationProgress.jsx';
 
 export const AccountCleaner = () => {
   const { networkId, spaceId } = useNetworkId();
-  const isAvailableNetwork = networkId === 'mainnet' || 'testnet';
+  const isAvailableNetwork = networkId === 'mainnet' || networkId === 'testnet';
   const accountCleaner = useStoreState(
     (store) => store.nearProtocol.utils.accountCleaner?.[spaceId]?.[networkId],
   );

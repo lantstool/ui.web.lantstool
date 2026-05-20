@@ -1,0 +1,32 @@
+@use '@styles/variables' as *;
+
+.titleText {
+  width: 90px;
+  height: 20px;
+}
+
+.title {
+  height: 24px;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+
+.keyText {
+  width: 450px;
+  max-width: 60vw;
+  height: 19px;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+.copyIcon {
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}

@@ -22,8 +22,8 @@ export const SelectSpace = () => {
 
   return (
     <div className={cn.selectSpace} ref={anchorRef}>
-      <DropDownSelector title={records[spaceId].name} openMenu={openMenu} isOpen={isOpen}>
-        <Badge badge={records[spaceId].badge} />
+      <DropDownSelector title={records[spaceId]?.name} openMenu={openMenu} isOpen={isOpen}>
+        <Badge badge={records[spaceId]?.badge} />
       </DropDownSelector>
       <DropDown isOpen={isOpen} setOpen={setOpen} spaceId={spaceId} anchorEl={anchorRef.current}/>
     </div>

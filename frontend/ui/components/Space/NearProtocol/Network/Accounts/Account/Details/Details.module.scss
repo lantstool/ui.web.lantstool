@@ -37,3 +37,45 @@
   width: 100%;
   padding: 0;
 }
+
+.faucetWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.faucetTitle {
+  @include text-sm-regular;
+  color: $neutral-700;
+  max-width: 500px;
+}
+
+.iconFaucetTokens {
+  @include icon('@assets/icons/import-outline.svg');
+  width: 16px;
+  height: 16px;
+  background-color: $accent-600;
+}
+
+.faucetButton {
+  min-width: 115px !important;
+}
+
+.spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 2px solid $neutral-400;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: top;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

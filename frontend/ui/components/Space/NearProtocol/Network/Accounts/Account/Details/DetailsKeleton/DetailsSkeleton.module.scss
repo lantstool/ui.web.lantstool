@@ -1,0 +1,46 @@
+@use '@styles/variables' as *;
+
+
+.value1 { width: 80px;  height: 14px; } // "5 NEAR"
+.value2 { width: 100px; height: 14px; } // "4.99818 NEAR"
+.value3 { width: 100px; height: 14px; } // "0.00182 NEAR"
+.value4 { width: 60px;  height: 14px; } // "0.182 KB"
+.value5 { width: 30px;  height: 14px; } // "No"
+
+.button {
+  width: 100px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.noteLabel {
+  width: 250px;
+  height: 24px;
+}
+
+.noteInput {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.border{
+  margin: 40px 0 24px 0
+}
+
+.faucetTitle{
+  height: 40px;
+  width: 500px;
+}
+
+.faucetButton{
+  height: 32px;
+  width: 115px;
+  border-radius: 8px;
+}
