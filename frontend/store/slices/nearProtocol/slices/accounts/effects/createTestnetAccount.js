@@ -2,7 +2,7 @@ import { effect } from '@react-vault';
 import { KEY_DERIVATION_PATH, generateSeedPhrase } from 'near-seed-phrase';
 
 export const createTestnetAccount = effect(async ({ store, slice, payload }) => {
-  const { accountId, spaceId, networkId, closeModal } = payload;
+  const { accountId, spaceId, networkId, closeModal, onCreated } = payload;
   const tmpAccountId = `${crypto.randomUUID()}.testnet`;
   const [backend] = store.getEntities((store) => store.backend);
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
@@ -106,6 +106,7 @@ export const createTestnetAccount = effect(async ({ store, slice, payload }) => 
       message: 'Account created successfully',
       variant: 'success',
     });
+    onCreated?.({ accountId, publicKey });
     closeModal();
   } catch (e) {
     closeModal();

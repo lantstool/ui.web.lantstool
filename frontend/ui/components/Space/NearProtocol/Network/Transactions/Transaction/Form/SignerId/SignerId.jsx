@@ -62,7 +62,7 @@ export const SignerId = ({ form }) => {
           )
         }
       />
-      {isTestnet && accountsOptions.length === 0 && <Tip />}
+      {isTestnet && accountsOptions.length === 0 && <Tip form={form} />}
       {isModalOpen && <ImportAccount closeModal={closeModal} setAccount={setAccount} />}
     </div>
   );

@@ -2,22 +2,14 @@ import { ImportAccount } from '../../_general/ImportAccount/ImportAccount.jsx';
 import { AccountsList } from './AccountsList/AccountsList.jsx';
 import { Button } from '@gc/Button/Button.jsx';
 import { useToggler } from '@hooks/useToggler.js';
-import { CreateAccount } from '../_general/CreateAccount/CreateAccount.jsx';
+import { CreateAccount } from '../../_general/CreateAccount/CreateAccount.jsx';
 import { useNetworkId } from '@hooks/useNetworkId.js';
-import { useSearchParams } from 'react-router-dom';
 import cn from './List.module.scss';
 
 export const List = () => {
   const [isModalOpen, openModal, closeModal] = useToggler();
+  const [isCreateModalOpen, openCreateModal, closeCreateModal] = useToggler();
   const { isTestnet } = useNetworkId();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const isCreateModalOpen = searchParams.get('modal') === 'create';
-  const openCreateModal = () => setSearchParams({ modal: 'create' });
-  const closeCreateModal = () => {
-    searchParams.delete('modal');
-    setSearchParams(searchParams);
-  };
 
   return (
     <div className={cn.accountList}>
