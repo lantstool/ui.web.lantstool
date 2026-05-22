@@ -4,8 +4,9 @@ import { Raw } from './Raw/Raw.jsx';
 import { Overview } from './Overview/Overview.jsx';
 import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Label } from '@gc/Label/Label.jsx';
+import { useResultViewState } from '../../../_general/hooks/useResultViewState.js';
 import cn from './Result.module.scss';
 
 const methodsWithOverview = new Set([
@@ -20,20 +21,22 @@ const getMode = (formValues) =>
 
 export const Result = ({ callResult, call }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
-  const { result, isLoading, callId, error, formValues } = callResult;
+  const { result, isLoading, callId, error, formValues, viewState } = callResult;
   const mode = getMode(formValues);
   const [viewMode, setViewMode] = useState(mode);
+  const resultRef = useRef(null);
 
-  const closeResult = () => {
-    setResult({ callId, isOpen: false });
-  };
+  const { onCreateEditor } = useResultViewState({
+    ref: resultRef,
+    viewState,
+    onSave: (snapshot) => setResult({ callId, viewState: snapshot }),
+  });
 
-  const changeViewMode = (mode) => {
-    setViewMode(mode);
-  };
+  const closeResult = () => setResult({ callId, isOpen: false });
+  const changeViewMode = (next) => setViewMode(next);
 
   return (
-    <div className={cn.result}>
+    <div ref={resultRef} className={cn.result}>
       <div className={cn.container}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
@@ -70,7 +73,7 @@ export const Result = ({ callResult, call }) => {
           ) : viewMode === 'overview' && result && !error ? (
             <Overview result={result} formValues={formValues} />
           ) : (
-            <Raw result={result} error={error} />
+            <Raw result={result} error={error} onCreateEditor={onCreateEditor} />
           )}
         </div>
       </div>
