@@ -6,20 +6,21 @@ import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
 import { useRef } from 'react';
-import { useResultViewState } from '../../../_general/hooks/useResultViewState.js';
+import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
 import cn from './Result.module.scss';
 
 export const Result = ({ txResult, transaction }) => {
-  const { result, isLoading, transactionId, error, viewState } = txResult;
+  const { result, isLoading, transactionId, error, editorState } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
+  const setEditorState = useStoreAction((store) => store.nearProtocol.transactions.setEditorState);
   const data = result ? result : error;
   const isSuccessResult = result?.status && 'successValue' in result.status;
   const resultRef = useRef(null);
 
-  const { onCreateEditor } = useResultViewState({
+  const { onCreateEditor } = usePersistentEditorState({
     ref: resultRef,
-    viewState,
-    onSave: (snapshot) => setResult({ transactionId, viewState: snapshot }),
+    editorState,
+    onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
   });
 
   const closeResult = () => setResult({ transactionId, isOpen: false });

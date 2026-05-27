@@ -26,9 +26,12 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const { spaceId, networkId, callId, formValues } = payload;
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const setResult = slice.getActions((slice) => slice.setResult);
+  const setEditorState = slice.getActions((slice) => slice.setEditorState);
+  const initEditorState = { scrollPosition: 0, foldedRanges: [] };
 
   try {
     setResult({ callId, isOpen: true, isLoading: true, formValues });
+    setEditorState({ callId, editorState: initEditorState });
 
     await rpc.configure({ spaceId, networkId, priority: getRpcPriority(formValues) });
     const result = await methods[formValues.method.value].rpcCaller(rpc, formValues);

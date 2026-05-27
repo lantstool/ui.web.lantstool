@@ -5,6 +5,8 @@ import { editTxName } from './editTxName.js';
 import { setResult } from './setResult.js';
 import { resetState } from './resetState.js';
 import { setupDraft } from './setupDraft.js';
+import { setScrollPosition } from './setScrollPosition.js';
+import { setEditorState } from './setEditorState.js';
 
 export const actions = {
   setList,
@@ -14,4 +16,6 @@ export const actions = {
   setResult,
   resetState,
   setupDraft,
+  setScrollPosition,
+  setEditorState,
 };

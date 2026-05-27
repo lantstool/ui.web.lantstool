@@ -24,7 +24,7 @@ export const Call = () => {
       {callResult?.isOpen ? (
         <Result key={callId} callResult={callResult} call={callDraft.origin} />
       ) : (
-        <Method call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
+        <Method key={callId} call={callDraft.origin} draft={callDraft[callDraft.currentMethod]} />
       )}
     </div>
   );

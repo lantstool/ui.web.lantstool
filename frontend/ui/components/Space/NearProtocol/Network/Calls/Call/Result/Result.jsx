@@ -6,7 +6,7 @@ import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
 import { useRef, useState } from 'react';
 import { Label } from '@gc/Label/Label.jsx';
-import { useResultViewState } from '../../../_general/hooks/useResultViewState.js';
+import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
 import cn from './Result.module.scss';
 
 const methodsWithOverview = new Set([
@@ -21,15 +21,16 @@ const getMode = (formValues) =>
 
 export const Result = ({ callResult, call }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
-  const { result, isLoading, callId, error, formValues, viewState } = callResult;
+  const setEditorState = useStoreAction((store) => store.nearProtocol.calls.setEditorState);
+  const { result, isLoading, callId, error, formValues, editorState } = callResult;
   const mode = getMode(formValues);
   const [viewMode, setViewMode] = useState(mode);
   const resultRef = useRef(null);
 
-  const { onCreateEditor } = useResultViewState({
+  const { onCreateEditor } = usePersistentEditorState({
     ref: resultRef,
-    viewState,
-    onSave: (snapshot) => setResult({ callId, viewState: snapshot }),
+    editorState,
+    onSave: (snapshot) => setEditorState({ callId, editorState: snapshot }),
   });
 
   const closeResult = () => setResult({ callId, isOpen: false });

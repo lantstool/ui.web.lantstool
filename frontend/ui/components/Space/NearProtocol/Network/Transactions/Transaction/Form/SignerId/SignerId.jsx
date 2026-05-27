@@ -1,4 +1,4 @@
-import { useAccountsOptions } from '../../../../_general/hooks/useAccountsOptions.js';
+import { useAccountsOptionsWithLoading } from '../../../../_general/hooks/useAccountsOptionsWithLoading.js';
 import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
 import { Label } from '@gc/Label/Label.jsx';
 import { useAccountBalance } from './useAccountBalance.js';
@@ -15,10 +15,10 @@ export const SignerId = ({ form }) => {
   const { control, setValue } = form;
   const { isTestnet } = useNetworkId();
   const signerId = useWatch({ control, name: 'signerId.value' });
-  const accountsOptions = useAccountsOptions(signerId);
+  const { options, isLoading } = useAccountsOptionsWithLoading(signerId);
   const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
-
+  const isShowTip = isTestnet && !isLoading && options.length === 0;
   const ref = useRef(null);
 
   const onChange = (field) => (event) => {
@@ -45,7 +45,7 @@ export const SignerId = ({ form }) => {
         dropdownRef={ref}
         isClearable={true}
         control={control}
-        options={accountsOptions}
+        options={options}
         creatableSelect={true}
         label="Signer Id"
         placeholder="Select or type..."
@@ -62,7 +62,7 @@ export const SignerId = ({ form }) => {
           )
         }
       />
-      {isTestnet && accountsOptions.length === 0 && <Tip />}
+      {isShowTip && <Tip />}
       {isModalOpen && <ImportAccount closeModal={closeModal} setAccount={setAccount} />}
     </div>
   );
