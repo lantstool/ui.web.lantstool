@@ -3,14 +3,9 @@
 
 .transaction {
   grid-area: b;
-  overflow-y: auto;
   height: 100%;
-  overflow-x: auto;
-  scrollbar-gutter: stable;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: 1000px) {
-  .transaction {
-    overflow-x: hidden;
-  }
-}

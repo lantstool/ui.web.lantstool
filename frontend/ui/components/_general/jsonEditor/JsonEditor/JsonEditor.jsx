@@ -3,15 +3,13 @@ import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { theme } from './theme.js';
-// import { javascript } from '@codemirror/lang-javascript';
 import { json5 } from 'codemirror-json5';
 import { linter } from '@codemirror/lint';
 import { json5ParseLinter } from '@gc/jsonEditor/JsonEditor/json5Linter.js';
-import { syntaxHighlighting } from '@codemirror/language';
-import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
+import { syntaxHighlighting, foldGutter } from '@codemirror/language';
+import { commentFolderExtension } from './commentFolderExtension.js';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
-import { foldGutter } from '@codemirror/language';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
@@ -39,7 +37,6 @@ const getEditorExtensions = ({ withLineWrapping }) => {
     linter(json5ParseLinter()),
     syntaxHighlighting(highlightStyle),
   ];
-
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
   return extensions;
 };
@@ -59,6 +56,7 @@ export const JsonEditor = ({
   errorLabel,
   customTheme,
   withLineWrapping,
+  onCreateEditor,
 }) => {
   const clearValue = () => onChange('');
   const extensions = getEditorExtensions({ withLineWrapping });
@@ -93,6 +91,7 @@ export const JsonEditor = ({
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={extensions}
+        onCreateEditor={onCreateEditor}
         basicSetup={{ foldGutter: false, tabSize: 2 }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}

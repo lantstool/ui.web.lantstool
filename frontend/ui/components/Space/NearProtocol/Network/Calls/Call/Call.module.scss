@@ -3,14 +3,8 @@
 
 .call {
   grid-area: b;
-  overflow-y: auto;
   height: 100%;
-  overflow-x: auto;
-  scrollbar-gutter: stable;
-}
-
-@media (min-width: 1000px) {
-  .call {
-    overflow-x: hidden;
-  }
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

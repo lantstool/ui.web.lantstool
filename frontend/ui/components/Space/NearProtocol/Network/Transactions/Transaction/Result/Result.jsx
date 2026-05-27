@@ -5,20 +5,28 @@ import { JsonEditor } from '@gc/jsonEditor/JsonEditor/JsonEditor.jsx';
 import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
+import { useRef } from 'react';
+import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
 import cn from './Result.module.scss';
 
 export const Result = ({ txResult, transaction }) => {
-  const { result, isLoading, transactionId, error } = txResult;
+  const { result, isLoading, transactionId, error, editorState } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
+  const setEditorState = useStoreAction((store) => store.nearProtocol.transactions.setEditorState);
   const data = result ? result : error;
   const isSuccessResult = result?.status && 'successValue' in result.status;
+  const resultRef = useRef(null);
 
-  const closeResult = () => {
-    setResult({ transactionId, isOpen: false });
-  };
+  const { onCreateEditor } = usePersistentEditorState({
+    ref: resultRef,
+    editorState,
+    onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
+  });
+
+  const closeResult = () => setResult({ transactionId, isOpen: false });
 
   return (
-    <div className={cn.result}>
+    <div ref={resultRef} className={cn.result}>
       <div className={cn.container}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
@@ -56,6 +64,7 @@ export const Result = ({ txResult, transaction }) => {
               showClearBtn={false}
               withLineWrapping
               title="json"
+              onCreateEditor={onCreateEditor}
             />
           </>
         )}

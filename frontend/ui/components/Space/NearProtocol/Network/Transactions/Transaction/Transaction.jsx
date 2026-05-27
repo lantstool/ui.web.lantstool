@@ -25,9 +25,13 @@ export const Transaction = () => {
   return (
     <div className={cn.transaction}>
       {txResult?.isOpen ? (
-        <Result txResult={txResult} transaction={transactionDraft.origin} />
+        <Result key={transactionId} txResult={txResult} transaction={transactionDraft.origin} />
       ) : (
-        <Form transaction={transactionDraft.origin} draft={transactionDraft.body} />
+        <Form
+          key={transactionId}
+          transaction={transactionDraft.origin}
+          draft={transactionDraft.body}
+        />
       )}
     </div>
   );

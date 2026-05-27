@@ -4,4 +4,5 @@ export const resetState = action(({ slice }) => {
   slice.txList = [];
   slice.drafts = {};
   slice.results = {};
+  slice.scrollPositions = {};
 });

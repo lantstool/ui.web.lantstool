@@ -12,9 +12,12 @@ export const sendOne = effect(async ({ store, slice, payload }) => {
   const [rpc] = store.getEntities((store) => store.nearProtocol.rpcProvider);
   const getKey = store.getEffects((store) => store.nearProtocol.keys.getKey);
   const setResult = slice.getActions((slice) => slice.setResult);
+  const setEditorState = slice.getActions((slice) => slice.setEditorState);
+  const initEditorState = { scrollPosition: 0, foldedRanges: [] };
 
   try {
     setResult({ transactionId, isOpen: true, isLoading: true });
+    setEditorState({ transactionId, editorState: initEditorState });
 
     await rpc.configure({ spaceId, networkId });
 
