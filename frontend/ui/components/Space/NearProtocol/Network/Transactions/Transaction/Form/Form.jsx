@@ -25,14 +25,13 @@ export const Form = ({ transaction, draft }) => {
 
   const formRef = useRef(null);
   const form = useForm({
-    defaultValues: body,
+    defaultValues: draft || body,
     mode: 'onSubmit',
     resolver: yupResolver(transactionSchema),
   });
   // useLayoutEffect ensures draft is applied before scroll position is restored,
   // preventing layout recalculation after initial paint
   useLayoutEffect(() => {
-    form.reset(draft);
     return () => {
       setDraft({ transactionId, draft: form.getValues() });
     };
