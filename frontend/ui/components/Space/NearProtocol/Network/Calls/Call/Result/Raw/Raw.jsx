@@ -2,7 +2,7 @@ import { getFormattedJSON } from '../../../../../../../../../store/helpers/utils
 import { JsonEditor } from '@gc/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './Raw.module.scss';
 
-export const Raw = ({ result, error, onCreateEditor }) => {
+export const Raw = ({ result, error, onCreateEditor, withLineWrapping }) => {
   const data = result ? result : error;
 
   return (
@@ -13,7 +13,7 @@ export const Raw = ({ result, error, onCreateEditor }) => {
       classes={{
         container: cn.editorContainer,
       }}
-      withLineWrapping
+      withLineWrapping={withLineWrapping}
       title="json"
       onCreateEditor={onCreateEditor}
     />

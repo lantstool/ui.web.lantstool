@@ -8,6 +8,7 @@ import { setDraftCurrentMethod } from './setDraftCurrentMethod.js';
 import { resetState } from './resetState.js';
 import { setScrollPosition } from './setScrollPosition.js';
 import { setEditorState } from './setEditorState.js';
+import { setViewMode } from './setViewMode.js';
 
 export const actions = {
   setList,
@@ -20,4 +21,5 @@ export const actions = {
   resetState,
   setScrollPosition,
   setEditorState,
+  setViewMode,
 };

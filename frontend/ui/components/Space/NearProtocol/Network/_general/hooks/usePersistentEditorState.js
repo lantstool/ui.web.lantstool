@@ -42,32 +42,25 @@ export const usePersistentEditorState = ({ ref, editorState, onSave }) => {
     const outerEl = ref.current;
     if (!outerEl) return;
 
-    // Wait for Roboto Mono (font-display: swap → cm-content height shifts ~50px
-    // after font swap). Without this, we restore against pre-swap heights.
-    document.fonts.ready.then(() => {
-      // Force CodeMirror to drop cached pre-swap measurements.
-      view.requestMeasure({ read: () => {} });
-
-      let attempts = 0;
-      const tick = () => {
-        if (!outerEl.isConnected || attempts++ >= 60) {
-          rafRef.current = null;
-          return;
-        }
-        const max = outerEl.scrollHeight - outerEl.clientHeight;
-        if (max >= scrollPosition) {
-          outerEl.scrollTop = scrollPosition;
-          rafRef.current = null;
-          return;
-        }
-        if (max > 0 && outerEl.scrollTop < max) {
-          outerEl.scrollTop = max;
-        }
-        rafRef.current = requestAnimationFrame(tick);
-      };
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    let attempts = 0;
+    const tick = () => {
+      if (!outerEl.isConnected || attempts++ >= 60) {
+        rafRef.current = null;
+        return;
+      }
+      const max = outerEl.scrollHeight - outerEl.clientHeight;
+      if (max >= scrollPosition) {
+        outerEl.scrollTop = scrollPosition;
+        rafRef.current = null;
+        return;
+      }
+      if (max > 0 && outerEl.scrollTop < max) {
+        outerEl.scrollTop = max;
+      }
       rafRef.current = requestAnimationFrame(tick);
-    });
+    };
+    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(tick);
   };
 
   useLayoutEffect(

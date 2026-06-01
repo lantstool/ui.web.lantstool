@@ -4,7 +4,7 @@ import { Raw } from './Raw/Raw.jsx';
 import { Overview } from './Overview/Overview.jsx';
 import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Label } from '@gc/Label/Label.jsx';
 import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
 import cn from './Result.module.scss';
@@ -22,9 +22,10 @@ const getMode = (formValues) =>
 export const Result = ({ callResult, call }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.calls.setResult);
   const setEditorState = useStoreAction((store) => store.nearProtocol.calls.setEditorState);
+  const setViewMode = useStoreAction((store) => store.nearProtocol.calls.setViewMode);
   const { result, isLoading, callId, error, formValues, editorState } = callResult;
   const mode = getMode(formValues);
-  const [viewMode, setViewMode] = useState(mode);
+  const viewMode = callResult.viewMode ?? mode;
   const resultRef = useRef(null);
 
   const { onCreateEditor } = usePersistentEditorState({
@@ -34,7 +35,7 @@ export const Result = ({ callResult, call }) => {
   });
 
   const closeResult = () => setResult({ callId, isOpen: false });
-  const changeViewMode = (next) => setViewMode(next);
+  const changeViewMode = (next) => setViewMode({ callId, viewMode: next });
 
   return (
     <div ref={resultRef} className={cn.result}>
@@ -74,7 +75,12 @@ export const Result = ({ callResult, call }) => {
           ) : viewMode === 'overview' && result && !error ? (
             <Overview result={result} formValues={formValues} />
           ) : (
-            <Raw result={result} error={error} onCreateEditor={onCreateEditor} />
+            <Raw
+              withLineWrapping={formValues.method.value}
+              result={result}
+              error={error}
+              onCreateEditor={onCreateEditor}
+            />
           )}
         </div>
       </div>
