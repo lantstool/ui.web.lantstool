@@ -7,6 +7,8 @@ import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
 import { useRef } from 'react';
 import { Label } from '@gc/Label/Label.jsx';
 import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
+import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
+import cnm from 'classnames';
 import cn from './Result.module.scss';
 
 const methodsWithOverview = new Set([
@@ -27,19 +29,29 @@ export const Result = ({ callResult, call }) => {
   const mode = getMode(formValues);
   const viewMode = callResult.viewMode ?? mode;
   const resultRef = useRef(null);
+  const original = getFormattedJSON(result ? result : error);
 
-  const { onCreateEditor } = usePersistentEditorState({
-    ref: resultRef,
-    editorState,
-    onSave: (snapshot) => setEditorState({ callId, editorState: snapshot }),
-  });
+  const { onCreateEditor, value, formatLineNumber, ready, freezeScroll, editorExtensions } =
+    usePersistentEditorState({
+      ref: resultRef,
+      original,
+      editorState,
+      onSave: (snapshot) => setEditorState({ callId, editorState: snapshot }),
+    });
+
+  //To avoid scroll jump we hide content while the Raw editor wraps + restores scroll
+  const showingEditor = !isLoading && !(viewMode === 'overview' && result && !error);
+  const hideContent = showingEditor && !ready;
 
   const closeResult = () => setResult({ callId, isOpen: false });
-  const changeViewMode = (next) => setViewMode({ callId, viewMode: next });
+  const changeViewMode = (mode) => {
+    freezeScroll(); // Save scroll position for Raw editor before switch mode
+    setViewMode({ callId, viewMode: mode });
+  };
 
   return (
     <div ref={resultRef} className={cn.result}>
-      <div className={cn.container}>
+      <div className={cnm(cn.container, hideContent && cn.hideContainer)}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
@@ -76,10 +88,11 @@ export const Result = ({ callResult, call }) => {
             <Overview result={result} formValues={formValues} />
           ) : (
             <Raw
-              withLineWrapping={formValues.method.value}
-              result={result}
-              error={error}
+              value={value}
+              copyValue={original}
               onCreateEditor={onCreateEditor}
+              formatLineNumber={formatLineNumber}
+              extraExtensions={editorExtensions}
             />
           )}
         </div>

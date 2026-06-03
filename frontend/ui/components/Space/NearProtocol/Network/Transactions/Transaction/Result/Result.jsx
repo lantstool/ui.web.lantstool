@@ -14,20 +14,27 @@ export const Result = ({ txResult, transaction }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
   const setEditorState = useStoreAction((store) => store.nearProtocol.transactions.setEditorState);
   const data = result ? result : error;
+  const original = getFormattedJSON(data);
   const isSuccessResult = result?.status && 'successValue' in result.status;
   const resultRef = useRef(null);
 
-  const { onCreateEditor } = usePersistentEditorState({
-    ref: resultRef,
-    editorState,
-    onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
-  });
+  const { onCreateEditor, value, formatLineNumber, ready, editorExtensions } =
+    usePersistentEditorState({
+      ref: resultRef,
+      original,
+      editorState,
+      onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
+    });
+
+  // Hide the content while the editor wraps + restores scroll, so the user
+  // never sees the top before it jumps to the saved position.
+  const hideContent = !isLoading && !ready;
 
   const closeResult = () => setResult({ transactionId, isOpen: false });
 
   return (
     <div ref={resultRef} className={cn.result}>
-      <div className={cn.container}>
+      <div className={cn.container} style={hideContent ? { visibility: 'hidden' } : undefined}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
@@ -60,9 +67,12 @@ export const Result = ({ txResult, transaction }) => {
             )}
             <JsonEditor
               readOnly
-              value={getFormattedJSON(data)}
+              value={value}
+              copyValue={original}
               showClearBtn={false}
-              withLineWrapping
+              disableLinter
+              formatLineNumber={formatLineNumber}
+              extraExtensions={editorExtensions}
               title="json"
               onCreateEditor={onCreateEditor}
             />

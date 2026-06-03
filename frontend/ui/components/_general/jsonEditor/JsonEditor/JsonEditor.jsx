@@ -2,6 +2,7 @@ import { FieldTopbarLabel } from '../../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
+import { lineNumbers } from '@codemirror/view';
 import { theme } from './theme.js';
 import { json5 } from 'codemirror-json5';
 import { linter } from '@codemirror/lint';
@@ -29,15 +30,28 @@ const foldMarker = foldGutter({
   },
 });
 
-const getEditorExtensions = ({ withLineWrapping }) => {
-  const extensions = [
-    commentFolderExtension,
-    foldMarker,
-    json5(),
-    linter(json5ParseLinter()),
-    syntaxHighlighting(highlightStyle),
-  ];
+
+
+const getEditorExtensions = ({
+  withLineWrapping,
+  disableLinter,
+  showLineNumbers,
+  formatLineNumber,
+  extraExtensions,
+}) => {
+  const extensions = [];
+  // Line numbers first → leftmost gutter. formatLineNumber lets callers show
+  // logical numbers (e.g. blank continuation rows for hard-wrapped content).
+  if (showLineNumbers) {
+    extensions.push(
+      formatLineNumber ? lineNumbers({ formatNumber: formatLineNumber }) : lineNumbers(),
+    );
+
+  }
+  extensions.push(commentFolderExtension, foldMarker, json5(), syntaxHighlighting(highlightStyle));
+  if (!disableLinter) extensions.push(linter(json5ParseLinter()));
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
+  if (extraExtensions) extensions.push(extraExtensions);
   return extensions;
 };
 
@@ -57,9 +71,20 @@ export const JsonEditor = ({
   customTheme,
   withLineWrapping,
   onCreateEditor,
+  disableLinter,
+  formatLineNumber,
+  showLineNumbers = true,
+  copyValue,
+  extraExtensions,
 }) => {
   const clearValue = () => onChange('');
-  const extensions = getEditorExtensions({ withLineWrapping });
+  const extensions = getEditorExtensions({
+    withLineWrapping,
+    disableLinter,
+    showLineNumbers,
+    formatLineNumber,
+    extraExtensions,
+  });
 
   return (
     <div className={cnm(cn.container, classes?.container)}>
@@ -77,7 +102,7 @@ export const JsonEditor = ({
           )}
           {showCopyBtn && (
             <Tooltip content="Copy" placement="top" arrow={false}>
-              <CopyButton value={value} />
+              <CopyButton value={copyValue ?? value} />
             </Tooltip>
           )}
         </div>
@@ -92,7 +117,7 @@ export const JsonEditor = ({
         readOnly={readOnly}
         extensions={extensions}
         onCreateEditor={onCreateEditor}
-        basicSetup={{ foldGutter: false, tabSize: 2 }}
+        basicSetup={{ foldGutter: false, tabSize: 2, lineNumbers: false }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>

@@ -8,7 +8,6 @@ export const usePersistentScroll = ({ ref, scrollPosition = 0, onSave, onAfterRe
     const tryRestore = () => {
       const maxScrollPos = el.scrollHeight - el.clientHeight;
       // Restore scroll position when content is tall enough
-        console.log(maxScrollPos, scrollPosition);
       if (maxScrollPos >= scrollPosition) {
         el.scrollTop = scrollPosition;
         observer?.disconnect();
