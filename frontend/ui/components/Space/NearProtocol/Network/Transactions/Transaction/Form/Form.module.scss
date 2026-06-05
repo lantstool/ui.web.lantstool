@@ -24,6 +24,10 @@
   scrollbar-gutter: stable;
 }
 
+.hideForm {
+  visibility: hidden;
+}
+
 .label {
   display: flex;
   align-items: center;

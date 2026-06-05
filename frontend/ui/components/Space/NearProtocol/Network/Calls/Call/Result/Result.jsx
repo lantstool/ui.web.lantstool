@@ -29,29 +29,31 @@ export const Result = ({ callResult, call }) => {
   const mode = getMode(formValues);
   const viewMode = callResult.viewMode ?? mode;
   const resultRef = useRef(null);
-  const original = getFormattedJSON(result ? result : error);
+  const originalJson = getFormattedJSON(result ? result : error);
 
-  const { onCreateEditor, value, formatLineNumber, ready, freezeScroll, editorExtensions } =
+  const { onCreateEditor, value, formatLineNumber, ready, freezeScroll, copyExtensions } =
     usePersistentEditorState({
-      ref: resultRef,
-      original,
+      scrollerRef: resultRef,
+      originalJson,
       editorState,
       onSave: (snapshot) => setEditorState({ callId, editorState: snapshot }),
     });
 
-  //To avoid scroll jump we hide content while the Raw editor wraps + restores scroll
   const showingEditor = !isLoading && !(viewMode === 'overview' && result && !error);
+  //To avoid scroll jump we hide content while the Raw editor wraps + restores scroll
   const hideContent = showingEditor && !ready;
 
   const closeResult = () => setResult({ callId, isOpen: false });
-  const changeViewMode = (mode) => {
-    freezeScroll(); // Save scroll position for Raw editor before switch mode
-    setViewMode({ callId, viewMode: mode });
+  const changeViewMode = (viewMode) => {
+    freezeScroll(viewMode);
+    setViewMode({ callId, viewMode });
   };
 
   return (
     <div ref={resultRef} className={cn.result}>
-      <div className={cnm(cn.container, hideContent && cn.hideContainer)}>
+      <div
+        className={cnm(cn.container, hideContent && cn.hideContainer)}
+      >
         <div className={cn.head}>
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
@@ -89,10 +91,10 @@ export const Result = ({ callResult, call }) => {
           ) : (
             <Raw
               value={value}
-              copyValue={original}
+              copyValue={originalJson}
               onCreateEditor={onCreateEditor}
               formatLineNumber={formatLineNumber}
-              extraExtensions={editorExtensions}
+              copyExtensions={copyExtensions}
             />
           )}
         </div>

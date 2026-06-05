@@ -5,21 +5,28 @@ import { useAccountBalance } from './useAccountBalance.js';
 import { useToggler } from '@hooks/useToggler.js';
 import { ImportAccount } from '../../../../_general/ImportAccount/ImportAccount.jsx';
 import { useWatch } from 'react-hook-form';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MenuList } from '../_general/MenuList/MenuList.jsx';
 import { Tip } from './Tip/Tip.jsx';
 import { useNetworkId } from '@hooks/useNetworkId.js';
 import cn from './SignerId.module.scss';
 
-export const SignerId = ({ form }) => {
+export const SignerId = ({ form, onLoadingChange }) => {
   const { control, setValue } = form;
   const { isTestnet } = useNetworkId();
   const signerId = useWatch({ control, name: 'signerId.value' });
   const { options, isLoading } = useAccountsOptionsWithLoading(signerId);
   const balance = useAccountBalance(signerId);
   const [isModalOpen, openModal, closeModal] = useToggler();
-  const isShowTip = isTestnet && !isLoading && options.length === 0;
+  const [accountsLoaded, setAccountsLoaded] = useState(false); // Avoid blinking when we clear or change signerId
+  const isShowTip = isTestnet && accountsLoaded && options.length === 0;
   const ref = useRef(null);
+
+  // Tell Form when options loaded
+  useEffect(() => {
+    onLoadingChange(isLoading);
+    if (!isLoading) setAccountsLoaded(true);
+  }, [isLoading]);
 
   const onChange = (field) => (event) => {
     field.onChange(event);

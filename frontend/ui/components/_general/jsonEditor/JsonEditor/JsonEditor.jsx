@@ -37,7 +37,7 @@ const getEditorExtensions = ({
   disableLinter,
   showLineNumbers,
   formatLineNumber,
-  extraExtensions,
+  copyExtensions,
 }) => {
   const extensions = [];
   // Line numbers first → leftmost gutter. formatLineNumber lets callers show
@@ -46,12 +46,11 @@ const getEditorExtensions = ({
     extensions.push(
       formatLineNumber ? lineNumbers({ formatNumber: formatLineNumber }) : lineNumbers(),
     );
-
   }
   extensions.push(commentFolderExtension, foldMarker, json5(), syntaxHighlighting(highlightStyle));
   if (!disableLinter) extensions.push(linter(json5ParseLinter()));
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
-  if (extraExtensions) extensions.push(extraExtensions);
+  if (copyExtensions) extensions.push(copyExtensions);
   return extensions;
 };
 
@@ -75,7 +74,7 @@ export const JsonEditor = ({
   formatLineNumber,
   showLineNumbers = true,
   copyValue,
-  extraExtensions,
+  copyExtensions,
 }) => {
   const clearValue = () => onChange('');
   const extensions = getEditorExtensions({
@@ -83,7 +82,7 @@ export const JsonEditor = ({
     disableLinter,
     showLineNumbers,
     formatLineNumber,
-    extraExtensions,
+    copyExtensions,
   });
 
   return (

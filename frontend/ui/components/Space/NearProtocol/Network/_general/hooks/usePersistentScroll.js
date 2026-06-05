@@ -1,37 +1,41 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
-export const usePersistentScroll = ({ ref, scrollPosition = 0, onSave, onAfterRestore }) => {
+export const usePersistentScroll = ({ scrollerRef, scrollPosition = 0, onSave, enabled = true, onAfterRestore }) => {
+  const restoredRef = useRef(false);
+
   useLayoutEffect(() => {
-    const el = ref.current;
+    if (!enabled || restoredRef.current) return;
+    const scroller = scrollerRef.current;
     let observer = null;
 
     const tryRestore = () => {
-      const maxScrollPos = el.scrollHeight - el.clientHeight;
+      const max = scroller.scrollHeight - scroller.clientHeight;
       // Restore scroll position when content is tall enough
-      if (maxScrollPos >= scrollPosition) {
-        el.scrollTop = scrollPosition;
+      if (max >= scrollPosition) {
+        scroller.scrollTop = scrollPosition;
+        restoredRef.current = true; // restore once — don't fight later user scroll
         observer?.disconnect();
         observer = null;
-      } else if (maxScrollPos > 0) {
-        el.scrollTop = maxScrollPos;
+      } else if (max > 0) {
+        scroller.scrollTop = max;
       }
       onAfterRestore?.();
     };
     tryRestore();
     // Content may not be fully rendered yet — observe resize to retry restoring scroll
-    if (el.scrollTop < scrollPosition && typeof ResizeObserver !== 'undefined') {
+    if (scroller.scrollTop < scrollPosition && typeof ResizeObserver !== 'undefined') {
       observer = new ResizeObserver(tryRestore);
-      observer.observe(el);
+      observer.observe(scroller);
     }
 
     return () => observer?.disconnect();
-  }, [ref, scrollPosition]);
+  }, [scrollerRef, scrollPosition, enabled]);
   // Save scroll position on unmount to restore it on next mount
   useLayoutEffect(
     () => () => {
-      const el = ref.current;
-      if (!el) return;
-      onSave(el.scrollTop);
+      const scroller = scrollerRef.current;
+      if (!scroller) return;
+      onSave(scroller.scrollTop);
     },
     [],
   );

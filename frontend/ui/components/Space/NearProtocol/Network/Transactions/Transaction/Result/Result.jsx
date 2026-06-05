@@ -14,20 +14,19 @@ export const Result = ({ txResult, transaction }) => {
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
   const setEditorState = useStoreAction((store) => store.nearProtocol.transactions.setEditorState);
   const data = result ? result : error;
-  const original = getFormattedJSON(data);
+  const originalJson = getFormattedJSON(data);
   const isSuccessResult = result?.status && 'successValue' in result.status;
   const resultRef = useRef(null);
 
-  const { onCreateEditor, value, formatLineNumber, ready, editorExtensions } =
+  const { onCreateEditor, value, formatLineNumber, ready, copyExtensions } =
     usePersistentEditorState({
-      ref: resultRef,
-      original,
+      scrollerRef: resultRef,
+      originalJson,
       editorState,
       onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
     });
 
-  // Hide the content while the editor wraps + restores scroll, so the user
-  // never sees the top before it jumps to the saved position.
+  //To avoid scroll jump we hide content while the editor wraps and restores scroll
   const hideContent = !isLoading && !ready;
 
   const closeResult = () => setResult({ transactionId, isOpen: false });
@@ -68,11 +67,11 @@ export const Result = ({ txResult, transaction }) => {
             <JsonEditor
               readOnly
               value={value}
-              copyValue={original}
+              copyValue={originalJson}
               showClearBtn={false}
               disableLinter
               formatLineNumber={formatLineNumber}
-              extraExtensions={editorExtensions}
+              copyExtensions={copyExtensions}
               title="json"
               onCreateEditor={onCreateEditor}
             />
