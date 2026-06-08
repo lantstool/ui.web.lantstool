@@ -6,7 +6,7 @@ import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
 import { useRef } from 'react';
-import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
+import { usePersistentEditorState } from '../../../_general/hooks/persistentEditorState/usePersistentEditorState.js';
 import cn from './Result.module.scss';
 
 export const Result = ({ txResult, transaction }) => {

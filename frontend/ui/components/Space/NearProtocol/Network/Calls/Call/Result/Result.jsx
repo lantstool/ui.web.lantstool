@@ -6,7 +6,7 @@ import { TabButton } from '@gc/tab/TabButton/TabButton.jsx';
 import { TabContainer } from '@gc/tab/TabContainer/TabContainer.jsx';
 import { useRef } from 'react';
 import { Label } from '@gc/Label/Label.jsx';
-import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
+import { usePersistentEditorState } from '../../../_general/hooks/persistentEditorState/usePersistentEditorState.js';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
 import cnm from 'classnames';
 import cn from './Result.module.scss';
@@ -39,9 +39,9 @@ export const Result = ({ callResult, call }) => {
       onSave: (snapshot) => setEditorState({ callId, editorState: snapshot }),
     });
 
-  const showingEditor = !isLoading && !(viewMode === 'overview' && result && !error);
+  const showEditor = !isLoading && !(viewMode === 'overview' && result && !error);
   //To avoid scroll jump we hide content while the Raw editor wraps + restores scroll
-  const hideContent = showingEditor && !ready;
+  const hideContent = showEditor && !ready;
 
   const closeResult = () => setResult({ callId, isOpen: false });
   const changeViewMode = (viewMode) => {

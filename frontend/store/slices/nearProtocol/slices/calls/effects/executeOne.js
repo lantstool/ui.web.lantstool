@@ -30,9 +30,7 @@ export const executeOne = effect(async ({ store, slice, payload }) => {
   const initEditorState = { scrollPosition: 0, foldedRanges: [] };
 
   try {
-    const method = formValues.method.value;
-    if (method)
-      setResult({ callId, isOpen: true, isLoading: true, formValues, viewMode: undefined });
+    setResult({ callId, isOpen: true, isLoading: true, formValues, viewMode: undefined });
     setEditorState({ callId, editorState: initEditorState });
 
     await rpc.configure({ spaceId, networkId, priority: getRpcPriority(formValues) });
