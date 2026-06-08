@@ -39,7 +39,7 @@ export const usePersistentEditorState = ({ scrollerRef, originalJson, editorStat
     value,
     ready,
     onCreateEditor: controller.attach,
-    freezeScroll: controller.leave,
+    leave: controller.leave,
     formatLineNumber: controller.formatLineNumber,
     copyExtensions: controller.extensions,
   };

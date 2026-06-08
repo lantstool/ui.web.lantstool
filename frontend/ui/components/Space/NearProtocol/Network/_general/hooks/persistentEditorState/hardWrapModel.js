@@ -60,7 +60,7 @@ export const buildModel = (view, original) => {
   return buildWrapModel(original, cols);
 };
 
-// Reconstruct the original text for a wrapped-doc range, dropping the '\n' we inserted
+// Reconstruct the original text for a wrapped doc range, dropping the '\n' we inserted
 // at continuation rows. Used by the copy handler.
 export const unwrapRange = (state, from, to, lineNumbers) => {
   if (!lineNumbers) return state.sliceDoc(from, to);
@@ -79,28 +79,28 @@ export const unwrapRange = (state, from, to, lineNumbers) => {
   }
   return result;
 };
-// Map a wrapped-doc position to its original-text offset:
-// subtract the inserted '\n' (continuation rows) before `pos`.
-export const wrappedPosToOriginal = (state, pos, lineNumbers) => {
-  if (!lineNumbers) return pos;
-  const lineNumber = state.doc.lineAt(pos).number;
+// Map a wrapped-doc position to its original text offset:
+// subtract the inserted '\n' (continuation rows) before `position`.
+export const wrappedPosToOriginal = (state, position, lineNumbers) => {
+  if (!lineNumbers) return position;
+  const lineNumber = state.doc.lineAt(position).number;
   let insertedBreaks = 0;
   for (let row = 2; row <= lineNumber; row++) {
     if (lineNumbers[row - 1] == null) insertedBreaks++;
   }
-  return pos - insertedBreaks;
+  return position - insertedBreaks;
 };
 
-// Map an original-text offset to its wrapped-doc position:
-// add the inserted '\n' at or before `origPos`. Binary search over ascending `breakOffsets`.
-export const originalPosToWrapped = (origPos, breakOffsets) => {
-  if (!breakOffsets || !breakOffsets.length) return origPos;
+// Map an original text offset to its wrapped doc position:
+// add the inserted '\n' at or before `originalPosition`. Binary search over ascending `breakOffsets`.
+export const originalPosToWrapped = (originalPosition, breakOffsets) => {
+  if (!breakOffsets || !breakOffsets.length) return originalPosition;
   let low = 0;
   let high = breakOffsets.length;
   while (low < high) {
     const mid = (low + high) >> 1;
-    if (breakOffsets[mid] <= origPos) low = mid + 1;
+    if (breakOffsets[mid] <= originalPosition) low = mid + 1;
     else high = mid;
   }
-  return origPos + low;
+  return originalPosition + low;
 };

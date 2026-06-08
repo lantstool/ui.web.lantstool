@@ -40,8 +40,7 @@ const getEditorExtensions = ({
   copyExtensions,
 }) => {
   const extensions = [];
-  // Line numbers first → leftmost gutter. formatLineNumber lets callers show
-  // logical numbers (e.g. blank continuation rows for hard-wrapped content).
+  // LineNumbers must be added before foldMarker for correct display
   if (showLineNumbers) {
     extensions.push(
       formatLineNumber ? lineNumbers({ formatNumber: formatLineNumber }) : lineNumbers(),

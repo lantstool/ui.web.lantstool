@@ -31,7 +31,7 @@ export const Result = ({ callResult, call }) => {
   const resultRef = useRef(null);
   const originalJson = getFormattedJSON(result ? result : error);
 
-  const { onCreateEditor, value, formatLineNumber, ready, freezeScroll, copyExtensions } =
+  const { onCreateEditor, value, formatLineNumber, ready, leave, copyExtensions } =
     usePersistentEditorState({
       scrollerRef: resultRef,
       originalJson,
@@ -40,20 +40,18 @@ export const Result = ({ callResult, call }) => {
     });
 
   const showEditor = !isLoading && !(viewMode === 'overview' && result && !error);
-  //To avoid scroll jump we hide content while the Raw editor wraps + restores scroll
+  // To avoid scroll jump we hide content while the editor wraps and restores scroll
   const hideContent = showEditor && !ready;
 
   const closeResult = () => setResult({ callId, isOpen: false });
   const changeViewMode = (viewMode) => {
-    freezeScroll(viewMode);
+    leave(viewMode);
     setViewMode({ callId, viewMode });
   };
 
   return (
     <div ref={resultRef} className={cn.result}>
-      <div
-        className={cnm(cn.container, hideContent && cn.hideContainer)}
-      >
+      <div className={cnm(cn.container, hideContent && cn.hideContainer)}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
