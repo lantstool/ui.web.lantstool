@@ -6,6 +6,7 @@ export const calls = {
   list: [],
   drafts: {},
   results: {},
+  scrollPositions: {},
   // actions
   ...actions,
   // effects

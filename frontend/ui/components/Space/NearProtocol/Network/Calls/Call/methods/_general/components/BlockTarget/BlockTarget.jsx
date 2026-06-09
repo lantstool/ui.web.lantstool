@@ -1,8 +1,7 @@
-import { useWatch } from 'react-hook-form';
-import { FormDropdown } from '../../../../../../../../../_general/dropdown/FormDropdown.jsx';
-import { FormRadioButton } from '../../../../../../../../../_general/FormRadioButton/FormRadioButton.jsx';
-import { FormInput } from '../../../../../../../../../_general/input/FormInput/FormInput.jsx';
-import { Tooltip } from '../../../../../../../../../_general/Tooltip/Tooltip.jsx';
+import { FormDropdown } from '@gc/dropdown/FormDropdown.jsx';
+import { FormRadioButton } from '@gc/FormRadioButton/FormRadioButton.jsx';
+import { FormInput } from '@gc/input/FormInput/FormInput.jsx';
+import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { config } from '../../config.js';
 import cn from './BlockTarget.module.scss';
 
@@ -12,10 +11,11 @@ const finalityOptions = [finality.final, finality['near-final'], finality.optimi
 export const BlockTarget = ({ form }) => {
   const {
     control,
-    formState: { errors },
+    watch,
+    formState: { errors, },
   } = form;
 
-  const blockTarget = useWatch({ control, name: 'blockTarget' });
+  const blockTarget = watch('blockTarget');
 
   return (
     <>

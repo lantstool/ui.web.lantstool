@@ -16,7 +16,16 @@
 .form {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+
+.hideForm {
+  visibility: hidden;
 }
 
 .label {

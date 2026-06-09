@@ -2,16 +2,15 @@ import { FieldTopbarLabel } from '../../FieldTopbarLabel/FieldTopbarLabel.jsx';
 import { Tooltip } from '../../Tooltip/Tooltip.jsx';
 import { CopyButton } from '../../CopyButton/CopyButton.jsx';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
+import { lineNumbers } from '@codemirror/view';
 import { theme } from './theme.js';
-// import { javascript } from '@codemirror/lang-javascript';
 import { json5 } from 'codemirror-json5';
 import { linter } from '@codemirror/lint';
 import { json5ParseLinter } from '@gc/jsonEditor/JsonEditor/json5Linter.js';
-import { syntaxHighlighting } from '@codemirror/language';
-import { commentFolderExtension, singleLineCommentFolder } from './commentFolderExtension.js';
+import { syntaxHighlighting, foldGutter } from '@codemirror/language';
+import { commentFolderExtension } from './commentFolderExtension.js';
 import { highlightStyle } from './theme.js';
 import { FieldErrorLabel } from '../../FieldErrorLabel/FieldErrorLabel.jsx';
-import { foldGutter } from '@codemirror/language';
 import cnm from 'classnames';
 import cn from './JsonEditor.module.scss';
 
@@ -31,16 +30,26 @@ const foldMarker = foldGutter({
   },
 });
 
-const getEditorExtensions = ({ withLineWrapping }) => {
-  const extensions = [
-    commentFolderExtension,
-    foldMarker,
-    json5(),
-    linter(json5ParseLinter()),
-    syntaxHighlighting(highlightStyle),
-  ];
 
+
+const getEditorExtensions = ({
+  withLineWrapping,
+  disableLinter,
+  showLineNumbers,
+  formatLineNumber,
+  copyExtensions,
+}) => {
+  const extensions = [];
+  // LineNumbers must be added before foldMarker for correct display
+  if (showLineNumbers) {
+    extensions.push(
+      formatLineNumber ? lineNumbers({ formatNumber: formatLineNumber }) : lineNumbers(),
+    );
+  }
+  extensions.push(commentFolderExtension, foldMarker, json5(), syntaxHighlighting(highlightStyle));
+  if (!disableLinter) extensions.push(linter(json5ParseLinter()));
   if (withLineWrapping) extensions.push(EditorView.lineWrapping);
+  if (copyExtensions) extensions.push(copyExtensions);
   return extensions;
 };
 
@@ -59,9 +68,21 @@ export const JsonEditor = ({
   errorLabel,
   customTheme,
   withLineWrapping,
+  onCreateEditor,
+  disableLinter,
+  formatLineNumber,
+  showLineNumbers = true,
+  copyValue,
+  copyExtensions,
 }) => {
   const clearValue = () => onChange('');
-  const extensions = getEditorExtensions({ withLineWrapping });
+  const extensions = getEditorExtensions({
+    withLineWrapping,
+    disableLinter,
+    showLineNumbers,
+    formatLineNumber,
+    copyExtensions,
+  });
 
   return (
     <div className={cnm(cn.container, classes?.container)}>
@@ -79,7 +100,7 @@ export const JsonEditor = ({
           )}
           {showCopyBtn && (
             <Tooltip content="Copy" placement="top" arrow={false}>
-              <CopyButton value={value} />
+              <CopyButton value={copyValue ?? value} />
             </Tooltip>
           )}
         </div>
@@ -93,7 +114,8 @@ export const JsonEditor = ({
         theme={theme(error, customTheme?.contentMinHeight)}
         readOnly={readOnly}
         extensions={extensions}
-        basicSetup={{ foldGutter: false, tabSize: 2 }}
+        onCreateEditor={onCreateEditor}
+        basicSetup={{ foldGutter: false, tabSize: 2, lineNumbers: false }}
       />
       {errorLabel || <FieldErrorLabel error={error} dynamicErrorSpace={dynamicErrorSpace} />}
     </div>

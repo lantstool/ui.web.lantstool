@@ -6,6 +6,7 @@ export const transactions = {
   txList: [],
   drafts: {},
   results: {},
+  scrollPositions: {},
   // actions
   ...actions,
   // effects

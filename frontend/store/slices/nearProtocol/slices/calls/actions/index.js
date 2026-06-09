@@ -6,6 +6,9 @@ import { setResult } from './setResult.js';
 import { setupDraft } from './setupDraft.js';
 import { setDraftCurrentMethod } from './setDraftCurrentMethod.js';
 import { resetState } from './resetState.js';
+import { setScrollPosition } from './setScrollPosition.js';
+import { setEditorState } from './setEditorState.js';
+import { setViewMode } from './setViewMode.js';
 
 export const actions = {
   setList,
@@ -16,4 +19,7 @@ export const actions = {
   setupDraft,
   setDraftCurrentMethod,
   resetState,
+  setScrollPosition,
+  setEditorState,
+  setViewMode,
 };

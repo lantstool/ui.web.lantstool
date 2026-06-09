@@ -1,20 +1,19 @@
-import { getFormattedJSON } from '../../../../../../../../../store/helpers/utils.js';
 import { JsonEditor } from '@gc/jsonEditor/JsonEditor/JsonEditor.jsx';
 import cn from './Raw.module.scss';
 
-export const Raw = ({ result, error }) => {
-  const data = result ? result : error;
-
-  return (
-    <JsonEditor
-      readOnly
-      value={getFormattedJSON(data)}
-      showClearBtn={false}
-      classes={{
-        container: cn.editorContainer,
-      }}
-      withLineWrapping
-      title="json"
-    />
-  );
-};
+export const Raw = ({ value, copyValue, onCreateEditor, formatLineNumber, copyExtensions }) => (
+  <JsonEditor
+    readOnly
+    value={value}
+    copyValue={copyValue}
+    showClearBtn={false}
+    classes={{
+      container: cn.editorContainer,
+    }}
+    disableLinter
+    formatLineNumber={formatLineNumber}
+    copyExtensions={copyExtensions}
+    title="json"
+    onCreateEditor={onCreateEditor}
+  />
+);
