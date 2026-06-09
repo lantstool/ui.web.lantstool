@@ -28,7 +28,7 @@ export const Form = ({ call, draft, children, methodDescription, schema }) => {
   }, [callId]);
 
   usePersistentScroll({
-    ref: formRef,
+    scrollerRef: formRef,
     scrollPosition,
     onSave: (sp) => setScrollPosition({ callId, scrollPosition: sp }),
   });

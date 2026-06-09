@@ -5,12 +5,13 @@ import { SignerId } from './SignerId/SignerId.jsx';
 import { SignerKey } from './SignerKey/SignerKey.jsx';
 import { Actions } from './Actions/Actions.jsx';
 import { ReceiverId } from './ReceiverId/ReceiverId.jsx';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Topbar } from './Topbar/Topbar.jsx';
 import { ActionBar } from './ActionBar/ActionBar.jsx';
 import { transactionSchema } from './validations/transactionSchema.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { usePersistentScroll } from '../../../_general/hooks/usePersistentScroll.js';
+import cnm from 'classnames';
 import cn from './Form.module.scss';
 
 export const Form = ({ transaction, draft }) => {
@@ -22,30 +23,33 @@ export const Form = ({ transaction, draft }) => {
   const setScrollPosition = useStoreAction(
     (store) => store.nearProtocol.transactions.setScrollPosition,
   );
-
+  const [isLoading, setLoading] = useState(true);
+  const [restored, setRestored] = useState(!scrollPosition);
   const formRef = useRef(null);
+
   const form = useForm({
-    defaultValues: body,
+    defaultValues: draft || body,
     mode: 'onSubmit',
     resolver: yupResolver(transactionSchema),
   });
   // useLayoutEffect ensures draft is applied before scroll position is restored,
   // preventing layout recalculation after initial paint
   useLayoutEffect(() => {
-    form.reset(draft);
     return () => {
       setDraft({ transactionId, draft: form.getValues() });
     };
   }, [transactionId]);
 
   usePersistentScroll({
-    ref: formRef,
+    scrollerRef: formRef,
+    enabled: !isLoading,
     scrollPosition,
     onSave: (sp) => setScrollPosition({ transactionId, scrollPosition: sp }),
+    onAfterRestore: () => setRestored(true),
   });
 
   return (
-    <div ref={formRef} className={cn.form}>
+    <div ref={formRef} className={cnm(cn.form, !restored && cn.hideForm)}>
       <form className={cn.formContainer}>
         <Topbar transaction={transaction} form={form} />
         <div className={cn.label}>
@@ -69,7 +73,7 @@ export const Form = ({ transaction, draft }) => {
             defaultContent
           />
         </div>
-        <SignerId form={form} />
+        <SignerId form={form} onLoadingChange={setLoading} />
         <SignerKey form={form} />
         <Actions form={form} />
         <ReceiverId form={form} />

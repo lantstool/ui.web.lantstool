@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.hideContainer {
+  visibility: hidden;
+}
+
 .head {
   padding: 16px;
   background-color: $neutral-50;

@@ -19,7 +19,6 @@ export const MethodName = ({ control, form }) => {
       options={options}
       isSearchable
       isClearable
-      creatableSelect
       onChange={onChange}
       components={{
         Option: (props) => <Option props={props} />,

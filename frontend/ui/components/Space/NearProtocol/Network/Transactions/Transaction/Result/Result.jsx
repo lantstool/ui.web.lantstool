@@ -6,28 +6,34 @@ import { Tooltip } from '@gc/Tooltip/Tooltip.jsx';
 import { CopyButton } from '@gc/CopyButton/CopyButton.jsx';
 import { getFormattedJSON } from '../../../../../../../../store/helpers/utils.js';
 import { useRef } from 'react';
-import { usePersistentEditorState } from '../../../_general/hooks/usePersistentEditorState.js';
+import { usePersistentEditorState } from '../../../_general/hooks/persistentEditorState/usePersistentEditorState.js';
+import cnm from 'classnames';
 import cn from './Result.module.scss';
 
 export const Result = ({ txResult, transaction }) => {
   const { result, isLoading, transactionId, error, editorState } = txResult;
   const setResult = useStoreAction((store) => store.nearProtocol.transactions.setResult);
   const setEditorState = useStoreAction((store) => store.nearProtocol.transactions.setEditorState);
-  const data = result ? result : error;
+  const originalJson = getFormattedJSON(result ? result : error);
   const isSuccessResult = result?.status && 'successValue' in result.status;
   const resultRef = useRef(null);
 
-  const { onCreateEditor } = usePersistentEditorState({
-    ref: resultRef,
-    editorState,
-    onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
-  });
+  const { onCreateEditor, value, formatLineNumber, ready, copyExtensions } =
+    usePersistentEditorState({
+      scrollerRef: resultRef,
+      originalJson,
+      editorState,
+      onSave: (snapshot) => setEditorState({ transactionId, editorState: snapshot }),
+    });
+
+  // To avoid scroll jump we hide content while the editor wraps and restores scroll
+  const hideContent = !isLoading && !ready;
 
   const closeResult = () => setResult({ transactionId, isOpen: false });
 
   return (
     <div ref={resultRef} className={cn.result}>
-      <div className={cn.container}>
+      <div className={cnm(cn.container, hideContent && cn.hideContainer)}>
         <div className={cn.head}>
           <div className={cn.headWrapper}>
             <h2 className={cn.title}>Result</h2>
@@ -60,9 +66,12 @@ export const Result = ({ txResult, transaction }) => {
             )}
             <JsonEditor
               readOnly
-              value={getFormattedJSON(data)}
+              value={value}
+              copyValue={originalJson}
               showClearBtn={false}
-              withLineWrapping
+              disableLinter
+              formatLineNumber={formatLineNumber}
+              copyExtensions={copyExtensions}
               title="json"
               onCreateEditor={onCreateEditor}
             />
