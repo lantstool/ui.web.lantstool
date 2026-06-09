@@ -37,106 +37,112 @@ export const createResultEditor = ({
   folds,
 }) => {
   // --- state ---
-  let hidden = true;
-  let value = originalJson; // current doc text (original, then wrapped after measure)
-  let view = null;
-  let scrollTop = scrollPosition;
-  let savedFolds = folds; // folds to restore, in original-text coords
-  let model = { lineNumbers: null, breakOffsets: [], wrappedFrom: null };
-  let pending = null; // { length, run } — run once the doc reaches this length
-  // latest external inputs, refreshed each render via update()
-  let currentJson = originalJson;
-  let currentOnSave = onSave;
+  const state = {
+    hidden: true,
+    value: originalJson, // current doc text (original, then wrapped after measure)
+    view: null,
+    scrollTop: scrollPosition,
+    savedFolds: folds, // folds to restore, in original-text coords
+    model: { lineNumbers: null, breakOffsets: [], wrappedFrom: null },
+    pending: null, // { length, run } — run once the doc reaches this length
+    // latest external inputs, refreshed each render via update()
+    currentJson: originalJson,
+    currentOnSave: onSave,
+  };
 
   // --- React binding (useSyncExternalStore): keep the snapshot ref stable ---
   const listeners = new Set();
-  let snapshot = { value, ready: !hidden };
+  let snapshot = { value: state.value, ready: !state.hidden };
+
   const getSnapshot = () => snapshot;
+
   const subscribe = (listener) => {
     listeners.add(listener);
     return () => listeners.delete(listener);
   };
+
   const emit = () => {
-    const ready = !hidden;
-    if (snapshot.value === value && snapshot.ready === ready) return; // unchanged → keep ref
-    snapshot = { value, ready };
+    const ready = !state.hidden;
+    if (snapshot.value === state.value && snapshot.ready === ready) return; // unchanged → keep ref
+    snapshot = { value: state.value, ready };
     listeners.forEach((listener) => listener());
   };
 
-  const getCurrentFoldsAsOriginal = () => foldsToOriginal(view.state, model.lineNumbers);
+  const getCurrentFoldsAsOriginal = () =>
+    foldsToOriginal(state.view.state, state.model.lineNumbers);
 
   // --- steps ---
   const save = () => {
     const scroller = getScroller();
-    currentOnSave({
+    state.currentOnSave({
       scrollPosition: scroller.scrollTop,
-      foldedRanges: savedFolds,
+      foldedRanges: state.savedFolds,
     });
   };
 
   const reveal = () => {
-    hidden = false;
+    state.hidden = false;
     emit();
   };
 
   // Restore saved scroll + folds synchronously.
   const runRestore = () => {
     const scroller = getScroller();
-    if (!view || !scroller) return;
+    if (!state.view || !scroller) return;
 
-    forceParsing(view, view.state.doc.length, 500); // Parse the whole document
-    if (savedFolds.length) {
-      view.dispatch({ effects: foldEffectsFor(savedFolds, model.breakOffsets) });
+    forceParsing(state.view, state.view.state.doc.length, 500); // Parse the whole document
+    if (state.savedFolds.length) {
+      state.view.dispatch({ effects: foldEffectsFor(state.savedFolds, state.model.breakOffsets) });
     }
-    if (scrollTop > 0) {
-      scroller.scrollTop = scrollTop;
-      view.requestMeasure();
+    if (state.scrollTop > 0) {
+      scroller.scrollTop = state.scrollTop;
+      state.view.requestMeasure();
     }
     reveal();
   };
 
   const runRefold = (origFolds, breakOffsets) => {
-    if (!view) return;
-    view.dispatch({ effects: foldEffectsFor(origFolds, breakOffsets) });
+    if (!state.view) return;
+    state.view.dispatch({ effects: foldEffectsFor(origFolds, breakOffsets) });
   };
 
   const commitValue = (text, run) => {
-    const changed = value !== text;
-    value = text;
+    const changed = state.value !== text;
+    state.value = text;
     if (changed) {
-      pending = { length: text.length, run }; // wait for onCmUpdate
+      state.pending = { length: text.length, run }; // wait for onCmUpdate
       emit();
     } else {
-      pending = null;
+      state.pending = null;
       emit();
       requestAnimationFrame(run); // doc already matches → run next frame
     }
   };
 
   const onCmUpdate = (update) => {
-    if (!update.docChanged || !pending) return;
-    if (update.state.doc.length === pending.length) {
-      const run = pending.run;
-      pending = null;
+    if (!update.docChanged || !state.pending) return;
+    if (update.state.doc.length === state.pending.length) {
+      const run = state.pending.run;
+      state.pending = null;
       requestAnimationFrame(run);
     }
   };
 
   // --- events ---
   const attach = (editorView) => {
-    view = editorView;
+    state.view = editorView;
     // Hide until restore. Avoids a flash of the unwrapped text before it re-wraps.
-    hidden = scrollTop > 0 || model.wrappedFrom !== currentJson;
+    state.hidden = state.scrollTop > 0 || state.model.wrappedFrom !== state.currentJson;
     emit();
 
     editorView.requestMeasure({
-      read: () => buildModel(editorView, currentJson),
+      read: () => buildModel(editorView, state.currentJson),
       write: (wrapModel) => {
-        if (view !== editorView) return;
-        model = {
+        if (state.view !== editorView) return;
+        state.model = {
           lineNumbers: wrapModel.lineNumbers,
           breakOffsets: wrapModel.breakOffsets,
-          wrappedFrom: currentJson,
+          wrappedFrom: state.currentJson,
         };
         commitValue(wrapModel.text, runRestore);
       },
@@ -144,14 +150,16 @@ export const createResultEditor = ({
   };
 
   const widthChanged = () => {
-    if (!view || hidden) return;
-    const originalFolds = foldsToOriginal(view.state, model.lineNumbers);
-    const wrapModel = buildModel(view, currentJson);
-    model = {
+    if (!state.view || state.hidden) return;
+    const originalFolds = foldsToOriginal(state.view.state, state.model.lineNumbers);
+    const wrapModel = buildModel(state.view, state.currentJson);
+
+    state.model = {
       lineNumbers: wrapModel.lineNumbers,
       breakOffsets: wrapModel.breakOffsets,
-      wrappedFrom: currentJson,
+      wrappedFrom: state.currentJson,
     };
+
     commitValue(
       wrapModel.text,
       originalFolds.length ? () => runRefold(originalFolds, wrapModel.breakOffsets) : () => {},
@@ -159,36 +167,37 @@ export const createResultEditor = ({
   };
 
   const leave = (mode) => {
-    if (mode === 'overview' && view) {
-      savedFolds = getCurrentFoldsAsOriginal();
+    if (mode === 'overview' && state.view) {
+      state.savedFolds = getCurrentFoldsAsOriginal();
       save();
       const scroller = getScroller();
       scroller.scrollTop = 0;
-      view = null; // Drop the live view so dispose/widthChanged skip it
+      state.view = null; // Drop the live view so dispose/widthChanged skip it
     }
   };
 
   const dispose = () => {
-    if (view) {
-      savedFolds = getCurrentFoldsAsOriginal();
+    if (state.view) {
+      state.savedFolds = getCurrentFoldsAsOriginal();
       save();
     }
   };
 
   const resetTargets = (nextScroll, nextFolds) => {
-    scrollTop = nextScroll;
-    savedFolds = nextFolds;
+    state.scrollTop = nextScroll;
+    state.savedFolds = nextFolds;
   };
 
   const update = (next) => {
-    currentOnSave = next.onSave;
-    currentJson = next.originalJson;
+    state.currentOnSave = next.onSave;
+    state.currentJson = next.originalJson;
   };
 
   // --- stable outputs ---
   const formatLineNumber = (rowNumber) => {
-    const lineNumbers = model.lineNumbers;
+    const lineNumbers = state.model.lineNumbers;
     if (!lineNumbers) return String(rowNumber);
+
     const originalLine = lineNumbers[rowNumber - 1];
     return originalLine == null ? '' : String(originalLine);
   };
@@ -200,7 +209,7 @@ export const createResultEditor = ({
       copy(event, editorView) {
         const { from, to } = editorView.state.selection.main;
         if (from === to || !event.clipboardData) return false;
-        const text = unwrapRange(editorView.state, from, to, model.lineNumbers);
+        const text = unwrapRange(editorView.state, from, to, state.model.lineNumbers);
         event.clipboardData.setData('text/plain', text);
         event.preventDefault();
         return true;
